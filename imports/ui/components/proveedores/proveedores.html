@@ -1,0 +1,48 @@
+<titulo-principal titulo="{{proveedores.titulo}}"></titulo-principal>
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <button class="btn btn-primary btn-sm" ng-click="proveedores.modalAgregar()">Agregar Proveedor</button>
+                        </div>
+                        <div class="col-xs-4">
+
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <input type="text" placeholder="Search client " class="input form-control">
+                                <span class="input-group-btn">
+                                        <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clients-list">
+                        <div class="full-height-scroll" full-scroll>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <td><a class="client-link">Anthony Jackson</a></td>
+                                        <td> Tellus Institute</td>
+                                        <td class="contact-type"><i class="fa fa-envelope"> </i></td>
+                                        <td> gravida@rbisit.com</td>
+                                        <td class="contact-type"><i class="fa fa-phone"> </i></td>
+                                        <td> +432 955 908</td>
+                                        <td class="client-status">
+                                            <button class="btn btn-danger btn-xs">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

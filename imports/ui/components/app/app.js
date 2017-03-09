@@ -5,6 +5,9 @@ import {name as Navigation} from "./navigation/navigation";
 import {name as Topnavbar} from "./topnavbar/topnavbar";
 import {name as Footer} from "./footer/footer";
 import {name as Prueba} from "../prueba/prueba";
+import {name as ProveedoresClass} from "../proveedores/proveedores";
+import {name as Tiendas} from "../tiendas/tiendas";
+import {name as Usuarios} from "../usuarios/usuarios";
 import "metismenu/dist/metisMenu.js";
 import "./app.html";
 
@@ -24,7 +27,10 @@ export default angular
         Navigation,
         Topnavbar,
         Footer,
-        Prueba
+        Prueba,
+        ProveedoresClass,
+        Usuarios,
+        Tiendas
     ]).component(name, {
         templateUrl: `imports/ui/components/${name}/${name}.html`,
         controllerAs: name,

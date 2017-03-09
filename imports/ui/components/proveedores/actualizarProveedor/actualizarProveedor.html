@@ -1,0 +1,22 @@
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn close" ng-click="eliminarVacante.cancelar()">
+                <span class="fa fa-times" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <alertas tipo="eliminarVacante.tipoMsj" mensaje="eliminarVacante.msj"></alertas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-offset-7 col-md-2">
+            <button class="btn btn-success" type="button" ng-click="eliminarVacante.eliminar()" ng-disabled="eliminarVacante.respuesta.disable">Aceptar</button>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-2">
+            <button class="btn btn-danger" type="button" ng-click="eliminarVacante.cancelar()">Cerrar</button>
+        </div>
+    </div>
+</div>
