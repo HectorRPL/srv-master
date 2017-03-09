@@ -1,33 +1,32 @@
 /**
- * Created by jvltmtz on 8/03/17.
+ * Created by jvltmtz on 9/03/17.
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
-import {Proveedores} from "./collection";
+import {Tiendas} from "./collection";
 
 const ID = ['_id'];
 
-const CAMPOS_PROVEEDORES = ['nombre', 'telefono', 'email'];
+const CAMPOS_TIENDAS = ['nombre', 'telefono', 'email'];
 // Enviará un correo con un link al usuario para verificacar de registro
 export const insertar = new ValidatedMethod({
-    name: 'proveedores.insertar',
-    validate: Proveedores.simpleSchema().pick(CAMPOS_PROVEEDORES).validator({
+    name: 'tiendas.insertar',
+    validate: Tiendas.simpleSchema().pick(CAMPOS_TIENDAS).validator({
         clean: true,
         filter: false
     }),
     run({nombre, telefono, email}) {
-        console.log(nombre, telefono, email);
-        return Proveedores.insert({nombre, telefono, email});
+        return Tiendas.insert({nombre, telefono, email});
     }
 });
 
-const PROVEEDORES_METHODS = _.pluck([insertar], 'name');
+const TIENDAS_METHODS = _.pluck([insertar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
-            return _.contains(PROVEEDORES_METHODS, name);
+            return _.contains(TIENDAS_METHODS, name);
         },
         connectionId() {
             return true;

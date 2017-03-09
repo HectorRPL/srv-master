@@ -1,33 +1,29 @@
 /**
- * Created by jvltmtz on 8/03/17.
+ * Created by jvltmtz on 9/03/17.
  */
-/**
- * Created by jvltmtz on 8/03/17.
- */
-import "./agregarProveedor.html";
+import "./agregarTienda.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
-import {insertar} from "../../../../api/catalogos/proveedores/methods";
+import {insertar} from "../../../../api/catalogos/tiendas/methods";
 
-class AgregarProveedor {
+class AgregarTienda {
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.titulo = 'Agregar Proveedores';
+        this.titulo = 'Agregar Tienda';
         this.datos = {};
 
     }
 
     agregar() {
         this.tipoMsj = '';
-        console.log(this.datos);
         insertar.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
                 console.log();
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';
             } else {
-                this.msj = 'La vacante ha sido eliminada con exito.';
+                this.msj = 'La tienda ha sido registrada con exito.';
                 this.tipoMsj = 'success';
             }
         }));
@@ -39,7 +35,7 @@ class AgregarProveedor {
 
 }
 
-const name = 'agregarProveedor';
+const name = 'agregarTienda';
 
 // create a module
 export default angular
@@ -47,9 +43,9 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/proveedores/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
         controllerAs: name,
-        controller: AgregarProveedor,
+        controller: AgregarTienda,
         bindings: {
             resolve: '<',
             close: '&',

@@ -28,7 +28,7 @@ class ProveedoresClass {
             component: 'AgregarProveedor',
             backdrop: 'static',
             size: 'md',
-            keyboard: false,
+            keyboard: true,
         });
     }
 
