@@ -3,5 +3,5 @@
  */
 //import "./security";
 import "./register-api";
-//import "./fixtures";
+import "./fixtures";
 import "./catalogos";
