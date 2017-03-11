@@ -10,15 +10,38 @@
             <h3>Centro Comercial de Pisos y Azulejos</h3>
             <p>"El más barato de México"</p>
             <p>Iniciar sesión</p>
-            <form class="m-t" role="form" action="#">
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Usuario" required="">
+            <form role="form" class="property-submit-form" id="loginFormId" name="loginForm" nonvalidate>
+                <!-- CORREO-->
+                <div class="form-group"
+                     ng-class="{ 'has-error' : loginForm.usuario.$invalid && !loginForm.usuario.$pristine }">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon span-demos">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <input id="candidatoEmailID" class="form-control" name="usuario" type="text" placeholder=""
+                               aria-describedby="basic-addon1" required ng-model="login.credentials.username">
+                    </div>
+                    <div ng-messages="loginForm.usuario.$dirty && loginForm.usuario.$error" role="alert">
+                        <div ng-message="required" style="color:red">Campo requerido</div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Contraseña" required="">
+                <div class="form-group"
+                     ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon span-demos">
+                            <i class="fa fa-key" aria-hidden="true"></i>
+                        </span>
+                        <input id="candidatoPasswordID" class="form-control" name="password" type="password" placeholder=""
+                               aria-describedby="basic-addon1" required ng-model="login.credentials.password">
+                    </div>
+                    <div ng-messages="loginForm.password.$dirty && loginForm.password.$error" role="alert">
+                        <div ng-message="required" style="color:red">Campo requerido</div>
+                    </div>
                 </div>
-                <button ui-sref="app.prueba" type="submit" class="btn btn-default block full-width m-b">Entrar</button>
-
+                <button type="submit" class="btn btn-default block full-width m-b" ng-click="login.login()">Entrar</button>
+                <div class="row">
+                    <alertas tipo="login.tipoMsj" mensaje="login.msj"></alertas>
+                </div>
                 <a ui-sref="forgot_password">
                     <small>Recuperar contraseña</small>
                 </a>

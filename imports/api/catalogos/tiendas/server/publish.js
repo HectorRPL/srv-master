@@ -10,4 +10,9 @@ if (Meteor.isServer) {
         return Tiendas.find();
     });
 
+    Meteor.publish('tiendas.seleccionada', function (tiendaId) {
+
+        return Tiendas.find(tiendaId);
+    });
+
 }

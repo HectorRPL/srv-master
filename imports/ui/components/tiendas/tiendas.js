@@ -5,6 +5,7 @@ import "./tiendas.html";
 import {Tiendas} from "../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from './agregarTienda/agregarTienda';
+import {name as Empleados} from './empleados/empleados';
 
 class TiendasClass {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -40,7 +41,8 @@ const name = 'tiendas';
 export default angular
     .module(name, [
         TituloPrincipal,
-        AgregarTienda
+        AgregarTienda,
+        Empleados
     ])
     .component(name, {
         templateUrl: `imports/ui/components/${name}/${name}.html`,

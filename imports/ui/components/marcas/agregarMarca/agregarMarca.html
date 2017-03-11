@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="inmodal">
+    <!-- div class="modal-header">
+
+    </div -->
+    <h5 class="modal-title text-center">{{agregarMarca.titulo}}</h5>
+    <div class="modal-body">
+        <form role="form" id="agregarMarcaFrmId" name="agregarMarcaFrm" novalidate>
+            <div class="row">
+                <!--NOMBRE DE LA EMPRESA-->
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group" ng-class="{ 'has-error' : agregarMarcaFrm.nombre.$invalid && !agregarMarcaFrm.nombre.$pristine}">
+                        <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                                        </span>
+                            <input id="nombreID" class="form-control" name="nombre" type="text"
+                                   placeholder="Nombre Marca" aria-describedby="sizing-addon1"
+                                   minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                                   ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/" required
+                                   ng-model="agregarMarca.datos.nombre">
+                        </div>
+                        <div ng-messages="agregarMarcaFrm.nombre.$dirty && agregarMarcaFrm.nombre.$error"
+                             role="alert">
+                            <div style="color:red;" ng-message="required"> Campo requerido</div>
+                            <div style="color:red;" ng-message="minlength"> Longitud mínima 2 caracteres</div>
+                            <div style="color:red;" ng-message="maxlength"> Longitud máxima 50 caracteres</div>
+                            <div style="color:red;" ng-message="pattern"> Sólo caracteres alfabéticos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-xs-offset-3 col-xs-6">
+                <!-- ALERTA: COMBINACIÓN INCORRECTA -->
+                <alertas tipo="agregarMarca.tipoMsj" mensaje="agregarMarca.msj"></alertas>
+            </div>
+        </div>
+        <!-- div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5><stron class="text-center">Agregar Proveedor</stron>
+                        </h5>
+                        <div ibox-tools></div>
+                    </div>
+                    <div class="ibox-content">
+
+                    </div>
+                </div>
+            </div>
+        </div -->
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" ng-click="agregarMarca.cerrar()">Cerrar</button>
+        <button type="button" class="btn btn-primary" ng-click="agregarMarca.agregar()"
+                ng-disabled="agregarMarcaFrm.$invalid">
+            Agregar
+        </button>
+    </div>
+</div>
+
+
+

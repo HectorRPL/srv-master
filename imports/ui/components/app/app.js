@@ -8,7 +8,7 @@ import {name as Prueba} from "../prueba/prueba";
 import {name as ProveedoresClass} from "../proveedores/proveedores";
 import {name as TiendasClass} from "../tiendas/tiendas";
 import {name as Usuarios} from "../usuarios/usuarios";
-import angularMessages from "angular-messages";
+import {name as Marcas} from "../marcas/marcas";
 import "metismenu/dist/metisMenu.js";
 import "./app.html";
 
@@ -32,7 +32,7 @@ export default angular
         ProveedoresClass,
         Usuarios,
         TiendasClass,
-        angularMessages
+        Marcas
     ]).component(name, {
         templateUrl: `imports/ui/components/${name}/${name}.html`,
         controllerAs: name,

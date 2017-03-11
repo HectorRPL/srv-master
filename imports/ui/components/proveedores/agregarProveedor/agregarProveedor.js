@@ -1,9 +1,6 @@
 /**
  * Created by jvltmtz on 8/03/17.
  */
-/**
- * Created by jvltmtz on 8/03/17.
- */
 import "./agregarProveedor.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {insertar} from "../../../../api/catalogos/proveedores/methods";

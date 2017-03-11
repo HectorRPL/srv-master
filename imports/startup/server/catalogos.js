@@ -5,3 +5,6 @@ import "../../api/catalogos/proveedores/server/publish";
 import "../../api/catalogos/proveedores/methods";
 import "../../api/catalogos/tiendas/server/publish";
 import "../../api/catalogos/tiendas/methods";
+import "../../api/catalogos/marcas/server/publish";
+import "../../api/catalogos/marcas/methods";
+

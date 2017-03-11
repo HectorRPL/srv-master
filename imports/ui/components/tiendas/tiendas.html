@@ -32,10 +32,12 @@
                                         <td class="contact-type"><i class="fa fa-phone"> </i></td>
                                         <td> +{{tienda.telefono}}</td>
                                         <td class="client-status">
+                                            <strong><small>Estatus:</small></strong>
                                             <span class="label label-info" ng-show="tienda.activo">Activo</span>
                                             <span class="label" ng-hide="tienda.activo">Inactivo</span>
                                         </td>
                                         <td class="project-actions">
+                                            <a ui-sref="app.empleados({tiendaId: tienda._id})" class="btn btn-white btn-sm"><i class="fa fa-users"></i> Personal </a>
                                             <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a>
                                         </td>
                                     </tr>

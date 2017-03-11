@@ -1,4 +1,5 @@
 import "./login.html";
+import {name as Alertas} from '../comun/alertas/alertas';
 
 
 class Login {
@@ -6,8 +7,27 @@ class Login {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+        this.credentials = {
+            username: '',
+            password: ''
+        };
+        this.msj = '';
+        this.tipoMsj = '';
     }
 
+    login() {
+        this.tipoMsj = '';
+        Meteor.loginWithPassword(this.credentials.username, this.credentials.password,
+            this.$bindToContext((err) => {
+                if (err) {
+                    this.msj = 'Combinación de usuario y contraseña incorrectos.';
+                    this.tipoMsj = 'danger';
+                } else {
+                    this.$state.go('app.tiendas');
+                }
+            })
+        );
+    }
 }
 
 const name = 'login';
