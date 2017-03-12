@@ -5,6 +5,7 @@ import "./marcas.html";
 import {Marcas} from "../../../api/catalogos/marcas/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarMarca} from './agregarMarca/agregarMarca';
+import {name as AgregarProductos} from '../productos/agregarProductos/agregarProductos';
 
 class MarcasClass {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -32,6 +33,16 @@ class MarcasClass {
         });
     }
 
+    modalAgregarProducto(marcaId) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'AgregarProductos',
+            backdrop: 'static',
+            size: 'lg',
+            keyboard: true,
+        });
+    }
+
     mdodalAtualizar() {
 
     }
@@ -44,7 +55,8 @@ const name = 'marcas';
 export default angular
     .module(name, [
         TituloPrincipal,
-        AgregarMarca
+        AgregarMarca,
+        AgregarProductos
     ])
     .component(name, {
         templateUrl: `imports/ui/components/${name}/${name}.html`,

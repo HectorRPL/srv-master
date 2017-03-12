@@ -27,7 +27,7 @@
                                     <tr ng-repeat="marca in marcas.marcas">
                                         <td><a class="client-link">{{marca.nombre}}</a></td>
                                         <td class="project-actions">
-                                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-plus-o"></i> Producto </a>
+                                            <a href="" class="btn btn-white btn-sm" ng-click="marcas.modalAgregarProducto(marca._id)"><i class="fa fa-plus-o"></i> Alta de Producto </a>
                                             <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a>
                                         </td>
                                     </tr>

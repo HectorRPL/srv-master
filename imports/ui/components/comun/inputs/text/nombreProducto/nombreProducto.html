@@ -1,0 +1,12 @@
+<input type="text"
+       class="form-control"
+       placeholder="Nombre / Modelo"
+       id="nombreId"
+       name="nombre"
+       minlength="1"
+       maxlength="41"
+       ng-minlength="1"
+       ng-maxlength="40"
+       ng-pattern="/^[A-ZñÑ!#$%&/()=¿?¡:.,;-_<>*+@\s]+$/"
+       required
+       ng-model="nombreProducto.nombre">

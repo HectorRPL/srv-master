@@ -1,0 +1,100 @@
+/**
+ * Created by Héctor on 11/03/2017.
+ */
+// import {insertar} from "../../../../api/catalogos/productos/methods";
+import {name as ConstruyeNombre}            from "../construyeNombre/construyeNombre";
+import {name as ClaveProductoProveedor}     from "../../comun/inputs/text/claveProductoProveedor/claveProductoProveedor";
+import {name as ClaveProductoEmpresa}       from "../../comun/inputs/text/claveProductoEmpresa/claveProductoEmpresa";
+import {name as NombreProducto}             from "../../comun/inputs/text/nombreProducto/nombreProducto";
+import {name as ElegirMarca}                from "../../comun/selects/elegirMarca/elegirMarca";
+import {name as ElegirTipoProducto}         from "../../comun/selects/elegirTipoProducto/elegirTipoProducto";
+import {name as CentimetrosAncho}           from "../../comun/inputs/number/centimetrosAncho/centimetrosAncho";
+import {name as CentimetrosLargo}           from "../../comun/inputs/number/centimetrosLargo/centimetrosLargo";
+import {name as ElegirCalidad}              from "../../comun/selects/elegirCalidad/elegirCalidad";
+import {name as ColorProducto}              from "../../comun/inputs/text/colorProducto/colorProducto";
+import {name as CheckboxProductoImportado}  from "../../comun/checkbox/checkboxProductoImportado/checkboxProductoImportado";
+import {name as CheckboxRectificado}        from "../../comun/checkbox/checkboxRectificado/checkboxRectificado";
+import {name as MetrosCuadrados}            from "../../comun/inputs/number/metrosCuadrados/metrosCuadrados";
+import {Marcas}                             from "../../../../api/catalogos/marcas/collection";
+import "./agregarProductos.html";
+
+class AgregarProductos {
+    constructor($scope, $reactive, $state) {
+        'ngInject';
+        this.$state = $state;
+        $reactive(this).attach($scope);
+
+        this.subscribe('marcas.todas');
+
+        this.helpers({
+            marcas(){
+                return Marcas.find();
+            }
+        });
+
+        this.producto = {
+            importado: false,
+            rectificado: false,
+        };
+
+        // Component
+        // this.subscribe('tiposProductos.todo');
+        // this.helpers({
+        //     estosTiposProductos() {
+        //         return TiposProductos.find();
+        //     }
+        // });
+
+
+    }
+/*
+    agregar() {
+        this.tipoMsj = '';
+        insertar.call(this.datos, this.$bindToContext((err)=> {
+            if (err) {
+                console.log();
+                this.msj = err.reason;
+                this.tipoMsj = 'danger';
+            } else {
+                this.msj = 'Se ingresó el producto con éxito';
+                this.tipoMsj = 'success';
+            }
+        }));
+    }
+ */
+
+    cerrar(){
+        this.dismiss();
+    }
+
+}
+
+const name = 'agregarProductos';
+
+// Módulo
+export default angular
+    .module(name, [
+        ConstruyeNombre,
+        ClaveProductoProveedor,
+        ClaveProductoEmpresa,
+        NombreProducto,
+        ElegirMarca,
+        ElegirTipoProducto,
+        CentimetrosAncho,
+        CentimetrosLargo,
+        ElegirCalidad,
+        ColorProducto,
+        CheckboxProductoImportado,
+        CheckboxRectificado,
+        MetrosCuadrados
+    ])
+    .component(name, {
+        templateUrl: `imports/ui/components/productos/${name}/${name}.html`,
+        controllerAs: name,
+        controller: AgregarProductos,
+        bindings: {
+            resolve: '<',
+            close: '&',
+            dismiss: '&'
+        }
+    });

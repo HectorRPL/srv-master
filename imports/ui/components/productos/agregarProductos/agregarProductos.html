@@ -1,0 +1,135 @@
+<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-10">
+            <h2>ALTA DE PRODUCTO
+                <br>
+                <small>
+                    <construye-nombre producto="agregarProductos.producto"></construye-nombre>
+                </small>
+            </h2>
+        </div>
+        <div class="col-lg-2">
+            <a class="btn close" ng-click="buscarProducto.cancelar()">
+                <span class="fa fa-times" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+    <ng-form name="productoForm">
+        <div class="ibox-content">
+            <div class="row">
+                <!--PROPIEDADES MÁS COMUNES DE LOS PRODUCTOS-->
+                <div class="col-lg-4">
+                    <div class="row">
+                        <!-- MARCA -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="control-label">Marca</label>
+                                <elegir-marca marca="agregarProductos.producto.marcaId"></elegir-marca>
+                            </div>
+                        </div>
+                        <!-- TIPO DE PRODUCTO -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="control-label">Tipo de Producto</label>
+                                <elegir-tipo-producto tipoproducto="agregarProductos.producto.tipoProductoId"></elegir-tipo-producto>
+                            </div>
+                        </div>
+                        <!-- CLAVE DE PRODUCTO DEL PROVEEDOR -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Clave Producto (Proveedor)</label>
+                                <clave-producto-proveedor codigo="agregarProductos.producto.claveProveedor"></clave-producto-proveedor>
+                            </div>
+                        </div>
+                        <!-- CLAVE INTERNA DE PRODUCTO -->
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Clave Producto (Empresa)</label>
+                                <clave-producto-empresa codigo="agregarProductos.producto.claveEmpresa"></clave-producto-empresa>
+                            </div>
+                        </div>
+                        <!-- IMPORTADO -->
+                        <div class="col-lg-12">
+                            <div class="btn-group btn-group-justified"
+                                 role="group"
+                                 aria-label="...">
+                                <div class="btn-group" role="group">
+                                    <checkbox-producto-importado importado="agregarProductos.producto.importado"></checkbox-producto-importado>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <!-- NOMBRE -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Nombre / Modelo</label>
+                            <nombre-producto nombre="agregarProductos.producto.nombre"></nombre-producto>
+                        </div>
+                    </div>
+                    <!-- COLOR -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Color</label>
+                            <color-producto color="agregarProductos.producto.color"></color-producto>
+                        </div>
+                    </div>
+                    <!-- CENTIMÉTROS DE ANCHO -->
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Ancho</label>
+                            <centimetros-ancho ancho="agregarProductos.producto.caracteristicas.ancho"></centimetros-ancho>
+                        </div>
+                    </div>
+                    <!-- CENTIMÉTROS DE LARGO -->
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label>Largo</label>
+                            <centimetros-largo largo="agregarProductos.producto.caracteristicas.largo"></centimetros-largo>
+                        </div>
+                    </div>
+                    <!-- CLASE -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label class="control-label">Calidad</label>
+                            <elegir-calidad calidad="agregarProductos.producto.calidad"></elegir-calidad>
+                        </div>
+                    </div>
+                    <!-- ACABADO -->
+                    <div class="col-lg-12">
+                        <div class="form-group btn-group btn-group-justified"
+                             role="group"
+                             aria-label="...">
+                            <div class="btn-group" role="group">
+                                <checkbox-rectificado rectificado="agregarProductos.producto.rectificado"></checkbox-rectificado>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- METROS CUADROS -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Metros Cuadrados</label>
+                            <metros-cuadrados metros="agregarProductos.producto.caracteristicas.metrosCuadrados"></metros-cuadrados>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <pre>{{ agregarProductos.producto | json}}</pre>
+                    <pre>{{ agregarProductos.nombrePreeliminar | json}}</pre>
+                </div>
+
+            </div>
+            <!-- BOTON CANCELAR / GUARDAR -->
+            <div class="row">
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-8">
+                        <button class="btn btn-white" type="submit">Cancelar</button>
+                        <button class="btn btn-primary" type="submit" ng-click="imprimeObjeto">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-form>
+</div>
