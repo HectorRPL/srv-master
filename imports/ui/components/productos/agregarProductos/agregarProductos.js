@@ -6,7 +6,6 @@ import {name as ConstruyeNombre}            from "../construyeNombre/construyeNo
 import {name as ClaveProductoProveedor}     from "../../comun/inputs/text/claveProductoProveedor/claveProductoProveedor";
 import {name as ClaveProductoEmpresa}       from "../../comun/inputs/text/claveProductoEmpresa/claveProductoEmpresa";
 import {name as NombreProducto}             from "../../comun/inputs/text/nombreProducto/nombreProducto";
-import {name as ElegirMarca}                from "../../comun/selects/elegirMarca/elegirMarca";
 import {name as ElegirTipoProducto}         from "../../comun/selects/elegirTipoProducto/elegirTipoProducto";
 import {name as CentimetrosAncho}           from "../../comun/inputs/number/centimetrosAncho/centimetrosAncho";
 import {name as CentimetrosLargo}           from "../../comun/inputs/number/centimetrosLargo/centimetrosLargo";
@@ -37,16 +36,8 @@ class AgregarProductos {
             importado: false,
             rectificado: false,
             activo: true,
-            calidad: '1'
+            calidad: '1A'
         };
-
-        // Component
-        // this.subscribe('tiposProductos.todo');
-        // this.helpers({
-        //     estosTiposProductos() {
-        //         return TiposProductos.find();
-        //     }
-        // });
 
 
     }
@@ -79,7 +70,6 @@ export default angular
         ClaveProductoProveedor,
         ClaveProductoEmpresa,
         NombreProducto,
-        ElegirMarca,
         ElegirTipoProducto,
         CentimetrosAncho,
         CentimetrosLargo,
@@ -96,7 +86,6 @@ export default angular
         controller: AgregarProductos,
         bindings: {
             resolve: '<',
-            close: '&',
-            dismiss: '&'
+            modalInstance: '<'
         }
     });

@@ -1,197 +1,164 @@
-<div class="modal-body">
-    <div class="row">
-        <div class="col-lg-10">
-            <h2>ALTA DE PRODUCTO
-                <br>
-                <small>
-                    <construye-nombre class="font-bold text-navy" producto="agregarProductos.producto"></construye-nombre>
-                </small>
-            </h2>
-        </div>
-        <div class="col-lg-2">
-            <a class="btn close" ng-click="buscarProducto.cancelar()">
-                <span class="fa fa-times" aria-hidden="true"></span>
-            </a>
-        </div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>ALTA DE PRODUCTO
+            <br>
+            <small>
+                <construye-nombre class="font-bold text-navy" nombremarca="agregarProductos.resolve.idMarcaNombre.nombre" producto="agregarProductos.producto"></construye-nombre>
+            </small>
+        </h2>
     </div>
-    <ng-form id="productoFormId" class="property-submit-form" name="agregarProductoFrm" role="form" nonvalidate>
-        <div class="ibox-content">
-            <div class="row">
-                <!--PROPIEDADES MÁS COMUNES DE LOS PRODUCTOS-->
-                <div class="col-lg-6 b-r">
-                    <div class="row">
-                        <!-- MARCA -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label class="control-label">
-                                    Marca
-                                    <span ng-messages="agregarProductoFrm.elegirMarca.$dirty && agregarProductoFrm.elegirMarca.$error" role="alert">
-                                        <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                    </span>
-                                </label>
-                                <elegir-marca marca="agregarProductos.producto.marcaId"></elegir-marca>
-
+    <div class="col-lg-2">
+        <a class="btn close" ng-click="agregarProductos.cancelar()">
+            <span class="fa fa-times" aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <ng-form id="productoFormId" class="property-submit-form" name="agregarProductoFrm" role="form" nonvalidate>
+            <div class="ibox-content">
+                <div class="row">
+                    <!-- PROPIEDADES MÁS COMUNES DE LOS PRODUCTOS -->
+                    <div class="col-lg-6 b-r">
+                        <div class="row">
+                            <!-- TIPO DE PRODUCTO -->
+                            <div class="col-lg-12">
+                                <label class="control-label">Tipo de Producto</label>
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.elegirTipoProducto.$invalid && !agregarProductoFrm.elegirTipoProducto.$pristine}">
+                                    <elegir-tipo-producto tipoproducto="agregarProductos.producto.tipoProductoId"></elegir-tipo-producto>
+                                </div>
+                                <div ng-messages="agregarProductoFrm.elegirTipoProducto.$dirty && agregarProductoFrm.elegirTipoProducto.$error" role="alert">
+                                    <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- TIPO DE PRODUCTO -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label class="control-label">
-                                    Tipo de Producto
-                                    <span ng-messages="agregarProductoFrm.elegirTipoProducto.$dirty && agregarProductoFrm.elegirTipoProducto.$error" role="alert">
-                                        <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                    </span>
-                                </label>
-                                <elegir-tipo-producto tipoproducto="agregarProductos.producto.tipoProductoId"></elegir-tipo-producto>
+                            <!-- CLAVE DE PRODUCTO DEL PROVEEDOR -->
+                            <div class="col-lg-12">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.codigoProveedor.$invalid && !agregarProductoFrm.codigoProveedor.$pristine}">
+                                    <label>Clave Producto (Proveedor)</label>
+                                    <clave-producto-proveedor codigo="agregarProductos.producto.claveProveedor"></clave-producto-proveedor>
+                                    <div ng-messages="agregarProductoFrm.codigoProveedor.$dirty && agregarProductoFrm.codigoProveedor.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- CLAVE DE PRODUCTO DEL PROVEEDOR -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Clave Producto (Proveedor)
-                                    <span ng-messages="agregarProductoFrm.codigoProveedor.$dirty && agregarProductoFrm.codigoProveedor.$error" role="alert">
-                                        <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                    </span>
-                                </label>
-                                <clave-producto-proveedor codigo="agregarProductos.producto.claveProveedor"></clave-producto-proveedor>
+                            <!-- CLAVE INTERNA DE PRODUCTO -->
+                            <div class="col-lg-12">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.codigoEmpresa.$invalid && !agregarProductoFrm.codigoEmpresa.$pristine}">
+                                    <label>Clave Producto (Empresa)</label>
+                                    <clave-producto-empresa codigo="agregarProductos.producto.claveEmpresa"></clave-producto-empresa>
+                                    <div ng-messages="agregarProductoFrm.codigoEmpresa.$dirty && agregarProductoFrm.codigoEmpresa.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- CLAVE INTERNA DE PRODUCTO -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Clave Producto (Empresa)
-                                    <span ng-messages="agregarProductoFrm.codigoEmpresa.$dirty && agregarProductoFrm.codigoEmpresa.$error" role="alert">
-                                        <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                    </span>
-                                </label>
-                                <clave-producto-empresa codigo="agregarProductos.producto.claveEmpresa"></clave-producto-empresa>
-                            </div>
-                        </div>
-                        <!-- ORIGEN -->
-                        <div class="col-lg-12">
-                            <div class="btn-group btn-group-justified"
-                                 role="group"
-                                 aria-label="...">
-                                <div class="btn-group" role="group">
-                                    <label class="control-label">País de Origen</label>
-                                    <checkbox-producto-importado importado="agregarProductos.producto.importado"></checkbox-producto-importado>
+                            <!-- ORIGEN -->
+                            <div class="col-lg-12">
+                                <div class="btn-group btn-group-justified"
+                                     role="group"
+                                     aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <label class="control-label">País de Origen</label>
+                                        <checkbox-producto-importado importado="agregarProductos.producto.importado"></checkbox-producto-importado>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <!-- NOMBRE -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Nombre / Modelo
-                                    <span ng-messages="agregarProductoFrm.nombre.$dirty && agregarProductoFrm.nombre.$error" role="alert">
-                                    <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                </span>
-                                </label>
-                                <nombre-producto nombre="agregarProductos.producto.nombre"></nombre-producto>
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <!-- NOMBRE -->
+                            <div class="col-lg-12">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.nombre.$invalid && !agregarProductoFrm.nombre.$pristine}">
+                                    <label>Nombre / Modelo</label>
+                                    <nombre-producto nombre="agregarProductos.producto.nombre"></nombre-producto>
+                                    <div ng-messages="agregarProductoFrm.nombre.$dirty && agregarProductoFrm.nombre.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- COLOR -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Color
-                                    <span ng-messages="agregarProductoFrm.color.$dirty && agregarProductoFrm.color.$error" role="alert">
-                                    <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                </span>
-                                </label>
-                                <color-producto color="agregarProductos.producto.color"></color-producto>
+                            <!-- COLOR -->
+                            <div class="col-lg-12">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.color.$invalid && !agregarProductoFrm.color.$pristine}">
+                                    <label>Color</label>
+                                    <color-producto color="agregarProductos.producto.color"></color-producto>
+                                    <div ng-messages="agregarProductoFrm.color.$dirty && agregarProductoFrm.color.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- CENTIMÉTROS DE ANCHO -->
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Ancho
-                                    <span ng-messages="agregarProductoFrm.ancho.$dirty && agregarProductoFrm.ancho.$error" role="alert">
-                                    <spanv style="color:red;" class="animated fadeIn" ng-message="required">requerido</spanv>
-                                </span>
-                                </label>
-                                <centimetros-ancho ancho="agregarProductos.producto.caracteristicas.ancho"></centimetros-ancho>
+                            <!-- CENTIMÉTROS DE ANCHO -->
+                            <div class="col-lg-6">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.ancho.$invalid && !agregarProductoFrm.ancho.$pristine}">
+                                    <label>Ancho</label>
+                                    <centimetros-ancho ancho="agregarProductos.producto.caracteristicas.ancho"></centimetros-ancho>
+                                    <div ng-messages="agregarProductoFrm.ancho.$dirty && agregarProductoFrm.ancho.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- CENTIMÉTROS DE LARGO -->
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Largo
-                                    <span ng-messages="agregarProductoFrm.largo.$dirty && agregarProductoFrm.largo.$error" role="alert">
-                                    <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                </span>
-                                </label>
-                                <centimetros-largo largo="agregarProductos.producto.caracteristicas.largo"></centimetros-largo>
+                            <!-- CENTIMÉTROS DE LARGO -->
+                            <div class="col-lg-6">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.largo.$invalid && !agregarProductoFrm.largo.$pristine}">
+                                    <label>Largo</label>
+                                    <centimetros-largo largo="agregarProductos.producto.caracteristicas.largo"></centimetros-largo>
+                                    <div ng-messages="agregarProductoFrm.largo.$dirty && agregarProductoFrm.largo.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- CALIDAD -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label class="control-label">
-                                    Calidad
-                                    <span ng-messages="agregarProductoFrm.elegirCalidad.$dirty && agregarProductoFrm.elegirCalidad.$error" role="alert">
-                                    <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                </span>
-                                </label>
-                                <elegir-calidad calidad="agregarProductos.producto.calidad"></elegir-calidad>
+                            <!-- CALIDAD -->
+                            <div class="col-lg-12">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.elegirCalidad.$invalid && !agregarProductoFrm.elegirCalidad.$pristine}">
+                                    <label class="control-label">Calidad</label>
+                                    <elegir-calidad calidad="agregarProductos.producto.calidad"></elegir-calidad>
+                                    <div ng-messages="agregarProductoFrm.elegirCalidad.$dirty && agregarProductoFrm.elegirCalidad.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- ACABADO -->
-                        <div class="col-lg-12">
-                            <div class="form-group btn-group btn-group-justified"
-                                 role="group"
-                                 aria-label="...">
-                                <div class="btn-group" role="group">
-                                    <label class="control-label">
-                                        Acabado
-                                        <span ng-messages="agregarProductoFrm.rectificado.$dirty && agregarProductoFrm.rectificado.$error" role="alert">
-                                        <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                    </span>
-                                    </label>
-                                    <checkbox-rectificado rectificado="agregarProductos.producto.rectificado"></checkbox-rectificado>
+                            <!-- ACABADO -->
+                            <div class="col-lg-12">
+                                <div class="form-group btn-group btn-group-justified"
+                                     role="group"
+                                     aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <label class="control-label">Acabado</label>
+                                        <checkbox-rectificado rectificado="agregarProductos.producto.rectificado"></checkbox-rectificado>
+                                        <div ng-messages="agregarProductoFrm.rectificado.$dirty && agregarProductoFrm.rectificado.$error" role="alert">
+                                            <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- METROS CUADROS -->
+                            <div class="col-lg-12">
+                                <div class="form-group" ng-class="{ 'has-error' : agregarProductoFrm.metrosCuadrados.$invalid && !agregarProductoFrm.metrosCuadrados.$pristine}">
+                                    <label>Metros Cuadrados</label>
+                                    <metros-cuadrados metros="agregarProductos.producto.caracteristicas.metrosCuadrados"></metros-cuadrados>
+                                    <div ng-messages="agregarProductoFrm.metrosCuadrados.$dirty && agregarProductoFrm.metrosCuadrados.$error" role="alert">
+                                        <div style="color:red;" class="animated fadeIn" ng-message="required">requerido</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- METROS CUADROS -->
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>
-                                    Metros Cuadrados
-                                    <span ng-messages="agregarProductoFrm.metrosCuadrados.$dirty && agregarProductoFrm.metrosCuadrados.$error" role="alert">
-                                    <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
-                                </span>
-                                </label>
-                                <metros-cuadrados metros="agregarProductos.producto.caracteristicas.metrosCuadrados"></metros-cuadrados>
-                            </div>
+                    </div>
+                    <!--<div class="col-lg-4">-->
+                        <!--<pre>{{ agregarProductos.producto | json}}</pre>-->
+                    <!--</div>-->
+                </div>
+                <alertas tipo="agregarProductos.tipoMsj" mensaje="agregarProductos.msj"></alertas>
+                <!-- BOTON CANCELAR / GUARDAR -->
+                <div class="row">
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-8">
+                            <button class="btn btn-white" type="submit">Cancelar</button>
+                            <button class="btn btn-primary"
+                                    type="submit"
+                                    ng-disabled="agregarProductoFrm.$invalid"
+                                    ng-click="agregarProductos.agregarProducto()">Guardar</button>
                         </div>
                     </div>
                 </div>
-                <!--<div class="col-lg-4">-->
-                    <!--<pre>{{ agregarProductos.producto | json}}</pre>-->
-                <!--</div>-->
             </div>
-            <alertas tipo="agregarProductos.tipoMsj" mensaje="agregarProductos.msj"></alertas>
-            <!-- BOTON CANCELAR / GUARDAR -->
-            <div class="row">
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-8">
-                        <button class="btn btn-white" type="submit">Cancelar</button>
-                        <button class="btn btn-primary"
-                                type="submit"
-                                ng-disabled="agregarProductoFrm.$invalid"
-                                ng-click="agregarProductos.agregarProducto()">Guardar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ng-form>
+        </ng-form>
+    </div>
 </div>

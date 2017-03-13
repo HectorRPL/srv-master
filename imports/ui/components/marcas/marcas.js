@@ -33,18 +33,21 @@ class MarcasClass {
         });
     }
 
-    modalAgregarProducto(marcaId) {
+    modalAgregarProducto(datos) {
+        console.log('Esto es lo que vamos a enviar', datos);
+        const datosUno = datos;
         var modalInstance = this.$uibModal.open({
             animation: true,
             component: 'AgregarProductos',
             backdrop: 'static',
             size: 'lg',
             keyboard: true,
+            resolve: {
+                idMarcaNombre: function () {
+                    return datosUno;
+                }
+            }
         });
-    }
-
-    mdodalAtualizar() {
-
     }
 
 }

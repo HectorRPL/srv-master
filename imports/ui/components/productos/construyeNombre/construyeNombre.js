@@ -20,7 +20,8 @@ export default angular
         templateUrl: `imports/ui/components/productos/${name}/${name}.html`,
         controllerAs: name,
         bindings: {
-            producto: '<'
+            producto: '<',
+            nombremarca: '<'
 
         },
         controller: ConstruyeNombre
