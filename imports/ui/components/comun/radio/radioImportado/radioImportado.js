@@ -1,9 +1,9 @@
 /**
- * Created by Héctor on 11/03/2017.
+ * Created by Héctor on 13/03/2017.
  */
-import "./checkboxProductoImportado.html";
+import "./radioImportado.html";
 
-class CheckboxProductoImportado{
+class RadioImportado{
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -11,17 +11,17 @@ class CheckboxProductoImportado{
     }
 }
 
-const name = 'checkboxProductoImportado';
+const name = 'radioImportado';
 // create a module
 
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/checkbox/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/comun/radio/${name}/${name}.html`,
         controllerAs: name,
         bindings: {
             importado: '='
 
         },
-        controller: CheckboxProductoImportado
+        controller: RadioImportado
     });

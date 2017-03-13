@@ -1,9 +1,9 @@
 /**
- * Created by Héctor on 11/03/2017.
+ * Created by Héctor on 13/03/2017.
  */
-import "./checkboxRectificado.html";
+import "./radioRectificado.html";
 
-class CheckboxRectificado{
+class RadioRectificado{
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -11,17 +11,17 @@ class CheckboxRectificado{
     }
 }
 
-const name = 'checkboxRectificado';
+const name = 'radioRectificado';
 // create a module
 
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/checkbox/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/comun/radio/${name}/${name}.html`,
         controllerAs: name,
         bindings: {
             rectificado: '='
 
         },
-        controller: CheckboxRectificado
+        controller: RadioRectificado
     });

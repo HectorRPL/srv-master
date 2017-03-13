@@ -11,8 +11,8 @@ import {name as CentimetrosAncho}           from "../../comun/inputs/number/cent
 import {name as CentimetrosLargo}           from "../../comun/inputs/number/centimetrosLargo/centimetrosLargo";
 import {name as ElegirCalidad}              from "../../comun/selects/elegirCalidad/elegirCalidad";
 import {name as ColorProducto}              from "../../comun/inputs/text/colorProducto/colorProducto";
-import {name as CheckboxProductoImportado}  from "../../comun/checkbox/checkboxProductoImportado/checkboxProductoImportado";
-import {name as CheckboxRectificado}        from "../../comun/checkbox/checkboxRectificado/checkboxRectificado";
+import {name as RadioImportado}             from "../../comun/radio/radioImportado/radioImportado";
+import {name as RadioRectificado}             from "../../comun/radio/radioRectificado/radioRectificado";
 import {name as MetrosCuadrados}            from "../../comun/inputs/number/metrosCuadrados/metrosCuadrados";
 import {name as Alertas}                    from "../../comun/alertas/alertas";
 import {Marcas}                             from "../../../../api/catalogos/marcas/collection";
@@ -75,8 +75,8 @@ export default angular
         CentimetrosLargo,
         ElegirCalidad,
         ColorProducto,
-        CheckboxProductoImportado,
-        CheckboxRectificado,
+        RadioImportado,
+        RadioRectificado,
         MetrosCuadrados,
         Alertas
     ])
