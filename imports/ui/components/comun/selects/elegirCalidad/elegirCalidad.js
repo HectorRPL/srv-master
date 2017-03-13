@@ -11,11 +11,9 @@ class ElegirCalidad {
         this.helpers({
             calidades() {
                 return this.calidades = [
-                    {_id: 1, nombre: '1A'},
-                    {_id: 2, nombre: '2A'},
-                    {_id: 3, nombre: '3A'},
-                    {_id: 4, nombre: 'PROMOCION'},
-                    {_id: 5, nombre: 'SALDO'},
+                    {_id: '1A', nombre: 'PRIMERA'},
+                    {_id: '2A', nombre: 'SEGUDA'},
+                    {_id: '3A', nombre: 'TERCERA'},
                 ];
             }
         });
