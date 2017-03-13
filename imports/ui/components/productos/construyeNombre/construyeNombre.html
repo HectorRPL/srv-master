@@ -1,14 +1,13 @@
 <span>{{construyeNombre.nombrePreeliminar.nombreMarca}}</span>
-<span>{{construyeNombre.producto.clase}}</span>
+<span>{{construyeNombre.producto.calidad}}</span>
 <span>{{construyeNombre.producto.nombre}}</span>
 <span>{{construyeNombre.producto.color}}</span>
-<span>{{construyeNombre.producto.caracteristicas.ancho}}
-    <span ng-hide="construyeNombre.producto.caracteristicas.largo === null ||
-                   construyeNombre.producto.caracteristicas.largo === undefined">X{{construyeNombre.producto.caracteristicas.largo}}
-    </span>
+<span>{{construyeNombre.producto.caracteristicas.ancho}}<span ng-hide="construyeNombre.producto.caracteristicas.largo === null ||
+                                                                       construyeNombre.producto.caracteristicas.largo === undefined">X{{construyeNombre.producto.caracteristicas.largo}}
+                                                        </span>
 </span>
 <span ng-show="construyeNombre.producto.rectificado === true">RECTIFICADO</span>
 <span ng-hide="construyeNombre.producto.caracteristicas.metrosCuadrados === null ||
                construyeNombre.producto.caracteristicas.metrosCuadrados === undefined">
-    ({{construyeNombre.producto.caracteristicas.metrosCuadrados}}&nbsp;MTS²)
+               ({{construyeNombre.producto.caracteristicas.metrosCuadrados}}&nbsp;MTS²)
 </span>

@@ -10,8 +10,8 @@ Meteor.startup(function () {
         const tiposProductos= [
             {nombre: 'Coladera',                        color: '', tipoMaterial: ['Plástico', 'Latón']},
             {nombre: 'Regadera',                        color: '', tipoMaterial: ['Plástico', 'Latón'], ahorroAgua: false}, // ¿qué tipo de materiales? ¿se coloca en la descripción de la nota? checar base de datos
-            {nombre: 'Mezcladora para lavabo',          color: '', tipoMaterial: ['Plástico', 'Latón']}, // ¿qué tipo de materiales? ¿se coloca en la descripción de la nota? checar base de datos
-            {nombre: 'Mezcladora para cocina',          color: '', tipoMaterial: ['Plástico', 'Latón']}, // ¿qué tipo de materiales? ¿se coloca en la descripción de la nota? checar base de datos
+            {nombre: 'Mezcladora lavabo',               color: '', tipoMaterial: ['Plástico', 'Latón']}, // ¿qué tipo de materiales? ¿se coloca en la descripción de la nota? checar base de datos
+            {nombre: 'Mezcladora cocina',               color: '', tipoMaterial: ['Plástico', 'Latón']}, // ¿qué tipo de materiales? ¿se coloca en la descripción de la nota? checar base de datos
             {nombre: 'Tarja',                           color: '', tipoMaterial: ['Acero Inoxidable', 'Aluminio'], centimetrosLargo: 1, centimetrosAncho: 1, numeroCanastas: 1}, // El color a veces es blanco o aluminio/metal
             {nombre: 'WC',                              color: '', tipoMaterial: ['Cerámica', 'Plástico'], dualFlush: false}, // puede ser cerámico o plástico si es chino
             {nombre: 'Lavabo',                          color: '', tipoMaterial: ['Cerámica', 'Vidrio Templado', 'Plástico']}, // tipoMaterial pueden ser: cerámico, vidrio, plástico

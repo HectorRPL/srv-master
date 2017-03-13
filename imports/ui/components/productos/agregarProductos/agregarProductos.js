@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 11/03/2017.
  */
-// import {insertar} from "../../../../api/catalogos/productos/methods";
+import {insertar}                           from "../../../../api/productos/methods";
 import {name as ConstruyeNombre}            from "../construyeNombre/construyeNombre";
 import {name as ClaveProductoProveedor}     from "../../comun/inputs/text/claveProductoProveedor/claveProductoProveedor";
 import {name as ClaveProductoEmpresa}       from "../../comun/inputs/text/claveProductoEmpresa/claveProductoEmpresa";
@@ -15,6 +15,7 @@ import {name as ColorProducto}              from "../../comun/inputs/text/colorP
 import {name as CheckboxProductoImportado}  from "../../comun/checkbox/checkboxProductoImportado/checkboxProductoImportado";
 import {name as CheckboxRectificado}        from "../../comun/checkbox/checkboxRectificado/checkboxRectificado";
 import {name as MetrosCuadrados}            from "../../comun/inputs/number/metrosCuadrados/metrosCuadrados";
+import {name as Alertas}                    from "../../comun/alertas/alertas";
 import {Marcas}                             from "../../../../api/catalogos/marcas/collection";
 import "./agregarProductos.html";
 
@@ -35,6 +36,8 @@ class AgregarProductos {
         this.producto = {
             importado: false,
             rectificado: false,
+            activo: true,
+            calidad: '1'
         };
 
         // Component
@@ -47,21 +50,19 @@ class AgregarProductos {
 
 
     }
-/*
-    agregar() {
+
+    agregarProducto() {
         this.tipoMsj = '';
-        insertar.call(this.datos, this.$bindToContext((err)=> {
+        insertar.call(this.producto, this.$bindToContext((err)=> {
             if (err) {
-                console.log();
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';
             } else {
-                this.msj = 'Se ingresó el producto con éxito';
+                this.msj = 'Se agregó el producto exitosamente';
                 this.tipoMsj = 'success';
             }
         }));
     }
- */
 
     cerrar(){
         this.dismiss();
@@ -86,7 +87,8 @@ export default angular
         ColorProducto,
         CheckboxProductoImportado,
         CheckboxRectificado,
-        MetrosCuadrados
+        MetrosCuadrados,
+        Alertas
     ])
     .component(name, {
         templateUrl: `imports/ui/components/productos/${name}/${name}.html`,

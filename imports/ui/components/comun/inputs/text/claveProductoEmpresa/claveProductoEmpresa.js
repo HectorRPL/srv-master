@@ -8,6 +8,15 @@ class ClaveProductoEmpresa {
         'ngInject';
         $reactive(this).attach($scope);
     }
+
+    upper(codigo) {
+        if (codigo === null || codigo === undefined) {
+            this.codigo = codigo;
+        } else {
+            this.codigo = codigo.toUpperCase();
+        }
+
+    }
 }
 
 const name = 'claveProductoEmpresa';

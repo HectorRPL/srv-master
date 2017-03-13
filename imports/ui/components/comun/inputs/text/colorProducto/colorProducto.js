@@ -8,6 +8,15 @@ class ColorProducto {
         'ngInject';
         $reactive(this).attach($scope);
     }
+
+    upper(nombreColor) {
+        if (nombreColor === null || nombreColor === undefined) {
+            this.color = nombreColor;
+        } else {
+            this.color = nombreColor.toUpperCase();
+        }
+
+    }
 }
 
 const name = 'colorProducto';

@@ -8,6 +8,15 @@ class NombreProducto {
         'ngInject';
         $reactive(this).attach($scope);
     }
+
+    upper(producto) {
+        if (producto === null || producto === undefined) {
+            this.nombre = producto;
+        } else {
+            this.nombre = producto.toUpperCase();
+        }
+
+    }
 }
 
 const name = 'nombreProducto';

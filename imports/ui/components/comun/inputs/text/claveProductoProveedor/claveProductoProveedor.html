@@ -7,6 +7,6 @@
        maxlength="21"
        ng-minlength="1"
        ng-maxlength="20"
-       ng-pattern="/^[A-ZñÑ!#$%&/()=¿?¡:.,;-_<>*+@\s]+$/"
        required
+       ng-change="claveProductoProveedor.upper(claveProductoProveedor.codigo);"
        ng-model="claveProductoProveedor.codigo">
