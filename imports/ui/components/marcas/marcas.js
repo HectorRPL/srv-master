@@ -34,7 +34,6 @@ class MarcasClass {
     }
 
     modalAgregarProducto(datos) {
-        console.log('Esto es lo que vamos a enviar', datos);
         const datosUno = datos;
         var modalInstance = this.$uibModal.open({
             animation: true,

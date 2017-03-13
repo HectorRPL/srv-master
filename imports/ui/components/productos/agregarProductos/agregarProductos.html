@@ -135,11 +135,15 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-8">
-                            <button class="btn btn-white" type="submit">Cancelar</button>
+                            <button class="btn btn-white"
+                                    type="submit"
+                                    ng-click="agregarProductos.cancelar()">Cancelar
+                            </button>
                             <button class="btn btn-primary"
                                     type="submit"
                                     ng-disabled="agregarProductoFrm.$invalid"
-                                    ng-click="agregarProductos.agregarProducto()">Guardar</button>
+                                    ng-click="agregarProductos.agregarProducto()">Guardar
+                            </button>
                         </div>
                     </div>
                 </div>
