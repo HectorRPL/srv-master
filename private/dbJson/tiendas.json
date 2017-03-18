@@ -1,0 +1,107 @@
+[
+  {
+    "nombre": "BODEGA XOCHIMILCO CUERNAVACA",
+    "usuarioId": "LUIS",
+    "fechaCreacion": "2016-12-28 17:37:02.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "BODEGA DE CHALCO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-17 17:47:41.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "CENTRO AZULEJERO CHALCO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-17 17:47:58.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "CERAGRES",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-11-07 11:43:22.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "CERAGRES ACAPULCO",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-11-18 13:17:06.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "EXPO VERACRUZ",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-11-07 11:43:39.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "PLAZA IXTAPALUCA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-17 17:49:36.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "MERCADO DE CHALCO",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-07-30 15:39:52.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "MUNDO DE PISOS CUERNAVACA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-11-18 16:55:27.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "MUNDO DE IXTAPALUCA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2013-01-03 17:19:04.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "PORCELATILE",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-07-01 14:54:29.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "SUCURSAL TLAHUAC CUERNAVACA",
+    "usuarioId": "KARINA",
+    "fechaCreacion": "2014-08-05 17:27:11.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "CENTRO COMERCIAL TLAHUAC",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2013-03-18 13:40:24.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "CENTRO COMERCIAL XOCHIMILCO",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-02-02 18:21:18.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  },
+  {
+    "nombre": "EXPO LUIS CARRILLO",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-11-07 11:44:20.000",
+    "email": "ejemplo@centrocomercialdepisosyazulejos.com",
+    "telefonos": []
+  }
+]

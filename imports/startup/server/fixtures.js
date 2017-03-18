@@ -1,8 +1,10 @@
 /**
  * Created by Héctor on 09/03/2017.
  */
-import { Meteor } from 'meteor/meteor';
-import { TiposProductos } from '../../api/catalogos/tiposProductos/collection';
+import {Meteor} from "meteor/meteor";
+import {TiposProductos} from "../../api/catalogos/tiposProductos/collection";
+import {Marcas} from "../../api/catalogos/marcas/collection";
+import {Tiendas} from "../../api/catalogos/tiendas/collection";
 
 Meteor.startup(function () {
 
@@ -47,22 +49,22 @@ Meteor.startup(function () {
         });
     }
 
-    if(Meteor.users.find().count() === 0){
+    if (Meteor.users.find().count() === 0) {
         const permJefePiso = ['aut_compras', 'aut_devoluciones'];
         const permGerente = ['aut_compras', 'aut_devoluciones', 'aut_ventasTiendas'];
 
-        let users =[{name:"UsuarioJefe", password:'1q2w3e!Q"W#E', roles: permJefePiso},
-            {name:"UsuarioGerente", password:'1q2w3e!Q"W#E', roles: permGerente},
-            {name:"UsuarioJefeGerente", password:'1q2w3e!Q"W#E', roles: permGerente}] ;
+        let users = [{name: "UsuarioJefe", password: '1q2w3e!Q"W#E', roles: permJefePiso},
+            {name: "UsuarioGerente", password: '1q2w3e!Q"W#E', roles: permGerente},
+            {name: "UsuarioJefeGerente", password: '1q2w3e!Q"W#E', roles: permGerente}];
 
         users.forEach((user, index) => {
             let id = Accounts.createUser({
                 password: user.password,
                 username: user.name,
-                profile: { name: user.name }
+                profile: {name: user.name}
             });
 
-            if(index === 0){
+            if (index === 0) {
                 Roles.addUsersToRoles(id, permJefePiso, 'jefePiso');
                 console.log('-------------------------- COMIENZA LAS VALIDACIONES PARA JEFE DE PISO ----------------------------------------------------------');
                 console.log(Roles.userIsInRole(id, permJefePiso, 'jefePiso'));//true
@@ -71,7 +73,7 @@ Meteor.startup(function () {
                 console.log('Valida perimisos de gerente y es jefe de piso, NO incluir grupo ', Roles.userIsInRole(id, permGerente));
                 console.log('Valida perimisos de gerente y es jefe de piso, incluir grupo ', Roles.userIsInRole(id, permGerente, 'gerente'));
 
-            }else if (index === 1){
+            } else if (index === 1) {
                 Roles.addUsersToRoles(id, permGerente, 'gerente');
 
                 console.log('-------------------------- COMIENZA LAS VALIDACIONES PARA JEFE DE PISO ----------------------------------------------------------');
@@ -80,7 +82,7 @@ Meteor.startup(function () {
                 console.log('Valida permisos de Jefe Piso pero es gerente, NO incluir grupo ', Roles.userIsInRole(id, permJefePiso));
                 console.log('Valida permisos de Jefe Piso(aut_compras) pero es gerente, NO incluir grupo ', Roles.userIsInRole(id, 'aut_compras'));
                 console.log('Valida permisos de Jefe Piso pero es gerente, incluir grupo ', Roles.userIsInRole(id, permJefePiso, 'jefePiso'));
-            }else{
+            } else {
                 Roles.addUsersToRoles(id, permJefePiso, 'jefePiso');
                 Roles.addUsersToRoles(id, permGerente, 'gerente');
 
@@ -99,7 +101,29 @@ Meteor.startup(function () {
         });
 
 
-
     }
+
+    if (Marcas.find().count() === 0) {
+        var marcas = JSON.parse(Assets.getText("dbJson/marcas.json"));
+        marcas.forEach((marca) => {
+            let marcaTemp = {
+                descripcion: marca.descripcion,
+                fechaCreacion: new Date(marca.fechaCreacion),
+                usuarioId: marca.usuarioId,
+                proveedorId: marca.proveedorId
+            };
+            Marcas.insert(marca);
+        });
+    }
+
+    if (Tiendas.find().count() === 0) {
+        var tiendas = JSON.parse(Assets.getText("dbJson/tiendas.json"));
+        tiendas.forEach((tienda) => {
+            tienda.fechaCreacion = new Date(tienda.fechaCreacion);
+            Tiendas.insert(tienda);
+        });
+    }
+
+
 
 });

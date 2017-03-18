@@ -13,7 +13,12 @@
                 SET MONGO_URL=mongodb://localhost:27017/ccp-dev1
     Importar / Exportar Collections
         mongoexport --db ccp-dev1 --collection tallas --out tallas.json
-        mongoimport --host localhost --port 27017 --collection puestos --db ccp-dev1 --file puestos.json
+        
+        mongoimport --host localhost --port 27017 --collection marcas --db ccp-dev1 --file marcas.json
+                
+        mongoimport --host localhost --port 27017 --db ccp-dev1 --collection marcas --type csv --headerline --file marcas.csv
+        // Aunque de momento este ya no lo estamos usando porque estamos con los fixtures importando las collections alojadas en
+        la carpeta /private
 
     COMANDOS GIT
         Iniciar Git

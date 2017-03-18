@@ -1,0 +1,762 @@
+[
+  {
+    "nombre": "95/24 MEXICO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-12-22 18:00"
+  },
+  {
+    "nombre": "ABASTECEDORA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-05-18 11:38"
+  },
+  {
+    "nombre": "ACUE",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "ADHECEM",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-08-03 18:10"
+  },
+  {
+    "nombre": "ADHETEC",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-09-06 16:21"
+  },
+  {
+    "nombre": "ALCESA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:35"
+  },
+  {
+    "nombre": "ALESSANDRA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:22"
+  },
+  {
+    "nombre": "ALLAPSA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "ALPHA CERAMICA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2013-04-19 09:25"
+  },
+  {
+    "nombre": "ALTA MAREA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:20"
+  },
+  {
+    "nombre": "ALTAMAR",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-06-05 17:53"
+  },
+  {
+    "nombre": "AQUASPA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-03-08 09:22"
+  },
+  {
+    "nombre": "ARESCRIS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-09-28 17:56"
+  },
+  {
+    "nombre": "ARTE Y DISEÑO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-01-05 17:27"
+  },
+  {
+    "nombre": "ASCOT",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "ASIENJF08A",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:20"
+  },
+  {
+    "nombre": "BAGUETA PRO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "BASICO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-04-26 13:22"
+  },
+  {
+    "nombre": "BETA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:20"
+  },
+  {
+    "nombre": "BRAZZIL",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:34"
+  },
+  {
+    "nombre": "CAMACHO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-03-23 14:32"
+  },
+  {
+    "nombre": "CAPIZZI",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-12-06 17:50"
+  },
+  {
+    "nombre": "CASTEL",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:37"
+  },
+  {
+    "nombre": "CASTRO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "CAZADORA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "CERAMOSA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-12-14 16:25"
+  },
+  {
+    "nombre": "CEYCA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:14"
+  },
+  {
+    "nombre": "CIFRE",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-02-28 16:10"
+  },
+  {
+    "nombre": "CLEAR",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-12-02 17:20"
+  },
+  {
+    "nombre": "COCEMEX",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-11-29 16:52"
+  },
+  {
+    "nombre": "COFLEX",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-03-21 09:32"
+  },
+  {
+    "nombre": "COMBO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-03-06 11:48"
+  },
+  {
+    "nombre": "COMERCIALIZADORA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-10-27 13:52"
+  },
+  {
+    "nombre": "COMETA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:35"
+  },
+  {
+    "nombre": "CONTRERAS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-10-02 10:11"
+  },
+  {
+    "nombre": "CUERNAVACA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-02-14 18:20"
+  },
+  {
+    "nombre": "DALTILE",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 14:55"
+  },
+  {
+    "nombre": "DECOCER",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-05-12 09:53"
+  },
+  {
+    "nombre": "DELTA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-12-29 11:33"
+  },
+  {
+    "nombre": "DGINMSA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-10-02 16:27"
+  },
+  {
+    "nombre": "DISA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-03-26 16:28"
+  },
+  {
+    "nombre": "DISEÑOS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "DOMOS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "DURAPISO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "DURATILE",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "DYRSA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:37"
+  },
+  {
+    "nombre": "EB TECNICA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-10-05 12:13"
+  },
+  {
+    "nombre": "EL SURTIDOR",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-04-08 11:20"
+  },
+  {
+    "nombre": "EMPAQUES ALM",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "EQUIPE",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "ESFER",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:34"
+  },
+  {
+    "nombre": "ESPECIALITAS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-10-01 16:04"
+  },
+  {
+    "nombre": "ESPEJOS ARES",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-01-08 15:01"
+  },
+  {
+    "nombre": "ETERNO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-03-05 13:00"
+  },
+  {
+    "nombre": "EXCLUSIVOS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:23"
+  },
+  {
+    "nombre": "EXEL",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-02-03 11:44"
+  },
+  {
+    "nombre": "FERREMABA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-01-08 15:01"
+  },
+  {
+    "nombre": "FINESTA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-02-25 18:10"
+  },
+  {
+    "nombre": "FLUSS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-02-20 16:57"
+  },
+  {
+    "nombre": "FONCER",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-05-11 15:01"
+  },
+  {
+    "nombre": "FONTIBRE",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-11-13 17:21"
+  },
+  {
+    "nombre": "FULGOR",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "GALGOS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "GEISER",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-02-10 18:47"
+  },
+  {
+    "nombre": "GREDA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-06-20 12:05"
+  },
+  {
+    "nombre": "GRESPANIA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-02-25 18:04"
+  },
+  {
+    "nombre": "HELVEX",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 15:14"
+  },
+  {
+    "nombre": "HERGIS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:15"
+  },
+  {
+    "nombre": "HIDRO SPLASH",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "HIDROPLAST",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "HISPAGRES",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2013-03-09 11:00"
+  },
+  {
+    "nombre": "HOMETILE",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:21"
+  },
+  {
+    "nombre": "INGUSA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "INNOVACION MON",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "INTERBATH",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-03-11 16:08"
+  },
+  {
+    "nombre": "ITALCRAFTS",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-02-25 18:05"
+  },
+  {
+    "nombre": "ITALIANOS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "ITALICA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "JOVET",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:35"
+  },
+  {
+    "nombre": "KALOTRON",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2010-04-26 11:55"
+  },
+  {
+    "nombre": "KAPA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-06-04 15:06"
+  },
+  {
+    "nombre": "KERLUX",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "KIT",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:19"
+  },
+  {
+    "nombre": "LA FENICE",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "LAMOSA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2010-08-21 12:29"
+  },
+  {
+    "nombre": "LILA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:35"
+  },
+  {
+    "nombre": "LINOLEUMS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-02-22 13:13"
+  },
+  {
+    "nombre": "LLANO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-04-08 11:20"
+  },
+  {
+    "nombre": "LUX SANY",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-03-19 18:37"
+  },
+  {
+    "nombre": "MACOSACRU",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-10-09 17:37"
+  },
+  {
+    "nombre": "MAGAMEX",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:29"
+  },
+  {
+    "nombre": "MAKU",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:19"
+  },
+  {
+    "nombre": "MARANELLO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-02-22 17:55"
+  },
+  {
+    "nombre": "MARMOL MTZ",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "METALFLU",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:22"
+  },
+  {
+    "nombre": "MOLDUPISO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-08-03 12:37"
+  },
+  {
+    "nombre": "MONTOLIU",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2011-06-11 16:02"
+  },
+  {
+    "nombre": "MUEBLES CUE",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:13"
+  },
+  {
+    "nombre": "MUGUIRIN",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "NACESA",
+    "usuarioId": "VENTAS",
+    "fechaCreacion": "2010-01-29 12:48"
+  },
+  {
+    "nombre": "NEO",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2014-02-25 18:09"
+  },
+  {
+    "nombre": "NITROPISO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2011-04-26 18:32"
+  },
+  {
+    "nombre": "NORDICO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-03-03 15:14"
+  },
+  {
+    "nombre": "NOVAGRES",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2016-11-21 16:17"
+  },
+  {
+    "nombre": "OMEGA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-10-09 10:44"
+  },
+  {
+    "nombre": "ONDA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "ORION",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:21"
+  },
+  {
+    "nombre": "PARM",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-03-20 16:07"
+  },
+  {
+    "nombre": "PARTHENON",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-10-13 15:42"
+  },
+  {
+    "nombre": "PEGA 5000",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2013-02-12 18:14"
+  },
+  {
+    "nombre": "PEGA ZIN",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-02-29 18:46"
+  },
+  {
+    "nombre": "PERDURA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:21"
+  },
+  {
+    "nombre": "PERFIL PVC",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:36"
+  },
+  {
+    "nombre": "PERFILIUM",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-03-02 18:40"
+  },
+  {
+    "nombre": "PERONDA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2015-12-26 17:26"
+  },
+  {
+    "nombre": "PHO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:23"
+  },
+  {
+    "nombre": "PIETRABELLA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "CERFORMEX",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:35"
+  },
+  {
+    "nombre": "TESANY",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:34"
+  },
+  {
+    "nombre": "PLAQUITAS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "PLASTITRIM",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "PLUS BLANCO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-12-27 18:36"
+  },
+  {
+    "nombre": "PORCELAMEX",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:29"
+  },
+  {
+    "nombre": "PORCELANATO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "PORCELANITE",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-02-18 15:51"
+  },
+  {
+    "nombre": "PROYECTA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-09-05 09:07"
+  },
+  {
+    "nombre": "PZA SUELTAS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:34"
+  },
+  {
+    "nombre": "REGADERA",
+    "usuarioId": "SUP",
+    "fechaCreacion": "2009-12-11 08:37"
+  },
+  {
+    "nombre": "RHEEM",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "RIQUETTI",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:24"
+  },
+  {
+    "nombre": "ROTO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:22"
+  },
+  {
+    "nombre": "RUZMAN",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "SAMBORO",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:23"
+  },
+  {
+    "nombre": "SAN MIGUEL",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-03-08 17:22"
+  },
+  {
+    "nombre": "SHUNCA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:36"
+  },
+  {
+    "nombre": "SOLUTEK",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:32"
+  },
+  {
+    "nombre": "YOLA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2009-12-31 15:16"
+  },
+  {
+    "nombre": "TEKA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "TESANY E CENEFAS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:34"
+  },
+  {
+    "nombre": "TILES",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 14:11"
+  },
+  {
+    "nombre": "TILES 2000",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 14:47"
+  },
+  {
+    "nombre": "TINETEK",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-01-07 01:13"
+  },
+  {
+    "nombre": "TOKIO",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:31"
+  },
+  {
+    "nombre": "TRAMONTINA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:33"
+  },
+  {
+    "nombre": "TRANSFORMA",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2015-04-23 14:04"
+  },
+  {
+    "nombre": "URBANTILES",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2016-10-07 10:01"
+  },
+  {
+    "nombre": "VACA DECORADOS",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "VERSAPLAS",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-02-25 18:07"
+  },
+  {
+    "nombre": "VICAR",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2016-11-12 11:30"
+  },
+  {
+    "nombre": "VILTILES",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2012-01-03 11:06"
+  },
+  {
+    "nombre": "VITALIA",
+    "usuarioId": "ERIK",
+    "fechaCreacion": "2017-01-10 12:30"
+  },
+  {
+    "nombre": "VITROBLOCK",
+    "usuarioId": "JAIME",
+    "fechaCreacion": "2014-07-18 16:10"
+  }
+]
