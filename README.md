@@ -2,9 +2,9 @@
 
 BASE DE DATOS MONGO
     Intrucciones para respladar la base y restaurar
-    	mongodump --out ~/Documents/ccp/db/backup/ --db demos-dev
+    	mongodump --out ~/Documents/ccp/db/backup/ --db ccp-dev1
 
-    	mongorestore --db demos-dev ~/Documents/ccp/db/backup/backup/demos-dev1
+    	mongorestore --db demos-dev ~/Documents/ccp/db/backup/backup/ccp-dev1
     Levantar el proyecto en la consola:
         meteor npm start
     Crear la base
