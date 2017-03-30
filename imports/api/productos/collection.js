@@ -17,17 +17,22 @@ Productos.schema = new SimpleSchema({
     _id:                {type: String,  regEx: SimpleSchema.RegEx.Id},
     fechaCreacion:      {type: Date,    defaultValue: new Date(), denyUpdate: true},
     marcaId:            {type: String,  regEx: SimpleSchema.RegEx.Id},
-    tipoProductoId:     {type: String,  defaultValue: ''},
-    codigoProveedor:    {type: String   },
-    activo:             {type: Boolean, defaultValue: true},
-    linea:              {type: String,  defaultValue: ''},
+    codigoProveedor:    {type: String},
+    campoBusqueda:      {type: String},
+    descripcionDos:     {type: String},
+    tipoProductoId:     {type: String,  optional:true},
+    descontinuado:      {type: Boolean, defaultValue: false},
+    linea:              {type: String,  optional:true},
     costoUnitario:      {type: Number,  decimal: true},
-    nombre:             {type: String,  optional: true   },
-    color:              {type: String,  defaultValue: ''},
+    nombre:             {type: String,  optional:true},
+    color:              {type: String,  optional:true},
     importado:          {type: Boolean, defaultValue: false},
     calidad:            {type: Number,  defaultValue: 1},
-    descripcion:        {type: String},
-    descripcionDos:     {type: String}
+    undidad:            {type:String, defaultValue: 'PZA'},
+    rectificado:        {type: Boolean, optional: true},
+    metrosCuadrados:    {type: Number, optional:true, decimal: true}
+
+
 });
 
 Productos.attachSchema(Productos.schema);

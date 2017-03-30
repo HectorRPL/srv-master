@@ -29,28 +29,40 @@ Proveedores.schema = new SimpleSchema({
         denyUpdate: true
     },
     nombre: {
-        type: String,
-        regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
-        min: 2,
-        max: 50
+        type: String
+        //regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        //min: 2,
+        //max: 50
     },
-    telefono: {
-        type: String,
-        regEx: /^[0-9]{10}$/,
-        min: 10,
-        max: 10
+    telefonos: {
+        type: [String],
+        optional: true
+        //regEx: /^[0-9]{10}$/,
+        //min: 10,
+        //max: 10
     },
-    extension:{
-        type: Number,
-        optional:true
-    },
-    email: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Email
+    emails: {
+        type: [String],
+        optional: true
     },
     activo: {
         type: Boolean,
         defaultValue: true
+    },
+    saldo: {
+        type: Number,
+        decimal: true
+    },
+    diasCredito: {
+        type: Number
+    },
+    descuento:{
+        type: Number,
+        decimal: true
+    },
+    cuentaContable:{
+        type: String,
+        optional: true
     }
 });
 
