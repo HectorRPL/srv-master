@@ -4,7 +4,6 @@
 import {name as Navigation} from "./navigation/navigation";
 import {name as Topnavbar} from "./topnavbar/topnavbar";
 import {name as Footer} from "./footer/footer";
-import {name as Prueba} from "../prueba/prueba";
 import {name as ProveedoresClass} from "../proveedores/proveedores";
 import {name as TiendasClass} from "../tiendas/tiendas";
 import {name as Usuarios} from "../usuarios/usuarios";
@@ -28,7 +27,6 @@ export default angular
         Navigation,
         Topnavbar,
         Footer,
-        Prueba,
         ProveedoresClass,
         Usuarios,
         TiendasClass,

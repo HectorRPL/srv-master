@@ -24,6 +24,20 @@ BASE DE DATOS MONGO
         mongoimport --host localhost --port 27017 --db ccp-dev1 --collection marcas --type csv --headerline --file marcas.csv
         // Aunque de momento este ya no lo estamos usando porque estamos con los fixtures importando las collections alojadas en
         la carpeta /private
+        
+        
+    Respaldar base de datos
+    
+        RESPALDAR:
+            Linux
+                mongodump --out ~/Documents/demos/baseDatos/backup/ --db ccp-dev1
+        
+            Windows
+                mongodump --out C:\a1\ccp\db\backup --db ccp-dev1
+            
+        RESTAURAR:
+            Linux
+                mongorestore --db demos-dev ~/Documents/demos/baseDatos/backup/demos-dev1
 
     COMANDOS GIT
         Iniciar Git
