@@ -33,6 +33,9 @@
         RESTAURAR:
             Linux
                 mongorestore --db demos-dev ~/Documents/demos/baseDatos/backup/demos-dev1
+            
+            Windows
+                mongorestore --db ccp-dev1 C:/respandos_mongo/ccp-dev1-170330
 
     COMANDOS GIT
         Iniciar Git
