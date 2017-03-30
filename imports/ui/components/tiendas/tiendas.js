@@ -4,33 +4,14 @@
 import "./tiendas.html";
 import {Tiendas} from "../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
-import {name as AgregarTienda} from './agregarTienda/agregarTienda';
-import {name as Empleados} from './empleados/empleados';
+import {name as ListaTiendas} from './listaTiendas/listaTiendas';
+import {name as AdministrarTienda} from './administrarTienda/administrarTienda';
 
 class TiendasClass {
-    constructor($scope, $reactive, $state, $uibModal) {
+    constructor($state) {
         'ngInject';
         this.$state = $state;
-        $reactive(this).attach($scope);
         this.titulo = 'Tiendas';
-        this.$uibModal = $uibModal;
-        this.subscribe('tiendas.todas');
-
-        this.helpers({
-            tiendas(){
-                return Tiendas.find();
-            }
-        });
-    }
-
-    modalAgregar() {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'AgregarTienda',
-            backdrop: 'static',
-            size: 'md',
-            keyboard: true,
-        });
     }
 
 }
@@ -41,8 +22,8 @@ const name = 'tiendas';
 export default angular
     .module(name, [
         TituloPrincipal,
-        AgregarTienda,
-        Empleados
+        ListaTiendas,
+        AdministrarTienda
     ])
     .component(name, {
         templateUrl: `imports/ui/components/${name}/${name}.html`,
@@ -56,6 +37,7 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tiendas', {
             url: '/tiendas',
-            template: '<tiendas></tiendas>'
+            template: '<tiendas></tiendas>',
+            abstract: true
         });
 }

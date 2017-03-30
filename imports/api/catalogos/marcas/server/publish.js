@@ -10,4 +10,17 @@ if (Meteor.isServer) {
         return Marcas.find();
     });
 
+    Meteor.publish('marcas.nombre', function (nombre) {
+        console.log('marcas.nombre', nombre);
+        if (nombre.nombre) {
+            const selector = {nombre: {$regex: nombre.nombre, $options : 'i'}};
+            console.log(selector);
+            return Marcas.find(selector);
+        }else{
+            this.ready();
+        }
+
+
+    });
+
 }
