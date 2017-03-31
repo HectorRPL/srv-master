@@ -35,22 +35,17 @@ export default angular
                     return obtenerColonias.callPromise({
                         cp: codigoPostal
                     }).then(function (result) {
-                        // CONSOLES LOG
-                        console.log('Resultado de buscar las colonias', codigoPostal, result);
                         scope.codigosPostales.direccion.colonias = result;
                         if (result.length === 0) {
-                            console.log('Entró al IF');
                             scope.codigosPostales.direccion.estado = '';
                             scope.codigosPostales.direccion.delMpio = '';
                             return $q.reject('No encontrado');
                         } else {
-                            console.log('Entró al ELSE');
                             scope.codigosPostales.direccion.estado = result[0].estado;
                             scope.codigosPostales.direccion.estadoId = result[0].codigoEstado;
                             scope.codigosPostales.direccion.delMpio = result[0].delegacionMunicipio;
                         }
                     }).catch(function (err) {
-                        console.log('Err de buscar las colonias ', codigoPostal, err);
                         return $q.reject('No encontrado');
                     });
                 };
