@@ -3,7 +3,9 @@
  */
 import "./agregarTienda.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
+import {name as FormaDireccion} from "../../direccion/formaDireccion/formaDireccion";
 import {insertar} from "../../../../api/catalogos/tiendas/methods";
+import {insertarDatosFiscales} from "../../../../api/catalogos/proveedores/datosFiscales/methods";
 
 class AgregarTienda {
     constructor($scope, $reactive, $state) {
@@ -11,20 +13,48 @@ class AgregarTienda {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Tienda';
-        this.datos = {};
-
+        this.pasoActual = 1;
+        this.pasoAnterior = 0;
+        this.datos =  {};
+        this.datosFiscales = {};
     }
 
-    agregar() {
+    siguiente() {
+        this.pasoAnterior = this.pasoActual;
+        this.pasoActual ++;
+    }
+
+    atras() {
+        this.pasoActual --;
+        this.pasoAnterior = this.pasoActual - 1;
+    }
+
+   agregar() {
         this.tipoMsj = '';
-        insertar.call(this.datos, this.$bindToContext((err)=> {
+        // Inserta la tienda en la collection tiendas
+        insertar.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
-                console.log();
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';
             } else {
-                this.msj = 'La tienda ha sido registrada con exito.';
-                this.tipoMsj = 'success';
+
+                this.msj = 'El sistema está trabajando, tardará unos minutos';
+                this.tipoMsj = 'warning';
+
+                // Inserta los datos fiscales en la collection datosFiscalesProveedores
+                let datosFiscalesFinal = angular.copy(this.datosFiscales);
+                delete datosFiscalesFinal.colonias;
+
+                datosFiscalesFinal.proveedorId =  result;
+                insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
+                    if (err) {
+                        this.msj = err.reason;
+                        this.tipoMsj = 'danger';
+                    } else {
+                        this.msj = 'La tienda ha sido registrada con éxito';
+                        this.tipoMsj = 'success';
+                    }
+                }));
             }
         }));
     }

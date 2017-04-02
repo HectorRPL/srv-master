@@ -64,11 +64,11 @@ export const insertar = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([insertar], 'name');
+const INSERTAR_PRODUCTOS_METHODS = _.pluck([insertar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
-            return _.contains(TIENDAS_METHODS, name);
+            return _.contains(INSERTAR_PRODUCTOS_METHODS, name);
         },
         connectionId() {
             return true;

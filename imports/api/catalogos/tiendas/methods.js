@@ -6,6 +6,7 @@ import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "./collection";
+import {insertarTiendaEnInventarios} from "../../inventarios/methods";
 
 const ID = ['_id'];
 
@@ -18,7 +19,16 @@ export const insertar = new ValidatedMethod({
         filter: false
     }),
     run({nombre, telefono, email}) {
-        return Tiendas.insert({nombre, telefono, email});
+        if (Meteor.isServer) {
+            return Tiendas.insert({nombre, telefono, email}, (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                Meteor.defer(() => {
+                    insertarTiendaEnInventarios.call({tiendaId: result});
+                });
+            });
+        }
     }
 });
 
