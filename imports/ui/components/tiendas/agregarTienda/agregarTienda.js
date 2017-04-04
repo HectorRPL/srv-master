@@ -15,25 +15,10 @@ class AgregarTienda {
         this.titulo = 'Agregar Tienda';
         this.pasoActual = 1;
         this.pasoAnterior = 0;
-        this.datosFiscales = {
-            razonSocial: 'DEMO S.A. DE C.V.',
-            rfc: 'SLA630306CF7',
-            email: 'demoFiscal@demoFiscal.com',
-            estado: 'CIUDAD DE MEXICO',
-            estadoId: 'CMX',
-            delMpio: 'XOCHIMILCO',
-            codigoPostal: '16030',
-            colonia: 'POTRERO DE SAN BERNARDINO',
-            calle: 'ROSELINA',
-            numExt: '7',
-            numInt: '2'
-        };
+        this.datosFiscales = {};
         this.datos = {
-            nombre: 'DEMO',
-            email: 'DEMO01@DEMO01.COM',
             telefonos: [{telefono: ''}]
         };
-
 
     }
 
