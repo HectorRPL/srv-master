@@ -32,6 +32,7 @@ ddp-rate-limiter@1.0.6
 ddp-server@1.2.10
 deps@1.0.12
 didericis:callpromise-mixin@0.0.1
+didericis:permissions-mixin@1.1.0
 diff-sequence@1.0.7
 dotansimha:accounts-ui-angular@0.0.4
 ecmascript@0.6.1
