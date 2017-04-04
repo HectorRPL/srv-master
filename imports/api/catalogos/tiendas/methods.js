@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "./collection";
@@ -14,6 +15,19 @@ const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 // Enviará un correo con un link al usuario para verificacar de registro
 export const insertar = new ValidatedMethod({
     name: 'tiendas.insertar',
+    mixins: [PermissionsMixin],
+    allow: [
+        {
+            roles: ['aut_ventasTiendas'],
+            group: 'gerente'
+        }
+    ],
+    permissionsError: {
+        name: 'tiendas.insertar',
+        message: ()=> {
+            return 'Acceso denegado';
+        }
+    },
     validate: Tiendas.simpleSchema().pick(CAMPOS_TIENDAS).validator({
         clean: true,
         filter: false

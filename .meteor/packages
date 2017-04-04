@@ -37,3 +37,4 @@ didericis:callpromise-mixin
 u2622:persistent-session@0.4.4
 less
 alanning:roles
+didericis:permissions-mixin

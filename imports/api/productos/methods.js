@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Productos} from "./collection";
@@ -26,6 +27,8 @@ const CAMPOS_PRODUCTOS = [
 
 export const insertar = new ValidatedMethod({
     name: 'productos.insertar',
+    mixins: [PermissionsMixin],
+    allow: PermissionsMixin.LoggedIn,
     validate: Productos.simpleSchema().pick(CAMPOS_PRODUCTOS).validator({
         clean: true,
         filter: false
@@ -44,7 +47,8 @@ export const insertar = new ValidatedMethod({
         calidad,
         caracteristicas,
         rectificado,
-        metrosCuadrados}) {
+        metrosCuadrados
+    }) {
         return Productos.insert({
             marcaId,
             tipoProductoId,
