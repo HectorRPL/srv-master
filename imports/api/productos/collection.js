@@ -4,7 +4,7 @@
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const Productos = new Mongo.Collection('productos', {});
+export const Productos = new Mongo.Collection('productos');
 
 Productos.deny({
     insert() {return true;},
@@ -23,7 +23,6 @@ Productos.schema = new SimpleSchema({
     tipoProductoId:     {type: String,  optional:true},
     descontinuado:      {type: Boolean, defaultValue: false},
     linea:              {type: String,  optional:true},
-    costoUnitario:      {type: Number,  decimal: true},
     nombre:             {type: String,  optional:true},
     color:              {type: String,  optional:true},
     importado:          {type: Boolean, defaultValue: false},
@@ -31,8 +30,6 @@ Productos.schema = new SimpleSchema({
     undidad:            {type:String, defaultValue: 'PZA'},
     rectificado:        {type: Boolean, optional: true},
     metrosCuadrados:    {type: Number, optional:true, decimal: true}
-
-
 });
 
 Productos.attachSchema(Productos.schema);
