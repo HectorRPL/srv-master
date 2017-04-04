@@ -7,6 +7,6 @@ import "../../api/catalogos/tiendas/server/publish";
 import "../../api/catalogos/tiendas/methods";
 import "../../api/catalogos/marcas/server/publish";
 import "../../api/catalogos/marcas/methods";
-import "../../api/productos/server/publish";
-import "../../api/productos/methods";
+import "../../api/catalogos/tiposProductos/server/publish";
+import "../../api/catalogos/proveedores/datosFiscales/methods";
 

@@ -40,6 +40,10 @@ Tiendas.schema = new SimpleSchema({
         optional: true,
         blackbox: true
     },
+    extension: {
+        type: String,
+        optional: true
+    },
     email: {
         type: String,
         regEx: SimpleSchema.RegEx.Email

@@ -7,10 +7,11 @@ import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "./collection";
+import {insertarTiendaEnInventarios} from "../../inventarios/methods";
 
 const ID = ['_id'];
 
-const CAMPOS_TIENDAS = ['nombre', 'telefono', 'email'];
+const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 // Enviará un correo con un link al usuario para verificacar de registro
 export const insertar = new ValidatedMethod({
     name: 'tiendas.insertar',
@@ -31,8 +32,17 @@ export const insertar = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({nombre, telefono, email}) {
-        return Tiendas.insert({nombre, telefono, email});
+    run({nombre, telefonos, email}) {
+        if (Meteor.isServer) {
+            return Tiendas.insert({nombre, telefonos, email}, (err, result) => {
+                if (err) {
+                    throw err;
+                }
+                Meteor.defer(() => {
+                    insertarTiendaEnInventarios.call({tiendaId: result});
+                });
+            });
+        }
     }
 });
 
