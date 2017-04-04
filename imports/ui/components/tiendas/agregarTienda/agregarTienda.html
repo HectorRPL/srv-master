@@ -51,9 +51,8 @@
                 </div>
                 <br>
 
-                <!--<div class="wizard">-->
+                <!--INFORMACIÓN DE CONTACTO-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 1">
-                    <!--INFORMACIÓN DE CONTACTO-->
                     <h3>Datos de Contacto</h3>
                     <!--NOMBRE DE LA EMPRESA-->
                     <div class="col-sm-6">
@@ -186,7 +185,7 @@
                 <!--DIRECCIÓN FISCAL-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 3 || agregarTienda.pasoActual === 4">
                     <h3>Dirección Fiscal</h3>
-                    <forma-direccion direccion="agregarTienda.datosFiscales"></forma-direccion>
+                    <forma-direccion exito="agregarTienda.exito" direccion="agregarTienda.datosFiscales"></forma-direccion>
                 </div>
                 <!--ALERTAS-->
                 <div class="row">
@@ -227,7 +226,6 @@
                     Cerrar
                 </button>
 
-            </div>
         </div>
     </div>
 </form>

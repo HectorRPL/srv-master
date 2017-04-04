@@ -10,7 +10,7 @@
                     <span class="animated fadeIn" style="color:red;" ng-message="pattern">5 dígitos requeridos</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="cpinvalido">invalido</span>
                 </label>
-                <codigos-postales direccion="formaDireccion.direccion"></codigos-postales>
+                <codigos-postales exito="formaDireccion.exito" direccion="formaDireccion.direccion"></codigos-postales>
             </div>
         </div>
     </div>
@@ -23,6 +23,7 @@
                 </label>
                 <select id="coloniaId" class="form-control texto-en-mayusculas" name="colonia" type="text"
                         aria-describedby="sizing-addon1" required
+                        ng-disabled="formaDireccion.exito"
                         ng-options="colonia.colonia as colonia.colonia for colonia in formaDireccion.direccion.colonias track by colonia.colonia"
                         ng-model="formaDireccion.direccion.colonia">
                     <option value=""></option>
@@ -59,6 +60,7 @@
                 <input id="calleId" class="form-control texto-en-mayusculas" name="calle" type="text"
                        aria-describedby="sizing-addon1"
                        maxlength="31" ng-maxlength="30"
+                       ng-disabled="formaDireccion.exito"
                        required ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/"
                        ng-model="formaDireccion.direccion.calle">
             </div>
@@ -78,6 +80,7 @@
                        aria-describedby="sizing-addon1"
                        maxlength="11" ng-maxlength="10"
                        required ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/"
+                       ng-disabled="formaDireccion.exito"
                        ng-model="formaDireccion.direccion.numExt">
             </div>
         </div>
@@ -94,6 +97,7 @@
                 <input id="numIntId" class="form-control texto-en-mayusculas" name="numInt" type="text"
                        aria-describedby="sizing-addon1"
                        maxlength="11" ng-maxlength="10" ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/"
+                       ng-disabled="formaDireccion.exito"
                        ng-model="formaDireccion.direccion.numInt">
             </div>
         </div>

@@ -13,11 +13,27 @@ class AgregarTienda {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Tienda';
+        this.exito = false;
         this.pasoActual = 1;
         this.pasoAnterior = 0;
         this.datosFiscales = {};
-        this.datos = {
-            telefonos: [{telefono: ''}]
+        this.datosFiscales = {
+            razonSocial: 'DEMO S.A. DE C.V.',
+            rfc: 'SLA630306CF7',
+            email: 'demo@demo.com',
+            estado: 'CIUDAD DE MEXICO',
+            estadoId: 'CMX',
+            delMpio: 'XOCHIMILCO',
+            codigoPostal: '16030',
+            colonia: 'POTRERO DE SAN BERNARDINO',
+            calle: 'ROSELINA',
+            numExt: '7',
+            numInt: '2'
+        };
+        this.datos =  {
+            nombre: 'DEMO',
+            email: 'DEMO01@DEMO01.COM',
+            telefonos: [{telefono: '5556769502'}]
         };
 
     }
@@ -69,6 +85,7 @@ class AgregarTienda {
                     }
                 }));
                 this.pasoActual = 4;
+                this.exito = true;
             }
         }));
     }

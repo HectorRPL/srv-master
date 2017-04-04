@@ -21,7 +21,8 @@ export default angular
         templateUrl: `imports/ui/components/comun/inputs/${name}/${name}.html`,
         controllerAs: name,
         bindings: {
-            direccion: '='
+            direccion: '=',
+            exito: '='
         },
         controller: CodigosPostales
     })
