@@ -2,7 +2,7 @@
  * Created by jvltmtz on 29/03/17.
  */
 import "./tabFactores.html";
-import {Marcas} from "../../../../../api/catalogos/marcas/collection"
+import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
 
 class TabFactores {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -11,19 +11,18 @@ class TabFactores {
         $reactive(this).attach($scope);
         this.tabTitulo = 'Factores';
         this.$uibModal = $uibModal;
-        this.marca = '';
+        this.marcaSelec = '';
+        this.marcas = [];
         this.nombre = '';
-        this.subscribe('marcas.nombre', ()=> [{nombre: this.getReactively('nombre')}]);
-
-        this.helpers({
-            marcas(){
-                return Marcas.find();
-            }
-        })
     }
 
-    buscarMarca() {
-        this.nombre = this.marca;
+    buscarMarca(valor) {
+        return obtenerMarcas.callPromise({
+            marca: valor
+        }).then(function (result) {
+            console.log(result);
+            return result;
+        });
     }
 
 }
