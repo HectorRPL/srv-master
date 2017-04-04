@@ -24,6 +24,7 @@ Schema.datosFiscalesProveedores = new SimpleSchema({
     _id:            {type: String,                  regEx: SimpleSchema.RegEx.Id },
     proveedorId:    {type: String,                  regEx: SimpleSchema.RegEx.Id },
     razonSocial:    {type: String /*                regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/ */},
+    email:          {type: String, regEx: SimpleSchema.RegEx.Email},
     rfc:            {type: String },
     fechaCreacion:  {type: Date, defaultValue: new Date(), denyUpdate: true },
     calle:          {type: String, max: 30,  min: 1, regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/},

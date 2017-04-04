@@ -15,9 +15,36 @@ class AgregarTienda {
         this.titulo = 'Agregar Tienda';
         this.pasoActual = 1;
         this.pasoAnterior = 0;
-        this.datos =  {};
-        this.datosFiscales = {};
+        this.datosFiscales = {
+            razonSocial: 'DEMO S.A. DE C.V.',
+            rfc: 'SLA630306CF7',
+            email: 'demoFiscal@demoFiscal.com',
+            estado: 'CIUDAD DE MEXICO',
+            estadoId: 'CMX',
+            delMpio: 'XOCHIMILCO',
+            codigoPostal: '16030',
+            colonia: 'POTRERO DE SAN BERNARDINO',
+            calle: 'ROSELINA',
+            numExt: '7',
+            numInt: '2'
+        };
+        this.datos = {
+            nombre: 'DEMO',
+            email: 'DEMO01@DEMO01.COM',
+            telefonos: [{telefono: ''}]
+        };
+
+
     }
+
+    agregarTelefono() {
+        this.nuevoTelefono = {
+            telefono: this.telefono,
+            extension: this.extension,
+        };
+        this.datos.telefonos.push(this.nuevoTelefono);
+    }
+
 
     siguiente() {
         this.pasoAnterior = this.pasoActual;
@@ -32,6 +59,7 @@ class AgregarTienda {
    agregar() {
         this.tipoMsj = '';
         // Inserta la tienda en la collection tiendas
+       console.log('Este es el objeto que vamos a enviar', this.datos);
         insertar.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = err.reason;
@@ -55,6 +83,7 @@ class AgregarTienda {
                         this.tipoMsj = 'success';
                     }
                 }));
+                this.pasoActual = 4;
             }
         }));
     }

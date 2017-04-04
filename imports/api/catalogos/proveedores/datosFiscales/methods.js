@@ -12,6 +12,7 @@ const ID = ['_id'];
 const CAMPOS_DATOS_FISCALES = [
     'proveedorId',
     'razonSocial',
+    'email',
     'rfc',
     'calle',
     'delMpio',
@@ -36,6 +37,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
         {
             proveedorId,
             razonSocial,
+            email,
             rfc,
             calle,
             delMpio,
@@ -53,6 +55,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
         return DatosFiscalesProveedores.insert({
             proveedorId,
             razonSocial,
+            email,
             rfc,
             calle,
             delMpio,

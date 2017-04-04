@@ -35,9 +35,10 @@ Tiendas.schema = new SimpleSchema({
         min: 2,
         max: 50
     },
-    telefono: {
-        type: String,
-        optional: true
+    telefonos: {
+        type: [Object],
+        optional: true,
+        blackbox: true
     },
     extension: {
         type: String,
