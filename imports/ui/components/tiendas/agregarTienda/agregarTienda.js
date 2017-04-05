@@ -30,7 +30,6 @@ class AgregarTienda {
         this.datos.telefonos.push(this.nuevoTelefono);
     }
 
-
     siguiente() {
         this.pasoAnterior = this.pasoActual;
         this.pasoActual++;
