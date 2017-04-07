@@ -5,7 +5,7 @@ import {Meteor} from "meteor/meteor";
 import {Productos} from "../../api/productos/collection";
 import {Proveedores} from "../../api/catalogos/proveedores/collection";
 import {MarcasProveedores} from "../../api/catalogos/marcasProveedores/collection";
-import {DatosFiscalesProveedores} from "../../api/catalogos/proveedores/datosFiscales/collection";
+import {DatosFiscales} from "../../api/datosFiscales/collection";
 import {Marcas} from "../../api/catalogos/marcas/collection";
 import {Tiendas} from "../../api/catalogos/tiendas/collection";
 import {PuestosRoles} from "../../api/catalogos/puestosRoles/collection";
@@ -198,7 +198,7 @@ Meteor.startup(function () {
      }
      if (datosFiscalesProv) {
      datosFiscalesProv.proveedorId = id;
-     DatosFiscalesProveedores.insert(datosFiscalesProv);
+     DatosFiscales.insert(datosFiscalesProv);
      }
      }
 

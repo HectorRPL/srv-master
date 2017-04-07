@@ -15,7 +15,7 @@ BASE DE DATOS MONGO
             Linux:
                 export MONGO_URL=mongodb://localhost:27017/ccp-dev1
             Windows:
-                SET MONGO_URL=mongodb://localhost:27017/ccp-dev1
+                SET MONGO_URL=mongodb://127.0.0.1:27017/ccp-dev1
     Importar / Exportar Collections
         mongoexport --db ccp-dev1 --collection tallas --out tallas.json
         

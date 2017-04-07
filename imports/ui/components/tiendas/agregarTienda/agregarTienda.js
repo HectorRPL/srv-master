@@ -5,7 +5,7 @@ import "./agregarTienda.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../direccion/formaDireccion/formaDireccion";
 import {insertar} from "../../../../api/catalogos/tiendas/methods";
-import {insertarDatosFiscales} from "../../../../api/catalogos/proveedores/datosFiscales/methods";
+import {insertarDatosFiscales} from "../../../../api/datosFiscales/methods";
 
 class AgregarTienda {
     constructor($scope, $reactive, $state) {
@@ -13,13 +13,13 @@ class AgregarTienda {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Tienda';
+        this.exito = false;
         this.pasoActual = 1;
         this.pasoAnterior = 0;
         this.datosFiscales = {};
         this.datos = {
             telefonos: [{telefono: ''}]
         };
-
     }
 
     agregarTelefono() {
@@ -30,18 +30,17 @@ class AgregarTienda {
         this.datos.telefonos.push(this.nuevoTelefono);
     }
 
-
     siguiente() {
         this.pasoAnterior = this.pasoActual;
-        this.pasoActual ++;
+        this.pasoActual++;
     }
 
     atras() {
-        this.pasoActual --;
+        this.pasoActual--;
         this.pasoAnterior = this.pasoActual - 1;
     }
 
-   agregar() {
+    agregar() {
         this.tipoMsj = '';
         // Inserta la tienda en la collection tiendas
         insertar.call(this.datos, this.$bindToContext((err, result)=> {
@@ -57,7 +56,7 @@ class AgregarTienda {
                 let datosFiscalesFinal = angular.copy(this.datosFiscales);
                 delete datosFiscalesFinal.colonias;
 
-                datosFiscalesFinal.proveedorId =  result;
+                datosFiscalesFinal.proveedorId = result;
                 insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
                     if (err) {
                         this.msj = err.reason;
@@ -68,11 +67,12 @@ class AgregarTienda {
                     }
                 }));
                 this.pasoActual = 4;
+                this.exito = true;
             }
         }));
     }
 
-    cerrar(){
+    cerrar() {
         this.dismiss();
     }
 

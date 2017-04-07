@@ -17,12 +17,11 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox-content">
                 <p>
-                    Vas a crear una nueva tienda del Grupo, todos los datos que vas a ingresar son muy sensibles.
-                    <br>
-                    <strong>Deberás tener mucha precaución.</strong>
+                    Dar de alta una tienda implica numerosos procesos para el sistema; es recomendable hacer este procedimiento en horas no laborales.
                     <br>
                     <br>
                 </p>
+                <!--BOTONES QUE INDICAN EN QUE PASO SE ENCUENTRA EL USUARIO-->
                 <div class="row">
                     <div class="col-md-4">
                         <button type="button"
@@ -49,144 +48,148 @@
                         </button>
                     </div>
                 </div>
+
                 <br>
 
-                <!--<div class="wizard">-->
+                <!--INFORMACIÓN DE CONTACTO-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 1">
-                    <!--INFORMACIÓN DE CONTACTO-->
-                    <h3>Datos de Contacto</h3>
-                    <!--NOMBRE DE LA EMPRESA-->
-                    <div class="col-sm-6">
-                        <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm.nombre.$invalid && !agregarTiendaFrm.nombre.$pristine}">
-                            <div ng-messages="agregarTiendaFrm.nombre.$dirty && agregarTiendaFrm.nombre.$error" role="alert">
-                                <label>Nombre *
-                                    <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                </label>
-                                <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
-                                       placeholder="ej: CERAGRES XOCHIMILCO" aria-describedby="sizing-addon1"
-                                       minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                       ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/" required
-                                       ng-model="agregarTienda.datos.nombre">
+                    <ng-form name="datosGeneralesForm">
+                        <h3>Datos Generales</h3>
+                        <!--NOMBRE DE LA EMPRESA-->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.nombre.$invalid && !datosGeneralesForm.nombre.$pristine}">
+                                <div ng-messages="datosGeneralesForm.nombre.$dirty && datosGeneralesForm.nombre.$error" role="alert">
+                                    <label>Nombre *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                                    </label>
+                                    <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
+                                           placeholder="ej: CENTRO TLAHUAC" aria-describedby="sizing-addon1"
+                                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                                           ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
+                                           ng-model="agregarTienda.datos.nombre">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- EMAIL DE CONTACTO -->
-                    <div class="col-sm-6">
-                        <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm.email.$invalid && !agregarTiendaFrm.email.$pristine}">
-                            <div ng-messages="agregarTiendaFrm.email.$dirty && agregarTiendaFrm.email.$error" role="alert">
-                                <label> Email *
-                                    <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="mixlength, maxlength"> min 2, max 50 letras</span>
-                                </label>
-                                <input id="emailId" class="form-control texto-en-mayusculas" name="email" type="email"
-                                       aria-describedby="sizing-addon1" minlength="5"
-                                       maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                                       ng-model="agregarTienda.datos.email">
+                        <!-- EMAIL DE CONTACTO -->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.email.$invalid && !datosGeneralesForm.email.$pristine}">
+                                <div ng-messages="datosGeneralesForm.email.$dirty && datosGeneralesForm.email.$error" role="alert">
+                                    <label> Email *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="mixlength, maxlength"> min 2, max 50 letras</span>
+                                    </label>
+                                    <input id="emailId" class="form-control texto-en-mayusculas" name="email" type="email"
+                                           aria-describedby="sizing-addon1" minlength="5"
+                                           maxlength="51" ng-minlength="5" ng-maxlength="50" required
+                                           ng-model="agregarTienda.datos.email">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- TELÉFONOS DE CONTACTO-->
-                    <span class="animated fadeIn" ng-repeat="telefono in agregarTienda.datos.telefonos track by $index">
-                                    <div class="col-sm-4">
-                                        <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm['telefono'+$index].$invalid && !agregarTiendaFrm ['telefono'+$index].$pristine}">
-                                            <div ng-messages="agregarTiendaFrm['telefono'+$index].$dirty && agregarTiendaFrm['telefono'+$index].$error" role="alert">
-                                                <label> Teléfono <span class="font-bold text-navy">{{$index + 1}}</span> *
-                                                    <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
-                                                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
-                                                </label>
-                                                <input id="telefonosId" class="form-control" type="text" name="telefono{{$index}}"
-                                                       aria-describedby="sizing-addon1" maxlength="10"
-                                                       ng-pattern="/^[0-9]{10}$/" required
-                                                       ng-pattern="/^[a-zA-Z-._\s\d]+$/"
-                                                       ng-model="telefono['telefono']">
-                                            </div>
-                                        </div>
+                        <!-- TELÉFONOS DE CONTACTO-->
+                        <span class="animated fadeIn" ng-repeat="telefono in agregarTienda.datos.telefonos track by $index">
+                            <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['telefono'+$index].$invalid && !datosGeneralesForm ['telefono'+$index].$pristine}">
+                                    <div ng-messages="datosGeneralesForm['telefono'+$index].$dirty && datosGeneralesForm['telefono'+$index].$error" role="alert">
+                                        <label> Teléfono <span class="font-bold text-navy">{{$index + 1}}</span> *
+                                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
+                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
+                                        </label>
+                                        <input id="telefonosId" class="form-control" type="text" name="telefono{{$index}}"
+                                               aria-describedby="sizing-addon1" maxlength="10"
+                                               ng-pattern="/^[0-9]{10}$/" required
+                                               ng-model="telefono['telefono']">
                                     </div>
-                        <!-- TELÉFONO EXTENSIÓN -->
-                                    <div class="col-sm-2">
-                                        <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm['extension'+$index].$invalid && !agregarTiendaFrm['extension'+$index].$pristine}">
-                                            <div ng-messages="agregarTiendaFrm['extension'+$index].$dirty && agregarTiendaFrm['extension'+$index].$error" role="alert">
-                                                <label>&nbsp;
-                                                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">número</span>
-                                                </label>
-                                                <input id="extensionId" class="form-control texto-en-mayusculas" type="text" name="extension{{$index}}"
-                                                       placeholder="Ext"
-                                                       aria-describedby="sizing-addon1" maxlength="5"
-                                                       ng-pattern="/^([0-9])*$/"
-                                                       ng-model="telefono['extension']">
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <!-- TELÉFONO EXTENSIÓN -->
+                            <div class="col-sm-2">
+                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['extension'+$index].$invalid && !datosGeneralesForm['extension'+$index].$pristine}">
+                                    <div ng-messages="datosGeneralesForm['extension'+$index].$dirty && datosGeneralesForm['extension'+$index].$error" role="alert">
+                                        <label>&nbsp;
+                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">número</span>
+                                        </label>
+                                        <input id="extensionId" class="form-control texto-en-mayusculas" type="text" name="extension{{$index}}"
+                                               placeholder="Ext"
+                                               aria-describedby="sizing-addon1" maxlength="5"
+                                               ng-pattern="/^([0-9])*$/"
+                                               ng-model="telefono['extension']">
                                     </div>
-                                </span>
-                    <!--BOTON AÑADIR TELÉFONO -->
-                    <div class="col-sm-12">
-                        <button type="button" class="btn btn-primary btn-sm" ng-click="agregarTienda.agregarTelefono()">
-                            Añadir teléfono
-                        </button>
-                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <!--BOTON AÑADIR TELÉFONO -->
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="agregarTienda.agregarTelefono()">
+                                Añadir teléfono
+                            </button>
+                        </div>
+                    </ng-form>
                 </div>
                 <!--DATOS FISCALES-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 2">
-                            <h3>Datos Fiscales</h3>
-                            <!--RAZÓN SOCIAL-->
-                            <div class="col-sm-6">
-                                <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm.razonSocial.$invalid && !agregarTiendaFrm.razonSocial.$pristine}">
-                                    <div ng-messages="agregarTiendaFrm.razonSocial.$dirty && agregarTiendaFrm.razonSocial.$error" role="alert">
-                                        <label>Razón Social *
-                                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">caracter no válido</span>
-                                        </label>
-                                        <input id="razonSocialId" class="form-control texto-en-mayusculas"
-                                               name="razonSocial" type="text" aria-describedby="sizing-addon1"
-                                               minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                               ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/" required
-                                               ng-model="agregarTienda.datosFiscales.razonSocial">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- EMAIL FISCAL -->
-                            <div class="col-sm-6">
-                                <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm.emailFiscal.$invalid && !agregarTiendaFrm.emailFiscal.$pristine}">
-                                    <div ng-messages="agregarTiendaFrm.emailFiscal.$dirty && agregarTiendaFrm.emailFiscal.$error" role="alert">
-                                        <label>Email Fiscal *
-                                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="email">correo incorrecto</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 5, max 50 letras</span>
-                                        </label>
-                                        <input id="emailFiscalId" class="form-control texto-en-mayusculas" name="emailFiscal" type="email"
-                                               aria-describedby="sizing-addon1" minlength="5"
-                                               maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                                               ng-model="agregarTienda.datosFiscales.email">
-                                    </div>
-                                </div>
-                            </div>
-                            <!--RFC-->
-                            <div class="col-sm-6">
-                                <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm.rfc.$invalid && !agregarTiendaFrm.rfc.$pristine}">
-                                    <div ng-messages="agregarTiendaFrm.rfc.$dirty && agregarTiendaFrm.rfc.$error" role="alert">
-                                        <label>RFC *
-                                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="maxlength"> 12 caracteres requeridos</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
-                                        </label>
-                                        <input id="rfcId" class="form-control texto-en-mayusculas" name="rfc" type="text"
-                                               aria-describedby="sizing-addon1"
-                                               maxlength="12" ng-maxlength="12"
-                                               ng-pattern="/^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/"
-                                               required ng-model="agregarTienda.datosFiscales.rfc">
-                                    </div>
+                    <ng-form name="datosFiscalesForm">
+                        <h3>Datos Fiscales</h3>
+                        <!--RAZÓN SOCIAL-->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosFiscalesForm.razonSocial.$invalid && !datosFiscalesForm.razonSocial.$pristine}">
+                                <div ng-messages="datosFiscalesForm.razonSocial.$dirty && datosFiscalesForm.razonSocial.$error" role="alert">
+                                    <label>Razón Social *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="pattern">caracter no válido</span>
+                                    </label>
+                                    <input id="razonSocialId" class="form-control texto-en-mayusculas"
+                                           name="razonSocial" type="text" aria-describedby="sizing-addon1"
+                                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                                           ng-pattern="/^[a-zA-ZñÑ.\s]+$/" required
+                                           ng-model="agregarTienda.datosFiscales.razonSocial">
                                 </div>
                             </div>
                         </div>
+                        <!-- EMAIL FISCAL -->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosFiscalesForm.emailFiscal.$invalid && !datosFiscalesForm.emailFiscal.$pristine}">
+                                <div ng-messages="datosFiscalesForm.emailFiscal.$dirty && datosFiscalesForm.emailFiscal.$error" role="alert">
+                                    <label>Email Fiscal *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="email">correo incorrecto</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 5, max 50 letras</span>
+                                    </label>
+                                    <input id="emailFiscalId" class="form-control texto-en-mayusculas" name="emailFiscal" type="email"
+                                           aria-describedby="sizing-addon1" minlength="5"
+                                           maxlength="51" ng-minlength="5" ng-maxlength="50" required
+                                           ng-model="agregarTienda.datosFiscales.email">
+                                </div>
+                            </div>
+                        </div>
+                        <!--RFC-->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosFiscalesForm.rfc.$invalid && !datosFiscalesForm.rfc.$pristine}">
+                                <div ng-messages="datosFiscalesForm.rfc.$dirty && datosFiscalesForm.rfc.$error" role="alert">
+                                    <label>RFC *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="maxlength"> 12 caracteres requeridos</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
+                                    </label>
+                                    <input id="rfcId" class="form-control texto-en-mayusculas" name="rfc" type="text"
+                                           aria-describedby="sizing-addon1"
+                                           maxlength="12" ng-maxlength="12"
+                                           ng-pattern="/^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/"
+                                           required ng-model="agregarTienda.datosFiscales.rfc">
+                                </div>
+                            </div>
+                        </div>
+
+                    </ng-form>
+                </div>
                 <!--DIRECCIÓN FISCAL-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 3 || agregarTienda.pasoActual === 4">
                     <h3>Dirección Fiscal</h3>
-                    <forma-direccion direccion="agregarTienda.datosFiscales"></forma-direccion>
+                    <forma-direccion exito="agregarTienda.exito" direccion="agregarTienda.datosFiscales"></forma-direccion>
                 </div>
                 <!--ALERTAS-->
                 <div class="row">
@@ -202,13 +205,15 @@
             <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
             <div class="modal-footer">
                 <!--BOTON ATRAS -->
-                <a type="button" class="btn btn-default"
-                   ng-click="agregarTienda.atras()"
-                   ng-show="agregarTienda.pasoActual === 2 || agregarTienda.pasoActual === 3">
+                <button type="button" class="btn btn-default"
+                        ng-disabled="(datosGeneralesForm.$invalid || agregarTienda.pasoActual != 1) && (datosFiscalesForm.$invalid || agregarTienda.pasoActual != 2)"
+                        ng-click="agregarTienda.atras()"
+                        ng-show="agregarTienda.pasoActual === 2 || agregarTienda.pasoActual === 3">
                     Atrás
-                </a>
+                </button>
                 <!--BOTON SIGUIENTE -->
                 <button type="button" class="btn btn-primary"
+                        ng-disabled="(datosGeneralesForm.$invalid || agregarTienda.pasoActual != 1) && (datosFiscalesForm.$invalid || agregarTienda.pasoActual != 2)"
                         ng-click="agregarTienda.siguiente()"
                         ng-show="agregarTienda.pasoActual === 1 || agregarTienda.pasoActual === 2">
                     Siguiente
@@ -226,7 +231,6 @@
                         ng-show="agregarTienda.pasoActual === 4">
                     Cerrar
                 </button>
-
             </div>
         </div>
     </div>

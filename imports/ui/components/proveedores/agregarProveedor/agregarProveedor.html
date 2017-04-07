@@ -1,110 +1,189 @@
-<div class="inmodal">
-    <!-- div class="modal-header">
-
-    </div -->
-    <h5 class="modal-title text-center">{{agregarProveedor.titulo}}</h5>
-    <div class="modal-body">
-        <form role="form" id="agregarProveedorFrmId" name="agregarProveedorFrm" novalidate>
-            <div class="row">
-                <!--NOMBRE DE LA EMPRESA-->
-                <div class="col-xs-12 col-sm-6">
-                    <div class="form-group" ng-class="{ 'has-error' : agregarProveedorFrm.nombre.$invalid && !agregarProveedorFrm.nombre.$pristine}">
-                        <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-product-hunt" aria-hidden="true"></i>
-                                        </span>
-                            <input id="nombreID" class="form-control" name="nombre" type="text"
-                                   placeholder="Nombre Proveedor" aria-describedby="sizing-addon1"
-                                   minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                   ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/" required
-                                   ng-model="agregarProveedor.datos.nombre">
-                        </div>
-                        <div ng-messages="agregarProveedorFrm.nombre.$dirty && agregarProveedorFrm.nombre.$error"
-                             role="alert">
-                            <div style="color:red;" ng-message="required"> Campo requerido</div>
-                            <div style="color:red;" ng-message="minlength"> Longitud mínima 2 caracteres</div>
-                            <div style="color:red;" ng-message="maxlength"> Longitud máxima 50 caracteres</div>
-                            <div style="color:red;" ng-message="pattern"> Sólo caracteres alfabéticos</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- EMAIL CORREO ELECTRÓNICO -->
-                <div class="col-xs-12 col-sm-6">
-                    <div class="form-group"
-                         ng-class="{ 'has-error' : agregarProveedorFrm.email.$invalid && !agregarProveedorFrm.email.$pristine}">
-                        <div class="input-group">
-                            <span class="input-group-addon">@</span>
-                            <input id="agenciaEmailID" class="form-control" name="email" type="email"
-                                   placeholder="Correo Electrónico" aria-describedby="sizing-addon1" minlength="5"
-                                   maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                                   ng-model="agregarProveedor.datos.email">
-                        </div>
-                        <div ng-messages="agregarProveedorFrm.email.$dirty && agregarProveedorFrm.email.$error" role="alert">
-                            <div style="color:red;" ng-message="required"> Campo requerido</div>
-                            <div style="color:red;" ng-message="email"> Formato de correo incorrecto</div>
-                            <div style="color:red;" ng-message="minlength"> Longitud mínima 2 caracteres</div>
-                            <div style="color:red;" ng-message="maxlength"> Longitud máxima 50 caracteres</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <!-- TELÉFONO -->
-                <div class="col-xs-8 col-sm-4">
-                    <div class="form-group"  ng-class="{ 'has-error' : agregarProveedorFrm.telefono.$invalid && !agregarProveedorFrm.telefono.$pristine}">
-                        <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                        </span>
-                            <input id="telefonoID" class="form-control" type="text" name="telefono" placeholder="Teléfono"
-                                   aria-describedby="sizing-addon1" maxlength="10" ng-maxlength="10"
-                                   ng-pattern="/^[0-9]{10}$/" required
-                                   ng-model="agregarProveedor.datos.telefono">
-                        </div>
-                        <div ng-messages="agregarProveedorFrm.telefono.$dirty && agregarProveedorFrm.telefono.$error"
-                             role="alert">
-                            <div style="color:red;" ng-message="required"> Campo requerido</div>
-                            <div style="color:red;" ng-message="maxlength"> 10 dígitos necesarios</div>
-                            <div style="color:red;" ng-message="pattern"> Teléfono a 10 dígitos</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-4 col-sm-3">
-                    <input id="telefonoID" class="form-control" type="text" name="extension"
-                           placeholder="Extension" aria-describedby="sizing-addon1" maxlength="10"
-                           ng-pattern="/^[0-9]{10}$/" ng-model="agregarProveedor.datos.extension">
-                </div>
-            </div>
-        </form>
-        <div class="row">
-            <div class="col-xs-offset-3 col-xs-6">
-                <!-- ALERTA: COMBINACIÓN INCORRECTA -->
-                <alertas tipo="agregarProveedor.tipoMsj" mensaje="agregarProveedor.msj"></alertas>
+<form role="form" id="agregarProveedorFrmId" name="agregarProveedorFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-lg-10">
+            <h2>{{agregarProveedor.titulo}}
+                <small></small>
+            </h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-lg-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="agregarProveedor.cerrar()"><i class="fa fa-times"></i></a>
             </div>
         </div>
-        <!-- div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5><stron class="text-center">Agregar Proveedor</stron>
-                        </h5>
-                        <div ibox-tools></div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <p>
+                    <!-- Aqui debe de ir texto (en caso de requerirlo) -->
+                    <br>
+                    <br>
+                </p>
+                <!--BOTONES QUE INDICAN EN QUE PASO SE ENCUENTRA EL USUARIO-->
+                <div class="row" ng-show="agregarProveedor.pasoActual != 4">
+                    <div class="col-md-4">
+                        <button type="button"
+                                class="btn btn-block"
+                                ng-class="{'btn-default' : agregarProveedor.pasoActual != 1, 'btn-primary' : agregarProveedor.pasoActual === 1 }"
+                                ng-disabled="agregarProveedor.pasoActual != 1">
+                            Paso 1
+                        </button>
                     </div>
-                    <div class="ibox-content">
+                    <div class="col-md-4">
+                        <button type="button"
+                                class="btn btn-block"
+                                ng-class="{'btn-default' : agregarProveedor.pasoActual != 2, 'btn-primary' : agregarProveedor.pasoActual === 2 }"
+                                ng-disabled="agregarProveedor.pasoActual != 2">
+                            Paso 2
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button"
+                                class="btn btn-block"
+                                ng-class="{'btn-default' : agregarProveedor.pasoActual != 3, 'btn-primary' : agregarProveedor.pasoActual === 3 }"
+                                ng-disabled="agregarProveedor.pasoActual != 3">
+                            Paso 3
+                        </button>
+                    </div>
+                </div>
 
+                <br>
+
+                <!--INFORMACIÓN GENERAL-->
+                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarProveedor.pasoActual === 1">
+                    <h3>Datos Generales</h3>
+                    <ng-form name="datosGeneralesForm">
+                        <!--NOMBRE DE LA EMPRESA-->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.nombre.$invalid && !datosGeneralesForm.nombre.$pristine}">
+                                <div ng-messages="datosGeneralesForm.nombre.$dirty && datosGeneralesForm.nombre.$error" role="alert">
+                                    <label>Nombre *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                                    </label>
+                                    <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
+                                           placeholder="EJ: METALFLU DEL SUR" aria-describedby="sizing-addon1"
+                                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                                           ng-pattern="/^[a-zA-ZñÑ.\s]+$/" required
+                                           ng-model="agregarProveedor.datos.nombre">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- EMAIL DE CONTACTO -->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.email.$invalid && !datosGeneralesForm.email.$pristine}">
+                                <div ng-messages="datosGeneralesForm.email.$dirty && datosGeneralesForm.email.$error" role="alert">
+                                    <label> Email *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="mixlength, maxlength"> min 2, max 50 letras</span>
+                                    </label>
+                                    <input id="emailId" class="form-control texto-en-mayusculas" name="email" type="email"
+                                           aria-describedby="sizing-addon1" minlength="5"
+                                           maxlength="51" ng-minlength="5" ng-maxlength="50" required
+                                           ng-model="agregarProveedor.datos.email">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- TELÉFONOS DE CONTACTO-->
+                        <span class="animated fadeIn" ng-repeat="telefono in agregarProveedor.datos.telefonos track by $index">
+                            <div class="col-sm-4">
+                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['telefono'+$index].$invalid && !datosGeneralesForm ['telefono'+$index].$pristine}">
+                                    <div ng-messages="datosGeneralesForm['telefono'+$index].$dirty && datosGeneralesForm['telefono'+$index].$error" role="alert">
+                                        <label> Teléfono <span class="font-bold text-navy">{{$index + 1}}</span> *
+                                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
+                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
+                                        </label>
+                                        <input id="telefonosId" class="form-control" type="text" name="telefono{{$index}}"
+                                               aria-describedby="sizing-addon1" maxlength="10"
+                                               ng-pattern="/^[0-9]{10}$/" required
+                                               ng-model="telefono['telefono']">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TELÉFONO EXTENSIÓN -->
+                            <div class="col-sm-2">
+                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['extension'+$index].$invalid && !datosGeneralesForm['extension'+$index].$pristine}">
+                                    <div ng-messages="datosGeneralesForm['extension'+$index].$dirty && datosGeneralesForm['extension'+$index].$error" role="alert">
+                                        <label>&nbsp;
+                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">número</span>
+                                        </label>
+                                        <input id="extensionId" class="form-control texto-en-mayusculas" type="text" name="extension{{$index}}"
+                                               placeholder="Ext"
+                                               aria-describedby="sizing-addon1" maxlength="5"
+                                               ng-pattern="/^([0-9])*$/"
+                                               ng-model="telefono['extension']">
+                                    </div>
+                                </div>
+                            </div>
+                        </span>
+                        <!--BOTON AÑADIR TELÉFONO -->
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="agregarProveedor.agregarTelefono()">
+                                Añadir teléfono
+                            </button>
+                        </div>
+                    </ng-form>
+                </div>
+                <!--DATOS FISCALES-->
+                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarProveedor.pasoActual === 2">
+                    <h3>Datos Fiscales</h3>
+                    <ng-form name="datosFiscalesForm">
+                        <forma-datos-fiscales datos="agregarProveedor.datosFiscales"></forma-datos-fiscales>
+                    </ng-form>
+                </div>
+                <!--DIRECCIÓN FISCAL-->
+                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarProveedor.pasoActual === 3">
+                    <h3>Dirección Fiscal</h3>
+                    <forma-direccion exito="agregarProveedor.exito" direccion="agregarProveedor.datosFiscales"></forma-direccion>
+                </div>
+                <!--ALERTAS-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- ALERTA -->
+                        <alertas tipo="agregarProveedor.tipoMsj" mensaje="agregarProveedor.msj"></alertas>
                     </div>
                 </div>
             </div>
-        </div -->
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON ATRAS -->
+                <button type="button" class="btn btn-default"
+                        ng-disabled="(datosGeneralesForm.$invalid && agregarProveedor.pasoActual === 2) || (datosFiscalesForm.$invalid && agregarProveedor.pasoActual === 3)"
+                        ng-click="agregarProveedor.atras()"
+                        ng-show="agregarProveedor.pasoActual === 2 || agregarProveedor.pasoActual === 3">
+                    Atrás
+                </button>
+                <!--BOTON SIGUIENTE -->
+                <button type="button" class="btn btn-primary"
+                        ng-disabled="(datosGeneralesForm.$invalid && agregarProveedor.pasoActual === 1) || (datosFiscalesForm.$invalid && agregarProveedor.pasoActual === 2)"
+                        ng-click="agregarProveedor.siguiente()"
+                        ng-show="agregarProveedor.pasoActual < 3">
+                    Siguiente
+                </button>
+                <!--BOTON FINALIZAR -->
+                <button type="button" class="btn btn-primary"
+                        ng-disabled="agregarProveedorFrm.$invalid"
+                        ng-click="agregarProveedor.agregar()"
+                        ng-show="agregarProveedor.pasoActual === 3">
+                    Finalizar
+                </button>
+                <!--BOTON CERRAR -->
+                <button type="button" class="btn btn-primary"
+                        ng-click="agregarProveedor.cerrar()"
+                        ng-show="agregarProveedor.pasoActual === 4">
+                    Cerrar
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-white" ng-click="agregarProveedor.cerrar()">Cerrar</button>
-        <button type="button" class="btn btn-primary" ng-click="agregarProveedor.agregar()"
-                ng-disabled="agregarProveedorFrm.$invalid">
-            Agregar
-        </button>
-    </div>
-</div>
-
+</form>
 
 

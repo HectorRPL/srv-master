@@ -3,4 +3,16 @@ html {
   .texto-en-mayusculas {
     text-transform: uppercase;
   }
+
+
+  // Quita el fondo amarillo que a veces pone chrome en los inputs
+  @-webkit-keyframes autofill {
+    to {
+      background: #ffffff;
+    }
+  }
+  input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+  }
 }
