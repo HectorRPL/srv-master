@@ -2,7 +2,8 @@
  * Created by jvltmtz on 4/04/17.
  */
 import {Meteor} from "meteor/meteor";
-import {ValidatedMethod} from "meteor/mdg:validated-method"
+import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 
@@ -10,21 +11,29 @@ const ID = ['_id'];
 
 export const insertar = new ValidatedMethod({
     name: 'usuarios.insertar',
+    mixins: [PermissionsMixin],
+    allow: [
+        {
+            roles: ['crea_usua'],
+            group: '__global_roles__'
+        }
+    ],
+    permissionsError: {
+        name: 'tiendas.insertar',
+        message: ()=> {
+            return 'Acceso denegado';
+        }
+    },
     validate: new SimpleSchema({
         password: {type: String},
         username: {type: String},
+        email: {type:String},
         profile: {type: Object, blackbox: true},
     }).validator(),
     run({password, username, profile}) {
 
         if (Meteor.isServer) {
-            Accounts.createUser({password, username, profile},
-                (err) => {
-                    if (err) {
-                        throw  err;
-                    }
-                }
-            );
+            return Accounts.createUser({password, username, profile});
         }
     }
 });
