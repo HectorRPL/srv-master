@@ -18,14 +18,14 @@ export const insertar = new ValidatedMethod({
     mixins: [PermissionsMixin],
     allow: [
         {
-            roles: ['aut_ventasTiendas'],
-            group: 'gerente'
+            roles: ['crea_tien'],
+            group: 'crudtiendas'
         }
     ],
     permissionsError: {
         name: 'tiendas.insertar',
         message: ()=> {
-            return 'Acceso denegado';
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
     validate: Tiendas.simpleSchema().pick(CAMPOS_TIENDAS).validator({
