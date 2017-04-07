@@ -44,7 +44,6 @@ class AgregarTienda {
    agregar() {
         this.tipoMsj = '';
         // Inserta la tienda en la collection tiendas
-       console.log('Este es el objeto que vamos a enviar', this.datos);
         insertar.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = err.reason;
