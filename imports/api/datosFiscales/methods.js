@@ -5,7 +5,7 @@ import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
-import {DatosFiscalesProveedores} from "./collection";
+import {DatosFiscales} from "./collection";
 
 const ID = ['_id'];
 
@@ -28,8 +28,8 @@ const CAMPOS_DATOS_FISCALES = [
 ];
 
 export const insertarDatosFiscales = new ValidatedMethod({
-    name: 'datosFiscalesProveedores.insertarDatosFiscales',
-    validate: DatosFiscalesProveedores.simpleSchema().pick(CAMPOS_DATOS_FISCALES).validator({
+    name: 'datosFiscales.insertarDatosFiscales',
+    validate: DatosFiscales.simpleSchema().pick(CAMPOS_DATOS_FISCALES).validator({
         clean: true,
         filter: false
     }),
@@ -52,7 +52,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
             curp
         }
     ) {
-        return DatosFiscalesProveedores.insert({
+        return DatosFiscales.insert({
             proveedorId,
             razonSocial,
             email,

@@ -4,9 +4,9 @@
 
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
-export const DatosFiscalesProveedores = new Mongo.Collection('datosFiscalesProveedores');
+export const DatosFiscales = new Mongo.Collection('datosFiscales');
 
-DatosFiscalesProveedores.deny({
+DatosFiscales.deny({
     insert() {
         return true;
     },
@@ -20,7 +20,7 @@ DatosFiscalesProveedores.deny({
 
 const Schema = {};
 
-Schema.datosFiscalesProveedores = new SimpleSchema({
+Schema.datosFiscales = new SimpleSchema({
     _id:            {type: String,                  regEx: SimpleSchema.RegEx.Id },
     proveedorId:    {type: String,                  regEx: SimpleSchema.RegEx.Id },
     razonSocial:    {type: String /*                regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/ */},
@@ -40,4 +40,4 @@ Schema.datosFiscalesProveedores = new SimpleSchema({
     curp:           {type: String, optional: true, }
 });
 
-DatosFiscalesProveedores.attachSchema(Schema.datosFiscalesProveedores);
+DatosFiscales.attachSchema(Schema.datosFiscales);
