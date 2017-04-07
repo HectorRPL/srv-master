@@ -8,5 +8,5 @@ import "../../api/catalogos/tiendas/methods";
 import "../../api/catalogos/marcas/server/publish";
 import "../../api/catalogos/marcas/methods";
 import "../../api/catalogos/tiposProductos/server/publish";
-import "../../api/catalogos/proveedores/datosFiscales/methods";
+import "../../api/datosFiscales/methods";
 

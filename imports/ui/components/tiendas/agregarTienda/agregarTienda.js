@@ -5,7 +5,7 @@ import "./agregarTienda.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../direccion/formaDireccion/formaDireccion";
 import {insertar} from "../../../../api/catalogos/tiendas/methods";
-import {insertarDatosFiscales} from "../../../../api/catalogos/proveedores/datosFiscales/methods";
+import {insertarDatosFiscales} from "../../../../api/datosFiscales/methods";
 
 class AgregarTienda {
     constructor($scope, $reactive, $state) {

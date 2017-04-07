@@ -24,7 +24,6 @@ export default angular
         controllerAs: name,
         controller: FormaDireccion,
         bindings: {
-            direccion: '=',
-            exito: '='
+            direccion: '='
         }
     });

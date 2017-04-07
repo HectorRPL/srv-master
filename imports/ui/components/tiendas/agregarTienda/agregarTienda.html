@@ -67,7 +67,7 @@
                                     <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
                                            placeholder="ej: CENTRO TLAHUAC" aria-describedby="sizing-addon1"
                                            minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                           ng-pattern="/^[a-zA-ZñÑ.\s]+$/" required
+                                           ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
                                            ng-model="agregarTienda.datos.nombre">
                                 </div>
                             </div>
@@ -107,8 +107,8 @@
                             </div>
                             <!-- TELÉFONO EXTENSIÓN -->
                             <div class="col-sm-2">
-                                <div class="form-group" ng-class="{ 'has-error' : agregarTiendaFrm['extension'+$index].$invalid && !agregarTiendaFrm['extension'+$index].$pristine}">
-                                    <div ng-messages="agregarTiendaFrm['extension'+$index].$dirty && agregarTiendaFrm['extension'+$index].$error" role="alert">
+                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['extension'+$index].$invalid && !datosGeneralesForm['extension'+$index].$pristine}">
+                                    <div ng-messages="datosGeneralesForm['extension'+$index].$dirty && datosGeneralesForm['extension'+$index].$error" role="alert">
                                         <label>&nbsp;
                                             <span class="animated fadeIn" style="color:red;" ng-message="pattern">número</span>
                                         </label>
@@ -145,7 +145,7 @@
                                     <input id="razonSocialId" class="form-control texto-en-mayusculas"
                                            name="razonSocial" type="text" aria-describedby="sizing-addon1"
                                            minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                           ng-pattern="/^[a-zA-ZÑñ-\s\d]+$/" required
+                                           ng-pattern="/^[a-zA-ZñÑ.\s]+$/" required
                                            ng-model="agregarTienda.datosFiscales.razonSocial">
                                 </div>
                             </div>

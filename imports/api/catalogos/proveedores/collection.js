@@ -35,15 +35,13 @@ Proveedores.schema = new SimpleSchema({
         //max: 50
     },
     telefonos: {
-        type: [String],
-        optional: true
-        //regEx: /^[0-9]{10}$/,
-        //min: 10,
-        //max: 10
+        type: [Object],
+        optional: true,
+        blackbox: true
     },
-    emails: {
-        type: [String],
-        optional: true
+    email: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Email
     },
     activo: {
         type: Boolean,
