@@ -6,3 +6,5 @@ import "../../api/productos/methods";
 import "../../api/codigosPostales/methods";
 import "../../api/inventarios/server/publish";
 import "../../api/inventarios/methods";
+import "../../api/users/methods";
+import "../../api/users/usuarios";
