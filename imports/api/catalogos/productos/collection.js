@@ -29,7 +29,8 @@ Productos.schema = new SimpleSchema({
     calidad:            {type: Number,  defaultValue: 1},
     undidad:            {type:String, defaultValue: 'PZA'},
     rectificado:        {type: Boolean, optional: true},
-    metrosCuadrados:    {type: Number, optional:true, decimal: true}
+    metrosCuadrados:    {type: Number, optional:true, decimal: true},
+    costoUnitario:      {type: Number,  decimal: true}
 });
 
 Productos.attachSchema(Productos.schema);
