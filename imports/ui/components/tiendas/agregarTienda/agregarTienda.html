@@ -91,7 +91,7 @@
                         <!-- TELÉFONOS DE CONTACTO-->
                         <span class="animated fadeIn" ng-repeat="telefono in agregarTienda.datos.telefonos track by $index">
                             <div class="col-sm-4">
-                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['telefono'+$index].$invalid && !datosGeneralesForm ['telefono'+$index].$pristine}">
+                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['telefono'+$index].$invalid && !datosGeneralesForm['telefono'+$index].$pristine}">
                                     <div ng-messages="datosGeneralesForm['telefono'+$index].$dirty && datosGeneralesForm['telefono'+$index].$error" role="alert">
                                         <label> Teléfono <span class="font-bold text-navy">{{$index + 1}}</span> *
                                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
