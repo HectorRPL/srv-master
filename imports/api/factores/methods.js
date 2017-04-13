@@ -2,27 +2,25 @@
  * Created by jvltmtz on 30/03/17.
  */
 import {Meteor} from "meteor/meteor";
-import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
+import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {_} from "meteor/underscore";
 import {Factores} from "./collection";
 
-const ID = ['_id'];
+const CAMPOS_FACTORES = [ 'nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9', 'factor10'];
 
-const CAMPOS_FACTORES = ['marcaId, tiendaId, factores'];
-// Enviará un correo con un link al usuario para verificacar de registro
-export const insertar = new ValidatedMethod({
-    name: 'factores.insertar',
+export const insertarFactor = new ValidatedMethod({
+    name: 'factores.insertarFactor',
     validate: Factores.simpleSchema().pick(CAMPOS_FACTORES).validator({
         clean: true,
         filter: false
     }),
-    run({marcaId, tiendaId, factores}) {
-        return Factores.insert({marcaId, tiendaId, factores});
+    run({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factor10}) {
+        return Factores.insert({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factor10});
     }
 });
 
-const FACTORES_METHODS = _.pluck([insertar], 'name');
+const FACTORES_METHODS = _.pluck([insertarFactor], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

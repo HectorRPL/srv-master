@@ -4,7 +4,7 @@
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const Factores = new Mongo.Collection('factoes');
+export const Factores = new Mongo.Collection('factores');
 
 Factores.deny({
     insert() {
@@ -19,12 +19,19 @@ Factores.deny({
 });
 
 Factores.schema = new SimpleSchema({
-    _id: {type: String, regEx: SimpleSchema.RegEx.Id},
-    fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
-    marcaId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    factores: {type: [Number]}
-
+    fechaCreacion: {type:  Date,   defaultValue: new Date(), denyUpdate: true},
+    _id:           {type:  String, regEx: SimpleSchema.RegEx.Id},
+    nombre:        {type:  String, },
+    factor1:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor2:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor3:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor4:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor5:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor6:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor7:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor8:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor9:       {type:  Number, min: 1.0000, max: 4.0000, decimal: true},
+    factor10:      {type:  Number, min: 1.0000, max: 4.0000, decimal: true}
 });
 
 Factores.attachSchema(Factores.schema);
