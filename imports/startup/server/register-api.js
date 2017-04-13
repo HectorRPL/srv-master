@@ -6,4 +6,5 @@ import "../../api/inventarios/methods";
 import "../../api/users/methods";
 import "../../api/users/usuarios";
 import "../../api/datosFiscales/methods";
-import "../../api/inventarios/inventarioInicial"
+import "../../api/inventarios/inventarioInicial";
+import "../../api/factores/methods";

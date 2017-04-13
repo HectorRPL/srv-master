@@ -1,8 +1,9 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import "./tabFactores.html";
 import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
+import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
+import "./tabFactores.html";
 
 class TabFactores {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -14,6 +15,16 @@ class TabFactores {
         this.marcaSelec = '';
         this.marcas = [];
         this.nombre = '';
+    }
+
+    crearFactor() {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'AgregarFactor',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true
+        });
     }
 
     buscarMarca(valor) {
@@ -31,7 +42,9 @@ const name = 'tabFactores';
 
 // create a module
 export default angular
-    .module(name, [])
+    .module(name, [
+        AgregarFactor
+    ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/administrarTienda/${name}/${name}.html`,
         controllerAs: name,

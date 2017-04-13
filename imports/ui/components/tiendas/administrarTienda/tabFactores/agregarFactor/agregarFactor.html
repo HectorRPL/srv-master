@@ -1,0 +1,115 @@
+<form role="form" id="agregarFactorFrmId" name="agregarFactorPadreFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-lg-10">
+            <h2>{{agregarFactor.titulo}}
+                <small></small>
+            </h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-lg-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="agregarFactor.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <p> Crear un nuevo factor para aplicarlo a una marca, línea de productos o productos.</p>
+
+                <br>
+                <br>
+
+                <ng-form name="agregarFactorFrm">
+                    <div class="row">
+                        <!-- NOMBRE -->
+                        <div class="col-sm-6">
+                            <div class="form-group" ng-class="{ 'has-error' : agregarFactorFrm.nombre.$invalid && !agregarFactorFrm.nombre.$pristine}">
+                                <div ng-messages="agregarFactorFrm.nombre.$dirty && agregarFactorFrm.nombre.$error" role="alert">
+                                    <label>Nombre *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                                    </label>
+                                    <input id="nombreId"
+                                           class="form-control texto-en-mayusculas"
+                                           name="nombre"
+                                           type="text"
+                                           aria-describedby="sizing-addon1"
+                                           minlength="2"
+                                           maxlength="51"
+                                           ng-minlength="2"
+                                           ng-maxlength="50"
+                                           ng-pattern="/^[a-zA-ZñÑ\s\d]+$/"
+                                           required
+                                           ng-disabled="agregarFactor.tipoMsj === 'success'"
+                                           ng-model="agregarFactor.datos.nombre">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <!-- FACTORES -->
+                        <div class="col-sm-4" ng-repeat="factor in agregarFactor.factores">
+                            <div class="form-group" ng-class="{ 'has-error' : agregarFactorFrm['factor'+$index].$invalid && !agregarFactorFrm['factor'+$index].$pristine}">
+                                <div ng-messages="agregarFactorFrm['factor'+$index].$dirty && agregarFactorFrm['factor'+$index].$error" role="alert">
+                                    <label>
+                                        Factor {{$index + 1}}
+                                        <span class="animated fadeIn" style="color:red;" ng-message="min">mix 1.0000</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="max">max 1.4000</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                    </label>
+                                    <input id="factor{{$index}}Id"
+                                           class="form-control"
+                                           type="number"
+                                           name="factor{{$index}}"
+                                           max="4.00"
+                                           min="1.00"
+                                           step=".0001"
+                                           required
+                                           ng-disabled="agregarFactor.tipoMsj === 'success'"
+                                           ng-model="agregarFactor.datos['factor'+($index + 1)]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-form>
+
+
+                <!--ALERTAS-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- ALERTA -->
+                        <alertas tipo="agregarFactor.tipoMsj" mensaje="agregarFactor.msj"></alertas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON CANCELAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-click="agregarFactor.cerrar()">
+                    Cerrar
+                </button>
+                <!--BOTON CREAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-hide="agregarFactor.tipoMsj === 'success'"
+                        ng-disabled="agregarFactorPadreFrm.$invalid"
+                        ng-click="agregarFactor.agregar()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
