@@ -21,8 +21,7 @@ class AgregarFactor {
             {nombre: 6},
             {nombre: 7},
             {nombre: 8},
-            {nombre: 9},
-            {nombre: 10}
+            {nombre: 9}
         ];
     }
 

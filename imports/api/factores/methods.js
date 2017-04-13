@@ -7,7 +7,7 @@ import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {_} from "meteor/underscore";
 import {Factores} from "./collection";
 
-const CAMPOS_FACTORES = [ 'nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9', 'factor10'];
+const CAMPOS_FACTORES = [ 'nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9'];
 
 export const insertarFactor = new ValidatedMethod({
     name: 'factores.insertarFactor',
@@ -15,8 +15,8 @@ export const insertarFactor = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factor10}) {
-        return Factores.insert({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factor10});
+    run({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9}) {
+        return Factores.insert({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9});
     }
 });
 
