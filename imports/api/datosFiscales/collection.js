@@ -21,9 +21,11 @@ DatosFiscales.deny({
 const Schema = {};
 
 Schema.datosFiscales = new SimpleSchema({
-    _id:            {type: String,                  regEx: SimpleSchema.RegEx.Id },
-    proveedorId:    {type: String,                  regEx: SimpleSchema.RegEx.Id },
-    razonSocial:    {type: String /*                regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/ */},
+    _id:            {type: String, regEx: SimpleSchema.RegEx.Id },
+    propietarioId:  {type: String, regEx: SimpleSchema.RegEx.Id },
+    razonSocial:    {type: String, regEx: /^[a-zA-Z-/&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/, custom: function () {
+        return this.value.toUpperCase();
+    }},
     email:          {type: String, regEx: SimpleSchema.RegEx.Email},
     rfc:            {type: String },
     fechaCreacion:  {type: Date, defaultValue: new Date(), denyUpdate: true },
@@ -37,7 +39,7 @@ Schema.datosFiscales = new SimpleSchema({
     numInt:         {type: String, max: 20,  min: 1, regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/, optional: true},
     // codigoPais:     {type: String }, // se deja pendiente, pero deberá estar
     personaFisica:  {type: Boolean, defaultValue: false },
-    curp:           {type: String, optional: true, }
+    curp:           {type: String, optional: true }
 });
 
 DatosFiscales.attachSchema(Schema.datosFiscales);
