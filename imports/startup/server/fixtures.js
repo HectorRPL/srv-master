@@ -309,7 +309,7 @@ Meteor.startup(function () {
     if(Factores.find().count() === 0){
         var readStream = fs.createReadStream(basePath + "/private/csv/factores.csv");
         csv().fromStream(readStream).on('json', Meteor.bindEnvironment((jsonObject) => {
-
+            Factores.insert(jsonObject);
         }));
 
     }
