@@ -6,10 +6,10 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <input type="text"
-                           ng-model="tabFactores.marcaSelec"
-                           uib-typeahead="marca as marca.nombre for marca in tabFactores.buscarMarca($viewValue)"
+                           ng-model="factores.marcaSelec"
+                           uib-typeahead="marca as marca.nombre for marca in factores.buscarMarca($viewValue)"
                            class="form-control">
-                    {{tabFactores.marcaSelec}}
+                    {{factores.marcaSelec}}
                 </div>
             </div>
         </div>
@@ -19,11 +19,10 @@
     </div>
 </div>
 -->
-
 <div class="panel-body">
     <div class="row">
         <div class="col-md-4">
-            <a ng-click="tabFactores.crearFactor()">
+            <a ng-click="factores.crearFactor()">
                 <div class="widget yellow-bg p-lg text-center">
                 <div class="m-b-md">
                     <i class="fa fa-flask fa-4x" aria-hidden="true"></i>
@@ -35,7 +34,7 @@
             </a>
         </div>
         <div class="col-md-8">
-            <a ng-click="tabFactores.aplicarFactor()">
+            <a ng-click="factores.aplicarFactor()">
                 <div class="widget lazur-bg p-lg text-center">
                     <div class="m-b-md">
                         <i class="fa fa-archive fa-4x" aria-hidden="true"></i>

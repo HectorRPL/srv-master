@@ -5,7 +5,7 @@ import "./tiendas.html";
 import {Tiendas} from "../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as ListaTiendas} from './listaTiendas/listaTiendas';
-import {name as AdministrarTienda} from './administrarTienda/administrarTienda';
+import {name as AdmonTienda} from './admonTienda/admonTienda';
 
 class TiendasClass {
     constructor($state) {
@@ -23,7 +23,7 @@ export default angular
     .module(name, [
         TituloPrincipal,
         ListaTiendas,
-        AdministrarTienda
+        AdmonTienda
     ])
     .component(name, {
         templateUrl: `imports/ui/components/${name}/${name}.html`,
@@ -35,8 +35,8 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tiendas', {
-            url: '/tiendas',
+        .state('app.tienda', {
+            url: '/tienda',
             template: '<tiendas></tiendas>',
             abstract: true
         });

@@ -5,7 +5,6 @@ import "./listaTiendas.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
-import {name as Empleados} from '../empleados/empleados';
 
 class ListaTiendas {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -41,8 +40,7 @@ const name = 'listaTiendas';
 export default angular
     .module(name, [
         TituloPrincipal,
-        AgregarTienda,
-        Empleados
+        AgregarTienda
     ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
@@ -54,7 +52,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tiendas.lista', {
+        .state('app.tienda.lista', {
             url: '/lista',
             template: '<lista-tiendas></lista-tiendas>'
         });

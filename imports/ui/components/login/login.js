@@ -23,7 +23,7 @@ class Login {
                     this.msj = 'Combinación de usuario y contraseña incorrectos.';
                     this.tipoMsj = 'danger';
                 } else {
-                    this.$state.go('app.tiendas.lista');
+                    this.$state.go('app.tienda.lista');
                 }
             })
         );

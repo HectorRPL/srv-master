@@ -4,14 +4,14 @@
 import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
 import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
-import "./tabFactores.html";
+import "./factores.html";
 
-class TabFactores {
+class Factores {
     constructor($scope, $reactive, $state, $uibModal) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.tabTitulo = 'Factores';
+        this.titulo = 'Factores';
         this.$uibModal = $uibModal;
         this.marcaSelec = '';
         this.marcas = [];
@@ -49,7 +49,7 @@ class TabFactores {
 
 }
 
-const name = 'tabFactores';
+const name = 'factores';
 
 // create a module
 export default angular
@@ -58,10 +58,17 @@ export default angular
         AplicarFactor
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/administrarTienda/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/tiendas/admonTienda/${name}/${name}.html`,
         controllerAs: name,
-        controller: TabFactores,
-        bindings: {
-            tiendaid: '<'
-        }
-    });
+        controller: Factores
+    })
+    .config(config);
+
+function config($stateProvider) {
+    'ngInject';
+    $stateProvider
+        .state('app.tienda.factores', {
+            url: '/:tiendaId/factores',
+            template: '<factores></factores>'
+        });
+}

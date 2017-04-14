@@ -1,20 +1,21 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import "./administrarTienda.html";
+import "./admonTienda.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
-import {name as TabFactores} from '../administrarTienda/tabFactores/tabFactores';
-import {name as TabComisiones} from '../administrarTienda/tabComisiones/tabComisiones';
-import {name as TabInventarios} from '../administrarTienda/tabInventarios/tabInventarios';
+import {name as Factores} from './factores/factores';
+import {name as Comisiones} from './comisiones/comisiones';
+import {name as Inventario} from './inventario/inventario';
+import {name as Personal} from './personal/personal';
 
-class AdministrarTienda {
+class AdmonTienda {
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Administrar';
-        this.tituloInv = 'Inventarios';
+        this.tituloInv = 'Inventario';
         this.tituloFact = 'Factores';
         this.tituloComi = 'Comisiones';
         this.tiendaId = $stateParams.tiendaId;
@@ -29,28 +30,29 @@ class AdministrarTienda {
 
 }
 
-const name = 'administrarTienda';
+const name = 'admonTienda';
 
 // create a module
 export default angular
     .module(name, [
         TituloPrincipal,
-        TabFactores,
-        TabComisiones,
-        TabInventarios
+        Factores,
+        Comisiones,
+        Inventario,
+        Personal
     ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
         controllerAs: name,
-        controller: AdministrarTienda
+        controller: AdmonTienda
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tiendas.administrar', {
-            url: '/admin/:tiendaId',
-            template: '<administrar-tienda></administrar-tienda>'
+        .state('app.tienda.admon', {
+            url: '/:tiendaId',
+            template: '<admon-tienda></admon-tienda>'
         });
 }
