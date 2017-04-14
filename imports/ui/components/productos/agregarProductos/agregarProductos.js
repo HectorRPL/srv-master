@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 11/03/2017.
  */
-import {insertar} from "../../../../api/productos/methods";
+import {insertar} from "../../../../api/catalogos/productos/methods";
 import {name as ConstruyeNombre} from "../construyeNombre/construyeNombre";
 import {name as ClaveProductoProveedor} from "../../comun/inputs/text/claveProductoProveedor/claveProductoProveedor";
 import {name as ClaveProductoEmpresa} from "../../comun/inputs/text/claveProductoEmpresa/claveProductoEmpresa";

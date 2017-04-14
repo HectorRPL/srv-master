@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 29/03/2017.
  */
-import {obtenerColonias} from "../../../../../api/codigosPostales/methods";
+import {obtenerColonias} from "../../../../../api/catalogos/codigosPostales/methods";
 import "./codigosPostales.html";
 
 class CodigosPostales {

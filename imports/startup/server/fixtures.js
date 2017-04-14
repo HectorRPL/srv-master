@@ -2,13 +2,14 @@
  * Created by Héctor on 09/03/2017.
  */
 import {Meteor} from "meteor/meteor";
-import {Productos} from "../../api/productos/collection";
+import {Productos} from "../../api/catalogos/productos/collection";
 import {Proveedores} from "../../api/catalogos/proveedores/collection";
 import {MarcasProveedores} from "../../api/catalogos/marcasProveedores/collection";
 import {DatosFiscales} from "../../api/datosFiscales/collection";
 import {Marcas} from "../../api/catalogos/marcas/collection";
 import {Tiendas} from "../../api/catalogos/tiendas/collection";
 import {PuestosRoles} from "../../api/catalogos/puestosRoles/collection";
+import {Factores} from "../../api/factores/collection";
 
 
 // Antigua manera de importar
@@ -303,6 +304,14 @@ Meteor.startup(function () {
         });
 
         Roles.addUsersToRoles(id, puestosRoles.roles, Roles.GLOBAL_GROUP);
+    }
+
+    if(Factores.find().count() === 0){
+        var readStream = fs.createReadStream(basePath + "/private/csv/factores.csv");
+        csv().fromStream(readStream).on('json', Meteor.bindEnvironment((jsonObject) => {
+            Factores.insert(jsonObject);
+        }));
+
     }
 
 
