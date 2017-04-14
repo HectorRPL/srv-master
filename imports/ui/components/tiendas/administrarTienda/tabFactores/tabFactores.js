@@ -3,6 +3,7 @@
  */
 import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
+import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
 import "./tabFactores.html";
 
 class TabFactores {
@@ -27,6 +28,16 @@ class TabFactores {
         });
     }
 
+    aplicarFactor() {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'AplicarFactor',
+            backdrop: 'static',
+            size: 'lg',
+            keyboard: true
+        });
+    }
+
     buscarMarca(valor) {
         return obtenerMarcas.callPromise({
             marca: valor
@@ -43,7 +54,8 @@ const name = 'tabFactores';
 // create a module
 export default angular
     .module(name, [
-        AgregarFactor
+        AgregarFactor,
+        AplicarFactor
     ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/administrarTienda/${name}/${name}.html`,

@@ -1,26 +1,28 @@
-<!-- Esto es la implentacion del autocomplete
+<!--Esto es la implentacion del autocomplete-->
+<!--
 <div class="panel-body">
     <div class="row">
         <div class="col-xs-3">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
-                    <input type="text" ng-model="tabFactores.marcaSelec" uib-typeahead="marca as marca.nombre for marca in tabFactores.buscarMarca($viewValue)" class="form-control">
+                    <input type="text"
+                           ng-model="tabFactores.marcaSelec"
+                           uib-typeahead="marca as marca.nombre for marca in tabFactores.buscarMarca($viewValue)"
+                           class="form-control">
                     {{tabFactores.marcaSelec}}
                 </div>
             </div>
         </div>
         <div class="col-xs-4">
-            <strong>FActores</strong>
-
+            <strong>Factores</strong>
         </div>
     </div>
-
 </div>
 -->
 
 <div class="panel-body">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <a ng-click="tabFactores.crearFactor()">
                 <div class="widget yellow-bg p-lg text-center">
                 <div class="m-b-md">
@@ -32,40 +34,16 @@
             </div>
             </a>
         </div>
-        <div class="col-md-3">
-            <a>
+        <div class="col-md-8">
+            <a ng-click="tabFactores.aplicarFactor()">
                 <div class="widget lazur-bg p-lg text-center">
-                <div class="m-b-md">
-                    <i class="fa fa-industry fa-4x" aria-hidden="true"></i>
-                    <h1 class="m-xs">Aplicar Factor</h1>
-                    <h3 class="font-bold no-margins">Marca</h3>
-                    <small>small</small>
+                    <div class="m-b-md">
+                        <i class="fa fa-archive fa-4x" aria-hidden="true"></i>
+                        <h1 class="m-xs">Aplicar</h1>
+                        <h3 class="font-bold no-margins"> Factor a Productos</h3>
+                        <small>small</small>
+                    </div>
                 </div>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a>
-                <div class="widget lazur-bg p-lg text-center">
-                <div class="m-b-md">
-                    <i class="fa fa-archive fa-4x" aria-hidden="true"></i>
-                    <h1 class="m-xs">Aplicar Factor</h1>
-                    <h3 class="font-bold no-margins">Linea de Productos</h3>
-                    <small>small</small>
-                </div>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a>
-                <div class="widget lazur-bg p-lg text-center">
-                <div class="m-b-md">
-                    <i class="fa fa-cubes fa-4x" aria-hidden="true"></i>
-                    <h1 class="m-xs">Aplicar Factor</h1>
-                    <h3 class="font-bold no-margins">Productos</h3>
-                    <small>small</small>
-                </div>
-            </div>
             </a>
         </div>
     </div>
