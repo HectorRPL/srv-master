@@ -59,13 +59,13 @@
                         <div class="col-sm-6">
                             <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.nombre.$invalid && !datosGeneralesForm.nombre.$pristine}">
                                 <div ng-messages="datosGeneralesForm.nombre.$dirty && datosGeneralesForm.nombre.$error" role="alert">
-                                    <label>Nombre *
+                                    <label>Sucursal *
                                         <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                                     </label>
                                     <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
-                                           placeholder="ej: CENTRO TLAHUAC" aria-describedby="sizing-addon1"
+                                           placeholder="ej: TLAHUAC" aria-describedby="sizing-addon1"
                                            minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
                                            ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
                                            ng-model="agregarTienda.datos.nombre">
@@ -76,7 +76,7 @@
                         <div class="col-sm-6">
                             <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.email.$invalid && !datosGeneralesForm.email.$pristine}">
                                 <div ng-messages="datosGeneralesForm.email.$dirty && datosGeneralesForm.email.$error" role="alert">
-                                    <label> Email *
+                                    <label> Email de Contacto*
                                         <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="mixlength, maxlength"> min 2, max 50 letras</span>
@@ -144,7 +144,7 @@
                                     </label>
                                     <input id="razonSocialId" class="form-control texto-en-mayusculas"
                                            name="razonSocial" type="text" aria-describedby="sizing-addon1"
-                                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                                           minlength="2" maxlength="71" ng-minlength="2" ng-maxlength="70"
                                            ng-pattern="/^[a-zA-ZñÑ.\s]+$/" required
                                            ng-model="agregarTienda.datosFiscales.razonSocial">
                                 </div>

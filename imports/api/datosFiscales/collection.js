@@ -23,7 +23,7 @@ const Schema = {};
 Schema.datosFiscales = new SimpleSchema({
     _id:            {type: String, regEx: SimpleSchema.RegEx.Id },
     propietarioId:  {type: String, regEx: SimpleSchema.RegEx.Id },
-    razonSocial:    {type: String, regEx: /^[a-zA-Z-/&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/, custom: function () {
+    razonSocial:    {type: String, regEx: /^[a-zA-Z-Ññ.-\s\d]+$/, custom: function () {
         return this.value.toUpperCase();
     }},
     email:          {type: String, regEx: SimpleSchema.RegEx.Email},
