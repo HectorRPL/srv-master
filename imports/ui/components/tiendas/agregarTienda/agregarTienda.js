@@ -13,7 +13,6 @@ class AgregarTienda {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Tienda';
-        this.exito = false;
         this.pasoActual = 1;
         this.pasoAnterior = 0;
         this.datosFiscales = {};
@@ -67,7 +66,6 @@ class AgregarTienda {
                     }
                 }));
                 this.pasoActual = 4;
-                this.exito = true;
             }
         }));
     }
