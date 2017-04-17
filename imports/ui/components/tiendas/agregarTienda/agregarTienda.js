@@ -14,10 +14,26 @@ class AgregarTienda {
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Tienda';
         this.pasoActual = 1;
-        this.pasoAnterior = 0;
-        this.datosFiscales = {};
-        this.datos = {
-            telefonos: [{telefono: ''}]
+        this.tipoMsj = '';
+
+
+        this.datosFiscales = {
+            razonSocial: 'demo s.a. de c.v.',
+            rfc: 'sla630306cf7',
+            email: 'demo@demo.com',
+            estado: 'ciudad de mexico',
+            estadoId: 'cmx',
+            delMpio: 'xochimilco',
+            codigoPostal: '16030',
+            colonia: 'potrero de san bernardino',
+            calle: 'roselina',
+            numExt: '7',
+            numInt: '2'
+        };
+        this.datos =  {
+            nombre: 'demo',
+            email: 'demo01@demo01.com',
+            telefonos: [{telefono: '5556769502'}]
         };
     }
 
@@ -29,18 +45,46 @@ class AgregarTienda {
         this.datos.telefonos.push(this.nuevoTelefono);
     }
 
+    guardarDatosGenerales() {
+        insertar.call(this.datos, this.$bindToContext((err, result)=> {
+            if (err) {
+                this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.tipoMsj = 'danger';
+            } else {
+
+                this.propietarioId = result;
+                this.msj = 'Los datos de contacto se guardaron con éxito.';
+                this.tipoMsj = 'success';
+                this.pasoActual++;
+            }
+        }));
+    }
+
     siguiente() {
-        this.pasoAnterior = this.pasoActual;
+        this.tipoMsj = '';
         this.pasoActual++;
     }
 
-    atras() {
-        this.pasoActual--;
-        this.pasoAnterior = this.pasoActual - 1;
+    guardarDatosFiscales() {
+
+        let datosFiscalesFinal = angular.copy(this.datosFiscales);
+        delete datosFiscalesFinal.colonias;
+
+        datosFiscalesFinal.propietarioId = this.propietarioId;
+        console.log('Estos son los datos que vamos a enviar: ', datosFiscalesFinal);
+        insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
+            if (err) {
+                this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.tipoMsj = 'danger';
+            } else {
+                this.msj = 'Los datos fiscales se guardaron exitosamente, el sistema tardará unos minutos para configurar la base de datos, espere.';
+                this.tipoMsj = 'warning';
+                this.pasoActual++;
+            }
+        }));
     }
 
     agregar() {
-        this.tipoMsj = '';
         // Inserta la tienda en la collection tiendas
         insertar.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
@@ -55,7 +99,7 @@ class AgregarTienda {
                 let datosFiscalesFinal = angular.copy(this.datosFiscales);
                 delete datosFiscalesFinal.colonias;
 
-                datosFiscalesFinal.proveedorId = result;
+                datosFiscalesFinal.propietarioId = result;
                 insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
                     if (err) {
                         this.msj = err.reason;

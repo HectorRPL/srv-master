@@ -7,10 +7,9 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
-const ID = ['_id'];
 
 const CAMPOS_DATOS_FISCALES = [
-    'proveedorId',
+    'propietarioId',
     'razonSocial',
     'email',
     'rfc',
@@ -35,7 +34,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
     }),
     run(
         {
-            proveedorId,
+            propietarioId,
             razonSocial,
             email,
             rfc,
@@ -53,7 +52,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
         }
     ) {
         return DatosFiscales.insert({
-            proveedorId,
+            propietarioId,
             razonSocial,
             email,
             rfc,

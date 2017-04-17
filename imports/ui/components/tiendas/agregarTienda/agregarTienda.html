@@ -10,7 +10,7 @@
         <div class="col-lg-2">
             <div class="ibox-tools">
                 <br>
-                <a ng-click="agregarTienda.cerrar()"><i class="fa fa-times"></i></a>
+                <a ng-hide="agregarTienda.pasoActual != 1 && agregarTienda.pasoActual != 4" ng-click="agregarTienda.cerrar()"><i class="fa fa-times"></i></a>
             </div>
         </div>
         <!-- BODY MODAL -->
@@ -52,7 +52,7 @@
                 <br>
 
                 <!--INFORMACIÓN DE CONTACTO-->
-                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 1">
+                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-hide="agregarTienda.pasoActual != 1">
                     <ng-form name="datosGeneralesForm">
                         <h3>Datos Generales</h3>
                         <!--NOMBRE DE LA EMPRESA-->
@@ -130,7 +130,7 @@
                     </ng-form>
                 </div>
                 <!--DATOS FISCALES-->
-                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 2">
+                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-hide="agregarTienda.pasoActual != 2">
                     <ng-form name="datosFiscalesForm">
                         <h3>Datos Fiscales</h3>
                         <!--RAZÓN SOCIAL-->
@@ -187,7 +187,7 @@
                     </ng-form>
                 </div>
                 <!--DIRECCIÓN FISCAL-->
-                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-show="agregarTienda.pasoActual === 3 || agregarTienda.pasoActual === 4">
+                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-hide="agregarTienda.pasoActual != 3">
                     <h3>Dirección Fiscal</h3>
                     <forma-direccion direccion="agregarTienda.datosFiscales"></forma-direccion>
                 </div>
@@ -204,31 +204,33 @@
         <div class="inmodal">
             <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
             <div class="modal-footer">
-                <!--BOTON ATRAS -->
-                <button type="button" class="btn btn-default"
-                        ng-disabled="(datosGeneralesForm.$invalid || agregarTienda.pasoActual != 1) && (datosFiscalesForm.$invalid || agregarTienda.pasoActual != 2)"
-                        ng-click="agregarTienda.atras()"
-                        ng-show="agregarTienda.pasoActual === 2 || agregarTienda.pasoActual === 3">
-                    Atrás
-                </button>
-                <!--BOTON SIGUIENTE -->
-                <button type="button" class="btn btn-primary"
-                        ng-disabled="(datosGeneralesForm.$invalid || agregarTienda.pasoActual != 1) && (datosFiscalesForm.$invalid || agregarTienda.pasoActual != 2)"
-                        ng-click="agregarTienda.siguiente()"
-                        ng-show="agregarTienda.pasoActual === 1 || agregarTienda.pasoActual === 2">
+                <!-- BOTON SIGUIENTE (Del paso 1 al paso 2) -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="datosGeneralesForm.$invalid"
+                        ng-hide="agregarTienda.pasoActual != 1"
+                        ng-click="agregarTienda.guardarDatosGenerales()">
                     Siguiente
                 </button>
-                <!--BOTON FINALIZAR -->
+                <!-- BOTON SIGUIENTE (Del paso 2 al paso 3) -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="datosFiscalesForm.$invalid"
+                        ng-hide="agregarTienda.pasoActual != 2"
+                        ng-click="agregarTienda.siguiente()">
+                    Siguiente
+                </button>
+                <!--BOTON FINALIZAR (Guarda la dirección fiscal y envia al paso 4 (exito) ) -->
                 <button type="button" class="btn btn-primary"
-                        ng-disabled="agregarTiendaFrm.$invalid"
-                        ng-click="agregarTienda.agregar()"
-                        ng-show="agregarTienda.pasoActual === 3">
+                        ng-disabled="direccionForm.$invalid"
+                        ng-hide="agregarTienda.pasoActual != 3"
+                        ng-click="agregarTienda.guardarDatosFiscales()">
                     Finalizar
                 </button>
                 <!--BOTON CERRAR -->
                 <button type="button" class="btn btn-primary"
                         ng-click="agregarTienda.cerrar()"
-                        ng-show="agregarTienda.pasoActual === 4">
+                        ng-hide="agregarTienda.pasoActual != 4">
                     Cerrar
                 </button>
             </div>
