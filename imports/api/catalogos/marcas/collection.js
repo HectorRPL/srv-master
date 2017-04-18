@@ -35,9 +35,12 @@ Marcas.schema = new SimpleSchema({
     },
     nombre: {
         type: String,
-        //regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        // regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
         min: 2,
-        max: 50
+        max: 50,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     activo: {
         type: Boolean,

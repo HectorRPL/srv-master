@@ -39,28 +39,45 @@ Schema.direcciones = new SimpleSchema({
         max: 30,
         min: 1,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
-        optional: true
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
     },
     delMpio: {
         type: String,
         max: 30,
-        min: 1
+        min: 1,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     estado: {
         type: String,
         max: 30,
-        min: 1
+        min: 1,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     estadoId: {
         type: String,
         max: 3,
         min: 1,
-        regEx: /^[a-zA-Z-/.&ñáéíóú-\s\d]+$/
+        regEx: /^[a-zA-Z-/.&ñáéíóú-\s\d]+$/,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     colonia: {
         type: String,
         max: 50,
-        min: 1
+        min: 1,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     codigoPostal: {
         type: String,
@@ -80,14 +97,24 @@ Schema.direcciones = new SimpleSchema({
         max: 10,
         min: 1,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
-        optional: true
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
     },
     numInt: {
         type: String,
         max: 10,
         min: 1,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
-        optional: true
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
     }
 });
 

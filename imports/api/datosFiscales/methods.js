@@ -21,9 +21,9 @@ const CAMPOS_DATOS_FISCALES = [
     'codigoPostal',
     'numExt',
     'numInt',
-    // 'codigoPais', // se deja pendiente, pero deberá estar
     'personaFisica',
     'curp'
+    // 'codigoPais', // se deja pendiente, pero deberá estar
 ];
 
 export const insertarDatosFiscales = new ValidatedMethod({
@@ -46,10 +46,10 @@ export const insertarDatosFiscales = new ValidatedMethod({
             codigoPostal,
             numExt,
             numInt,
-            // codigoPais, // se deja pendiente, pero deberá estar
             personaFisica,
             curp
-        }
+            //codigoPais, // se deja pendiente, pero deberá estar
+    }
     ) {
         return DatosFiscales.insert({
             propietarioId,
@@ -64,9 +64,9 @@ export const insertarDatosFiscales = new ValidatedMethod({
             codigoPostal,
             numExt,
             numInt,
-            // codigoPais, // se deja pendiente, pero deberá estar
             personaFisica,
             curp
+            //codigoPais, // se deja pendiente, pero deberá estar
         });
     }
 });

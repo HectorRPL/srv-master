@@ -29,10 +29,14 @@ Proveedores.schema = new SimpleSchema({
         denyUpdate: true
     },
     nombre: {
-        type: String
-        //regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
-        //min: 2,
-        //max: 50
+        type: String,
+        regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        min: 2,
+        max: 50,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
+
     },
     telefonos: {
         type: [Object],
@@ -41,7 +45,10 @@ Proveedores.schema = new SimpleSchema({
     },
     email: {
         type: String,
-        regEx: SimpleSchema.RegEx.Email
+        regEx: SimpleSchema.RegEx.Email,
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     activo: {
         type: Boolean,
