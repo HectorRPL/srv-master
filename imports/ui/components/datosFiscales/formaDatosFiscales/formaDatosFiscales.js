@@ -8,14 +8,21 @@ class FormaDatosFiscales {
         'ngInject';
         this.pasoDos = false;
         this.habilitarCampos = true;
-
     }
 
     esPersonaMoral() {
+        delete this.datos.email;
+        delete this.datos.nombre;
+        delete this.datos.apellidoPaterno;
+        delete this.datos.apellidoMaterno;
+        delete this.datos.rfc;
         this.pasoDos = true;
         this.habilitarCampos = false;
     }
     esPersonaFisica() {
+        delete this.datos.email;
+        delete this.datos.razonSocial;
+        delete this.datos.rfc;
         this.pasoDos = true;
         this.habilitarCampos = true;
     }

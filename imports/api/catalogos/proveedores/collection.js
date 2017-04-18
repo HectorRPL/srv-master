@@ -53,21 +53,6 @@ Proveedores.schema = new SimpleSchema({
     activo: {
         type: Boolean,
         defaultValue: true
-    },
-    saldo: {
-        type: Number,
-        decimal: true
-    },
-    diasCredito: {
-        type: Number
-    },
-    descuento:{
-        type: Number,
-        decimal: true
-    },
-    cuentaContable:{
-        type: String,
-        optional: true
     }
 });
 

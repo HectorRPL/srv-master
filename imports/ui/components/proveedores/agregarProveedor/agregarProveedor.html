@@ -154,16 +154,9 @@
         <div class="inmodal">
             <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
             <div class="modal-footer">
-                <!--BOTON ATRAS -->
-                <button type="button" class="btn btn-default"
-                        ng-disabled="(datosGeneralesForm.$invalid && agregarProveedor.pasoActual === 2) || (datosFiscalesForm.$invalid && agregarProveedor.pasoActual === 3)"
-                        ng-click="agregarProveedor.atras()"
-                        ng-show="agregarProveedor.pasoActual === 2 || agregarProveedor.pasoActual === 3">
-                    Atrás
-                </button>
                 <!--BOTON SIGUIENTE -->
                 <button type="button" class="btn btn-primary"
-                        ng-disabled="(datosGeneralesForm.$invalid && agregarProveedor.pasoActual === 1) || (datosFiscalesForm.$invalid && agregarProveedor.pasoActual === 2)"
+                        ng-disabled="datosFiscalesForm.$invalid && agregarProveedor.pasoActual === 2"
                         ng-click="agregarProveedor.siguiente()"
                         ng-show="agregarProveedor.pasoActual < 3">
                     Siguiente

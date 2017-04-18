@@ -13,26 +13,10 @@ class AgregarProveedor {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Proveedores';
-        this.exito = false;
         this.pasoActual = 1;
-        this.pasoAnterior = 0;
-        this.datosFiscales = {
-            razonSocial: 'DEMO S.A. DE C.V.',
-            rfc: 'SLA630306CF7',
-            email: 'demo@demo.com',
-            estado: 'CIUDAD DE MEXICO',
-            estadoId: 'CMX',
-            delMpio: 'XOCHIMILCO',
-            codigoPostal: '16030',
-            colonia: 'POTRERO DE SAN BERNARDINO',
-            calle: 'ROSELINA',
-            numExt: '7',
-            numInt: '2'
-        };
+        this.datosFiscales = {};
         this.datos =  {
-            nombre: 'DEMO',
-            email: 'DEMO01@DEMO01.COM',
-            telefonos: [{telefono: '5556769502'}]
+            telefonos: [{telefono: ''}]
         };
     }
 
@@ -44,24 +28,12 @@ class AgregarProveedor {
         this.datos.telefonos.push(this.nuevoTelefono);
     }
 
-
     siguiente() {
-        this.pasoAnterior = this.pasoActual;
         this.pasoActual++;
     }
-
-    atras() {
-        this.pasoActual--;
-        this.pasoAnterior = this.pasoActual - 1;
-    }
-
 
     agregar() {
-        console.log('Estos son los datos', this.datos);
-        // console.log('Estos son los datosFiscales', this.datosFiscales);
         this.pasoActual++;
-
-
         this.tipoMsj = '';
         insertar.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
@@ -75,7 +47,6 @@ class AgregarProveedor {
         }));
 
     }
-
 
     cerrar(){
         this.dismiss();
