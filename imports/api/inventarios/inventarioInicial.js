@@ -9,9 +9,9 @@ import {ProductosInventarios} from "./productosInventarios/collection";
 import {_} from "meteor/underscore";
 
 ProdsInvntariosUtils = {
-    generarInventarioInicial(inventarioId){
+    generarInventarioInicial(inventarioId, tiendaId){
 
-        console.log("Entro a generar el inventario inicial");
+        console.log("Entro a generar el inventario inicial ", tiendaId);
         const marcas = Marcas.find();
         marcas.forEach((marca)=>{
             const productos = Productos.find({marcaId : marca._id});
@@ -21,18 +21,16 @@ ProdsInvntariosUtils = {
                     const productoInven = {
                         _id: Random.id(),
                         inventarioId: inventarioId,
+                        tiendaId: tiendaId,
                         productoId: producto._id,
+                        marcaId: producto.marcaId,
+                        factorId: 'NP2qmZt3FqJfqd5cH',
                         fechaCreacion: new  Date(),
                         costo: producto.costoDefault
                     };
-                    //prodsInv.push(productoInven);
                     bulkProdsInv.insert(productoInven);
                 });
                 let options = {forceServerObjectId: false};
-                //ProductosInventarios.rawCollection().insertMany(prodsInv, options, (err, result)=>{
-                   //console.log(err);
-                   //console.log(result);
-                //});
                 bulkProdsInv.execute((err, res)=>{
                     console.log(err);
                     console.log(res);

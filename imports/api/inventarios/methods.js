@@ -24,7 +24,7 @@ export const insertarInventario = new ValidatedMethod({
         if(Meteor.isServer){
             Inventarios.insert({tiendaId}, (err, result)=>{
                 if(result){
-                    ProdsInvntariosUtils.generarInventarioInicial(result);
+                    ProdsInvntariosUtils.generarInventarioInicial(result, tiendaId);
                 }
             });
         }
