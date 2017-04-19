@@ -2,10 +2,8 @@
  * Created by jvltmtz on 15/09/16.
  */
 import {Meteor} from "meteor/meteor";
-import {Random} from "meteor/random";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
-import {SimpleSchema} from "meteor/aldeed:simple-schema";
-import {LoggedInMixin} from "meteor/tunifight:loggedin-mixin";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin"
 import {_} from "meteor/underscore";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {Direcciones} from "./collection.js";
@@ -17,17 +15,24 @@ const CAMPOS_DIRECCION = ['propietarioId', 'calle', 'delMpio', 'estado', 'estado
 // CREAR CANDIDATO
 export const insertar = new ValidatedMethod({
     name: 'direcciones.insertar',
-    mixins: [LoggedInMixin],
-    checkLoggedInError: {
-        error: 'noLogeado',
-        message: 'Para crear una dirección necesitas registrarte.',
-        reason: 'Usuario no logeado'
-    },
+        mixins: [PermissionsMixin],
+        allow: [
+            {
+                roles: ['crea_dire'],
+                group: ['cruddirecciones']
+            }
+        ],
+        permissionsError: {
+            name: 'tiendas.insertar',
+            message: ()=> {
+                return 'Acceso denegado';
+            }
+        },
     validate: Direcciones.simpleSchema().pick(CAMPOS_DIRECCION).validator({
         clean: true,
         filter: false
     }),
-    run({propietarioId,calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais}) {
+    run({propietarioId, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais}) {
         if (Meteor.isServer) {
             const direccion = {
                 propietarioId,

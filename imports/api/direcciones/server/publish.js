@@ -3,7 +3,6 @@
  */
 import {Meteor} from "meteor/meteor";
 import {Direcciones} from "../collection";
-import {Candidatos} from "../../candidatos/collection";
 
 if (Meteor.isServer) {
 
