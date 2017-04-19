@@ -10,7 +10,10 @@
         <div class="col-lg-2">
             <div class="ibox-tools">
                 <br>
-                <a ng-click="agregarProveedor.cerrar()"><i class="fa fa-times"></i></a>
+                <a ng-hide="agregarProveedor.pasoActual != 1 && agregarProveedor.pasoActual != 4"
+                   ng-click="agregarProveedor.cerrar()">
+                    <i class="fa fa-times"></i>
+                </a>
             </div>
         </div>
         <!-- BODY MODAL -->
@@ -154,24 +157,33 @@
         <div class="inmodal">
             <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
             <div class="modal-footer">
-                <!--BOTON SIGUIENTE -->
-                <button type="button" class="btn btn-primary"
-                        ng-disabled="datosFiscalesForm.$invalid && agregarProveedor.pasoActual === 2"
-                        ng-click="agregarProveedor.siguiente()"
-                        ng-show="agregarProveedor.pasoActual < 3">
+                <!-- BOTON SIGUIENTE (Del paso 1 al paso 2) -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="datosGeneralesForm.$invalid"
+                        ng-hide="agregarProveedor.pasoActual != 1"
+                        ng-click="agregarProveedor.guardarDatosGenerales()">
                     Siguiente
                 </button>
-                <!--BOTON FINALIZAR -->
+                <!-- BOTON SIGUIENTE (Del paso 2 al paso 3) -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-disabled="datosFiscalesForm.$invalid"
+                        ng-hide="agregarProveedor.pasoActual != 2"
+                        ng-click="agregarProveedor.siguiente()">
+                    Siguiente
+                </button>
+                <!--BOTON FINALIZAR (Guarda la dirección fiscal y envia al paso 4 (exito) ) -->
                 <button type="button" class="btn btn-primary"
-                        ng-disabled="agregarProveedorFrm.$invalid"
-                        ng-click="agregarProveedor.agregar()"
-                        ng-show="agregarProveedor.pasoActual === 3">
+                        ng-disabled="direccionForm.$invalid"
+                        ng-hide="agregarProveedor.pasoActual != 3"
+                        ng-click="agregarProveedor.guardarDatosFiscales()">
                     Finalizar
                 </button>
                 <!--BOTON CERRAR -->
                 <button type="button" class="btn btn-primary"
                         ng-click="agregarProveedor.cerrar()"
-                        ng-show="agregarProveedor.pasoActual === 4">
+                        ng-hide="agregarProveedor.pasoActual != 4">
                     Cerrar
                 </button>
             </div>
