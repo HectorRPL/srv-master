@@ -10,6 +10,9 @@ import {DatosFiscales} from "./collection";
 
 const CAMPOS_DATOS_FISCALES = [
     'propietarioId',
+    'nombre',
+    'apellidoPaterno',
+    'apellidoMaterno',
     'razonSocial',
     'email',
     'rfc',
@@ -35,6 +38,9 @@ export const insertarDatosFiscales = new ValidatedMethod({
     run(
         {
             propietarioId,
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
             razonSocial,
             email,
             rfc,
@@ -53,6 +59,9 @@ export const insertarDatosFiscales = new ValidatedMethod({
     ) {
         return DatosFiscales.insert({
             propietarioId,
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
             razonSocial,
             email,
             rfc,

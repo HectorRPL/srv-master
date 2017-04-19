@@ -34,6 +34,37 @@ Schema.datosFiscales = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
+    nombre: {
+        type: String,
+        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
+    },
+    apellidoPaterno: {
+        type: String,
+        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
+    },
+    apellidoMaterno: {
+        type: String,
+        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
+    },
+
     email: {
         type: String,
         regEx: SimpleSchema.RegEx.Email,
@@ -44,8 +75,11 @@ Schema.datosFiscales = new SimpleSchema({
     razonSocial: {
         type: String,
         regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        optional: true,
         autoValue: function () {
-            return this.value.toUpperCase()
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
         }
     },
     rfc: {
