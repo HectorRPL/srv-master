@@ -23,15 +23,6 @@ Schema.bitacoraLogin = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    propietario: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Id
-    },
-    fechaCreacion: {
-        type: Date,
-        defaultValue: new Date(),
-        denyUpdate: true
-    },
     fechaLogin: {
         type: Date
     },
@@ -42,12 +33,6 @@ Schema.bitacoraLogin = new SimpleSchema({
     conexion: {
         type: Object,
         blackbox: true
-    },
-    estadoRegistro: {
-        type: String
-    },
-    tipoLogin: {
-        type: String
     }
 });
 
