@@ -64,7 +64,6 @@ Schema.datosFiscales = new SimpleSchema({
             }
         }
     },
-
     email: {
         type: String,
         regEx: SimpleSchema.RegEx.Email,
@@ -167,8 +166,7 @@ Schema.datosFiscales = new SimpleSchema({
         regEx: /^[0-9]{5}$/
     },
     personaFisica: {
-        type: Boolean,
-        defaultValue: false
+        type: Boolean
     }
     // SE DEJA PENDIENTE, PERO DEBERÁ ESTAR.
     /*
