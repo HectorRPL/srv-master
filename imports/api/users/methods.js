@@ -9,8 +9,8 @@ import {_} from "meteor/underscore";
 
 const ID = ['_id'];
 
-export const insertar = new ValidatedMethod({
-    name: 'usuarios.insertar',
+export const insertarUsu = new ValidatedMethod({
+    name: 'usuarios.insertarUsu',
     mixins: [PermissionsMixin],
     allow: [
         {
@@ -39,7 +39,7 @@ export const insertar = new ValidatedMethod({
 });
 
 
-const USUARIOS_METHODS = _.pluck([insertar], 'name');
+const USUARIOS_METHODS = _.pluck([insertarUsu], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
