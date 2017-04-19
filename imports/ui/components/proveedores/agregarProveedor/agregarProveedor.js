@@ -2,6 +2,7 @@
  * Created by jvltmtz on 8/03/17.
  */
 import {insertar} from "../../../../api/catalogos/proveedores/methods";
+import {insertarDatosFiscales} from "../../../../api/datosFiscales/methods";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../direccion/formaDireccion/formaDireccion"; // No es necesario importarlo, no sé por qué
 import {name as FormaDatosFiscales} from "../../datosFiscales/formaDatosFiscales/formaDatosFiscales";
@@ -13,26 +14,10 @@ class AgregarProveedor {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Proveedores';
-        this.exito = false;
         this.pasoActual = 1;
-        this.pasoAnterior = 0;
-        this.datosFiscales = {
-            razonSocial: 'DEMO S.A. DE C.V.',
-            rfc: 'SLA630306CF7',
-            email: 'demo@demo.com',
-            estado: 'CIUDAD DE MEXICO',
-            estadoId: 'CMX',
-            delMpio: 'XOCHIMILCO',
-            codigoPostal: '16030',
-            colonia: 'POTRERO DE SAN BERNARDINO',
-            calle: 'ROSELINA',
-            numExt: '7',
-            numInt: '2'
-        };
+        this.datosFiscales = {};
         this.datos =  {
-            nombre: 'DEMO',
-            email: 'DEMO01@DEMO01.COM',
-            telefonos: [{telefono: '5556769502'}]
+            telefonos: [{telefono: ''}]
         };
     }
 
@@ -44,40 +29,46 @@ class AgregarProveedor {
         this.datos.telefonos.push(this.nuevoTelefono);
     }
 
-
-    siguiente() {
-        this.pasoAnterior = this.pasoActual;
-        this.pasoActual++;
-    }
-
-    atras() {
-        this.pasoActual--;
-        this.pasoAnterior = this.pasoActual - 1;
-    }
-
-
-    agregar() {
-        console.log('Estos son los datos', this.datos);
-        // console.log('Estos son los datosFiscales', this.datosFiscales);
-        this.pasoActual++;
-
-
-        this.tipoMsj = '';
-        insertar.call(this.datos, this.$bindToContext((err)=> {
+    guardarDatosGenerales() {
+        insertar.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
-                console.log();
-                this.msj = err.reason;
+                this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
             } else {
-                this.msj = 'La vacante ha sido eliminada con exito.';
+
+                this.propietarioId = result;
+                this.msj = 'Los datos de contacto se guardaron con éxito.';
                 this.tipoMsj = 'success';
+                this.pasoActual++;
             }
         }));
-
     }
 
+    siguiente() {
+        this.tipoMsj = '';
+        this.pasoActual++;
+    }
 
-    cerrar(){
+    guardarDatosFiscales() {
+
+        let datosFiscalesFinal = angular.copy(this.datosFiscales);
+        delete datosFiscalesFinal.colonias;
+
+        datosFiscalesFinal.propietarioId = this.propietarioId;
+        console.log('Estos son los datos que vamos a enviar: ', datosFiscalesFinal);
+        insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
+            if (err) {
+                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.tipoMsj = 'danger';
+            } else {
+                this.msj = 'Los datos fiscales se guardaron exitosamente.';
+                this.tipoMsj = 'success';
+                this.pasoActual++;
+            }
+        }));
+    }
+
+    cerrar() {
         this.dismiss();
     }
 
