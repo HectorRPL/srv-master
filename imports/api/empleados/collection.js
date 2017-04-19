@@ -23,7 +23,8 @@ Empleados.schema = new SimpleSchema({
     nacimientoAnio:     {type: Number, regEx: /^[0-9]$/, optional: true},
     sexo:               {type: String, max: 6, min: 5, regEx: /^[a-zA-Z]/},
     telefono:           {type: String, regEx: /^[0-9]{10}$/, min: 10, max: 10},
-    celular:            {type: String, regEx: /^[0-9]{10}$/, min: 10, max: 10}
+    celular:            {type: String, regEx: /^[0-9]{10}$/, min: 10, max: 10},
+    noEmpleado:         {type: Number }
 });
 
 Empleados.attachSchema(Empleados.schema);
