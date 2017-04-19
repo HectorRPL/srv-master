@@ -8,3 +8,5 @@ import "../../api/users/usuarios";
 import "../../api/datosFiscales/methods";
 import "../../api/inventarios/inventarioInicial";
 import "../../api/factores/methods";
+import "../../api/empleados/server/publish";
+import "../../api/inventarios/productosInventarios/server/publish";
