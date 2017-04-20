@@ -39,19 +39,15 @@
                                 {{factores.marcaSelec}}
                             </div>
                         </div>
-                        <div class="col-sm-4 m-b-xs">
-                            <div data-toggle="buttons" class="btn-group">
-                                <label class="btn btn-sm btn-white"> <input type="radio" id="option1" name="options"> Day </label>
-                                <label class="btn btn-sm btn-white active"> <input type="radio" id="option2" name="options"> Week </label>
-                                <label class="btn btn-sm btn-white"> <input type="radio" id="option3" name="options"> Month </label>
-                            </div>
+                        <div class="col-sm-6 m-b-xs">
+                            <dir-pagination-controls on-page-change="factores.pageChanged(newPageNumber)"></dir-pagination-controls>
                         </div>
                         <div class="col-sm-3">
                             <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
                                         <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -65,10 +61,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr class="table-responsive" dir-paginate="producto in factores.productos | itemsPerPage: factores.perPage"
+                                total-items="factores.productosCount">
                                 <td><input icheck type="checkbox" ng-model="main.checkOne"></td>
-                                <td>Project
-                                    <small>This is example of project</small>
+                                <td>{{producto.marcaId}}
+                                    <small>{{producto.productoId}}</small>
                                 </td>
                                 <td><pie-chart data="main.PieChart4.data" options="main.PieChart4.options"></pie-chart></td>
                                 <td>20%</td>

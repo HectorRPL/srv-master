@@ -5,6 +5,7 @@ import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
 import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
 import {ProductosInventarios} from "../../../../../api/inventarios/productosInventarios/collection";
+import utilsPagination from "angular-utils-pagination";
 import "./factores.html";
 
 class Factores {
@@ -15,7 +16,7 @@ class Factores {
         this.titulo = 'Factores';
         this.$uibModal = $uibModal;
         this.tiendaId = $stateParams.tiendaId;
-        this.perPage = 50;
+        this.perPage = 30;
         this.page = 1;
         this.marcaSelec = '';
         this.marcas = [];
@@ -79,7 +80,8 @@ const name = 'factores';
 export default angular
     .module(name, [
         AgregarFactor,
-        AplicarFactor
+        AplicarFactor,
+        utilsPagination
     ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/admonTienda/${name}/${name}.html`,
