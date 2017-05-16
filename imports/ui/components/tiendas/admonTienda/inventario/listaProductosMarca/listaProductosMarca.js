@@ -31,7 +31,6 @@ class ListaProductosMarca {
 
         this.helpers({
             productos(){
-                console.log('esto es ProductosInventarios.find() ', ProductosInventarios.find());
                 return ProductosInventarios.find();
             },
             productosCount(){
