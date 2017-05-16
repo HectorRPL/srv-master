@@ -10,3 +10,4 @@ import "../../api/inventarios/inventarioInicial";
 import "../../api/factores/methods";
 import "../../api/empleados/server/publish";
 import "../../api/inventarios/productosInventarios/server/publish";
+import "../../api/direcciones/methods";

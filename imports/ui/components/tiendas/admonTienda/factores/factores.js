@@ -2,6 +2,7 @@
  * Created by jvltmtz on 29/03/17.
  */
 import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
+import {obtenerProducto} from "../../../../../api/catalogos/productos/methods"
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
 import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
 import {ProductosInventarios} from "../../../../../api/inventarios/productosInventarios/collection";
@@ -16,13 +17,15 @@ class Factores {
         this.titulo = 'Factores';
         this.$uibModal = $uibModal;
         this.tiendaId = $stateParams.tiendaId;
-        this.perPage = 30;
+        this.perPage = 15;
         this.page = 1;
         this.marcaSelec = '';
+        this.prodSelec = '';
         this.marcas = [];
         this.nombre = '';
         this.subscribe('productosInventarios.tiendaMarca', ()=> [{tiendaId: this.tiendaId,
-            marcaId: this.getReactively('marcaSelec._id')},
+            marcaId: this.getReactively('marcaSelec._id'),
+            productoId: this.getReactively('prodSelec._id')},
             {
                 limit: parseInt(this.perPage),
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage)
@@ -67,7 +70,14 @@ class Factores {
         return obtenerMarcas.callPromise({
             marca: valor
         }).then(function (result) {
-            console.log(result);
+            return result;
+        });
+    }
+    buscarProducto(valor) {
+        return obtenerProducto.callPromise({
+            marcaId: this.marcaSelec._id,
+            codigo: valor
+        }).then(function (result) {
             return result;
         });
     }

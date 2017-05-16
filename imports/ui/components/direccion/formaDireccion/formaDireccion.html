@@ -52,13 +52,13 @@
             <div ng-messages="direccionForm.calle.$dirty && direccionForm.calle.$error" role="alert">
                 <label>
                     Calle *
-                    <span class="animated fadeIn" style="color:red;" ng-message="maxlength">min 1, max 30 letras</span>
+                    <span class="animated fadeIn" style="color:red;" ng-message="maxlength">min 1, max 45 letras</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="pattern">sólo letras y/o números</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                 </label>
                 <input id="calleId" class="form-control texto-en-mayusculas" name="calle" type="text"
                        aria-describedby="sizing-addon1"
-                       maxlength="31" ng-maxlength="30"
+                       maxlength="31" ng-maxlength="45"
                        required ng-pattern="/^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/"
                        ng-model="formaDireccion.direccion.calle">
             </div>

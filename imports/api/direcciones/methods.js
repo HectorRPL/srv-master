@@ -13,17 +13,17 @@ const ID = ['_id'];
 const CAMPOS_DIRECCION = ['propietarioId', 'calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 // CREAR CANDIDATO
-export const insertar = new ValidatedMethod({
-    name: 'direcciones.insertar',
+export const crearDireccion = new ValidatedMethod({
+    name: 'direcciones.crear',
         mixins: [PermissionsMixin],
         allow: [
             {
                 roles: ['crea_dire'],
-                group: ['cruddirecciones']
+                group: 'cruddirecciones'
             }
         ],
         permissionsError: {
-            name: 'tiendas.insertar',
+            name: 'direcciones.crear',
             message: ()=> {
                 return 'Acceso denegado';
             }
@@ -84,7 +84,7 @@ export const actualizar = new ValidatedMethod({
     }
 });
 
-const DIRECCIONES_METHODS = _.pluck([insertar, actualizar], 'name');
+const DIRECCIONES_METHODS = _.pluck([crearDireccion, actualizar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -23,11 +23,6 @@ Marcas.schema = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    proveedorId: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Id,
-        optional: true
-    },
     fechaCreacion: {
         type: Date,
         defaultValue: new Date(),

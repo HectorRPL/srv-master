@@ -30,9 +30,9 @@ Proveedores.schema = new SimpleSchema({
     },
     nombre: {
         type: String,
-        regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        //regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
         min: 2,
-        max: 50,
+        max: 70,
         autoValue: function () {
             return this.value.toUpperCase()
         }
@@ -53,6 +53,12 @@ Proveedores.schema = new SimpleSchema({
     activo: {
         type: Boolean,
         defaultValue: true
+    },
+    cuentaContable: {
+        type: String
+    },
+    dias: {
+        type: Number
     }
 });
 

@@ -36,7 +36,7 @@ Schema.direcciones = new SimpleSchema({
     },
     calle: {
         type: String,
-        max: 30,
+        max: 45,
         min: 1,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
         optional: true,

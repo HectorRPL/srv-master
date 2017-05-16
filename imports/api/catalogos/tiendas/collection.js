@@ -54,6 +54,11 @@ Tiendas.schema = new SimpleSchema({
     activo: {
         type: Boolean,
         defaultValue: true
+    },
+    tiendaMatrizId: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id,
+        optional: true
     }
 });
 

@@ -6,7 +6,7 @@ import {name as Alertas} from "../../../comun/alertas/alertas";
 import {insertarDatosFiscales} from "../../../../../api/datosFiscales/methods";
 
 class TiendaDatosFiscales {
-    constructor($scope, $reactive, $state) {
+    constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
@@ -14,6 +14,7 @@ class TiendaDatosFiscales {
         this.datosFiscales = {
             tipoPersona: 'PM'
         };
+        this.propietarioId = $stateParams.tiendaId;
     }
 
 
@@ -21,8 +22,11 @@ class TiendaDatosFiscales {
 
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
-
         datosFiscalesFinal.propietarioId = this.propietarioId;
+        if(datosFiscalesFinal.tipoPersona === 'PM'){
+            datosFiscalesFinal.razonSocial = datosFiscalesFinal.razonSocial + ' S.A. DE C.V.'
+        }
+        console.log(datosFiscalesFinal);
         insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
             if (err) {
                 console.log(err);

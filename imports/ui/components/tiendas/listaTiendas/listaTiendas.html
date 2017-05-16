@@ -5,7 +5,7 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-xs-4">
-                            <button class="btn btn-primary btn-sm" ng-click="listaTiendas.modalAgregar()">Agregar Tienda</button>
+                            <a ui-sref="app.tienda.agregar.datos" class="btn btn-primary btn-sm">Agregar Tienda</a>
                         </div>
                         <div class="col-xs-4">
 
@@ -26,13 +26,12 @@
                                     <tbody>
                                     <tr ng-repeat="tienda in listaTiendas.tiendas">
                                         <td><a ui-sref="app.tienda.admon({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
-                                        <td class="contact-type"><i class="fa fa-envelope"> </i></td>
-                                        <td> {{tienda.email}}</td>
-                                        <td class="contact-type"><i class="fa fa-phone"> </i></td>
-                                        <td> +{{tienda.telefono}}</td>
+                                        <td><i class="fa fa-envelope"> </i> {{tienda.email}}</td>
+                                        <td><i class="fa fa-phone"> </i> +{{tienda.telefonos[0].telefono}}</td>
                                         <td class="project-actions">
                                             <a class="btn btn-white btn-sm"><i class="fa fa-cogs"></i> Editar</a>
-                                            <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a>
+                                            <a ui-sref="app.tienda.sucursal({tiendaId: tienda._id})" class="btn btn-white btn-sm"><i class="fa fa-industry"></i> Agregar Sucursal</a>
+                                            <!-- a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a -->
                                         </td>
                                     </tr>
                                     </tbody>

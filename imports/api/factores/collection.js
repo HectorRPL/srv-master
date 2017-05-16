@@ -20,7 +20,9 @@ Factores.deny({
 
 Factores.schema = new SimpleSchema({
     _id:           {type:  String, regEx: SimpleSchema.RegEx.Id},
+    marcaId:       {type:  String, regEx: SimpleSchema.RegEx.Id},
     nombre:        {type:  String  },
+    marcaVieja:    {type:  String  },
     factor1:       {type:  Number, defaultValue: 0.0, decimal: true},
     factor2:       {type:  Number, defaultValue: 0.0, decimal: true},
     factor3:       {type:  Number, defaultValue: 0.0, decimal: true},
@@ -29,7 +31,7 @@ Factores.schema = new SimpleSchema({
     factor6:       {type:  Number, defaultValue: 0.0, decimal: true},
     factor7:       {type:  Number, defaultValue: 0.0, decimal: true},
     factor8:       {type:  Number, defaultValue: 0.0, decimal: true},
-    factor9:       {type:  Number, defaultValue: 0.0, decimal: true},
+    factorCosto:   {type:  Number, defaultValue: 0.0, decimal: true},
     activo:        {type: Boolean, defaultValue:true},
     fechaCreacion: {type:  Date,   defaultValue: new Date(), denyUpdate: true}
 });

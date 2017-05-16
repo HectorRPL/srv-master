@@ -51,94 +51,16 @@
 
                 <br>
 
-                <!--INFORMACIÓN DE CONTACTO-->
-                <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-hide="agregarTienda.pasoActual != 1">
-                    <ng-form name="datosGeneralesForm">
-                        <h3>Datos Generales</h3>
-                        <!--NOMBRE DE LA EMPRESA-->
-                        <div class="col-sm-6">
-                            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.nombre.$invalid && !datosGeneralesForm.nombre.$pristine}">
-                                <div ng-messages="datosGeneralesForm.nombre.$dirty && datosGeneralesForm.nombre.$error" role="alert">
-                                    <label>Sucursal *
-                                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
-                                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                    </label>
-                                    <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
-                                           placeholder="ej: TLAHUAC" aria-describedby="sizing-addon1"
-                                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                           ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
-                                           ng-model="agregarTienda.datos.nombre">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- EMAIL DE CONTACTO -->
-                        <div class="col-sm-6">
-                            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.email.$invalid && !datosGeneralesForm.email.$pristine}">
-                                <div ng-messages="datosGeneralesForm.email.$dirty && datosGeneralesForm.email.$error" role="alert">
-                                    <label> Email de Contacto*
-                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                        <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
-                                        <span class="animated fadeIn" style="color:red;" ng-message="mixlength, maxlength"> min 2, max 50 letras</span>
-                                    </label>
-                                    <input id="emailId" class="form-control texto-en-mayusculas" name="email" type="email"
-                                           aria-describedby="sizing-addon1" minlength="5"
-                                           maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                                           ng-model="agregarTienda.datos.email">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- TELÉFONOS DE CONTACTO-->
-                        <span class="animated fadeIn" ng-repeat="telefono in agregarTienda.datos.telefonos track by $index">
-                            <div class="col-sm-4">
-                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['telefono'+$index].$invalid && !datosGeneralesForm['telefono'+$index].$pristine}">
-                                    <div ng-messages="datosGeneralesForm['telefono'+$index].$dirty && datosGeneralesForm['telefono'+$index].$error" role="alert">
-                                        <label> Teléfono <span class="font-bold text-navy">{{$index + 1}}</span> *
-                                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
-                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
-                                        </label>
-                                        <input id="telefonosId" class="form-control" type="text" name="telefono{{$index}}"
-                                               aria-describedby="sizing-addon1" maxlength="10"
-                                               ng-pattern="/^[0-9]{10}$/" required
-                                               ng-model="telefono['telefono']">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- TELÉFONO EXTENSIÓN -->
-                            <div class="col-sm-2">
-                                <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['extension'+$index].$invalid && !datosGeneralesForm['extension'+$index].$pristine}">
-                                    <div ng-messages="datosGeneralesForm['extension'+$index].$dirty && datosGeneralesForm['extension'+$index].$error" role="alert">
-                                        <label>&nbsp;
-                                            <span class="animated fadeIn" style="color:red;" ng-message="pattern">número</span>
-                                        </label>
-                                        <input id="extensionId" class="form-control texto-en-mayusculas" type="text" name="extension{{$index}}"
-                                               placeholder="Ext"
-                                               aria-describedby="sizing-addon1" maxlength="5"
-                                               ng-pattern="/^([0-9])*$/"
-                                               ng-model="telefono['extension']">
-                                    </div>
-                                </div>
-                            </div>
-                        </span>
-                        <!--BOTON AÑADIR TELÉFONO -->
-                        <div class="col-sm-12">
-                            <button type="button" class="btn btn-primary btn-sm" ng-click="agregarTienda.agregarTelefono()">
-                                Añadir teléfono
-                            </button>
-                        </div>
-                    </ng-form>
-                </div>
                 <!--DATOS FISCALES-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-hide="agregarTienda.pasoActual != 2">
                     <ng-form name="datosFiscalesForm">
-                        <forma-datos-fiscales datos="agregarTienda.datosFiscales"></forma-datos-fiscales>
+
                     </ng-form>
                 </div>
                 <!--DIRECCIÓN FISCAL-->
                 <div style="padding: 5px;" class="row jumbotron animated fadeInRight" ng-hide="agregarTienda.pasoActual != 3">
                     <h3>Dirección Fiscal</h3>
-                    <forma-direccion direccion="agregarTienda.datosFiscales"></forma-direccion>
+
                 </div>
                 <!--ALERTAS-->
                 <div class="row">
@@ -153,14 +75,6 @@
         <div class="inmodal">
             <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
             <div class="modal-footer">
-                <!-- BOTON SIGUIENTE (Del paso 1 al paso 2) -->
-                <button type="button"
-                        class="btn btn-primary"
-                        ng-disabled="datosGeneralesForm.$invalid"
-                        ng-hide="agregarTienda.pasoActual != 1"
-                        ng-click="agregarTienda.guardarDatosGenerales()">
-                    Siguiente
-                </button>
                 <!-- BOTON SIGUIENTE (Del paso 2 al paso 3) -->
                 <button type="button"
                         class="btn btn-primary"
@@ -169,13 +83,7 @@
                         ng-click="agregarTienda.siguiente()">
                     Siguiente
                 </button>
-                <!--BOTON FINALIZAR (Guarda la dirección fiscal y envia al paso 4 (exito) ) -->
-                <button type="button" class="btn btn-primary"
-                        ng-disabled="direccionForm.$invalid"
-                        ng-hide="agregarTienda.pasoActual != 3"
-                        ng-click="agregarTienda.guardarDatosFiscales()">
-                    Finalizar
-                </button>
+
                 <!--BOTON CERRAR -->
                 <button type="button" class="btn btn-primary"
                         ng-click="agregarTienda.cerrar()"

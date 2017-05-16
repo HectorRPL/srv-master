@@ -68,7 +68,26 @@ export const insertar = new ValidatedMethod({
     }
 });
 
-const INSERTAR_PRODUCTOS_METHODS = _.pluck([insertar], 'name');
+export const obtenerProducto = new ValidatedMethod({
+    name: 'marcas.obtenerProducto',
+    mixins: [CallPromiseMixin],
+    validate: new SimpleSchema({
+        marcaId: {type: String},
+        codigo: {type: String}
+    }).validator(),
+    run({marcaId, codigo}) {
+        const selector = {$and: [
+            {marcaId: marcaId},
+            {campoBusqueda: {$regex: codigo, $options: 'i'}}
+            ]};
+
+        let options = {fields: {_id: 1, campoBusqueda: 1}};
+        const resultado = Productos.find(selector, options).fetch();
+        return resultado;
+    }
+});
+
+const INSERTAR_PRODUCTOS_METHODS = _.pluck([insertar, obtenerProducto], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

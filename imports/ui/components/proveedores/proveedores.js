@@ -5,6 +5,7 @@ import "./proveedores.html";
 import {Proveedores} from "../../../api/catalogos/proveedores/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarProveedor} from './agregarProveedor/agregarProveedor';
+import {buscarProveedor} from "../../../api/catalogos/proveedores/methods";
 
 class ProveedoresClass {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -13,7 +14,8 @@ class ProveedoresClass {
         $reactive(this).attach($scope);
         this.titulo = 'Proveedores';
         this.$uibModal = $uibModal;
-        this.subscribe('proveedores.todos');
+        this.proveedorSelec = '';
+        this.subscribe('proveedores.todos', ()=> [{_id: this.getReactively('proveedorSelec._id')}] );
 
         this.helpers({
             proveedores(){
@@ -35,6 +37,15 @@ class ProveedoresClass {
     mdodalAtualizar() {
 
     }
+
+    buscarProveedor(valor) {
+        return buscarProveedor.callPromise({
+            nombre: valor
+        }).then(function (result) {
+            return result;
+        });
+    }
+
 
 }
 

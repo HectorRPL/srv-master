@@ -5,6 +5,7 @@ import "./listaTiendas.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
+import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
 
 class ListaTiendas {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -22,16 +23,6 @@ class ListaTiendas {
         });
     }
 
-    modalAgregar() {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'AgregarTienda',
-            backdrop: 'static',
-            size: 'md',
-            keyboard: true,
-        });
-    }
-
 }
 
 const name = 'listaTiendas';
@@ -40,7 +31,8 @@ const name = 'listaTiendas';
 export default angular
     .module(name, [
         TituloPrincipal,
-        AgregarTienda
+        AgregarTienda,
+        AgregarSucursal
     ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,

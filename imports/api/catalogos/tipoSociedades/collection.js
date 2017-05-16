@@ -4,18 +4,18 @@
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const SociedadesMercantiles = new Mongo.Collection('sociedadesMercantiles');
+export const TiposSociedades = new Mongo.Collection('tiposSociedades');
 
-SociedadesMercantiles.deny({
+TiposSociedades.deny({
     insert() {return true;},
     update() {return true;},
     remove() {return true;}
 });
 
 
-SociedadesMercantiles.schema = new SimpleSchema({
+TiposSociedades.schema = new SimpleSchema({
     _id:                {type: String},
     abreviacion:        {type: String}
 });
 
-SociedadesMercantiles.attachSchema(SociedadesMercantiles.schema);
+TiposSociedades.attachSchema(TiposSociedades.schema);

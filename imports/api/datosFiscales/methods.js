@@ -3,19 +3,20 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
 
 const CAMPOS_DATOS_FISCALES = [
+    '_id',
     'propietarioId',
     'nombre',
     'apellidoPaterno',
     'apellidoMaterno',
     'razonSocial',
     'email',
-    'rfc',
     'calle',
     'delMpio',
     'estado',
@@ -24,7 +25,7 @@ const CAMPOS_DATOS_FISCALES = [
     'codigoPostal',
     'numExt',
     'numInt',
-    'personaFisica',
+    'tipoPersona',
     'curp'
     // 'codigoPais', // se deja pendiente, pero deberá estar
 ];
@@ -37,13 +38,13 @@ export const insertarDatosFiscales = new ValidatedMethod({
     }),
     run(
         {
+            _id,
             propietarioId,
             nombre,
             apellidoPaterno,
             apellidoMaterno,
             razonSocial,
             email,
-            rfc,
             calle,
             delMpio,
             estado,
@@ -52,19 +53,18 @@ export const insertarDatosFiscales = new ValidatedMethod({
             codigoPostal,
             numExt,
             numInt,
-            personaFisica,
+            tipoPersona,
             curp
-            //codigoPais, // se deja pendiente, pero deberá estar
     }
     ) {
         return DatosFiscales.insert({
+            _id,
             propietarioId,
             nombre,
             apellidoPaterno,
             apellidoMaterno,
             razonSocial,
             email,
-            rfc,
             calle,
             delMpio,
             estado,
@@ -73,14 +73,25 @@ export const insertarDatosFiscales = new ValidatedMethod({
             codigoPostal,
             numExt,
             numInt,
-            personaFisica,
+            tipoPersona,
             curp
-            //codigoPais, // se deja pendiente, pero deberá estar
         });
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([insertarDatosFiscales], 'name');
+export const existeRFC = new ValidatedMethod({
+    name: 'datosFiscales.existeRFC',
+    mixins: [CallPromiseMixin],
+    validate: new SimpleSchema({
+        rfc: {type: String}
+    }).validator(),
+    run({rfc}) {
+        const resultado = DatosFiscales.findOne({_id: rfc});
+        return resultado ? true : false;
+    }
+});
+
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([insertarDatosFiscales, existeRFC], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

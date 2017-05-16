@@ -13,7 +13,9 @@
                         </div>
                         <div class="col-xs-4">
                             <div class="input-group">
-                                <input type="text" placeholder="Search client " class="input form-control">
+                                <input type="text" class="form-control" ng-model="proveedores.proveedorSelec"
+                                       uib-typeahead="proveedor as proveedor.nombre for proveedor in proveedores.buscarProveedor($viewValue)"
+                                       placeholder="Nombre Proveedor">
                                 <span class="input-group-btn">
                                         <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
                                 </span>

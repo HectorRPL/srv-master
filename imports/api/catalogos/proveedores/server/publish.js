@@ -5,9 +5,9 @@ import {Meteor} from "meteor/meteor";
 import {Proveedores} from "../collection";
 
 if (Meteor.isServer) {
-    Meteor.publish('proveedores.todos', function () {
+    Meteor.publish('proveedores.todos', function (filter) {
 
-        return Proveedores.find();
+        return Proveedores.find(filter);
     });
 
 }

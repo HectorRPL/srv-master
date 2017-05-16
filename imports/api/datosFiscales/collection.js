@@ -1,9 +1,9 @@
 /**
  * Created by jvltmtz on 25/03/17.
  */
-
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
+
 export const DatosFiscales = new Mongo.Collection('datosFiscales');
 
 DatosFiscales.deny({
@@ -28,7 +28,9 @@ Schema.datosFiscales = new SimpleSchema({
     },
     _id: {
         type: String,
-        regEx: SimpleSchema.RegEx.Id
+        autoValue: function () {
+            return this.value.toUpperCase()
+        }
     },
     propietarioId: {
         type: String,
@@ -36,8 +38,16 @@ Schema.datosFiscales = new SimpleSchema({
     },
     nombre: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
         optional: true,
+        custom: function () {
+            let shouldBeRequired = this.field('tipoPersona').value == 'PF';
+            if (shouldBeRequired) {
+                if (!this.operator) {
+                    if (!this.isSet || this.value === null || this.value === '') return "required";
+                }
+            }
+        },
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase()
@@ -46,8 +56,16 @@ Schema.datosFiscales = new SimpleSchema({
     },
     apellidoPaterno: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
         optional: true,
+        custom: function () {
+            let shouldBeRequired = this.field('tipoPersona').value == 'PF';
+            if (shouldBeRequired) {
+                if (!this.operator) {
+                    if (!this.isSet || this.value === null || this.value === '') return "required";
+                }
+            }
+        },
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase()
@@ -56,7 +74,7 @@ Schema.datosFiscales = new SimpleSchema({
     },
     apellidoMaterno: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
         optional: true,
         autoValue: function () {
             if (this.value) {
@@ -73,23 +91,25 @@ Schema.datosFiscales = new SimpleSchema({
     },
     razonSocial: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ.-\s\d]+$/,
+        regEx: /^[a-zA-Z-Ññ.,-\s\d]+$/,
         optional: true,
+        custom: function () {
+            let shouldBeRequired = this.field('tipoPersona').value == 'PM';
+            if (shouldBeRequired) {
+                if (!this.operator) {
+                    if (!this.isSet || this.value === null || this.value === '') return "required";
+                }
+            }
+        },
         autoValue: function () {
             if (this.value) {
-                return this.value.toUpperCase()
+                return this.value.toUpperCase();
             }
-        }
-    },
-    rfc: {
-        type: String,
-        autoValue: function () {
-            return this.value.toUpperCase()
         }
     },
     calle: {
         type: String,
-        max: 30,
+        max: 40,
         min: 1,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
         autoValue: function () {
@@ -131,11 +151,13 @@ Schema.datosFiscales = new SimpleSchema({
     },
     numExt: {
         type: String,
-        max: 10,
+        max: 20,
         min: 1,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
         autoValue: function () {
-            return this.value.toUpperCase()
+            if(this.value){
+                return this.value.toUpperCase()
+            }
         }
     },
     numInt: {
@@ -165,15 +187,13 @@ Schema.datosFiscales = new SimpleSchema({
         min: 5,
         regEx: /^[0-9]{5}$/
     },
-    personaFisica: {
-        type: Boolean
-    }
-    // SE DEJA PENDIENTE, PERO DEBERÁ ESTAR.
-    /*
-    codigoPais: {
+    tipoPersona: {
         type: String
+    },
+    codigoPais: {
+        type: String,
+        defaultValue: 'MX'
     }
-    */
 });
 
 DatosFiscales.attachSchema(Schema.datosFiscales);
