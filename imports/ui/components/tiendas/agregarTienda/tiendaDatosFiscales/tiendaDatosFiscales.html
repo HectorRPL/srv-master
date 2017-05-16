@@ -1,0 +1,25 @@
+<form role="form" class="p-lg" id="agregarDatosFiscalesFrmId" name="agregarDatosFiscalesFrm" novalidate>
+    <fieldset>
+        <h2>Datos y Direccion Fiscal</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <forma-datos-fiscales datos="pasoDos.datosFiscales"></forma-datos-fiscales>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <forma-direccion direccion="pasoDos.datosFiscales"></forma-direccion>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <!--BOTON FINALIZAR (Guarda la dirección fiscal y envia al paso 4 (exito) ) -->
+                <button type="button" class="btn btn-primary pull-right"
+                        ng-disabled="agregarDatosFiscalesFrm.$invalid"
+                        ng-click="pasoDos.guardarDatosFiscales()">
+                    Finalizar
+                </button>
+            </div>
+        </div>
+    </fieldset>
+</form>
