@@ -4,6 +4,7 @@
 import utilsPagination from "angular-utils-pagination";
 import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
 import {name as TituloPrincipal} from '../../../../comun/tituloPrincipal/tituloPrincipal';
+import {crearInventarioMarca} from  "../../../../../../api/inventarios/methods"
 import "./listaProductosMarca.html";
 
 class ListaProductosMarca {
@@ -43,6 +44,15 @@ class ListaProductosMarca {
     pageChanged(newPage) {
         this.page = newPage;
     }
+
+    crearInventario() {
+        const info = {tiendaId: this.tiendaId, marcaId: this.marcaId};
+        crearInventarioMarca.call(info, this.$bindToContext((err, result)=> {
+            if(err){
+                console.log('Error al genrar el inventario de ', this.marcaId);
+            }
+        }));
+    }
 }
 
 const name = 'listaProductosMarca';
@@ -64,7 +74,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.productosmarca', {
-            url: '/:tiendaId/:marcaId/productosmarca',
+            url: '/:tiendaId/productos/:marcaId',
             template: '<lista-productos-marca></lista-productos-marca>'
         });
 }

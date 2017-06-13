@@ -29,7 +29,7 @@ Productos.schema = new SimpleSchema({
     descp6:{type:String, optional:true},
     descp:{type:String, optional:true},
     calidad:            {type: Number,  defaultValue: 1},
-    undidad:            {type:String, defaultValue: 'PZA'},
+    unidad:            {type:String, defaultValue: 'PZA'},
     costoProveedor:     {type: Number,  decimal: true},
     descontinuado:      {type: Boolean, defaultValue: false},
     linea:              {type: String,  optional:true},

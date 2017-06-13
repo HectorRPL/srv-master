@@ -6,6 +6,7 @@ import {Random} from 'meteor/random'
 import {Productos} from "../catalogos/productos/collection";
 import {Marcas} from "../catalogos/marcas/collection";
 import {ProductosInventarios} from "./productosInventarios/collection";
+import {Inventarios} from "../inventarios/collection";
 import {_} from "meteor/underscore";
 
 ProdsInvntariosUtils = {
@@ -26,14 +27,15 @@ ProdsInvntariosUtils = {
                         marcaId: producto.marcaId,
                         fechaCreacion: new Date(),
                         costo: producto.costoProveedor,
-                        factorId: producto.factorDefaultId
+                        factorId: producto.factorDefaultId,
+                        cantidad: 10
                     };
                     bulkProdsInv.insert(productoInven);
                 });
                 let options = {forceServerObjectId: false};
                 bulkProdsInv.execute((err, res)=> {
-                    if(err){
-                        
+                    if (err) {
+
                     }
                     console.log(err);
                     console.log(res);
@@ -48,7 +50,31 @@ ProdsInvntariosUtils = {
 
     },
 
-    actualizarPostulaciones(carritoId){
+    generarInventarioMarca(tiendaId, marcaId){
+        const productos = Productos.find({marcaId: marcaId});
+        const inventario = Inventarios.findOne({tiendaId: tiendaId});
+
+        productos.forEach((producto)=> {
+            const productoInven = {
+                _id: Random.id(),
+                inventarioId: inventario._id,
+                tiendaId: tiendaId,
+                productoId: producto._id,
+                marcaId: producto.marcaId,
+                fechaCreacion: new Date(),
+                costo: producto.costoProveedor,
+                factorId: producto.factorDefaultId,
+                cantidad: 10
+            };
+
+            ProductosInventarios.insert(productoInven, (err)=>{
+                if(err){
+                    console.log('Error al insertar el producto ', producto._id, err.message);
+                }
+            });
+
+        });
+
 
     },
 

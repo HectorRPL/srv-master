@@ -4,3 +4,4 @@
 import "./fixtures/proveedores/proveedores";
 import "./fixtures/productos/helvex";
 import "./fixtures/productos/daltile";
+import "./fixtures/inventarios/inventarios";

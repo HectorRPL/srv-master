@@ -16,23 +16,34 @@ const CAMPOS_INVENTARIOS = [
 ];
 
 export const insertarInventario = new ValidatedMethod({
-    name: 'marcas.insertarInventario',
+    name: 'inventarios.insertarInventario',
     validate: new SimpleSchema({
         tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id}
     }).validator(),
     run({tiendaId}) {
-        if(Meteor.isServer){
-            Inventarios.insert({tiendaId}, (err, result)=>{
-                if(result){
-                    ProdsInvntariosUtils.generarInventarioInicial(result, tiendaId);
-                }
-            });
+        if (Meteor.isServer) {
+            Inventarios.insert({tiendaId});
         }
 
     }
 });
 
-const INVENTARIOS_METHODS = _.pluck([insertarInventario], 'name');
+export const crearInventarioMarca = new ValidatedMethod({
+    name: 'inventarios.crearInventarioMarca',
+    validate: new SimpleSchema({
+        tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
+        marcaId: {type: String, regEx: SimpleSchema.RegEx.Id}
+    }).validator(),
+    run({tiendaId, marcaId}) {
+        if (Meteor.isServer) {
+            console.log('inventarios.crearInventarioMarca');
+            ProdsInvntariosUtils.generarInventarioMarca(tiendaId, marcaId);
+        }
+
+    }
+});
+
+const INVENTARIOS_METHODS = _.pluck([insertarInventario, crearInventarioMarca], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

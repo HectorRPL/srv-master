@@ -29,12 +29,11 @@ class TiendaDatosFiscales {
         console.log(datosFiscalesFinal);
         insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
             if (err) {
-                console.log(err);
                 this.msj = 'Error al crear datos fiscales, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
             } else {
                 this.msj = 'Los datos fiscales se guardaron exitosamente, el sistema tardará unos minutos para configurar la base de datos, espere.';
-                this.tipoMsj = 'warning';
+                this.tipoMsj = 'success';
                 this.pasoActual++;
             }
         }));
