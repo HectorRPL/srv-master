@@ -4,7 +4,7 @@
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
 import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
 import {name as BuscarMarcaProducto} from "../../../comun/buscarMarcaProducto/buscarMarcaProducto";
-import {ProductosInventarios} from "../../../../../api/inventarios/productosInventarios/collection";
+import {name as ListaProductosXMarca} from "../../../comun/listaProductosXMarca/listaProductosXMarca";
 import utilsPagination from "angular-utils-pagination";
 import "./factores.html";
 
@@ -17,32 +17,6 @@ class Factores {
         this.titulo = 'Factores';
         this.$uibModal = $uibModal;
         this.tiendaId = $stateParams.tiendaId;
-        this.perPage = 15;
-        this.page = 1;
-        this.marcaSelec = '';
-        this.prodSelec = '';
-        this.marcas = [];
-        this.nombre = '';
-        this.subscribe('productosInventarios.tiendaMarca', ()=> [{tiendaId: this.tiendaId,
-            marcaId: this.getReactively('marcaSelec._id'),
-            productoId: this.getReactively('prodSelec._id')},
-            {
-                limit: parseInt(this.perPage),
-                skip: parseInt((this.getReactively('page') - 1) * this.perPage)
-            }]
-        );
-        this.helpers({
-            productos(){
-                return ProductosInventarios.find();
-            },
-            productosCount(){
-                return Counts.get('numProdsInventarios');
-            }
-        });
-    }
-
-    pageChanged(newPage) {
-        this.page = newPage;
     }
 
     crearFactor() {
@@ -74,6 +48,7 @@ export default angular
         AgregarFactor,
         AplicarFactor,
         BuscarMarcaProducto,
+        ListaProductosXMarca,
         utilsPagination
     ])
     .component(name, {

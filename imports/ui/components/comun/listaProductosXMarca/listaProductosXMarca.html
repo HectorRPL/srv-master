@@ -1,0 +1,25 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>MarcaId</th>
+            <th>ProductoId</th>
+            <th>Ejemplo 1</th>
+            <th>Ejemplo 2</th>
+            <th>Ejemplo 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-responsive"
+            dir-paginate="producto in listaProductosXMarca.productos | itemsPerPage: listaProductosXMarca.perPage"
+            total-items="listaProductosXMarca.productosCount">
+            <td><input icheck type="checkbox" ng-model="main.checkOne"></td>
+            <td>{{producto.marcaId}}</td>
+            <td><small>{{producto.productoId}}</small></td>
+            <td>Ejemplo 1</td>
+            <td>Ejemplo 2</td>
+            <td><a href=""><i class="fa fa-check text-navy"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaProductosXMarca.pageChanged(newPageNumber)"></dir-pagination-controls>

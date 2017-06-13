@@ -6,66 +6,17 @@
                     <h5>Factores</h5>
                 </div>
                 <div class="ibox-content">
-                    <buscar-marca-producto marca="factores.marcaSelec" prod="factores.prodSelec"></buscar-marca-producto>
-                    <div>
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>Project</th>
-                                <th>Completed</th>
-                                <th>Task</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr class="table-responsive" dir-paginate="producto in factores.productos | itemsPerPage: factores.perPage"
-                                total-items="factores.productosCount">
-                                <td><input icheck type="checkbox" ng-model="main.checkOne"></td>
-                                <td>{{producto.marcaId}}
-                                    <small>{{producto.productoId}}</small>
-                                </td>
-                                <td><pie-chart data="main.PieChart4.data" options="main.PieChart4.options"></pie-chart></td>
-                                <td>20%</td>
-                                <td>Jul 14, 2013</td>
-                                <td><a href=""><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><input icheck type="checkbox" ng-model="main.unCheck3"></td>
-                                <td>Gamma project</td>
-                                <td><pie-chart data="main.PieChart5.data" options="main.PieChart5.options"></pie-chart></td>
-                                <td>18%</td>
-                                <td>Jul 22, 2013</td>
-                                <td><a href=""><i class="fa fa-check text-navy"></i></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <dir-pagination-controls on-page-change="factores.pageChanged(newPageNumber)"></dir-pagination-controls>
-                    </div>
+                    <buscar-marca-producto
+                            marca="factores.marcaSelec"
+                            prod="factores.prodSelec">
+                    </buscar-marca-producto>
+                    <lista-productos-x-marca
+                            marca="factores.marcaSelec"
+                            prod="factores.prodSelec"
+                            tiendaid="factores.tiendaId">
+                    </lista-productos-x-marca>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<pre>factores.marcaSelec: {{factores.marcaSelec | json }}</pre>
-<pre>factores.prodSelec: {{factores.prodSelec | json }}</pre>
-<pre>factores.perPage: {{factores.perPage | json }}</pre>
-<pre>factores.productosCount: {{factores.productosCount | json }}</pre>
-<pre>factores.pageChanged: {{factores.pageChanged | json }}</pre>
-<pre>factores.productos: {{factores.productos | json }}</pre>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
