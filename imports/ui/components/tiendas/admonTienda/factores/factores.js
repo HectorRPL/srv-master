@@ -5,6 +5,7 @@ import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
 import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
 import {name as BuscarMarcaProducto} from "../../../comun/buscarMarcaProducto/buscarMarcaProducto";
 import {name as ListaProductosXMarca} from "../../../comun/listaProductosXMarca/listaProductosXMarca";
+import {name as ListaFactores} from "./listaFactores/listaFactores";
 import utilsPagination from "angular-utils-pagination";
 import "./factores.html";
 
@@ -49,6 +50,7 @@ export default angular
         AplicarFactor,
         BuscarMarcaProducto,
         ListaProductosXMarca,
+        ListaFactores,
         utilsPagination
     ])
     .component(name, {

@@ -6,6 +6,24 @@
                     <h5>Factores</h5>
                 </div>
                 <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <a href="" class="btn btn-primary btn-sm" ng-click="factores.crearFactor()">Agregar Factor</a>
+                        </div>
+                        <div class="col-xs-4">
+
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="input-group">
+                                <input type="text" placeholder="Buscar" class="input form-control">
+                                <span class="input-group-btn">
+                                        <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Buscar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <lista-factores></lista-factores>
+                    <!--
                     <buscar-marca-producto
                             marca="factores.marcaSelec"
                             prod="factores.prodSelec">
@@ -15,6 +33,7 @@
                             prod="factores.prodSelec"
                             tiendaid="factores.tiendaId">
                     </lista-productos-x-marca>
+                    -->
                 </div>
             </div>
         </div>

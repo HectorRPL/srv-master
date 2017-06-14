@@ -1,0 +1,56 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Marca Vieja</th>
+            <th>Nombre</th>
+            <th class="text-center">1</th>
+            <th class="text-center">2</th>
+            <th class="text-center">3</th>
+            <th class="text-center">4</th>
+            <th class="text-center">5</th>
+            <th class="text-center">6</th>
+            <th class="text-center">7</th>
+            <th class="text-center">8</th>
+            <th>Factor Costo</th>
+            <th>MarcaId</th>
+            <th>Activo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-responsive text-right"
+            dir-paginate="factor in listaFactores.factores | itemsPerPage: listaFactores.perPage"
+            total-items="listaFactores.factoresCount">
+            <td><input icheck type="checkbox" ng-model="main.checkOne"></td>
+            <td>{{factor.marcaVieja}}</td>
+            <td>{{factor.nombre}}</td>
+            <td>{{factor.factor1 | number:4 }}</td>
+            <td>{{factor.factor2 | number:4 }}</td>
+            <td>{{factor.factor3 | number:4 }}</td>
+            <td>{{factor.factor4 | number:4 }}</td>
+            <td>{{factor.factor5 | number:4 }}</td>
+            <td>{{factor.factor6 | number:4 }}</td>
+            <td>{{factor.factor7 | number:4 }}</td>
+            <td>{{factor.factor8 | number:4 }}</td>
+            <td class="text-navy">{{factor.factorCosto | number:4 }}</td>
+            <td>{{factor.marcaId}}</td>
+            <td>{{factor.activo}}</td>
+            <td><a href=""><i class="fa fa-check text-navy"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaFactores.pageChanged(newPageNumber)"></dir-pagination-controls>
+
+
+
+
+
+
+
+
+
+
+
+
+
