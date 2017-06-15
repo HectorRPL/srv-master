@@ -9,3 +9,15 @@ if (Meteor.isServer) {
         return Factores.find();
     });
 }
+
+if (Meteor.isServer) {
+    // Trae un sólo factor buscado
+    Meteor.publish('factores.buscarUno', function (filter, options) {
+        const selector = {$and: [filter]};
+        Counts.publish(this, 'numfactores', Factores.find(selector), {
+            noReady: true
+        });
+        return Factores.find(selector, options);
+    });
+
+}

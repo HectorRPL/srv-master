@@ -1,9 +1,9 @@
+<pre>listaFactores está recibiendo este parámetro tiendaid {{ listaFactores.tiendaid | json }}</pre>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th></th>
-            <th>Marca Vieja</th>
-            <th>Nombre</th>
+            <th class="text-center">Marca Vieja</th>
+            <th class="text-center">Nombre</th>
             <th class="text-center">1</th>
             <th class="text-center">2</th>
             <th class="text-center">3</th>
@@ -12,19 +12,18 @@
             <th class="text-center">6</th>
             <th class="text-center">7</th>
             <th class="text-center">8</th>
-            <th>Factor Costo</th>
-            <th>MarcaId</th>
-            <th>Activo</th>
-            <th></th>
+            <th class="text-center">Costo</th>
+            <th class="text-center">Activo</th>
+            <th class="text-center">Acción</th>
         </tr>
     </thead>
+
     <tbody>
         <tr class="table-responsive text-right"
             dir-paginate="factor in listaFactores.factores | itemsPerPage: listaFactores.perPage"
             total-items="listaFactores.factoresCount">
-            <td><input icheck type="checkbox" ng-model="main.checkOne"></td>
             <td>{{factor.marcaVieja}}</td>
-            <td>{{factor.nombre}}</td>
+            <td><a class="text-navy" style="text-decoration: inherit" ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, factor: factor})">{{factor.nombre}}</a></td>
             <td>{{factor.factor1 | number:4 }}</td>
             <td>{{factor.factor2 | number:4 }}</td>
             <td>{{factor.factor3 | number:4 }}</td>
@@ -34,23 +33,36 @@
             <td>{{factor.factor7 | number:4 }}</td>
             <td>{{factor.factor8 | number:4 }}</td>
             <td class="text-navy">{{factor.factorCosto | number:4 }}</td>
-            <td>{{factor.marcaId}}</td>
             <td>{{factor.activo}}</td>
-            <td><a href=""><i class="fa fa-check text-navy"></i></a></td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Aplicar a&nbsp;&nbsp;&nbsp;
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Marca</a></li>
+                            <li><a ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, tiendaid: listaFactores.tiendaid})">Producto</a></li>
+                        </ul>
+                        <button type="button" class="btn btn-xs btn-default">Editar</button>
+                    </div>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>
 <dir-pagination-controls on-page-change="listaFactores.pageChanged(newPageNumber)"></dir-pagination-controls>
 
 
+<!--
 
+NOTAS
 
+La variable "tiendaid" no tiene l CamelCase porque esta dentro de un componente, y recordemos que los bindings no
+respetan CamelCase.
 
+Entonces al pasar a la pantalla de aplicar factor ya sea a una marca o a un producto dicho parámetro viajará con los
+$statesParams sin CamelCase
 
-
-
-
-
-
-
-
+-->

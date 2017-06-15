@@ -7,6 +7,10 @@ class Minimalize {
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
+
+        this.minimalize();
+
+
     }
 
     minimalize = () => {

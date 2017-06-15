@@ -1,0 +1,55 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Aplicar Factor</h5>
+                </div>
+                <div class="ibox-content">
+
+                    <buscar-marca-producto
+                            marca="aplicarFactorProductos.marcaSelec"
+                            prod="aplicarFactorProductos.prodSelec">
+                    </buscar-marca-producto>
+                    <!--ng-show="aplicarFactorProductos.prodSelec"-->
+                    <lista-productos-x-marca
+                            marca="aplicarFactorProductos.marcaSelec"
+                            prod="aplicarFactorProductos.prodSelec"
+                            tiendaid="aplicarFactorProductos.tiendaid">
+                    </lista-productos-x-marca>
+
+                    <div class="row">
+                        <!-- ALERTA -->
+                        <div class="col-lg-12">
+                            <alertas tipo="aplicarFactorProductos.tipoMsj" mensaje="aplicarFactorProductos.msj"></alertas>
+                        </div>
+                        <!--BOTON APLICAR FACTOR -->
+                        <div class="col-xs-12">
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    ui-sref="app.tienda.factores"
+                                    ng-show="aplicarFactorProductos.prodSelec._id">
+                                Atrás
+                            </button>
+                            <button type="button"
+                                    class="btn btn-primary"
+                                    ng-click="aplicarFactorProductos.aplicar()"
+                                    ng-show="aplicarFactorProductos.prodSelec._id">
+                                Aplicar Factor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<pre>aplicarFactorProductos.factor{{ aplicarFactorProductos.factor | json}}</pre>
+<!--
+VARIABLES NECESIARIAS PARA QUE ESTE COMPONENTE FUNCIONE
+<pre>prodSelec  {{ aplicarFactorProductos.prodSelec | json }}</pre>
+<pre>tiendaid   {{ aplicarFactorProductos.tiendaid | json }}</pre>
+<pre>marcaSelec {{ aplicarFactorProductos.marcaSelec | json }}</pre>
+<pre>factorId   {{ aplicarFactorProductos.factorId | json }}</pre>
+-->

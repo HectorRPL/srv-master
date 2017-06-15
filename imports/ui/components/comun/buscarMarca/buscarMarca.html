@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-sm-6 m-b-xs">
+        <div class="ibox float-e-margins">
+            <input type="text"
+                   class="form-control"
+                   placeholder="Ingresa la marca"
+                   uib-typeahead="marca as marca.nombre for marca in buscarMarca.buscarMarca($viewValue)"
+                   ng-model="buscarMarca.marca">
+        </div>
+    </div>
+</div>

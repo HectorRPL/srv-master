@@ -2,6 +2,8 @@
  * Created by Héctor on 13/06/2017.
  */
 import {Factores} from "../../../../../../api/factores/collection";
+import {name as BuscarMarcaProducto} from "../../../../comun/buscarMarcaProducto/buscarMarcaProducto";
+import {name as ListaProductosXMarca} from "../../../../comun/listaProductosXMarca/listaProductosXMarca";
 import utilsPagination from "angular-utils-pagination";
 import "./listaFactores.html";
 
@@ -15,15 +17,26 @@ class ListaFactores {
         this.perPage = 15;
         this.page = 1;
 
-        this.subscribe('factores.todos');
+        this.subscribe('factores.buscarUno', () =>
+            [
+                {
+                    factorId: this.getReactively('factor._id')
+                },
+                {
+                    limit: parseInt(this.perPage),
+                    skip: parseInt((this.getReactively('page') - 1) * this.perPage)
+                }
+            ]
+        );
         this.helpers({
-            factores (){
-                console.log('Que onda we, a ver que me traes', Factores.find());
-                return Factores.find({}, {
-                    sort: {fechaCreacion: -1}
-                });
+            factores() {
+                return Factores.find();
+            },
+            factoresCount(){
+                return Counts.get('numfactores');
             }
         });
+
     }
 
     pageChanged(newPage) {
@@ -36,6 +49,8 @@ const name = 'listaFactores';
 
 export default angular
     .module(name, [
+        BuscarMarcaProducto,
+        ListaProductosXMarca,
         utilsPagination
     ])
     .component(name, {
@@ -43,9 +58,7 @@ export default angular
         controllerAs: name,
         controller: ListaFactores,
         bindings: {
-            marca: '=',
-            prod: '=',
-            tiendaid: '=',
-            count: '='
+            factor: '=',
+            tiendaid: '='
         },
     });

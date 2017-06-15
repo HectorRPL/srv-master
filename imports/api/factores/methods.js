@@ -20,6 +20,20 @@ export const insertarFactor = new ValidatedMethod({
     }
 });
 
+export const obtenerFactores = new ValidatedMethod({
+    name: 'factores.obtenerFactores',
+    mixins: [CallPromiseMixin],
+    validate: new SimpleSchema({
+        factor: {type: String}
+    }).validator(),
+    run({factor}) {
+        const selector = {nombre: {$regex: factor, $options: 'i'}};
+        let options = {fields: {_id: 1, nombre: 1}};
+        const resultado = Factores.find(selector, options).fetch();
+        return resultado;
+    }
+});
+
 const FACTORES_METHODS = _.pluck([insertarFactor], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({

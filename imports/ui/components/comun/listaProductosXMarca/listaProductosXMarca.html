@@ -2,24 +2,32 @@
     <thead>
         <tr>
             <th></th>
-            <th>MarcaId</th>
-            <th>ProductoId</th>
-            <th>Ejemplo 1</th>
-            <th>Ejemplo 2</th>
-            <th>Ejemplo 3</th>
+            <th>_id</th>
+            <th>inventarioId</th>
+            <th>tiendaId</th>
+            <th>productoId</th>
+            <th>marcaId</th>
+            <th>costo</th>
+            <th>factorId</th>
+            <th>cantidad</th>
         </tr>
     </thead>
     <tbody>
         <tr class="table-responsive"
             dir-paginate="producto in listaProductosXMarca.productos | itemsPerPage: listaProductosXMarca.perPage"
             total-items="listaProductosXMarca.productosCount">
-            <td><input icheck type="checkbox" ng-model="main.checkOne"></td>
+            <td><input type="checkbox"></td>
+            <td>{{producto._id}}</td>
+            <td>{{producto.inventarioId}}</td>
+            <td>{{producto.tiendaId}}</td>
+            <td>{{producto.productoId}}</td>
             <td>{{producto.marcaId}}</td>
-            <td><small>{{producto.productoId}}</small></td>
-            <td>Ejemplo 1</td>
-            <td>Ejemplo 2</td>
-            <td><a href=""><i class="fa fa-check text-navy"></i></a></td>
+            <td>{{producto.costo}}</td>
+            <td>{{producto.factorId}}</td>
+            <td>{{producto.cantidad}}</td>
         </tr>
     </tbody>
 </table>
-<dir-pagination-controls on-page-change="listaProductosXMarca.pageChanged(newPageNumber)"></dir-pagination-controls>
+<dir-pagination-controls
+        on-page-change="listaProductosXMarca.pageChanged(newPageNumber)">
+</dir-pagination-controls>

@@ -2,9 +2,8 @@
  * Created by jvltmtz on 29/03/17.
  */
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
-import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
-import {name as BuscarMarcaProducto} from "../../../comun/buscarMarcaProducto/buscarMarcaProducto";
-import {name as ListaProductosXMarca} from "../../../comun/listaProductosXMarca/listaProductosXMarca";
+import {name as AplicarFactorProductos} from "./aplicarFactorProductos/aplicarFactorProductos";
+import {name as BuscarFactor} from "../../../comun/buscarFactor/buscarFactor";
 import {name as ListaFactores} from "./listaFactores/listaFactores";
 import utilsPagination from "angular-utils-pagination";
 import "./factores.html";
@@ -47,9 +46,8 @@ const name = 'factores';
 export default angular
     .module(name, [
         AgregarFactor,
-        AplicarFactor,
-        BuscarMarcaProducto,
-        ListaProductosXMarca,
+        AplicarFactorProductos,
+        BuscarFactor,
         ListaFactores,
         utilsPagination
     ])
