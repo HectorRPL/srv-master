@@ -7,14 +7,14 @@ import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "../collection";
-import {insertarInventario} from "../../../inventarios/methods";
+import {altaInventario} from "../../../inventarios/methods";
 
 const ID = ['_id'];
 
 const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMatrizId'];
 // Enviará un correo con un link al usuario para verificacar de registro
-export const crearSucursal = new ValidatedMethod({
-    name: 'sucursales.crear',
+export const altaSucursal = new ValidatedMethod({
+    name: 'sucursales.altaSucursal',
     mixins: [PermissionsMixin],
     allow: [
         {
@@ -23,7 +23,7 @@ export const crearSucursal = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'sucursales.crear',
+        name: 'sucursales.altaSucursal',
         message: ()=> {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -40,7 +40,7 @@ export const crearSucursal = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([crearSucursal], 'name');
+const TIENDAS_METHODS = _.pluck([altaSucursal], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -7,7 +7,7 @@ import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "./collection";
-import {insertarInventario} from "../../inventarios/methods";
+import {altaInventario} from "../../inventarios/methods";
 
 const ID = ['_id'];
 
@@ -39,7 +39,7 @@ export const crearTienda = new ValidatedMethod({
                     throw err;
                 }
                 Meteor.defer(() => {
-                    insertarInventario.call({tiendaId: result});
+                    altaInventario.call({tiendaId: result});
                 });
             });
         }

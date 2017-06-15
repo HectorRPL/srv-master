@@ -9,8 +9,8 @@ import {Factores} from "./collection";
 
 const CAMPOS_FACTORES = [ 'nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9'];
 
-export const insertarFactor = new ValidatedMethod({
-    name: 'factores.insertarFactor',
+export const altaFactor = new ValidatedMethod({
+    name: 'factores.altaFactor',
     validate: Factores.simpleSchema().pick(CAMPOS_FACTORES).validator({
         clean: true,
         filter: false
@@ -34,7 +34,7 @@ export const obtenerFactores = new ValidatedMethod({
     }
 });
 
-const FACTORES_METHODS = _.pluck([insertarFactor], 'name');
+const FACTORES_METHODS = _.pluck([altaFactor], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

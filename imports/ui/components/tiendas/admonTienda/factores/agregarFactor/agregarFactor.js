@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 12/04/2017.
  */
-import {insertarFactor} from "../../../../../../api/factores/methods";
+import {altaFactor} from "../../../../../../api/factores/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import "./agregarFactor.html";
 
@@ -25,7 +25,7 @@ class AgregarFactor {
     }
 
     agregar() {
-        insertarFactor.call(this.datos, this.$bindToContext((err)=> {
+        altaFactor.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';

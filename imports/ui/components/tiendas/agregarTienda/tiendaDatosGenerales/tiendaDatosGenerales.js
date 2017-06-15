@@ -4,7 +4,7 @@
 import "./tiendaDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {crearTienda} from "../../../../../api/catalogos/tiendas/methods";
-import {crearDireccion} from "../../../../../api/direcciones/methods";
+import {altaDireccion} from "../../../../../api/direcciones/methods";
 
 class TiendaDatosGenerales {
     constructor($scope, $reactive, $state) {
@@ -43,7 +43,7 @@ class TiendaDatosGenerales {
     guardarDireccion() {
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
-        crearDireccion.call(direccionFinal, this.$bindToContext((err, result)=> {
+        altaDireccion.call(direccionFinal, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = 'Error al crear la direccion de una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
