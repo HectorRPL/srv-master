@@ -3,8 +3,8 @@
  */
 import "./agregarSucursal.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
-import {crearSucursal} from "../../../../api/catalogos/tiendas/sucursales/methods";
-import {crearDireccion} from "../../../../api/direcciones/methods";
+import {altaSucursal} from "../../../../api/catalogos/tiendas/sucursales/methods";
+import {altaDireccion} from "../../../../api/direcciones/methods";
 
 class AgregarSucursal {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -32,7 +32,7 @@ class AgregarSucursal {
     guardar() {
         this.datos.tiendaMatrizId = this.tiendaId;
         console.log('Crear suscursal ', this.datos);
-        crearSucursal.call(this.datos, this.$bindToContext((err, result)=> {
+        altaSucursal.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = 'Error al crear una Sucursal, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
@@ -47,7 +47,7 @@ class AgregarSucursal {
     guardarDireccion() {
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
-        crearDireccion.call(direccionFinal, this.$bindToContext((err, result)=> {
+        altaDireccion.call(direccionFinal, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = 'Error al crear la direccion de una Sucursal, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
