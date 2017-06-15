@@ -1,0 +1,5 @@
+<input type="text"
+       class="form-control"
+       placeholder="Ingresa el nombre del Factor"
+       uib-typeahead="factor as factor.nombre for factor in buscarFactor.buscarFactor($viewValue)"
+       ng-model="buscarFactor.factor">

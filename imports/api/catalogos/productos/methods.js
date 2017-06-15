@@ -76,10 +76,12 @@ export const obtenerProducto = new ValidatedMethod({
         codigo: {type: String}
     }).validator(),
     run({marcaId, codigo}) {
-        const selector = {$and: [
-            {marcaId: marcaId},
-            {campoBusqueda: {$regex: codigo, $options: 'i'}}
-            ]};
+        const selector = {
+            $and: [
+                {marcaId: marcaId},
+                {campoBusqueda: {$regex: codigo, $options: 'i'}}
+            ]
+        };
 
         let options = {fields: {_id: 1, campoBusqueda: 1}};
         const resultado = Productos.find(selector, options).fetch();

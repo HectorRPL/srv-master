@@ -20,8 +20,7 @@ class AgregarFactor {
             {nombre: 5},
             {nombre: 6},
             {nombre: 7},
-            {nombre: 8},
-            {nombre: 9}
+            {nombre: 8}
         ];
     }
 
@@ -51,7 +50,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/administrarTienda/tabFactores/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/tiendas/admonTienda/factores/${name}/${name}.html`,
         controllerAs: name,
         controller: AgregarFactor,
         bindings: {

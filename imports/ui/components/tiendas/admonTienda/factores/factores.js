@@ -1,15 +1,15 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import {obtenerMarcas} from "../../../../../api/catalogos/marcas/methods"
-import {obtenerProducto} from "../../../../../api/catalogos/productos/methods"
 import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
-import {name as AplicarFactor} from "./aplicarFactor/aplicarFactor";
-import {ProductosInventarios} from "../../../../../api/inventarios/productosInventarios/collection";
+import {name as AplicarFactorProductos} from "./aplicarFactorProductos/aplicarFactorProductos";
+import {name as BuscarFactor} from "../../../comun/buscarFactor/buscarFactor";
+import {name as ListaFactores} from "./listaFactores/listaFactores";
 import utilsPagination from "angular-utils-pagination";
 import "./factores.html";
 
 class Factores {
+
     constructor($scope, $reactive, $state, $uibModal, $stateParams) {
         'ngInject';
         this.$state = $state;
@@ -17,33 +17,6 @@ class Factores {
         this.titulo = 'Factores';
         this.$uibModal = $uibModal;
         this.tiendaId = $stateParams.tiendaId;
-        this.perPage = 15;
-        this.page = 1;
-        this.marcaSelec = '';
-        this.prodSelec = '';
-        this.marcas = [];
-        this.nombre = '';
-        this.subscribe('productosInventarios.tiendaMarca', ()=> [{tiendaId: this.tiendaId,
-            marcaId: this.getReactively('marcaSelec._id'),
-            productoId: this.getReactively('prodSelec._id')},
-            {
-                limit: parseInt(this.perPage),
-                skip: parseInt((this.getReactively('page') - 1) * this.perPage)
-            }]
-        );
-        this.helpers({
-            productos(){
-                return ProductosInventarios.find();
-            },
-            productosCount(){
-                return Counts.get('numProdsInventarios');
-            }
-        });
-
-    }
-
-    pageChanged(newPage) {
-        this.page = newPage;
     }
 
     crearFactor() {
@@ -65,23 +38,6 @@ class Factores {
             keyboard: true
         });
     }
-
-    buscarMarca(valor) {
-        return obtenerMarcas.callPromise({
-            marca: valor
-        }).then(function (result) {
-            return result;
-        });
-    }
-    buscarProducto(valor) {
-        return obtenerProducto.callPromise({
-            marcaId: this.marcaSelec._id,
-            codigo: valor
-        }).then(function (result) {
-            return result;
-        });
-    }
-
 }
 
 const name = 'factores';
@@ -90,7 +46,9 @@ const name = 'factores';
 export default angular
     .module(name, [
         AgregarFactor,
-        AplicarFactor,
+        AplicarFactorProductos,
+        BuscarFactor,
+        ListaFactores,
         utilsPagination
     ])
     .component(name, {
