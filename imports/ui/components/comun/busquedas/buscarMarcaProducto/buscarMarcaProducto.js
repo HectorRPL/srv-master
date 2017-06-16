@@ -1,8 +1,8 @@
 /**
  * Created by Héctor on 13/06/2017.
  */
-import {buscarMarcas} from "../../../../api/catalogos/marcas/busquedas"
-import {buscarProducto} from "../../../../api/catalogos/productos/busquedas"
+import {buscarMarcas} from "../../../../../api/catalogos/marcas/busquedas"
+import {buscarProducto} from "../../../../../api/catalogos/productos/busquedas"
 import "./buscarMarcaProducto.html";
 
 class BuscarMarcaProducto {
@@ -38,7 +38,7 @@ const name = 'buscarMarcaProducto';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/comun/busquedas/${name}/${name}.html`,
         controllerAs: name,
         controller: BuscarMarcaProducto,
         bindings: {

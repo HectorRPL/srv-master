@@ -2,7 +2,7 @@
  * Created by Héctor on 13/06/2017.
  */
 import {Factores} from "../../../../../../api/factores/collection";
-import {name as BuscarMarcaProducto} from "../../../../comun/buscarMarcaProducto/buscarMarcaProducto";
+import {name as BuscarMarcaProducto} from "../../../../comun/busquedas/buscarMarcaProducto/buscarMarcaProducto";
 import {name as ListaProductosXMarca} from "../../../../comun/listaProductosXMarca/listaProductosXMarca";
 import utilsPagination from "angular-utils-pagination";
 import "./listaFactores.html";

@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 13/04/2017.
  */
-import {name as BuscarMarca} from "../../../../comun/buscarMarca/buscarMarca";
+import {name as BuscarMarca} from "../../../../comun/busquedas/buscarMarca/buscarMarca";
 import {cambioFactorProducto} from "../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import "./aplicarFactorProductos.html";
