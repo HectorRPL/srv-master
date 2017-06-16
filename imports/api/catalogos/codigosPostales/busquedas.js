@@ -8,8 +8,8 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {CodigosPostales} from "./collection.js";
 
-export const obtenerColonias = new ValidatedMethod({
-    name: 'codigosPostales.obtenerColonias',
+export const buscarColonias = new ValidatedMethod({
+    name: 'codigosPostales.buscarColonias',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
         cp: {type: String}
@@ -20,11 +20,11 @@ export const obtenerColonias = new ValidatedMethod({
     }
 });
 
-const CODIGOS_POSTALES_METODOS = _.pluck([obtenerColonias], 'name');
+const BUSCAR_CODIGOS_POSTALES_METODOS = _.pluck([buscarColonias], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
-            return _.contains(CODIGOS_POSTALES_METODOS, name);
+            return _.contains(BUSCAR_CODIGOS_POSTALES_METODOS, name);
         },
         connectionId() {
             return true;

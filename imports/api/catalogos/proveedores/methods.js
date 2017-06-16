@@ -23,24 +23,7 @@ export const insertar = new ValidatedMethod({
     }
 });
 
-export const buscarProveedor = new ValidatedMethod({
-    name: 'proveedores.buscarProveedor',
-    mixins: [CallPromiseMixin],
-    validate: new SimpleSchema({
-        nombre: {type: String}
-    }).validator(),
-    run({nombre}) {
-        const partialMatch = new RegExp(`^${nombre}`, 'i');
-        const selector = {nombre: {$regex: partialMatch}};
-        console.log(selector);
-        let options = {fields: {_id: 1, nombre: 1}};
-        const resultado = Proveedores.find(selector, options).fetch();
-
-        return resultado;
-    }
-});
-
-const PROVEEDORES_METHODS = _.pluck([insertar, buscarProveedor], 'name');
+const PROVEEDORES_METHODS = _.pluck([insertar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

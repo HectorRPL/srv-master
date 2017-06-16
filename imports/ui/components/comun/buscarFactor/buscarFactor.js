@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 14/06/2017.
  */
-import {obtenerFactores} from "../../../../api/factores/methods"
+import {buscarFactores} from "../../../../api/factores/busquedas"
 import "./buscarFactor.html";
 
 class BuscarFactor {
@@ -14,7 +14,7 @@ class BuscarFactor {
     }
 
     buscarFactor(valor) {
-        return obtenerFactores.callPromise({factor: valor}).then(function (result) {
+        return buscarFactores.callPromise({factor: valor}).then(function (result) {
             return result;
         });
     }

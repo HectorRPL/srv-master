@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 14/06/2017.
  */
-import {obtenerMarcas} from "../../../../api/catalogos/marcas/methods"
+import {buscarMarcas} from "../../../../api/catalogos/marcas/busquedas"
 import "./buscarMarca.html";
 
 class BuscarMarca {
@@ -14,7 +14,7 @@ class BuscarMarca {
     }
 
     buscarMarca(valor) {
-        return obtenerMarcas.callPromise({marca: valor}).then(function (result) {
+        return buscarMarcas.callPromise({marca: valor}).then(function (result) {
             return result;
         });
     }

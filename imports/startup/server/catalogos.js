@@ -14,6 +14,5 @@ import "../../api/catalogos/fechaNacimiento/dias/server/publish";
 import "../../api/catalogos/puestosRoles/server/publish";
 import "../../api/catalogos/productos/server/publish";
 import "../../api/catalogos/productos/methods";
-import "../../api/catalogos/codigosPostales/methods";
 import "../../api/catalogos/tiendas/sucursales/methods";
 import "../../api/catalogos/tipoSociedades/server/publish";

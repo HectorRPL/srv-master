@@ -2,7 +2,7 @@
  * Created by Héctor on 06/04/2017.
  */
 import "./formaDatosFiscales.html";
-import {existeRFC} from "../../../../api/datosFiscales/methods";
+import {buscarRfc} from "../../../../api/datosFiscales/busquedas";
 import {name as ElegirTipoSociedad} from "../../comun/selects/elegirTipoSociedad/elegirTipoSociedad"
 
 class FormaDatosFiscales {
@@ -49,14 +49,14 @@ export default angular
             datos: '='
         }
     })
-    .directive('existeRfc', ['$q', function ($q) {
+    .directive('buscarRfc', ['$q', function ($q) {
         return {
             restrict: 'EA',
             require: '?ngModel',
             link: function (scope, element, attrs, ngModel) {
-                ngModel.$asyncValidators.existerfc = function (modelValue, viewValue) {
+                ngModel.$asyncValidators.buscarRfc = function (modelValue, viewValue) {
                     let rfc = modelValue || viewValue;
-                    return existeRFC.callPromise({
+                    return buscarRfc.callPromise({
                         rfc: rfc
                     }).then(function (result) {
                         if (result) {

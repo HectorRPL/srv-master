@@ -1,8 +1,8 @@
 /**
  * Created by Héctor on 13/06/2017.
  */
-import {obtenerMarcas} from "../../../../api/catalogos/marcas/methods"
-import {obtenerProducto} from "../../../../api/catalogos/productos/methods"
+import {buscarMarcas} from "../../../../api/catalogos/marcas/busquedas"
+import {buscarProducto} from "../../../../api/catalogos/productos/busquedas"
 import "./buscarMarcaProducto.html";
 
 class BuscarMarcaProducto {
@@ -15,7 +15,7 @@ class BuscarMarcaProducto {
     }
 
     buscarMarca(valor) {
-        return obtenerMarcas.callPromise({
+        return buscarMarcas.callPromise({
             marca: valor
         }).then(function (result) {
             return result;
@@ -23,7 +23,7 @@ class BuscarMarcaProducto {
     }
 
     buscarProducto(valor) {
-        return obtenerProducto.callPromise({
+        return buscarProducto.callPromise({
             marcaId: this.marca._id,
             codigo: valor
         }).then(function (result) {

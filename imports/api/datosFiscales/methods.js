@@ -8,7 +8,6 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
-
 const CAMPOS_DATOS_FISCALES = [
     '_id',
     'propietarioId',
@@ -79,19 +78,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
     }
 });
 
-export const existeRFC = new ValidatedMethod({
-    name: 'datosFiscales.existeRFC',
-    mixins: [CallPromiseMixin],
-    validate: new SimpleSchema({
-        rfc: {type: String}
-    }).validator(),
-    run({rfc}) {
-        const resultado = DatosFiscales.findOne({_id: rfc});
-        return resultado ? true : false;
-    }
-});
-
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([insertarDatosFiscales, existeRFC], 'name');
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([insertarDatosFiscales], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

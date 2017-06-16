@@ -5,7 +5,7 @@ import "./proveedores.html";
 import {Proveedores} from "../../../api/catalogos/proveedores/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarProveedor} from './agregarProveedor/agregarProveedor';
-import {buscarProveedor} from "../../../api/catalogos/proveedores/methods";
+import {buscarProveedor} from "../../../api/catalogos/proveedores/busquedas";
 
 class ProveedoresClass {
     constructor($scope, $reactive, $state, $uibModal) {
