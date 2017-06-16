@@ -13,8 +13,8 @@ const ID = ['_id'];
 
 const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 // Enviará un correo con un link al usuario para verificacar de registro
-export const crearTienda = new ValidatedMethod({
-    name: 'tiendas.crear',
+export const altaTienda = new ValidatedMethod({
+    name: 'tiendas.altaTienda',
     mixins: [PermissionsMixin],
     allow: [
         {
@@ -23,7 +23,7 @@ export const crearTienda = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'tiendas.crear',
+        name: 'tiendas.altaTienda',
         message: ()=> {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -46,7 +46,7 @@ export const crearTienda = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([crearTienda], 'name');
+const TIENDAS_METHODS = _.pluck([altaTienda], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

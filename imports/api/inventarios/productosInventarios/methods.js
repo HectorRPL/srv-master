@@ -26,8 +26,8 @@ const CAMPOS_APLICAR_FACTOR = [
     'factorId'
 ];
 
-export const aplicarFactor = new ValidatedMethod({
-    name: 'productosInventarios.aplicarFactor',
+export const cambioFactorProducto = new ValidatedMethod({
+    name: 'productosInventarios.cambioFactorProducto',
     validate: ProductosInventarios.simpleSchema().pick(CAMPOS_APLICAR_FACTOR).validator({
         clean: true,
         filter: false
@@ -58,7 +58,7 @@ export const aplicarFactor = new ValidatedMethod({
     }
 });
 
-const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([aplicarFactor], 'name');
+const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([cambioFactorProducto], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

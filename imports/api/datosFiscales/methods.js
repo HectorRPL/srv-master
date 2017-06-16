@@ -29,8 +29,8 @@ const CAMPOS_DATOS_FISCALES = [
     // 'codigoPais', // se deja pendiente, pero deberá estar
 ];
 
-export const insertarDatosFiscales = new ValidatedMethod({
-    name: 'datosFiscales.insertarDatosFiscales',
+export const altaDatosFiscales = new ValidatedMethod({
+    name: 'datosFiscales.altaDatosFiscales',
     validate: DatosFiscales.simpleSchema().pick(CAMPOS_DATOS_FISCALES).validator({
         clean: true,
         filter: false
@@ -78,7 +78,7 @@ export const insertarDatosFiscales = new ValidatedMethod({
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([insertarDatosFiscales], 'name');
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([altaDatosFiscales], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

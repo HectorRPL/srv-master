@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 8/03/17.
  */
-import {insertar} from "../../../../api/catalogos/proveedores/methods";
+import {altaProveedor} from "../../../../api/catalogos/proveedores/methods";
 import {insertarDatosFiscales} from "../../../../api/datosFiscales/methods";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../direccion/formaDireccion/formaDireccion"; // No es necesario importarlo, no sé por qué
@@ -30,7 +30,7 @@ class AgregarProveedor {
     }
 
     guardarDatosGenerales() {
-        insertar.call(this.datos, this.$bindToContext((err, result)=> {
+        altaProveedor.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';

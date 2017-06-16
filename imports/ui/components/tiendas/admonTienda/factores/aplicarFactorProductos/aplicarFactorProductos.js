@@ -2,7 +2,7 @@
  * Created by Héctor on 13/04/2017.
  */
 import {name as BuscarMarca} from "../../../../comun/buscarMarca/buscarMarca";
-import {aplicarFactor} from "../../../../../../api/inventarios/productosInventarios/methods";
+import {cambioFactorProducto} from "../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import "./aplicarFactorProductos.html";
 
@@ -27,7 +27,7 @@ class AplicarFactorProductos {
 
         console.log('Los datos que vamos a enviar son this.datos', this.datos);
 
-        aplicarFactor.call(this.datos, this.$bindToContext((err)=> {
+        cambioFactorProducto.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';

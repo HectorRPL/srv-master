@@ -3,7 +3,7 @@
  */
 import "./tiendaDatosFiscales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {insertarDatosFiscales} from "../../../../../api/datosFiscales/methods";
+import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
 
 class TiendaDatosFiscales {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -27,7 +27,7 @@ class TiendaDatosFiscales {
             datosFiscalesFinal.razonSocial = datosFiscalesFinal.razonSocial + ' S.A. DE C.V.'
         }
         console.log(datosFiscalesFinal);
-        insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
+        altaDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = 'Error al crear datos fiscales, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';

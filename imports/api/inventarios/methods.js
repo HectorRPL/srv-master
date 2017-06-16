@@ -28,22 +28,21 @@ export const altaInventario = new ValidatedMethod({
     }
 });
 
-export const crearInventarioMarca = new ValidatedMethod({
-    name: 'inventarios.crearInventarioMarca',
+export const altaInventarioMarca = new ValidatedMethod({
+    name: 'inventarios.altaInventarioMarca',
     validate: new SimpleSchema({
         tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
         marcaId: {type: String, regEx: SimpleSchema.RegEx.Id}
     }).validator(),
     run({tiendaId, marcaId}) {
         if (Meteor.isServer) {
-            console.log('inventarios.crearInventarioMarca');
             ProdsInvntariosUtils.generarInventarioMarca(tiendaId, marcaId);
         }
 
     }
 });
 
-const INVENTARIOS_METHODS = _.pluck([altaInventario, crearInventarioMarca], 'name');
+const INVENTARIOS_METHODS = _.pluck([altaInventario, altaInventarioMarca], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

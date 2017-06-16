@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 11/03/2017.
  */
-import {insertar} from "../../../../api/catalogos/productos/methods";
+import {altaProducto} from "../../../../api/catalogos/productos/methods";
 import {name as ConstruyeNombre} from "../construyeNombre/construyeNombre";
 import {name as ClaveProductoProveedor} from "../../comun/inputs/text/claveProductoProveedor/claveProductoProveedor";
 import {name as ClaveProductoEmpresa} from "../../comun/inputs/text/claveProductoEmpresa/claveProductoEmpresa";
@@ -44,7 +44,7 @@ class AgregarProductos {
 
     agregarProducto() {
         this.tipoMsj = '';
-        insertar.call(this.producto, this.$bindToContext((err)=> {
+        altaProducto.call(this.producto, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';

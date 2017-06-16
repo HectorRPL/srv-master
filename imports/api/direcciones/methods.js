@@ -52,8 +52,8 @@ export const altaDireccion = new ValidatedMethod({
 });
 
 // ACTUALIZAR DIRECCIÓN
-export const actualizar = new ValidatedMethod({
-    name: 'direcciones.actualizar',
+export const cambioDireccion = new ValidatedMethod({
+    name: 'direcciones.cambioDireccion',
     mixins: [LoggedInMixin],
     checkLoggedInError: {
         error: 'noLogeado',
@@ -84,7 +84,7 @@ export const actualizar = new ValidatedMethod({
     }
 });
 
-const DIRECCIONES_METHODS = _.pluck([altaDireccion, actualizar], 'name');
+const DIRECCIONES_METHODS = _.pluck([altaDireccion, cambioDireccion], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

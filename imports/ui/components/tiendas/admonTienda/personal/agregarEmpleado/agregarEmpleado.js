@@ -8,8 +8,7 @@ import {name as ElegitMes} from "../../../../comun/selects/elegirFechaNacimiento
 import {name as ElegitDia} from "../../../../comun/selects/elegirFechaNacimiento/elegirDia/elegirDia";
 import {name as FormaDireccion} from "../../../../direccion/formaDireccion/formaDireccion";
 import {name as ElegirDepartamento} from "../../../../comun/selects/elegirDepartamento/elegirDepartamento";
-import {insertarUsu} from "../../../../../../api/users/methods";
-import {insertar} from "../../../../../../api/direcciones/methods";
+import {altaUsuario} from "../../../../../../api/users/methods";
 
 class AgregarEmpleado {
     constructor($scope, $reactive, $state) {
@@ -39,7 +38,7 @@ class AgregarEmpleado {
         this.credentials.profile.direccion = this.direccion;
         this.credentials.profile.tiendaId = this.resolve.tiendaId;
 
-        insertarUsu.call(this.credentials, this.$bindToContext((err, result)=> {
+        altaUsuario.call(this.credentials, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';

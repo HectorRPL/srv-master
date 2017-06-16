@@ -11,8 +11,8 @@ const ID = ['_id'];
 
 const CAMPOS_PROVEEDORES = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 // Enviará un correo con un link al usuario para verificacar de registro
-export const insertar = new ValidatedMethod({
-    name: 'proveedores.insertar',
+export const altaProveedor = new ValidatedMethod({
+    name: 'proveedores.altaProveedor',
     validate: Proveedores.simpleSchema().pick(CAMPOS_PROVEEDORES).validator({
         clean: true,
         filter: false
@@ -23,7 +23,7 @@ export const insertar = new ValidatedMethod({
     }
 });
 
-const PROVEEDORES_METHODS = _.pluck([insertar], 'name');
+const PROVEEDORES_METHODS = _.pluck([altaProveedor], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
