@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 14/06/2017.
  */
-import {buscarMarcas} from "../../../../api/catalogos/marcas/busquedas"
+import {buscarMarcas} from "../../../../../api/catalogos/marcas/busquedas"
 import "./buscarMarca.html";
 
 class BuscarMarca {
@@ -26,7 +26,7 @@ const name = 'buscarMarca';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/comun/busquedas/${name}/${name}.html`,
         controllerAs: name,
         controller: BuscarMarca,
         bindings: {

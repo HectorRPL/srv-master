@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 14/06/2017.
  */
-import {buscarFactores} from "../../../../api/factores/busquedas"
+import {buscarFactores} from "../../../../../api/factores/busquedas"
 import "./buscarFactor.html";
 
 class BuscarFactor {
@@ -26,7 +26,7 @@ const name = 'buscarFactor';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/${name}/${name}.html`,
+        templateUrl: `imports/ui/components/comun/busquedas/${name}/${name}.html`,
         controllerAs: name,
         controller: BuscarFactor,
         bindings: {
