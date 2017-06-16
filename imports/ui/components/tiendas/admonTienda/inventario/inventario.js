@@ -47,8 +47,8 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.inventario', {
-            url: '/:tiendaId/inventario',
+        .state('app.tienda.admon.inventario', {
+            url: '/inventario',
             template: '<inventario></inventario>'
         });
 }

@@ -1,64 +1,28 @@
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-md-3">
-            <a ui-sref="app.tienda.personal({tiendaId: admonTienda.tiendaId})">
-                <div class="widget yellow-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
-                        <h1 class="m-xs">Personal</h1>
-                        <h3 class="font-bold no-margins"> Empleados</h3>
-                        <small>power</small>
+<h2>{{admonTienda.tienda.nombre}}
+</h2>
+<hr>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="clients-list">
+            <ul class="nav nav-tabs">
+                <span class="pull-right small text-muted">
+                    <a ui-sref="app.tienda.lista">
+                        <i class="fa fa-chevron-left"></i>  Atras
+                    </a></span>
+                <li ng-class="{active: admonTienda.tab === $index}" ng-repeat="tab in admonTienda.tabs">
+                    <a ng-click="admonTienda.tab = $index" ui-sref="{{tab.estado}}">
+                        <i class="{{tab.icono}}"></i>{{tab.titulo}}
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+                    <div class="panel-body">
+                        <div ui-view=""></div>
                     </div>
                 </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a ui-sref="app.tienda.inventario({tiendaId: admonTienda.tiendaId})">
-                <div class="widget lazur-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-cubes fa-4x" aria-hidden="true"></i>
-                        <h1 class="m-xs">Inventarios</h1>
-                        <h3 class="font-bold no-margins"> Cantidad</h3>
-                        <small>small</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a ui-sref="app.tienda.comisiones({tiendaId: admonTienda.tiendaId})">
-                <div class="widget red-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-money fa-4x" aria-hidden="true"></i>
-                        <h1 class="m-xs">Comisiones</h1>
-                        <h3 class="font-bold no-margins">Nuevo Factor</h3>
-                        <small>power</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a ui-sref="app.tienda.factores({tiendaId: admonTienda.tiendaId})">
-                <div class="widget navy-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-bomb fa-4x" aria-hidden="true"></i>
-                        <h1 class="m-xs">Factores</h1>
-                        <h3 class="font-bold no-margins"> Factor a Productos</h3>
-                        <small>small</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3">
-            <a ui-sref="app.tienda.factores({tiendaId: admonTienda.tiendaId})">
-                <div class="widget navy-bg p-lg text-center">
-                    <div class="m-b-md">
-                        <i class="fa fa-diamond fa-4x" aria-hidden="true"></i>
-                        <h1 class="m-xs">Promociones</h1>
-                        <h3 class="font-bold no-margins"> Promociones de productos</h3>
-                        <small>small</small>
-                    </div>
-                </div>
-            </a>
+            </div>
+
         </div>
     </div>
 </div>

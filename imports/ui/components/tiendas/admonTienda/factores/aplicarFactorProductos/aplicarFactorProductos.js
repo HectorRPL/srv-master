@@ -56,8 +56,8 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.aplicarfactorproductos', {
-            url: '/aplicarfactorproductos/:factorId/:tiendaid',
+        .state('app.tienda.admon.factores.aplicar', {
+            url: '/aplicar',
             template: '<aplicar-factor-productos></aplicar-factor-productos>'
         });
 }

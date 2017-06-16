@@ -1,4 +1,3 @@
-<pre>listaFactores está recibiendo este parámetro tiendaid {{ listaFactores.tiendaid | json }}</pre>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -43,7 +42,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#">Marca</a></li>
-                            <li><a ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, tiendaid: listaFactores.tiendaid})">Producto</a></li>
+                            <li><a ui-sref="app.tienda.admon.factores.aplicar({factorId: factor._id})">Producto</a></li>
                         </ul>
                         <button type="button" class="btn btn-xs btn-default">Editar</button>
                     </div>

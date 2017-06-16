@@ -14,10 +14,6 @@ class AdmonTienda {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.titulo = 'Administrar';
-        this.tituloInv = 'Inventario';
-        this.tituloFact = 'Factores';
-        this.tituloComi = 'Comisiones';
         this.tiendaId = $stateParams.tiendaId;
         this.subscribe('tiendas.todas');
 
@@ -26,6 +22,15 @@ class AdmonTienda {
                 return Tiendas.findOne({_id: this.tiendaId});
             }
         });
+
+        this.tabs = [
+            {titulo: "Inventario", estado: ".inventario", icono: 'fa fa-cubes'},
+            {titulo: "Personal", estado: ".personal", icono: 'fa fa-user'},
+            {titulo: "Factores", estado: ".factores.lista", icono: 'fa fa-money'},
+            {titulo: "Comisiones", estado: ".comisiones.lista", icono: 'fa fa-briefcase'},
+        ];
+
+        this.tab = 0;
     }
 
 }
@@ -53,6 +58,7 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon', {
             url: '/:tiendaId',
-            template: '<admon-tienda></admon-tienda>'
+            template: '<admon-tienda></admon-tienda>',
+            abstract: true
         });
 }

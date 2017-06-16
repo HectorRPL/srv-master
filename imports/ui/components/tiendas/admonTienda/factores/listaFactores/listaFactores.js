@@ -4,16 +4,17 @@
 import {Factores} from "../../../../../../api/factores/collection";
 import {name as BuscarMarcaProducto} from "../../../../comun/buscarMarcaProducto/buscarMarcaProducto";
 import {name as ListaProductosXMarca} from "../../../../comun/listaProductosXMarca/listaProductosXMarca";
+import {name as AplicarFactorProductos} from "../aplicarFactorProductos/aplicarFactorProductos"
 import utilsPagination from "angular-utils-pagination";
 import "./listaFactores.html";
 
 class ListaFactores {
 
-    constructor($scope, $reactive, $state) {
+    constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-
+        this.tiendaId = $stateParams.tiendaId;
         this.perPage = 15;
         this.page = 1;
 
@@ -51,14 +52,21 @@ export default angular
     .module(name, [
         BuscarMarcaProducto,
         ListaProductosXMarca,
-        utilsPagination
+        utilsPagination,
+        AplicarFactorProductos
     ])
     .component(name, {
         templateUrl: `imports/ui/components/tiendas/admonTienda/factores/${name}/${name}.html`,
         controllerAs: name,
         controller: ListaFactores,
-        bindings: {
-            factor: '=',
-            tiendaid: '='
-        },
-    });
+    })
+    .config(config);
+
+function config($stateProvider) {
+    'ngInject';
+    $stateProvider
+        .state('app.tienda.admon.factores.lista', {
+            url: '/lista',
+            template: '<lista-factores></lista-factores>',
+        });
+}

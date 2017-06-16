@@ -1,35 +1,20 @@
-<pre>factores.tiendaId: {{ factores.tiendaId | json }}</pre>
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Factores</h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <a href="" class="btn btn-primary btn-sm" ng-click="factores.crearFactor()">Agregar Factor</a>
-                        </div>
-                        <div class="col-xs-4">
+<div class="row">
+    <div class="col-xs-4">
+        <a href="" class="btn btn-primary btn-sm" ng-click="factores.crearFactor()">Agregar Factor</a>
+    </div>
+    <div class="col-xs-4">
 
-                        </div>
-                        <div class="col-sm-6 m-b-xs">
-                            <div class="ibox float-e-margins">
-                                <buscar-factor
-                                        factor="factores.factorSelec">
-                                </buscar-factor>
-                            </div>
-                        </div>
-                    </div>
-
-                    <lista-factores
-                            factor="factores.factorSelec"
-                            tiendaid="factores.tiendaId">
-                    </lista-factores>
-
-                </div>
-            </div>
+    </div>
+    <div class="col-sm-6 m-b-xs">
+        <div class="ibox float-e-margins">
+            <buscar-factor factor="factores.factorSelec">
+            </buscar-factor>
         </div>
     </div>
 </div>
+<div ui-view=""></div>
+
+<!-- lista-factores
+        factor="factores.factorSelec"
+        tiendaid="factores.tiendaId">
+</lista-factores -->
