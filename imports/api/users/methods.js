@@ -5,13 +5,14 @@ import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 
 const ID = ['_id'];
 
 export const altaUsuario = new ValidatedMethod({
     name: 'usuarios.altaUsuario',
-    mixins: [PermissionsMixin],
+    mixins: [CallPromiseMixin, PermissionsMixin],
     allow: [
         {
             roles: ['crea_usua'],

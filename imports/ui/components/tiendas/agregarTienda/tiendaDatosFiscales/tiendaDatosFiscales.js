@@ -26,13 +26,12 @@ class TiendaDatosFiscales {
         if(datosFiscalesFinal.tipoPersona === 'PM'){
             datosFiscalesFinal.razonSocial = datosFiscalesFinal.razonSocial + ' S.A. DE C.V.'
         }
-        console.log(datosFiscalesFinal);
         altaDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
             if (err) {
-                this.msj = 'Error al crear datos fiscales, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.msj = err.message
                 this.tipoMsj = 'danger';
             } else {
-                this.msj = 'Los datos fiscales se guardaron exitosamente, el sistema tardará unos minutos para configurar la base de datos, espere.';
+                this.msj = 'La operación ha sido exitosa.';
                 this.tipoMsj = 'success';
                 this.pasoActual++;
             }

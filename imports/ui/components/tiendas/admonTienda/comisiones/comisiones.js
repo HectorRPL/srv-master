@@ -35,6 +35,7 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon.comisiones', {
             url: '/comisiones',
-            template: '<comisiones></comisiones>'
+            template: '<comisiones></comisiones>',
+            abstract: true
         });
 }

@@ -1,0 +1,26 @@
+<form role="form" class="p-lg" id="agregarDireccionEmpleadoFrmId" name="agregarDireccionEmpleadoFrm" novalidate>
+    <forma-direccion direccion="agregarDireccionEmpleado.direccion"></forma-direccion>
+    <div class="row">
+        <div class="col-md-8">
+            <alertas mensaje="agregarDireccionEmpleado.msj" tipo="agregarDireccionEmpleado.tipoMsj"></alertas>
+        </div>
+        <div class="col-md-4" ng-show="!agregarDireccionEmpleado.msj || agregarDireccionEmpleado.tipoMsj != 'success'">
+            <!--BOTON SIGUIENTE -->
+            <button type="button" class="btn btn-primary pull-right"
+                    ng-disabled="agregarDireccionEmpleadoFrm.$invalid"
+                    ng-click="agregarDireccionEmpleado.guardar()">
+                Finalizar
+            </button>
+        </div>
+        <div class="col-md-2" ng-show="agregarDireccionEmpleado.tipoMsj === 'success'">
+            <a class="btn btn-default" role="button" ui-sref="app.tienda.admon.personal.lista">
+                Ver Empleados
+            </a>
+        </div>
+        <div class="col-md-2" ng-show="agregarDireccionEmpleado.tipoMsj === 'success'">
+            <a class="btn btn btn-default" role="button" ui-sref="^.datosPersonales">
+                Agregar Otro
+            </a>
+        </div>
+    </div>
+</form>

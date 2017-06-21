@@ -35,27 +35,11 @@ export const altaDatosFiscales = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run(
-        {
-            _id,
-            propietarioId,
-            nombre,
-            apellidoPaterno,
-            apellidoMaterno,
-            razonSocial,
-            email,
-            calle,
-            delMpio,
-            estado,
-            estadoId,
-            colonia,
-            codigoPostal,
-            numExt,
-            numInt,
-            tipoPersona,
-            curp
-    }
-    ) {
+    run({
+        _id, propietarioId, nombre, apellidoPaterno, apellidoMaterno, razonSocial,
+        email, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt,
+        tipoPersona, curp
+    }) {
         return DatosFiscales.insert({
             _id,
             propietarioId,
@@ -74,6 +58,10 @@ export const altaDatosFiscales = new ValidatedMethod({
             numInt,
             tipoPersona,
             curp
+        }, (err)=> {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+            }
         });
     }
 });

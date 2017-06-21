@@ -15,39 +15,32 @@ const CAMPOS_DIRECCION = ['propietarioId', 'calle', 'delMpio', 'estado', 'estado
 // CREAR CANDIDATO
 export const altaDireccion = new ValidatedMethod({
     name: 'direcciones.altaDireccion',
-        mixins: [PermissionsMixin],
-        allow: [
-            {
-                roles: ['crea_dire'],
-                group: 'cruddirecciones'
-            }
-        ],
-        permissionsError: {
-            name: 'direcciones.altaDireccion',
-            message: ()=> {
-                return 'Acceso denegado';
-            }
-        },
+    mixins: [PermissionsMixin],
+    allow: [
+        {
+            roles: ['crea_dire'],
+            group: 'cruddirecciones'
+        }
+    ],
+    permissionsError: {
+        name: 'direcciones.altaDireccion',
+        message: ()=> {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
     validate: Direcciones.simpleSchema().pick(CAMPOS_DIRECCION).validator({
         clean: true,
         filter: false
     }),
-    run({propietarioId, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais}) {
-        if (Meteor.isServer) {
-            const direccion = {
-                propietarioId,
-                calle,
-                delMpio,
-                estado,
-                estadoId,
-                colonia,
-                codigoPostal,
-                numExt,
-                numInt,
-                codigoPais
-            };
-            return Direcciones.insert(direccion);
-        }
+    run({
+        propietarioId, calle, delMpio, estado, estadoId, colonia,
+        codigoPostal, numExt, numInt, codigoPais
+    }) {
+        const direccion = {
+            propietarioId, calle, delMpio, estado, estadoId,
+            colonia, codigoPostal, numExt, numInt, codigoPais
+        };
+        return Direcciones.insert(direccion);
     }
 });
 

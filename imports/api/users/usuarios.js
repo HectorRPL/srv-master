@@ -22,9 +22,11 @@ if (Meteor.isServer) {
             empleado = {
                 propietarioId: user._id,
                 departamentoId: strDepto,
-                nombre: options.profile.nombre,
+                primerNombre: options.profile.primerNombre,
+                segundoNombre: options.profile.segundoNombre,
                 tiendaId: options.profile.tiendaId,
-                apellidos: options.profile.apellidos,
+                apellidoPaterno: options.profile.apellidoPaterno,
+                apellidoMaterno: options.profile.apellidoMaterno,
                 nacimientoDia: options.profile.nacimientoDia,
                 nacimientoMes: options.profile.nacimientoMes,
                 nacimientoAnio: options.profile.nacimientoAnio,
@@ -33,21 +35,24 @@ if (Meteor.isServer) {
                 celular: options.profile.celular
             };
 
+            console.log('en el servidor ', empleado);
+
             var findOneAndUpdate = Meteor.wrapAsync(Counters.rawCollection().findOneAndUpdate, Counters.rawCollection());
             try{
                 let result = findOneAndUpdate({_id: 'noEmpleado'}, {$inc: {seq: 1}},  {returnOriginal: false, upsert: true});
                 noEmpleado = result.value.seq;
             }catch (e){
-                throw  new Meteor.Error(401, 'Error al crear el empleado, intente mas tarde.', 'empleado-no-creada');
+                throw  new Meteor.Error(401, 'Error al crear el empleado, intente mas tarde.', 'no-empleado-noEncontrado');
             }
             empleado.noEmpleado = noEmpleado;
 
         }
 
-        empleado.propietario = user._id;
+        empleado.propietarioId = user._id;
         Empleados.insert(empleado, (err, result)=> {
             if (err) {
-                throw new Meteor.Error(401, 'Error al crear el empleado, intente mas tarde.', 'empleado-no-creada');
+                console.log(err);
+                throw new Meteor.Error(401, 'Error al crear el empleado, intente mas tarde.', 'empleado-no-creado');
             } else {
                 empleado._id = result;
             }

@@ -5,8 +5,11 @@ import angular from 'angular';
 import './alertas.html';
 
 class Alertas {
-    constructor() {
-
+    constructor($scope, $reactive) {
+        'ngInject';
+        $reactive(this).attach($scope);
+        this.dangerMsj = 'Error al realizar la operación.';
+        this.successMsj = 'Éxito al realizar la operación.'
     }
 }
 

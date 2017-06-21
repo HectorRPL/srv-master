@@ -21,7 +21,7 @@
             <table class="table table-striped table-hover">
                 <tbody>
                 <tr ng-repeat="tienda in listaTiendas.tiendas">
-                    <td><a ui-sref="app.tienda.admon.personal({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
+                    <td><a ui-sref="app.tienda.admon.personal.lista({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
                     <td><i class="fa fa-envelope"> </i> {{tienda.email}}</td>
                     <td><i class="fa fa-phone"> </i> +{{tienda.telefonos[0].telefono}}</td>
                     <td class="project-actions">

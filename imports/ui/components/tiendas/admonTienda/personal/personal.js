@@ -2,49 +2,15 @@
  * Created by Héctor on 14/04/2017.
  */
 import "./personal.html";
-import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
-import {Empleados} from "../../../../../api/empleados/collection";
-import {name as AgregarEmpleado} from './agregarEmpleado/agregarEmpleado';
+import {name as ListaPersonal} from "./listaPersonal/listaPersonal";
+import {name as AgregarEmpleado} from "./agregarEmpleado/agregarEmpleado";
 
 class Personal {
-    constructor($scope, $reactive, $state, $uibModal, $stateParams) {
+    constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.titulo = 'Tiendas';
-        this.tiendaId = $stateParams.tiendaId;
-        this.$uibModal = $uibModal;
-        this.subscribe('tiendas.seleccionada', ()=> [{_id: this.tiendaId}]);
-        this.subscribe('empleados.porTienda', ()=> [{tiendaId: this.tiendaId}]);
-
-        this.helpers({
-            tienda(){
-                return Tiendas.findOne({_id: this.tiendaId});
-            },
-            empleados(){
-                return Empleados.find({tiendaId: this.tiendaId});
-            }
-        });
-
     }
-
-    modalAgregar() {
-        const tiendaId = this.tiendaId;
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'AgregarEmpleado',
-            backdrop: 'static',
-            size: 'md',
-            keyboard: true,
-            resolve: {
-                tiendaId: function () {
-                    return tiendaId;
-                }
-
-            }
-        });
-    }
-
 }
 
 const name = 'personal';
@@ -52,6 +18,7 @@ const name = 'personal';
 // create a module
 export default angular
     .module(name, [
+        ListaPersonal,
         AgregarEmpleado
     ])
     .component(name, {
@@ -66,6 +33,7 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon.personal', {
             url: '/personal',
-            template: '<personal></personal>'
+            template: '<personal></personal>',
+            abstract: true
         });
 }
