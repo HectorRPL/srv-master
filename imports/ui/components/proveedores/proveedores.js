@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 8/03/17.
  */
-import "./proveedores.html";
+import template from "./proveedores.html";
 import {Proveedores} from "../../../api/catalogos/proveedores/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarProveedor} from './agregarProveedor/agregarProveedor';
@@ -58,7 +58,7 @@ export default angular
         AgregarProveedor
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: ProveedoresClass
     })

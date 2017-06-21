@@ -3,7 +3,7 @@
  */
 import {altaFactor} from "../../../../../../api/factores/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
-import "./agregarFactor.html";
+import template from "./agregarFactor.html";
 
 class AgregarFactor {
     constructor($scope, $reactive, $state) {
@@ -50,7 +50,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/factores/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarFactor,
         bindings: {

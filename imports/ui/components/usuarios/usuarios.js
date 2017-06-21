@@ -2,7 +2,7 @@
  * Created by jvltmtz on 8/03/17.
  */
 
-import "./usuarios.html";
+import template from "./usuarios.html";
 
 class Usuarios {
     constructor($scope, $reactive, $state) {
@@ -20,7 +20,7 @@ export default angular
     .module(name, [
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: Usuarios
     })

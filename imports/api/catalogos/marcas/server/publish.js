@@ -11,7 +11,6 @@ if (Meteor.isServer) {
     });
 
     Meteor.publish('marcas.nombre', function (nombre) {
-        console.log('marcas.nombre', nombre);
         if (nombre.nombre) {
             const selector = {nombre: {$regex: nombre.nombre, $options: 'i'}};
             let options = {fields: {_id: 1, nombre: 1}};

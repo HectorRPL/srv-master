@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 10/03/17.
  */
-import "./detalleTienda.html";
+import template from "./detalleTienda.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 
 class DetalleTienda {
@@ -37,7 +37,7 @@ export default angular
     .module(name, [
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: DetalleTienda,
         bindings:{

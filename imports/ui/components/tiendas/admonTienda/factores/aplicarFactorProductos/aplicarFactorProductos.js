@@ -4,7 +4,7 @@
 import {name as BuscarMarca} from "../../../../comun/busquedas/buscarMarca/buscarMarca";
 import {cambioFactorProducto} from "../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
-import "./aplicarFactorProductos.html";
+import template from "./aplicarFactorProductos.html";
 
 class AplicarFactorProductos {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -24,8 +24,6 @@ class AplicarFactorProductos {
             marcaId:    this.marcaSelec._id,
             factorId:   this.factorId
         };
-
-        console.log('Los datos que vamos a enviar son this.datos', this.datos);
 
         cambioFactorProducto.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
@@ -48,7 +46,7 @@ export default angular
         BuscarMarca
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/factores/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AplicarFactorProductos,
     }).config(config);

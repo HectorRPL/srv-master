@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 11/03/2017.
  */
-import "./construyeNombre.html";
+import template from "./construyeNombre.html";
 
 class ConstruyeNombre {
     constructor($scope, $reactive) {
@@ -17,7 +17,7 @@ const name = 'construyeNombre';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/productos/${name}/${name}.html`,
+        template,
         controllerAs: name,
         bindings: {
             producto: '<',

@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 19/06/17.
  */
-import "./listaPersonal.html";
+import template from "./listaPersonal.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 
 class ListaPersonal {
@@ -26,7 +26,7 @@ const name = 'listaPersonal';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/personal/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: ListaPersonal
     })

@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 30/03/17.
  */
-import "./comisiones.html";
+import template from "./comisiones.html";
 
 class Comisiones {
     constructor($scope, $reactive, $state, $uibModal, $stateParams) {
@@ -24,7 +24,7 @@ export default angular
 
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: Comisiones
     })

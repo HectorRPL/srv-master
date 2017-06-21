@@ -32,7 +32,6 @@ export const altaUsuario = new ValidatedMethod({
         profile: {type: Object, blackbox: true},
     }).validator(),
     run({password, username, profile}) {
-
         if (Meteor.isServer) {
             return Accounts.createUser({password, username, profile});
         }

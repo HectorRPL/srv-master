@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 9/03/17.
  */
-import "./marcas.html";
+import template from "./marcas.html";
 import {Marcas} from "../../../api/catalogos/marcas/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarMarca} from './agregarMarca/agregarMarca';
@@ -61,7 +61,7 @@ export default angular
         AgregarProductos
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: MarcasClass
     })

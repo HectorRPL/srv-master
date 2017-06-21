@@ -7,7 +7,6 @@ import {Empleados} from "../collection";
 if (Meteor.isServer) {
     // Trae t.o.d.o. el inventario
     Meteor.publish('empleados.porTienda', function (tiendaId) {
-        console.log(tiendaId);
         return Empleados.find(tiendaId);
     });
 

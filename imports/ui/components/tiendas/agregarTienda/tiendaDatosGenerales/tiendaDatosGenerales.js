@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 9/05/17.
  */
-import "./tiendaDatosGenerales.html";
+import template from "./tiendaDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {altaTienda} from "../../../../../api/catalogos/tiendas/methods";
 import {altaDireccion} from "../../../../../api/direcciones/methods";
@@ -66,7 +66,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/agregarTienda/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: TiendaDatosGenerales
     })

@@ -5,7 +5,7 @@ import utilsPagination from "angular-utils-pagination";
 import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
 import {name as TituloPrincipal} from '../../../../comun/tituloPrincipal/tituloPrincipal';
 import {altaInventarioMarca} from  "../../../../../../api/inventarios/methods"
-import "./listaProductosMarca.html";
+import template from "./listaProductosMarca.html";
 
 class ListaProductosMarca {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -49,7 +49,6 @@ class ListaProductosMarca {
         const info = {tiendaId: this.tiendaId, marcaId: this.marcaId};
         altaInventarioMarca.call(info, this.$bindToContext((err, result)=> {
             if(err){
-                console.log('Error al genrar el inventario de ', this.marcaId);
             }
         }));
     }
@@ -64,7 +63,7 @@ export default angular
         utilsPagination
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/inventario/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: ListaProductosMarca
     })

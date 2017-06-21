@@ -14,7 +14,6 @@ if (Meteor.isServer) {
             Counts.publish(this, 'numProdsInventarios', ProductosInventarios.find(selector), {
                 noReady: true
             });
-            console.log('ESTE ES EL SELECTOR', selector);
             return ProductosInventarios.find(selector, options);
 
         }

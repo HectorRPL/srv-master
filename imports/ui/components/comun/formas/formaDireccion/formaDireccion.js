@@ -1,9 +1,8 @@
 /**
  * Created by Héctor on 29/03/2017.
  */
-import angular from "angular";
-import {name as CodigosPostales} from "../../comun/inputs/codigosPostales/codigosPostales";
-import "./formaDireccion.html";
+import {name as CodigosPostales} from "../../inputs/codigosPostales/codigosPostales";
+import template from "./formaDireccion.html";
 
 class FormaDireccion {
     constructor($scope) {
@@ -20,7 +19,7 @@ export default angular
         CodigosPostales
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/direccion/${name}/${name}.html`,
+        template ,
         controllerAs: name,
         controller: FormaDireccion,
         bindings: {

@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 14/04/2017.
  */
-import "./personal.html";
+import template from "./personal.html";
 import {name as ListaPersonal} from "./listaPersonal/listaPersonal";
 import {name as AgregarEmpleado} from "./agregarEmpleado/agregarEmpleado";
 
@@ -22,7 +22,7 @@ export default angular
         AgregarEmpleado
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: Personal
     })

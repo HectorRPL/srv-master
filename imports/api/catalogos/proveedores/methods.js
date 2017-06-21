@@ -18,7 +18,6 @@ export const altaProveedor = new ValidatedMethod({
         filter: false
     }),
     run({nombre, telefonos, email}) {
-        console.log(nombre, telefonos, email);
         return Proveedores.insert({nombre, telefonos, email});
     }
 });

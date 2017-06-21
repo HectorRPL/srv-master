@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 19/06/17.
  */
-import "./agregarDireccionEmpleado.html";
+import template from "./agregarDireccionEmpleado.html";
 import {altaUsuario} from "../../../../../../../api/users/methods";
 import {Session} from "meteor/session";
 
@@ -42,7 +42,7 @@ const name = 'agregarDireccionEmpleado';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/personal/agregarEmpleado/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarDireccionEmpleado
     })

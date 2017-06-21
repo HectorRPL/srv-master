@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 9/03/17.
  */
-import "./agregarMarca.html";
+import template from "./agregarMarca.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {altaMarca} from "../../../../api/catalogos/marcas/methods";
 
@@ -17,7 +17,6 @@ class AgregarMarca {
 
     agregar() {
         this.tipoMsj = '';
-        console.log(this.datos);
         altaMarca.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
                 console.log();
@@ -44,7 +43,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/marcas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarMarca,
         bindings: {

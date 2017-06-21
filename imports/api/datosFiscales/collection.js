@@ -29,7 +29,7 @@ Schema.datosFiscales = new SimpleSchema({
     _id: {
         type: String,
         autoValue: function () {
-            return this.value.toUpperCase()
+            return this.value.toUpperCase();
         }
     },
     propietarioId: {

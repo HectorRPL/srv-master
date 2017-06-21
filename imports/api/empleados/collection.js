@@ -22,14 +22,43 @@ Empleados.schema = new SimpleSchema({
     propietarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
     tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
     departamentoId: {type: String},
-    primerNombre: {type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/},
-    segundoNombre: {type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/, optional: true},
-    apellidoPaterno: {type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/},
-    apellidoMaterno: {type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/, optional: true},
+    primerNombre: {
+        type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/,
+        autoValue: function () {
+            return this.value.toUpperCase();
+        }
+    },
+    segundoNombre: {
+        type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/, optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase();
+            }
+        }
+    },
+    apellidoPaterno: {
+        type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/,
+        autoValue: function () {
+            return this.value.toUpperCase();
+        }
+    },
+    apellidoMaterno: {
+        type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/, optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase();
+            }
+        }
+    },
     nacimientoDia: {type: Number, max: 31, min: 1, regEx: /^[0-9]$/, optional: true},
     nacimientoMes: {type: Number, max: 12, min: 1, regEx: /^[0-9]$/, optional: true},
     nacimientoAnio: {type: Number, regEx: /^[0-9]$/, optional: true},
-    sexo: {type: String, max: 6, min: 5, regEx: /^[a-zA-Z]/},
+    sexo: {
+        type: String, max: 6, min: 5, regEx: /^[a-zA-Z]/,
+        autoValue: function () {
+            return this.value.toUpperCase();
+        }
+    },
     telefono: {type: String, regEx: /^[0-9]{10}$/, min: 10, max: 10},
     celular: {type: String, regEx: /^[0-9]{10}$/, min: 10, max: 10},
     noEmpleado: {type: Number},
@@ -42,8 +71,8 @@ Empleados.schema = new SimpleSchema({
                 nombreCompleto += ' ' + this.field('segundoNombre').value.toUpperCase();
             }
             nombreCompleto += ' ' + this.field('apellidoPaterno').value.toUpperCase();
-            if(this.field('segundoNombre').value){
-                nombreCompleto +=  ' ' + this.field('segundoNombre').value.toUpperCase();
+            if (this.field('segundoNombre').value) {
+                nombreCompleto += ' ' + this.field('segundoNombre').value.toUpperCase();
             }
             return nombreCompleto;
         }

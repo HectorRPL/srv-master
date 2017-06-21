@@ -1,11 +1,11 @@
 /**
  * Created by jvltmtz on 19/06/17.
  */
-import "./agregarDatosEmpleado.html";
+import template from "./agregarDatosEmpleado.html";
 import {name as ElegirAnio} from "../../../../../comun/selects/elegirFechaNacimiento/elegirAnio/elegirAnio";
 import {name as ElegitMes} from "../../../../../comun/selects/elegirFechaNacimiento/elegirMes/elegirMes";
 import {name as ElegitDia} from "../../../../../comun/selects/elegirFechaNacimiento/elegirDia/elegirDia";
-import {name as FormaDireccion} from "../../../../../direccion/formaDireccion/formaDireccion";
+import {name as FormaDireccion} from "../../../../../comun/formas/formaDireccion/formaDireccion";
 import {name as ElegirDepartamento} from "../../../../../comun/selects/elegirDepartamento/elegirDepartamento";
 import {Session} from "meteor/session";
 
@@ -42,7 +42,7 @@ export default angular
         ElegirDepartamento
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/personal/agregarEmpleado/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AregarDatosEmpleado
     })

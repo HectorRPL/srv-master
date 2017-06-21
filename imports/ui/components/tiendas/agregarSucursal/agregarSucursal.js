@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 10/05/17.
  */
-import "./agregarSucursal.html";
+import template from "./agregarSucursal.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
 import {altaSucursal} from "../../../../api/catalogos/tiendas/sucursales/methods";
 import {altaDireccion} from "../../../../api/direcciones/methods";
@@ -31,7 +31,6 @@ class AgregarSucursal {
 
     guardar() {
         this.datos.tiendaMatrizId = this.tiendaId;
-        console.log('Crear suscursal ', this.datos);
         altaSucursal.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
                 this.msj = 'Error al crear una Sucursal, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
@@ -69,7 +68,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarSucursal
     })

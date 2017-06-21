@@ -3,7 +3,7 @@
  */
 import {ProductosInventarios} from "../../../../api/inventarios/productosInventarios/collection";
 import utilsPagination from "angular-utils-pagination";
-import "./listaProductosXMarca.html";
+import template from "./listaProductosXMarca.html";
 
 class ListaProductosXMarca {
 
@@ -51,7 +51,7 @@ export default angular
         utilsPagination
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: ListaProductosXMarca,
         bindings: {

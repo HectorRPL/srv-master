@@ -35,8 +35,6 @@ if (Meteor.isServer) {
                 celular: options.profile.celular
             };
 
-            console.log('en el servidor ', empleado);
-
             var findOneAndUpdate = Meteor.wrapAsync(Counters.rawCollection().findOneAndUpdate, Counters.rawCollection());
             try{
                 let result = findOneAndUpdate({_id: 'noEmpleado'}, {$inc: {seq: 1}},  {returnOriginal: false, upsert: true});

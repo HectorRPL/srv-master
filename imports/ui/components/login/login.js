@@ -1,4 +1,4 @@
-import "./login.html";
+import template from "./login.html";
 import {name as Alertas} from '../comun/alertas/alertas';
 
 
@@ -35,7 +35,7 @@ const name = 'login';
 // create a module
 export default angular.module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/login/${name}.html`,
+        template,
         controllerAs: name,
         controller: Login
     })

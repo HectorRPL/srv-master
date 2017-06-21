@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 9/03/17.
  */
-import "./agregarTienda.html";
+import template from "./agregarTienda.html";
 import {name as TiendaDatosGenerales} from "./tiendaDatosGenerales/tiendaDatosGenerales";
 import {name as TiendaDatosFiscales} from "./tiendaDatosFiscales/tiendaDatosFiscales";
 
@@ -25,7 +25,7 @@ export default angular
         TiendaDatosFiscales
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarTienda,
         bindings:{

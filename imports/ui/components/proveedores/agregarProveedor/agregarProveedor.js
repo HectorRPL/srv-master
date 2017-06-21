@@ -4,9 +4,9 @@
 import {altaProveedor} from "../../../../api/catalogos/proveedores/methods";
 import {insertarDatosFiscales} from "../../../../api/datosFiscales/methods";
 import {name as Alertas} from "../../comun/alertas/alertas";
-import {name as FormaDireccion} from "../../direccion/formaDireccion/formaDireccion"; // No es necesario importarlo, no sé por qué
-import {name as FormaDatosFiscales} from "../../datosFiscales/formaDatosFiscales/formaDatosFiscales";
-import "./agregarProveedor.html";
+import {name as FormaDireccion} from "../../comun/formas/formaDireccion/formaDireccion"; // No es necesario importarlo, no sé por qué
+import {name as FormaDatosFiscales} from "../../comun/formas/formaDatosFiscales/formaDatosFiscales";
+import template from "./agregarProveedor.html";
 
 class AgregarProveedor {
     constructor($scope, $reactive, $state) {
@@ -55,7 +55,6 @@ class AgregarProveedor {
         delete datosFiscalesFinal.colonias;
 
         datosFiscalesFinal.propietarioId = this.propietarioId;
-        console.log('Estos son los datos que vamos a enviar: ', datosFiscalesFinal);
         insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
@@ -84,7 +83,7 @@ export default angular
         FormaDatosFiscales
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/proveedores/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarProveedor,
         bindings: {

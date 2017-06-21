@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 13/03/2017.
  */
-import "./radioImportado.html";
+import template from "./radioImportado.html";
 
 class RadioImportado{
     constructor($scope, $reactive) {
@@ -17,7 +17,7 @@ const name = 'radioImportado';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/radio/${name}/${name}.html`,
+        template,
         controllerAs: name,
         bindings: {
             importado: '='

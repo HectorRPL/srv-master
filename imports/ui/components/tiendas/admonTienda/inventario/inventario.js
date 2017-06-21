@@ -4,7 +4,7 @@
 import {Marcas} from "../../../../../api/catalogos/marcas/collection";
 import {name as TituloPrincipal} from '../../../comun/tituloPrincipal/tituloPrincipal';
 import {name as ListaProductosMarca} from './listaProductosMarca/listaProductosMarca';
-import "./inventario.html";
+import template from "./inventario.html";
 
 class Inventario {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -24,7 +24,6 @@ class Inventario {
 
 
     muestrameTiendaId(tiendaId){
-        console.log('Mostraras el tiendaId: ', tiendaId);
     }
 
 }
@@ -38,7 +37,7 @@ export default angular
         ListaProductosMarca
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: Inventario
     })

@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 09/02/2017.
  */
-import "./iboxTools.html";
+import template from "./iboxTools.html";
 
 class IboxTools {
     constructor($scope, $reactive, $element, $timeout) {
@@ -38,7 +38,7 @@ const name = 'iboxTools';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: IboxTools
     });

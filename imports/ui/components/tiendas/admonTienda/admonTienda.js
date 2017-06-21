@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import "./admonTienda.html";
+import template from "./admonTienda.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as Factores} from './factores/factores';
@@ -47,7 +47,7 @@ export default angular
         Personal
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AdmonTienda
     })

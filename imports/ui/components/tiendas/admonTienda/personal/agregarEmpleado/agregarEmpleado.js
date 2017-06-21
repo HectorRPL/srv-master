@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 10/03/17.
  */
-import "./agregarEmpleado.html";
+import template from "./agregarEmpleado.html";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as AgregarDatosEmpleado} from "./agregarDatosEmpleado/agregarDatosEmpleado";
 import {name as AgregarDireccionEmpleado} from "./agregarDireccionEmpleado/agregarDireccionEmpleado";
@@ -40,7 +40,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/personal/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: AgregarEmpleado
     })

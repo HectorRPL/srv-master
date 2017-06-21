@@ -3,7 +3,7 @@
  */
 import {buscarMarcas} from "../../../../../api/catalogos/marcas/busquedas"
 import {buscarProducto} from "../../../../../api/catalogos/productos/busquedas"
-import "./buscarMarcaProducto.html";
+import template from "./buscarMarcaProducto.html";
 
 class BuscarMarcaProducto {
 
@@ -38,7 +38,7 @@ const name = 'buscarMarcaProducto';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/busquedas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: BuscarMarcaProducto,
         bindings: {

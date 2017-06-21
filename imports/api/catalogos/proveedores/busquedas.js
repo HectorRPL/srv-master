@@ -16,7 +16,6 @@ export const buscarProveedor = new ValidatedMethod({
     run({nombre}) {
         const partialMatch = new RegExp(`^${nombre}`, 'i');
         const selector = {nombre: {$regex: partialMatch}};
-        console.log(selector);
         let options = {fields: {_id: 1, nombre: 1}};
         const resultado = Proveedores.find(selector, options).fetch();
 

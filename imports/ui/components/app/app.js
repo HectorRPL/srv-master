@@ -8,7 +8,7 @@ import {name as TiendasClass} from "../tiendas/tiendas";
 import {name as Usuarios} from "../usuarios/usuarios";
 import {name as Marcas} from "../marcas/marcas";
 import "metismenu/dist/metisMenu.js";
-import "./app.html";
+import template from "./app.html";
 
 class App {
     constructor() {
@@ -30,7 +30,7 @@ export default angular
         TiendasClass,
         Marcas
     ]).component(name, {
-        templateUrl: `imports/ui/components/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: App
     }).config(config);

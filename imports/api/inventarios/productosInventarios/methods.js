@@ -41,7 +41,6 @@ export const cambioFactorProducto = new ValidatedMethod({
     }) {
         console.log('llegó aquí');
         if (Meteor.isServer) {
-            console.log('ni aquí weeee');
             return ProductosInventarios.update(
                 {
                     tiendaId: tiendaId,

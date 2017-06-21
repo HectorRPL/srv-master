@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 13/03/2017.
  */
-import "./radioRectificado.html";
+import template from "./radioRectificado.html";
 
 class RadioRectificado{
     constructor($scope, $reactive) {
@@ -17,7 +17,7 @@ const name = 'radioRectificado';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/radio/${name}/${name}.html`,
+        template,
         controllerAs: name,
         bindings: {
             rectificado: '='

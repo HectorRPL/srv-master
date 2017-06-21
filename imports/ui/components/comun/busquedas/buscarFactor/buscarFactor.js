@@ -2,7 +2,7 @@
  * Created by Héctor on 14/06/2017.
  */
 import {buscarFactores} from "../../../../../api/factores/busquedas"
-import "./buscarFactor.html";
+import template from "./buscarFactor.html";
 
 class BuscarFactor {
 
@@ -26,7 +26,7 @@ const name = 'buscarFactor';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/busquedas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: BuscarFactor,
         bindings: {

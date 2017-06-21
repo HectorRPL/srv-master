@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import "./listaTiendas.html";
+import template from "./listaTiendas.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
@@ -35,7 +35,7 @@ export default angular
         AgregarSucursal
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: ListaTiendas
     })

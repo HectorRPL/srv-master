@@ -2,7 +2,7 @@
  * Created by Héctor on 11/03/2017.
  */
 import {TiposProductos} from "../../../../../api/catalogos/tiposProductos/collection";
-import "./elegirTipoProducto.html";
+import template from "./elegirTipoProducto.html";
 
 class ElegirTipoProducto {
     constructor($scope, $reactive) {
@@ -27,7 +27,7 @@ const name = 'elegirTipoProducto';
 export default angular
     .module(name, [])
     .component(name, {
-        templateUrl: `imports/ui/components/comun/selects/${name}/${name}.html`,
+        template,
         controllerAs: name,
         bindings: {
             tipoproducto: '=',

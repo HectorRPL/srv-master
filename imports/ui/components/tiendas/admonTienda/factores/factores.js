@@ -6,7 +6,7 @@ import {name as AplicarFactorProductos} from "./aplicarFactorProductos/aplicarFa
 import {name as BuscarFactor} from "../../../comun/busquedas/buscarFactor/buscarFactor";
 import {name as ListaFactores} from "./listaFactores/listaFactores";
 import utilsPagination from "angular-utils-pagination";
-import "./factores.html";
+import template from "./factores.html";
 
 class Factores {
 
@@ -52,7 +52,7 @@ export default angular
         utilsPagination
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/admonTienda/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: Factores
     })

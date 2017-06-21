@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 9/05/17.
  */
-import "./tiendaDatosFiscales.html";
+import template from "./tiendaDatosFiscales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
 
@@ -48,7 +48,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/tiendas/agregarTienda/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: TiendaDatosFiscales
     })

@@ -1,9 +1,9 @@
 /**
  * Created by Héctor on 06/04/2017.
  */
-import "./formaDatosFiscales.html";
-import {buscarRfc} from "../../../../api/datosFiscales/busquedas";
-import {name as ElegirTipoSociedad} from "../../comun/selects/elegirTipoSociedad/elegirTipoSociedad"
+import template from "./formaDatosFiscales.html";
+import {buscarRfc} from "../../../../../api/datosFiscales/busquedas";
+import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad"
 
 class FormaDatosFiscales {
     constructor($scope) {
@@ -42,7 +42,7 @@ export default angular
         ElegirTipoSociedad
     ])
     .component(name, {
-        templateUrl: `imports/ui/components/datosFiscales/${name}/${name}.html`,
+        template,
         controllerAs: name,
         controller: FormaDatosFiscales,
         bindings: {
