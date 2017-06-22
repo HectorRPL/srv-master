@@ -39,7 +39,7 @@
                                         <span class="animated fadeIn" style="color:red;"
                                               ng-message="pattern"> caracter inválido</span>
                                     </label>
-                                    <input id="nombreId" class="form-control texto-en-mayusculas" name="nombre" type="text"
+                                    <input id="nombreId" class="form-control" name="nombre" type="text"
                                            placeholder="ej: TLAHUAC" aria-describedby="sizing-addon1"
                                            minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
                                            ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
@@ -58,7 +58,7 @@
                                         <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="mixlength, maxlength"> min 2, max 50 letras</span>
                                     </label>
-                                    <input id="emailId" class="form-control texto-en-mayusculas" name="email" type="email"
+                                    <input id="emailId" class="form-control" name="email" type="email"
                                            aria-describedby="sizing-addon1" minlength="5"
                                            maxlength="51" ng-minlength="5" ng-maxlength="50" required
                                            ng-model="tiendaDatosGenerales.datos.email">
@@ -96,7 +96,7 @@
                                             <span class="animated fadeIn" style="color:red;"
                                                   ng-message="pattern">número</span>
                                         </label>
-                                        <input id="extensionId" class="form-control texto-en-mayusculas" type="text"
+                                        <input id="extensionId" class="form-control" type="text"
                                                name="extension{{$index}}"
                                                placeholder="Ext"
                                                aria-describedby="sizing-addon1" maxlength="5"
