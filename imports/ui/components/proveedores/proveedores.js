@@ -2,50 +2,13 @@
  * Created by jvltmtz on 8/03/17.
  */
 import template from "./proveedores.html";
-import {Proveedores} from "../../../api/catalogos/proveedores/collection";
-import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
-import {name as AgregarProveedor} from './agregarProveedor/agregarProveedor';
-import {buscarProveedor} from "../../../api/catalogos/proveedores/busquedas";
+import {name as ListaProveedores} from "./listaProveedores/listaProveedores"
 
-class ProveedoresClass {
-    constructor($scope, $reactive, $state, $uibModal) {
+
+class Proveedores {
+    constructor() {
         'ngInject';
-        this.$state = $state;
-        $reactive(this).attach($scope);
-        this.titulo = 'Proveedores';
-        this.$uibModal = $uibModal;
-        this.proveedorSelec = '';
-        this.subscribe('proveedores.todos', ()=> [{_id: this.getReactively('proveedorSelec._id')}] );
-
-        this.helpers({
-            proveedores(){
-                return Proveedores.find();
-            }
-        });
     }
-
-    modalAgregar() {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'AgregarProveedor',
-            backdrop: 'static',
-            size: 'md',
-            keyboard: true,
-        });
-    }
-
-    mdodalAtualizar() {
-
-    }
-
-    buscarProveedor(valor) {
-        return buscarProveedor.callPromise({
-            nombre: valor
-        }).then(function (result) {
-            return result;
-        });
-    }
-
 
 }
 
@@ -54,13 +17,12 @@ const name = 'proveedores';
 // create a module
 export default angular
     .module(name, [
-        TituloPrincipal,
-        AgregarProveedor
+        ListaProveedores
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ProveedoresClass
+        controller: Proveedores
     })
     .config(config);
 
@@ -69,6 +31,7 @@ function config($stateProvider) {
     $stateProvider
         .state('app.proveedores', {
             url: '/proveedores',
-            template: '<proveedores></proveedores>'
+            template: '<proveedores></proveedores>',
+            abstract: true
         });
 }
