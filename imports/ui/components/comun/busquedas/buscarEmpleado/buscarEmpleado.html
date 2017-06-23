@@ -1,0 +1,6 @@
+<div class="input-group m-b">
+    <input type="text" class="form-control" ng-model="buscarTienda.empleado"
+           uib-typeahead="empleado as empleado.nombre for empleado in buscarEmpleado.buscar($viewValue)"
+           placeholder="Nombre de la tienda">
+    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+</div>
