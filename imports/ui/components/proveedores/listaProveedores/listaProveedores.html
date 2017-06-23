@@ -2,19 +2,21 @@
 <hr>
 <div class="row">
     <div class="col-xs-4">
-        <button class="btn btn-primary btn-sm" ng-click="proveedores.modalAgregar()">Agregar Proveedor</button>
+        <a ui-sref="app.proveedores.agregar.datos" class="btn btn-primary btn-sm">Agregar Proveedor</a>
     </div>
     <div class="col-xs-4">
 
     </div>
     <div class="col-xs-4">
         <div class="input-group">
-            <input type="text" class="form-control" ng-model="proveedores.proveedorSelec"
+            <input type="text"
+                   class="form-control"
+                   ng-model="listaProveedores.proveedorSelec"
                    uib-typeahead="proveedor as proveedor.nombre for proveedor in listaProveedores.buscarProveedor($viewValue)"
                    placeholder="Nombre Proveedor">
             <span class="input-group-btn">
-                                        <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
-                                </span>
+                <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
+            </span>
         </div>
     </div>
 </div>

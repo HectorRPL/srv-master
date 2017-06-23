@@ -1,11 +1,8 @@
 /**
  * Created by jvltmtz on 8/03/17.
  */
-import {altaProveedor} from "../../../../api/catalogos/proveedores/methods";
-import {insertarDatosFiscales} from "../../../../api/datosFiscales/methods";
-import {name as Alertas} from "../../comun/alertas/alertas";
-import {name as FormaDireccion} from "../../comun/formas/formaDireccion/formaDireccion"; // No es necesario importarlo, no sé por qué
-import {name as FormaDatosFiscales} from "../../comun/formas/formaDatosFiscales/formaDatosFiscales";
+import {name as ProveedorDatosGenerales} from "./proveedorDatosGenerales/proveedorDatosGenerales";
+import {name as ProveedorDatosFiscales} from "./proveedorDatosFiscales/proveedorDatosFiscales";
 import template from "./agregarProveedor.html";
 
 class AgregarProveedor {
@@ -14,81 +11,41 @@ class AgregarProveedor {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Proveedores';
+
+        this.tabs = [
+            {titulo: "Datos Personales", estado: ".datos", icono: 'fa fa-user'},
+            {titulo: "Direccion", estado: ".fiscales", icono: 'fa fa-cubes'}
+        ];
+
         this.pasoActual = 1;
         this.datosFiscales = {};
         this.datos =  {
             telefonos: [{telefono: ''}]
         };
     }
-
-    agregarTelefono() {
-        this.nuevoTelefono = {
-            telefono: this.telefono,
-            extension: this.extension,
-        };
-        this.datos.telefonos.push(this.nuevoTelefono);
-    }
-
-    guardarDatosGenerales() {
-        altaProveedor.call(this.datos, this.$bindToContext((err, result)=> {
-            if (err) {
-                this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-
-                this.propietarioId = result;
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.pasoActual++;
-            }
-        }));
-    }
-
-    siguiente() {
-        this.tipoMsj = '';
-        this.pasoActual++;
-    }
-
-    guardarDatosFiscales() {
-
-        let datosFiscalesFinal = angular.copy(this.datosFiscales);
-        delete datosFiscalesFinal.colonias;
-
-        datosFiscalesFinal.propietarioId = this.propietarioId;
-        insertarDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos fiscales se guardaron exitosamente.';
-                this.tipoMsj = 'success';
-                this.pasoActual++;
-            }
-        }));
-    }
-
-    cerrar() {
-        this.dismiss();
-    }
-
 }
 
 const name = 'agregarProveedor';
 
-// create a module
 export default angular
     .module(name, [
-        Alertas,
-        FormaDireccion,
-        FormaDatosFiscales
+        ProveedorDatosGenerales,
+        ProveedorDatosFiscales
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: AgregarProveedor,
-        bindings: {
-            resolve: '<',
-            close: '&',
-            dismiss: '&'
-        }
-    });
+        controller: AgregarProveedor
+    })
+    .config(config);
+
+function config($stateProvider) {
+    'ngInject';
+    $stateProvider
+        .state('app.proveedores.agregar', {
+            url: '/agregar',
+            template: '<agregar-proveedor></agregar-proveedor>',
+            abstract: true,
+            component: 'agregarProveedor'
+        });
+};

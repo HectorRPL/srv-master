@@ -23,11 +23,24 @@ export const buscarProveedor = new ValidatedMethod({
     }
 });
 
-const BUSQUEDAS_PROVEEDORES_METHODS = _.pluck([buscarProveedor], 'name');
+export const buscarCuentaContable = new ValidatedMethod({
+    name: 'proveedores.buscarCuentaContable',
+    mixins: [CallPromiseMixin],
+    validate: new SimpleSchema({
+        cc: {type: String}
+    }).validator(),
+    run({cc}) {
+        const resultado = Proveedores.find({cuentaContable: cc}).fetch();
+        return resultado;
+    }
+});
+
+
+const BUSCAR_PROVEEDORES_METHODS = _.pluck([buscarProveedor, buscarCuentaContable], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
-            return _.contains(BUSQUEDAS_PROVEEDORES_METHODS, name);
+            return _.contains(BUSCAR_PROVEEDORES_METHODS, name);
         },
         connectionId() {
             return true;

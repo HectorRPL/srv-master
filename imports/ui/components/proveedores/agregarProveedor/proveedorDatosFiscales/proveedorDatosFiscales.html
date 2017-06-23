@@ -1,0 +1,41 @@
+<form role="form" class="p-lg" id="agregarTiendaFrmId" name="agregarTiendaFrm" novalidate>
+    <fieldset>
+        <h2>Información General</h2>
+        <!--DATOS FISCALES-->
+        <div class="row animated fadeInRight">
+            <h3>Datos Fiscales</h3>
+            <ng-form name="datosFiscalesForm">
+                <forma-datos-fiscales datos="proveedorDatosFiscales.datosFiscales"></forma-datos-fiscales>
+            </ng-form>
+        </div>
+        <!--DIRECCIÓN FISCAL-->
+        <div class="row animated fadeInRight">
+            <h3>Dirección Fiscal</h3>
+            <forma-direccion direccion="proveedorDatosFiscales.datosFiscales"></forma-direccion>
+        </div>
+        <!--ALERTA Y BOTÓN-->
+        <div class="row">
+            <div class="col-md-8">
+                <alertas tipo="proveedorDatosFiscales.tipoMsj" mensaje="proveedorDatosFiscales.msj"></alertas>
+            </div>
+            <div class="col-md-3" ng-show="!proveedorDatosFiscales.msj || proveedorDatosFiscales.tipoMsj != 'success'">
+                <!-- BOTON GUARDAR DATOS GENERALES (Del paso 1 al paso 2) -->
+                <button type="button" class="btn btn-primary pull-right"
+                        ng-disabled="agregarTiendaFrm.$invalid"
+                        ng-click="proveedorDatosFiscales.guardar()">
+                    Siguiente
+                </button>
+            </div>
+            <div class="col-md-2" ng-show="proveedorDatosFiscales.tipoMsj === 'success'">
+                <a class="btn btn-default" role="button" ui-sref="app.proveedores.lista">
+                    Ver Proveedores
+                </a>
+            </div>
+            <div class="col-md-2" ng-show="proveedorDatosFiscales.tipoMsj === 'success'">
+                <a class="btn btn btn-default" role="button" ui-sref="^.datos">
+                    Agregar Otro
+                </a>
+            </div>
+        </div>
+    </fieldset>
+</form>

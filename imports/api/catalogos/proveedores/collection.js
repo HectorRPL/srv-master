@@ -58,7 +58,8 @@ Proveedores.schema = new SimpleSchema({
         type: String
     },
     dias: {
-        type: Number
+        type: Number,
+        optional: true
     }
 });
 

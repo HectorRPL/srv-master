@@ -9,7 +9,7 @@ import {Proveedores} from "./collection";
 
 const ID = ['_id'];
 
-const CAMPOS_PROVEEDORES = ['nombre', 'telefonos', 'telefonos.$', 'email'];
+const CAMPOS_PROVEEDORES = ['nombre', 'telefonos', 'telefonos.$', 'email', 'cuentaContable'];
 // Enviará un correo con un link al usuario para verificacar de registro
 export const altaProveedor = new ValidatedMethod({
     name: 'proveedores.altaProveedor',
@@ -17,8 +17,8 @@ export const altaProveedor = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({nombre, telefonos, email}) {
-        return Proveedores.insert({nombre, telefonos, email});
+    run({nombre, telefonos, email, cuentaContable}) {
+        return Proveedores.insert({nombre, telefonos, email, cuentaContable});
     }
 });
 

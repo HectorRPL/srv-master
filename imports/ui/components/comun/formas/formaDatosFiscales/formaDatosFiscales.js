@@ -8,8 +8,6 @@ import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegi
 class FormaDatosFiscales {
     constructor($scope) {
         'ngInject';
-        this.pasoDos = false;
-        this.habilitarCampos = true;
         this.abreviacion = '';
     }
 
@@ -20,16 +18,13 @@ class FormaDatosFiscales {
         delete this.datos.apellidoMaterno;
         delete this.datos._id;
         this.datos.tipoPersona = 'PM';
-        this.pasoDos = true;
-        this.habilitarCampos = false;
     }
     esPersonaFisica() {
         delete this.datos.email;
         delete this.datos.razonSocial;
         delete this.datos._id;
         this.datos.tipoPersona = 'PF';
-        this.pasoDos = true;
-        this.habilitarCampos = true;
+
     }
 
 }
@@ -54,7 +49,7 @@ export default angular
             restrict: 'EA',
             require: '?ngModel',
             link: function (scope, element, attrs, ngModel) {
-                ngModel.$asyncValidators.buscarRfc = function (modelValue, viewValue) {
+                ngModel.$asyncValidators.existerfc = function (modelValue, viewValue) {
                     let rfc = modelValue || viewValue;
                     return buscarRfc.callPromise({
                         rfc: rfc
