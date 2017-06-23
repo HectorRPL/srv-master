@@ -5,9 +5,13 @@ import {Meteor} from "meteor/meteor";
 import {Empleados} from "../collection";
 
 if (Meteor.isServer) {
-    // Trae t.o.d.o. el inventario
-    Meteor.publish('empleados.porTienda', function (tiendaId) {
-        return Empleados.find(tiendaId);
+    Meteor.publish('empleados.porTienda', function (filter, options) {
+
+        Counts.publish(this, 'numEmpleados', Empleados.find(filter), {
+            noReady: true
+        });
+        console.log(JSON.stringify(filter));
+        return Empleados.find(filter, options);
     });
 
 }
