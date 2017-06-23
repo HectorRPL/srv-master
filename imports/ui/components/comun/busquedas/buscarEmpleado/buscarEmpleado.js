@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 23/06/17.
  */
-import {buscarEmpleados} from "../../../../../api/catalogos/tiendas/"
+import {buscarEmpleados} from "../../../../../api/empleados/busquedas"
 import template from "./buscarEmpleado.html";
 
 class BuscarEmpleado {
@@ -15,7 +15,7 @@ class BuscarEmpleado {
     }
 
     buscar(valor) {
-        return buscarEmpleados.callPromise({nombre: valor}).then(function (result) {
+        return buscarEmpleados.callPromise({tiendaId: this.tiendaid, nombre: valor}).then(function (result) {
             return result;
         });
     }
@@ -31,6 +31,7 @@ export default angular
         controllerAs: name,
         controller: BuscarEmpleado,
         bindings: {
+            tiendaid: '<',
             empleado: '='
         },
     });
