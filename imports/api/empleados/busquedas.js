@@ -11,6 +11,7 @@ export const buscarEmpleados = new ValidatedMethod({
     name: 'empleados.buscarEmpleados',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
+        tiendaId: {type:String},
         nombre: {type: String}
     }).validator(),
     run({nombre}) {
