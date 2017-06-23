@@ -2,6 +2,7 @@
  * Created by Héctor on 13/04/2017.
  */
 import {name as BuscarMarca} from "../../../../comun/busquedas/buscarMarca/buscarMarca";
+import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {cambioFactorProducto} from "../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import template from "./aplicarFactorProductos.html";
@@ -11,10 +12,11 @@ class AplicarFactorProductos {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-
+        this.marcaSelec = '';
+        this.productoSelec = '';
         this.titulo   = 'Aplicar Factor';
         this.factorId = $stateParams.factorId;
-        this.tiendaid = $stateParams.tiendaid;
+        this.tiendaId = $stateParams.tiendaId;
     }
 
     aplicar() {
@@ -43,7 +45,8 @@ const name = 'aplicarFactorProductos';
 export default angular
     .module(name, [
         Alertas,
-        BuscarMarca
+        BuscarMarca,
+        BuscarProducto
     ])
     .component(name, {
         template,

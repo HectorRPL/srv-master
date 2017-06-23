@@ -10,6 +10,7 @@ class BuscarMarca {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+        this.marca = '';
 
     }
 
