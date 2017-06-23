@@ -5,9 +5,11 @@ import {Meteor} from "meteor/meteor";
 import {Tiendas} from "../collection";
 
 if (Meteor.isServer) {
-    Meteor.publish('tiendas.todas', function () {
-
-        return Tiendas.find();
+    Meteor.publish('tiendas.todas', function (filter, options) {
+        Counts.publish(this, 'numTiendas', Tiendas.find(filter), {
+            noReady: true
+        });
+        return Tiendas.find(filter, options);
     });
 
     Meteor.publish('tiendas.seleccionada', function (tiendaId) {
