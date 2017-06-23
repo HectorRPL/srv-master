@@ -6,6 +6,7 @@ import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
 import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
+import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
 
 class ListaTiendas {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -14,13 +15,32 @@ class ListaTiendas {
         $reactive(this).attach($scope);
         this.titulo = 'Tiendas';
         this.$uibModal = $uibModal;
-        this.subscribe('tiendas.todas');
+        this.tiendaSelec = '';
+        this.perPage = 10;
+        this.page = 1;
+        this.subscribe('tiendas.todas', ()=>
+            [
+                {
+                    _id: this.getReactively('tiendaSelec._id')
+                },
+                {
+                    limit: parseInt(this.perPage),
+                    skip: parseInt((this.getReactively('page') - 1) * this.perPage)
+                }
+            ]);
 
         this.helpers({
             tiendas(){
                 return Tiendas.find();
+            },
+            tiendasCount(){
+                return Counts.get('numTiendas');
             }
         });
+    }
+
+    pageChanged(newPage) {
+        this.page = newPage;
     }
 
 }
@@ -32,7 +52,8 @@ export default angular
     .module(name, [
         TituloPrincipal,
         AgregarTienda,
-        AgregarSucursal
+        AgregarSucursal,
+        BuscarTienda
     ])
     .component(name, {
         template,
