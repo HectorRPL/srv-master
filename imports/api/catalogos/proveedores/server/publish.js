@@ -5,9 +5,12 @@ import {Meteor} from "meteor/meteor";
 import {Proveedores} from "../collection";
 
 if (Meteor.isServer) {
-    Meteor.publish('proveedores.todos', function (filter) {
+    Meteor.publish('proveedores.todos', function (filter, options) {
 
-        return Proveedores.find(filter);
+        Counts.publish(this, 'numProveedores', Proveedores.find(filter), {
+            noReady: true
+        });
+        return Proveedores.find(filter, options);
     });
 
 }

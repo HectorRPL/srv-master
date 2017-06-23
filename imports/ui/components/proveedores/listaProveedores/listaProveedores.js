@@ -4,7 +4,7 @@
 import template from "./listaProveedores.html";
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as AgregarProveedor} from '../agregarProveedor/agregarProveedor';
-import {buscarProveedor} from "../../../../api/catalogos/proveedores/busquedas";
+import {name as BuscarProveedor} from '../../comun/busquedas/buscarProveedor/buscarProveedor'
 
 
 class ListaProveedores {
@@ -15,13 +15,32 @@ class ListaProveedores {
         this.titulo = 'Todos los Proveedores';
         this.$uibModal = $uibModal;
         this.proveedorSelec = '';
-        this.subscribe('proveedores.todos', ()=> [{_id: this.getReactively('proveedorSelec._id')}] );
+        this.perPage = 10;
+        this.page = 1;
+        this.subscribe('proveedores.todos', ()=>
+            [
+                {
+                    _id: this.getReactively('proveedorSelec._id')
+                },
+                {
+                    limit: parseInt(this.perPage),
+                    skip: parseInt((this.getReactively('page') - 1) * this.perPage)
+                }
+            ]
+        );
 
         this.helpers({
             proveedores(){
                 return Proveedores.find();
+            },
+            proveedoresCount(){
+                return Counts.get('numProveedores');
             }
         });
+    }
+
+    pageChanged(newPage) {
+        this.page = newPage;
     }
 
 
@@ -35,14 +54,6 @@ class ListaProveedores {
         });
     }
 
-    buscarProveedor(valor) {
-        return buscarProveedor.callPromise({
-            nombre: valor
-        }).then(function (result) {
-            return result;
-        });
-    }
-
 
 }
 
@@ -51,7 +62,8 @@ const name = 'listaProveedores';
 // create a module
 export default angular
     .module(name, [
-        AgregarProveedor
+        AgregarProveedor,
+        BuscarProveedor
     ])
     .component(name, {
         template,

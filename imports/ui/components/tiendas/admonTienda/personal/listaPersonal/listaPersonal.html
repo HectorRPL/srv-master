@@ -1,26 +1,24 @@
 <div class="row">
     <div class="col-xs-4">
-        <a class="btn btn-primary btn-sm" ui-sref="app.tienda.admon.personal.agregar.datosPersonales">Agregar Empleado</a>
+        <a class="btn btn-primary btn-sm" ui-sref="app.tienda.admon.personal.agregar.datosPersonales">Agregar
+            Empleado</a>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-2">
 
     </div>
-    <div class="col-xs-4">
-        <div class="input-group">
-            <input type="text" placeholder="Buscar Tienda" class="input form-control">
-            <span class="input-group-btn">
-                    <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Buscar</button>
-                </span>
-        </div>
+    <div class="col-xs-6">
+        <buscar-empleado tiendaid="listaPersonal.tiendaId" empleado="listaPersonal.empleadoSelec"></buscar-empleado>
+        {{listaPersonal.empleadoSelec}}
     </div>
 </div>
 <div class="full-height-scroll" full-scroll>
     <div class="table-responsive">
         <table class="table table-striped table-hover">
             <tbody>
-            <tr ng-repeat="empleado in listaPersonal.empleados">
+            <tr dir-paginate="empleado in listaPersonal.empleados | itemsPerPage: listaPersonal.perPage"
+                total-items="listaPersonal.empleadosCount">
                 <td class="client-avatar"><img alt="image" src="images//a3.jpg"></td>
-                <td><a class="client-link">{{empleado.nombre}}&nbsp;{{empleado.apellidos}}&nbsp;</a></td>
+                <td><a class="client-link">{{empleado.nombreCompleto}}</a></td>
                 <td class="contact-type">
                     <small>Departamento:</small>
                 </td>
@@ -41,5 +39,6 @@
             </tr>
             </tbody>
         </table>
+        <dir-pagination-controls on-page-change="listaPersonal.pageChanged(newPageNumber)"></dir-pagination-controls>
     </div>
 </div>

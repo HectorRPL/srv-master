@@ -8,12 +8,7 @@
 
     </div>
     <div class="col-xs-4">
-        <div class="input-group">
-            <input type="text" placeholder="Buscar Tienda" class="input form-control">
-            <span class="input-group-btn">
-                                        <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Buscar</button>
-                                </span>
-        </div>
+        <buscar-tienda tienda="listaTiendas.tiendaSelec"></buscar-tienda>
     </div>
 </div>
 <div class="clients-list">
@@ -21,7 +16,8 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tbody>
-                <tr ng-repeat="tienda in listaTiendas.tiendas">
+                <tr dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
+                    total-items="listaTiendas.tiendasCount">
                     <td><a ui-sref="app.tienda.admon.personal.lista({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
                     <td><i class="fa fa-envelope"> </i> {{tienda.email}}</td>
                     <td><i class="fa fa-phone"> </i> +{{tienda.telefonos[0].telefono}}</td>
@@ -33,6 +29,7 @@
                 </tr>
                 </tbody>
             </table>
+            <dir-pagination-controls on-page-change="listaTiendas.pageChanged(newPageNumber)"></dir-pagination-controls>
         </div>
     </div>
 </div>

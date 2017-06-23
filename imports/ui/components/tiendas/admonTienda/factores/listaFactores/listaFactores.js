@@ -2,7 +2,7 @@
  * Created by Héctor on 13/06/2017.
  */
 import {Factores} from "../../../../../../api/factores/collection";
-import {name as BuscarMarcaProducto} from "../../../../comun/busquedas/buscarMarcaProducto/buscarMarcaProducto";
+import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {name as ListaProductosXMarca} from "../../../../comun/listaProductosXMarca/listaProductosXMarca";
 import {name as AplicarFactorProductos} from "../aplicarFactorProductos/aplicarFactorProductos"
 import utilsPagination from "angular-utils-pagination";
@@ -50,7 +50,7 @@ const name = 'listaFactores';
 
 export default angular
     .module(name, [
-        BuscarMarcaProducto,
+        BuscarProducto,
         ListaProductosXMarca,
         utilsPagination,
         AplicarFactorProductos

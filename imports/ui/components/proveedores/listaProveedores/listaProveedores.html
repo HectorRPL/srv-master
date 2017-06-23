@@ -8,16 +8,7 @@
 
     </div>
     <div class="col-xs-4">
-        <div class="input-group">
-            <input type="text"
-                   class="form-control"
-                   ng-model="listaProveedores.proveedorSelec"
-                   uib-typeahead="proveedor as proveedor.nombre for proveedor in listaProveedores.buscarProveedor($viewValue)"
-                   placeholder="Nombre Proveedor">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> Search</button>
-            </span>
-        </div>
+        <buscar-proveedor proveedor="listaProveedores.proveedorSelec"></buscar-proveedor>
     </div>
 </div>
 <div class="clients-list">
@@ -25,7 +16,8 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <tbody>
-                <tr ng-repeat="proveedor in listaProveedores.proveedores">
+                <tr dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
+                    total-items="listaProveedores.proveedoresCount">
                     <td><a class="client-link">{{proveedor.nombre}}</a></td>
                     <td class="contact-type"><i class="fa fa-envelope"> </i></td>
                     <td> {{proveedor.email}}</td>
@@ -41,6 +33,7 @@
                 </tr>
                 </tbody>
             </table>
+            <dir-pagination-controls on-page-change="listaProveedores.pageChanged(newPageNumber)"></dir-pagination-controls>
         </div>
     </div>
 </div>

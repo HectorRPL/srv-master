@@ -8,28 +8,25 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Productos} from "./collection";
 
-export const buscarProducto = new ValidatedMethod({
-    name: 'marcas.buscarProducto',
+export const buscarProductos = new ValidatedMethod({
+    name: 'productos.buscarProductos',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
-        marcaId: {type: String},
+        marcaId: {type: String, optional: true},
         codigo: {type: String}
     }).validator(),
     run({marcaId, codigo}) {
-        const selector = {
-            $and: [
-                {marcaId: marcaId},
-                {campoBusqueda: {$regex: codigo, $options: 'i'}}
-            ]
-        };
-
-        let options = {fields: {_id: 1, campoBusqueda: 1}};
+        let selector = {campoBusqueda: {$regex: codigo, $options: 'i'}};
+        if(marcaId){
+           selector = {$and:[{marcaId: marcaId}, {campoBusqueda: {$regex: codigo, $options: 'i'}}]};
+        }
+        let options = {fields: {_id: 1, marcaId:1, campoBusqueda: 1}, limit: 10};
         const resultado = Productos.find(selector, options).fetch();
         return resultado;
     }
 });
 
-const BUSQUEDAS_PRODUCTOS_METHODS = _.pluck([buscarProducto], 'name');
+const BUSQUEDAS_PRODUCTOS_METHODS = _.pluck([buscarProductos], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

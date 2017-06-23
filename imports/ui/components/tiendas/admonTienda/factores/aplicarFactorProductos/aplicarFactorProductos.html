@@ -1,14 +1,21 @@
 <h5>Aplicar Factor</h5>
 <div class="ibox-content">
-    <buscar-marca-producto
-            marca="aplicarFactorProductos.marcaSelec"
-            prod="aplicarFactorProductos.prodSelec">
-    </buscar-marca-producto>
+    <div class="row">
+        <div class="col-xs-4">
+            <buscar-marca marca="aplicarFactorProductos.marcaSelec"></buscar-marca>
+        </div>
+        <div class="col-xs-6">
+            <buscar-producto marcaid="aplicarFactorProductos.marcaSelec._id"
+                             producto="aplicarFactorProductos.productoSelec">
+            </buscar-producto>
+        </div>
+    </div>
+
     <!--ng-show="aplicarFactorProductos.prodSelec"-->
     <lista-productos-x-marca
             marca="aplicarFactorProductos.marcaSelec"
-            prod="aplicarFactorProductos.prodSelec"
-            tiendaid="aplicarFactorProductos.tiendaid">
+            prod="aplicarFactorProductos.productoSelec"
+            tiendaid="aplicarFactorProductos.tiendaId">
     </lista-productos-x-marca>
 
     <div class="row">
