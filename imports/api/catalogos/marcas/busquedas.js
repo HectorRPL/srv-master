@@ -23,11 +23,11 @@ export const buscarMarcas = new ValidatedMethod({
 });
 
 
-const BUSCAR_MARCAS_METHODS = _.pluck([buscarMarcas], 'name');
+const BUSQUEDAS_MARCAS_METHODS = _.pluck([buscarMarcas], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
-            return _.contains(BUSCAR_MARCAS_METHODS, name);
+            return _.contains(BUSQUEDAS_MARCAS_METHODS, name);
         },
         connectionId() {
             return true;

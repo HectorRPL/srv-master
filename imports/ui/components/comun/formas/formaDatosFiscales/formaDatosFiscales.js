@@ -3,7 +3,7 @@
  */
 import template from "./formaDatosFiscales.html";
 import {buscarRfc} from "../../../../../api/datosFiscales/busquedas";
-import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad"
+import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad";
 
 class FormaDatosFiscales {
     constructor($scope) {
@@ -14,6 +14,7 @@ class FormaDatosFiscales {
     esPersonaMoral() {
         delete this.datos.email;
         delete this.datos.nombre;
+        delete this.datos.segundoNombre;
         delete this.datos.apellidoPaterno;
         delete this.datos.apellidoMaterno;
         delete this.datos._id;

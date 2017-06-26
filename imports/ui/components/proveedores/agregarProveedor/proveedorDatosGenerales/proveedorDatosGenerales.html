@@ -9,7 +9,7 @@
                 <div class="col-sm-6">
                     <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.nombre.$invalid && !datosGeneralesForm.nombre.$pristine}">
                         <div ng-messages="datosGeneralesForm.nombre.$dirty && datosGeneralesForm.nombre.$error" role="alert">
-                            <label>Nombre *
+                            <label>Nombre corto*
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
@@ -17,7 +17,7 @@
                             <input id="nombreId" class="form-control" name="nombre" type="text"
                                    placeholder="EJ: METALFLU DEL SUR" aria-describedby="sizing-addon1"
                                    minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
-                                   ng-pattern="/^[a-zA-ZñÑ.\s]+$/" required
+                                   ng-pattern="/^[ñÑ\w]+$/" required
                                    ng-model="proveedorDatosGenerales.datos.nombre">
                         </div>
                     </div>
