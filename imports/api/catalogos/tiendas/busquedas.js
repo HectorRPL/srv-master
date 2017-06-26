@@ -25,11 +25,11 @@ export const buscarTiendas = new ValidatedMethod({
 });
 
 
-const BUSCAR_TIENDAS_METHODS = _.pluck([buscarTiendas], 'name');
+const BUSQUEDAS_TIENDAS_METHODS = _.pluck([buscarTiendas], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
-            return _.contains(BUSCAR_TIENDAS_METHODS, name);
+            return _.contains(BUSQUEDAS_TIENDAS_METHODS, name);
         },
         connectionId() {
             return true;
