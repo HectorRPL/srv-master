@@ -54,6 +54,24 @@ Schema.datosFiscales = new SimpleSchema({
             }
         }
     },
+    segundoNombre: {
+        type: String,
+        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
+        optional: true,
+        custom: function () {
+            let shouldBeRequired = this.field('tipoPersona').value == 'PF';
+            if (shouldBeRequired) {
+                if (!this.operator) {
+                    if (!this.isSet || this.value === null || this.value === '') return "required";
+                }
+            }
+        },
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
+    },
     apellidoPaterno: {
         type: String,
         regEx: /^[a-zA-Z-Ññ-\s\d]+$/,

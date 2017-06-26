@@ -12,6 +12,7 @@ const CAMPOS_DATOS_FISCALES = [
     '_id',
     'propietarioId',
     'nombre',
+    'segundoNombre',
     'apellidoPaterno',
     'apellidoMaterno',
     'razonSocial',
@@ -36,7 +37,7 @@ export const altaDatosFiscales = new ValidatedMethod({
         filter: false
     }),
     run({
-        _id, propietarioId, nombre, apellidoPaterno, apellidoMaterno, razonSocial,
+        _id, propietarioId, nombre, segundoNombre, apellidoPaterno, apellidoMaterno, razonSocial,
         email, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt,
         tipoPersona, curp
     }) {
@@ -44,6 +45,7 @@ export const altaDatosFiscales = new ValidatedMethod({
             _id,
             propietarioId,
             nombre,
+            segundoNombre,
             apellidoPaterno,
             apellidoMaterno,
             razonSocial,

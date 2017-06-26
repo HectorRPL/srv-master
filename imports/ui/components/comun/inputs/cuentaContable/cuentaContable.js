@@ -2,6 +2,7 @@
  * Created by Héctor on 23/06/2017.
  */
 import {buscarCuentaContable} from "../../../../../api/catalogos/proveedores/busquedas";
+import uiMask from "angular-ui-mask";
 import template from "./cuentaContable.html";
 
 class CuentaContable {
@@ -14,7 +15,9 @@ class CuentaContable {
 const name = 'cuentaContable';
 
 export default angular
-    .module(name, [])
+    .module(name, [
+        uiMask
+    ])
     .component(name, {
         template,
         controllerAs: name,
@@ -34,7 +37,6 @@ export default angular
                         cc: cuentaContable
                     }).then(function (result) {
                         if (result.length != 0) {
-                            console.log('Esta entrando a la linea 37');
                             return $q.reject('Encontrado');
                         } else {
                             // scope.proveedorDatosGenerales.datos.cuentaContable = '';

@@ -2,11 +2,14 @@
        class="form-control"
        name="cuentaContable"
        type="text"
-       placeholder=""
        aria-describedby="sizing-addon1"
-       minlength="9"
-       maxlength="9"
-       ng-pattern="/^[0-9]{9}$/"
+       minlength="12"
+       maxlength="12"
+       ng-pattern="/^[0-9-]{12}$/"
        required
        buscar-cuenta-contable
+       ui-mask="9999-999-999"
+       ui-mask-placeholder
+       ui-mask-placeholder-char="_"
+       model-view-value="true"
        ng-model="cuentaContable.dato">
