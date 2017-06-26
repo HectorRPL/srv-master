@@ -5,9 +5,12 @@ import {Meteor} from "meteor/meteor";
 import {Marcas} from "../collection";
 
 if (Meteor.isServer) {
-    Meteor.publish('marcas.todas', function () {
+    Meteor.publish('marcas.todas', function (filter, options) {
+        Counts.publish(this, 'numMarcas', Marcas.find(filter), {
+            noReady: true
+        });
+        return Marcas.find(filter, options);
 
-        return Marcas.find();
     });
 
     Meteor.publish('marcas.nombre', function (nombre) {
