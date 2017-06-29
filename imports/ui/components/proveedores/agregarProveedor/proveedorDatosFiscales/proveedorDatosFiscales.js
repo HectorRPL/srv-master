@@ -6,7 +6,7 @@ import {name as Alertas} from "../../../comun/alertas/alertas";
 import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 
-class proveedorDatosFiscales {
+class ProveedorDatosFiscales {
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
@@ -51,7 +51,7 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: proveedorDatosFiscales
+        controller: ProveedorDatosFiscales
     })
     .config(config);
 

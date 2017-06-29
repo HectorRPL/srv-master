@@ -4,8 +4,8 @@
 import template from "./listaProveedores.html";
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as AgregarProveedor} from '../agregarProveedor/agregarProveedor';
-import {name as BuscarProveedor} from '../../comun/busquedas/buscarProveedor/buscarProveedor'
-
+import {name as EditarProveedor} from '../editarProveedor/editarProveedor';
+import {name as BuscarProveedor} from '../../comun/busquedas/buscarProveedor/buscarProveedor';
 
 class ListaProveedores {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -63,6 +63,7 @@ const name = 'listaProveedores';
 export default angular
     .module(name, [
         AgregarProveedor,
+        EditarProveedor,
         BuscarProveedor
     ])
     .component(name, {

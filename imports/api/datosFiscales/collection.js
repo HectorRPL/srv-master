@@ -29,8 +29,11 @@ Schema.datosFiscales = new SimpleSchema({
     _id: {
         type: String,
         autoValue: function () {
-            return this.value.toUpperCase();
+            if (this.value) {
+                return this.value.toUpperCase();
+            }
         }
+
     },
     propietarioId: {
         type: String,
@@ -38,7 +41,7 @@ Schema.datosFiscales = new SimpleSchema({
     },
     nombre: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
+        regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
         custom: function () {
             let shouldBeRequired = this.field('tipoPersona').value == 'PF';
@@ -56,7 +59,7 @@ Schema.datosFiscales = new SimpleSchema({
     },
     segundoNombre: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
+        regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
         custom: function () {
             let shouldBeRequired = this.field('tipoPersona').value == 'PF';
@@ -74,7 +77,7 @@ Schema.datosFiscales = new SimpleSchema({
     },
     apellidoPaterno: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
+        regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
         custom: function () {
             let shouldBeRequired = this.field('tipoPersona').value == 'PF';
@@ -92,7 +95,7 @@ Schema.datosFiscales = new SimpleSchema({
     },
     apellidoMaterno: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
+        regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
         autoValue: function () {
             if (this.value) {
@@ -104,12 +107,14 @@ Schema.datosFiscales = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Email,
         autoValue: function () {
-            return this.value.toUpperCase()
+            if (this.value) {
+                return this.value.toUpperCase();
+            }
         }
     },
     razonSocial: {
         type: String,
-        regEx: /^[a-zA-Z-Ññ.,-\s\d]+$/,
+        regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
         custom: function () {
             let shouldBeRequired = this.field('tipoPersona').value == 'PM';
@@ -125,11 +130,46 @@ Schema.datosFiscales = new SimpleSchema({
             }
         }
     },
+    tipoSociedad: {
+        type: String,
+        regEx: /^[a-zA-Z-Ññ.\s]+$/,
+        optional: true,
+        custom: function () {
+            let shouldBeRequired = this.field('tipoPersona').value == 'PM';
+            if (shouldBeRequired) {
+                if (!this.operator) {
+                    if (!this.isSet || this.value === null || this.value === '') return "required";
+                }
+            }
+        },
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase();
+            }
+        }
+    },
+    tipoPersona: {
+        type: String
+    },
+    /*
+    curp: {
+        type: String,
+        optional: true,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
+        }
+    },
+     */
+
+    /* DIRECCION FISCAL */
+
     calle: {
         type: String,
         max: 40,
         min: 1,
-        regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        regEx: /^[a-zA-Z./&Ññ-\s\d]+$/,
         autoValue: function () {
             return this.value.toUpperCase()
         }
@@ -154,7 +194,7 @@ Schema.datosFiscales = new SimpleSchema({
         type: String,
         max: 3,
         min: 1,
-        regEx: /^[a-zA-Z-/.&ñáéíóú-\s\d]+$/,
+        regEx: /^[a-zA-Z]+$/,
         autoValue: function () {
             return this.value.toUpperCase()
         }
@@ -167,11 +207,17 @@ Schema.datosFiscales = new SimpleSchema({
             return this.value.toUpperCase()
         }
     },
+    codigoPostal: {
+        type: String,
+        max: 5,
+        min: 5,
+        regEx: /^[0-9]{5}$/
+    },
     numExt: {
         type: String,
         max: 20,
         min: 1,
-        regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        regEx: /^[a-zA-Z./&Ññ-\s\d]+$/,
         autoValue: function () {
             if(this.value){
                 return this.value.toUpperCase()
@@ -182,31 +228,13 @@ Schema.datosFiscales = new SimpleSchema({
         type: String,
         max: 20,
         min: 1,
-        regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
+        regEx: /^[a-zA-Z./&Ññ-\s\d]+$/,
         optional: true,
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase()
             }
         }
-    },
-    curp: {
-        type: String,
-        optional: true,
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase()
-            }
-        }
-    },
-    codigoPostal: {
-        type: String,
-        max: 5,
-        min: 5,
-        regEx: /^[0-9]{5}$/
-    },
-    tipoPersona: {
-        type: String
     },
     codigoPais: {
         type: String,

@@ -8,7 +8,7 @@ import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegi
 class FormaDatosFiscales {
     constructor($scope) {
         'ngInject';
-        this.abreviacion = '';
+        // this.datos.abreviacion = '';
     }
 
     esPersonaMoral() {
@@ -23,6 +23,7 @@ class FormaDatosFiscales {
     esPersonaFisica() {
         delete this.datos.email;
         delete this.datos.razonSocial;
+        delete this.datos.tipoSociedad;
         delete this.datos._id;
         this.datos.tipoPersona = 'PF';
 

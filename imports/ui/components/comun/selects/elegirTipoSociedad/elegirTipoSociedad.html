@@ -4,5 +4,7 @@
         required
         ng-model="elegirTipoSociedad.tiposociedad">
     <option value="">ELEGIR</option>
-    <option ng-repeat="tipoSociedad in elegirTipoSociedad.abreviaturas" value="{{tipoSociedad.abreviacion}}">{{tipoSociedad.abreviacion}}</option>
+    <option ng-repeat="tipoSociedad in elegirTipoSociedad.abreviaturas"
+            value="{{tipoSociedad.abreviacion}}">{{tipoSociedad.abreviacion}}
+    </option>
 </select>

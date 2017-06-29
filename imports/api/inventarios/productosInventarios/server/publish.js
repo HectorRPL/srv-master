@@ -8,7 +8,7 @@ if (Meteor.isServer) {
     // Trae t.o.d.o. el inventario
     Meteor.publish('productosInventarios.tiendaMarca', function (filter, options) {
         if (Object.keys(filter).length === 0 && filter.constructor === Object) {
-            this.ready;
+            this.ready();
         } else {
             const selector = {$and: [filter]};
             Counts.publish(this, 'numProdsInventarios', ProductosInventarios.find(selector), {

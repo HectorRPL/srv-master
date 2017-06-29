@@ -16,12 +16,6 @@ class AgregarProveedor {
             {titulo: "Datos Personales", estado: ".datos", icono: 'fa fa-user'},
             {titulo: "Direccion", estado: ".fiscales", icono: 'fa fa-cubes'}
         ];
-
-        this.pasoActual = 1;
-        this.datosFiscales = {};
-        this.datos =  {
-            telefonos: [{telefono: ''}]
-        };
     }
 }
 
