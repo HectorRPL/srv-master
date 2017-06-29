@@ -1,10 +1,10 @@
 <form role="form" class="p-lg" id="agregarTiendaFrmId" name="agregarTiendaFrm" novalidate>
     <!--DATOS FISCALES-->
     <div class="row animated fadeInRight">
-        <div class="col-sm-4  b-r">
-            <h3>Datos Fiscales</h3>
+        <div class="col-sm-4 b-r">
             <div class="row">
                 <div class="col-sm-12">
+                    <h3>Datos Fiscales</h3>
                     <div class="contact-box">
                         <a href="">
                             <div class="col-sm-4">
@@ -15,7 +15,7 @@
                             <div class="col-sm-8">
                                 <h3><strong>{{editarProveedorFiscales.datosFiscales.razonSocial}} {{editarProveedorFiscales.datosFiscales.tipoSociedad}}</strong></h3>
                                 <h3><strong>{{editarProveedorFiscales.datosFiscales.nombre}} {{editarProveedorFiscales.datosFiscales.segundoNombre}} {{editarProveedorFiscales.datosFiscales.apellidoPaterno}} {{editarProveedorFiscales.datosFiscales.apellidoMaterno}}</strong></h3>
-                                <p class="m-t-xs font-bold">{{editarProveedorFiscales.datosFiscales._id}}</p>
+                                <p class="m-t-xs font-bold">RFC: <strong>{{editarProveedorFiscales.datosFiscales._id}}</strong></p>
                                 <address>
                                     <strong><i class="fa fa-envelope-o"></i> {{editarProveedorFiscales.datosFiscales.email}}</strong><br>
                                     {{editarProveedorFiscales.datosFiscales.calle}}, {{editarProveedorFiscales.datosFiscales.numInt}}, {{editarProveedorFiscales.datosFiscales.numExt}}, {{editarProveedorFiscales.datosFiscales.colonia}},<br>
@@ -26,14 +26,61 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-sm-12">
+                    <!--BOTON EDITAR -->
+                    <button type="button"
+                            class="btn btn-primary btn-xs pull-right"
+                            ng-hide="editarProveedorFiscales.ocultarBoton"
+                            ng-click="editarProveedorFiscales.editar()">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <h3>Dirección Fiscal</h3>
+
+
+
+        <!-- MOSTRAR CUANDO LA BASE NO CONTENGA DATOS FISCALES -->
+        <div class="col-sm-8 animated fadeInRight"
+             ng-if="editarProveedorFiscales.muestrarDatosFiscales">
+
             <div class="row">
+                <div class="col-sm-12">
+                    <h3>Datos Fiscales</h3>
+                </div>
+            </div>
+            <div class="row">
+                <forma-datos-fiscales datos="editarProveedorFiscales.datosFiscales"></forma-datos-fiscales>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Dirección Fiscal</h3>
+                </div>
+            </div>
+            <div class="row animated fadeInRight"
+                 ng-hide="editarProveedorFiscales.datosFiscales.tipoPersona === undefined">
                 <forma-direccion direccion="editarProveedorFiscales.datosFiscales"></forma-direccion>
             </div>
         </div>
+
+
+        <!-- MOSTRAR CUANDO LA BASE CONTENGA DATOS FISCALES -->
+        <div class="col-sm-8 animated fadeInRight"
+             ng-if="editarProveedorFiscales.muestraSoloDireccion">
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Dirección Fiscal</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                <forma-direccion direccion="editarProveedorFiscales.datosFiscales"></forma-direccion>
+            </div>
+        </div>
+
     </div>
     <hr>
     <!--DIRECCIÓN FISCAL-->
@@ -48,6 +95,7 @@
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
+                    ng-hide="editarProveedorFiscales.ocultarBoton != true"
                     ng-disabled="agregarTiendaFrm.$invalid"
                     ng-click="editarProveedorFiscales.actualizarDireccion()">
                 Actualizar

@@ -18,7 +18,7 @@
                 <tbody>
                 <tr dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
                     total-items="listaProveedores.proveedoresCount">
-                    <td><a class="client-link"><pre>{{proveedor | json}}</pre></a></td>
+                    <!--<td><a class="client-link"><pre>{{proveedor | json}}</pre></a></td>-->
                     <td><a class="client-link">{{proveedor.nombre}}</a></td>
                     <td class="contact-type"><i class="fa fa-envelope"> </i></td>
                     <td> {{proveedor.email}}</td>

@@ -30,7 +30,7 @@ Proveedores.schema = new SimpleSchema({
     },
     nombre: {
         type: String,
-        regEx: /^[ñÑ\w]+$/,
+        regEx: /^[ñÑ\s\w]+$/,
         min: 2,
         max: 70,
         autoValue: function () {

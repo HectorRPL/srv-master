@@ -3,29 +3,38 @@
  */
 import template from "./editarProveedorGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
+import {name as FormaDatosProveedores} from "../../../comun/formas/formaDatosProveedores/formaDatosProveedores";
 import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class EditarProveedorGenerales {
-    constructor($scope, $reactive, $state) {
+    constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$scope = $scope;
         this.$state = $state;
         $reactive(this).attach($scope);
 
-        this.tipoMsj = '';
-        this.datos =  {
-            telefonos: [{telefono: ''}]
-        };
+        this.propietarioId = $stateParams.proveedorId;
+        console.log('$stateParams.proveedorId', $stateParams.proveedorId)
 
+        this.tipoMsj = '';
+
+        this.proveedor = {};
+
+        this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
+        console.log('SEGÚN ESTO ES EL this.proveedorId', this.proveedorId);
+
+        this.helpers({
+            proveedor(){
+                console.log('TRAER EL PROVEEDOR [26]', Proveedores.findOne());
+                return Proveedores.findOne();
+            }
+        });
     }
 
-    agregarTelefono() {
-        this.nuevoTelefono = {
-            telefono: this.telefono,
-            extension: this.extension,
-        };
-        this.datos.telefonos.push(this.nuevoTelefono);
+
+    editar() {
+        this.ocultarBoton = true;
     }
 
     guardar() {
@@ -49,7 +58,7 @@ const name = 'editarProveedorGenerales';
 export default angular
     .module(name, [
         Alertas,
-        CuentaContable
+        FormaDatosProveedores
     ])
     .component(name, {
         template,

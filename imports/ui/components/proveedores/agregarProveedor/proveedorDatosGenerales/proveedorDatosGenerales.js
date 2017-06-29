@@ -3,6 +3,7 @@
  */
 import template from "./proveedorDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDatosProveedores} from "../../../comun/formas/formaDatosProveedores/formaDatosProveedores";
 import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
 import {altaProveedor} from "../../../../../api/catalogos/proveedores/methods";
 
@@ -15,6 +16,8 @@ class ProveedorDatosGenerales {
 
         this.tipoMsj = '';
         this.$scope = $scope;
+        this.ocultarBoton = false;
+
         this.datos = {
             telefonos: [{telefono: ''}]
         };
@@ -49,6 +52,7 @@ const name = 'proveedorDatosGenerales';
 export default angular
     .module(name, [
         Alertas,
+        FormaDatosProveedores,
         CuentaContable
     ])
     .component(name, {
