@@ -3,7 +3,7 @@
  */
 import template from "./tiendaDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDatosTienda} from "../../../comun/formas/formaDatosTienda/formaDatosTienda";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import {altaTienda} from "../../../../../api/catalogos/tiendas/methods";
 import {altaDireccion} from "../../../../../api/direcciones/methods";
@@ -57,7 +57,7 @@ const name = 'tiendaDatosGenerales';
 export default angular
     .module(name, [
         Alertas,
-        FormaDatosTienda,
+        FormaDatosGenerales,
         FormaDireccion
     ])
     .component(name, {
