@@ -33,7 +33,12 @@ class EditarCuentaContable {
         this.ocultarBoton = true;
     }
 
-    actualizarDatosGenerales() {
+    limpiarCampos(editarCuentaContableForm) {
+        this.datos = {};
+        editarCuentaContableForm.$setPristine();
+    }
+
+    actualizarDatosGenerales(editarCuentaContableForm) {
         this.datos._id = this.propietarioId;
 
         cambiosCuentaContable.call(this.datos, this.$bindToContext((err, result) => {
@@ -43,6 +48,7 @@ class EditarCuentaContable {
             } else {
                 this.msj = 'Los datos de contacto se guardaron con éxito.';
                 this.tipoMsj = 'success';
+                this.limpiarCampos(editarCuentaContableForm);
             }
         }));
     }

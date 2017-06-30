@@ -71,13 +71,12 @@
         <div class="col-md-8">
             <alertas tipo="editarCuentaContable.tipoMsj" mensaje="editarCuentaContable.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="!editarCuentaContable.msj || editarCuentaContable.tipoMsj != 'success'">
+        <div class="col-md-3" ng-show="editarCuentaContable.ocultarBoton">
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-hide="editarCuentaContable.ocultarBoton != true"
                     ng-disabled="editarCuentaContableForm.$invalid"
-                    ng-click="editarCuentaContable.actualizarDatosGenerales()">
+                    ng-click="editarCuentaContable.actualizarDatosGenerales(editarCuentaContableForm)">
                 Actualizar
             </button>
         </div>

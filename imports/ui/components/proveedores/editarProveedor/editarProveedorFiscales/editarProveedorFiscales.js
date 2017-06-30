@@ -46,18 +46,23 @@ class EditarProveedorFiscales {
 
     }
 
-    actualizar() {
-        console.log(this.datosFiscales);
+    actualizar(agregarTiendaFrm) {
         if (this.datosFiscales) {
-            this.actualizarDireccion();
+            this.actualizarDireccion(agregarTiendaFrm);
         } else {
-            this.guardarDatosFiscales();
+            this.guardarDatosFiscales(agregarTiendaFrm);
         }
+    }
+
+    limpiarCampos(agregarTiendaFrm) {
+        this.datosFiscalesOriginal = {};
+        agregarTiendaFrm.$setPristine();
     }
 
 
 
-    actualizarDireccion() {
+
+    actualizarDireccion(agregarTiendaFrm) {
         delete this.datosFiscalesOriginal.colonias;
         delete this.datosFiscalesOriginal._id;
         delete this.datosFiscalesOriginal.tipoPersona;
@@ -80,11 +85,12 @@ class EditarProveedorFiscales {
             } else {
                 this.msj = 'Los datos fiscales se guardaron exitosamente.';
                 this.tipoMsj = 'success';
+                this.limpiarCampos(agregarTiendaFrm);
             }
         }));
     }
 
-    guardarDatosFiscales() {
+    guardarDatosFiscales(agregarTiendaFrm) {
         console.log('ESTO VAMOS A ENVIAR [83]', this.datosFiscalesOriginal);
         delete this.datosFiscalesOriginal.colonias;
 
@@ -96,6 +102,7 @@ class EditarProveedorFiscales {
             } else {
                 this.msj = 'Los datos fiscales se guardaron exitosamente.';
                 this.tipoMsj = 'success';
+                this.limpiarCampos(agregarTiendaFrm);
             }
         }));
     }

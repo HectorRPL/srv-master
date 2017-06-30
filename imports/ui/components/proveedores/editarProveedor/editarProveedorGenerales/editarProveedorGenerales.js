@@ -33,12 +33,17 @@ class EditarProveedorGenerales {
 
     }
 
-
     editar() {
         this.ocultarBoton = true;
     }
 
-    actualizarDatosGenerales() {
+    limpiarCampos(datosGeneralesForm) {
+        this.datosProveedorNuevo = {};
+        datosGeneralesForm.$setPristine();
+    }
+
+
+    actualizarDatosGenerales(datosGeneralesForm) {
         delete this.datosProveedorNuevo.cuentaContable;
         delete this.datosProveedorNuevo.fechaCreacion;
         delete this.datosProveedorNuevo._id;
@@ -53,6 +58,7 @@ class EditarProveedorGenerales {
             } else {
                 this.msj = 'Los datos de contacto se guardaron con éxito.';
                 this.tipoMsj = 'success';
+                this.limpiarCampos(datosGeneralesForm);
             }
         }));
     }
