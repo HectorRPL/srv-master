@@ -44,7 +44,7 @@
                 <div class="col-sm-12">
                     <h3>Datos Generales</h3>
                 </div>
-                <forma-datos-proveedores datos="editarProveedorGenerales.proveedor"></forma-datos-proveedores>
+                <forma-datos-generales datos="editarProveedorGenerales.datosProveedorNuevo"></forma-datos-generales>
             </div>
 
         </div>
@@ -58,11 +58,10 @@
         <div class="col-md-8">
             <alertas tipo="editarProveedorGenerales.tipoMsj" mensaje="editarProveedorGenerales.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="!editarProveedorGenerales.msj || editarProveedorGenerales.tipoMsj != 'success'">
+        <div class="col-md-3">
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-hide="editarProveedorGenerales.ocultarBoton != true"
                     ng-disabled="datosGeneralesForm.$invalid"
                     ng-click="editarProveedorGenerales.actualizarDatosGenerales()">
                 Actualizar

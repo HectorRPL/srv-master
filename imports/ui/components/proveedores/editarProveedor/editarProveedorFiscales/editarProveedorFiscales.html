@@ -18,7 +18,7 @@
                                 <p class="m-t-xs font-bold">RFC: <strong>{{editarProveedorFiscales.datosFiscales._id}}</strong></p>
                                 <address>
                                     <strong><i class="fa fa-envelope-o"></i> {{editarProveedorFiscales.datosFiscales.email}}</strong><br>
-                                    {{editarProveedorFiscales.datosFiscales.calle}}, {{editarProveedorFiscales.datosFiscales.numInt}}, {{editarProveedorFiscales.datosFiscales.numExt}}, {{editarProveedorFiscales.datosFiscales.colonia}},<br>
+                                    {{editarProveedorFiscales.datosFiscales.calle}}, {{editarProveedorFiscales.datosFiscales.numExt}}, {{editarProveedorFiscales.datosFiscales.numInt}}, {{editarProveedorFiscales.datosFiscales.colonia}},<br>
                                     {{editarProveedorFiscales.datosFiscales.delMpio}}, {{editarProveedorFiscales.datosFiscales.estado}}, {{editarProveedorFiscales.datosFiscales.codigoPostal}}<br>
                                 </address>
                             </div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="row">
-                <forma-datos-fiscales datos="editarProveedorFiscales.datosFiscales"></forma-datos-fiscales>
+                <forma-datos-fiscales datos="editarProveedorFiscales.datosFiscalesOriginal"></forma-datos-fiscales>
             </div>
 
             <div class="row">
@@ -59,8 +59,8 @@
                 </div>
             </div>
             <div class="row animated fadeInRight"
-                 ng-hide="editarProveedorFiscales.datosFiscales.tipoPersona === undefined">
-                <forma-direccion direccion="editarProveedorFiscales.datosFiscales"></forma-direccion>
+                 ng-hide="editarProveedorFiscales.datosFiscalesOriginal.tipoPersona === undefined">
+                <forma-direccion direccion="editarProveedorFiscales.datosFiscalesOriginal"></forma-direccion>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
             </div>
             <div class="row">
 
-                <forma-direccion direccion="editarProveedorFiscales.datosFiscales"></forma-direccion>
+                <forma-direccion direccion="editarProveedorFiscales.datosFiscalesOriginal"></forma-direccion>
             </div>
         </div>
 
@@ -91,13 +91,12 @@
         <div class="col-md-8">
             <alertas tipo="editarProveedorFiscales.tipoMsj" mensaje="editarProveedorFiscales.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="!editarProveedorFiscales.msj || editarProveedorFiscales.tipoMsj != 'success'">
+        <div class="col-md-3" ng-show="editarProveedorFiscales.muestrarDatosFiscales || editarProveedorFiscales.muestraSoloDireccion">
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-hide="editarProveedorFiscales.ocultarBoton != true"
                     ng-disabled="agregarTiendaFrm.$invalid"
-                    ng-click="editarProveedorFiscales.actualizarDireccion()">
+                    ng-click="editarProveedorFiscales.actualizar()">
                 Actualizar
             </button>
         </div>

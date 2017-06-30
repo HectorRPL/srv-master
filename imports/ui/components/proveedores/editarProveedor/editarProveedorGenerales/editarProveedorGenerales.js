@@ -3,7 +3,7 @@
  */
 import template from "./editarProveedorGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDatosProveedores} from "../../../comun/formas/formaDatosProveedores/formaDatosProveedores";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods";
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
@@ -22,11 +22,15 @@ class EditarProveedorGenerales {
 
         this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
 
+        this.datosProveedorNuevo = {};
         this.helpers({
             proveedor(){
-                return Proveedores.findOne();
+                this.datosProveedorNuevo = Proveedores.findOne({_id: $stateParams.proveedorId});
+                return angular.copy(this.datosProveedorNuevo);
             }
         });
+
+
     }
 
 
@@ -35,15 +39,14 @@ class EditarProveedorGenerales {
     }
 
     actualizarDatosGenerales() {
-        let proveedorFinal = angular.copy(this.proveedor);
+        delete this.datosProveedorNuevo.cuentaContable;
+        delete this.datosProveedorNuevo.fechaCreacion;
+        delete this.datosProveedorNuevo._id;
+        delete this.datosProveedorNuevo.activo;
+        delete this.datosProveedorNuevo.dias;
 
-        delete proveedorFinal.cuentaContable;
-        delete proveedorFinal.fechaCreacion;
-        delete proveedorFinal._id;
-        delete proveedorFinal.activo;
-
-        proveedorFinal._id = this.propietarioId;
-        cambiosProveedor.call(proveedorFinal, this.$bindToContext((err, result) => {
+        this.datosProveedorNuevo._id = this.propietarioId;
+        cambiosProveedor.call(this.datosProveedorNuevo, this.$bindToContext((err, result) => {
             if (err) {
                 this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
@@ -61,7 +64,7 @@ const name = 'editarProveedorGenerales';
 export default angular
     .module(name, [
         Alertas,
-        FormaDatosProveedores
+        FormaDatosGenerales
     ])
     .component(name, {
         template,

@@ -6,6 +6,7 @@ import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 import {cambiosDireccionFiscal} from "../../../../../api/datosFiscales/methods";
+import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 
 class EditarProveedorFiscales {
@@ -26,7 +27,8 @@ class EditarProveedorFiscales {
         this.subscribe('datosFiscales.proveedor', () => [{propietarioId: this.propietarioId}]);
         this.helpers({
             datosFiscales(){
-                return DatosFiscales.findOne();
+                this.datosFiscalesOriginal = DatosFiscales.findOne({propietarioId: this.propietarioId});
+                return angular.copy(this.datosFiscalesOriginal);
             }
         });
 
@@ -39,33 +41,39 @@ class EditarProveedorFiscales {
             this.muestrarDatosFiscales = true;
         } else {
 
-            this.datosFiscales.calle = '';
-            this.datosFiscales.delMpio = '';
-            this.datosFiscales.estado = '';
-            this.datosFiscales.estadoId = '';
-            this.datosFiscales.colonia = '';
-            this.datosFiscales.codigoPostal = '';
-            this.datosFiscales.numExt = '';
-            this.datosFiscales.numInt = '';
-            this.datosFiscales.codigoPais = '';
-
             this.muestraSoloDireccion = true;
         }
 
     }
 
-    actualizarDireccion() {
-        let datosFiscalesFinal = angular.copy(this.datosFiscales);
-        delete datosFiscalesFinal.colonias;
-        delete datosFiscalesFinal._id;
-        delete datosFiscalesFinal.tipoPersona;
-        delete datosFiscalesFinal.razonSocial;
-        delete datosFiscalesFinal.tipoSociedad;
-        delete datosFiscalesFinal.email;
-        delete datosFiscalesFinal.fechaCreacion;
+    actualizar() {
+        console.log(this.datosFiscales);
+        if (this.datosFiscales) {
+            this.actualizarDireccion();
+        } else {
+            this.guardarDatosFiscales();
+        }
+    }
 
-        datosFiscalesFinal.propietarioId = this.propietarioId;
-        cambiosDireccionFiscal.call(datosFiscalesFinal, this.$bindToContext((err) => {
+
+
+    actualizarDireccion() {
+        delete this.datosFiscalesOriginal.colonias;
+        delete this.datosFiscalesOriginal._id;
+        delete this.datosFiscalesOriginal.tipoPersona;
+        delete this.datosFiscalesOriginal.razonSocial;
+        delete this.datosFiscalesOriginal.tipoSociedad;
+        delete this.datosFiscalesOriginal.apellidoMaterno;
+        delete this.datosFiscalesOriginal.apellidoPaterno;
+        delete this.datosFiscalesOriginal.segundoNombre;
+        delete this.datosFiscalesOriginal.nombre;
+        delete this.datosFiscalesOriginal.email;
+        delete this.datosFiscalesOriginal.fechaCreacion;
+
+        console.log('ESTOS SON LOS DATOS QUE VAMOS A ENVIAR', this.datosFiscalesOriginal);
+
+        this.datosFiscalesOriginal.propietarioId = this.propietarioId;
+        cambiosDireccionFiscal.call(this.datosFiscalesOriginal, this.$bindToContext((err) => {
             if (err) {
                 this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
@@ -75,6 +83,23 @@ class EditarProveedorFiscales {
             }
         }));
     }
+
+    guardarDatosFiscales() {
+        console.log('ESTO VAMOS A ENVIAR [83]', this.datosFiscalesOriginal);
+        delete this.datosFiscalesOriginal.colonias;
+
+        this.datosFiscalesOriginal.propietarioId = this.propietarioId;
+        altaDatosFiscales.call(this.datosFiscalesOriginal, this.$bindToContext((err) => {
+            if (err) {
+                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.tipoMsj = 'danger';
+            } else {
+                this.msj = 'Los datos fiscales se guardaron exitosamente.';
+                this.tipoMsj = 'success';
+            }
+        }));
+    }
+
 }
 
 const name = 'editarProveedorFiscales';

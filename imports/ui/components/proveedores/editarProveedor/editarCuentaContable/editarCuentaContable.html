@@ -8,7 +8,7 @@
         <div class="col-sm-4 b-r">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>Datos Generales</h3>
+                    <h3>Cuenta Contable</h3>
                     <div class="contact-box">
                         <a href="">
                             <div class="col-sm-4">
@@ -20,7 +20,7 @@
                                 <p class="m-t-xs font-bold">Cta. Contable: </p>
                                 <h2><strong>{{editarCuentaContable.proveedor.cuentaContable}}</strong></h2>
                                 <address>
-                                    <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
+                                    <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
                                     <p>Al editar la Cuenta Contable de éste proveedor todas las tiendas verán reflejado dicho cambio así como severas repercusiones en la contabilidad.</p>
                                 </address>
                             </div>
@@ -45,8 +45,8 @@
                 </div>
                 <!--CUENTA CONTABLE-->
                 <div class="col-sm-offset-3 col-sm-6">
-                    <h3><strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i></strong>  Importante</h3>
-                    <h4>No edite este campo si no cuenta con la autorización del departamente de contabilidad de todas las tiendas. </h4>
+                    <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
+                    <h4>No edite este campo si no está seguro que todos los contadores de cada tienda estén enterados.</h4>
                     <div class="form-group" ng-class="{ 'has-error' : editarCuentaContableForm.cuentaContable.$invalid && !editarCuentaContableForm.cuentaContable.$pristine}">
                         <div ng-messages="editarCuentaContableForm.cuentaContable.$dirty && editarCuentaContableForm.cuentaContable.$error" role="alert">
                             <label>Nueva Cuenta Contable *

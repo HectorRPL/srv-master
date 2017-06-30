@@ -3,7 +3,7 @@
  */
 import template from "./proveedorDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDatosProveedores} from "../../../comun/formas/formaDatosProveedores/formaDatosProveedores";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
 import {altaProveedor} from "../../../../../api/catalogos/proveedores/methods";
 
@@ -51,7 +51,7 @@ const name = 'proveedorDatosGenerales';
 export default angular
     .module(name, [
         Alertas,
-        FormaDatosProveedores,
+        FormaDatosGenerales,
         CuentaContable
     ])
     .component(name, {
