@@ -18,7 +18,6 @@ class TiendasClass {
 
 const name = 'tiendas';
 
-// create a module
 export default angular
     .module(name, [
         TituloPrincipal,

@@ -3,28 +3,23 @@
  */
 import template from "./tiendaDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDatosTienda} from "../../../comun/formas/formaDatosTienda/formaDatosTienda";
+import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import {altaTienda} from "../../../../../api/catalogos/tiendas/methods";
 import {altaDireccion} from "../../../../../api/direcciones/methods";
 
 class TiendaDatosGenerales {
     constructor($scope, $reactive, $state) {
         'ngInject';
+        this.$scope = $scope;
         this.$state = $state;
         $reactive(this).attach($scope);
+
         this.tipoMsj = '';
         this.direccion = {};
-        this.$scope = $scope;
         this.datos = {
             telefonos: [{telefono: ''}]
         };
-    }
-
-    agregarTelefono() {
-        this.nuevoTelefono = {
-            telefono: this.telefono,
-            extension: this.extension,
-        };
-        this.datos.telefonos.push(this.nuevoTelefono);
     }
 
     guardar() {
@@ -43,14 +38,13 @@ class TiendaDatosGenerales {
     guardarDireccion() {
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
-        altaDireccion.call(direccionFinal, this.$bindToContext((err, result)=> {
+        altaDireccion.call(direccionFinal, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = 'Error al crear la direccion de una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
             } else {
                 this.msj = 'Los datos de contacto se guardaron con éxito.';
                 this.tipoMsj = 'success';
-                this.pasoActual++;
                 this.$state.go('app.tienda.agregar.fiscales', {tiendaId: direccionFinal.propietarioId});
             }
         }))
@@ -60,10 +54,11 @@ class TiendaDatosGenerales {
 
 const name = 'tiendaDatosGenerales';
 
-// create a module
 export default angular
     .module(name, [
-        Alertas
+        Alertas,
+        FormaDatosTienda,
+        FormaDireccion
     ])
     .component(name, {
         template,

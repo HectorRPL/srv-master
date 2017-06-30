@@ -1,9 +1,9 @@
 /**
- * Created by Héctor on 29/06/2017.
+ * Created by Héctor on 30/06/2017.
  */
-import template from "./formaDatosProveedores.html";
+import template from "./formaDatosTienda.html";
 
-class FormaDatosProveedores {
+class FormaDatosTienda {
     constructor($scope) {
         'ngInject';
 
@@ -23,14 +23,14 @@ class FormaDatosProveedores {
 
 }
 
-const name = 'formaDatosProveedores';
+const name = 'formaDatosTienda';
 
 export default angular
     .module(name, [])
     .component(name, {
         template ,
         controllerAs: name,
-        controller: FormaDatosProveedores,
+        controller: FormaDatosTienda,
         bindings: {
             datos: '='
         }

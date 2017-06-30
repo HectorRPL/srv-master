@@ -37,7 +37,6 @@ class AdmonTienda {
 
 const name = 'admonTienda';
 
-// create a module
 export default angular
     .module(name, [
         TituloPrincipal,

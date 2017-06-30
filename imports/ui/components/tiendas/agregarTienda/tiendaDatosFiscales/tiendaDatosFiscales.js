@@ -23,9 +23,9 @@ class TiendaDatosFiscales {
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
         datosFiscalesFinal.propietarioId = this.propietarioId;
-        if(datosFiscalesFinal.tipoPersona === 'PM'){
-            datosFiscalesFinal.razonSocial = datosFiscalesFinal.razonSocial + ' S.A. DE C.V.'
-        }
+
+        console.log('ESTO ES LO QUE SE VA A ENVIAR', datosFiscalesFinal);
+
         altaDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err.message
@@ -33,7 +33,6 @@ class TiendaDatosFiscales {
             } else {
                 this.msj = 'La operación ha sido exitosa.';
                 this.tipoMsj = 'success';
-                this.pasoActual++;
             }
         }));
     }
