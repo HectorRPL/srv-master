@@ -32,7 +32,6 @@ class ProveedorDatosGenerales {
     }
 
     guardar() {
-        console.log('Esto vamos a enviar linea 32', this.datos);
         altaProveedor.call(this.datos, this.$bindToContext((err, result) => {
             if (err) {
                 this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';

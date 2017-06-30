@@ -34,7 +34,9 @@ Proveedores.schema = new SimpleSchema({
         min: 2,
         max: 70,
         autoValue: function () {
-            return this.value.toUpperCase()
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
         }
 
     },
@@ -47,7 +49,9 @@ Proveedores.schema = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Email,
         autoValue: function () {
-            return this.value.toUpperCase()
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
         }
     },
     activo: {

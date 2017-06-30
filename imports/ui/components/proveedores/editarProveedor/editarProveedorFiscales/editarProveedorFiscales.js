@@ -65,7 +65,6 @@ class EditarProveedorFiscales {
         delete datosFiscalesFinal.fechaCreacion;
 
         datosFiscalesFinal.propietarioId = this.propietarioId;
-        console.log('EL JSON QUE SE ENVIARÁ ES:', datosFiscalesFinal);
         cambiosDireccionFiscal.call(datosFiscalesFinal, this.$bindToContext((err) => {
             if (err) {
                 this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
