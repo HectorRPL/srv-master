@@ -24,7 +24,7 @@ export const altaProveedor = new ValidatedMethod({
 });
 
 export const cambiosProveedor = new ValidatedMethod({
-    name: 'datosFiscales.cambiosProveedor',
+    name: 'proveedores.cambiosProveedor',
     validate: Proveedores.simpleSchema().pick(ID, CAMPOS_PROVEEDORES).validator({
         clean: true,
         filter: false
@@ -45,7 +45,7 @@ export const cambiosProveedor = new ValidatedMethod({
 });
 
 export const cambiosCuentaContable = new ValidatedMethod({
-    name: 'datosFiscales.cambiosCuentaContable',
+    name: 'proveedores.cambiosCuentaContable',
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false

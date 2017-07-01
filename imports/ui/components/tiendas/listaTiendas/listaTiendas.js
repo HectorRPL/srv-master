@@ -5,6 +5,7 @@ import template from "./listaTiendas.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
+import {name as EditarTienda} from '../editarTienda/editarTienda';
 import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
 import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
 
@@ -47,11 +48,11 @@ class ListaTiendas {
 
 const name = 'listaTiendas';
 
-// create a module
 export default angular
     .module(name, [
         TituloPrincipal,
         AgregarTienda,
+        EditarTienda,
         AgregarSucursal,
         BuscarTienda
     ])

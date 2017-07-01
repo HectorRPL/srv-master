@@ -1,0 +1,71 @@
+<form role="form" class="p-lg" id="editarTiendaGeneralesFormId" name="editarTiendaGeneralesForm" novalidate>
+    <!--DATOS FISCALES-->
+    <div class="row animated fadeInRight">
+        <div class="col-sm-4 b-r">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Datos Generales</h3>
+                    <div class="contact-box">
+                        <a href="">
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <i class="fa fa fa-book fa-5x" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <h3><strong>{{editarTiendaGenerales.tienda.nombre}}</strong></h3>
+                                <p class="m-t-xs font-bold">Cta. Contable: <strong>{{editarTiendaGenerales.tienda.cuentaContable}}</strong></p>
+                                <address>
+                                    <strong><i class="fa fa-envelope-o"></i> {{editarTiendaGenerales.tienda.email}}</strong><br>
+                                    <div ng-repeat="telefono in editarTiendaGenerales.tienda.telefonos">
+                                        {{telefono.telefono}}
+                                        <span ng-show="telefono.extension">
+                                            Ext. {{telefono.extension}}
+                                        </span>
+                                    </div>
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <!--BOTON EDITAR -->
+                    <button type="button"
+                            class="btn btn-primary btn-xs pull-right"
+                            ng-click="editarTiendaGenerales.editar()">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 animated fadeInRight" ng-show="editarTiendaGenerales.ocultarBoton">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Datos Generales</h3>
+                </div>
+                <forma-datos-generales datos="editarTiendaGenerales.datosTiendaNuevo"></forma-datos-generales>
+            </div>
+
+        </div>
+    </div>
+    <hr>
+    <!--DIRECCIÓN FISCAL-->
+    <div class="row animated fadeInRight">
+    </div>
+    <!--ALERTA Y BOTÓN-->
+    <div class="row">
+        <div class="col-md-8">
+            <alertas tipo="editarTiendaGenerales.tipoMsj" mensaje="editarTiendaGenerales.msj"></alertas>
+        </div>
+        <div class="col-md-3">
+            <!--BOTON GUARDAR DATOS GENERALES-->
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-disabled="editarTiendaGeneralesForm.$invalid"
+                    ng-click="editarTiendaGenerales.actualizarDatosGenerales(editarTiendaGeneralesForm)">
+                Actualizar
+            </button>
+        </div>
+    </div>
+</form>

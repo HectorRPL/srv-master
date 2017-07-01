@@ -4,7 +4,7 @@
 import template from "./editarProveedor.html";
 import {name as EditarProveedorGenerales} from "./editarProveedorGenerales/editarProveedorGenerales";
 import {name as EditarProveedorFiscales} from "./editarProveedorFiscales/editarProveedorFiscales";
-import {name as EditarCuentaContable} from "./editarCuentaContable/editarCuentaContable";
+import {name as EditarProveedorCuentaContable} from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
 
 class EditarProveedor {
     constructor($state, $stateParams) {
@@ -29,7 +29,7 @@ export default angular
     .module(name, [
         EditarProveedorGenerales,
         EditarProveedorFiscales,
-        EditarCuentaContable
+        EditarProveedorCuentaContable
     ])
     .component(name, {
         template,

@@ -35,9 +35,10 @@ Tiendas.schema = new SimpleSchema({
         min: 2,
         max: 50,
         autoValue: function () {
+            if (this.value) {
             return this.value.toUpperCase()
+            }
         }
-
     },
     telefonos: {
         type: [Object],
@@ -48,12 +49,18 @@ Tiendas.schema = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Email,
         autoValue: function () {
-            return this.value.toUpperCase()
+            if (this.value) {
+                return this.value.toUpperCase()
+            }
         }
     },
     activo: {
         type: Boolean,
         defaultValue: true
+    },
+    cuentaContable: {
+        type: String,
+        regEx: /^[0-9-]{12}$/
     },
     tiendaMatrizId: {
         type: String,
