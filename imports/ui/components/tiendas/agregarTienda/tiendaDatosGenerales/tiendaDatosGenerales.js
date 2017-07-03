@@ -6,7 +6,6 @@ import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import {altaTienda} from "../../../../../api/catalogos/tiendas/methods";
-import {altaDireccion} from "../../../../../api/direcciones/methods";
 
 class TiendaDatosGenerales {
     constructor($scope, $reactive, $state) {
@@ -23,33 +22,16 @@ class TiendaDatosGenerales {
     }
 
     guardar() {
+        console.log('Estos son los datos generales que vamos a enviar', this.datos);
         altaTienda.call(this.datos, this.$bindToContext((err, result)=> {
             if (err) {
-                this.msj = 'Error al crear una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.msj = err + 'Error al crear una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';
             } else {
-                this.direccion.propietarioId = result;
-                this.guardarDireccion();
-
+                this.$state.go('app.tienda.agregar.direccion', {tiendaId: result});
             }
         }));
     }
-
-    guardarDireccion() {
-        let direccionFinal = angular.copy(this.direccion);
-        delete direccionFinal.colonias;
-        altaDireccion.call(direccionFinal, this.$bindToContext((err)=> {
-            if (err) {
-                this.msj = 'Error al crear la direccion de una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.$state.go('app.tienda.agregar.fiscales', {tiendaId: direccionFinal.propietarioId});
-            }
-        }))
-    }
-
 }
 
 const name = 'tiendaDatosGenerales';

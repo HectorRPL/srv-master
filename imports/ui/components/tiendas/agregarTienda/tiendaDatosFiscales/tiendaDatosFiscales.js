@@ -17,12 +17,11 @@ class TiendaDatosFiscales {
         this.propietarioId = $stateParams.tiendaId;
     }
 
-
     guardar() {
 
+        this.datosFiscales.propietarioId = this.propietarioId;
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
-        datosFiscalesFinal.propietarioId = this.propietarioId;
 
         console.log('ESTO ES LO QUE SE VA A ENVIAR', datosFiscalesFinal);
 
@@ -36,7 +35,6 @@ class TiendaDatosFiscales {
             }
         }));
     }
-
 }
 
 const name = 'tiendaDatosFiscales';

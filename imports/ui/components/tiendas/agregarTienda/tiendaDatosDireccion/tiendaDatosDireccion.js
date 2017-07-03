@@ -1,0 +1,62 @@
+/**
+ * Created by Héctor on 03/07/2017.
+ */
+import template from "./tiendaDatosDireccion.html";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
+import {altaDireccion} from "../../../../../api/direcciones/methods";
+
+class TiendaDatosDireccion {
+    constructor($scope, $reactive, $state, $stateParams) {
+        'ngInject';
+        this.$scope = $scope;
+        this.$state = $state;
+        $reactive(this).attach($scope);
+
+        this.propietarioId = $stateParams.tiendaId;
+
+        this.tipoMsj = '';
+        this.direccion = {};
+    }
+
+    guardarDireccion() {
+        this.direccion.propietarioId = this.propietarioId
+        let direccionFinal = angular.copy(this.direccion);
+        delete direccionFinal.colonias;
+        console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
+        altaDireccion.call(direccionFinal, this.$bindToContext((err)=> {
+            if (err) {
+                this.msj = err + 'Error al crear la direccion de una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
+                this.tipoMsj = 'danger';
+            } else {
+                this.msj = 'Los datos de contacto se guardaron con éxito.';
+                this.tipoMsj = 'success';
+                this.$state.go('app.tienda.agregar.fiscales', {tiendaId:  this.propietarioId});
+            }
+        }))
+    }
+
+}
+
+const name = 'tiendaDatosDireccion';
+
+export default angular
+    .module(name, [
+        Alertas,
+        FormaDireccion
+    ])
+    .component(name, {
+        template,
+        controllerAs: name,
+        controller: TiendaDatosDireccion
+    })
+    .config(config);
+
+function config($stateProvider) {
+    'ngInject';
+    $stateProvider
+        .state('app.tienda.agregar.direccion', {
+            url: '/:tiendaId/direccion',
+            template: '<tienda-datos-direccion></tienda-datos-direccion>'
+        });
+}

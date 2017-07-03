@@ -30,13 +30,13 @@ export const altaTienda = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    validate: Tiendas.simpleSchema().pick(CAMPOS_TIENDAS).validator({
+    validate: Tiendas.simpleSchema().pick(CAMPOS_TIENDAS, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
     }),
-    run({nombre, telefonos, email}) {
+    run({nombre, telefonos, email, cuentaContable}) {
         if (Meteor.isServer) {
-            return Tiendas.insert({nombre, telefonos, email}, (err, result) => {
+            return Tiendas.insert({nombre, telefonos, email, cuentaContable}, (err, result) => {
                 if (err) {
                     throw err;
                 }
