@@ -31,8 +31,6 @@ class EditarProveedorFiscales {
                 return angular.copy(this.datosFiscalesOriginal);
             }
         });
-
-
     }
 
     editar() {
@@ -40,7 +38,6 @@ class EditarProveedorFiscales {
         if (this.datosFiscales === undefined) {
             this.muestrarDatosFiscales = true;
         } else {
-
             this.muestraSoloDireccion = true;
         }
 
@@ -59,9 +56,6 @@ class EditarProveedorFiscales {
         agregarTiendaFrm.$setPristine();
     }
 
-
-
-
     actualizarDireccion(agregarTiendaFrm) {
         delete this.datosFiscalesOriginal.colonias;
         delete this.datosFiscalesOriginal._id;
@@ -78,15 +72,12 @@ class EditarProveedorFiscales {
         console.log('ESTOS SON LOS DATOS QUE VAMOS A ENVIAR', this.datosFiscalesOriginal);
 
         this.datosFiscalesOriginal.propietarioId = this.propietarioId;
-        cambiosDireccionFiscal.call(this.datosFiscalesOriginal, this.$bindToContext((err) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos fiscales se guardaron exitosamente.';
-                this.tipoMsj = 'success';
-                this.limpiarCampos(agregarTiendaFrm);
-            }
+
+        cambiosDireccionFiscal.callPromise(this.datosFiscalesOriginal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(agregarTiendaFrm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
     }
 
@@ -95,18 +86,14 @@ class EditarProveedorFiscales {
         delete this.datosFiscalesOriginal.colonias;
 
         this.datosFiscalesOriginal.propietarioId = this.propietarioId;
-        altaDatosFiscales.call(this.datosFiscalesOriginal, this.$bindToContext((err) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos fiscales se guardaron exitosamente.';
-                this.tipoMsj = 'success';
-                this.limpiarCampos(agregarTiendaFrm);
-            }
+
+        altaDatosFiscales.callPromise(this.datosFiscalesOriginal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(agregarTiendaFrm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
     }
-
 }
 
 const name = 'editarProveedorFiscales';

@@ -4,6 +4,7 @@
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "./collection";
@@ -17,7 +18,7 @@ const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 
 export const altaTienda = new ValidatedMethod({
     name: 'tiendas.altaTienda',
-    mixins: [PermissionsMixin],
+    mixins: [CallPromiseMixin, PermissionsMixin],
     allow: [
         {
             roles: ['crea_tien'],
@@ -50,6 +51,7 @@ export const altaTienda = new ValidatedMethod({
 
 export const cambiosTienda = new ValidatedMethod({
     name: 'datosFiscales.cambiosTienda',
+    mixins: [CallPromiseMixin],
     validate: Tiendas.simpleSchema().pick(ID, CAMPOS_TIENDAS).validator({
         clean: true,
         filter: false
@@ -63,7 +65,7 @@ export const cambiosTienda = new ValidatedMethod({
             }
         }, (err) => {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
         });
     }
@@ -71,6 +73,7 @@ export const cambiosTienda = new ValidatedMethod({
 
 export const cambiosTiendaCuentaContable = new ValidatedMethod({
     name: 'tiendas.cambiosTiendaCuentaContable',
+    mixins: [CallPromiseMixin],
     validate: Tiendas.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
@@ -83,9 +86,8 @@ export const cambiosTiendaCuentaContable = new ValidatedMethod({
                 cuentaContable
             }
         }, (err) => {
-            console.log('ESTO ES EL ERROR WE', err);
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
             }
         });
     }

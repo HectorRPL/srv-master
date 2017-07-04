@@ -15,6 +15,7 @@ const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colo
 
 export const altaDatosFiscales = new ValidatedMethod({
     name: 'datosFiscales.altaDatosFiscales',
+    mixins: [CallPromiseMixin],
     validate: DatosFiscales.simpleSchema().pick(CAMPO_ID, CAMPO_PROPIETARIOID, CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false
@@ -31,7 +32,7 @@ export const altaDatosFiscales = new ValidatedMethod({
             calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
         }, (err)=> {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
         });
     }
@@ -39,6 +40,7 @@ export const altaDatosFiscales = new ValidatedMethod({
 
 export const cambiosDireccionFiscal = new ValidatedMethod({
     name: 'datosFiscales.cambiosDireccionFiscal',
+    mixins: [CallPromiseMixin],
     validate: DatosFiscales.simpleSchema().pick(CAMPO_PROPIETARIOID, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false
@@ -50,7 +52,7 @@ export const cambiosDireccionFiscal = new ValidatedMethod({
             }
         }, (err) => {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
             }
         });
     }

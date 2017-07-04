@@ -49,18 +49,14 @@ class EditarTiendaGenerales {
         delete this.datosTiendaNuevo.tiendaMatrizId;
 
         this.datosTiendaNuevo._id = this._id;
-        cambiosTienda.call(this.datosTiendaNuevo, this.$bindToContext((err, result) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.limpiarCampos(datosGeneralesForm);
-            }
+
+        cambiosTienda.callPromise(this.datosTiendaNuevo).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(datosGeneralesForm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
     }
-
 }
 
 const name = 'editarTiendaGenerales';
@@ -85,5 +81,3 @@ function config($stateProvider) {
             template: '<editar-tienda-generales></editar-tienda-generales>'
         });
 }
-
-/*todo: En editar datos generales, tanto en proeedores como en tiendas no está funcionando correctamente, me manda un error al estar vacío*/

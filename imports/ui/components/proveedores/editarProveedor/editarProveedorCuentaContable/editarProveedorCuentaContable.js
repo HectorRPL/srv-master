@@ -41,18 +41,13 @@ class EditarProveedorCuentaContable {
     actualizarDatosGenerales(editarProveedorCuentaContableForm) {
         this.datos._id = this.propietarioId;
 
-        cambiosCuentaContable.call(this.datos, this.$bindToContext((err, result) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.limpiarCampos(editarProveedorCuentaContableForm);
-            }
+        cambiosCuentaContable.callPromise(this.datos).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(editarProveedorCuentaContableForm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
     }
-
 }
 
 const name = 'editarProveedorCuentaContable';

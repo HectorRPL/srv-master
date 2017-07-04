@@ -23,17 +23,12 @@ class TiendaDatosFiscales {
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
 
-        console.log('ESTO ES LO QUE SE VA A ENVIAR', datosFiscalesFinal);
-
-        altaDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
-            if (err) {
-                this.msj = err.message
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'La operación ha sido exitosa.';
-                this.tipoMsj = 'success';
-            }
+        altaDatosFiscales.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
+
     }
 }
 

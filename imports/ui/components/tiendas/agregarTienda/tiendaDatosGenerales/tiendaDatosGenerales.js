@@ -22,14 +22,11 @@ class TiendaDatosGenerales {
     }
 
     guardar() {
-        console.log('Estos son los datos generales que vamos a enviar', this.datos);
-        altaTienda.call(this.datos, this.$bindToContext((err, result)=> {
-            if (err) {
-                this.msj = err + 'Error al crear una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.$state.go('app.tienda.agregar.direccion', {tiendaId: result});
-            }
+        altaTienda.callPromise(this.datos).then(this.$bindToContext((result) => {
+            this.tipoMsj = 'success';
+            this.$state.go('app.tienda.agregar.direccion', {tiendaId: result});
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
     }
 }

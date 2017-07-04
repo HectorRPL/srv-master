@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Proveedores} from "./collection";
@@ -14,6 +15,7 @@ const CAMPO_CUENTA_CONTABLE = ['cuentaContable'];
 
 export const altaProveedor = new ValidatedMethod({
     name: 'proveedores.altaProveedor',
+    mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(CAMPOS_PROVEEDORES, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
@@ -25,6 +27,7 @@ export const altaProveedor = new ValidatedMethod({
 
 export const cambiosProveedor = new ValidatedMethod({
     name: 'proveedores.cambiosProveedor',
+    mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(ID, CAMPOS_PROVEEDORES).validator({
         clean: true,
         filter: false
@@ -38,7 +41,7 @@ export const cambiosProveedor = new ValidatedMethod({
             }
         }, (err) => {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
         });
     }
@@ -46,6 +49,7 @@ export const cambiosProveedor = new ValidatedMethod({
 
 export const cambiosCuentaContable = new ValidatedMethod({
     name: 'proveedores.cambiosCuentaContable',
+    mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
@@ -59,7 +63,7 @@ export const cambiosCuentaContable = new ValidatedMethod({
             }
         }, (err) => {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
             }
         });
     }

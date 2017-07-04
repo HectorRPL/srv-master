@@ -24,16 +24,13 @@ class TiendaDatosDireccion {
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
         console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
-        altaDireccion.call(direccionFinal, this.$bindToContext((err)=> {
-            if (err) {
-                this.msj = err + 'Error al crear la direccion de una tienda, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.$state.go('app.tienda.agregar.fiscales', {tiendaId:  this.propietarioId});
-            }
-        }))
+
+        altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.$state.go('app.tienda.agregar.fiscales', {tiendaId:  this.propietarioId});
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
+        }));
     }
 
 }

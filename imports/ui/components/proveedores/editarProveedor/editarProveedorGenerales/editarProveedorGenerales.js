@@ -51,16 +51,14 @@ class EditarProveedorGenerales {
         delete this.datosProveedorNuevo.dias;
 
         this.datosProveedorNuevo._id = this.propietarioId;
-        cambiosProveedor.call(this.datosProveedorNuevo, this.$bindToContext((err, result) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.limpiarCampos(datosGeneralesForm);
-            }
+
+        cambiosProveedor.callPromise(this.datosProveedorNuevo).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(datosGeneralesForm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
+
     }
 
 }

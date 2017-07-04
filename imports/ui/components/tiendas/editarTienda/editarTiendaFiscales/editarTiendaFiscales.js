@@ -56,7 +56,7 @@ class EditarTiendaFiscales {
 
     limpiarCampos(editarTiendaFiscalesFrm) {
         this.datosFiscalesOriginal = {};
-        /*todo: no está limpiando la forma cuando se agregan los datos fiscales  por primera vez también habrá que corregirlo en proveedores, u ocultar la forma o que se.*/
+        /*todo: la forma datos fiscales no se está limpiando cuando se agregan los datos fiscales por primera vez (lo mismo en proveedores).*/
         editarTiendaFiscalesFrm.$setPristine();
     }
 
@@ -75,16 +75,14 @@ class EditarTiendaFiscales {
 
 
         this.datosFiscalesOriginal.propietarioId = this.propietarioId;
-        cambiosDireccionFiscal.call(this.datosFiscalesOriginal, this.$bindToContext((err) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos fiscales se guardaron exitosamente.';
-                this.tipoMsj = 'success';
-                this.limpiarCampos(editarTiendaFiscalesFrm);
-            }
+
+        cambiosDireccionFiscal.callPromise(this.datosFiscalesOriginal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(editarTiendaFiscalesFrm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
+
     }
 
     guardarDatosFiscales(editarTiendaFiscalesFrm) {
