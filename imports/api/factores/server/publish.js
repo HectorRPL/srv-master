@@ -5,19 +5,12 @@ import {Meteor} from "meteor/meteor";
 import {Factores} from "../collection";
 
 if (Meteor.isServer) {
-    Meteor.publish('factores.todos', () => {
-        return Factores.find();
-    });
-}
+    Meteor.publish('factores.todos', function(filter, options) {
 
-if (Meteor.isServer) {
-    // Trae un sólo factor buscado
-    Meteor.publish('factores.buscarUno', function (filter, options) {
-        const selector = {$and: [filter]};
-        Counts.publish(this, 'numfactores', Factores.find(selector), {
+        Counts.publish(this, 'numFactores', Factores.find(filter), {
             noReady: true
         });
-        return Factores.find(selector, options);
-    });
 
+        return Factores.find(filter, options);
+    });
 }

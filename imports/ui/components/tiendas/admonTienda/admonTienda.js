@@ -15,7 +15,12 @@ class AdmonTienda {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
-        this.subscribe('tiendas.todas');
+        this.subscribe('tiendas.todas',()=>
+            [
+                {
+                    _id: this.tiendaId
+                }
+            ]);
 
         this.helpers({
             tienda(){

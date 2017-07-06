@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="factorProducto.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto marcaid="factorProducto.marcaSelec._id"
+                         producto="factorProducto.productoSelec">
+        </buscar-producto>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">Productos a elegir</h3>
+        <p></p>
+        <lista-productos-tienda marca="factorProducto.marcaSelec" producto="factorProducto.productoSelec"
+                                tienda-id="factorProducto.tiendaId"
+                                agregar-prod="factorProducto.agregar(_id, factorId, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Productos que seran actaulizados&nbsp;
+            <button class="btn btn-primary btn-sm pull-right"
+                    ng-disabled="factorProducto.productosAplicarFac.length === 0"
+                    ng-click="factorProducto.confirmar()">
+                Aplicar Factor
+            </button>
+        </h4>
+        <p></p>
+        <lista-productos-factores productos="factorProducto.productosAplicarFac"></lista-productos-factores>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+        <alertas tipo="factorProducto.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>

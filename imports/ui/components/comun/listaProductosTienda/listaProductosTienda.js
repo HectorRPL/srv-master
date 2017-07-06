@@ -3,23 +3,23 @@
  */
 import {ProductosInventarios} from "../../../../api/inventarios/productosInventarios/collection";
 import utilsPagination from "angular-utils-pagination";
-import template from "./listaProductosXMarca.html";
+import template from "./listaProductosTienda.html";
 
-class ListaProductosXMarca {
+class ListaProductosTienda {
 
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
 
-        this.perPage = 15;
+        this.perPage = 10;
         this.page = 1;
 
         this.subscribe('productosInventarios.tiendaMarca', () => [
                 {
-                    tiendaId: this.getReactively('tiendaid'),
+                    tiendaId: this.getReactively('tiendaId'),
                     marcaId: this.getReactively('marca._id'),
-                    productoId: this.getReactively('prod._id')
+                    productoId: this.getReactively('producto._id')
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -42,9 +42,18 @@ class ListaProductosXMarca {
         this.page = newPage;
     }
 
+    agregarLista(producto) {
+        this.agregarProd({
+            _id: producto._id,
+            factorId: producto.factorId,
+            marca: producto.marca().nombre,
+            producto: producto.producto().campoBusqueda
+        });
+    }
+
 }
 
-const name = 'listaProductosXMarca';
+const name = 'listaProductosTienda';
 
 export default angular
     .module(name, [
@@ -53,11 +62,11 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: ListaProductosXMarca,
+        controller: ListaProductosTienda,
         bindings: {
-            marca: '=',
-            prod: '=',
-            tiendaid: '=',
-            count: '='
+            marca: '<',
+            producto: '<',
+            tiendaId: '<',
+            agregarProd: '&'
         },
     });
