@@ -10,7 +10,7 @@ if (Meteor.isServer) {
         Counts.publish(this, 'numEmpleados', Empleados.find(filter), {
             noReady: true
         });
-        console.log(JSON.stringify(filter));
+
         return Empleados.find(filter, options);
     });
 

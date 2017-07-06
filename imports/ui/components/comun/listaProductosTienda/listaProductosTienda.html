@@ -1,0 +1,15 @@
+<p class="text-center">
+<ul class="list-group clear-list">
+    <li class="list-group-item" dir-paginate="producto in listaProductosTienda.productos | itemsPerPage: listaProductosTienda.perPage"
+        total-items="listaProductosTienda.productosCount">
+        <span class="pull-right"><button class="btn-white btn-sm close" ng-click="listaProductosTienda.agregarLista(producto)">
+            <i class="fa  fa-chevron-right"></i>
+            </button>
+        </span>
+        {{producto.marca().nombre}}&nbsp;&nbsp;{{producto.producto().campoBusqueda}}
+        </td>
+    </li>
+</ul>
+</p>
+<dir-pagination-controls on-page-change="listaProductosTienda.pageChanged(newPageNumber)">
+</dir-pagination-controls>

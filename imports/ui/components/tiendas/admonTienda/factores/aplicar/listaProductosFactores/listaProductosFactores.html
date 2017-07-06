@@ -1,0 +1,9 @@
+<ul class="list-group clear-list m-t">
+    <li class="list-group-item" ng-repeat="producto in listaProductosFactores.productos">
+        <span class="pull-right"></span>
+        <button type="button" class="btn btn-sm" ng-click="listaProductosFactores.eliminar($index)">
+            <i class="fa fa-trash"></i>
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;{{producto.marca}}&nbsp;&nbsp;{{producto.producto}}
+    </li>
+
+</ul>

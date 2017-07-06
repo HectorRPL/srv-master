@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Marca</th>
+        <th>Producto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-responsive" ng-repeat="producto in listaExcepciones.productos">
+        <td>
+            <button class="btn-white btn-sm" ng-click="listaExcepciones.eliminar($index)">
+                Eliminar&nbsp;<i class="fa fa-trash"></i>
+            </button>
+        </td>
+        <td>{{producto.marca}}</td>
+        <td>{{producto.producto}}</td>
+    </tr>
+    </tbody>
+</table>

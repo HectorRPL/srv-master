@@ -1,7 +1,20 @@
+<div class="row">
+    <div class="col-xs-4">
+        <a href="" class="btn btn-primary btn-sm" ng-click="factores.crearFactor()">Agregar Factor</a>
+    </div>
+    <div class="col-xs-4">
+
+    </div>
+    <div class="col-sm-6 m-b-xs">
+        <div class="ibox float-e-margins">
+            <buscar-factor factor="listaFactores.factorSelec">
+            </buscar-factor>
+        </div>
+    </div>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>
-            <th class="text-center">Marca Vieja</th>
             <th class="text-center">Nombre</th>
             <th class="text-center">1</th>
             <th class="text-center">2</th>
@@ -21,18 +34,17 @@
         <tr class="table-responsive text-right"
             dir-paginate="factor in listaFactores.factores | itemsPerPage: listaFactores.perPage"
             total-items="listaFactores.factoresCount">
-            <td>{{factor.marcaVieja}}</td>
-            <td><a class="text-navy" style="text-decoration: inherit" ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, factor: factor})">{{factor.nombre}}</a></td>
-            <td>{{factor.factor1 | number:4 }}</td>
-            <td>{{factor.factor2 | number:4 }}</td>
-            <td>{{factor.factor3 | number:4 }}</td>
-            <td>{{factor.factor4 | number:4 }}</td>
-            <td>{{factor.factor5 | number:4 }}</td>
-            <td>{{factor.factor6 | number:4 }}</td>
-            <td>{{factor.factor7 | number:4 }}</td>
-            <td>{{factor.factor8 | number:4 }}</td>
-            <td class="text-navy">{{factor.factorCosto | number:4 }}</td>
-            <td>{{factor.activo}}</td>
+            <td class="text-center"><a class="text-navy" style="text-decoration: inherit" ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, factor: factor})">{{factor.nombre}}</a></td>
+            <td class="text-center">{{factor.factor1 | number:4 }}</td>
+            <td class="text-center">{{factor.factor2 | number:4 }}</td>
+            <td class="text-center">{{factor.factor3 | number:4 }}</td>
+            <td class="text-center">{{factor.factor4 | number:4 }}</td>
+            <td class="text-center">{{factor.factor5 | number:4 }}</td>
+            <td class="text-center">{{factor.factor6 | number:4 }}</td>
+            <td class="text-center">{{factor.factor7 | number:4 }}</td>
+            <td class="text-center">{{factor.factor8 | number:4 }}</td>
+            <td class="text-center text-navy">{{factor.factorCosto | number:4 }}</td>
+            <td class="text-center">{{factor.activo}}</td>
             <td>
                 <div class="btn-group" role="group" aria-label="...">
                     <div class="btn-group" role="group">
@@ -41,8 +53,8 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Marca</a></li>
-                            <li><a ui-sref="app.tienda.admon.factores.aplicar({factorId: factor._id})">Producto</a></li>
+                            <li><a ui-sref="^.aplicar.marca({factorId: factor._id})">Marca</a></li>
+                            <li><a ui-sref="^.aplicar.producto({factorId: factor._id})">Producto</a></li>
                         </ul>
                         <button type="button" class="btn btn-xs btn-default">Editar</button>
                     </div>

@@ -2,10 +2,7 @@
  * Created by Héctor on 13/06/2017.
  */
 import {Factores} from "../../../../../../api/factores/collection";
-import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
-import {name as ListaProductosXMarca} from "../../../../comun/listaProductosXMarca/listaProductosXMarca";
-import {name as AplicarFactorProductos} from "../aplicarFactorProductos/aplicarFactorProductos"
-import utilsPagination from "angular-utils-pagination";
+import {name as AplicarFactor} from "../aplicar/aplicarFactor";
 import template from "./listaFactores.html";
 
 class ListaFactores {
@@ -15,13 +12,14 @@ class ListaFactores {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
-        this.perPage = 15;
+        this.factorSelec = '';
+        this.perPage = 10;
         this.page = 1;
 
-        this.subscribe('factores.buscarUno', () =>
+        this.subscribe('factores.todos', () =>
             [
                 {
-                    factorId: this.getReactively('factor._id')
+                    _id: this.getReactively('factorSelec._id')
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -34,7 +32,7 @@ class ListaFactores {
                 return Factores.find();
             },
             factoresCount(){
-                return Counts.get('numfactores');
+                return Counts.get('numFactores');
             }
         });
 
@@ -50,10 +48,7 @@ const name = 'listaFactores';
 
 export default angular
     .module(name, [
-        BuscarProducto,
-        ListaProductosXMarca,
-        utilsPagination,
-        AplicarFactorProductos
+        AplicarFactor
     ])
     .component(name, {
         template,
