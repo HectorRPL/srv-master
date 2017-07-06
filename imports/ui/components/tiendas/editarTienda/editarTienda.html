@@ -1,0 +1,25 @@
+<h2>{{editarTienda.tienda.nombre}}</h2>
+<hr>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+                <span class="pull-right small">
+                    <a ui-sref="app.proveedores.lista" class="text-navy">
+                        <i class="fa fa-chevron-left"></i>  Atrás
+                    </a>
+                </span>
+            <li ng-class="{active: editarTienda.tab === $index}" ng-repeat="tab in editarTienda.tabs">
+                <a ng-click="editarTienda.tab = $index" ui-sref="{{tab.estado}}">
+                    <i class="{{tab.icono}}"></i>{{tab.titulo}}
+                </a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane active">
+                <div class="panel-body">
+                    <div ui-view="" class="animated fadeInRight"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,15 +13,9 @@ class AgregarProveedor {
         this.titulo = 'Agregar Proveedores';
 
         this.tabs = [
-            {titulo: "Datos Personales", estado: ".datos", icono: 'fa fa-user'},
-            {titulo: "Direccion", estado: ".fiscales", icono: 'fa fa-cubes'}
+            {titulo: "Datos Generales", estado: ".datos", icono: 'fa fa-user'},
+            {titulo: "Datos Fiscales", estado: ".fiscales", icono: 'fa fa-cubes'}
         ];
-
-        this.pasoActual = 1;
-        this.datosFiscales = {};
-        this.datos =  {
-            telefonos: [{telefono: ''}]
-        };
     }
 }
 

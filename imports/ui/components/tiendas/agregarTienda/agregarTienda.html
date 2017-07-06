@@ -1,19 +1,25 @@
-<div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox">
-                <div class="ibox-title">
-                    <h3>{{agregarTienda.titulo}}</h3>
-                    <p>
-                        Dar de alta una tienda implica numerosos procesos para el sistema; es recomendable hacer este procedimiento en horas no laborales.
-                    </p>
-                    <div ibox-tools></div>
-                </div>
-                <div class="ibox-content wizard">
-                    <div ui-view> </div>
-                </div>
-            </div>
-        </div>
+<div class="wizard">
+    <h2>
+        <h3>{{agregarTienda.titulo}}</h3>
+    </h2>
+    <p>
+        This example show how to use ui-router to create wizard like form.
+        <br>
+        <strong>Data from ng-model.</strong><br>
+    </p>
 
+    <div class="steps clearfix">
+        <ul>
+            <li ui-sref-active='current' ng-repeat="tab in agregarTienda.tabs">
+                <a ui-sref="{{tab.estado}}" class="btn btn-default disabled" role="button">
+                    <span>{{$index +1}}</span> {{tab.titulo}}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="wizard">
+        <div class="content">
+            <div id="form-views" class="animated fadeInRight" ui-view></div>
+        </div>
     </div>
 </div>

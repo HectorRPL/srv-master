@@ -17,27 +17,19 @@ class TiendaDatosFiscales {
         this.propietarioId = $stateParams.tiendaId;
     }
 
-
     guardar() {
 
+        this.datosFiscales.propietarioId = this.propietarioId;
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
-        datosFiscalesFinal.propietarioId = this.propietarioId;
-        if(datosFiscalesFinal.tipoPersona === 'PM'){
-            datosFiscalesFinal.razonSocial = datosFiscalesFinal.razonSocial + ' S.A. DE C.V.'
-        }
-        altaDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err)=> {
-            if (err) {
-                this.msj = err.message
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'La operación ha sido exitosa.';
-                this.tipoMsj = 'success';
-                this.pasoActual++;
-            }
-        }));
-    }
 
+        altaDatosFiscales.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
+        }));
+
+    }
 }
 
 const name = 'tiendaDatosFiscales';

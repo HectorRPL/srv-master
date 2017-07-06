@@ -3,6 +3,7 @@
  */
 import template from "./proveedorDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
 import {altaProveedor} from "../../../../../api/catalogos/proveedores/methods";
 
@@ -15,6 +16,8 @@ class ProveedorDatosGenerales {
 
         this.tipoMsj = '';
         this.$scope = $scope;
+        this.ocultarBoton = false;
+
         this.datos = {
             telefonos: [{telefono: ''}]
         };
@@ -29,7 +32,6 @@ class ProveedorDatosGenerales {
     }
 
     guardar() {
-        console.log('Esto vamos a enviar linea 32', this.datos);
         altaProveedor.call(this.datos, this.$bindToContext((err, result) => {
             if (err) {
                 this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
@@ -49,6 +51,7 @@ const name = 'proveedorDatosGenerales';
 export default angular
     .module(name, [
         Alertas,
+        FormaDatosGenerales,
         CuentaContable
     ])
     .component(name, {

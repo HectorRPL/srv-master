@@ -8,67 +8,57 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
-const CAMPOS_DATOS_FISCALES = [
-    '_id',
-    'propietarioId',
-    'nombre',
-    'segundoNombre',
-    'apellidoPaterno',
-    'apellidoMaterno',
-    'razonSocial',
-    'email',
-    'calle',
-    'delMpio',
-    'estado',
-    'estadoId',
-    'colonia',
-    'codigoPostal',
-    'numExt',
-    'numInt',
-    'tipoPersona',
-    'curp'
-    // 'codigoPais', // se deja pendiente, pero deberá estar
-];
+const CAMPO_ID = ['_id'];
+const CAMPO_PROPIETARIOID = ['propietarioId'];
+const CAMPOS_DATOS_FISCALES = ['tipoPersona', 'nombre', 'segundoNombre', 'apellidoPaterno', 'apellidoMaterno', 'razonSocial', 'tipoSociedad', 'email'];
+const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 export const altaDatosFiscales = new ValidatedMethod({
     name: 'datosFiscales.altaDatosFiscales',
-    validate: DatosFiscales.simpleSchema().pick(CAMPOS_DATOS_FISCALES).validator({
+    mixins: [CallPromiseMixin],
+    validate: DatosFiscales.simpleSchema().pick(CAMPO_ID, CAMPO_PROPIETARIOID, CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false
     }),
     run({
-        _id, propietarioId, nombre, segundoNombre, apellidoPaterno, apellidoMaterno, razonSocial,
-        email, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt,
-        tipoPersona, curp
+        _id, propietarioId, tipoPersona,
+        nombre, segundoNombre, apellidoPaterno, apellidoMaterno,
+        razonSocial, tipoSociedad, email,
+        calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
-        return DatosFiscales.insert({
-            _id,
-            propietarioId,
-            nombre,
-            segundoNombre,
-            apellidoPaterno,
-            apellidoMaterno,
-            razonSocial,
-            email,
-            calle,
-            delMpio,
-            estado,
-            estadoId,
-            colonia,
-            codigoPostal,
-            numExt,
-            numInt,
-            tipoPersona,
-            curp
+        return DatosFiscales.insert({ _id, propietarioId, tipoPersona,
+            nombre, segundoNombre, apellidoPaterno, apellidoMaterno,
+            razonSocial, tipoSociedad, email,
+            calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
         }, (err)=> {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación. , llamar a soporte técnico: 55-6102-4884 | 55-2628-5121.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
         });
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([altaDatosFiscales], 'name');
+export const cambiosDireccionFiscal = new ValidatedMethod({
+    name: 'datosFiscales.cambiosDireccionFiscal',
+    mixins: [CallPromiseMixin],
+    validate: DatosFiscales.simpleSchema().pick(CAMPO_PROPIETARIOID, CAMPOS_DIRECCION_FISCAL).validator({
+        clean: true,
+        filter: false
+    }),
+    run({propietarioId, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
+    }) {
+        return DatosFiscales.update({propietarioId: propietarioId}, {
+            $set: { calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
+            }
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+            }
+        });
+    }
+});
+
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([altaDatosFiscales, cambiosDireccionFiscal], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

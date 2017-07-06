@@ -22,7 +22,7 @@
                     <td><i class="fa fa-envelope"> </i> {{tienda.email}}</td>
                     <td><i class="fa fa-phone"> </i> +{{tienda.telefonos[0].telefono}}</td>
                     <td class="project-actions">
-                        <a class="btn btn-white btn-sm"><i class="fa fa-cogs"></i> Editar</a>
+                        <a ui-sref="app.tienda.editar.generales({tiendaId: tienda._id})" class="btn btn-white btn-sm"><i class="fa fa-cogs"></i> Editar</a>
                         <a ui-sref="app.tienda.sucursal({tiendaId: tienda._id})" class="btn btn-white btn-sm"><i class="fa fa-industry"></i> Agregar Sucursal</a>
                         <!-- a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a -->
                     </td>

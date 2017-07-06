@@ -18,7 +18,8 @@
                 <tbody>
                 <tr dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
                     total-items="listaProveedores.proveedoresCount">
-                    <td><a class="client-link">{{proveedor.nombre}}</a></td>
+                    <!--<td><a class="client-link"><pre>{{proveedor | json}}</pre></a></td>-->
+                    <td><a ng-click="listaProveedores.abreModalDealles(proveedor)" class="client-link">{{proveedor.nombre}}</a></td>
                     <td class="contact-type"><i class="fa fa-envelope"> </i></td>
                     <td> {{proveedor.email}}</td>
                     <td class="contact-type"><i class="fa fa-phone"> </i></td>
@@ -27,8 +28,13 @@
                         <span class="label label-info" ng-show="proveedor.activo">Activo</span>
                         <span class="label" ng-hide="proveedor.activo">Inactivo</span>
                     </td>
-                    <td class="project-actions">
-                        <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a>
+                    <td>
+                        <div class="btn-group btn-group-sm"
+                             role="group"
+                             aria-label="...">
+                            <a type="button" class="btn btn-default" ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})"><i class="fa fa-cogs"></i> Editar</a>
+                            <a type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Desactivar</a>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
