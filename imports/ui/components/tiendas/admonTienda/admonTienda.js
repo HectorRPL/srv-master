@@ -30,7 +30,7 @@ class AdmonTienda {
 
         this.tabs = [
             {titulo: "Personal", estado: ".personal.lista", icono: 'fa fa-user'},
-            {titulo: "Inventario", estado: ".inventario", icono: 'fa fa-cubes'},
+            {titulo: "Inventario", estado: ".inventario.lista", icono: 'fa fa-cubes'},
             {titulo: "Factores", estado: ".factores.lista", icono: 'fa fa-money'},
             {titulo: "Comisiones", estado: ".comisiones.lista", icono: 'fa fa-briefcase'},
         ];

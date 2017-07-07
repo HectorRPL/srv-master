@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {_} from "meteor/underscore";
 import {ProductosInventarios} from "./collection";
@@ -24,6 +25,12 @@ const CAMPOS_APLICAR_FACTOR = [
     'productoId',
     'marcaId',
     'factorId'
+];
+
+const CAMPOS_CAMBIAR_EXISTENCIA = [
+    'tiendaId',
+    'productoId',
+    'cantidad'
 ];
 
 export const cambioFactorProducto = new ValidatedMethod({
@@ -57,7 +64,34 @@ export const cambioFactorProducto = new ValidatedMethod({
     }
 });
 
-const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([cambioFactorProducto], 'name');
+export const cambiosExistenciaProducto = new ValidatedMethod({
+    name: 'productosInventarios.cambiosExistenciaProducto',
+    mixins: [CallPromiseMixin],
+    validate: ProductosInventarios.simpleSchema().pick(CAMPOS_CAMBIAR_EXISTENCIA).validator({
+        clean: true,
+        filter: false
+    }),
+    run({
+        tiendaId,
+        productoId,
+        cantidad
+    }) {
+        if (Meteor.isServer) {
+            return ProductosInventarios.update({tiendaId: tiendaId, productoId: productoId}, {
+                $set: {
+                    cantidad
+                }
+            }, (err) => {
+                if (err) {
+                    console.log(err);
+                    throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+                }
+            });
+        }
+    }
+});
+
+const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([cambioFactorProducto, cambiosExistenciaProducto], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
