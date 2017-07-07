@@ -11,6 +11,13 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+        <alertas tipo="existenciaProductosTienda.tipoMsj"
+                 mensaje="existenciaProductosTienda.msj">
+        </alertas>
+    </div>
+</div>
 
 <div class="clients-list">
     <div class="full-height-scroll" full-scroll>
@@ -48,7 +55,7 @@
                                     <span class="input-group-btn">
                                         <button class="btn btn-default"
                                                 ng-disabled="editarExistenciaFrm.$invalid"
-                                                ng-click="existenciaProductosTienda.actualizar(producto.nuevaExistencia, producto.productoId, editarExistenciaFrm)"
+                                                ng-click="existenciaProductosTienda.actualizar(producto.nuevaExistencia, producto._id, editarExistenciaFrm)"
                                                 type="button">Actualizar
                                         </button>
                                     </span>
@@ -56,8 +63,7 @@
                                         <div style="color: red" ng-message="max">máximo 10 mil</div>
                                     </div>
                                 </div>
-                                <!--<alertas tipo="existenciaProductosTienda.tipoMsj" mensaje="existenciaProductosTienda.msj"></alertas>-->
-                            </form>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

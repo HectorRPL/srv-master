@@ -20,6 +20,7 @@ class ExistenciaProductosTienda {
         this.titulo = 'HELVEX HARDCORE';
 
         this.datos = {};
+        this.mensajeExitoso = '';
 
 
         this.subscribe('marcas.todas', () => [{_id: this.marcaId}]);
@@ -32,8 +33,6 @@ class ExistenciaProductosTienda {
 
         this.perPage = 10;
         this.page = 1;
-
-        console.log('<<<[22]>>>', this.getReactively('productoSelec'));
 
         this.subscribe('productosInventarios.tiendaMarca', () => [
             {
@@ -57,10 +56,10 @@ class ExistenciaProductosTienda {
 
     }
 
-    actualizar(nuevoValor, productoId, editarExistenciaFrm) {
-        this.datos.tiendaId = this.tiendaId;
+    actualizar(nuevoValor, id, editarExistenciaFrm) {
+        this.tipoMsj = '';
         this.datos.cantidad = nuevoValor;
-        this.datos.productoId = productoId;
+        this.datos._id = id;
         cambiosExistenciaProducto.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarExistenciaFrm);
@@ -71,10 +70,8 @@ class ExistenciaProductosTienda {
     }
 
     limpiarCampos(editarExistenciaFrm) {
-        this.datosFiscalesOriginal = {};
         editarExistenciaFrm.$setPristine();
     }
-
 
     pageChanged(newPage) {
         this.page = newPage;

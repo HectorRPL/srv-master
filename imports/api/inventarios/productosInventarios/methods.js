@@ -27,11 +27,10 @@ const CAMPOS_APLICAR_FACTOR = [
     'factorId'
 ];
 
-const CAMPOS_CAMBIAR_EXISTENCIA = [
-    'tiendaId',
-    'productoId',
-    'cantidad'
-];
+const ID = ['_id'];
+
+const CAMPO_CANTIDAD = ['cantidad'];
+
 
 export const cambioFactorProducto = new ValidatedMethod({
     name: 'productosInventarios.cambioFactorProducto',
@@ -67,17 +66,16 @@ export const cambioFactorProducto = new ValidatedMethod({
 export const cambiosExistenciaProducto = new ValidatedMethod({
     name: 'productosInventarios.cambiosExistenciaProducto',
     mixins: [CallPromiseMixin],
-    validate: ProductosInventarios.simpleSchema().pick(CAMPOS_CAMBIAR_EXISTENCIA).validator({
+    validate: ProductosInventarios.simpleSchema().pick(CAMPO_CANTIDAD, ID).validator({
         clean: true,
         filter: false
     }),
     run({
-        tiendaId,
-        productoId,
+        _id,
         cantidad
     }) {
         if (Meteor.isServer) {
-            return ProductosInventarios.update({tiendaId: tiendaId, productoId: productoId}, {
+            return ProductosInventarios.update({_id: _id}, {
                 $set: {
                     cantidad
                 }
