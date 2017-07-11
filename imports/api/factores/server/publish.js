@@ -13,4 +13,15 @@ if (Meteor.isServer) {
 
         return Factores.find(filter, options);
     });
+
+    Meteor.publish('factores.nombre', function (nombre) {
+        if (nombre.nombre) {
+            const selector = {nombre: {$regex: nombre.nombre, $options: 'i'}};
+            let options = {fields: {_id: 1, nombre: 1}};
+            return Factores.find(selector, options);
+        } else {
+            this.ready();
+        }
+    });
+
 }

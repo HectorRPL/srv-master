@@ -5,17 +5,19 @@ import {ProductosInventarios} from "../../../../../../api/inventarios/productosI
 import {cambiosExistenciaProducto} from "../../../../../../api/inventarios/productosInventarios/methods";
 import {Marcas} from "../../../../../../api/catalogos/marcas/collection";
 import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
+import {name as DetallesProducto} from "./detallesProducto/detallesProducto";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import template from "./existenciaProductosTienda.html";
 
 class ExistenciaProductosTienda {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;
         this.marcaId = $stateParams.marcaId;
+        this.$uibModal = $uibModal;
 
         this.titulo = 'HELVEX HARDCORE';
 
@@ -69,6 +71,21 @@ class ExistenciaProductosTienda {
         }));
     }
 
+    abreModalDealles(producto) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'DetallesProducto',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                producto: function () {
+                    return producto;
+                }
+            }
+        });
+    }
+
     limpiarCampos(editarExistenciaFrm) {
         editarExistenciaFrm.$setPristine();
     }
@@ -84,6 +101,7 @@ const name = 'existenciaProductosTienda';
 export default angular
     .module(name, [
         BuscarProducto,
+        DetallesProducto,
         Alertas
     ])
     .component(name, {

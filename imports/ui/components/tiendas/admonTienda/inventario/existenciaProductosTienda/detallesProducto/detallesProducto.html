@@ -1,0 +1,53 @@
+<form id="detallesProductoFrmId" name="detallesProductoFrm" role="form">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-sm-10">
+            <h2>{{detallesProducto.resolve.producto.producto().campoBusqueda}}</h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-sm-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="detallesProducto.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <!--DATOS GENERALES-->
+                    <div class="col-sm-12">
+                        <div class="contact-box">
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <i class="fa fa-cube fa-5x" aria-hidden="true"></i>
+                                    <div class="m-t-xs font-bold"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <h3>DETALLES DEL PRODUCTO</h3>
+                                <address>
+                                    <p>Nombre: <strong>&nbsp; {{detallesProducto.resolve.producto.producto().campoBusqueda}}</strong></p>
+                                    <p>Marca: <strong>{{detallesProducto.resolve.producto.marca().nombre}}</strong><br></p>
+                                    <p>Factor: <strong>{{detallesProducto.resolve.producto.factor().nombre}}</strong><br></p>
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!--BOTON CERRAR -->
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="detallesProducto.cerrar()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

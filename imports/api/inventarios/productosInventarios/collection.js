@@ -5,6 +5,7 @@ import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
 import {Marcas} from "../../catalogos/marcas/collection";
 import {Productos} from "../../catalogos/productos/collection";
+import {Factores} from "../../factores/collection";
 import opProductosInvetarios from "./operacionesEventos";
 
 
@@ -55,5 +56,8 @@ ProductosInventarios.helpers({
     },
     producto(){
         return Productos.findOne({_id: this.productoId});
+    },
+    factor(){
+        return Factores.findOne({_id: this.factorId});
     }
 });
