@@ -19,7 +19,7 @@ class ExistenciaProductosTienda {
         this.marcaId = $stateParams.marcaId;
         this.$uibModal = $uibModal;
 
-        this.titulo = 'HELVEX HARDCORE';
+        this.titulo = 'Inventario';
 
         this.datos = {};
         this.mensajeExitoso = '';

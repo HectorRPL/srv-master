@@ -16,6 +16,8 @@ const CAMPO_CUENTA_CONTABLE = ['cuentaContable'];
 
 const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 
+const CAMPO_ACTIVO = ['activo'];
+
 export const altaTienda = new ValidatedMethod({
     name: 'tiendas.altaTienda',
     mixins: [CallPromiseMixin, PermissionsMixin],
@@ -93,7 +95,29 @@ export const cambiosTiendaCuentaContable = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([altaTienda, cambiosTienda, cambiosTiendaCuentaContable], 'name');
+export const cambiosTiendaActivar = new ValidatedMethod({
+    name: 'tiendas.cambiosTiendaActivar',
+    mixins: [CallPromiseMixin],
+    validate: Tiendas.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
+        clean: true,
+        filter: false
+    }),
+    run({
+        _id, activo
+    }) {
+        return Tiendas.update({_id: _id}, {
+            $set: {
+                activo
+            }
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+            }
+        });
+    }
+});
+
+const TIENDAS_METHODS = _.pluck([altaTienda, cambiosTienda, cambiosTiendaCuentaContable, cambiosTiendaActivar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

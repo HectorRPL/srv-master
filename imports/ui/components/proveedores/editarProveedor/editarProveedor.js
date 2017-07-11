@@ -5,6 +5,7 @@ import template from "./editarProveedor.html";
 import {name as EditarProveedorGenerales} from "./editarProveedorGenerales/editarProveedorGenerales";
 import {name as EditarProveedorFiscales} from "./editarProveedorFiscales/editarProveedorFiscales";
 import {name as EditarProveedorCuentaContable} from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
+import {name as DesactivarProveedor} from "./desactivarProveedor/desactivarProveedor";
 
 class EditarProveedor {
     constructor($state, $stateParams) {
@@ -15,7 +16,8 @@ class EditarProveedor {
         this.tabs = [
             {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
             {titulo: "Datos Fiscales",  estado: ".fiscales", icono: 'fa fa-address-card-o'},
-            {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'}
+            {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'},
+            {titulo: "Eliminar", estado: ".desactivar", icono: 'fa fa-trash-o'}
         ];
 
         this.tab = 0;
@@ -29,7 +31,8 @@ export default angular
     .module(name, [
         EditarProveedorGenerales,
         EditarProveedorFiscales,
-        EditarProveedorCuentaContable
+        EditarProveedorCuentaContable,
+        DesactivarProveedor
     ])
     .component(name, {
         template,

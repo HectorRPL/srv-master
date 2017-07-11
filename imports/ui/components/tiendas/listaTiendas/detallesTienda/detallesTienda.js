@@ -1,16 +1,16 @@
 /**
- * Created by Héctor on 03/07/2017.
+ * Created by Héctor on 10/07/2017.
  */
-import template from "./detallesProveedor.html";
+import template from "./detallesTienda.html";
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 
-class DetallesProveedor {
+class detallesTienda {
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
 
-        this.subscribe('datosFiscales.proveedor', () => [{propietarioId: this.getReactively('resolve.proveedor._id')}]);
+        this.subscribe('datosFiscales.proveedor', () => [{propietarioId: this.getReactively('resolve.tienda._id')}]);
         this.helpers({
             datosFiscales(){
                 return DatosFiscales.findOne({});
@@ -24,14 +24,14 @@ class DetallesProveedor {
 
 }
 
-const name = 'detallesProveedor';
+const name = 'detallesTienda';
 
 export default angular
     .module(name, [])
     .component(name, {
         template,
         controllerAs: name,
-        controller: DetallesProveedor,
+        controller: detallesTienda,
         bindings: {
             resolve: '<',
             close: '&',
