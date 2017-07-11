@@ -1,13 +1,13 @@
 /**
- * Created by Héctor on 30/06/2017.
+ * Created by Héctor on 10/07/2017.
  */
-import template from "./editarTiendaCuentaContable.html";
+import template from "./desactivarTienda.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
-import {cambiosTiendaCuentaContable} from "../../../../../api/catalogos/tiendas/methods";
+import {name as DesactivarTiendaProveedor} from "../../../comun/radio/desactivarTiendaProveedor/desactivarTiendaProveedor";
+import {cambiosTiendaActivar} from "../../../../../api/catalogos/tiendas/methods";
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 
-class EditarTiendaCuentaContable {
+class DesactivarTienda {
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$scope = $scope;
@@ -33,17 +33,17 @@ class EditarTiendaCuentaContable {
         this.ocultarBoton = true;
     }
 
-    limpiarCampos(editarTiendaCuentaContableForm) {
+    limpiarCampos(desactivarTiendaForm) {
         this.datos = {};
-        editarTiendaCuentaContableForm.$setPristine();
+        desactivarTiendaForm.$setPristine();
     }
 
-    actualizarDatosGenerales(editarTiendaCuentaContableForm) {
+    desactivar(desactivarTiendaForm) {
         this.datos._id = this.tiendaId;
 
-        cambiosTiendaCuentaContable.callPromise(this.datos).then(this.$bindToContext(() => {
+        cambiosTiendaActivar.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(editarTiendaCuentaContableForm);
+            this.limpiarCampos(desactivarTiendaForm);
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';
         }));
@@ -51,25 +51,25 @@ class EditarTiendaCuentaContable {
 
 }
 
-const name = 'editarTiendaCuentaContable';
+const name = 'desactivarTienda';
 
 export default angular
     .module(name, [
         Alertas,
-        CuentaContable
+        DesactivarTiendaProveedor
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: EditarTiendaCuentaContable
+        controller: DesactivarTienda
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.editar.cuentaContable', {
-            url: '/cuentaContable',
-            template: '<editar-tienda-cuenta-contable></editar-tienda-cuenta-contable>'
+        .state('app.tienda.editar.desactivar', {
+            url: '/desactivar',
+            template: '<desactivar-tienda></desactivar-tienda>'
         });
 }

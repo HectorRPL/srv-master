@@ -8,6 +8,7 @@ import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
 import {name as EditarTienda} from '../editarTienda/editarTienda';
 import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
 import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
+import {name as DetallesTienda} from "./detallesTienda/detallesTienda";
 
 class ListaTiendas {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -40,6 +41,23 @@ class ListaTiendas {
         });
     }
 
+    abreModalDealles(tienda) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'DetallesTienda',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                tienda: function () {
+                    return tienda;
+                }
+            }
+
+        });
+    }
+
+
     pageChanged(newPage) {
         this.page = newPage;
     }
@@ -54,7 +72,8 @@ export default angular
         AgregarTienda,
         EditarTienda,
         AgregarSucursal,
-        BuscarTienda
+        BuscarTienda,
+        DetallesTienda
     ])
     .component(name, {
         template,

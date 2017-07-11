@@ -12,6 +12,7 @@ import {Proveedores} from "./collection";
 const ID = ['_id'];
 const CAMPOS_PROVEEDORES = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 const CAMPO_CUENTA_CONTABLE = ['cuentaContable'];
+const CAMPO_ACTIVO = ['activo'];
 
 export const altaProveedor = new ValidatedMethod({
     name: 'proveedores.altaProveedor',
@@ -69,9 +70,29 @@ export const cambiosCuentaContable = new ValidatedMethod({
     }
 });
 
+export const cambiosProveedorActivar = new ValidatedMethod({
+    name: 'tiendas.cambiosProveedorActivar',
+    mixins: [CallPromiseMixin],
+    validate: Proveedores.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
+        clean: true,
+        filter: false
+    }),
+    run({
+        _id, activo
+    }) {
+        return Proveedores.update({_id: _id}, {
+            $set: {
+                activo
+            }
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+            }
+        });
+    }
+});
 
-
-const PROVEEDORES_METHODS = _.pluck([altaProveedor, cambiosProveedor, cambiosCuentaContable], 'name');
+const PROVEEDORES_METHODS = _.pluck([altaProveedor, cambiosProveedor, cambiosCuentaContable, cambiosProveedorActivar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
