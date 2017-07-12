@@ -4,12 +4,15 @@
 import template from "./listaPersonal.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
+import {name as DetallesPersonal} from "./detallesPersonal/detallesPersonal";
+// import {name as EditarPersonalGenerales} from "../editarPersonal/editarPersonalGenerales/editarPersonalGenerales";
 
 class ListaPersonal {
-    constructor($scope, $reactive, $stateParams) {
+    constructor($scope, $reactive, $stateParams, $uibModal) {
         'ngInject';
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
+        this.$uibModal = $uibModal;
         this.perPage = 5;
         this.page = 1;
         this.empleadoSelec = '';
@@ -40,6 +43,23 @@ class ListaPersonal {
     pageChanged(newPage) {
         this.page = newPage;
     }
+
+    abreModalDealles(personal) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'DetallesPersonal',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                personal: function () {
+                    return personal;
+                }
+            }
+
+        });
+    }
+
 }
 
 const name = 'listaPersonal';
@@ -47,7 +67,9 @@ const name = 'listaPersonal';
 // create a module
 export default angular
     .module(name, [
-        BuscarEmpleado
+        BuscarEmpleado,
+        DetallesPersonal,
+        // EditarPersonalGenerales
     ])
     .component(name, {
         template,

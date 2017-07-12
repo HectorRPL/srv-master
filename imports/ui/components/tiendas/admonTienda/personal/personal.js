@@ -4,6 +4,7 @@
 import template from "./personal.html";
 import {name as ListaPersonal} from "./listaPersonal/listaPersonal";
 import {name as AgregarEmpleado} from "./agregarEmpleado/agregarEmpleado";
+import {name as EditarPersonal} from "./editarPersonal/editarPersonal";
 
 class Personal {
     constructor($scope, $reactive, $state) {
@@ -19,7 +20,8 @@ const name = 'personal';
 export default angular
     .module(name, [
         ListaPersonal,
-        AgregarEmpleado
+        AgregarEmpleado,
+        EditarPersonal
     ])
     .component(name, {
         template,

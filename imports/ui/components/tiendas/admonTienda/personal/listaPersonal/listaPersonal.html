@@ -18,7 +18,7 @@
             <tr dir-paginate="empleado in listaPersonal.empleados | itemsPerPage: listaPersonal.perPage"
                 total-items="listaPersonal.empleadosCount">
                 <td class="client-avatar"><img alt="image" src="images//a3.jpg"></td>
-                <td><a class="client-link">{{empleado.nombreCompleto}}</a></td>
+                <td>{{empleado.nombreCompleto}}</td>
                 <td class="contact-type">
                     <small>Departamento:</small>
                 </td>
@@ -32,9 +32,19 @@
                     <span class="label label-info" ng-show="empleado.activo">Activo</span>
                     <span class="label" ng-hide="empleado.activo">Inactivo</span>
                 </td>
-                <td class="project-actions">
-                    <a href="" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Editar </a>
-                    <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Eliminar </a>
+                <td>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                        <a type="button"
+                           class="btn btn-default"
+                           ui-sref="app.tienda.admon.personal.editar.generales({personalId: empleado._id})">
+                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                        </a>
+                        <a type="button"
+                           class="btn btn-default"
+                           ng-click="listaPersonal.abreModalDealles(empleado)">
+                            <i class="fa fa-info" aria-hidden="true"></i> Ver Más
+                        </a>
+                    </div>
                 </td>
             </tr>
             </tbody>
