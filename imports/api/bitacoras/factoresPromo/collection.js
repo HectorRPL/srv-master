@@ -29,6 +29,7 @@ Schema.bitaFactPromoComi = new SimpleSchema({
     productoInventarioId: {type: String, optional: true},
     marcaId: {type: String, optional: true},
     excepciones: {type: [String], blackbox: true, optional: true},
+    productos: {type: [String], blackbox: true, optional: true}
 });
 
 BitaFactPromoComi.attachSchema(Schema.bitaFactPromoComi);
