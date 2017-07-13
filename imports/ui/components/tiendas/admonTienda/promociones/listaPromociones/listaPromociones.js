@@ -3,6 +3,7 @@
  */
 import {Promociones} from "../../../../../../api/promociones/collection";
 import {name as AgregarPromocion} from "../agregarPromocion/agregarPromocion";
+import {name as AplicarPromocion} from "../aplicar/aplicarPromocion";
 import template from "./listaPromociones.html";
 
 class ListaFactores {
@@ -13,14 +14,14 @@ class ListaFactores {
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
         this.$uibModal = $uibModal;
-        this.factorSelec = '';
+        this.promocionSelec = '';
         this.perPage = 10;
         this.page = 1;
 
         this.subscribe('promociones.todos', () =>
             [
                 {
-                    _id: this.getReactively('factorSelec._id')
+                    _id: this.getReactively('promocionSelec._id')
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -59,7 +60,8 @@ const name = 'listaPromociones';
 
 export default angular
     .module(name, [
-        AgregarPromocion
+        AgregarPromocion,
+        AplicarPromocion
     ])
     .component(name, {
         template,
