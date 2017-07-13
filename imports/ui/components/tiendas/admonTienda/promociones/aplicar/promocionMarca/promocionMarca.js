@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 11/07/17.
  */
-import {aplicarPromocionMarca} from "../../../../../../../api/promociones/methods";
+import {aplicarFactPromoComiMarca} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./promocionMarca.html";
 
 class PromocionMarca {
@@ -33,14 +33,15 @@ class PromocionMarca {
         }
     }
 
-    aplicarFactor() {
+    aplicarPromocion() {
         const datos = {
             tiendaId: this.tiendaId,
             marcaId: this.marcaSelec._id,
-            promocionNuevaId: this.promocionId,
-            excepciones: this.prodsExcepciones
+            nuevoValorId: this.promocionId,
+            excepciones: this.prodsExcepciones,
+            operacion: 'promocionMarca'
         };
-        aplicarPromocionMarca.callPromise(datos).then(this.$bindToContext(()=> {
+        aplicarFactPromoComiMarca.callPromise(datos).then(this.$bindToContext(()=> {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {
@@ -51,10 +52,18 @@ class PromocionMarca {
     confirmar() {
         var modalInstance = this.$uibModal.open({
             animation: true,
-            component: "ConfirmarAplicarFactor",
-            backdrop  : 'static'
+            component: "ConfirmarOperacion",
+            backdrop  : 'static',
+            resolve: {
+                contenido: function () {
+                    return {
+                        tipoMsj: 'warning',
+                        msj: 'Al aplicar una Promocion, uno o varios productos podrian verse afectados en sus precios. ¿Desea continuar con el proceso?'
+                    }
+                }
+            }
         }).result.then(this.$bindToContext((result) => {
-            this.aplicarFactor();
+            this.aplicarPromocion();
         }, function (reason) {
             console.log(reason)
         }));

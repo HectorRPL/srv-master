@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 11/07/17.
  */
-import {aplicarPromocionProductos} from "../../../../../../../api/promociones/methods";
+import {aplicarFactPromoComiProd} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./promocionProducto.html";
 
 class PromocionProducto {
@@ -18,10 +18,9 @@ class PromocionProducto {
         this.productosAplicarPromo = [];
     }
 
-    agregar(_id, factorId, comisionId, promocionId, marca, producto) {
+    agregar(_id, marca, producto) {
         const result = {
             _id: _id,
-            promocionId: promocionId,
             marca: marca,
             producto: producto
         };
@@ -35,10 +34,11 @@ class PromocionProducto {
 
     aplicarPromocion() {
         const datos = {
-            promocionNuevaId: this.promocionId,
-            productos: this.productosAplicarPromo
+            nuevoValorId: this.promocionId,
+            productos: this.productosAplicarPromo,
+            operacion: 'promocionProducto'
         };
-        aplicarPromocionProductos.callPromise(datos).then(this.$bindToContext(()=> {
+        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarPromo = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
@@ -50,8 +50,16 @@ class PromocionProducto {
     confirmar() {
         var modalInstance = this.$uibModal.open({
             animation: true,
-            component: "ConfirmarAplicarFactor",
-            backdrop  : 'static'
+            component: "ConfirmarOperacion",
+            backdrop  : 'static',
+            resolve: {
+                contenido: function () {
+                    return {
+                        tipoMsj: 'warning',
+                        msj: 'Al aplicar una Promocion, uno o varios productos podrian verse afectados en sus precios. ¿Desea continuar con el proceso?'
+                    }
+                }
+            }
         }).result.then(this.$bindToContext((result) => {
             this.aplicarPromocion();
         }, function (reason) {

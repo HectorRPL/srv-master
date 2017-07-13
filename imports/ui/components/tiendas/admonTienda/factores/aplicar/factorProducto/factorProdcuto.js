@@ -36,7 +36,7 @@ class FactorProducto {
         const datos = {
             nuevoValorId: this.factorId,
             productos: this.productosAplicarFac,
-            operacion: 'factorProdcuto'
+            operacion: 'factorProducto'
         };
         aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarFac = [];
