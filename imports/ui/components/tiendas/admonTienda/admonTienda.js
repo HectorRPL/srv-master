@@ -29,7 +29,7 @@ class AdmonTienda {
         });
 
         this.tabs = [
-            {titulo: "Personal", estado: ".personal.lista", icono: 'fa fa-users'},
+            {titulo: "Personal", estado: ".empleados.lista", icono: 'fa fa-users'},
             {titulo: "Inventario", estado: ".inventario.lista", icono: 'fa fa-cubes'},
             {titulo: "Factores", estado: ".factores.lista", icono: 'fa fa-money'},
             {titulo: "Comisiones", estado: ".comisiones.lista", icono: 'fa fa-briefcase'},

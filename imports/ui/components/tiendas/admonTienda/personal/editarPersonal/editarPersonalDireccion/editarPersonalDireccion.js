@@ -63,7 +63,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.personal.editar.direccion', {
+        .state('app.tienda.admon.empleados.editar.direccion', {
             url: '/:personalId/direccion',
             template: '<editar-personal-direccion></editar-personal-direccion>'
         });

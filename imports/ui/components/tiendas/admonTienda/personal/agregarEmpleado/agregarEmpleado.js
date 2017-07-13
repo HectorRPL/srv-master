@@ -49,7 +49,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.personal.agregar', {
+        .state('app.tienda.admon.empleados.agregar', {
             url: '/agregar',
             template: '<agregar-empleado></agregar-empleado>',
             abstract: true

@@ -51,7 +51,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.personal.agregar.direccion', {
+        .state('app.tienda.admon.empleados.agregar.direccion', {
             url: '/direccion',
             template: '<agregar-direccion-empleado></agregar-direccion-empleado>'
         });
