@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 27/06/17.
  */
-import {aplicarFactorMarca} from "../../../../../../../api/factores/methods";
+import {aplicarFactPromoComiMarca} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./factorMarca.html";
 
 class FactorMarca {
@@ -38,13 +38,15 @@ class FactorMarca {
         const datos = {
             tiendaId: this.tiendaId,
             marcaId: this.marcaSelec._id,
-            factorNuevoId: this.factorId,
-            excepciones: this.prodsExcepciones
+            nuevoValorId: this.factorId,
+            excepciones: this.prodsExcepciones,
+            operacion: 'factorMarca'
         };
-        aplicarFactorMarca.callPromise(datos).then(this.$bindToContext(()=> {
+        aplicarFactPromoComiMarca.callPromise(datos).then(this.$bindToContext(()=> {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -52,8 +54,16 @@ class FactorMarca {
     confirmar() {
         var modalInstance = this.$uibModal.open({
             animation: true,
-            component: "ConfirmarAplicarFactor",
-            backdrop  : 'static'
+            component: "ConfirmarOperacion",
+            backdrop  : 'static',
+            resolve: {
+                contenido: function () {
+                    return {
+                        tipoMsj: 'warning',
+                        msj: 'Al aplicar un factor, uno o varios productos podrian verse afectados en sus precios. ¿Desea continuar con el proceso?'
+                    }
+                }
+            }
         }).result.then(this.$bindToContext((result) => {
             this.aplicarFactor();
         }, function (reason) {

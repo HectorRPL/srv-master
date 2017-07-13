@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 27/06/17.
  */
-import {aplicarFactorProductos} from "../../../../../../../api/factores/methods";
+import {aplicarFactPromoComiProd} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./factorProducto.html";
 
 class FactorProducto {
@@ -34,10 +34,11 @@ class FactorProducto {
 
     aplicarFactor() {
         const datos = {
-            factorNuevoId: this.factorId,
-            productos: this.productosAplicarFac
+            nuevoValorId: this.factorId,
+            productos: this.productosAplicarFac,
+            operacion: 'factorProdcuto'
         };
-        aplicarFactorProductos.callPromise(datos).then(this.$bindToContext(()=> {
+        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarFac = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
@@ -48,8 +49,16 @@ class FactorProducto {
     confirmar() {
         var modalInstance = this.$uibModal.open({
             animation: true,
-            component: "ConfirmarAplicarFactor",
-            backdrop  : 'static'
+            component: "ConfirmarOperacion",
+            backdrop  : 'static',
+            resolve: {
+                contenido: function () {
+                    return {
+                        tipoMsj: 'warning',
+                        msj: 'Al aplicar un factor, uno o varios productos podrian verse afectados en sus precios. ¿Desea continuar con el proceso?'
+                    }
+                }
+            }
         }).result.then(this.$bindToContext((result) => {
             this.aplicarFactor();
         }, function (reason) {
