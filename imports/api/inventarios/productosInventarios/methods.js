@@ -40,11 +40,20 @@ export const aplicarFactPromoComiProd = new ValidatedMethod({
             productos.forEach((prod)=> {
                 arrIds.push(prod._id);
             });
+
             const selector = {_id: {$in: arrIds}};
+            let campoActualizar = {};
+            if(operacion.includes('promocion')){
+                campoActualizar = {promocionId: nuevoValorId}
+            } else if(operacion.includes('factor')){
+                campoActualizar = {factorId: nuevoValorId}
+            }else {
+                campoActualizar = {comisionId: nuevoValorId}
+            }
+            console.log('', campoActualizar);
 
             let prodInventariosBulk = ProductosInventarios.rawCollection().initializeUnorderedBulkOp();
-
-            prodInventariosBulk.find(selector).update({$set: {factorId: nuevoValorId}});
+            prodInventariosBulk.find(selector).update({$set: campoActualizar});
             const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
             try {
                 execute();
@@ -75,7 +84,7 @@ export const aplicarFactPromoComiMarca = new ValidatedMethod({
             excepciones.forEach((prod)=> {
                 arrIds.push(prod._id);
             });
-            let prodInventariosBulk = ProductosInventarios.rawCollection().initializeUnorderedBulkOp();
+
             const selector = {
                 $and: [
                     {_id: {$nin: arrIds}},
@@ -83,7 +92,17 @@ export const aplicarFactPromoComiMarca = new ValidatedMethod({
                     {marcaId: marcaId}
                 ]
             };
-            prodInventariosBulk.find(selector).update({$set: {factorId: nuevoValorId}});
+            let campoActualizar = {};
+            if(operacion.includes('promocion')){
+                campoActualizar = {promocionId: nuevoValorId}
+            } else if(operacion.includes('factor')){
+                campoActualizar = {factorId: nuevoValorId}
+            }else {
+                campoActualizar = {comisionId: nuevoValorId}
+            }
+
+            let prodInventariosBulk = ProductosInventarios.rawCollection().initializeUnorderedBulkOp();
+            prodInventariosBulk.find(selector).update({$set: campoActualizar});
             const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
             try {
                 execute();
