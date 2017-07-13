@@ -1,9 +1,9 @@
 /**
  * Created by jvltmtz on 28/06/17.
  */
-import template from "./listaProductosFactores.html";
+import template from "./listaProductosElegidos.html";
 
-class ListaProductosFactores {
+class ListaProductosElegidos {
 
     constructor($scope, $reactive, $state) {
         'ngInject';
@@ -17,14 +17,14 @@ class ListaProductosFactores {
 
 }
 
-const name = 'listaProductosFactores';
+const name = 'listaProductosElegidos';
 
 export default angular
     .module(name, [])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ListaProductosFactores,
+        controller: ListaProductosElegidos,
         bindings: {
             productos: '='
         },
