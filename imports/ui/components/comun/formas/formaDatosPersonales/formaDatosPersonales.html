@@ -1,9 +1,9 @@
-<ng-form name="formaDatosPersonalesForm">
+<ng-form name="formaDatosPersonalesFrm">
     <!--PRIMER NOMBRE-->
     <div class="col-sm-6">
         <div class="form-group"
              ng-class="{ 'has-error' : formaDatosPersonalesFrm.primerNombre.$invalid && !formaDatosPersonalesFrm.primerNombre.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.nombre.$dirty && formaDatosPersonalesFrm.primerNombre.$error"
+            <div ng-messages="formaDatosPersonalesFrm.primerNombre.$dirty && formaDatosPersonalesFrm.primerNombre.$error"
                  role="alert">
                 <label>Primer Nombre *
                     <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>

@@ -3,6 +3,7 @@
  */
 import template from "./agregarDireccionEmpleado.html";
 import {altaUsuario} from "../../../../../../../api/users/methods";
+import {name as FormaDireccion} from "../../../../../comun/formas/formaDireccion/formaDireccion";
 import {Session} from "meteor/session";
 
 class AgregarDireccionEmpleado {
@@ -43,7 +44,9 @@ class AgregarDireccionEmpleado {
 const name = 'agregarDireccionEmpleado';
 
 export default angular
-    .module(name, [])
+    .module(name, [
+        FormaDireccion
+    ])
     .component(name, {
         template,
         controllerAs: name,

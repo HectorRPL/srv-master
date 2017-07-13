@@ -7,6 +7,7 @@
         <div class="col-md-4" ng-show="!agregarDireccionEmpleado.msj || agregarDireccionEmpleado.tipoMsj != 'success'">
             <!--BOTON SIGUIENTE -->
             <button type="button" class="btn btn-primary pull-right"
+                    ng-show="agregarDireccionEmpleado.tipoMsj != 'success'"
                     ng-disabled="agregarDireccionEmpleadoFrm.$invalid"
                     ng-click="agregarDireccionEmpleado.guardar()">
                 Finalizar

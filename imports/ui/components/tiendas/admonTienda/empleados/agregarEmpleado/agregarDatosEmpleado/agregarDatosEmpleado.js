@@ -2,11 +2,7 @@
  * Created by jvltmtz on 19/06/17.
  */
 import template from "./agregarDatosEmpleado.html";
-import {name as ElegirAnio} from "../../../../../comun/selects/elegirFechaNacimiento/elegirAnio/elegirAnio";
-import {name as ElegitMes} from "../../../../../comun/selects/elegirFechaNacimiento/elegirMes/elegirMes";
-import {name as ElegitDia} from "../../../../../comun/selects/elegirFechaNacimiento/elegirDia/elegirDia";
-import {name as FormaDireccion} from "../../../../../comun/formas/formaDireccion/formaDireccion";
-import {name as ElegirDepartamento} from "../../../../../comun/selects/elegirDepartamento/elegirDepartamento";
+import {name as FormaDatosPersonales} from "../../../../../comun/formas/formaDatosPersonales/formaDatosPersonales";
 import {Session} from "meteor/session";
 
 
@@ -22,7 +18,11 @@ class AregarDatosEmpleado {
 
     // Inserta usuario, empleado y dirreccion empleados
     siguiente() {
-        this.credentials.username = this.credentials.email;
+        this.credentials.username = this.credentials.profile.email;
+        this.credentials.email = this.credentials.profile.email;
+        delete this.credentials.profile.email;
+        console.log('[28]', this.credentials);
+
         Session.setPersistent('empleadoNuevo', this.credentials);
         this.$state.go('^.direccion');
     }
@@ -35,11 +35,7 @@ const name = 'agregarDatosEmpleado';
 // create a module
 export default angular
     .module(name, [
-        FormaDireccion,
-        ElegirAnio,
-        ElegitMes,
-        ElegitDia,
-        ElegirDepartamento
+        FormaDatosPersonales
     ])
     .component(name, {
         template,

@@ -16,7 +16,7 @@ if (Meteor.isServer) {
     Accounts.onCreateUser((options, user) => {
         let empleado = {};
         let noEmpleado = 0;
-        let strDepto = options.profile.departamento;
+        let strDepto = options.profile.departamentoId;
 
         if (options.profile) {
             empleado = {
