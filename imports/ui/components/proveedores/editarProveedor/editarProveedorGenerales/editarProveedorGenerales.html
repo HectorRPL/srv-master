@@ -6,27 +6,25 @@
                 <div class="col-sm-12">
                     <h3>Datos Generales</h3>
                     <div class="contact-box">
-                        <a href="">
-                            <div class="col-sm-4">
-                                <div class="text-center">
-                                    <i class="fa fa fa-book fa-5x" aria-hidden="true"></i>
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                                <i class="fa fa fa-book fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h3><strong>{{editarProveedorGenerales.proveedor.nombre}}</strong></h3>
+                            <p class="m-t-xs font-bold">Cta. Contable: <strong>{{editarProveedorGenerales.proveedor.cuentaContable}}</strong></p>
+                            <address>
+                                <strong><i class="fa fa-envelope-o"></i> {{editarProveedorGenerales.proveedor.email}}</strong><br>
+                                <div ng-repeat="telefono in editarProveedorGenerales.proveedor.telefonos">
+                                    {{telefono.telefono}}
+                                    <span ng-show="telefono.extension">
+                                        Ext. {{telefono.extension}}
+                                    </span>
                                 </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <h3><strong>{{editarProveedorGenerales.proveedor.nombre}}</strong></h3>
-                                <p class="m-t-xs font-bold">Cta. Contable: <strong>{{editarProveedorGenerales.proveedor.cuentaContable}}</strong></p>
-                                <address>
-                                    <strong><i class="fa fa-envelope-o"></i> {{editarProveedorGenerales.proveedor.email}}</strong><br>
-                                    <div ng-repeat="telefono in editarProveedorGenerales.proveedor.telefonos">
-                                        {{telefono.telefono}}
-                                        <span ng-show="telefono.extension">
-                                            Ext. {{telefono.extension}}
-                                        </span>
-                                    </div>
-                                </address>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
+                            </address>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -39,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarProveedorGenerales.ocultarBoton">
+        <div class="col-sm-8 animated fadeInRight" ng-show="editarProveedorGenerales.mostrarCampos">
             <div class="row">
                 <div class="col-sm-12">
                     <h3>Datos Generales</h3>
@@ -62,6 +60,7 @@
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
+                    ng-hide="!editarProveedorGenerales.mostrarCampos"
                     ng-disabled="datosGeneralesForm.$invalid"
                     ng-click="editarProveedorGenerales.actualizarDatosGenerales(datosGeneralesForm)">
                 Actualizar

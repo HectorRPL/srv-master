@@ -3,7 +3,8 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
-import {PermissionsMixin} from "meteor/didericis:permissions-mixin"
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {Direcciones} from "./collection.js";
@@ -45,9 +46,9 @@ export const altaDireccion = new ValidatedMethod({
 });
 
 // ACTUALIZAR DIRECCIÓN
-export const cambioDireccion = new ValidatedMethod({
-    name: 'direcciones.cambioDireccion',
-    mixins: [LoggedInMixin],
+export const cambiosDireccion = new ValidatedMethod({
+    name: 'direcciones.cambiosDireccion',
+    mixins: [LoggedInMixin, CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
         message: 'Para modificar estos campos necesita registrarse.',
@@ -77,7 +78,7 @@ export const cambioDireccion = new ValidatedMethod({
     }
 });
 
-const DIRECCIONES_METHODS = _.pluck([altaDireccion, cambioDireccion], 'name');
+const DIRECCIONES_METHODS = _.pluck([altaDireccion, cambiosDireccion], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

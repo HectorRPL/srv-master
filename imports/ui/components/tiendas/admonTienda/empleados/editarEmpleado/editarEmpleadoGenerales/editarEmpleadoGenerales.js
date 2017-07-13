@@ -3,8 +3,8 @@
  */
 import template from "./editarEmpleadoGenerales.html";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
-import {name as FormaDatosGenerales} from "../../../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-// import {cambiosEmpleados} from "../../../../../../../api/empleados/methods";
+import {cambiosEmpleados} from "../../../../../../../api/empleados/methods";
+import {name as FormaDatosPersonales} from "../../../../../comun/formas/formaDatosPersonales/formaDatosPersonales";
 import {Empleados} from "../../../../../../../api/empleados/collection";
 
 class EditarEmpleadoGenerales {
@@ -21,10 +21,9 @@ class EditarEmpleadoGenerales {
         this.tienda = {};
 
         this.subscribe('empleados.porTienda', () => [{_id: this.empleadoId}]);
-
         this.datosEmpleadoNuevo = {};
         this.helpers({
-            empleados(){
+            empleado(){
                 this.datosEmpleadoNuevo = Empleados.findOne({_id: this._id});
                 return angular.copy(this.datosEmpleadoNuevo);
             }
@@ -32,7 +31,7 @@ class EditarEmpleadoGenerales {
     }
 
     editar() {
-        this.ocultarBoton = true;
+        this.mostrarCampos = true;
     }
 
     limpiarCampos(editarEmpleadoGeneralesForm) {
@@ -40,24 +39,28 @@ class EditarEmpleadoGenerales {
         editarEmpleadoGeneralesForm.$setPristine();
     }
 
-    actualizarDatosGenerales(editarEmpleadoGeneralesForm) {
-        delete this.datosEmpleadoNuevo.cuentaContable;
+    actualizar(editarEmpleadoGeneralesForm) {
         delete this.datosEmpleadoNuevo.fechaCreacion;
         delete this.datosEmpleadoNuevo._id;
         delete this.datosEmpleadoNuevo.activo;
-        delete this.datosEmpleadoNuevo.dias;
-        delete this.datosEmpleadoNuevo.tiendaMatrizId;
+        delete this.datosEmpleadoNuevo.noEmpleado;
+        delete this.datosEmpleadoNuevo.propietarioId;
+        delete this.datosEmpleadoNuevo.tiendaId;
+        delete this.datosEmpleadoNuevo.nombreCompleto;
 
         this.datosEmpleadoNuevo._id = this._id;
 
-        /*
+        console.log('[49] los datos que vamos a enviar datosEmpleadoNuevo' , this.datosEmpleadoNuevo);
+
+        // /*
         cambiosEmpleados.callPromise(this.datosEmpleadoNuevo).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarEmpleadoGeneralesForm);
         })).catch(this.$bindToContext((err) => {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
-        */
+        // */
     }
 }
 
@@ -66,7 +69,7 @@ const name = 'editarEmpleadoGenerales';
 export default angular
     .module(name, [
         Alertas,
-        FormaDatosGenerales
+        FormaDatosPersonales
     ])
     .component(name, {
         template,

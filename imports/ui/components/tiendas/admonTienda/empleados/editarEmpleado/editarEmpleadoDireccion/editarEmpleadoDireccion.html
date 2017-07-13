@@ -1,8 +1,65 @@
 <form role="form" class="p-lg" id="editarEmpleadoDireccionFrmId" name="editarEmpleadoDireccionFrm" novalidate>
-    <forma-direccion direccion="editarEmpleadoDireccion.direccion"></forma-direccion>
+    <!--DATOS FISCALES-->
+    <div class="row animated fadeInRight">
+        <div class="col-sm-6 b-r">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Dirección</h3>
+                    <div class="contact-box">
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                                <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <p><i class="fa fa-map-marker"></i> Dirección</p>
+                            <address>
+                                {{editarEmpleadoDireccion.direccion.calle}} {{editarEmpleadoDireccion.direccion.numExt}} <span ng-show="editarEmpleadoDireccion.direccion.numExt">Int. {{editarEmpleadoDireccion.direccion.numInt}}</span><br>
+                                {{editarEmpleadoDireccion.direccion.delMpio}}, {{editarEmpleadoDireccion.direccion.codigoPostal}}, {{editarEmpleadoDireccion.direccion.estado}} <br>
+                            </address>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <!--BOTON EDITAR -->
+                    <button type="button"
+                            class="btn btn-primary btn-xs pull-right"
+                            ng-hide="editarEmpleadoDireccion.mostrarCampos"
+                            ng-click="editarEmpleadoDireccion.editar()">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!--DIRECCION-->
+        <div class="col-sm-6 animated fadeInRight" ng-show="editarEmpleadoDireccion.mostrarCampos">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Dirección</h3>
+                </div>
+            </div>
+            <div class="row">
+                <forma-direccion direccion="editarEmpleadoDireccion.nuevaDireccion"></forma-direccion>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
-            <alertas mensaje="editarEmpleadoDireccion.msj" tipo="editarEmpleadoDireccion.tipoMsj"></alertas>
+            <alertas tipo="editarEmpleadoDireccion.tipoMsj" mensaje="editarEmpleadoDireccion.msj"></alertas>
+        </div>
+        <div class="col-md-3">
+            <!--BOTON GUARDAR DATOS GENERALES-->
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-hide="!editarEmpleadoDireccion.mostrarCampos"
+                    ng-disabled="editarEmpleadoDireccionFrm.$invalid"
+                    ng-click="editarEmpleadoDireccion.actualizar(editarEmpleadoDireccionFrm)">
+                Actualizar
+            </button>
         </div>
     </div>
 </form>

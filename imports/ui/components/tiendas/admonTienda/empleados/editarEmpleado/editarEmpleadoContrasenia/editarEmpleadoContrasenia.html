@@ -1,6 +1,6 @@
 <form role="form"
-      id="editarProveedorCuentaContableFormId"
-      name="editarProveedorCuentaContableForm"
+      id="editarEmpleadoContraseniaFormId"
+      name="editarEmpleadoContraseniaForm"
       class="p-lg"
       novalidate>
     <!--DATOS FISCALES-->
@@ -8,7 +8,7 @@
         <div class="col-sm-4 b-r">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>Cuenta Contable</h3>
+                    <h3>Contraseña</h3>
                     <div class="contact-box">
                         <div class="col-sm-4">
                             <div class="text-center">
@@ -16,11 +16,11 @@
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <p class="m-t-xs font-bold">Cta. Contable: </p>
-                            <h2><strong>{{editarProveedorCuentaContable.proveedor.cuentaContable}}</strong></h2>
+                            <p class="m-t-xs font-bold">Contraseña: </p>
+                            <h2><strong>{{editarEmpleadoContrasenia.empleado.contrasenia}}</strong></h2>
                             <address>
                                 <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
-                                <p>Al editar la Cuenta Contable de éste proveedor todas las tiendas verán reflejado dicho cambio así como severas repercusiones en la contabilidad.</p>
+                                <p>Al editar la Contraseña el empleado debe ser informado.</p>
                             </address>
                         </div>
                         <div class="clearfix"></div>
@@ -30,34 +30,33 @@
                     <!--BOTON EDITAR -->
                     <button type="button"
                             class="btn btn-primary btn-xs pull-right"
-                            ng-click="editarProveedorCuentaContable.editar()">
+                            ng-click="editarEmpleadoContrasenia.editar()">
                         <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                     </button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarProveedorCuentaContable.ocultarBoton">
+        <div class="col-sm-8 animated fadeInRight" ng-show="editarEmpleadoContrasenia.ocultarBoton">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>Nueva Cuenta Contable</h3>
+                    <h3>Nueva Contraseña</h3>
                 </div>
                 <!--CUENTA CONTABLE-->
                 <div class="col-sm-offset-3 col-sm-6">
                     <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
-                    <h4>No edite este campo si no está seguro que todos los contadores de cada tienda estén enterados.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : editarProveedorCuentaContableForm.cuentaContable.$invalid && !editarProveedorCuentaContableForm.cuentaContable.$pristine}">
-                        <div ng-messages="editarProveedorCuentaContableForm.cuentaContable.$dirty && editarProveedorCuentaContableForm.cuentaContable.$error" role="alert">
-                            <label>Nueva Cuenta Contable *
+                    <h4>Se deberá informar personalmente al empleado dicho cambio.</h4>
+                    <div class="form-group" ng-class="{ 'has-error' : editarEmpleadoContraseniaForm.contrasenia.$invalid && !editarEmpleadoContraseniaForm.contrasenia.$pristine}">
+                        <div ng-messages="editarEmpleadoContraseniaForm.contrasenia.$dirty && editarEmpleadoContraseniaForm.contrasenia.$error" role="alert">
+                            <label>Nueva Contraseña *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
                             </label>
-                            <cuenta-contable dato="editarProveedorCuentaContable.datos.cuentaContable"></cuenta-contable>
+                            <contrasenia dato="editarEmpleadoContrasenia.datos.contrasenia"></contrasenia>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <hr>
@@ -67,14 +66,14 @@
     <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
-            <alertas tipo="editarProveedorCuentaContable.tipoMsj" mensaje="editarProveedorCuentaContable.msj"></alertas>
+            <alertas tipo="editarEmpleadoContrasenia.tipoMsj" mensaje="editarEmpleadoContrasenia.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="editarProveedorCuentaContable.ocultarBoton">
+        <div class="col-md-3" ng-show="editarEmpleadoContrasenia.ocultarBoton">
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-disabled="editarProveedorCuentaContableForm.$invalid"
-                    ng-click="editarProveedorCuentaContable.actualizarDatosGenerales(editarProveedorCuentaContableForm)">
+                    ng-disabled="editarEmpleadoContraseniaForm.$invalid"
+                    ng-click="editarEmpleadoContrasenia.actualizarDatosGenerales(editarEmpleadoContraseniaForm)">
                 Actualizar
             </button>
         </div>

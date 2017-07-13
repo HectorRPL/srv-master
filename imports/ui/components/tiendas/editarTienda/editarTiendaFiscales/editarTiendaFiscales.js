@@ -18,7 +18,7 @@ class EditarTiendaFiscales {
 
         this.datosFiscales = {};
         this.muestrarDatosFiscales = false;
-        this.ocultarBoton = false;
+        this.mostrarCampos = false;
 
         this.propietarioId = $stateParams.tiendaId;
 
@@ -36,7 +36,7 @@ class EditarTiendaFiscales {
     }
 
     editar() {
-        this.ocultarBoton = true;
+        this.mostrarCampos = true;
         if (this.datosFiscales === undefined) {
             this.muestrarDatosFiscales = true;
         } else {

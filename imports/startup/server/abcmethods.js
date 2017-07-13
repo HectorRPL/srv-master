@@ -7,3 +7,4 @@ import "../../api/datosFiscales/methods";
 import "../../api/factores/methods";
 import "../../api/inventarios/productosInventarios/methods";
 import "../../api/direcciones/methods";
+import "../../api/empleados/methods";

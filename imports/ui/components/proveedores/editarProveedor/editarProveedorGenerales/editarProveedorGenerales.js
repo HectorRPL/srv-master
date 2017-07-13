@@ -34,7 +34,7 @@ class EditarProveedorGenerales {
     }
 
     editar() {
-        this.ocultarBoton = true;
+        this.mostrarCampos = true;
     }
 
     limpiarCampos(datosGeneralesForm) {

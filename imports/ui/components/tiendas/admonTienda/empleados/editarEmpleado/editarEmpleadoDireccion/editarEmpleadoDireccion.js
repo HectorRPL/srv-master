@@ -16,27 +16,39 @@ class EditarEmpleadoDireccion {
 
         this.propietarioId = $stateParams.empleadoId;
 
-        console.log('[19] this.propietarioId', this.propietarioId);
+        this.direccion = {};
 
         this.tipoMsj = '';
+
+        this.subscribe('direcciones.todas', () => [{propietarioId: this.propietarioId}]);
+        this.nuevaDireccion= {};
+        this.helpers({
+            direccion(){
+                this.nuevaDireccion = Direcciones.findOne({propietarioId: this.propietarioId});
+                return angular.copy(this.nuevaDireccion);
+            }
+        });
 
     }
 
     editar() {
-        this.ocultarBoton = true;
-        if (this.datosFiscales === undefined) {
-            this.muestrarDatosFiscales = true;
-        } else {
-            this.muestraSoloDireccion = true;
-        }
+        this.mostrarCampos = true;
     }
 
-    actualizar(editarEmpleadoDireccionFrm) {
-        if (this.datosFiscales) {
-            this.actualizarDireccion(editarEmpleadoDireccionFrm);
-        } else {
-            this.guardarDatosFiscales(editarEmpleadoDireccionFrm);
-        }
+    actualizar() {
+        this.tipoMsj = '';
+        let direccionFinal = angular.copy(this.nuevaDireccion);
+        delete direccionFinal.colonias;
+        delete direccionFinal.fechaCreacion;
+
+        console.log('[45] Esta es la nueva dirección>>>', direccionFinal);
+
+        cambiosDireccion.callPromise(direccionFinal).then(this.$bindToContext(()=> {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err)=>{
+            console.log(err);
+            this.tipoMsj = 'danger';
+        }));
     }
 
     limpiarCampos(editarEmpleadoDireccionFrm) {
