@@ -1,4 +1,4 @@
-<form role="form" class="p-lg" id="editarPersonalGeneralesFormId" name="editarPersonalGeneralesForm" novalidate>
+<form role="form" class="p-lg" id="editarEmpleadoGeneralesFormId" name="editarEmpleadoGeneralesForm" novalidate>
     <!--DATOS FISCALES-->
     <div class="row animated fadeInRight">
         <div class="col-sm-4 b-r">
@@ -9,30 +9,30 @@
                             <div class="text-center">
                                 <i class="fa fa-user fa-5x" aria-hidden="true"></i>
 
-                                <div class="m-t-xs font-bold">{{editarPersonalGenerales.personal.departamentoId}}</div>
-                                <div class="m-t-xs">No Empleado: <span class="font-bold"></span>{{editarPersonalGenerales.personal.noEmpleado}}</div>
-                                <div class="m-t-xs">{{editarPersonalGenerales.personal.sexo}}</div>
-                                <div class="m-t-xs">Nacimiento: {{editarPersonalGenerales.personal.nacimientoAnio}}/{{editarPersonalGenerales.personal.nacimientoMes}}/{{editarPersonalGenerales.personal.nacimientoDia}}</div>
-                                <div class="m-t-xs">Registro: {{editarPersonalGenerales.personal.fechaCreacion | date : format : timezone}}</div>
+                                <div class="m-t-xs font-bold">{{editarEmpleadoGenerales.empleados.departamentoId}}</div>
+                                <div class="m-t-xs">No Empleado: <span class="font-bold"></span>{{editarEmpleadoGenerales.empleados.noEmpleado}}</div>
+                                <div class="m-t-xs">{{editarEmpleadoGenerales.empleados.sexo}}</div>
+                                <div class="m-t-xs">Nacimiento: {{editarEmpleadoGenerales.empleados.nacimientoAnio}}/{{editarEmpleadoGenerales.empleados.nacimientoMes}}/{{editarEmpleadoGenerales.empleados.nacimientoDia}}</div>
+                                <div class="m-t-xs">Registro: {{editarEmpleadoGenerales.empleados.fechaCreacion | date : format : timezone}}</div>
                                 <div class="m-t-xs">Activo:
-                                    <span ng-show="editarPersonalGenerales.personal.activo">Si</span>
-                                    <span ng-show="!editarPersonalGenerales.personal.activo">No</span>
+                                    <span ng-show="editarEmpleadoGenerales.empleados.activo">Si</span>
+                                    <span ng-show="!editarEmpleadoGenerales.empleados.activo">No</span>
                                 </div>
-                                <h1>{{editarPersonalGenerales.personal.activo}}</h1>
+                                <h1>{{editarEmpleadoGenerales.empleados.activo}}</h1>
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <h3><strong>{{editarPersonalGenerales.personal.nombreCompleto}}</strong></h3>
+                            <h3><strong>{{editarEmpleadoGenerales.empleados.nombreCompleto}}</strong></h3>
 
                             <p><i class="fa fa-map-marker"></i> Dirección</p>
                             <address>
-                                {{editarPersonalGenerales.direccion.calle}} {{editarPersonalGenerales.direccion.numExt}} <span ng-show="editarPersonalGenerales.direccion.numExt">Int. {{editarPersonalGenerales.direccion.numInt}}</span><br>
-                                {{editarPersonalGenerales.direccion.delMpio}}, {{editarPersonalGenerales.direccion.codigoPostal}}, {{editarPersonalGenerales.direccion.estado}}
+                                {{editarEmpleadoGenerales.direccion.calle}} {{editarEmpleadoGenerales.direccion.numExt}} <span ng-show="editarEmpleadoGenerales.direccion.numExt">Int. {{editarEmpleadoGenerales.direccion.numInt}}</span><br>
+                                {{editarEmpleadoGenerales.direccion.delMpio}}, {{editarEmpleadoGenerales.direccion.codigoPostal}}, {{editarEmpleadoGenerales.direccion.estado}}
                                 <br>
                                 <br>
-                                <abbr title="Phone">Tel:</abbr> {{editarPersonalGenerales.personal.telefono}}<br>
-                                <abbr title="Phone">Cel:</abbr> {{editarPersonalGenerales.personal.celular}} <br>
-                                <abbr><i class="fa fa-envelope-o" aria-hidden="true"></i>:</abbr> {{editarPersonalGenerales.personal.email}} <br>
+                                <abbr title="Phone">Tel:</abbr> {{editarEmpleadoGenerales.empleados.telefono}}<br>
+                                <abbr title="Phone">Cel:</abbr> {{editarEmpleadoGenerales.empleados.celular}} <br>
+                                <abbr><i class="fa fa-envelope-o" aria-hidden="true"></i>:</abbr> {{editarEmpleadoGenerales.empleados.email}} <br>
                             </address>
                         </div>
                         <div class="clearfix"></div>
@@ -42,13 +42,13 @@
                     <!--BOTON EDITAR -->
                     <button type="button"
                             class="btn btn-primary btn-xs pull-right"
-                            ng-click="editarPersonalGenerales.editar()">
+                            ng-click="editarEmpleadoGenerales.editar()">
                         <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                     </button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarPersonalGenerales.ocultarBoton">
+        <div class="col-sm-8 animated fadeInRight" ng-show="editarEmpleadoGenerales.ocultarBoton">
             <div class="row">
                 <div class="col-sm-12">
                     <h3>Datos Generales</h3>
@@ -56,8 +56,8 @@
                 <!--NOMBRE DEl EMPLEADO-->
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.primerNombre.$invalid && !editarPersonalGeneralesFrm.primerNombre.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.nombre.$dirty && editarPersonalGeneralesFrm.primerNombre.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.primerNombre.$invalid && !editarEmpleadoGeneralesFrm.primerNombre.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.nombre.$dirty && editarEmpleadoGeneralesFrm.primerNombre.$error"
                              role="alert">
                             <label>Primer Nombre *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
@@ -67,14 +67,14 @@
                             <input id="primerNombreID" class="form-control" name="primerNombre" type="text" aria-describedby="sizing-addon1"
                                    placeholder="Primer Nombre" required minlength="2" maxlength="31" ng-minlength="2"
                                    ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/"
-                                   ng-model="editarPersonalGenerales.credentials.profile.primerNombre">
+                                   ng-model="editarEmpleadoGenerales.credentials.profile.primerNombre">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.segundoNombre.$invalid && !editarPersonalGeneralesFrm.segundoNombre.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.segundoNombre.$dirty && editarPersonalGeneralesFrm.segundoNombre.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.segundoNombre.$invalid && !editarEmpleadoGeneralesFrm.segundoNombre.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.segundoNombre.$dirty && editarEmpleadoGeneralesFrm.segundoNombre.$error"
                              role="alert">
                             <label>Segundo Nombre
                                 <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 30 letras</span>
@@ -83,14 +83,14 @@
                             <input id="segundoNombreID" class="form-control" name="segundoNombre" type="text" aria-describedby="sizing-addon1"
                                    placeholder="Segundo Nombre" minlength="2" maxlength="31" ng-minlength="2"
                                    ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/"
-                                   ng-model="editarPersonalGenerales.credentials.profile.segundoNombre">
+                                   ng-model="editarEmpleadoGenerales.credentials.profile.segundoNombre">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.apellidoPaterno.$invalid && !editarPersonalGeneralesFrm.apellidoPaterno.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.apellidoPaterno.$dirty && editarPersonalGeneralesFrm.apellidoPaterno.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.apellidoPaterno.$invalid && !editarEmpleadoGeneralesFrm.apellidoPaterno.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.apellidoPaterno.$dirty && editarEmpleadoGeneralesFrm.apellidoPaterno.$error"
                              role="alert">
                             <label>Apellidos Paterno *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
@@ -100,14 +100,14 @@
                             <input id="apellidoPaternoID" class="form-control" name="apellidoPaterno" type="text" placeholder="Apellido Paterno"
                                    aria-describedby="sizing-addon1" required minlength="2" maxlength="31"
                                    ng-minlength="2" ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/"
-                                   ng-model="editarPersonalGenerales.credentials.profile.apellidoPaterno">
+                                   ng-model="editarEmpleadoGenerales.credentials.profile.apellidoPaterno">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.apellidoMaterno.$invalid && !editarPersonalGeneralesFrm.apellidoMaterno.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.apellidoMaterno.$dirty && editarPersonalGeneralesFrm.apellidoMaterno.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.apellidoMaterno.$invalid && !editarEmpleadoGeneralesFrm.apellidoMaterno.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.apellidoMaterno.$dirty && editarEmpleadoGeneralesFrm.apellidoMaterno.$error"
                              role="alert">
                             <label>Apellido Materno
                                 <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 2, max 30 letras</span>
@@ -116,15 +116,15 @@
                             <input id="apellidoMaternoID" class="form-control" name="apellidoMaterno" type="text" placeholder="Apellido Materno"
                                    aria-describedby="sizing-addon1" minlength="2" maxlength="31"
                                    ng-minlength="2" ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/"
-                                   ng-model="editarPersonalGenerales.credentials.profile.apellidoMaterno">
+                                   ng-model="editarEmpleadoGenerales.credentials.profile.apellidoMaterno">
                         </div>
                     </div>
                 </div>
                 <!-- EMAIL DE EMPLEADO -->
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.email.$invalid && !editarPersonalGeneralesFrm.email.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.email.$dirty && editarPersonalGeneralesFrm.email.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.email.$invalid && !editarEmpleadoGeneralesFrm.email.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.email.$dirty && editarEmpleadoGeneralesFrm.email.$error"
                              role="alert">
                             <label> Email *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -134,15 +134,15 @@
                             <input id="emailId" class="form-control" name="email" type="email"
                                    aria-describedby="sizing-addon1" minlength="5"
                                    maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                                   ng-model="editarPersonalGenerales.credentials.email">
+                                   ng-model="editarEmpleadoGenerales.credentials.email">
                         </div>
                     </div>
                 </div>
                 <!-- SEX DE EMPLEADO -->
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.sexo.$invalid && !editarPersonalGeneralesFrm.sexo.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.sexo.$dirty && editarPersonalGeneralesFrm.sexo.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.sexo.$invalid && !editarEmpleadoGeneralesFrm.sexo.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.sexo.$dirty && editarEmpleadoGeneralesFrm.sexo.$error"
                              role="alert">
                             <label>Sexo *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
@@ -150,13 +150,13 @@
                             <div class="btn-group btn-group-justified" role="group" aria-label="...">
                                 <div class="btn-group" role="group">
                                     <button id="sexoMId" class="btn btn-default" name="sexoM" type="button" required
-                                            uib-btn-radio="'Mujer'" ng-model="editarPersonalGenerales.credentials.profile.sexo">
+                                            uib-btn-radio="'Mujer'" ng-model="editarEmpleadoGenerales.credentials.profile.sexo">
                                         <i class="fa fa-venus" aria-hidden="true"></i> Mujer
                                     </button>
                                 </div>
                                 <div class="btn-group" role="group">
                                     <button id="sexoHId" class="btn btn-default" name="sexoH" type="button" required
-                                            uib-btn-radio="'Hombre'" ng-model="editarPersonalGenerales.credentials.profile.sexo">
+                                            uib-btn-radio="'Hombre'" ng-model="editarEmpleadoGenerales.credentials.profile.sexo">
                                         <i class="fa fa-mars" aria-hidden="true"></i> Hombre
                                     </button>
                                 </div>
@@ -166,9 +166,9 @@
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <div ng-messages="(editarPersonalGeneralesFrm.elegirAnio.$dirty && editarPersonalGeneralesFrm.elegirAnio.$error)
-                            || (editarPersonalGeneralesFrm.elegirMes.$dirty && editarPersonalGeneralesFrm.elegirMes.$error)
-                            || (editarPersonalGeneralesFrm.elegirDia.$dirty && editarPersonalGeneralesFrm.elegirDia.$error)"
+                        <div ng-messages="(editarEmpleadoGeneralesFrm.elegirAnio.$dirty && editarEmpleadoGeneralesFrm.elegirAnio.$error)
+                            || (editarEmpleadoGeneralesFrm.elegirMes.$dirty && editarEmpleadoGeneralesFrm.elegirMes.$error)
+                            || (editarEmpleadoGeneralesFrm.elegirDia.$dirty && editarEmpleadoGeneralesFrm.elegirDia.$error)"
                              role="alert">
                             <label>Fecha Nacimiento*
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
@@ -178,20 +178,20 @@
                             <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group"
-                                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.elegirAnio.$invalid && !editarPersonalGeneralesFrm.elegirAnio.$pristine}">
-                                        <elegir-anio anioid="editarPersonalGenerales.credentials.profile.nacimientoAnio"></elegir-anio>
+                                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.elegirAnio.$invalid && !editarEmpleadoGeneralesFrm.elegirAnio.$pristine}">
+                                        <elegir-anio anioid="editarEmpleadoGenerales.credentials.profile.nacimientoAnio"></elegir-anio>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group"
-                                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.elegirMes.$invalid && !editarPersonalGeneralesFrm.elegirMes.$pristine}">
-                                        <elegir-mes mesid="editarPersonalGenerales.credentials.profile.nacimientoMes"></elegir-mes>
+                                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.elegirMes.$invalid && !editarEmpleadoGeneralesFrm.elegirMes.$pristine}">
+                                        <elegir-mes mesid="editarEmpleadoGenerales.credentials.profile.nacimientoMes"></elegir-mes>
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group"
-                                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.elegirDia.$invalid && !editarPersonalGeneralesFrm.elegirDia.$pristine}">
-                                        <elegir-dia diaid="editarPersonalGenerales.credentials.profile.nacimientoDia"></elegir-dia>
+                                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.elegirDia.$invalid && !editarEmpleadoGeneralesFrm.elegirDia.$pristine}">
+                                        <elegir-dia diaid="editarEmpleadoGenerales.credentials.profile.nacimientoDia"></elegir-dia>
                                     </div>
                                 </div>
                             </div>
@@ -201,8 +201,8 @@
                 <!-- TELÉFONO Y CELULAR DE CONTACTO-->
                 <div class="col-sm-4">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.telefono.$invalid && !editarPersonalGeneralesFrm.telefono.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.telefono.$dirty && editarPersonalGeneralesFrm.telefono.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.telefono.$invalid && !editarEmpleadoGeneralesFrm.telefono.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.telefono.$dirty && editarEmpleadoGeneralesFrm.telefono.$error"
                              role="alert">
                             <label> Teléfono*
                                 <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -212,14 +212,14 @@
                             <input id="telefonosId" class="form-control" type="text" name="telefono"
                                    aria-describedby="sizing-addon1" maxlength="10" ng-pattern="/^[0-9]{10}$/"
                                    required ng-pattern="/^[a-zA-Z-._\s\d]+$/"
-                                   ng-model="editarPersonalGenerales.credentials.profile.telefono">
+                                   ng-model="editarEmpleadoGenerales.credentials.profile.telefono">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.celular.$invalid && !editarPersonalGeneralesFrm.celular.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.celular.$dirty && editarPersonalGeneralesFrm.celular.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.celular.$invalid && !editarEmpleadoGeneralesFrm.celular.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.celular.$dirty && editarEmpleadoGeneralesFrm.celular.$error"
                              role="alert">
                             <label> Celular *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -229,34 +229,34 @@
                             <input id="celularId" class="form-control" type="text" name="celular"
                                    aria-describedby="sizing-addon1" maxlength="10" ng-pattern="/^[0-9]{10}$/"
                                    required ng-pattern="/^[a-zA-Z-._\s\d]+$/"
-                                   ng-model="editarPersonalGenerales.credentials.profile.celular">
+                                   ng-model="editarEmpleadoGenerales.credentials.profile.celular">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.departamento.$invalid && !editarPersonalGeneralesFrm.departamento.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.departamento.$dirty && editarPersonalGeneralesFrm.departamento.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.departamento.$invalid && !editarEmpleadoGeneralesFrm.departamento.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.departamento.$dirty && editarEmpleadoGeneralesFrm.departamento.$error"
                              role="alert">
                             <label> Puesto *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                             </label>
                             <elegir-departamento
-                                    departamento="editarPersonalGenerales.credentials.profile.departamento"></elegir-departamento>
+                                    departamento="editarEmpleadoGenerales.credentials.profile.departamento"></elegir-departamento>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group"
-                         ng-class="{ 'has-error' : editarPersonalGeneralesFrm.password.$invalid && !editarPersonalGeneralesFrm.password.$pristine}">
-                        <div ng-messages="editarPersonalGeneralesFrm.password.$dirty && editarPersonalGeneralesFrm.password.$error"
+                         ng-class="{ 'has-error' : editarEmpleadoGeneralesFrm.password.$invalid && !editarEmpleadoGeneralesFrm.password.$pristine}">
+                        <div ng-messages="editarEmpleadoGeneralesFrm.password.$dirty && editarEmpleadoGeneralesFrm.password.$error"
                              role="alert">
                             <label> Contraseña *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                             </label>
                             <input id="passwordId" class="form-control " name="password" type="password"
                                    placeholder="Contraseña" aria-describedby="sizing-addon2" maxlength="8" minlength="4"
-                                   required ng-model="editarPersonalGenerales.credentials.password">
+                                   required ng-model="editarEmpleadoGenerales.credentials.password">
                         </div>
                     </div>
                 </div>
@@ -270,14 +270,14 @@
     <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
-            <alertas tipo="editarPersonalGenerales.tipoMsj" mensaje="editarPersonalGenerales.msj"></alertas>
+            <alertas tipo="editarEmpleadoGenerales.tipoMsj" mensaje="editarEmpleadoGenerales.msj"></alertas>
         </div>
         <div class="col-md-3">
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-disabled="editarPersonalGeneralesForm.$invalid"
-                    ng-click="editarPersonalGenerales.actualizarDatosGenerales(editarPersonalGeneralesForm)">
+                    ng-disabled="editarEmpleadoGeneralesForm.$invalid"
+                    ng-click="editarEmpleadoGenerales.actualizarDatosGenerales(editarEmpleadoGeneralesForm)">
                 Actualizar
             </button>
         </div>

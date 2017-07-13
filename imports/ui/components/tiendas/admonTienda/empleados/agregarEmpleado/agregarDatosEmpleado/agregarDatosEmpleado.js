@@ -51,8 +51,8 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.empleados.agregar.datosPersonales', {
-            url: '/datosPersonales',
+        .state('app.tienda.admon.empleados.agregar.datosTemporales', {
+            url: '/datosTemporales',
             template: '<agregar-datos-empleado></agregar-datos-empleado>'
         });
 }

@@ -1,13 +1,13 @@
 /**
  * Created by jvltmtz on 19/06/17.
  */
-import template from "./listaPersonal.html";
+import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
-import {name as DetallesPersonal} from "./detallesPersonal/detallesPersonal";
-// import {name as EditarPersonalGenerales} from "../editarPersonal/editarPersonalGenerales/editarPersonalGenerales";
+import {name as DetallesEmpleados} from "./detallesEmpleados/detallesEmpleados";
+// import {name as EditarEmpleadosGenerales} from "../editarEmpleados/editarEmpleadosGenerales/editarEmpleadosGenerales";
 
-class ListaPersonal {
+class ListaEmpleados {
     constructor($scope, $reactive, $stateParams, $uibModal) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -44,16 +44,16 @@ class ListaPersonal {
         this.page = newPage;
     }
 
-    abreModalDealles(personal) {
+    abreModalDealles(empleados) {
         var modalInstance = this.$uibModal.open({
             animation: true,
-            component: 'DetallesPersonal',
+            component: 'DetallesEmpleados',
             backdrop: 'static',
             size: 'xs',
             keyboard: true,
             resolve: {
-                personal: function () {
-                    return personal;
+                empleados: function () {
+                    return empleados;
                 }
             }
 
@@ -62,19 +62,19 @@ class ListaPersonal {
 
 }
 
-const name = 'listaPersonal';
+const name = 'listaEmpleados';
 
 // create a module
 export default angular
     .module(name, [
         BuscarEmpleado,
-        DetallesPersonal,
-        // EditarPersonalGenerales
+        DetallesEmpleados,
+        // EditarEmpleadosGenerales
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ListaPersonal
+        controller: ListaEmpleados
     })
     .config(config);
 
@@ -83,6 +83,6 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon.empleados.lista', {
             url: '/lista',
-            template: '<lista-personal></lista-personal>'
+            template: '<lista-empleados></lista-empleados>'
         });
 }

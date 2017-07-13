@@ -1,17 +1,17 @@
 /**
  * Created by Héctor on 11/07/2017.
  */
-import template from "./editarPersonal.html";
+import template from "./editarEmpleado.html";
 import ngAnimate from "angular-animate";
-import {name as EditarPersonalGenerales} from "./editarPersonalGenerales/editarPersonalGenerales";
-import {name as EditarPersonalDireccion} from "./editarPersonalDireccion/editarPersonalDireccion";
+import {name as EditarEmpleadoGenerales} from "./editarEmpleadoGenerales/editarEmpleadoGenerales";
+import {name as EditarEmpleadoDireccion} from "./editarEmpleadoDireccion/editarEmpleadoDireccion";
 
-class EditarPersonal {
+class EditarEmpleado {
     constructor($scope, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
 
-        this.personalId = $stateParams.personalId;
+        this.empleadoId = $stateParams.empleadoId;
         this.tiendaId = $stateParams.tiendaId;
 
         $scope.oneAtATime = true;
@@ -23,18 +23,18 @@ class EditarPersonal {
     }
 }
 
-const name = 'editarPersonal';
+const name = 'editarEmpleado';
 
 export default angular
     .module(name, [
         ngAnimate,
-        EditarPersonalGenerales,
-        EditarPersonalDireccion
+        EditarEmpleadoGenerales,
+        EditarEmpleadoDireccion
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: EditarPersonal
+        controller: EditarEmpleado
     })
     .config(config);
 
@@ -43,7 +43,7 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon.empleados.editar', {
             url: '/editar',
-            template: '<editar-personal></editar-personal>',
+            template: '<editar-empleado></editar-empleado>',
             abstract: true
         });
 }

@@ -18,7 +18,7 @@
                 <tbody>
                     <tr dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
                         total-items="listaTiendas.tiendasCount">
-                        <td><a ui-sref="app.tienda.admon.personal.lista({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
+                        <td><a ui-sref="app.tienda.admon.empleados.lista({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
                         <td><i class="fa fa-envelope"> </i> {{tienda.email}}</td>
                         <td><i class="fa fa-phone"> </i> +{{tienda.telefonos[0].telefono}}</td>
                         <td>

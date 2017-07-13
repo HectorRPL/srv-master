@@ -1,20 +1,20 @@
 /**
  * Created by Héctor on 11/07/2017.
 */
-import template from "./editarPersonalDireccion.html";
+import template from "./editarEmpleadoDireccion.html";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../../../comun/formas/formaDireccion/formaDireccion";
 import {cambiosDireccion} from "../../../../../../../api/direcciones/methods";
 import {Direcciones} from "../../../../../../../api/direcciones/collection";
 
-class EditarPersonalDireccion {
+class EditarEmpleadoDireccion {
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$scope = $scope;
         this.$state = $state;
         $reactive(this).attach($scope);
 
-        this.propietarioId = $stateParams.personalId;
+        this.propietarioId = $stateParams.empleadoId;
 
         console.log('[19] this.propietarioId', this.propietarioId);
 
@@ -31,22 +31,22 @@ class EditarPersonalDireccion {
         }
     }
 
-    actualizar(editarPersonalDireccionFrm) {
+    actualizar(editarEmpleadoDireccionFrm) {
         if (this.datosFiscales) {
-            this.actualizarDireccion(editarPersonalDireccionFrm);
+            this.actualizarDireccion(editarEmpleadoDireccionFrm);
         } else {
-            this.guardarDatosFiscales(editarPersonalDireccionFrm);
+            this.guardarDatosFiscales(editarEmpleadoDireccionFrm);
         }
     }
 
-    limpiarCampos(editarPersonalDireccionFrm) {
+    limpiarCampos(editarEmpleadoDireccionFrm) {
         this.datosFiscalesOriginal = {};
-        editarPersonalDireccionFrm.$setPristine();
+        editarEmpleadoDireccionFrm.$setPristine();
     }
 
 }
 
-const name = 'editarPersonalDireccion';
+const name = 'editarEmpleadoDireccion';
 
 export default angular
     .module(name, [
@@ -56,7 +56,7 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: EditarPersonalDireccion
+        controller: EditarEmpleadoDireccion
     })
     .config(config);
 
@@ -64,7 +64,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.admon.empleados.editar.direccion', {
-            url: '/:personalId/direccion',
-            template: '<editar-personal-direccion></editar-personal-direccion>'
+            url: '/:empleadoId/direccion',
+            template: '<editar-empleado-direccion></editar-empleado-direccion>'
         });
 }

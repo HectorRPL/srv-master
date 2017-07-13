@@ -1,10 +1,10 @@
 /**
  * Created by Héctor on 11/07/2017.
  */
-import template from "./detallesPersonal.html";
+import template from "./detallesEmpleados.html";
 import {Direcciones} from "../../../../../../../api/direcciones/collection";
 
-class DetallesPersonal {
+class DetallesEmpleados {
     constructor($scope, $reactive, $state) {
         'ngInject';
 
@@ -13,7 +13,7 @@ class DetallesPersonal {
         $reactive(this).attach($scope);
 
         // /*
-        this.subscribe('direcciones.todas', () => [{propietarioId: this.getReactively('resolve.personal._id')}]);
+        this.subscribe('direcciones.todas', () => [{propietarioId: this.getReactively('resolve.empleados._id')}]);
         this.helpers({
             direccion() {
                 console.log('[19] deberías traer la direccion', Direcciones.findOne({}));
@@ -28,14 +28,14 @@ class DetallesPersonal {
     }
 }
 
-const name = 'detallesPersonal';
+const name = 'detallesEmpleados';
 
 export default angular
     .module(name, [])
     .component(name, {
         template,
         controllerAs: name,
-        controller: DetallesPersonal,
+        controller: DetallesEmpleados,
         bindings: {
             resolve: '<',
             close: '&',
