@@ -1,16 +1,14 @@
 /**
  * Created by jvltmtz on 3/07/17.
  */
-import template from "./confirmarAplicarFactor.html";
+import template from "./confirmarOperacion.html";
 
-class ConfirmarAplicarFactor {
+class ConfirmarOperacion {
 
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
-        this.titulo = 'Confirmar aplicar factor';
-        this.tipoMsj = 'warning';
-        this.msj = 'Al aplicar un factor, uno o varios productos podrian verse afectados en sus precios.\n ¿Desea continuar con el proceso?';
+        this.titulo = 'Confirmar';
     }
 
     aceptar() {
@@ -22,14 +20,14 @@ class ConfirmarAplicarFactor {
     }
 }
 
-const name = 'confirmarAplicarFactor';
+const name = 'confirmarOperacion';
 
 export default angular
     .module(name, [])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ConfirmarAplicarFactor,
+        controller: ConfirmarOperacion,
         bindings: {
             close: '&',
             dismiss: '&',
