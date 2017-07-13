@@ -7,7 +7,7 @@ import {ValidatedMethod} from "meteor/mdg:validated-method"
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {Promociones} from "./collection";
-import {BitaFactoresPromo} from "../bitacoras/factoresPromo/collection";
+import {BitaFactPromoComi} from "../bitacoras/factoresPromo/collection";
 import {ProductosInventarios} from "../inventarios/productosInventarios/collection";
 
 const CAMPOS_PROMOCIONES = ['nombre', 'descuento', 'precioLista', 'fechaInicio', 'fechaFin'];
@@ -33,15 +33,14 @@ export const aplicarPromocionProductos = new ValidatedMethod({
     name: 'promociones.aplicarProductos',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
-        factorNuevoId: {type: String},
+        promocionNuevaId: {type: String},
         productos: {type: [Object], blackbox: true}
     }).validator(),
-    run({factorNuevoId, productos}) {
-        console.log('Dentro del metodo', factorNuevoId, productos);
+    run({promocionNuevaId, productos}) {
         let result = [];
         let error = [];
         productos.forEach((prod)=> {
-            ProductosInventarios.update({_id: prod._id}, {$set: {factorId: factorNuevoId}}, (err)=> {
+            ProductosInventarios.update({_id: prod._id}, {$set: {promocionId: promocionNuevaId}}, (err)=> {
                 if (err) {
                     error.push({_id: prod._id});
                 } else {
@@ -50,7 +49,7 @@ export const aplicarPromocionProductos = new ValidatedMethod({
             });
         });
         if (result.length === 0) {
-            throw Meteor.Error('404', 'Erro al realizar la operacion.', 'erro-aplicar-factor');
+            throw Meteor.Error('404', 'Erro al realizar la operacion.', 'erro-aplicar-promo');
         }
         return result;
     }
@@ -62,10 +61,10 @@ export const aplicarPromocionMarca = new ValidatedMethod({
     validate: new SimpleSchema({
         tiendaId: {type: String},
         marcaId: {type: String},
-        factorNuevoId: {type: String},
+        promocionNuevaId: {type: String},
         excepciones: {type: [Object], blackbox: true}
     }).validator(),
-    run({tiendaId, marcaId, factorNuevoId, excepciones}) {
+    run({tiendaId, marcaId, promocionNuevaId, excepciones}) {
         if (Meteor.isServer) {
             let arrIds = [];
             excepciones.forEach((prod)=> {
@@ -79,18 +78,18 @@ export const aplicarPromocionMarca = new ValidatedMethod({
                     {marcaId: marcaId}
                 ]
             };
-            prodInventariosBulk.find(selector).update({$set: {factorId: factorNuevoId}});
+            prodInventariosBulk.find(selector).update({$set: {promocionId: promocionNuevaId}});
             const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
             try {
                 execute();
-                BitaFactoresPromo.insert({
-                    usuarioId: this.userId, operacion: 'aplica-factor',
-                    marcaId: marcaId, excepciones: arrIds
-                });
+                BitaFactPromoComi.insert({usuarioId: this.userId, nuevoValorId:promocionNuevaId,
+                    operacion: 'promocionMarca', marcaId: marcaId, excepciones: arrIds});
                 return true;
             } catch (error) {
-                throw new Meteor.Error(403, 'Error al aplicar factor', 'error.aplicar-factor');
+                console.log(error);
+                throw new Meteor.Error(403, 'Error al aplicar factor', 'error.aplicar-promocion');
             }
+
         }
     }
 });

@@ -8,7 +8,7 @@ import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {Factores} from "./collection";
 import {ProductosInventarios} from "../inventarios/productosInventarios/collection";
-import {BitaFactoresPromo} from "../bitacoras/factoresPromo/collection";
+import {BitaFactPromoComi} from "../bitacoras/factoresPromo/collection";
 
 const CAMPOS_FACTORES = ['nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9'];
 
@@ -42,7 +42,6 @@ export const aplicarFactorProductos = new ValidatedMethod({
         productos: {type: [Object],  blackbox: true}
     }).validator(),
     run({factorNuevoId, productos}) {
-        console.log('Dentro del metodo', factorNuevoId, productos);
         let result = [];
         let error = [];
         productos.forEach((prod)=> {
@@ -88,10 +87,11 @@ export const aplicarFactorMarca = new ValidatedMethod({
             const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
             try {
                 execute();
-                BitaFactoresPromo.insert({usuarioId: this.userId, operacion: 'aplica-factor',
+                BitaFactPromoComi.insert({usuarioId: this.userId, nuevoValorId:factorNuevoId, operacion: 'factorMarca',
                     marcaId: marcaId, excepciones: arrIds});
                 return true;
             } catch (error) {
+                console.log(error);
                 throw new Meteor.Error(403, 'Error al aplicar factor', 'error.aplicar-factor');
             }
         }

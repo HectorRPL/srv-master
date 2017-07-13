@@ -42,10 +42,10 @@ Schema.productosInventarios = new SimpleSchema({
     marcaId: {type: String, regEx: SimpleSchema.RegEx.Id},
     factorId: {type: String, regEx: SimpleSchema.RegEx.Id},
     fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
-    cantidad: {type: Number, defaultValue: 10, max: 10000, min: 0
-},
+    cantidad: {type: Number, defaultValue: 10, max: 10000, min: 0},
     costo: {type: Number, decimal: true},
-    promocionId: {type: String, regEx: SimpleSchema.RegEx.Id, optional: true}
+    promocionId: {type: String, regEx: SimpleSchema.RegEx.Id, optional: true},
+    comisionId: {type: String, regEx: SimpleSchema.RegEx.Id, optional: true}
 });
 
 ProductosInventarios.attachSchema(Schema.productosInventarios);
