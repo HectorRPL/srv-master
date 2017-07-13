@@ -18,10 +18,9 @@ class FactorProducto {
         this.productosAplicarFac = [];
     }
 
-    agregar(_id, factorId, marca, producto) {
+    agregar(_id, marca, producto) {
         const result = {
             _id: _id,
-            factorId: factorId,
             marca: marca,
             producto: producto
         };

@@ -7,32 +7,12 @@
                          producto="factorProducto.productoSelec">
         </buscar-producto>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-6">
-
-    </div>
-
-</div>
-<div class="row">
-    <div class="col-sm-6 b-r">
-        <h3 class="m-t-none m-b">Productos a elegir</h3>
-        <p></p>
-        <lista-productos-tienda marca="factorProducto.marcaSelec" producto="factorProducto.productoSelec"
-                                tienda-id="factorProducto.tiendaId"
-                                agregar-prod="factorProducto.agregar(_id, factorId, marca, producto)">
-        </lista-productos-tienda>
-    </div>
-    <div class="col-sm-6">
-        <h4>Productos que seran actaulizados&nbsp;
-            <button class="btn btn-primary btn-sm pull-right"
-                    ng-disabled="factorProducto.productosAplicarFac.length === 0"
-                    ng-click="factorProducto.confirmar()">
-                Aplicar Factor
-            </button>
-        </h4>
-        <p></p>
-        <lista-productos-factores productos="factorProducto.productosAplicarFac"></lista-productos-factores>
+    <div class="col-xs-2">
+        <button class="btn btn-primary btn-sm pull-right"
+                ng-disabled="factorProducto.productosAplicarFac.length === 0"
+                ng-click="factorProducto.confirmar()">
+            Aplicar Factor
+        </button>
     </div>
 </div>
 <div class="row">
@@ -40,3 +20,19 @@
         <alertas tipo="factorProducto.tipoMsj" mensaje=""></alertas>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">Productos a elegir</h3>
+        <p></p>
+        <lista-productos-tienda marca="factorProducto.marcaSelec" producto="factorProducto.productoSelec"
+                                tienda-id="factorProducto.tiendaId"
+                                agregar-prod="factorProducto.agregar(_id, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Productos que seran actaulizados&nbsp;</h4>
+        <p></p>
+        <lista-productos-factores productos="factorProducto.productosAplicarFac"></lista-productos-factores>
+    </div>
+</div>
+

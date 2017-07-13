@@ -19,10 +19,9 @@ class FactorMarca {
         this.prodsExcepciones = [];
     }
 
-    agregar(_id, factorId, marca, producto) {
+    agregar(_id, marca, producto) {
         const result = {
             _id: _id,
-            factorId: factorId,
             marca: marca,
             producto: producto
         };
@@ -35,6 +34,7 @@ class FactorMarca {
     }
 
     aplicarFactor() {
+        this.tipoMsj = '';
         const datos = {
             tiendaId: this.tiendaId,
             marcaId: this.marcaSelec._id,
