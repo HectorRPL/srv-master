@@ -7,7 +7,7 @@ import {name as PromocionProducto} from "./promocionProducto/promocionProducto";
 import {name as BuscarMarca} from "../../../../comun/busquedas/buscarMarca/buscarMarca";
 import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {name as ListaProductosTienda} from "../../../../comun/listaProductosTienda/listaProductosTienda";
-import {name as Alertas} from "../../../../comun/alertas/alertas"
+import {name as Alertas} from "../../../../comun/alertas/alertas";
 import template from "./aplicarPromocion.html";
 
 class AplicarPromocion {

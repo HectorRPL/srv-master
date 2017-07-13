@@ -1,2 +1,7 @@
-<h2 class="text-navy">Promoción: {{aplicarPromocion.promocion.nombre}}.</h2>
+<span class="text-muted small pull-right">Descuento:{{aplicarPromocion.promocion.descuento}}%&nbsp;
+    Fecha Inicio: {{aplicarPromocion.promocion.fechaInicio | date:"dd-MMMM-yyyy"}}&nbsp;
+    Fecha Fin: {{aplicarPromocion.promocion.fechaFin | date:"dd-MMMM-yyyy"}}</span>
+<h2 class="text-navy">
+    Promoción: {{aplicarPromocion.promocion.nombre}}&nbsp;&nbsp;
+</h2>
 <div ui-view=""></div>
