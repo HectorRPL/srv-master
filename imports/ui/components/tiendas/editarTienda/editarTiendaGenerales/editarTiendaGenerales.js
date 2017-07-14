@@ -32,7 +32,7 @@ class EditarTiendaGenerales {
     }
 
     editar() {
-        this.ocultarBoton = true;
+        this.mostrarCampos = true;
     }
 
     limpiarCampos(datosGeneralesForm) {

@@ -19,6 +19,15 @@ Empleados.deny({
 Empleados.schema = new SimpleSchema({
     _id: {type: String, regEx: SimpleSchema.RegEx.Id},
     fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
+    email: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Email,
+        autoValue: function () {
+            if (this.value) {
+                return this.value.toUpperCase();
+            }
+        }
+    },
     propietarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
     tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
     departamentoId: {type: String},
@@ -76,7 +85,11 @@ Empleados.schema = new SimpleSchema({
             }
             return nombreCompleto;
         }
-    }
+    },
+    activo: {
+        type: Boolean,
+        defaultValue: true
+    },
 });
 
 Empleados.attachSchema(Empleados.schema);

@@ -7,18 +7,19 @@
         <div class="col-md-4" ng-show="!agregarDireccionEmpleado.msj || agregarDireccionEmpleado.tipoMsj != 'success'">
             <!--BOTON SIGUIENTE -->
             <button type="button" class="btn btn-primary pull-right"
+                    ng-show="agregarDireccionEmpleado.tipoMsj != 'success'"
                     ng-disabled="agregarDireccionEmpleadoFrm.$invalid"
                     ng-click="agregarDireccionEmpleado.guardar()">
                 Finalizar
             </button>
         </div>
         <div class="col-md-2" ng-show="agregarDireccionEmpleado.tipoMsj === 'success'">
-            <a class="btn btn-default" role="button" ui-sref="app.tienda.admon.personal.lista">
+            <a class="btn btn-default" role="button" ui-sref="app.tienda.admon.empleados.lista">
                 Ver Empleados
             </a>
         </div>
         <div class="col-md-2" ng-show="agregarDireccionEmpleado.tipoMsj === 'success'">
-            <a class="btn btn btn-default" role="button" ui-sref="^.datosPersonales">
+            <a class="btn btn btn-default" role="button" ui-sref="^.datosTemporales">
                 Agregar Otro
             </a>
         </div>

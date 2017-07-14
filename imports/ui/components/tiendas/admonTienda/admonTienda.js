@@ -7,7 +7,7 @@ import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincip
 import {name as Factores} from './factores/factores';
 import {name as Comisiones} from './comisiones/comisiones';
 import {name as Inventario} from './inventario/inventario';
-import {name as Personal} from './personal/personal';
+import {name as Empleados} from './empleados/empleados';
 import {name as Promociones} from './promociones/promociones';
 
 class AdmonTienda {
@@ -30,7 +30,7 @@ class AdmonTienda {
         });
 
         this.tabs = [
-            {titulo: "Personal", estado: ".personal.lista", icono: 'fa fa-user'},
+            {titulo: "Empleados", estado: ".empleados.lista", icono: 'fa fa-users'},
             {titulo: "Inventario", estado: ".inventario.lista", icono: 'fa fa-cubes'},
             {titulo: "Factores", estado: ".factores.lista", icono: 'fa fa-money'},
             {titulo: "Comisiones", estado: ".comisiones.lista", icono: 'fa fa-briefcase'},
@@ -50,8 +50,8 @@ export default angular
         Factores,
         Comisiones,
         Inventario,
-        Personal,
-        Promociones
+        Promociones,
+        Empleados
     ])
     .component(name, {
         template,

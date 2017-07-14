@@ -13,7 +13,7 @@ class AgregarEmpleado {
         $reactive(this).attach($scope);
         this.titulo = 'Agregar Empleado';
         this.tabs = [
-            {titulo: "Datos Personales", estado: ".datosPersonales", icono: 'fa fa-user'},
+            {titulo: "Datos Empleadoses", estado: ".datosTemporales", icono: 'fa fa-user'},
             {titulo: "Direccion", estado: ".direccion", icono: 'fa fa-cubes'}
         ];
 
@@ -49,7 +49,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.personal.agregar', {
+        .state('app.tienda.admon.empleados.agregar', {
             url: '/agregar',
             template: '<agregar-empleado></agregar-empleado>',
             abstract: true

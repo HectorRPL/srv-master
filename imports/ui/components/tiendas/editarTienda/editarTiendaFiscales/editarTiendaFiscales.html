@@ -6,31 +6,29 @@
                 <div class="col-sm-12">
                     <h3>Datos Fiscales</h3>
                     <div class="contact-box">
-                        <a href="">
-                            <div class="col-sm-4">
-                                <div class="text-center">
-                                    <i class="fa fa-industry fa-5x" aria-hidden="true"></i>
-                                </div>
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                                <i class="fa fa-industry fa-5x" aria-hidden="true"></i>
                             </div>
-                            <div class="col-sm-8">
-                                <h3><strong>{{editarTiendaFiscales.datosFiscales.razonSocial}} {{editarTiendaFiscales.datosFiscales.tipoSociedad}}</strong></h3>
-                                <h3><strong>{{editarTiendaFiscales.datosFiscales.nombre}} {{editarTiendaFiscales.datosFiscales.segundoNombre}} {{editarTiendaFiscales.datosFiscales.apellidoPaterno}} {{editarTiendaFiscales.datosFiscales.apellidoMaterno}}</strong></h3>
-                                <p class="m-t-xs font-bold">RFC: <strong>{{editarTiendaFiscales.datosFiscales._id}}</strong></p>
-                                <address>
-                                    <strong><i class="fa fa-envelope-o"></i> {{editarTiendaFiscales.datosFiscales.email}}</strong><br>
-                                    {{editarTiendaFiscales.datosFiscales.calle}}, {{editarTiendaFiscales.datosFiscales.numExt}}, {{editarTiendaFiscales.datosFiscales.numInt}}, {{editarTiendaFiscales.datosFiscales.colonia}},<br>
-                                    {{editarTiendaFiscales.datosFiscales.delMpio}}, {{editarTiendaFiscales.datosFiscales.estado}}, {{editarTiendaFiscales.datosFiscales.codigoPostal}}<br>
-                                </address>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
+                        </div>
+                        <div class="col-sm-8">
+                            <h3><strong>{{editarTiendaFiscales.datosFiscales.razonSocial}} {{editarTiendaFiscales.datosFiscales.tipoSociedad}}</strong></h3>
+                            <h3><strong>{{editarTiendaFiscales.datosFiscales.nombre}} {{editarTiendaFiscales.datosFiscales.segundoNombre}} {{editarTiendaFiscales.datosFiscales.apellidoPaterno}} {{editarTiendaFiscales.datosFiscales.apellidoMaterno}}</strong></h3>
+                            <p class="m-t-xs font-bold">RFC: <strong>{{editarTiendaFiscales.datosFiscales._id}}</strong></p>
+                            <address>
+                                <strong><i class="fa fa-envelope-o"></i> {{editarTiendaFiscales.datosFiscales.email}}</strong><br>
+                                {{editarTiendaFiscales.datosFiscales.calle}}, {{editarTiendaFiscales.datosFiscales.numExt}}, {{editarTiendaFiscales.datosFiscales.numInt}}, {{editarTiendaFiscales.datosFiscales.colonia}},<br>
+                                {{editarTiendaFiscales.datosFiscales.delMpio}}, {{editarTiendaFiscales.datosFiscales.estado}}, {{editarTiendaFiscales.datosFiscales.codigoPostal}}<br>
+                            </address>
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <!--BOTON EDITAR -->
                     <button type="button"
                             class="btn btn-primary btn-xs pull-right"
-                            ng-hide="editarTiendaFiscales.ocultarBoton"
+                            ng-hide="editarTiendaFiscales.mostrarCampos"
                             ng-click="editarTiendaFiscales.editar()">
                         <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                     </button>
@@ -91,6 +89,7 @@
             <!--BOTON GUARDAR DATOS GENERALES-->
             <button type="button"
                     class="btn btn-primary pull-right"
+                    ng-hide="!editarTiendaFiscales.mostrarCampos"
                     ng-disabled="editarTiendaFiscalesFrm.$invalid"
                     ng-click="editarTiendaFiscales.actualizar(editarTiendaFiscalesFrm)">
                 Actualizar

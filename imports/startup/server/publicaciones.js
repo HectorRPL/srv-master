@@ -6,4 +6,5 @@ import "../../api/empleados/server/publish";
 import "../../api/inventarios/productosInventarios/server/publish";
 import "../../api/inventarios/server/publish";
 import "../../api/datosFiscales/server/publish";
+import "../../api/direcciones/server/publish";
 import "../../api/promociones/server/publish";

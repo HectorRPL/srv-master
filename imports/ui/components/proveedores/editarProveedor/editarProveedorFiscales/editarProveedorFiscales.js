@@ -43,20 +43,20 @@ class EditarProveedorFiscales {
 
     }
 
-    actualizar(agregarTiendaFrm) {
+    actualizar(editarProveedorFiscalesFrm) {
         if (this.datosFiscales) {
-            this.actualizarDireccion(agregarTiendaFrm);
+            this.actualizarDireccion(editarProveedorFiscalesFrm);
         } else {
-            this.guardarDatosFiscales(agregarTiendaFrm);
+            this.guardarDatosFiscales(editarProveedorFiscalesFrm);
         }
     }
 
-    limpiarCampos(agregarTiendaFrm) {
+    limpiarCampos(editarProveedorFiscalesFrm) {
         this.datosFiscalesOriginal = {};
-        agregarTiendaFrm.$setPristine();
+        editarProveedorFiscalesFrm.$setPristine();
     }
 
-    actualizarDireccion(agregarTiendaFrm) {
+    actualizarDireccion(editarProveedorFiscalesFrm) {
         delete this.datosFiscalesOriginal.colonias;
         delete this.datosFiscalesOriginal._id;
         delete this.datosFiscalesOriginal.tipoPersona;
@@ -75,13 +75,13 @@ class EditarProveedorFiscales {
 
         cambiosDireccionFiscal.callPromise(this.datosFiscalesOriginal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(agregarTiendaFrm);
+            this.limpiarCampos(editarProveedorFiscalesFrm);
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';
         }));
     }
 
-    guardarDatosFiscales(agregarTiendaFrm) {
+    guardarDatosFiscales(editarProveedorFiscalesFrm) {
         console.log('ESTO VAMOS A ENVIAR [83]', this.datosFiscalesOriginal);
         delete this.datosFiscalesOriginal.colonias;
 
@@ -89,7 +89,7 @@ class EditarProveedorFiscales {
 
         altaDatosFiscales.callPromise(this.datosFiscalesOriginal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(agregarTiendaFrm);
+            this.limpiarCampos(editarProveedorFiscalesFrm);
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';
         }));

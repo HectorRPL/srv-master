@@ -20,8 +20,8 @@
                                 <p class="m-t-xs font-bold">Tienda Activa: </p>
                                 <h2>
                                     <strong>
-                                        <span class="animated fadeInRight" ng-show="desactivarProveedor.proveedor.activo">Este proveedor se encuentra activo</span>
-                                        <span class="animated fadeInRight" ng-hide="desactivarProveedor.proveedor.activo">Este proveedor se encuentra desactivado</span>
+                                        <span ng-show="desactivarProveedor.proveedor.activo">Este proveedor se encuentra activo</span>
+                                        <span ng-hide="desactivarProveedor.proveedor.activo">Este proveedor se encuentra desactivado</span>
                                     </strong>
                                 </h2>
                                 <address>
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="desactivarProveedor.ocultarBoton">
+        <div class="col-sm-8 " ng-show="desactivarProveedor.ocultarBoton">
             <div class="row">
                 <div class="col-sm-12">
                     <h3>Eliminar Proveedor</h3>

@@ -1,15 +1,17 @@
 /**
  * Created by jvltmtz on 19/06/17.
  */
-import template from "./listaPersonal.html";
+import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
+import {name as DetallesEmpleados} from "./detallesEmpleados/detallesEmpleados";
 
-class ListaPersonal {
-    constructor($scope, $reactive, $stateParams) {
+class ListaEmpleados {
+    constructor($scope, $reactive, $stateParams, $uibModal) {
         'ngInject';
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
+        this.$uibModal = $uibModal;
         this.perPage = 5;
         this.page = 1;
         this.empleadoSelec = '';
@@ -40,27 +42,44 @@ class ListaPersonal {
     pageChanged(newPage) {
         this.page = newPage;
     }
+
+    abreModalDealles(empleado) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'DetallesEmpleados',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                empleado: function () {
+                    return empleado;
+                }
+            }
+
+        });
+    }
+
 }
 
-const name = 'listaPersonal';
+const name = 'listaEmpleados';
 
-// create a module
 export default angular
     .module(name, [
-        BuscarEmpleado
+        BuscarEmpleado,
+        DetallesEmpleados,
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ListaPersonal
+        controller: ListaEmpleados
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.personal.lista', {
+        .state('app.tienda.admon.empleados.lista', {
             url: '/lista',
-            template: '<lista-personal></lista-personal>'
+            template: '<lista-empleados></lista-empleados>'
         });
 }

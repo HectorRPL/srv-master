@@ -2,26 +2,27 @@
  * Created by Héctor on 30/06/2017.
  */
 import template from "./editarTienda.html";
+import ngAnimate from "angular-animate";
 import {name as EditarTiendaGenerales} from "./editarTiendaGenerales/editarTiendaGenerales";
 import {name as EditarTiendaFiscales} from "./editarTiendaFiscales/editarTiendaFiscales";
 import {name as EditarTiendaCuentaContable} from "./editarTiendaCuentaContable/editarTiendaCuentaContable";
 import {name as DesactivarTienda} from "./desactivarTienda/desactivarTienda";
 
 class EditarTienda {
-    constructor($state, $stateParams) {
+    constructor($scope, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
+
         this.tiendaId = $stateParams.tiendaId;
 
-        this.tabs = [
+        $scope.oneAtATime = true;
+
+        this.acordeon = [
             {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
             {titulo: "Datos Fiscales",  estado: ".fiscales", icono: 'fa fa-address-card-o'},
             {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'},
             {titulo: "Eliminar", estado: ".desactivar", icono: 'fa fa-trash-o'}
         ];
-
-        this.tab = 0;
-
     }
 }
 
@@ -29,6 +30,7 @@ const name = 'editarTienda';
 
 export default angular
     .module(name, [
+        ngAnimate,
         EditarTiendaGenerales,
         EditarTiendaFiscales,
         EditarTiendaCuentaContable,

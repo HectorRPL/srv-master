@@ -1,11 +1,12 @@
 /**
  * Created by Héctor on 14/04/2017.
  */
-import template from "./personal.html";
-import {name as ListaPersonal} from "./listaPersonal/listaPersonal";
+import template from "./empleados.html";
+import {name as ListaEmpleados} from "./listaEmpleados/listaEmpleados";
 import {name as AgregarEmpleado} from "./agregarEmpleado/agregarEmpleado";
+import {name as EditarEmpleado} from "./editarEmpleado/editarEmpleado";
 
-class Personal {
+class Empleados {
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
@@ -13,27 +14,28 @@ class Personal {
     }
 }
 
-const name = 'personal';
+const name = 'empleados';
 
 // create a module
 export default angular
     .module(name, [
-        ListaPersonal,
-        AgregarEmpleado
+        ListaEmpleados,
+        AgregarEmpleado,
+        EditarEmpleado
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: Personal
+        controller: Empleados
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.personal', {
-            url: '/personal',
-            template: '<personal></personal>',
+        .state('app.tienda.admon.empleados', {
+            url: '/empleados',
+            template: '<empleados></empleados>',
             abstract: true
         });
 }

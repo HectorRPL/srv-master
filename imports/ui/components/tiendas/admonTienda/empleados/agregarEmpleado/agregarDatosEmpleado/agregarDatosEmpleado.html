@@ -1,0 +1,32 @@
+<form role="form" class="p-lg" id="agregarDatosEmpleadoFrmId" name="agregarDatosEmpleadoFrm" novalidate>
+    <fieldset>
+        <forma-datos-personales datos="agregarDatosEmpleado.credentials.profile"></forma-datos-personales>
+        <div class="col-sm-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : agregarDatosEmpleadoFrm.password.$invalid && !agregarDatosEmpleadoFrm.password.$pristine}">
+                <div ng-messages="agregarDatosEmpleadoFrm.password.$dirty && agregarDatosEmpleadoFrm.password.$error"
+                     role="alert">
+                    <label> Contraseña *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <input id="passwordId" class="form-control " name="password" type="password"
+                           placeholder="Contraseña" aria-describedby="sizing-addon2" maxlength="8" minlength="4"
+                           required ng-model="agregarDatosEmpleado.credentials.password">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="row">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+            <!--BOTON SIGUIENTE -->
+            <button type="button" class="btn btn-primary pull-right"
+                    ng-disabled="agregarDatosEmpleadoFrm.$invalid"
+                    ng-click="agregarDatosEmpleado.siguiente()">
+                Siguiente
+            </button>
+        </div>
+    </div>
+</form>

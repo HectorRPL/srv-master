@@ -16,7 +16,7 @@ if (Meteor.isServer) {
     Accounts.onCreateUser((options, user) => {
         let empleado = {};
         let noEmpleado = 0;
-        let strDepto = options.profile.departamento;
+        let strDepto = options.profile.departamentoId;
 
         if (options.profile) {
             empleado = {
@@ -32,7 +32,8 @@ if (Meteor.isServer) {
                 nacimientoAnio: options.profile.nacimientoAnio,
                 sexo: options.profile.sexo,
                 telefono: options.profile.telefono,
-                celular: options.profile.celular
+                celular: options.profile.celular,
+                email: options.profile.email
             };
 
             var findOneAndUpdate = Meteor.wrapAsync(Counters.rawCollection().findOneAndUpdate, Counters.rawCollection());
