@@ -21,7 +21,6 @@ class AregarDatosEmpleado {
         this.credentials.username = this.credentials.profile.email;
         this.credentials.email = this.credentials.profile.email;
         delete this.credentials.profile.email;
-        console.log('[28]', this.credentials);
 
         Session.setPersistent('empleadoNuevo', this.credentials);
         this.$state.go('^.direccion');

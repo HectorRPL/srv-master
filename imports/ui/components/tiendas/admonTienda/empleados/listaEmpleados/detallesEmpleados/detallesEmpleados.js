@@ -12,15 +12,12 @@ class DetallesEmpleados {
 
         $reactive(this).attach($scope);
 
-        // /*
-        this.subscribe('direcciones.todas', () => [{propietarioId: this.getReactively('resolve.empleados._id')}]);
+        this.subscribe('direcciones.todas', () => [{propietarioId: this.getReactively('resolve.empleado._id')}]);
         this.helpers({
             direccion() {
-                console.log('[19] deberías traer la direccion', Direcciones.findOne({}));
                 return Direcciones.findOne({});
             }
         });
-         // */
     }
 
     cerrar(){

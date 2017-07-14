@@ -15,7 +15,7 @@ class AgregarDireccionEmpleado {
         this.tiendaId = $stateParams.tiendaId;
         this.rootScope = $rootScope;
         this.credentials =  Session.get('empleadoNuevo');
-        console.log('[17]', this.credentials);
+
         this.direccion = {};
 
     }
@@ -28,12 +28,10 @@ class AgregarDireccionEmpleado {
         this.credentials.profile.tiendaId = this.tiendaId;
 
         this.credentials.profile.email = this.credentials.email;
-        console.log('[29] THIS CREDENTIALS', this.credentials);
 
         altaUsuario.callPromise(this.credentials).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

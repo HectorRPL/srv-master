@@ -1,16 +1,18 @@
 /**
  * Created by Héctor on 11/07/2017.
  */
-import template from "./editarEmpleado.html";
+import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as EditarEmpleadoGenerales} from "./editarEmpleadoGenerales/editarEmpleadoGenerales";
 import {name as EditarEmpleadoDireccion} from "./editarEmpleadoDireccion/editarEmpleadoDireccion";
 import {name as EditarEmpleadoContrasenia} from "./editarEmpleadoContrasenia/editarEmpleadoContrasenia";
 import {name as DesactivarEmpleado} from "./desactivarEmpleado/desactivarEmpleado";
+import template from "./editarEmpleado.html";
 
 class EditarEmpleado {
-    constructor($scope, $state, $stateParams) {
+    constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
+        $reactive(this).attach($scope);
 
         this.empleadoId = $stateParams.empleadoId;
         this.tiendaId = $stateParams.tiendaId;
@@ -24,6 +26,16 @@ class EditarEmpleado {
             {titulo: "Eliminar", estado: ".desactivar", icono: 'fa fa-trash-o'}
 
         ];
+// /*
+        this.subscribe('empleados.porTienda', () => [{_id: this.empleadoId}]);
+        this.datosEmpleadoNuevo = {};
+        this.helpers({
+            empleado(){
+                this.datosEmpleadoNuevo = Empleados.findOne({_id: this.empleadoId});
+                return angular.copy(this.datosEmpleadoNuevo);
+            }
+        });
+// */
     }
 }
 

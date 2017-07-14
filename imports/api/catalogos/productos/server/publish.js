@@ -17,7 +17,7 @@ if (Meteor.isServer) {
     Meteor.publish('productos.id', (selector) => {
         console.log('Esto es el selector y está llegando a la [18]', selector);
         if (Object.keys(selector).length === 0 && selector.constructor === Object){
-            this.ready;
+            this.ready();
         } else {
             return Productos.find(selector);
         }

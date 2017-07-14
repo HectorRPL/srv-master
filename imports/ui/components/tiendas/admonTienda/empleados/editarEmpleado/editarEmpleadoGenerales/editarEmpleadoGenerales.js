@@ -50,17 +50,12 @@ class EditarEmpleadoGenerales {
 
         this.datosEmpleadoNuevo._id = this._id;
 
-        console.log('[49] los datos que vamos a enviar datosEmpleadoNuevo' , this.datosEmpleadoNuevo);
-
-        // /*
         cambiosEmpleados.callPromise(this.datosEmpleadoNuevo).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarEmpleadoGeneralesForm);
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
-        // */
     }
 }
 

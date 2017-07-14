@@ -1,5 +1,3 @@
-import angular from "angular";
-import angularMeteor from "angular-meteor";
 import {Meses} from "../../../../../../api/catalogos/fechaNacimiento/meses/collection";
 import template from "./elegirMes.html";
 
@@ -19,12 +17,9 @@ class ElegirMes {
 }
 
 const name = 'elegirMes';
-// create a module
 
 export default angular
-    .module(name, [
-        angularMeteor
-    ])
+    .module(name, [])
     .component(name, {
         template,
         controllerAs: name,

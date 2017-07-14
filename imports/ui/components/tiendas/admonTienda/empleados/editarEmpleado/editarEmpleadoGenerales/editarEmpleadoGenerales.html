@@ -1,7 +1,7 @@
 <form role="form" class="p-lg" id="editarEmpleadoGeneralesFormId" name="editarEmpleadoGeneralesForm" novalidate>
     <!--DATOS FISCALES-->
     <div class="row animated fadeInRight">
-        <div class="col-sm-4 b-r">
+        <div class="col-sm-6 b-r">
             <div class="row">
                 <div class="col-sm-12">
                     <h3>Datos Personales</h3>
@@ -19,7 +19,14 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <h3><strong>{{editarEmpleadoGenerales.empleado.nombreCompleto}}</strong></h3>
+                            <h3>
+                                <strong>
+                                    {{editarEmpleadoGenerales.empleado.primerNombre}}
+                                    {{editarEmpleadoGenerales.empleado.segundoNombre}}
+                                    {{editarEmpleadoGenerales.empleado.apellidoPaterno}}
+                                    {{editarEmpleadoGenerales.empleado.apellidoMaterno}}
+                                </strong>
+                            </h3>
                             <p class="m-t-xs font-bold">
                                 {{editarEmpleadoGenerales.empleado.sexo}} <br>
                                 Nacimiento: {{editarEmpleadoGenerales.empleado.nacimientoAnio}}/{{editarEmpleadoGenerales.empleado.nacimientoMes}}/{{editarEmpleadoGenerales.empleado.nacimientoDia}} <br>
@@ -44,7 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarEmpleadoGenerales.mostrarCampos">
+        <div class="col-sm-6 animated fadeInRight" ng-show="editarEmpleadoGenerales.mostrarCampos">
             <div class="row">
                 <div class="col-sm-12">
                     <h3>Datos Personales</h3>

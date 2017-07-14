@@ -41,12 +41,9 @@ class EditarEmpleadoDireccion {
         delete direccionFinal.colonias;
         delete direccionFinal.fechaCreacion;
 
-        console.log('[45] Esta es la nueva dirección>>>', direccionFinal);
-
         cambiosDireccion.callPromise(direccionFinal).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

@@ -5,7 +5,6 @@ import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
 import {name as DetallesEmpleados} from "./detallesEmpleados/detallesEmpleados";
-// import {name as EditarEmpleadosGenerales} from "../editarEmpleados/editarEmpleadosGenerales/editarEmpleadosGenerales";
 
 class ListaEmpleados {
     constructor($scope, $reactive, $stateParams, $uibModal) {
@@ -44,7 +43,7 @@ class ListaEmpleados {
         this.page = newPage;
     }
 
-    abreModalDealles(empleados) {
+    abreModalDealles(empleado) {
         var modalInstance = this.$uibModal.open({
             animation: true,
             component: 'DetallesEmpleados',
@@ -52,8 +51,8 @@ class ListaEmpleados {
             size: 'xs',
             keyboard: true,
             resolve: {
-                empleados: function () {
-                    return empleados;
+                empleado: function () {
+                    return empleado;
                 }
             }
 
@@ -64,12 +63,10 @@ class ListaEmpleados {
 
 const name = 'listaEmpleados';
 
-// create a module
 export default angular
     .module(name, [
         BuscarEmpleado,
         DetallesEmpleados,
-        // EditarEmpleadosGenerales
     ])
     .component(name, {
         template,
