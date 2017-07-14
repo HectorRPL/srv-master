@@ -10,10 +10,10 @@ import {Factores} from "../../../factores/collection";
 if (Meteor.isServer) {
     // Trae t.o.d.o. el inventario
     Meteor.publishComposite('productosInventarios.tiendaMarca', function (filter, options) {
-        if ((Object.keys(filter).length === 0 && filter.constructor === Object)
-            || !filter.marcaId) {
+        if (Object.keys(filter).length === 0 && filter.constructor === Object) {
             this.ready();
         } else {
+            console.log(JSON.stringify(filter));
             const selector = {$and: [filter]};
             options.fields = {inventarioId: 0, fechaCreacion: 0};
             Counts.publish(this, 'numProdsInventarios', ProductosInventarios.find(selector), {
