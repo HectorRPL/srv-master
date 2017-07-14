@@ -4,6 +4,7 @@ import oclazyload from "oclazyload";
 import uiRouter from "angular-ui-router";
 import angularUBoostrap from "angular-ui-bootstrap";
 import angularMessages from "angular-messages";
+import "angular-i18n/angular-locale_es-mx";
 import "./stylesheets/animate.css";
 import "jquery/dist/jquery";
 import "bootstrap/dist/css/bootstrap.css";

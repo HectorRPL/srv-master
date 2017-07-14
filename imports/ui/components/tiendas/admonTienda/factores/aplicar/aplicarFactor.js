@@ -4,11 +4,11 @@
 import {Factores} from "../../../../../../api/factores/collection";
 import {name as FactorMarca} from "./factorMarca/factorMarca";
 import {name as FactorProducto} from "./factorProducto/factorProdcuto";
-import {name as ConfirmarAplicarFactor} from "./confirmarAplicarFactor/confirmarAplicarFactor";
+import {name as ConfirmarOperacion} from "../../../../comun/modales/confirmarOperacion/confirmarOperacion";
 import {name as BuscarMarca} from "../../../../comun/busquedas/buscarMarca/buscarMarca";
 import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {name as ListaProductosTienda} from "../../../../comun/listaProductosTienda/listaProductosTienda";
-import {name as ListaProductosFactores} from "./listaProductosFactores/listaProductosFactores";
+import {name as ListaProductosElegidos} from "../../../../comun/listaProductosElegidos/listaProductosElegidos";
 import {name as Alertas} from "../../../../comun/alertas/alertas"
 import template from "./aplicarFactor.html";
 
@@ -35,11 +35,11 @@ export default angular
     .module(name, [
         FactorMarca,
         FactorProducto,
-        ConfirmarAplicarFactor,
+        ConfirmarOperacion,
         BuscarMarca,
         BuscarProducto,
         ListaProductosTienda,
-        ListaProductosFactores,
+        ListaProductosElegidos,
         Alertas
     ])
     .component(name, {

@@ -6,11 +6,25 @@
 
     </div>
     <div class="col-xs-4">
-        <button class="btn btn-default btn-sm pull-right"
-                ng-disabled="factorMarca.productosAplicarFac.length === 0"
+        <button class="btn btn-primary btn-sm pull-right"
+                ng-disabled="!factorMarca.marcaSelec._id"
+                ng-click="factorMarca.confirmar()">
+            Aplicar Factor
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+        <alertas tipo="factorMarca.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-default btn-sm pull-left"
+                ng-disabled="factorMarca.productosAplicarFac.length === 0 || !factorMarca.marcaSelec._id"
                 ng-click="factorMarca.mostrar = !factorMarca.mostrar">
             Agregar Excepciones
-        </button>&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
     </div>
 </div>
 <div class="row" uib-collapse="factorMarca.mostrar" class="row">
@@ -23,24 +37,13 @@
         <p></p>
         <lista-productos-tienda
                 marca="factorMarca.marcaSelec" producto="factorMarca.productoSelec"
-                tienda-id="factorMarca.tiendaId" agregar-prod="factorMarca.agregar(_id, factorId, marca, producto)">
+                tienda-id="factorMarca.tiendaId" agregar-prod="factorMarca.agregar(_id, marca, producto)">
         </lista-productos-tienda>
     </div>
     <div class="col-sm-6">
         <h4>Lsita de excepciones&nbsp;</h4>
         <p></p>
-        <lista-productos-factores productos="factorMarca.prodsExcepciones"></lista-productos-factores>
+        <lista-productos-elegidos productos="factorMarca.prodsExcepciones"></lista-productos-elegidos>
     </div>
 </div>
-<div class="row">
-    <div class="col-xs-offset-3 col-xs-6">
-        <alertas tipo="factorMarca.tipoMsj" mensaje=""></alertas>
-    </div>
-    <div class="col-xs-3">
-        <button class="btn btn-primary btn-sm pull-right"
-                ng-disabled="!factorMarca.marcaSelec._id"
-                ng-click="factorMarca.confirmar()">
-            Aplicar Factor
-        </button>
-    </div>
-</div>
+

@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="promocionProducto.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto marcaid="promocionProducto.marcaSelec._id"
+                         producto="promocionProducto.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <button class="btn btn-primary btn-sm pull-right"
+                    ng-disabled="promocionProducto.productosAplicarFac.length === 0"
+                    ng-click="promocionProducto.confirmar()">
+                Aplicar Promocion
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+        <alertas tipo="promocionProducto.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">Productos a elegir</h3>
+        <p></p>
+        <lista-productos-tienda marca="promocionProducto.marcaSelec" producto="promocionProducto.productoSelec"
+                                tienda-id="promocionProducto.tiendaId"
+                                agregar-prod="promocionProducto.agregar(_id, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Productos que seran actaulizados</h4>
+        <p></p>
+        <lista-productos-elegidos productos="promocionProducto.productosAplicarPromo"></lista-productos-elegidos>
+    </div>
+</div>

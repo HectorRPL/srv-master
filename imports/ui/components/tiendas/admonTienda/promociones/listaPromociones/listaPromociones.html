@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-xs-4">
+        <a href="" class="btn btn-primary btn-sm" ng-click="listaPromociones.crearPromocion()">
+            Agregar Promocion
+        </a>
+    </div>
+    <div class="col-xs-4">
+
+    </div>
+    <div class="col-sm-6 m-b-xs">
+        <div class="ibox float-e-margins">
+            <buscar-factor factor="listaPromociones.factorSelec">
+            </buscar-factor>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Descuento</th>
+        <th class="text-center">Fecha Inicio</th>
+        <th class="text-center">Fecha Fin</th>
+        <th class="text-center">Sobre el Precio</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr class="table-responsive text-right"
+        dir-paginate="promocion in listaPromociones.promociones | itemsPerPage: listaPromociones.perPage"
+        total-items="listaPromociones.promocionesCount">
+        <td class="text-center"><a class="text-navy" style="text-decoration: inherit" ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, factor: factor})">{{promocion.nombre}}</a></td>
+        <td class="text-center">{{promocion.descuento}}%</td>
+        <td class="text-center">{{promocion.fechaInicio | date:"dd-MMMM-yyyy HH:mm:ss"}}</td>
+        <td class="text-center">{{promocion.fechaFin | date:"dd-MMMM-yyyy HH:mm:ss"}}</td>
+        <td class="text-center">
+            <span ng-show="promocion.precioLista">Precio Lista</span>
+            <span ng-hide="promocion.precioLista">Precio Compra</span>
+        </td>
+        <td>
+            <div class="btn-group" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Aplicar a&nbsp;&nbsp;&nbsp;
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="^.aplicar.marca({promocionId: promocion._id})">Marca</a></li>
+                        <li><a ui-sref="^.aplicar.producto({promocionId: promocion._id})">Producto</a></li>
+                    </ul>
+                    <button type="button" class="btn btn-xs btn-default">Editar</button>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaPromociones.pageChanged(newPageNumber)"></dir-pagination-controls>
+

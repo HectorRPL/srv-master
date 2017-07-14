@@ -2,14 +2,14 @@
     <!--TITULO MODAL-->
     <div class="col-sm-10">
         <h2>
-            {{confirmarAplicarFactor.titulo}}&nbsp;
+            {{confirmarOperacion.titulo}}&nbsp;
         </h2>
     </div>
     <!-- TACHE (CERRAR MODAL)-->
     <div class="col-sm-2">
         <div class="ibox-tools">
             <br>
-            <a ng-click="confirmarAplicarFactor.cerrar()"><i class="fa fa-times"></i></a>
+            <a ng-click="confirmarOperacion.cerrar()"><i class="fa fa-times"></i></a>
         </div>
     </div>
     <!-- BODY MODAL -->
@@ -17,7 +17,9 @@
         <div class="ibox-content">
             <div class="row">
                 <div class="col-sm-12">
-                    <alertas mensaje="confirmarAplicarFactor.msj" tipo="confirmarAplicarFactor.tipoMsj"></alertas>
+                    <alertas mensaje="confirmarOperacion.resolve.contenido.msj"
+                             tipo="confirmarOperacion.resolve.contenido.tipoMsj">
+                    </alertas>
                 </div>
             </div>
         </div>
@@ -28,12 +30,12 @@
             <!--BOTON CERRAR -->
             <button type="button"
                     class="btn btn-default"
-                    ng-click="confirmarAplicarFactor.cerrar()">
+                    ng-click="confirmarOperacion.cerrar()">
                 Cancelar
             </button>
             <button type="button"
                     class="btn btn-primary"
-                    ng-click="confirmarAplicarFactor.aceptar()">
+                    ng-click="confirmarOperacion.aceptar()">
                 Aceptar
             </button>
         </div>

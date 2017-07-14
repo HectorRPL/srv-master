@@ -45,7 +45,6 @@ class ListaProductosTienda {
     agregarLista(producto) {
         this.agregarProd({
             _id: producto._id,
-            factorId: producto.factorId,
             marca: producto.marca().nombre,
             producto: producto.producto().campoBusqueda
         });

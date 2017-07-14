@@ -4,9 +4,9 @@
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const BitaFactoresPromo = new Mongo.Collection('bitaFactoresPromo');
+export const BitaFactPromoComi = new Mongo.Collection('bitaFactPromoComi');
 
-BitaFactoresPromo.deny({
+BitaFactPromoComi.deny({
     insert() {
         return true;
     },
@@ -20,14 +20,16 @@ BitaFactoresPromo.deny({
 
 const Schema = {};
 
-Schema.bitaFactoresPromo = new SimpleSchema({
-    _id: {type: String, regEx: SimpleSchema.RegEx.Id},
+Schema.bitaFactPromoComi = new SimpleSchema({
+    _id: {type: String},
     usuarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
+    nuevoValorId: {type: String, regEx: SimpleSchema.RegEx.Id},
     operacion: {type: String},
     fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
-    productoId: {type: String, optional: true},
+    productoInventarioId: {type: String, optional: true},
     marcaId: {type: String, optional: true},
-    excepciones: {type: [String], blackbox:true, optional: true},
+    excepciones: {type: [String], blackbox: true, optional: true},
+    productos: {type: [String], blackbox: true, optional: true}
 });
 
-BitaFactoresPromo.attachSchema(Schema.bitaFactoresPromo);
+BitaFactPromoComi.attachSchema(Schema.bitaFactPromoComi);

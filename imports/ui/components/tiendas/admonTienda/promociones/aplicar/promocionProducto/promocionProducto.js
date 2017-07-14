@@ -1,21 +1,21 @@
 /**
- * Created by jvltmtz on 27/06/17.
+ * Created by jvltmtz on 11/07/17.
  */
 import {aplicarFactPromoComiProd} from "../../../../../../../api/inventarios/productosInventarios/methods";
-import template from "./factorProducto.html";
+import template from "./promocionProducto.html";
 
-class FactorProducto {
+class PromocionProducto {
 
     constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.factorId = $stateParams.factorId;
+        this.promocionId = $stateParams.promocionId;
         this.tiendaId = $stateParams.tiendaId;
         this.$uibModal = $uibModal;
         this.marcaSelec = '';
         this.productoSelec = '';
-        this.productosAplicarFac = [];
+        this.productosAplicarPromo = [];
     }
 
     agregar(_id, marca, producto) {
@@ -24,24 +24,25 @@ class FactorProducto {
             marca: marca,
             producto: producto
         };
-        const encontrado = this.productosAplicarFac.find((prod)=>{
+        const encontrado = this.productosAplicarPromo.find((prod)=>{
             return prod._id === result._id;
         });
         if(!encontrado){
-            this.productosAplicarFac.push(result);
+            this.productosAplicarPromo.push(result);
         }
     }
 
-    aplicarFactor() {
+    aplicarPromocion() {
         const datos = {
-            nuevoValorId: this.factorId,
-            productos: this.productosAplicarFac,
-            operacion: 'factorProducto'
+            nuevoValorId: this.promocionId,
+            productos: this.productosAplicarPromo,
+            operacion: 'promocionProducto'
         };
         aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
-            this.productosAplicarFac = [];
+            this.productosAplicarPromo = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -55,12 +56,12 @@ class FactorProducto {
                 contenido: function () {
                     return {
                         tipoMsj: 'warning',
-                        msj: 'Al aplicar un factor, uno o varios productos podrian verse afectados en sus precios. ¿Desea continuar con el proceso?'
+                        msj: 'Al aplicar una Promocion, uno o varios productos podrian verse afectados en sus precios. ¿Desea continuar con el proceso?'
                     }
                 }
             }
         }).result.then(this.$bindToContext((result) => {
-            this.aplicarFactor();
+            this.aplicarPromocion();
         }, function (reason) {
             console.log(reason)
         }));
@@ -69,7 +70,7 @@ class FactorProducto {
 
 }
 
-const name = 'factorProducto';
+const name = 'promocionProducto';
 
 export default angular
     .module(name, [
@@ -78,15 +79,15 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: FactorProducto,
+        controller: PromocionProducto,
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.factores.aplicar.producto', {
+        .state('app.tienda.admon.promociones.aplicar.producto', {
             url: '/producto',
-            template: '<factor-producto></factor-producto>',
+            template: '<promocion-producto></promocion-producto>',
         });
 }
