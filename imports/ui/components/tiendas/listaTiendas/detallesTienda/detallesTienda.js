@@ -4,7 +4,7 @@
 import template from "./detallesTienda.html";
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 
-class detallesTienda {
+class DetallesTienda {
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
@@ -31,7 +31,7 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: detallesTienda,
+        controller: DetallesTienda,
         bindings: {
             resolve: '<',
             close: '&',
