@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<span class="text-muted small pull-right">Factor 1: {{listaProductosFactores.factor.factor1}}&nbsp;Factor 2: {{listaProductosFactores.factor.factor2}}&nbsp;
+    Factor 3: {{listaProductosFactores.factor.factor3}}&nbsp;Factor 4: {{listaProductosFactores.factor.factor4}}&nbsp;
+    Factor 5: {{listaProductosFactores.factor.factor5}}&nbsp;Factor 6:{{listaProductosFactores.factor.factor6}}&nbsp;
+</span>
+<h2 class="text-navy">Productos con factor: {{listaProductosFactores.factor.nombre}}.</h2>
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="listaProductosFactores.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto marcaid="listaProductosFactores.marcaSelec._id"
+                         producto="listaProductosFactores.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="col-xs-2">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th class="text-left">Marca - Producto</th>
+        <th class="text-center">Costo</th>
+        <th class="text-center">Cliente</th>
+        <th class="text-center">Cliente 2</th>
+        <th class="text-center">Cliente 3</th>
+        <th class="text-center">Cliente 4</th>
+        <th class="text-center">Cliente 5</th>
+        <th class="text-center">Cliente 6</th>
+        <th class="text-center">Cliente 7</th>
+        <th class="text-center">Cliente 8</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr class="table-responsive text-right"
+        dir-paginate="producto in listaProductosFactores.productos | itemsPerPage: listaProductosFactores.perPage"
+        total-items="listaProductosFactores.productosCount">
+        <td class="text-left">
+            {{producto.marca().nombre}}&nbsp;&nbsp;{{producto.producto().campoBusqueda}}
+        </td>
+        <td class="text-center">${{producto.costo  | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor1 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor2 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor3 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor4 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor5 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor6 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor7 | number:2 }}</td>
+        <td class="text-center">${{producto.costo * listaProductosFactores.factor.factor8 | number:2 }}</td>
+    </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaProductosFactores.pageChanged(newPageNumber)">
+</dir-pagination-controls>
