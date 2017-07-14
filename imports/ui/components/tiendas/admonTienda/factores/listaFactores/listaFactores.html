@@ -34,7 +34,11 @@
         <tr class="table-responsive text-right"
             dir-paginate="factor in listaFactores.factores | itemsPerPage: listaFactores.perPage"
             total-items="listaFactores.factoresCount">
-            <td class="text-center"><a class="text-navy" style="text-decoration: inherit" ui-sref="app.tienda.aplicarfactorproductos({factorId: factor._id, factor: factor})">{{factor.nombre}}</a></td>
+            <td class="text-center">
+                <a class="text-navy" style="text-decoration: inherit" ui-sref="^.productos({factorId: factor._id})">
+                    {{factor.nombre}}
+                </a>
+            </td>
             <td class="text-center">{{factor.factor1 | number:4 }}</td>
             <td class="text-center">{{factor.factor2 | number:4 }}</td>
             <td class="text-center">{{factor.factor3 | number:4 }}</td>
