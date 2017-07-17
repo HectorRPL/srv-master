@@ -6,6 +6,7 @@ import {SimpleSchema} from "meteor/aldeed:simple-schema";
 import {Marcas} from "../../catalogos/marcas/collection";
 import {Productos} from "../../catalogos/productos/collection";
 import {Factores} from "../../factores/collection";
+import {Promociones} from "../../promociones/collection"
 import opProductosInvetarios from "./operacionesEventos";
 
 
@@ -59,5 +60,30 @@ ProductosInventarios.helpers({
     },
     factor(){
         return Factores.findOne({_id: this.factorId});
+    },
+    precioUno(){
+        let precio = 0.0;
+        const factor = Factores.findOne({_id: this.factorId});
+        if (factor) {
+            precio = this.costo * factor.factor1;
+        }
+        return precio;
+    },
+    precioDescuento(){
+        let precio = 0;
+        if (this.promocionId) {
+            const promo = Promociones.findOne({_id: this.promocionId});
+            if (promo) {
+                if (promo.precioLista) {
+                    const factor = Factores.findOne({_id: this.factorId});
+                    if(factor){
+                        precio = (this.costo * factor.factor1) * (1 - (promo.descuento / 100));
+                    }
+                } else {
+                    precio = this.costo * (1 - (promo.descuento / 100));
+                }
+            }
+        }
+        return precio;
     }
 });

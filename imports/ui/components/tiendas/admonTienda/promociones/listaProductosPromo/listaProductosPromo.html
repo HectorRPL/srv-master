@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<span class="text-muted small pull-right">Descuento:{{listaProductosPromo.promocion.descuento}}%&nbsp;
+    Fecha Inicio: {{listaProductosPromo.promocion.fechaInicio | date:"dd-MMMM-yyyy"}}&nbsp;
+    Fecha Fin: {{listaProductosPromo.promocion.fechaFin | date:"dd-MMMM-yyyy"}}
+</span>
+<h2 class="text-navy">Productos con Promoción: {{listaProductosPromo.promocion.nombre}}.</h2>
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="listaProductosPromo.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto marcaid="listaProductosPromo.marcaSelec._id"
+                         producto="listaProductosPromo.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="col-xs-2">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th class="text-left">Marca - Producto</th>
+        <th class="text-center">Costo</th>
+        <th class="text-center">Precio</th>
+        <th class="text-center">Precio Final</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr class="table-responsive text-right"
+        dir-paginate="producto in listaProductosPromo.productos | itemsPerPage: listaProductosPromo.perPage"
+        total-items="listaProductosPromo.productosCount">
+        <td class="text-left">
+            {{producto.marca().nombre}}&nbsp;&nbsp;{{producto.producto().campoBusqueda}}
+        </td>
+        <td class="text-center">${{producto.costo  | number:2}}</td>
+        <td class="text-center">${{producto.precioUno() | number:2}}</td>
+        <td class="text-center">${{producto.precioDescuento() | number:2}}</td>
+    </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaProductosPromo.pageChanged(newPageNumber)">
+</dir-pagination-controls>

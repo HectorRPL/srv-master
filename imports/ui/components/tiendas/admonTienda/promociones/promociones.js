@@ -3,6 +3,7 @@
  */
 
 import {name as ListaPromociones} from "./listaPromociones/listaPromociones";
+import {name as ListaProductosPromo} from "./listaProductosPromo/listaProductosPromo";
 import utilsPagination from "angular-utils-pagination";
 import template from "./promociones.html";
 
@@ -24,7 +25,8 @@ const name = 'promociones';
 export default angular
     .module(name, [
         ListaPromociones,
-        utilsPagination
+        utilsPagination,
+        ListaProductosPromo
     ])
     .component(name, {
         template,
