@@ -4,6 +4,7 @@
 import template from "./listaProveedores.html";
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as DetallesProveedor} from './detallesProveedor/detallesProveedor';
+import {name as EliminarProveedor} from './eliminarProveedor/eliminarProveedor';
 import {name as AgregarProveedor} from '../agregarProveedor/agregarProveedor';
 import {name as EditarProveedor} from '../editarProveedor/editarProveedor';
 import {name as BuscarProveedor} from '../../comun/busquedas/buscarProveedor/buscarProveedor';
@@ -21,7 +22,8 @@ class ListaProveedores {
         this.subscribe('proveedores.todos', ()=>
             [
                 {
-                    _id: this.getReactively('proveedorSelec._id')
+                    _id: this.getReactively('proveedorSelec._id'),
+                    activo: true
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -61,6 +63,22 @@ class ListaProveedores {
         });
     }
 
+    abreModalEliminar(proveedor) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'EliminarProveedor',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                proveedor: function () {
+                    return proveedor;
+                }
+            }
+
+        });
+    }
+
 
 
 }
@@ -70,6 +88,7 @@ const name = 'listaProveedores';
 export default angular
     .module(name, [
         DetallesProveedor,
+        EliminarProveedor,
         AgregarProveedor,
         EditarProveedor,
         BuscarProveedor

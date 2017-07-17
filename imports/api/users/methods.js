@@ -38,8 +38,42 @@ export const altaUsuario = new ValidatedMethod({
     }
 });
 
+export const bajaUsuario = new ValidatedMethod({
+    name: 'usuarios.bajaUsuario',
+    mixins: [CallPromiseMixin, PermissionsMixin],
+    /* todo: falta que juan me explique que es lo que va aquí:
+    allow: [
+        {
+            roles: ['crea_usua'],
+            group: '__global_roles__'
+        }
+    ],
 
-const USUARIOS_METHODS = _.pluck([altaUsuario], 'name');
+    permissionsError: {
+        name: 'tiendas.insertar',
+        message: ()=> {
+            return 'Acceso denegado';
+        }
+    },
+    */
+    validate: new SimpleSchema({
+        _id: {type: String, regEx: SimpleSchema.RegEx.Id}
+    }).validator(),
+    run({_Id}) {
+        return Users.remove({_Id: _Id}, (err) => {
+            if (err) {
+                console.log('[82]', err);
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+            }
+        });
+    }
+});
+
+
+
+
+
+const USUARIOS_METHODS = _.pluck([altaUsuario, bajaUsuario], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

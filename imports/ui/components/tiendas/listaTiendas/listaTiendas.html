@@ -26,17 +26,28 @@
                                 <a type="button"
                                    class="btn btn-default"
                                    ui-sref="app.tienda.editar.generales({tiendaId: tienda._id})">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
                                 </a>
                                 <a type="button"
                                    class="btn btn-default"
+                                   uib-popover="Eliminar"
+                                   popover-trigger="'Editar'"
                                    ui-sref="app.tienda.sucursal({tiendaId: tienda._id})">
-                                    <i class="fa fa-industry" aria-hidden="true"></i> Agregar Sucursal
+                                    <i class="fa fa-industry" aria-hidden="true"></i>
                                 </a>
                                 <a type="button"
                                    class="btn btn-default"
+                                   uib-popover="Ver más"
+                                   popover-trigger="'mouseenter'"
                                    ng-click="listaTiendas.abreModalDealles(tienda)">
-                                    <i class="fa fa-info" aria-hidden="true"></i> Ver Más
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                </a>
+                                <a type="button"
+                                   class="btn btn-default"
+                                   uib-popover="Eliminar"
+                                   popover-trigger="'mouseenter'"
+                                   ng-click="listaTiendas.abreModalEliminar(tienda)">
+                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </td>

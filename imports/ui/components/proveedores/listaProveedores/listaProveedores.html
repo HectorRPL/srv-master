@@ -33,14 +33,26 @@
                              aria-label="...">
                             <a type="button"
                                class="btn btn-default"
+                               uib-popover="Editar"
+                               popover-trigger="'mouseenter'"
                                ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
-                                <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
                             <a type="button"
                                class="btn btn-default"
+                               uib-popover="Ver más"
+                               popover-trigger="'mouseenter'"
                                ng-click="listaProveedores.abreModalDealles(proveedor)">
-                                <i class="fa fa-info" aria-hidden="true"></i> Ver Más
+                                <i class="fa fa-info" aria-hidden="true"></i>
                             </a>
+                            <a type="button"
+                               class="btn btn-default"
+                               uib-popover="Eliminar"
+                               popover-trigger="'mouseenter'"
+                               ng-click="listaProveedores.abreModalEliminar(proveedor)">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+
                         </div>
                     </td>
                 </tr>

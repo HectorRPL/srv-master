@@ -1,9 +1,9 @@
 /**
  * Created by Héctor on 10/07/2017.
  */
-import template from "./desactivarTiendaProveedor.html";
+import template from "./radioDesactivar.html";
 
-class desactivarTiendaProveedor {
+class radioDesactivar {
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -11,7 +11,7 @@ class desactivarTiendaProveedor {
     }
 }
 
-const name = 'desactivarTiendaProveedor';
+const name = 'radioDesactivar';
 
 export default angular
     .module(name, [])
@@ -21,5 +21,5 @@ export default angular
         bindings: {
             dato: '='
         },
-        controller: desactivarTiendaProveedor
+        controller: radioDesactivar
     });

@@ -1,0 +1,67 @@
+<form role="form" id="eliminarEmpleadoFrmId" name="eliminarEmpleadoFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-sm-10">
+            <h2>Eliminar Empleado</h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-sm-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="eliminarEmpleado.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>Nombre: {{eliminarEmpleado.resolve.empleado.nombreCompleto}}</h3>
+                        <h3>No Empleado: {{eliminarEmpleado.resolve.empleado.noEmpleado}}</h3>
+                    </div>
+                    <div class="col-sm-12">
+                        <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
+                        <h4>La empleado dejará de operar en el sistema y no se guardará más información.</h4>
+                        <div class="form-group" ng-class="{ 'has-error' : eliminarEmpleadoFrm.cuentaContable.$invalid && !eliminarEmpleadoFrm.cuentaContable.$pristine}">
+                            <div ng-messages="eliminarEmpleadoFrm.cuentaContable.$dirty && eliminarEmpleadoFrm.cuentaContable.$error" role="alert">
+                                <label>Acción
+                                    <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                                    <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                                    <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
+                                </label>
+                                <radio-desactivar dato="eliminarEmpleado.datos.activo"></radio-desactivar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--ALERTA-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <alertas tipo="eliminarEmpleado.tipoMsj" mensaje="eliminarEmpleado.msj"></alertas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON CANCELAR -->
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="eliminarEmpleado.cerrar()">
+                    Cerrar
+                </button>
+                <!--BOTON CREAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-hide="eliminarEmpleado.tipoMsj === 'success'"
+                        ng-disabled="eliminarEmpleadoFrm.$invalid"
+                        ng-click="eliminarEmpleado.desactivar()">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

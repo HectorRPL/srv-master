@@ -36,14 +36,26 @@
                     <div class="btn-group btn-group-sm" role="group" aria-label="...">
                         <a type="button"
                            class="btn btn-default"
+                           uib-popover="Editar"
+                           popover-trigger="'mouseenter'"
                            ui-sref="app.tienda.admon.empleados.editar.generales({empleadoId: empleado._id})">
-                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
                         <a type="button"
                            class="btn btn-default"
+                           uib-popover="Ver más"
+                           popover-trigger="'mouseenter'"
                            ng-click="listaEmpleados.abreModalDealles(empleado)">
-                            <i class="fa fa-info" aria-hidden="true"></i> Ver Más
+                            <i class="fa fa-info" aria-hidden="true"></i>
                         </a>
+                        <a type="button"
+                           class="btn btn-default"
+                           uib-popover="Eliminar"
+                           popover-trigger="'mouseenter'"
+                           ng-click="listaEmpleados.abreModalEliminar(empleado)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+
                     </div>
                 </td>
             </tr>

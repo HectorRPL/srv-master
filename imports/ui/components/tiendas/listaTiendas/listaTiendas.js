@@ -9,6 +9,7 @@ import {name as EditarTienda} from '../editarTienda/editarTienda';
 import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
 import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
 import {name as DetallesTienda} from "./detallesTienda/detallesTienda";
+import {name as EliminarTienda} from "./eliminarTienda/eliminarTienda";
 
 class ListaTiendas {
     constructor($scope, $reactive, $state, $uibModal) {
@@ -23,7 +24,8 @@ class ListaTiendas {
         this.subscribe('tiendas.todas', ()=>
             [
                 {
-                    _id: this.getReactively('tiendaSelec._id')
+                    _id: this.getReactively('tiendaSelec._id'),
+                    activo: true
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -57,6 +59,22 @@ class ListaTiendas {
         });
     }
 
+    abreModalEliminar(tienda) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'EliminarTienda',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                tienda: function () {
+                    return tienda;
+                }
+            }
+
+        });
+    }
+
 
     pageChanged(newPage) {
         this.page = newPage;
@@ -73,7 +91,8 @@ export default angular
         EditarTienda,
         AgregarSucursal,
         BuscarTienda,
-        DetallesTienda
+        DetallesTienda,
+        EliminarTienda
     ])
     .component(name, {
         template,

@@ -5,6 +5,8 @@ import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
 import {name as DetallesEmpleados} from "./detallesEmpleados/detallesEmpleados";
+import {name as EliminarEmpleado} from "./eliminarEmpleado/eliminarEmpleado";
+
 
 class ListaEmpleados {
     constructor($scope, $reactive, $stateParams, $uibModal) {
@@ -19,7 +21,8 @@ class ListaEmpleados {
             [
                 {
                     _id: this.getReactively('empleadoSelec._id'),
-                    tiendaId: this.tiendaId
+                    tiendaId: this.tiendaId,
+                    activo: true
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -59,6 +62,22 @@ class ListaEmpleados {
         });
     }
 
+    abreModalEliminar(empleado) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'EliminarEmpleado',
+            backdrop: 'static',
+            size: 'xs',
+            keyboard: true,
+            resolve: {
+                empleado: function () {
+                    return empleado;
+                }
+            }
+
+        });
+    }
+
 }
 
 const name = 'listaEmpleados';
@@ -67,6 +86,7 @@ export default angular
     .module(name, [
         BuscarEmpleado,
         DetallesEmpleados,
+        EliminarEmpleado
     ])
     .component(name, {
         template,
