@@ -18,7 +18,7 @@
             <tr dir-paginate="empleado in listaEmpleados.empleados | itemsPerPage: listaEmpleados.perPage"
                 total-items="listaEmpleados.empleadosCount">
                 <td class="client-avatar"><img alt="image" src="images//a3.jpg"></td>
-                <td>{{empleado.nombreCompleto}}</td>
+                <td><a ui-sref="app.tienda.admon.empleados.editar.generales({empleadoId: empleado._id})" class="client-link">{{empleado.nombreCompleto}}</a></td>
                 <td class="contact-type">
                     <small>Departamento:</small>
                 </td>
@@ -31,32 +31,6 @@
                     </strong>
                     <span class="label label-info" ng-show="empleado.activo">Activo</span>
                     <span class="label" ng-hide="empleado.activo">Inactivo</span>
-                </td>
-                <td>
-                    <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                        <a type="button"
-                           class="btn btn-default"
-                           uib-popover="Editar"
-                           popover-trigger="'mouseenter'"
-                           ui-sref="app.tienda.admon.empleados.editar.generales({empleadoId: empleado._id})">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                        </a>
-                        <a type="button"
-                           class="btn btn-default"
-                           uib-popover="Ver más"
-                           popover-trigger="'mouseenter'"
-                           ng-click="listaEmpleados.abreModalDealles(empleado)">
-                            <i class="fa fa-info" aria-hidden="true"></i>
-                        </a>
-                        <a type="button"
-                           class="btn btn-default"
-                           uib-popover="Eliminar"
-                           popover-trigger="'mouseenter'"
-                           ng-click="listaEmpleados.abreModalEliminar(empleado)">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        </a>
-
-                    </div>
                 </td>
             </tr>
             </tbody>

@@ -3,8 +3,8 @@
  */
 import template from "./desactivarEmpleado.html";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
-// import {cambiosEmpleadosActivar} from "../../../../../../../api/empleados/methods";
-// import {Empleados} from "../../../../../../../api/empleados/collection";
+// import {cambiosEmpleadosActivar} from "../../../../../../../api/productos/methods";
+// import {Empleados} from "../../../../../../../api/productos/collection";
 
 class DesactivarEmpleado {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -18,7 +18,7 @@ class DesactivarEmpleado {
         this.tipoMsj = '';
 
         /*
-        this.subscribe('empleados.todos', () => [{_id: this.propietarioId}]);
+        this.subscribe('productos.todos', () => [{_id: this.propietarioId}]);
         this.helpers({
             empleado(){
                 return Empleados.findOne({_id: this.propietarioId});

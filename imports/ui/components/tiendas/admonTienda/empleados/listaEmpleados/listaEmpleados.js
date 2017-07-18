@@ -4,16 +4,12 @@
 import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
-import {name as DetallesEmpleados} from "./detallesEmpleados/detallesEmpleados";
-import {name as EliminarEmpleado} from "./eliminarEmpleado/eliminarEmpleado";
-
 
 class ListaEmpleados {
-    constructor($scope, $reactive, $stateParams, $uibModal) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
-        this.$uibModal = $uibModal;
         this.perPage = 5;
         this.page = 1;
         this.empleadoSelec = '';
@@ -46,47 +42,13 @@ class ListaEmpleados {
         this.page = newPage;
     }
 
-    abreModalDealles(empleado) {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'DetallesEmpleados',
-            backdrop: 'static',
-            size: 'xs',
-            keyboard: true,
-            resolve: {
-                empleado: function () {
-                    return empleado;
-                }
-            }
-
-        });
-    }
-
-    abreModalEliminar(empleado) {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'EliminarEmpleado',
-            backdrop: 'static',
-            size: 'xs',
-            keyboard: true,
-            resolve: {
-                empleado: function () {
-                    return empleado;
-                }
-            }
-
-        });
-    }
-
 }
 
 const name = 'listaEmpleados';
 
 export default angular
     .module(name, [
-        BuscarEmpleado,
-        DetallesEmpleados,
-        EliminarEmpleado
+        BuscarEmpleado
     ])
     .component(name, {
         template,

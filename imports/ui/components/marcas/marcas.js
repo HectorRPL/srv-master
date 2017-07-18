@@ -3,6 +3,7 @@
  */
 import template from "./marcas.html";
 import {name as ListaMarcas} from "./listaMarcas/listaMarcas";
+import {name as AdmonMarca} from "./admonMarca/admonMarca";
 
 class Marcas {
     constructor() {
@@ -12,10 +13,10 @@ class Marcas {
 
 const name = 'marcas';
 
-// create a module
 export default angular
     .module(name, [
-        ListaMarcas
+        ListaMarcas,
+        AdmonMarca
     ])
     .component(name, {
         template,

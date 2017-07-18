@@ -1,0 +1,87 @@
+/**
+ * Created by Héctor on 27/06/2017.
+ */
+import template from "./editarProveedorGenerales.html";
+import {name as Alertas} from "../../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales} from "../../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
+import {cambiosProveedor} from "../../../../../../api/catalogos/proveedores/methods";
+import {Proveedores} from "../../../../../../api/catalogos/proveedores/collection";
+
+class EditarProveedorGenerales {
+    constructor($scope, $reactive, $state, $stateParams) {
+        'ngInject';
+        this.$scope = $scope;
+        this.$state = $state;
+        $reactive(this).attach($scope);
+
+        this.propietarioId = $stateParams.proveedorId;
+
+        this.tipoMsj = '';
+
+        this.proveedor = {};
+
+        this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
+
+        this.datosProveedorNuevo = {};
+        this.helpers({
+            proveedor(){
+                this.datosProveedorNuevo = Proveedores.findOne({_id: $stateParams.proveedorId});
+                return angular.copy(this.datosProveedorNuevo);
+            }
+        });
+
+
+    }
+
+    editar() {
+        this.mostrarCampos = true;
+    }
+
+    limpiarCampos(datosGeneralesForm) {
+        this.datosProveedorNuevo = {};
+        datosGeneralesForm.$setPristine();
+    }
+
+
+    actualizarDatosGenerales(datosGeneralesForm) {
+        delete this.datosProveedorNuevo.cuentaContable;
+        delete this.datosProveedorNuevo.fechaCreacion;
+        delete this.datosProveedorNuevo._id;
+        delete this.datosProveedorNuevo.activo;
+        delete this.datosProveedorNuevo.dias;
+
+        this.datosProveedorNuevo._id = this.propietarioId;
+
+        cambiosProveedor.callPromise(this.datosProveedorNuevo).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+            this.limpiarCampos(datosGeneralesForm);
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
+        }));
+
+    }
+
+}
+
+const name = 'editarProveedorGenerales';
+
+export default angular
+    .module(name, [
+        Alertas,
+        FormaDatosGenerales
+    ])
+    .component(name, {
+        template,
+        controllerAs: name,
+        controller: EditarProveedorGenerales
+    })
+    .config(config);
+
+function config($stateProvider) {
+    'ngInject';
+    $stateProvider
+        .state('app.proveedores.admon.editar.generales', {
+            url: '/generales',
+            template: '<editar-proveedor-generales></editar-proveedor-generales>'
+        });
+}

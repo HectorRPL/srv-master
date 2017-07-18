@@ -4,7 +4,7 @@
 import template from "./editarEmpleadoContrasenia.html";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import {name as Contrasenia} from "../../../../../comun/inputs/contrasenia/contrasenia";
-// import {cambiosEmpleadoContrasenia} from "../../../../../../../api/catalogos/empleados/methods";
+// import {cambiosEmpleadoContrasenia} from "../../../../../../../api/catalogos/productos/methods";
 import {Empleados} from "../../../../../../../api/empleados/collection";
 
 class EditarEmpleadoContrasenia {

@@ -9,6 +9,8 @@ import {name as Comisiones} from './comisiones/comisiones';
 import {name as Inventario} from './inventario/inventario';
 import {name as Empleados} from './empleados/empleados';
 import {name as Promociones} from './promociones/promociones';
+import {name as EditarTienda} from './editarTienda/editarTienda';
+import {name as DetallesTienda} from './detallesTienda/detallesTienda';
 
 class AdmonTienda {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -35,6 +37,8 @@ class AdmonTienda {
             {titulo: "Factores", estado: ".factores.lista", icono: 'fa fa-money'},
             {titulo: "Comisiones", estado: ".comisiones.lista", icono: 'fa fa-briefcase'},
             {titulo: "Promociones", estado: ".promociones.lista", icono: 'fa fa-hand-o-down'},
+            {titulo: "Editar", estado: ".editar.generales", icono: 'fa fa-pencil'},
+            {titulo: "Info", estado: ".detalles.info", icono: 'fa fa-info'}
         ];
 
         this.tab = 0;
@@ -51,7 +55,9 @@ export default angular
         Comisiones,
         Inventario,
         Promociones,
-        Empleados
+        Empleados,
+        EditarTienda,
+        DetallesTienda
     ])
     .component(name, {
         template,

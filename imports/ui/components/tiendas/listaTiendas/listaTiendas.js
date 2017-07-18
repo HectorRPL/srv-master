@@ -5,19 +5,16 @@ import template from "./listaTiendas.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
-import {name as EditarTienda} from '../editarTienda/editarTienda';
 import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
 import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
-import {name as DetallesTienda} from "./detallesTienda/detallesTienda";
-import {name as EliminarTienda} from "./eliminarTienda/eliminarTienda";
 
 class ListaTiendas {
-    constructor($scope, $reactive, $state, $uibModal) {
+    constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Tiendas';
-        this.$uibModal = $uibModal;
+
         this.tiendaSelec = '';
         this.perPage = 10;
         this.page = 1;
@@ -43,39 +40,6 @@ class ListaTiendas {
         });
     }
 
-    abreModalDealles(tienda) {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'DetallesTienda',
-            backdrop: 'static',
-            size: 'xs',
-            keyboard: true,
-            resolve: {
-                tienda: function () {
-                    return tienda;
-                }
-            }
-
-        });
-    }
-
-    abreModalEliminar(tienda) {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'EliminarTienda',
-            backdrop: 'static',
-            size: 'xs',
-            keyboard: true,
-            resolve: {
-                tienda: function () {
-                    return tienda;
-                }
-            }
-
-        });
-    }
-
-
     pageChanged(newPage) {
         this.page = newPage;
     }
@@ -88,11 +52,8 @@ export default angular
     .module(name, [
         TituloPrincipal,
         AgregarTienda,
-        EditarTienda,
         AgregarSucursal,
         BuscarTienda,
-        DetallesTienda,
-        EliminarTienda
     ])
     .component(name, {
         template,

@@ -18,7 +18,7 @@
                 <tbody>
                 <tr dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
                     total-items="listaProveedores.proveedoresCount">
-                    <td>{{proveedor.nombre}}</td>
+                    <td><a ui-sref="app.proveedores.admon.editar.generales({proveedorId: proveedor._id})" class="client-link">{{proveedor.nombre}}</a></td>
                     <td class="contact-type"><i class="fa fa-envelope"> </i></td>
                     <td> {{proveedor.email}}</td>
                     <td class="contact-type"><i class="fa fa-phone"> </i></td>
@@ -26,34 +26,6 @@
                     <td class="client-status">
                         <span class="label label-info" ng-show="proveedor.activo">Activo</span>
                         <span class="label" ng-hide="proveedor.activo">Inactivo</span>
-                    </td>
-                    <td>
-                        <div class="btn-group btn-group-sm"
-                             role="group"
-                             aria-label="...">
-                            <a type="button"
-                               class="btn btn-default"
-                               uib-popover="Editar"
-                               popover-trigger="'mouseenter'"
-                               ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
-                            </a>
-                            <a type="button"
-                               class="btn btn-default"
-                               uib-popover="Ver más"
-                               popover-trigger="'mouseenter'"
-                               ng-click="listaProveedores.abreModalDealles(proveedor)">
-                                <i class="fa fa-info" aria-hidden="true"></i>
-                            </a>
-                            <a type="button"
-                               class="btn btn-default"
-                               uib-popover="Eliminar"
-                               popover-trigger="'mouseenter'"
-                               ng-click="listaProveedores.abreModalEliminar(proveedor)">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            </a>
-
-                        </div>
                     </td>
                 </tr>
                 </tbody>

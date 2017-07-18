@@ -1,15 +1,15 @@
-<h2>Tienda: {{admonTienda.tienda.nombre}}</h2>
+<h2>Proveedor: {{admonProveedor.proveedor.nombre}}</h2>
 <hr>
 <div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-tabs">
             <span class="pull-right small text-muted">
-                <a ui-sref="app.tienda.lista">
+                <a ui-sref="app.proveedores.lista">
                     <i class="fa fa-chevron-left"></i>  Atras
                 </a>
             </span>
-            <li ng-class="{active: admonTienda.tab === $index}" ng-repeat="tab in admonTienda.tabs">
-                <a ng-click="admonTienda.tab = $index" ui-sref="{{tab.estado}}">
+            <li ng-class="{active: admonProveedor.tab === $index}" ng-repeat="tab in admonProveedor.tabs">
+                <a ng-click="admonProveedor.tab = $index" ui-sref="{{tab.estado}}">
                     <i class="{{tab.icono}}"></i>{{tab.titulo}}
                 </a>
             </li>
