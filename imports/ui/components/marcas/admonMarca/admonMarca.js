@@ -2,7 +2,9 @@
  * Created by Héctor on 17/07/2017.
  */
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
-// import {name as ListaProductos} from './listaProductos/listaProductos';
+import {name as Catalogo} from './catalogo/catalogo';
+import {name as EditarProducto} from './editarProducto/editarProducto';
+
 import template from "./admonMarca.html";
 
 class AdmonMarca {
@@ -10,6 +12,13 @@ class AdmonMarca {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+
+        this.tabs = [
+            {titulo: "Catálogo", estado: ".catalogo.lista", icono: 'fa fa-list'},
+            {titulo: "Editar", estado: ".editar.desactivar", icono: 'fa fa-pencil'},
+        ];
+
+        this.tab = 0;
 
         /*
         this.marcaId = $stateParams.marcaId;
@@ -21,13 +30,6 @@ class AdmonMarca {
                 return Marcas.findOne({_id: this.marcaId});
             }
         });
-
-        this.tabs = [
-            {titulo: "Catálogo", estado: ".productos.lista", icono: 'fa fa-pencil'},
-            {titulo: "Editar", estado: ".editar.marca", icono: 'fa fa-info'},
-        ];
-
-        this.tab = 0;
          */
     }
 
@@ -38,7 +40,8 @@ const name = 'admonMarca';
 export default angular
     .module(name, [
         TituloPrincipal,
-        // ListaProductos
+        Catalogo,
+        EditarProducto
     ])
     .component(name, {
         template,

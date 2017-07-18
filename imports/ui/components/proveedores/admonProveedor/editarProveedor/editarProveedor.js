@@ -57,7 +57,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.proveedores.admon.editar', {
-            url: '/editar/:proveedorId',
+            url: '/editar',
             template: '<editar-proveedor></editar-proveedor>',
             abstract: true
         });

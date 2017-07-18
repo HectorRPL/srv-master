@@ -3,6 +3,7 @@
  */
 import template from "./detallesProveedor.html";
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
+import {name as InfoProveedor} from "./infoProveedor/infoProveedor";
 
 class DetallesProveedor {
     constructor($scope, $reactive, $state) {
@@ -27,7 +28,9 @@ class DetallesProveedor {
 const name = 'detallesProveedor';
 
 export default angular
-    .module(name, [])
+    .module(name, [
+        InfoProveedor
+    ])
     .component(name, {
         template,
         controllerAs: name,
