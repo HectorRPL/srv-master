@@ -2,6 +2,7 @@
  * Created by jvltmtz on 26/06/17.
  */
 import {Marcas} from "../../../../../../api/catalogos/marcas/collection";
+import {name as ListaProdsMarcaTienda} from "./listaProdsMarcaTienda/listaProdsMarcaTienda";
 import template from "./listaMarcasTienda.html";
 
 class ListaMarcasTienda {
@@ -16,6 +17,7 @@ class ListaMarcasTienda {
         this.titulo = 'Marcas';
 
         this.marcaSelec = '';
+
         this.perPage = 10;
         this.page = 1;
         this.subscribe('marcas.todas', () => [
@@ -26,7 +28,6 @@ class ListaMarcasTienda {
                 limit: parseInt(this.perPage),
                 skip: parseInt((this.getReactively('page') - 1) * this.perPage)
             }
-
         ]);
         this.helpers({
             marcas(){
@@ -47,7 +48,9 @@ class ListaMarcasTienda {
 const name = 'listaMarcasTienda';
 
 export default angular
-    .module(name, [])
+    .module(name, [
+        ListaProdsMarcaTienda
+    ])
     .component(name, {
         template,
         controllerAs: name,

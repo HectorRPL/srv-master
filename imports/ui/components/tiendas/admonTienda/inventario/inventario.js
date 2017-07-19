@@ -1,12 +1,12 @@
 /**
  * Created by jvltmtz on 30/03/17.
  */
+import utilsPagination from "angular-utils-pagination";
 import {name as TituloPrincipal} from '../../../comun/tituloPrincipal/tituloPrincipal';
 import {name as ListaMarcasTienda} from './listaMarcasTienda/listaMarcasTienda';
-import {name as ExistenciaProductosTienda} from './existenciaProductosTienda/existenciaProductosTienda';
-
-import utilsPagination from "angular-utils-pagination";
+import {name as ConfigProductoTienda} from './configProductoTienda/configProductoTienda';
 import template from "./inventario.html";
+
 
 class Inventario {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -23,10 +23,10 @@ const name = 'inventario';
 
 export default angular
     .module(name, [
+        utilsPagination,
         TituloPrincipal,
         ListaMarcasTienda,
-        ExistenciaProductosTienda,
-        utilsPagination
+        ConfigProductoTienda
     ])
     .component(name, {
         template,

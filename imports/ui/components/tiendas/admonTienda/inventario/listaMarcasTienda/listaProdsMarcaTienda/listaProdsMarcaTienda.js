@@ -1,23 +1,21 @@
 /**
- * Created by Héctor on 19/04/2017.
+ * Created by Héctor on 19/07/2017.
  */
-import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
-import {cambiosExistenciaProducto} from "../../../../../../api/inventarios/productosInventarios/methods";
-import {Marcas} from "../../../../../../api/catalogos/marcas/collection";
-import {name as BuscarProducto} from "../../../../comun/busquedas/buscarProducto/buscarProducto";
-import {name as DetallesProducto} from "./detallesProducto/detallesProducto";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import template from "./existenciaProductosTienda.html";
+import {ProductosInventarios}       from "../../../../../../../api/inventarios/productosInventarios/collection";
+import {Marcas}                     from "../../../../../../../api/catalogos/marcas/collection";
+import {cambiosExistenciaProducto}  from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {name as BuscarProducto}     from "../../../../../comun/busquedas/buscarProducto/buscarProducto";
+import {name as Alertas}            from "../../../../../comun/alertas/alertas";
+import template                     from "./listaProdsMarcaTienda.html";
 
-class ExistenciaProductosTienda {
-    constructor($scope, $reactive, $state, $stateParams, $uibModal) {
+class ListaProdsMarcaTienda {
+    constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;
         this.marcaId = $stateParams.marcaId;
-        this.$uibModal = $uibModal;
 
         this.titulo = 'Inventario';
 
@@ -71,21 +69,6 @@ class ExistenciaProductosTienda {
         }));
     }
 
-    abreModalDealles(producto) {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'DetallesProducto',
-            backdrop: 'static',
-            size: 'xs',
-            keyboard: true,
-            resolve: {
-                producto: function () {
-                    return producto;
-                }
-            }
-        });
-    }
-
     limpiarCampos(editarExistenciaFrm) {
         editarExistenciaFrm.$setPristine();
     }
@@ -96,18 +79,17 @@ class ExistenciaProductosTienda {
 
 }
 
-const name = 'existenciaProductosTienda';
+const name = 'listaProdsMarcaTienda';
 
 export default angular
     .module(name, [
         BuscarProducto,
-        DetallesProducto,
         Alertas
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ExistenciaProductosTienda
+        controller: ListaProdsMarcaTienda
     })
     .config(config);
 
@@ -116,6 +98,6 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon.inventario.productos', {
             url: '/marca/:marcaId',
-            template: '<existencia-productos-tienda></existencia-productos-tienda>'
+            template: '<lista-prods-marca-tienda></lista-prods-marca-tienda>'
         });
 }
