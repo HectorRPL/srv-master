@@ -2,10 +2,10 @@
  * Created by Héctor on 27/06/2017.
  */
 import template from "./editarProveedorGenerales.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as FormaDatosGenerales} from "../../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-import {cambiosProveedor} from "../../../../../../api/catalogos/proveedores/methods";
-import {Proveedores} from "../../../../../../api/catalogos/proveedores/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
+import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class EditarProveedorGenerales {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -29,8 +29,6 @@ class EditarProveedorGenerales {
                 return angular.copy(this.datosProveedorNuevo);
             }
         });
-
-
     }
 
     editar() {
@@ -80,7 +78,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.proveedores.admon.editar.generales', {
+        .state('app.proveedores.editar.generales', {
             url: '/generales',
             template: '<editar-proveedor-generales></editar-proveedor-generales>'
         });

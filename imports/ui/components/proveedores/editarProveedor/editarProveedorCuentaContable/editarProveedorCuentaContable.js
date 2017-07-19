@@ -2,10 +2,10 @@
  * Created by Héctor on 29/06/2017.
  */
 import template from "./editarProveedorCuentaContable.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as CuentaContable} from "../../../../comun/inputs/cuentaContable/cuentaContable";
-import {cambiosCuentaContable} from "../../../../../../api/catalogos/proveedores/methods";
-import {Proveedores} from "../../../../../../api/catalogos/proveedores/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
+import {cambiosCuentaContable} from "../../../../../api/catalogos/proveedores/methods";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class EditarProveedorCuentaContable {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -67,7 +67,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.proveedores.admon.editar.cuentaContable', {
+        .state('app.proveedores.editar.cuentaContable', {
             url: '/cuentaContable',
             template: '<editar-proveedor-cuenta-contable></editar-proveedor-cuenta-contable>'
         });

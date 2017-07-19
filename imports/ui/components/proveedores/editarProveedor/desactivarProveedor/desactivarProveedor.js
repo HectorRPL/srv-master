@@ -2,10 +2,10 @@
  * Created by Héctor on 11/07/2017.
  */
 import template from "./desactivarProveedor.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as RadioDesactivar} from "../../../../comun/radio/radioDesactivar/radioDesactivar";
-import {cambiosProveedorActivar} from "../../../../../../api/catalogos/proveedores/methods";
-import {Proveedores} from "../../../../../../api/catalogos/proveedores/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
+import {cambiosProveedorActivar} from "../../../../../api/catalogos/proveedores/methods";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class DesactivarProveedor {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -66,7 +66,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.proveedores.admon.editar.desactivar', {
+        .state('app.proveedores.editar.desactivar', {
             url: '/desactivar',
             template: '<desactivar-proveedor></desactivar-proveedor>'
         });

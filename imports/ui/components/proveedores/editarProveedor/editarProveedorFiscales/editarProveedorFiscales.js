@@ -2,12 +2,12 @@
  * Created by Héctor on 27/06/2017.
  */
 import template from "./editarProveedorFiscales.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as FormaDireccion} from "../../../../comun/formas/formaDireccion/formaDireccion";
-import {name as FormaDatosFiscales} from "../../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
-import {cambiosDireccionFiscal} from "../../../../../../api/datosFiscales/methods";
-import {altaDatosFiscales} from "../../../../../../api/datosFiscales/methods";
-import {DatosFiscales} from "../../../../../../api/datosFiscales/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
+import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
+import {cambiosDireccionFiscal} from "../../../../../api/datosFiscales/methods";
+import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
+import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 
 class EditarProveedorFiscales {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -114,7 +114,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.proveedores.admon.editar.fiscales', {
+        .state('app.proveedores.editar.fiscales', {
             url: '/fiscales',
             template: '<editar-proveedor-fiscales></editar-proveedor-fiscales>'
         });
