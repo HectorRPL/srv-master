@@ -3,16 +3,21 @@
  */
 import {Factores} from "../../../../../../api/factores/collection";
 import {name as AplicarFactor} from "../aplicar/aplicarFactor";
+import {name as AgregarFactor} from "../agregarFactor/agregarFactor";
 import template from "./listaFactores.html";
 
 class ListaFactores {
 
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+        this.$uibModal = $uibModal;
+
         this.tiendaId = $stateParams.tiendaId;
+
         this.factorSelec = '';
+
         this.perPage = 10;
         this.page = 1;
 
@@ -38,6 +43,17 @@ class ListaFactores {
 
     }
 
+    crearFactor() {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'AgregarFactor',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true
+        });
+    }
+
+
     pageChanged(newPage) {
         this.page = newPage;
     }
@@ -48,7 +64,8 @@ const name = 'listaFactores';
 
 export default angular
     .module(name, [
-        AplicarFactor
+        AplicarFactor,
+        AgregarFactor
     ])
     .component(name, {
         template,

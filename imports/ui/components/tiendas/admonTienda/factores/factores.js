@@ -1,45 +1,30 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import {name as AgregarFactor} from "./agregarFactor/agregarFactor";
+import utilsPagination from "angular-utils-pagination";
 import {name as BuscarFactor} from "../../../comun/busquedas/buscarFactor/buscarFactor";
 import {name as ListaFactores} from "./listaFactores/listaFactores";
 import {name as ListaProductosFactores} from "./listaProductosFactores/listaProductosFactores";
-import utilsPagination from "angular-utils-pagination";
 import template from "./factores.html";
 
 class Factores {
-
-    constructor($scope, $reactive, $state, $uibModal, $stateParams) {
+    constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Factores';
-        this.$uibModal = $uibModal;
         this.tiendaId = $stateParams.tiendaId;
-    }
-
-    crearFactor() {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'AgregarFactor',
-            backdrop: 'static',
-            size: 'md',
-            keyboard: true
-        });
     }
 }
 
 const name = 'factores';
 
-// create a module
 export default angular
     .module(name, [
-        AgregarFactor,
+        utilsPagination,
         BuscarFactor,
         ListaFactores,
         ListaProductosFactores,
-        utilsPagination
     ])
     .component(name, {
         template,

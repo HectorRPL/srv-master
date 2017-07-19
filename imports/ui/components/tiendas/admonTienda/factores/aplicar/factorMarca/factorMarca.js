@@ -46,7 +46,6 @@ class FactorMarca {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
