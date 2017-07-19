@@ -1,90 +1,89 @@
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias assumenda consectetur corporis cum cupiditate doloremque eaque eos esse eveniet fuga, laborum molestiae odit provident quisquam soluta tempore ullam ut.
-<!--<form id="infoTiendaFrmId" name="infoTiendaFrm" role="form">-->
-    <!--<div class="row wrapper border-bottom white-bg page-heading">-->
-        <!--&lt;!&ndash;TITULO MODAL&ndash;&gt;-->
-        <!--<div class="col-sm-10">-->
-            <!--<h2>{{infoTienda.tienda.nombre}}</h2>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; TACHE (CERRAR MODAL)&ndash;&gt;-->
-        <!--<div class="col-sm-2">-->
-            <!--<div class="ibox-tools">-->
-                <!--<br>-->
-                <!--<a ng-click="infoTienda.cerrar()"><i class="fa fa-times"></i></a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; BODY MODAL &ndash;&gt;-->
-        <!--<div class="wrapper wrapper-content animated fadeInRight">-->
-            <!--<div class="ibox-content">-->
-                <!--<div class="row">-->
-                    <!--&lt;!&ndash;DATOS GENERALES&ndash;&gt;-->
-                    <!--<div class="col-sm-12">-->
-                        <!--<div class="contact-box">-->
-                            <!--<a ui-sref="profile">-->
-                                <!--<div class="col-sm-4">-->
-                                    <!--<div class="text-center">-->
-                                        <!--<i class="fa fa-book fa-5x" aria-hidden="true"></i>-->
-                                        <!--<div class="m-t-xs font-bold"></div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="col-sm-8">-->
-                                    <!--<h3><strong>DATOS GENERALES</strong></h3>-->
-                                    <!--<address>-->
-                                        <!--Cta. Contable <strong>&nbsp; {{infoTienda.tienda.cuentaContable}}</strong><br>-->
-                                        <!--<p>-->
-                                            <!--Días de crédito: {{infoTienda.tienda.dias}} <br>-->
-                                            <!--Activo: <span ng-show="infoTienda.tienda.activo === true">Si</span>-->
-                                        <!--</p>-->
+<form id="infoTiendaFrmId" name="infoTiendaFrm" role="form">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-sm-10">
+            <h2>{{infoTienda.tienda.nombre}}</h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-sm-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="infoTienda.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <!--DATOS GENERALES-->
+                    <div class="col-sm-12">
+                        <div class="contact-box">
+                            <a ui-sref="profile">
+                                <div class="col-sm-4">
+                                    <div class="text-center">
+                                        <i class="fa fa-book fa-5x" aria-hidden="true"></i>
+                                        <div class="m-t-xs font-bold"></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h3><strong>DATOS GENERALES</strong></h3>
+                                    <address>
+                                        Cta. Contable <strong>&nbsp; {{infoTienda.tienda.cuentaContable}}</strong><br>
+                                        <p>
+                                            Días de crédito: {{infoTienda.tienda.dias}} <br>
+                                            Activo: <span ng-show="infoTienda.tienda.activo === true">Si</span>
+                                        </p>
 
-                                        <!--<i class="fa fa-envelope-o" aria-hidden="true"></i> {{infoTienda.tienda.email}}-->
-                                        <!--<br><br>-->
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i> {{infoTienda.tienda.email}}
+                                        <br><br>
 
-                                        <!--<div ng-repeat="telefono in infoTienda.tienda.telefonos">-->
-                                            <!--<i class="fa fa-phone" aria-hidden="true"></i> &nbsp; {{telefono.telefono}}-->
-                                            <!--<span ng-show="telefono.extension">-->
-                                            <!--Ext. {{telefono.extension}}-->
-                                        <!--</span>-->
-                                        <!--</div>-->
-                                    <!--</address>-->
-                                <!--</div>-->
-                                <!--<hr>-->
-                                <!--&lt;!&ndash;DATOS FISCALES&ndash;&gt;-->
-                                <!--<div class="col-sm-8 col-sm-offset-4">-->
-                                    <!--<h3><strong>DATOS FISCALES</strong></h3>-->
+                                        <div ng-repeat="telefono in infoTienda.tienda.telefonos">
+                                            <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; {{telefono.telefono}}
+                                            <span ng-show="telefono.extension">
+                                                Ext. {{telefono.extension}}
+                                            </span>
+                                        </div>
+                                    </address>
+                                </div>
+                                <hr>
+                                <!--DATOS FISCALES-->
+                                <div class="col-sm-8 col-sm-offset-4">
+                                    <h3><strong>DATOS FISCALES</strong></h3>
 
-                                    <!--{{infoTienda.datosFiscales.razonSocial}} {{infoTienda.datosFiscales.tipoSociedad}}-->
-                                    <!--{{infoTienda.datosFiscales.nombre}} {{infoTienda.datosFiscales.segundoNombre}}{{infoTienda.datosFiscales.apellidoPaterno}} {{infoTienda.datosFiscales.apellidoMaterno}}-->
+                                    {{infoTienda.datosFiscales.razonSocial}} {{infoTienda.datosFiscales.tipoSociedad}}
+                                    {{infoTienda.datosFiscales.nombre}} {{infoTienda.datosFiscales.segundoNombre}}{{infoTienda.datosFiscales.apellidoPaterno}} {{infoTienda.datosFiscales.apellidoMaterno}}
 
-                                    <!--<address>-->
-                                        <!--<strong>{{infoTienda.datosFiscales._id}}</strong><br><br>-->
-                                        <!--<i class="fa fa-envelope-o" aria-hidden="true"></i> {{infoTienda.datosFiscales.email}}<br><br>-->
-                                        <!--<i class="fa fa-map-marker"></i>-->
-                                        <!--{{infoTienda.datosFiscales.calle}}-->
-                                        <!--{{infoTienda.datosFiscales.numExt}}-->
-                                        <!--{{infoTienda.datosFiscales.numInt}}-->
-                                        <!--{{infoTienda.datosFiscales.colonia}}-->
-                                        <!--{{infoTienda.datosFiscales.delMpio}}-->
-                                        <!--{{infoTienda.datosFiscales.estado}}-->
-                                        <!--{{infoTienda.datosFiscales.codigoPostal}}-->
-                                        <!--<br>-->
-                                    <!--</address>-->
-                                <!--</div>-->
-                                <!--<div class="clearfix"></div>-->
-                            <!--</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;FOOTER MODAL&ndash;&gt;-->
-        <!--<div class="inmodal">-->
-            <!--&lt;!&ndash;BOTON CERRAR &ndash;&gt;-->
-            <!--<div class="modal-footer">-->
-                <!--<button type="button"-->
-                        <!--class="btn btn-default"-->
-                        <!--ng-click="infoTienda.cerrar()">-->
-                    <!--Cerrar-->
-                <!--</button>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</form>-->
+                                    <address>
+                                        <strong>{{infoTienda.datosFiscales._id}}</strong><br><br>
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i> {{infoTienda.datosFiscales.email}}<br><br>
+                                        <i class="fa fa-map-marker"></i>
+                                        {{infoTienda.datosFiscales.calle}}
+                                        {{infoTienda.datosFiscales.numExt}}
+                                        {{infoTienda.datosFiscales.numInt}}
+                                        {{infoTienda.datosFiscales.colonia}}
+                                        {{infoTienda.datosFiscales.delMpio}}
+                                        {{infoTienda.datosFiscales.estado}}
+                                        {{infoTienda.datosFiscales.codigoPostal}}
+                                        <br>
+                                    </address>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!--BOTON CERRAR -->
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="infoTienda.cerrar()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -2,10 +2,10 @@
  * Created by Héctor on 30/06/2017.
  */
 import template from "./editarTiendaGenerales.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as FormaDatosGenerales} from "../../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-import {cambiosTienda} from "../../../../../../api/catalogos/tiendas/methods";
-import {Tiendas} from "../../../../../../api/catalogos/tiendas/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
+import {cambiosTienda} from "../../../../../api/catalogos/tiendas/methods";
+import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 
 class EditarTiendaGenerales {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -76,7 +76,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.editar.generales', {
+        .state('app.tienda.editar.generales', {
             url: '/datosgenerales',
             template: '<editar-tienda-generales></editar-tienda-generales>'
         });

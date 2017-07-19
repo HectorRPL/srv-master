@@ -6,6 +6,7 @@ import {Tiendas} from "../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../comun/tituloPrincipal/tituloPrincipal';
 import {name as ListaTiendas} from './listaTiendas/listaTiendas';
 import {name as AdmonTienda} from './admonTienda/admonTienda';
+import {name as EditarTienda} from './editarTienda/editarTienda';
 
 class TiendasClass {
     constructor($state) {
@@ -22,7 +23,8 @@ export default angular
     .module(name, [
         TituloPrincipal,
         ListaTiendas,
-        AdmonTienda
+        AdmonTienda,
+        EditarTienda
     ])
     .component(name, {
         template,

@@ -5,37 +5,42 @@
         <a ui-sref="app.tienda.agregar.datos" class="btn btn-primary btn-sm">Agregar Tienda</a>
     </div>
     <div class="col-xs-4">
-
-    </div>
-    <div class="col-xs-4">
         <buscar-tienda tienda="listaTiendas.tiendaSelec"></buscar-tienda>
     </div>
+    <div class="col-xs-4">
+
+    </div>
 </div>
-<div class="clients-list">
-    <div class="full-height-scroll" full-scroll>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <tbody>
-                    <tr dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
-                        total-items="listaTiendas.tiendasCount">
-                        <td><a ui-sref="app.tienda.admon.empleados.lista({tiendaId: tienda._id})" class="client-link">{{tienda.nombre}}</a></td>
-                        <td><i class="fa fa-envelope"> </i> {{tienda.email}}</td>
-                        <td><i class="fa fa-phone"> </i> +{{tienda.telefonos[0].telefono}}</td>
-                        <td>
-                            <div class="btn-group btn-group-sm" role="group" aria-label="...">
-                                <a type="button"
-                                   class="btn btn-default"
-                                   uib-popover="Añadir Sucursal"
-                                   popover-trigger="'Editar'"
-                                   ui-sref="app.tienda.sucursal({tiendaId: tienda._id})">
-                                    <i class="fa fa-industry" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <dir-pagination-controls on-page-change="listaTiendas.pageChanged(newPageNumber)"></dir-pagination-controls>
+<div class="row">
+    <div class="col-sm-4 ajustar"
+         dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
+         total-items="listaTiendas.tiendasCount">
+        <div class="contact-box">
+            <a ui-sref="app.tienda.admon.empleados.lista({tiendaId: tienda._id})">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <i class="fa fa-industry" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <h3><strong>{{tienda.nombre}}</strong></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <mostrar-direccion propietario-id="tienda._id"></mostrar-direccion>
+                        <mostrar-datos-fiscales propietario-id="tienda._id"></mostrar-datos-fiscales>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <span ng-repeat="telefono in tienda.telefonos">{{telefono.telefono}},
+                            <span ng-show="telefono.extension">
+                                Ext. {{telefono.extension}},
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </a>
         </div>
     </div>
 </div>
+<dir-pagination-controls on-page-change="listaTiendas.pageChanged(newPageNumber)"></dir-pagination-controls>

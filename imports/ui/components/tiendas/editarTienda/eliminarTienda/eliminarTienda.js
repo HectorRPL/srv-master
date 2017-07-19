@@ -2,10 +2,10 @@
  * Created by Héctor on 10/07/2017.
  */
 import template from "./eliminarTienda.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as RadioDesactivar} from "../../../../comun/radio/radioDesactivar/radioDesactivar";
-import {cambiosTiendaActivar} from "../../../../../../api/catalogos/tiendas/methods";
-import {Tiendas} from "../../../../../../api/catalogos/tiendas/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
+import {cambiosTiendaActivar} from "../../../../../api/catalogos/tiendas/methods";
+import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 
 class EliminarTienda {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -68,7 +68,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.editar.eliminar', {
+        .state('app.tienda.editar.eliminar', {
             url: '/eliminar',
             template: '<eliminar-tienda></eliminar-tienda>'
         });

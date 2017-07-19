@@ -15,4 +15,12 @@ html {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
   }
+
+  // Arreglar los textos muy largos de manera que se reduzcan y no estropee los estilos que tengan renglones fijos
+
+  .ajustar {
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+  }
 }

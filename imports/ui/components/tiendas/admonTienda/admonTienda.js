@@ -9,7 +9,7 @@ import {name as Comisiones} from './comisiones/comisiones';
 import {name as Inventario} from './inventario/inventario';
 import {name as Empleados} from './empleados/empleados';
 import {name as Promociones} from './promociones/promociones';
-import {name as EditarTienda} from './editarTienda/editarTienda';
+import {name as EditarTienda} from '../editarTienda/editarTienda';
 import {name as DetallesTienda} from './detallesTienda/detallesTienda';
 
 class AdmonTienda {
@@ -17,28 +17,26 @@ class AdmonTienda {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+
         this.tiendaId = $stateParams.tiendaId;
-        this.subscribe('tiendas.todas',()=>
+
+        this.subscribe('tiendas.todas', () =>
             [
                 {
                     _id: this.tiendaId
                 }
             ]);
-
         this.helpers({
             tienda(){
                 return Tiendas.findOne({_id: this.tiendaId});
             }
         });
-
         this.tabs = [
             {titulo: "Empleados", estado: ".empleados.lista", icono: 'fa fa-users'},
             {titulo: "Inventario", estado: ".inventario.lista", icono: 'fa fa-cubes'},
             {titulo: "Factores", estado: ".factores.lista", icono: 'fa fa-money'},
             {titulo: "Comisiones", estado: ".comisiones.lista", icono: 'fa fa-briefcase'},
             {titulo: "Promociones", estado: ".promociones.lista", icono: 'fa fa-hand-o-down'},
-            {titulo: "Editar", estado: ".editar.generales", icono: 'fa fa-pencil'},
-            {titulo: "Info", estado: ".detalles.info", icono: 'fa fa-info'}
         ];
 
         this.tab = 0;
@@ -55,9 +53,7 @@ export default angular
         Comisiones,
         Inventario,
         Promociones,
-        Empleados,
-        EditarTienda,
-        DetallesTienda
+        Empleados
     ])
     .component(name, {
         template,

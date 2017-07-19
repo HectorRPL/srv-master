@@ -2,12 +2,12 @@
  * Created by Héctor on 30/06/2017.
  */
 import template from "./editarTiendaFiscales.html";
-import {name as Alertas} from "../../../../comun/alertas/alertas";
-import {name as FormaDireccion} from "../../../../comun/formas/formaDireccion/formaDireccion";
-import {name as FormaDatosFiscales} from "../../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
-import {cambiosDireccionFiscal} from "../../../../../../api/datosFiscales/methods";
-import {altaDatosFiscales} from "../../../../../../api/datosFiscales/methods";
-import {DatosFiscales} from "../../../../../../api/datosFiscales/collection";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
+import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
+import {cambiosDireccionFiscal} from "../../../../../api/datosFiscales/methods";
+import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
+import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 
 class EditarTiendaFiscales {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -121,7 +121,7 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.admon.editar.fiscales', {
+        .state('app.tienda.editar.fiscales', {
             url: '/tiendaFiscales',
             template: '<editar-tienda-fiscales></editar-tienda-fiscales>'
         });
