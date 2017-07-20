@@ -1,0 +1,54 @@
+<form role="form" id="editarFactorFrmId" name="editarFactorFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-lg-10">
+            <h2>{{editarFactor.titulo}}
+                <small></small>
+            </h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-lg-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="editarFactor.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <p> Al editar este factor todos los productos que estén asociados al mismo se verán modificados.</p>
+                <br>
+
+                <forma-factores factor="editarFactor.resolve.factor"></forma-factores>
+                <!--ALERTAS-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- ALERTA -->
+                        <alertas tipo="editarFactor.tipoMsj" mensaje="editarFactor.msj"></alertas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON CANCELAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-click="editarFactor.cerrar()">
+                    Cerrar
+                </button>
+                <!--BOTON CREAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-hide="editarFactor.tipoMsj === 'success'"
+                        ng-disabled="editarFactorFrm.$invalid"
+                        ng-click="editarFactor.editarFactor()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

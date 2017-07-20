@@ -4,6 +4,8 @@
 import {Factores} from "../../../../../../api/factores/collection";
 import {name as AplicarFactor} from "../aplicar/aplicarFactor";
 import {name as AgregarFactor} from "../agregarFactor/agregarFactor";
+import {name as EditarFactor} from "./editarFactor/editarFactor";
+
 import template from "./listaFactores.html";
 
 class ListaFactores {
@@ -15,6 +17,9 @@ class ListaFactores {
         this.$uibModal = $uibModal;
 
         this.tiendaId = $stateParams.tiendaId;
+
+        this.datos = {};
+        this.factor = {};
 
         this.factorSelec = '';
 
@@ -53,6 +58,39 @@ class ListaFactores {
         });
     }
 
+    editarFactorModal(factor) {
+        this.datos.factores = angular.copy(factor);
+
+        this.factor.nombre        = this.datos.factores.nombre;
+        this.factor._id           = this.datos.factores._id;
+        this.factor.factorCosto   = this.datos.factores.factorCosto;
+
+        delete this.datos.factores.marcaVieja;
+        delete this.datos.factores.nombre;
+        delete this.datos.factores.factorCosto;
+        delete this.datos.factores.marcaId;
+        delete this.datos.factores.activo;
+        delete this.datos.factores.fechaCreacion;
+        delete this.datos.factores._id;
+
+        this.factor.factores = this.datos.factores;
+
+        factor = this.factor;
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'EditarFactor',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true,
+            resolve: {
+                factor: function () {
+                    return factor;
+                }
+            }
+        });
+    }
+
+
 
     pageChanged(newPage) {
         this.page = newPage;
@@ -65,7 +103,8 @@ const name = 'listaFactores';
 export default angular
     .module(name, [
         AplicarFactor,
-        AgregarFactor
+        AgregarFactor,
+        EditarFactor
     ])
     .component(name, {
         template,

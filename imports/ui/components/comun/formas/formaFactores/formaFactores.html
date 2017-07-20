@@ -1,0 +1,59 @@
+<ng-form name="formaFactoresFrm">
+    <div class="row">
+        <!-- NOMBRE -->
+        <div class="col-sm-12">
+            <div class="form-group" ng-class="{ 'has-error' : formaFactoresFrm.nombre.$invalid && !formaFactoresFrm.nombre.$pristine}">
+                <div ng-messages="formaFactoresFrm.nombre.$dirty && formaFactoresFrm.nombre.$error" role="alert">
+                    <label>Nombre *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                    </label>
+                    <input id="nombreId"
+                           class="form-control"
+                           name="nombre"
+                           type="text"
+                           placeholder="Nombre del Factor"
+                           aria-describedby="sizing-addon1"
+                           minlength="2"
+                           maxlength="51"
+                           ng-minlength="2"
+                           ng-maxlength="50"
+                           ng-pattern="/^[a-zA-ZñÑ\s\d]+$/"
+                           required
+                           ng-disabled="formaFactores.tipoMsj === 'success'"
+                           ng-model="formaFactores.factor.nombre">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <!-- FACTORES -->
+        <div class="col-sm-4" ng-repeat="factor in formaFactores.factor.factores">
+            <div class="form-group" ng-class="{ 'has-error' : formaFactoresFrm['factor'+$index].$invalid && !formaFactoresFrm['factor'+$index].$pristine}">
+                <div ng-messages="formaFactoresFrm['factor'+$index].$dirty && formaFactoresFrm['factor'+$index].$error" role="alert">
+                    <label>
+                        Factor {{$index + 1}}
+                        <span class="animated fadeIn" style="color:red;" ng-message="min">mix 1.0000</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="max">max 1.4000</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <input id="factor{{$index}}Id"
+                           class="form-control"
+                           type="number"
+                           name="factor{{$index}}"
+                           max="4.00"
+                           min="1.00"
+                           step=".0001"
+                           required
+                           ng-disabled="formaFactores.tipoMsj === 'success'"
+                           ng-model="formaFactores.factor.factores['factor'+($index + 1)]">
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-form>
