@@ -3,7 +3,7 @@
  */
 import template from "./desactivarProveedor.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as DesactivarTiendaProveedor} from "../../../comun/radio/desactivarTiendaProveedor/desactivarTiendaProveedor";
+import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
 import {cambiosProveedorActivar} from "../../../../../api/catalogos/proveedores/methods";
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
@@ -54,7 +54,7 @@ const name = 'desactivarProveedor';
 export default angular
     .module(name, [
         Alertas,
-        DesactivarTiendaProveedor
+        RadioDesactivar
     ])
     .component(name, {
         template,

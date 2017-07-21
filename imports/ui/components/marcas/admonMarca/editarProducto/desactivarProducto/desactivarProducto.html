@@ -1,0 +1,83 @@
+<form role="form"
+      id="desactivarProductoFrmId"
+      name="desactivarProductoFrm"
+      novalidate>
+    <!--DATOS FISCALES-->
+    <div class="row animated fadeInRight">
+        <div class="col-sm-4 b-r">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Tienda Activa</h3>
+                    <div class="contact-box">
+                        <a href="">
+                            <div class="col-sm-4">
+                                <div class="text-center">
+                                    <i class="fa fa-industry fa-5x" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="m-t-xs font-bold">Tienda Activa: </p>
+                                <h2>
+                                    <strong>
+                                        <span ng-show="desactivarProducto.producto.activo">Este producto se encuentra activo</span>
+                                        <span ng-hide="desactivarProducto.producto.activo">Este producto se encuentra desactivado</span>
+                                    </strong>
+                                </h2>
+                                <address>
+                                    <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
+                                    <p>Eliminar un producto implica grandes riesgos operativos y pérdida de información.</p>
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <!--BOTON EDITAR -->
+                    <button type="button"
+                            class="btn btn-primary btn-xs pull-right"
+                            ng-click="desactivarProducto.editar()">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 " ng-show="desactivarProducto.ocultarBoton">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Eliminar Proveedor</h3>
+                </div>
+                <div class="col-sm-offset-3 col-sm-6">
+                    <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
+                    <h4>El producto dejará de operar en el sistema y no se guardará más información.</h4>
+                    <div class="form-group" ng-class="{ 'has-error' : desactivarProductoFrm.cuentaContable.$invalid && !desactivarProductoFrm.cuentaContable.$pristine}">
+                        <div ng-messages="desactivarProductoFrm.cuentaContable.$dirty && desactivarProductoFrm.cuentaContable.$error" role="alert">
+                            <label>Acción
+                                <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                                <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                                <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
+                            </label>
+                            <radio-desactivar dato="desactivarProducto.datos.activo"></radio-desactivar>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!--ALERTA Y BOTÓN-->
+    <div class="row">
+        <div class="col-md-8">
+            <alertas tipo="desactivarProducto.tipoMsj" mensaje="desactivarProducto.msj"></alertas>
+        </div>
+        <div class="col-md-3" ng-show="desactivarProducto.ocultarBoton">
+            <!--BOTON GUARDAR DATOS GENERALES-->
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-disabled="desactivarProductoFrm.$invalid"
+                    ng-click="desactivarProducto.desactivar(desactivarProductoFrm)">
+                Aceptar
+            </button>
+        </div>
+    </div>
+</form>

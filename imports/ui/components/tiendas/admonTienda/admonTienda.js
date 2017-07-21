@@ -9,26 +9,28 @@ import {name as Comisiones} from './comisiones/comisiones';
 import {name as Inventario} from './inventario/inventario';
 import {name as Empleados} from './empleados/empleados';
 import {name as Promociones} from './promociones/promociones';
+import {name as EditarTienda} from '../editarTienda/editarTienda';
+import {name as DetallesTienda} from './detallesTienda/detallesTienda';
 
 class AdmonTienda {
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+
         this.tiendaId = $stateParams.tiendaId;
-        this.subscribe('tiendas.todas',()=>
+
+        this.subscribe('tiendas.todas', () =>
             [
                 {
                     _id: this.tiendaId
                 }
             ]);
-
         this.helpers({
             tienda(){
                 return Tiendas.findOne({_id: this.tiendaId});
             }
         });
-
         this.tabs = [
             {titulo: "Empleados", estado: ".empleados.lista", icono: 'fa fa-users'},
             {titulo: "Inventario", estado: ".inventario.lista", icono: 'fa fa-cubes'},

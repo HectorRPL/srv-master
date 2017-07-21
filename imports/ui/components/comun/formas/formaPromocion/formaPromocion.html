@@ -1,0 +1,78 @@
+<ng-form name="formaPromocionFrm">
+    <!--NOMBRE-->
+    <div class="col-sm-4">
+        <div class="form-group"
+             ng-class="{ 'has-error' : formaPromocionFrm.nombre.$invalid && !formaPromocionFrm.nombre.$pristine}">
+            <div ng-messages="formaPromocionFrm.nombre.$dirty && formaPromocionFrm.nombre.$error"
+                 role="alert">
+                <label>Nombre *
+                    <span class="animated fadeIn" style="color:red;"
+                          ng-message="required"> requerido</span>
+                    <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
+                    <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                </label>
+                <input id="nombreId"
+                       class="form-control"
+                       name="nombre"
+                       type="text"
+                       placeholder="Nombre Promocion"
+                       aria-describedby="sizing-addon1"
+                       minlength="2"
+                       maxlength="51"
+                       ng-minlength="2"
+                       ng-maxlength="50"
+                       ng-pattern="/^[a-zA-ZñÑ\s\d]+$/"
+                       required
+                       ng-disabled="formaPromocion.tipoMsj === 'success'"
+                       ng-model="formaPromocion.promocion.nombre">
+            </div>
+        </div>
+    </div>
+    <!--DESCUENTO-->
+    <div class="col-sm-4">
+        <div class="form-group"
+             ng-class="{ 'has-error' : formaPromocionFrm.descuento.$invalid && !formaPromocionFrm.descuento.$pristine}">
+            <div ng-messages="formaPromocionFrm.descuento.$dirty && formaPromocionFrm.descuento.$error"
+                 role="alert">
+                <label>
+                    Descuento *
+                    <span class="animated fadeIn" style="color:red;" ng-message="min">mix 1%</span>
+                    <span class="animated fadeIn" style="color:red;" ng-message="max">max 100%</span>
+                    <span class="animated fadeIn" style="color:red;"
+                          ng-message="required">requerido</span>
+                </label>
+                <div class="input-group m-b">
+                    <input id="descuentoId"
+                           class="form-control"
+                           type="number"
+                           name="descuento"
+                           min="1"
+                           max="100"
+                           step="1"
+                           required
+                           ng-model="formaPromocion.promocion.descuento">
+                    <span class="input-group-addon">%</span></div>
+            </div>
+        </div>
+    </div>
+    <!--APLICAR: LISTA O PRECIO-->
+    <div class="col-sm-4">
+        <div class="form-group" ng-class="{ 'has-error' : formaPromocionFrm.sobrePrecio.$invalid && !formaPromocionFrm.sobrePrecio.$pristine}">
+            <div ng-messages="formaPromocionFrm.sobrePrecio.$dirty && formaPromocionFrm.sobrePrecio.$error"
+                 role="alert">
+                <label>
+                    Elegir Precio *
+                    <span class="animated fadeIn" style="color:red;"ng-message="required">requerido</span>
+                </label>
+                <div class="btn-group btn-group-justified">
+                    <label class="btn btn-default" ng-model="formaPromocion.promocion.precioLista" uib-btn-radio="true" required>Lista</label>
+                    <label class="btn btn-default" ng-model="formaPromocion.promocion.precioLista" uib-btn-radio="false" required>Compra</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <elige-fecha-inicio-fin
+            fecha-inicio="formaPromocion.promocion.fechaInicio"
+            fecha-fin="formaPromocion.promocion.fechaFin">
+    </elige-fecha-inicio-fin>
+</ng-form>

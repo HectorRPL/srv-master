@@ -3,13 +3,19 @@
  */
 import template from "./listaMarcas.html";
 import {Marcas} from "../../../../api/catalogos/marcas/collection";
+import {name as AgregarMarca} from "../agregarMarca/agregarMarca";
 
 class ListaMarcas {
     constructor($scope, $reactive, $state, $uibModal) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
+
+        this.$uibModal = $uibModal;
+
         this.titulo = 'Marcas';
+
+        // /*
         this.marcaSelec = '';
         this.perPage = 10;
         this.page = 1;
@@ -32,6 +38,7 @@ class ListaMarcas {
                 return Counts.get('numMarcas');
             }
         });
+        // */
     }
 
     pageChanged(newPage) {
@@ -54,7 +61,9 @@ const name = 'listaMarcas';
 
 // create a module
 export default angular
-    .module(name, [])
+    .module(name, [
+        AgregarMarca
+    ])
     .component(name, {
         template,
         controllerAs: name,

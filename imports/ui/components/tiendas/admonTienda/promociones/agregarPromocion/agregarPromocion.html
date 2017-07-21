@@ -1,13 +1,11 @@
 <form role="form" id="agregarPromocionFrmId" name="agregarPromocionFrm" novalidate>
     <div class="row wrapper border-bottom white-bg page-heading">
         <!--TITULO MODAL-->
-        <div class="col-lg-10">
-            <h2>{{agregarPromocion.titulo}}
-                <small></small>
-            </h2>
+        <div class="col-sm-10">
+            <h2>{{agregarPromocion.titulo}}</h2>
         </div>
         <!-- TACHE (CERRAR MODAL)-->
-        <div class="col-lg-2">
+        <div class="col-sm-2">
             <div class="ibox-tools">
                 <br>
                 <a ng-click="agregarPromocion.cerrar()"><i class="fa fa-times"></i></a>
@@ -18,133 +16,13 @@
             <div class="ibox-content">
                 <p> Crear una promocion para aplicarlo a una marca o productos.</p>
                 <br>
+                <!--FORMA PROMOCIÓN-->
                 <div class="row">
-                    <!-- NOMBRE -->
-                    <div class="col-sm-4">
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : agregarPromocionFrm.nombre.$invalid && !agregarPromocionFrm.nombre.$pristine}">
-                            <div ng-messages="agregarPromocionFrm.nombre.$dirty && agregarPromocionFrm.nombre.$error"
-                                 role="alert">
-                                <label>Nombre *
-                                    <span class="animated fadeIn" style="color:red;"
-                                          ng-message="required"> requerido</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                </label>
-                                <input id="nombreId"
-                                       class="form-control"
-                                       name="nombre"
-                                       type="text"
-                                       placeholder="Nombre Promocion"
-                                       aria-describedby="sizing-addon1"
-                                       minlength="2"
-                                       maxlength="51"
-                                       ng-minlength="2"
-                                       ng-maxlength="50"
-                                       ng-pattern="/^[a-zA-ZñÑ\s\d]+$/"
-                                       required
-                                       ng-disabled="agregarPromocion.tipoMsj === 'success'"
-                                       ng-model="agregarPromocion.promocion.nombre">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <!-- DESCEUNTO -->
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : agregarPromocionFrm.descuento.$invalid && !agregarPromocionFrm.descuento.$pristine}">
-                            <div ng-messages="agregarPromocionFrm.descuento.$dirty && agregarPromocionFrm.descuento.$error"
-                                 role="alert">
-                                <label>
-                                    Descuento *
-                                    <span class="animated fadeIn" style="color:red;" ng-message="min">mix 1%</span>
-                                    <span class="animated fadeIn" style="color:red;" ng-message="max">max 100%</span>
-                                    <span class="animated fadeIn" style="color:red;"
-                                          ng-message="required">requerido</span>
-                                </label>
-                                <div class="input-group m-b">
-                                    <input id="descuentoId" class="form-control" type="number" name="descuento" min="1"
-                                           max="100" step="1" required ng-model="agregarPromocion.promocion.descuento">
-                                    <span class="input-group-addon">%</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="form-group" ng-class="{ 'has-error' : agregarPromocionFrm.sobrePrecio.$invalid && !agregarPromocionFrm.sobrePrecio.$pristine}">
-                            <div ng-messages="agregarPromocionFrm.sobrePrecio.$dirty && agregarPromocionFrm.sobrePrecio.$error"
-                                 role="alert">
-                                <label>
-                                    Elegir Precio *
-                                    <span class="animated fadeIn" style="color:red;"
-                                          ng-message="required">requerido</span>
-                                </label>
-                                <div class="btn-group">
-                                    <label class="btn btn-default" ng-model="agregarPromocion.promocion.precioLista" uib-btn-radio="true" required>Lista</label>
-                                    <label class="btn btn-default" ng-model="agregarPromocion.promocion.precioLista" uib-btn-radio="false" required>Compra</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : agregarPromocionFrm.fechaInicio.$invalid && !agregarPromocionFrm.fechaInicio.$pristine}">
-                            <div ng-messages="agregarPromocionFrm.fechaInicio.$dirty && agregarPromocionFrm.fechaInicio.$error"
-                                 role="alert">
-                                <label>
-                                    Fecha Inicio *
-                                    <span class="animated fadeIn" style="color:red;"
-                                          ng-message="required">requerido</span>
-                                </label>
-                                <p class="input-group">
-                                    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" required
-                                           ng-model="agregarPromocion.promocion.fechaInicio"
-                                           is-open="agregarPromocion.popFechaIni"
-                                           datepicker-options="agregarPromocion.dateOptions" close-text="Cerrar"
-                                           current-text="Hoy" alt-input-formats="agregarPromocion.altInputFormats"
-                                           clear-text="Limpiar" name="fechaInicio"/>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default"
-                                                ng-click="agregarPromocion.openFechaIni()">
-                                        <i class="glyphicon glyphicon-calendar"></i>
-                                        </button>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : agregarPromocionFrm.fechaFin.$invalid && !agregarPromocionFrm.fechaFin.$pristine}">
-                            <div ng-messages="agregarPromocionFrm.fechaFin.$dirty && agregarPromocionFrm.fechaFin.$error"
-                                 role="alert">
-                                <label>
-                                    Fecha Fin *
-                                    <span class="animated fadeIn" style="color:red;"
-                                          ng-message="required">requerido</span>
-                                </label>
-                                <p class="input-group">
-                                    <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" required
-                                           ng-model="agregarPromocion.promocion.fechaFin"
-                                           is-open="agregarPromocion.popFechaFin"
-                                           datepicker-options="agregarPromocion.dateOptions" close-text="Cerrar"
-                                           current-text="Hoy" alt-input-formats="agregarPromocion.altInputFormats"
-                                           clear-text="Limpiar" name="fechaFin"/>
-                                    <span class="input-group-btn">
-                                        <button type="button" class="btn btn-default"
-                                                ng-click="agregarPromocion.openFechaFin()">
-                                        <i class="glyphicon glyphicon-calendar"></i>
-                                        </button>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <forma-promocion promocion="agregarPromocion.promocion"></forma-promocion>
                 </div>
                 <!--ALERTAS-->
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- ALERTA -->
                         <alertas tipo="agregarPromocion.tipoMsj" mensaje="agregarPromocion.msj"></alertas>
                     </div>
                 </div>

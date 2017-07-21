@@ -47,9 +47,8 @@ export const cambiosDireccionFiscal = new ValidatedMethod({
     }),
     run({propietarioId, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
-        return DatosFiscales.update({propietarioId: propietarioId}, {
-            $set: { calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
-            }
+        return DatosFiscales.update({propietarioId: propietarioId},
+            {$set: { calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais}
         }, (err) => {
             if (err) {
                 throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');

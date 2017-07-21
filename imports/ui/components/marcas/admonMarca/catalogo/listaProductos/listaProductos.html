@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xs-4">
+        <a class="btn btn-primary btn-sm" ui-sref="app.tienda.admon.productos.agregar.datosTemporales">Agregar Producto</a>
+    </div>
+    <div class="col-xs-2">
+
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto tiendaid="listaProductos.tiendaId" producto="listaProductos.productoSelec"></buscar-producto>
+        {{listaProductos.productoSelec}}
+    </div>
+</div>
+<div class="full-height-scroll" full-scroll>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <tbody>
+            <tr dir-paginate="producto in listaProductos.productos | itemsPerPage: listaProductos.perPage"
+                total-items="listaProductos.productosCount">
+                <td class="client-avatar"><img alt="image" src="images//a3.jpg"></td>
+                <td><a ui-sref="app.tienda.admon.productos.editar.generales({productoId: productos._id})" class="client-link">{{productos.nombreCompleto}}</a></td>
+                <td class="contact-type">
+                    <small>Departamento:</small>
+                </td>
+                <td> {{productos.departamentoId}}</td>
+                <td class="contact-type"><i class="fa fa-phone"> </i></td>
+                <td> +{{productos.telefono}}</td>
+                <td class="client-status">
+                    <strong>
+                        <small>Estatus:</small>
+                    </strong>
+                    <span class="label label-info" ng-show="productos.activo">Activo</span>
+                    <span class="label" ng-hide="productos.activo">Inactivo</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls on-page-change="listaProductos.pageChanged(newPageNumber)"></dir-pagination-controls>
+    </div>
+</div>

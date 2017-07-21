@@ -1,16 +1,55 @@
 <h2>{{listaProveedores.titulo}}</h2>
 <hr>
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-sm-4">
         <a ui-sref="app.proveedores.agregar.datos" class="btn btn-primary btn-sm">Agregar Proveedor</a>
     </div>
-    <div class="col-xs-4">
-
-    </div>
-    <div class="col-xs-4">
+    <div class="col-sm-4">
         <buscar-proveedor proveedor="listaProveedores.proveedorSelec"></buscar-proveedor>
     </div>
+    <div class="col-sm-4">
+
+    </div>
 </div>
+<div class="row">
+    <div class="col-sm-4 ajustar"
+         dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
+         total-items="listaProveedores.proveedoresCount">
+        <div class="contact-box">
+            <a ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <i class="fa fa-industry" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-sm-11">
+                        <h3><strong>{{proveedor.nombre}}</strong></h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <mostrar-direccion propietario-id="proveedor._id"></mostrar-direccion>
+                        <mostrar-datos-fiscales propietario-id="proveedor._id"></mostrar-datos-fiscales>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <span ng-repeat="telefono in proveedor.telefonos">{{telefono.telefono}},
+                            <span ng-show="telefono.extension">
+                                Ext. {{telefono.extension}},
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </a>
+        </div>
+    </div>
+</div>
+<dir-pagination-controls on-page-change="listaProveedores.pageChanged(newPageNumber)"></dir-pagination-controls>
+
+
+
+
+
+<!--
+
 <div class="clients-list">
     <div class="full-height-scroll" full-scroll>
         <div class="table-responsive">
@@ -18,7 +57,7 @@
                 <tbody>
                 <tr dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
                     total-items="listaProveedores.proveedoresCount">
-                    <td>{{proveedor.nombre}}</td>
+                    <td><a ui-sref="app.proveedores.admon.editar.generales({proveedorId: proveedor._id})" class="client-link">{{proveedor.nombre}}</a></td>
                     <td class="contact-type"><i class="fa fa-envelope"> </i></td>
                     <td> {{proveedor.email}}</td>
                     <td class="contact-type"><i class="fa fa-phone"> </i></td>
@@ -27,22 +66,6 @@
                         <span class="label label-info" ng-show="proveedor.activo">Activo</span>
                         <span class="label" ng-hide="proveedor.activo">Inactivo</span>
                     </td>
-                    <td>
-                        <div class="btn-group btn-group-sm"
-                             role="group"
-                             aria-label="...">
-                            <a type="button"
-                               class="btn btn-default"
-                               ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
-                                <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                            </a>
-                            <a type="button"
-                               class="btn btn-default"
-                               ng-click="listaProveedores.abreModalDealles(proveedor)">
-                                <i class="fa fa-info" aria-hidden="true"></i> Ver Más
-                            </a>
-                        </div>
-                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -50,3 +73,5 @@
         </div>
     </div>
 </div>
+
+-->

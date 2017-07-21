@@ -12,6 +12,8 @@ import {ProductosInventarios} from "../inventarios/productosInventarios/collecti
 
 const CAMPOS_PROMOCIONES = ['nombre', 'descuento', 'precioLista', 'fechaInicio', 'fechaFin'];
 
+const CAMPO_ID = ['_id'];
+
 
 export const altaPromocion = new ValidatedMethod({
     name: 'promociones.altaPromocion',
@@ -24,6 +26,32 @@ export const altaPromocion = new ValidatedMethod({
         return Promociones.insert({nombre, descuento, precioLista, fechaInicio, fechaFin}, (err)=> {
             if (err) {
                 throw  new Meteor.Error(500, "Error al realizar ala operación", "insertar-promo");
+            }
+        });
+    }
+});
+
+export const cambiosPromociones = new ValidatedMethod({
+    name: 'promociones.cambiosPromociones',
+    mixins: [LoggedInMixin, CallPromiseMixin],
+    checkLoggedInError: {
+        error: 'noLogeado',
+        message: 'Para modificar estos campos necesita registrarse.',
+        reason: 'Usuario no logeado'
+    },
+    validate: Promociones.simpleSchema().pick(CAMPO_ID, CAMPOS_PROMOCIONES).validator({
+        clean: true,
+        filter: false
+    }),
+    run({_id, nombre, descuento, precioLista, fechaInicio, fechaFin,
+    }) {
+        return Promociones.update({
+            _id: _id
+        }, {
+            $set: {nombre: nombre, descuento: descuento, precioLista: precioLista, fechaInicio: fechaInicio, fechaFin: fechaFin}
+        },(err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
             }
         });
     }
@@ -95,7 +123,7 @@ export const aplicarPromocionMarca = new ValidatedMethod({
 });
 
 
-const PROMOCIONES_METHODS = _.pluck([altaPromocion, aplicarPromocionProductos, aplicarPromocionMarca], 'name');
+const PROMOCIONES_METHODS = _.pluck([altaPromocion, cambiosPromociones, aplicarPromocionProductos, aplicarPromocionMarca], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

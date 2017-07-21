@@ -16,7 +16,7 @@ class AregarDatosEmpleado {
         };
     }
 
-    // Inserta usuario, empleado y dirreccion empleados
+    // Inserta usuario, empleado y dirreccion productos
     siguiente() {
         this.credentials.username = this.credentials.profile.email;
         this.credentials.email = this.credentials.profile.email;

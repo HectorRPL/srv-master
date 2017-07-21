@@ -1,0 +1,70 @@
+<ng-form name="eligeFechaInicioFinFrm">
+    <div class="col-md-6">
+        <div class="form-group"
+             ng-class="{ 'has-error' : eligeFechaInicioFinFrm.fechaInicio.$invalid && !eligeFechaInicioFinFrm.fechaInicio.$pristine}">
+            <div ng-messages="eligeFechaInicioFinFrm.fechaInicio.$dirty && eligeFechaInicioFinFrm.fechaInicio.$error"
+                 role="alert">
+                <label>
+                    Fecha Inicio *
+                    <span class="animated fadeIn" style="color:red;"ng-message="required">requerido</span>
+                </label>
+                <p class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           name="fechaInicio"
+                           placeholder="Selecciona"
+                           uib-datepicker-popup="dd-MMMM-yyyy"
+                           is-open="eligeFechaInicioFin.popFechaIni"
+                           datepicker-options="eligeFechaInicioFin.dateOptions"
+                           close-text="Cerrar"
+                           current-text="Hoy"
+                           alt-input-formats="eligeFechaInicioFin.altInputFormats"
+                           clear-text="Limpiar"
+                           required
+                           ng-model="eligeFechaInicioFin.fechaInicio">
+                    <span class="input-group-btn">
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="eligeFechaInicioFin.openFechaIni()">
+                    <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group"
+             ng-class="{ 'has-error' : eligeFechaInicioFinFrm.fechaFin.$invalid && !eligeFechaInicioFinFrm.fechaFin.$pristine}">
+            <div ng-messages="eligeFechaInicioFinFrm.fechaFin.$dirty && eligeFechaInicioFinFrm.fechaFin.$error"
+                 role="alert">
+                <label>
+                    Fecha Fin *
+                    <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                </label>
+                <p class="input-group">
+                    <input type="text"
+                           class="form-control"
+                           name="fechaFin"
+                           placeholder="Selecciona"
+                           uib-datepicker-popup="dd-MMMM-yyyy"
+                           is-open="eligeFechaInicioFin.popFechaFin"
+                           datepicker-options="eligeFechaInicioFin.dateOptions"
+                           close-text="Cerrar"
+                           current-text="Hoy"
+                           alt-input-formats="eligeFechaInicioFin.altInputFormats"
+                           clear-text="Limpiar"
+                           required
+                           ng-model="eligeFechaInicioFin.fechaFin">
+                    <span class="input-group-btn">
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="eligeFechaInicioFin.openFechaFin()">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</ng-form>

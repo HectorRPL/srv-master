@@ -4,14 +4,12 @@
 import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
-import {name as DetallesEmpleados} from "./detallesEmpleados/detallesEmpleados";
 
 class ListaEmpleados {
-    constructor($scope, $reactive, $stateParams, $uibModal) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
-        this.$uibModal = $uibModal;
         this.perPage = 5;
         this.page = 1;
         this.empleadoSelec = '';
@@ -19,7 +17,8 @@ class ListaEmpleados {
             [
                 {
                     _id: this.getReactively('empleadoSelec._id'),
-                    tiendaId: this.tiendaId
+                    tiendaId: this.tiendaId,
+                    activo: true
                 },
                 {
                     limit: parseInt(this.perPage),
@@ -43,30 +42,13 @@ class ListaEmpleados {
         this.page = newPage;
     }
 
-    abreModalDealles(empleado) {
-        var modalInstance = this.$uibModal.open({
-            animation: true,
-            component: 'DetallesEmpleados',
-            backdrop: 'static',
-            size: 'xs',
-            keyboard: true,
-            resolve: {
-                empleado: function () {
-                    return empleado;
-                }
-            }
-
-        });
-    }
-
 }
 
 const name = 'listaEmpleados';
 
 export default angular
     .module(name, [
-        BuscarEmpleado,
-        DetallesEmpleados,
+        BuscarEmpleado
     ])
     .component(name, {
         template,

@@ -29,8 +29,6 @@ class EditarProveedorGenerales {
                 return angular.copy(this.datosProveedorNuevo);
             }
         });
-
-
     }
 
     editar() {

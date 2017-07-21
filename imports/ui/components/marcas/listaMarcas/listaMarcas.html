@@ -2,7 +2,7 @@
 <hr>
 <div class="row">
     <div class="col-xs-4">
-        <a ui-sref="app.tienda.marcas.agregar" class="btn btn-primary btn-sm">Agregar Marca</a>
+        <a ng-click="listaMarcas.modalAgregar()" class="btn btn-primary btn-sm">Agregar Marca</a>
     </div>
     <div class="col-xs-4">
 
@@ -18,11 +18,7 @@
                 <tbody>
                 <tr dir-paginate="marca in listaMarcas.marcas | itemsPerPage: listaMarcas.perPage"
                     total-items="listaMarcas.marcasCount">
-                    <td><a class="client-link">{{marca.nombre}}</a></td>
-                    <td class="project-actions">
-                        <a href="" class="btn btn-white btn-sm" ng-click="marcas.modalAgregarProducto(marca)"><i class="fa fa-plus-o"></i> Alta de Producto </a>
-                        <a href="" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Desactivar </a>
-                    </td>
+                    <td><a ui-sref="app.marcas.admon.catalogo.lista({marcaId: marca._id})" class="client-link">{{marca.nombre}}</a></td>
                 </tr>
                 </tbody>
             </table>

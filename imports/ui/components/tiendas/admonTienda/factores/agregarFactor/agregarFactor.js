@@ -3,6 +3,7 @@
  */
 import {altaFactor} from "../../../../../../api/factores/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
+import {name as FormaFactores} from "../../../../comun/formas/formaFactores/formaFactores";
 import template from "./agregarFactor.html";
 
 class AgregarFactor {
@@ -11,6 +12,8 @@ class AgregarFactor {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Crear un Factor';
+
+        this.factor = {};
 
         this.factores = [
             {nombre: 1},
@@ -44,10 +47,10 @@ class AgregarFactor {
 
 const name = 'agregarFactor';
 
-// create a module
 export default angular
     .module(name, [
-        Alertas
+        Alertas,
+        FormaFactores
     ])
     .component(name, {
         template,

@@ -1,0 +1,26 @@
+<div class="row">
+    <!-- TÍTULO -->
+    <div class="col-sm-10">
+        <h2>{{editarProducto.producto.nombre}}</h2>
+    </div>
+    <!-- ATRÄS-->
+    <div class="col-sm-2">
+        <div class="ibox-tools">
+            <a ui-sref="app.productos.lista" class="small"><i class="fa fa-chevron-left text-navy"></i> <span class="text-navy"> Atrás</span></a>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <uib-accordion close-others="oneAtATime">
+            <div uib-accordion-group
+                 ng-repeat="fole in editarProducto.acordeon"
+                 class="panel-default"
+                 ui-sref="{{fole.estado}}({productoId: editarProducto.productoId})"
+                 heading="{{fole.titulo}}">
+                <div ui-view=""></div>
+            </div>
+        </uib-accordion>
+    </div>
+</div>

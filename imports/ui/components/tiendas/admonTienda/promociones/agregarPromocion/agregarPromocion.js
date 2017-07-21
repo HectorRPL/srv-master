@@ -3,6 +3,7 @@
  */
 import {altaPromocion} from "../../../../../../api/promociones/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
+import {name as FormaPromocion} from "../../../../comun/formas/formaPromocion/formaPromocion";
 import template from "./agregarPromocion.html";
 
 class AgregarPromocion {
@@ -11,25 +12,6 @@ class AgregarPromocion {
         this.$state = $state;
         $reactive(this).attach($scope);
         this.titulo = 'Crear un Promoción';
-        this.inlineOptions = {
-            //customClass: this.getDayClass(),
-            minDate: new Date(),
-            showWeeks: true
-        };
-
-        this.dateOptions = {
-            //dateDisabled: disabled,
-            //maxDate: new Date(2030, 5, 22),
-            minDate: new Date(),
-            startingDay: 1
-        };
-
-        this.popFechaIni = false;
-        this.popFechaFin = false;
-
-        this.promocion = {
-            fechaInicio: new Date()
-        }
     }
 
     agregar() {
@@ -37,7 +19,7 @@ class AgregarPromocion {
 
         altaPromocion.callPromise(this.promocion).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext(()=> {
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }
@@ -46,40 +28,14 @@ class AgregarPromocion {
         this.dismiss();
     }
 
-    getDayClass(data) {
-        var date = data.date,
-            mode = data.mode;
-        if (mode === 'day') {
-            var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
-
-            for (var i = 0; i < $scope.events.length; i++) {
-                var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
-
-                if (dayToCheck === currentDay) {
-                    return $scope.events[i].status;
-                }
-            }
-        }
-
-        return '';
-    }
-
-    openFechaIni() {
-        this.popFechaIni = true;
-    }
-
-    openFechaFin() {
-        this.popFechaFin = true;
-    }
-
 }
 
 const name = 'agregarPromocion';
 
-// create a module
 export default angular
     .module(name, [
-        Alertas
+        Alertas,
+        FormaPromocion
     ])
     .component(name, {
         template,

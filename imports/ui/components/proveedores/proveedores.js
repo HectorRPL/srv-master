@@ -3,6 +3,7 @@
  */
 import template from "./proveedores.html";
 import {name as ListaProveedores} from "./listaProveedores/listaProveedores"
+import {name as EditarProveedor} from "./editarProveedor/editarProveedor"
 
 
 class Proveedores {
@@ -14,10 +15,10 @@ class Proveedores {
 
 const name = 'proveedores';
 
-// create a module
 export default angular
     .module(name, [
-        ListaProveedores
+        ListaProveedores,
+        EditarProveedor
     ])
     .component(name, {
         template,
