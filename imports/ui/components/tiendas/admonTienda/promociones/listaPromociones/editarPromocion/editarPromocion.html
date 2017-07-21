@@ -1,29 +1,30 @@
-<form role="form" id="agregarPromocionFrmId" name="agregarPromocionFrm" novalidate>
+<form role="form" id="editarPromocionFrmId" name="editarPromocionFrm" novalidate>
     <div class="row wrapper border-bottom white-bg page-heading">
         <!--TITULO MODAL-->
         <div class="col-sm-10">
-            <h2>{{agregarPromocion.titulo}}</h2>
+            <h2>{{editarPromocion.titulo}}
+            </h2>
         </div>
         <!-- TACHE (CERRAR MODAL)-->
         <div class="col-sm-2">
             <div class="ibox-tools">
                 <br>
-                <a ng-click="agregarPromocion.cerrar()"><i class="fa fa-times"></i></a>
+                <a ng-click="editarPromocion.cerrar()"><i class="fa fa-times"></i></a>
             </div>
         </div>
         <!-- BODY MODAL -->
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox-content">
-                <p> Crear una promocion para aplicarlo a una marca o productos.</p>
+                <p> Edita una promocion para aplicarlo a una marca o productos.</p>
                 <br>
                 <!--FORMA PROMOCIÓN-->
                 <div class="row">
-                    <forma-promocion promocion="agregarPromocion.promocion"></forma-promocion>
+                    <forma-promocion promocion="editarPromocion.resolve.promocion"></forma-promocion>
                 </div>
                 <!--ALERTAS-->
                 <div class="row">
                     <div class="col-lg-12">
-                        <alertas tipo="agregarPromocion.tipoMsj" mensaje="agregarPromocion.msj"></alertas>
+                        <alertas tipo="editarPromocion.tipoMsj" mensaje="editarPromocion.msj"></alertas>
                     </div>
                 </div>
             </div>
@@ -35,15 +36,15 @@
                 <!--BOTON CANCELAR -->
                 <button type="button"
                         class="btn btn-primary"
-                        ng-click="agregarPromocion.cerrar()">
+                        ng-click="editarPromocion.cerrar()">
                     Cerrar
                 </button>
                 <!--BOTON CREAR -->
                 <button type="button"
                         class="btn btn-primary"
-                        ng-hide="agregarPromocion.tipoMsj === 'success'"
-                        ng-disabled="agregarPromocionFrm.$invalid"
-                        ng-click="agregarPromocion.agregar()">
+                        ng-hide="editarPromocion.tipoMsj === 'success'"
+                        ng-disabled="editarPromocionFrm.$invalid"
+                        ng-click="editarPromocion.editarPromocion()">
                     Guardar
                 </button>
             </div>

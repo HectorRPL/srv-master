@@ -4,6 +4,7 @@
 import {Promociones} from "../../../../../../api/promociones/collection";
 import {name as AgregarPromocion} from "../agregarPromocion/agregarPromocion";
 import {name as AplicarPromocion} from "../aplicar/aplicarPromocion";
+import {name as EditarPromocion} from "./editarPromocion/editarPromocion";
 import template from "./listaPromociones.html";
 
 class ListaFactores {
@@ -54,6 +55,21 @@ class ListaFactores {
         });
     }
 
+    editarPromocionModal(promocion) {
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'EditarPromocion',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true,
+            resolve: {
+                promocion: function () {
+                    return promocion;
+                }
+            }
+        });
+    }
+
 }
 
 const name = 'listaPromociones';
@@ -61,7 +77,8 @@ const name = 'listaPromociones';
 export default angular
     .module(name, [
         AgregarPromocion,
-        AplicarPromocion
+        AplicarPromocion,
+        EditarPromocion
     ])
     .component(name, {
         template,
