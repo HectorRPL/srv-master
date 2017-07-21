@@ -3,7 +3,7 @@
  */
 
 import {name as ListaPromociones} from "./listaPromociones/listaPromociones";
-import {name as ListaProductosPromo} from "./listaProductosPromo/listaProductosPromo";
+import {name as ListaProductosPromocion} from "./listaProductosPromocion/listaProductosPromocion";
 import utilsPagination from "angular-utils-pagination";
 import template from "./promociones.html";
 
@@ -21,12 +21,11 @@ class Promociones {
 
 const name = 'promociones';
 
-// create a module
 export default angular
     .module(name, [
         ListaPromociones,
         utilsPagination,
-        ListaProductosPromo
+        ListaProductosPromocion
     ])
     .component(name, {
         template,
