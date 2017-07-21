@@ -1,0 +1,51 @@
+<pre>{{listaProductosPromocion.factor|json}}</pre>
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Promoción:
+            <span class="text-navy">{{listaProductosPromocion.promocion.nombre}}</span>
+        </h2>
+    </div>
+    <div class="col-sm-4">
+        <span class="pull-right">
+            Descuento: <span class="text-navy">{{listaProductosPromocion.promocion.descuento}}</span>%.
+            Sobre:  <span class="text-navy" ng-show="listaProductosPromocion.promocion.precioLista"> Lista</span>
+                    <span class="text-navy" ng-show="!listaProductosPromocion.promocion.precioLista">Compra</span>
+            <br>
+            del
+            <span class="text-navy">{{listaProductosPromocion.promocion.fechaInicio | date:'dd-MMMM-yyyy' }}</span> al
+            <span class="text-navy">{{listaProductosPromocion.promocion.fechaFin | date:'dd-MMMM-yyyy' }}</span>
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <buscar-marca marca="listaProductosPromocion.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-sm-4">
+        <buscar-producto marcaid="listaProductosPromocion.marcaSelec._id"
+                         producto="listaProductosPromocion.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Marca - Producto</th>
+        <th>pre</th>
+    </thead>
+
+    <tbody>
+    <tr class="table-responsive"
+        dir-paginate="producto in listaProductosPromocion.productos | itemsPerPage: listaProductosPromocion.perPage"
+        total-items="listaProductosPromocion.productosCount">
+        <td>{{producto.marca().nombre}}&nbsp;&nbsp;{{producto.producto().campoBusqueda}}</td>
+        <td><pre>{{producto|json}}</pre></td>
+    </tr>
+    </tbody>
+</table>
+<dir-pagination-controls
+        on-page-change="listaProductosPromocion.pageChanged(newPageNumber)">
+</dir-pagination-controls>
