@@ -1,9 +1,10 @@
 /**
  * Created by jvltmtz on 7/07/17.
  */
-import utilsPagination from "angular-utils-pagination";
+
 import {name as ListaPromociones} from "./listaPromociones/listaPromociones";
-import {name as ListaProductosPromocion} from "./listaProductosPromocion/listaProductosPromocion";
+import {name as ListaProductosPromo} from "./listaProductosPromo/listaProductosPromo";
+import utilsPagination from "angular-utils-pagination";
 import template from "./promociones.html";
 
 class Promociones {
@@ -20,11 +21,12 @@ class Promociones {
 
 const name = 'promociones';
 
+// create a module
 export default angular
     .module(name, [
         ListaPromociones,
-        ListaProductosPromocion,
-        utilsPagination
+        utilsPagination,
+        ListaProductosPromo
     ])
     .component(name, {
         template,

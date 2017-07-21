@@ -13,7 +13,6 @@ if (Meteor.isServer) {
         if (Object.keys(filter).length === 0 && filter.constructor === Object) {
             this.ready();
         } else {
-            console.log(JSON.stringify(filter));
             const selector = {$and: [filter]};
             options.fields = {inventarioId: 0, fechaCreacion: 0};
             Counts.publish(this, 'numProdsInventarios', ProductosInventarios.find(selector), {
@@ -32,6 +31,11 @@ if (Meteor.isServer) {
                     {
                         find: function (prodInv) {
                             return Productos.find({_id: prodInv.productoId}, {fields: {campoBusqueda: 1}});
+                        }
+                    },
+                    {
+                        find: function (prodInv) {
+                            return Factores.find({_id: prodInv.factorId}, {fields: {marcaVieja: 0}});
                         }
                     }
                 ]
