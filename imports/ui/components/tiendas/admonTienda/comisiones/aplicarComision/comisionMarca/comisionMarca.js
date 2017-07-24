@@ -1,9 +1,6 @@
 /**
  * Created by Héctor on 24/07/2017.
  */
-/**
- * Created by jvltmtz on 11/07/17.
- */
 import {aplicarFactPromoComiMarca} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./comisionMarca.html";
 

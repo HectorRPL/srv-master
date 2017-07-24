@@ -1,9 +1,6 @@
 /**
  * Created by Héctor on 24/07/2017.
  */
-/**
- * Created by jvltmtz on 11/07/17.
- */
 import {aplicarFactPromoComiProd} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as BuscarMarca} from "../../../../../comun/busquedas/buscarMarca/buscarMarca";
 import {name as BuscarProducto} from "../../../../../comun/busquedas/buscarProducto/buscarProducto";

@@ -1,9 +1,6 @@
 /**
  * Created by Héctor on 24/07/2017.
  */
-/**
- * Created by jvltmtz on 7/07/17.
- */
 import {altaComision} from "../../../../../../api/comisiones/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaComision} from "../../../../comun/formas/formaComision/formaComision";
