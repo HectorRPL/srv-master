@@ -9,3 +9,4 @@ import "../../api/inventarios/productosInventarios/methods";
 import "../../api/direcciones/methods";
 import "../../api/empleados/methods";
 import "../../api/promociones/methods";
+import "../../api/comisiones/methods";

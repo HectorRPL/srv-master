@@ -1,27 +1,31 @@
 /**
  * Created by jvltmtz on 30/03/17.
  */
+import {name as ListaComisiones} from "./listaComisiones/listaComisiones";
+import {name as ListaProductosComision} from "./listaProductosComision/listaProductosComision";
+import utilsPagination from "angular-utils-pagination";
 import template from "./comisiones.html";
 
 class Comisiones {
+
     constructor($scope, $reactive, $state, $uibModal, $stateParams) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.tiendaId = $stateParams.tiendaId;
         this.titulo = 'Comisiones';
         this.$uibModal = $uibModal;
 
+        this.tiendaId = $stateParams.tiendaId;
     }
-
 }
 
 const name = 'comisiones';
 
-// create a module
 export default angular
     .module(name, [
-
+        ListaComisiones,
+        utilsPagination,
+        ListaProductosComision
     ])
     .component(name, {
         template,

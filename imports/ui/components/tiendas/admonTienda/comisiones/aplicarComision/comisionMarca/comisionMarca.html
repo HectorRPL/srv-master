@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-4">
+        <buscar-marca marca="comisionMarca.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+    <div class="col-sm-4">
+        <button class="btn btn-primary btn-sm pull-right"
+                ng-disabled="!comisionMarca.marcaSelec._id"
+                ng-click="comisionMarca.confirmar()">
+            Aplicar Comision
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+        <alertas tipo="comisionMarca.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-default btn-sm pull-left"
+                ng-disabled="comisionMarca.productosAplicarFac.length === 0 || !comisionMarca.marcaSelec._id"
+                ng-click="comisionMarca.mostrar = !comisionMarca.mostrar">
+            Agregar Excepciones
+        </button>
+    </div>
+</div>
+<div class="row" uib-collapse="comisionMarca.mostrar" class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">
+            <buscar-producto marcaid="comisionMarca.marcaSelec._id"
+                             producto="comisionMarca.productoSelec">
+            </buscar-producto>
+        </h3>
+        <p></p>
+        <lista-productos-tienda
+                marca="comisionMarca.marcaSelec" producto="comisionMarca.productoSelec" tienda-id="comisionMarca.tiendaId"
+                agregar-prod="comisionMarca.agregar(_id, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Lsita de excepciones&nbsp;</h4>
+        <p></p>
+        <lista-productos-elegidos productos="comisionMarca.prodsExcepciones"></lista-productos-elegidos>
+    </div>
+</div>

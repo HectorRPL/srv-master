@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-sm-4">
+        <buscar-marca
+                marca="comisionProducto.marcaSelec">
+        </buscar-marca>
+    </div>
+    <div class="col-sm-4">
+        <buscar-producto
+                ng-show="comisionProducto.marcaSelec._id"
+                marcaid="comisionProducto.marcaSelec._id"
+                producto="comisionProducto.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <button class="btn btn-primary btn-sm pull-right"
+                    ng-disabled="comisionProducto.productosAplicarFac.length === 0"
+                    ng-click="comisionProducto.confirmar()">
+                Aplicar Comision
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-offset-3 col-sm-6">
+        <alertas tipo="comisionProducto.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">Productos a elegir</h3>
+        <p></p>
+        <lista-productos-tienda
+                marca="comisionProducto.marcaSelec"
+                producto="comisionProducto.productoSelec"
+                tienda-id="comisionProducto.tiendaId"
+                agregar-prod="comisionProducto.agregar(_id, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Productos que seran actualizados</h4>
+        <lista-productos-elegidos
+                productos="comisionProducto.productosAplicarPromo">
+        </lista-productos-elegidos>
+    </div>
+</div>
