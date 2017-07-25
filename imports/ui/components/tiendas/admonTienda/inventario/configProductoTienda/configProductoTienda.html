@@ -1,28 +1,35 @@
+<!--<pre>{{configProductoTienda.producto|json}}</pre>-->
+<!--
 <form id="configProductoTiendaFrmId" name="configProductoTiendaFrm" role="form">
     <div class="row wrapper border-bottom white-bg page-heading">
-        <!--TITULO MODAL-->
-        <div class="col-sm-10">
+        <div class="col-sm-12">
             <h2>{{configProductoTienda.producto.producto().campoBusqueda}}</h2>
         </div>
-        <!-- BODY MODAL -->
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox-content">
                 <div class="row">
-                    <!--DATOS GENERALES-->
-                    <div class="col-sm-12">
+                    <div class="col-sm-4">
                         <div class="contact-box">
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <div class="text-center">
-                                    <i class="fa fa-cube fa-5x" aria-hidden="true"></i>
+                                    <i class="fa fa-money fa-5x" aria-hidden="true"></i>
                                     <div class="m-t-xs font-bold"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <address>
-                                    <p>Nombre: <strong>&nbsp; {{configProductoTienda.producto.producto().campoBusqueda}}</strong></p>
-                                    <p>Marca: <strong>{{configProductoTienda.producto.marca().nombre}}</strong><br></p>
-                                    <p>Factor: <strong>{{configProductoTienda.producto.factor().nombre}}</strong><br></p>
+                                    <p>Marca:     <strong>{{configProductoTienda.producto.marca().nombre}}</strong><br></p>
+                                    <p>Factor:    <strong>{{configProductoTienda.producto.factor().nombre}}</strong><br></p>
+                                    <p>Promoción: <strong>{{configProductoTienda.producto.promocion().nombre}}</strong><br></p>
+                                    <p>Comisión:  <strong>{{configProductoTienda.producto.comision().nombre}}</strong><br></p>
                                 </address>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button"
+                                        class="btn btn-primary btn-xs pull-right"
+                                        ng-click="configProductoTienda.editar()">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </button>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -32,3 +39,200 @@
         </div>
     </div>
 </form>
+-->
+
+
+
+
+
+
+
+
+
+<!--&lt;!&ndash;-->
+<form id="configProductoTiendaFrmId" name="configProductoTiendaFrm" role="form">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-12">
+            <h2>{{configProductoTienda.producto.producto().campoBusqueda}}</h2>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <div class="col-sm-3">
+                                <div class="text-center">
+                                    <i class="fa fa-cube fa-5x" aria-hidden="true"></i>
+                                    <div class="m-t-xs font-bold"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <h2>Factor: {{configProductoTienda.producto.factor().nombre}}</h2>
+                                <small>Factores:</small>
+                                <ul class="list-group clear-list m-t">
+                                    <li class="list-group-item fist-item">
+                                        <span class="pull-right">Cliente</span>
+                                        <span class="">Valor</span>
+                                    </li>
+                                    <li class="list-group-item fist-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-success">0</span>1.5652 (costo)
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-info">1</span> 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">2</span> 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-default">3</span> Call 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">4</span> Write a 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">4</span> Write a 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">4</span> Write a 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">4</span> Write a 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">4</span> Write a 1.5652
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right">$4555.00</span>
+                                        <span class="label label-primary">4</span> Write a 1.5652
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button"
+                                        class="btn btn-primary btn-xs pull-right"
+                                        ng-click="configProductoTienda.editar()">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!--&ndash;&gt;-->
+
+
+
+
+<!--
+<form id="configProductoTiendaFrmId" name="configProductoTiendaFrm" role="form">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-12">
+            <h2>{{configProductoTienda.producto.producto().campoBusqueda}}</h2>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <div class="col-sm-3">
+                                <div class="text-center">
+                                    <i class="fa fa-cube fa-5x" aria-hidden="true"></i>
+                                    <div class="m-t-xs font-bold"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <address>
+                                    <p>Marca:     <strong>{{configProductoTienda.producto.marca().nombre}}</strong><br></p>
+                                    <p>Factor:    <strong>{{configProductoTienda.producto.factor().nombre}}</strong><br></p>
+                                    <p>Promoción: <strong>{{configProductoTienda.producto.promocion().nombre}}</strong><br></p>
+                                    <p>Comisión:  <strong>{{configProductoTienda.producto.comision().nombre}}</strong><br></p>
+                                </address>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button"
+                                        class="btn btn-primary btn-xs pull-right"
+                                        ng-click="configProductoTienda.editar()">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<form id="configProductoTiendaFrmId" name="configProductoTiendaFrm" role="form">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-12">
+            <h2>{{configProductoTienda.producto.producto().campoBusqueda}}</h2>
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <div class="col-sm-3">
+                                <div class="text-center">
+                                    <i class="fa fa-cube fa-5x" aria-hidden="true"></i>
+                                    <div class="m-t-xs font-bold"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <address>
+                                    <p>Marca:     <strong>{{configProductoTienda.producto.marca().nombre}}</strong><br></p>
+                                    <p>Factor:    <strong>{{configProductoTienda.producto.factor().nombre}}</strong><br></p>
+                                    <p>Promoción: <strong>{{configProductoTienda.producto.promocion().nombre}}</strong><br></p>
+                                    <p>Comisión:  <strong>{{configProductoTienda.producto.comision().nombre}}</strong><br></p>
+                                </address>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button"
+                                        class="btn btn-primary btn-xs pull-right"
+                                        ng-click="configProductoTienda.editar()">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+-->

@@ -7,6 +7,7 @@ import {Marcas} from "../../catalogos/marcas/collection";
 import {Productos} from "../../catalogos/productos/collection";
 import {Factores} from "../../factores/collection";
 import {Promociones} from "../../promociones/collection"
+import {Comisiones} from "../../comisiones/collection"
 import opProductosInvetarios from "./operacionesEventos";
 
 
@@ -36,17 +37,17 @@ ProductosInventarios.deny({
 const Schema = {};
 
 Schema.productosInventarios = new SimpleSchema({
-    _id: {type: String, regEx: SimpleSchema.RegEx.Id},
-    inventarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    productoId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    marcaId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    factorId: {type: String, regEx: SimpleSchema.RegEx.Id},
-    fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
-    cantidad: {type: Number, defaultValue: 10, max: 10000, min: 0},
-    costo: {type: Number, decimal: true},
-    promocionId: {type: String, regEx: SimpleSchema.RegEx.Id, optional: true},
-    comisionId: {type: String, regEx: SimpleSchema.RegEx.Id, optional: true}
+    _id:            {type: String, regEx: SimpleSchema.RegEx.Id},
+    inventarioId:   {type: String, regEx: SimpleSchema.RegEx.Id},
+    tiendaId:       {type: String, regEx: SimpleSchema.RegEx.Id},
+    productoId:     {type: String, regEx: SimpleSchema.RegEx.Id},
+    marcaId:        {type: String, regEx: SimpleSchema.RegEx.Id},
+    factorId:       {type: String, regEx: SimpleSchema.RegEx.Id},
+    fechaCreacion:  {type: Date,   defaultValue: new Date(), denyUpdate: true},
+    cantidad:       {type: Number, defaultValue: 10, max: 10000, min: 0},
+    costo:          {type: Number, decimal: true},
+    promocionId:    {type: String, regEx: SimpleSchema.RegEx.Id, optional: true},
+    comisionId:     {type: String, regEx: SimpleSchema.RegEx.Id, optional: true}
 });
 
 ProductosInventarios.attachSchema(Schema.productosInventarios);
@@ -60,6 +61,12 @@ ProductosInventarios.helpers({
     },
     factor(){
         return Factores.findOne({_id: this.factorId});
+    },
+    promocion(){
+        return Promociones.findOne({_id: this.promocionId});
+    },
+    comision(){
+        return Comisiones.findOne({_id: this.comisionId});
     },
     precioUno(){
         let precio = 0.0;

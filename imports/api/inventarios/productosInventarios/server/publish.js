@@ -6,6 +6,8 @@ import {ProductosInventarios} from "../collection";
 import {Productos} from "../../../catalogos/productos/collection";
 import {Marcas} from "../../../catalogos/marcas/collection";
 import {Factores} from "../../../factores/collection";
+import {Promociones} from "../../../promociones/collection";
+import {Comisiones} from "../../../comisiones/collection";
 
 if (Meteor.isServer) {
     // Trae t.o.d.o. el inventario
@@ -67,6 +69,16 @@ if (Meteor.isServer) {
                     {
                         find: function (prodInv) {
                             return Factores.find({_id: prodInv.factorId}, {fields: {nombre: 1}});
+                        }
+                    },
+                    {
+                        find: function (prodInv) {
+                            return Promociones.find({_id: prodInv.promocionId}, {fields: {nombre: 1}});
+                        }
+                    },
+                    {
+                        find: function (prodInv) {
+                            return Comisiones.find({_id: prodInv.comisionId}, {fields: {nombre: 1}});
                         }
                     }
                 ]

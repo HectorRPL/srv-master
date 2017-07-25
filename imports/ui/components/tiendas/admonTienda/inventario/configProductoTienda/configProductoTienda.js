@@ -20,7 +20,6 @@ class ConfigProductoTienda {
         ]);
         this.helpers({
             producto() {
-                console.log('[23]', this.productoId);
                 return ProductosInventarios.findOne();
             }
         });
