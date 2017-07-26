@@ -4,7 +4,7 @@
 import ngAnimate from "angular-animate";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as EditarTiendaGenerales} from "./editarTiendaGenerales/editarTiendaGenerales";
-import {name as EditarTiendaDireccion} from "./editarTiendaDireccion/editarTiendaDireccion";
+import {name as TiendaDireccion} from "./tiendaDireccion/tiendaDireccion";
 import {name as EditarTiendaFiscales} from "./editarTiendaFiscales/editarTiendaFiscales";
 import {name as EditarTiendaCuentaContable} from "./editarTiendaCuentaContable/editarTiendaCuentaContable";
 import {name as EliminarTienda} from "./eliminarTienda/eliminarTienda";
@@ -54,7 +54,7 @@ export default angular
     .module(name, [
         ngAnimate,
         EditarTiendaGenerales,
-        EditarTiendaDireccion,
+        TiendaDireccion,
         EditarTiendaFiscales,
         EditarTiendaCuentaContable,
         EliminarTienda

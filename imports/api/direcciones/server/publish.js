@@ -8,6 +8,7 @@ if (Meteor.isServer) {
     Meteor.publish('direcciones.todas', function (filter) {
         if (Object.keys(filter).length === 0 && filter.constructor === Object) {
             this.ready();
+
         } else {
             return Direcciones.find(filter);
         }

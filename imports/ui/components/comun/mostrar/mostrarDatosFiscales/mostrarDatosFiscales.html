@@ -5,11 +5,11 @@
     </span>
     {{mostrarDatosFiscales.datosFiscales.razonSocial}}<br>
     {{mostrarDatosFiscales.datosFiscales.calle}}
-    {{mostrarDatosFiscales.datosFiscales.numExt}}
-    <span ng-hide="!mostrarDatosFiscales.datosFiscales._id">Int. {{mostrarDatosFiscales.datosFiscales.numInt}}</span> <br>
+    {{mostrarDatosFiscales.datosFiscales.numExt}}<span ng-show="mostrarDatosFiscales.datosFiscales._id">,</span>
+    <span ng-show="mostrarDatosFiscales.datosFiscales.numInt">Int. {{mostrarDatosFiscales.datosFiscales.numInt}}.</span> <br>
     {{mostrarDatosFiscales.datosFiscales.colonia}}
-    {{mostrarDatosFiscales.datosFiscales.codigoPostal}} <br>
-    {{mostrarDatosFiscales.datosFiscales.delMpio}},
-    {{mostrarDatosFiscales.datosFiscales.estado}}
+    <span ng-show="mostrarDatosFiscales.datosFiscales._id">CP.</span> {{mostrarDatosFiscales.datosFiscales.codigoPostal}}
+    {{mostrarDatosFiscales.datosFiscales.delMpio}}<span ng-show="mostrarDatosFiscales.datosFiscales._id">,</span>
+    {{mostrarDatosFiscales.datosFiscales.estado}}<br>
     <br>
 </address>

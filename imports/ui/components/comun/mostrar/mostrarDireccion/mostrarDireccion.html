@@ -3,11 +3,11 @@
     <span ng-hide="mostrarDireccion.direccion._id" style="color: red">
         <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR</strong> La dirección debe ser completada
     </span>
-    {{mostrarDireccion.direccion.calle}} <br>
-    {{mostrarDireccion.direccion.numExt}},
+    {{mostrarDireccion.direccion.calle}}
+    {{mostrarDireccion.direccion.numExt}}<span ng-show="mostrarDireccion.direccion._id">,</span>
     <span ng-show="mostrarDireccion.direccion.numInt">Int. {{mostrarDireccion.direccion.numInt}}.</span> <br>
     {{mostrarDireccion.direccion.colonia}}
-    {{mostrarDireccion.direccion.codigoPostal}} <br>
-    {{mostrarDireccion.direccion.delMpio}},
-    {{mostrarDireccion.direccion.estado}}
+    <span ng-show="mostrarDireccion.direccion._id">CP.</span> {{mostrarDireccion.direccion.codigoPostal}}
+    {{mostrarDireccion.direccion.delMpio}}<span ng-show="mostrarDireccion.direccion._id">,</span>
+    {{mostrarDireccion.direccion.estado}}<br>
 </p>

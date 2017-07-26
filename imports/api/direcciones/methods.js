@@ -13,10 +13,10 @@ const ID = ['_id'];
 
 const CAMPOS_DIRECCION = ['propietarioId', 'calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
-// CREAR CANDIDATO
+// CREAR DIRECCIÓN
 export const altaDireccion = new ValidatedMethod({
     name: 'direcciones.altaDireccion',
-    mixins: [PermissionsMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
             roles: ['crea_dire'],

@@ -7,7 +7,7 @@ import template from "./codigosPostales.html";
 class CodigosPostales {
     constructor($scope) {
         'ngInject';
-        this.colonias = {};
+        this.colonias = [];
         this.direccion = {};
     }
 }
@@ -35,6 +35,7 @@ export default angular
                     return buscarColonias.callPromise({
                         cp: codigoPostal
                     }).then(function (result) {
+                        console.log('[38]', result);
                         scope.codigosPostales.direccion.colonias = result;
                         if (result.length === 0) {
                             scope.codigosPostales.direccion.estado = '';
