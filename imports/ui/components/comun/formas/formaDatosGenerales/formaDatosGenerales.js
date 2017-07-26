@@ -4,8 +4,9 @@
 import template from "./formaDatosGenerales.html";
 
 class FormaDatosGenerales {
-    constructor($scope) {
+    constructor($scope, $reactive) {
         'ngInject';
+        $reactive(this).attach($scope);
 
         this.datos =  {
             telefonos: [{telefono: ''}]
@@ -14,15 +15,20 @@ class FormaDatosGenerales {
     }
 
     agregarTelefono() {
-        this.nuevoTelefono = {
-            telefono: this.telefono,
-            extension: this.extension,
-        };
-
-        this.datos.telefonos.push(this.nuevoTelefono);
-
+        if (!this.datos.telefonos) {
+            this.datos. telefonos = [{telefono: ''}];
+        } else {
+            this.telefono = {
+                telefono: '',
+                extension: ''
+            };
+            this.datos.telefonos.push(this.telefono);
+        }
     }
 
+    bajaTelefono() {
+
+    }
 }
 
 const name = 'formaDatosGenerales';
