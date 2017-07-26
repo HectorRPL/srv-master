@@ -4,9 +4,9 @@
 import {name as AltaDireccion} from "../../../comun/altasCambios/direccion/altaDireccion/altaDireccion";
 import {name as CambiosDireccion} from "../../../comun/altasCambios/direccion/cambiosDireccion/cambiosDireccion";
 import {Direcciones} from "../../../../../api/direcciones/collection";
-import template from "./tiendaDireccion.html";
+import template from "./editarTiendaDireccion.html";
 
-class TiendaDireccion {
+class EditarTiendaDireccion {
     constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
@@ -32,7 +32,7 @@ class TiendaDireccion {
     }
 }
 
-const name = 'tiendaDireccion';
+const name = 'editarTiendaDireccion';
 
 export default angular
     .module(name, [
@@ -42,7 +42,7 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: TiendaDireccion
+        controller: EditarTiendaDireccion
     })
     .config(config);
 
@@ -51,6 +51,6 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.editar.direccion', {
             url: '/direccion',
-            template: '<tienda-direccion></tienda-direccion>'
+            template: '<editar-tienda-direccion></editar-tienda-direccion>'
         });
 }

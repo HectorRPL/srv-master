@@ -4,15 +4,15 @@
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 import {name as AltaDatosFiscales} from "../../../comun/altasCambios/datosFiscales/altaDatosFiscales/altaDatosFiscales";
 import {name as CambiosDatosFiscales} from "../../../comun/altasCambios/datosFiscales/cambiosDatosFiscales/cambiosDatosFiscales";
-import template from "./tiendaDatosFiscales.html";
+import template from "./editarProveedorDatosFiscales.html";
 
-class TiendaDatosFiscales {
+class EditarProveedorDatosFiscales {
     constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
         $reactive(this).attach($scope);
 
-        this.propietarioId = $stateParams.tiendaId;
+        this.propietarioId = $stateParams.proveedorId;
 
         this.tipoMsj = '';
 
@@ -35,7 +35,7 @@ class TiendaDatosFiscales {
 
 }
 
-const name = 'tiendaDatosFiscales';
+const name = 'editarProveedorDatosFiscales';
 
 export default angular
     .module(name, [
@@ -45,15 +45,15 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: TiendaDatosFiscales
+        controller: EditarProveedorDatosFiscales
     })
     .config(config);
 
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.editar.fiscales', {
+        .state('app.proveedores.editar.fiscales', {
             url: '/datosFiscales',
-            template: '<tienda-datos-fiscales></tienda-datos-fiscales>'
+            template: '<editar-proveedor-datos-fiscales></editar-proveedor-datos-fiscales>'
         });
 }

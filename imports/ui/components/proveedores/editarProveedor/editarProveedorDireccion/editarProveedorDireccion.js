@@ -4,9 +4,9 @@
 import {name as AltaDireccion} from "../../../comun/altasCambios/direccion/altaDireccion/altaDireccion";
 import {name as CambiosDireccion} from "../../../comun/altasCambios/direccion/cambiosDireccion/cambiosDireccion";
 import {Direcciones} from "../../../../../api/direcciones/collection";
-import template from "./proveedorDireccion.html";
+import template from "./editarProveedorDireccion.html";
 
-class ProveedorDireccion {
+class EditarProveedorDireccion {
     constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
@@ -32,7 +32,7 @@ class ProveedorDireccion {
     }
 }
 
-const name = 'proveedorDireccion';
+const name = 'editarProveedorDireccion';
 
 export default angular
     .module(name, [
@@ -42,7 +42,7 @@ export default angular
     .component(name, {
         template,
         controllerAs: name,
-        controller: ProveedorDireccion
+        controller: EditarProveedorDireccion
     })
     .config(config);
 
@@ -51,6 +51,6 @@ function config($stateProvider) {
     $stateProvider
         .state('app.proveedores.editar.direccion', {
             url: '/direccion',
-            template: '<proveedor-direccion></proveedor-direccion>'
+            template: '<editar-proveedor-direccion></editar-proveedor-direccion>'
         });
 }
