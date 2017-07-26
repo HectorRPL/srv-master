@@ -3,7 +3,7 @@
  */
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as EditarEmpleadoGenerales} from "./editarEmpleadoGenerales/editarEmpleadoGenerales";
-import {name as EditarEmpleadoDireccion} from "./editarEmpleadoDireccion/editarEmpleadoDireccion";
+import {name as EmpleadoDireccion} from "./empleadoDireccion/empleadoDireccion";
 import {name as EditarEmpleadoContrasenia} from "./editarEmpleadoContrasenia/editarEmpleadoContrasenia";
 import {name as DesactivarEmpleado} from "./desactivarEmpleado/desactivarEmpleado";
 import template from "./editarEmpleado.html";
@@ -20,10 +20,10 @@ class EditarEmpleado {
         $scope.oneAtATime = true;
 
         this.acordeon = [
-            {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-user'},
-            {titulo: "Dirección", estado: ".direccion", icono: 'fa fa-map-marker'},
-            {titulo: "Contraseña", estado: ".contrasenia", icono: 'fa fa-key'},
-            {titulo: "Eliminar", estado: ".desactivar", icono: 'fa fa-trash-o'}
+            {titulo: "Datos Generales", estado: "app.tienda.admon.empleados.editar.generales",   icono: 'fa fa-user'},
+            {titulo: "Dirección",       estado: "app.tienda.admon.empleados.editar.direccion",   icono: 'fa fa-map-marker'},
+            {titulo: "Contraseña",      estado: "app.tienda.admon.empleados.editar.contrasenia", icono: 'fa fa-key'},
+            {titulo: "Eliminar",        estado: "app.tienda.admon.empleados.editar.desactivar",  icono: 'fa fa-trash-o'}
 
         ];
 // /*
@@ -44,7 +44,7 @@ const name = 'editarEmpleado';
 export default angular
     .module(name, [
         EditarEmpleadoGenerales,
-        EditarEmpleadoDireccion,
+        EmpleadoDireccion,
         EditarEmpleadoContrasenia,
         DesactivarEmpleado
     ])
