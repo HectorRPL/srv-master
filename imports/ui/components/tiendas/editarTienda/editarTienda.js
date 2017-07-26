@@ -5,7 +5,7 @@ import ngAnimate from "angular-animate";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as EditarTiendaGenerales} from "./editarTiendaGenerales/editarTiendaGenerales";
 import {name as TiendaDireccion} from "./tiendaDireccion/tiendaDireccion";
-import {name as EditarTiendaFiscales} from "./editarTiendaFiscales/editarTiendaFiscales";
+import {name as TiendaDatosFiscales} from "./tiendaDatosFiscales/tiendaDatosFiscales";
 import {name as EditarTiendaCuentaContable} from "./editarTiendaCuentaContable/editarTiendaCuentaContable";
 import {name as EliminarTienda} from "./eliminarTienda/eliminarTienda";
 import template from "./editarTienda.html";
@@ -55,7 +55,7 @@ export default angular
         ngAnimate,
         EditarTiendaGenerales,
         TiendaDireccion,
-        EditarTiendaFiscales,
+        TiendaDatosFiscales,
         EditarTiendaCuentaContable,
         EliminarTienda
     ])

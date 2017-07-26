@@ -38,8 +38,8 @@ export const altaDatosFiscales = new ValidatedMethod({
     }
 });
 
-export const cambiosDireccionFiscal = new ValidatedMethod({
-    name: 'datosFiscales.cambiosDireccionFiscal',
+export const cambiosDatosFiscales= new ValidatedMethod({
+    name: 'datosFiscales.cambiosDatosFiscales',
     mixins: [CallPromiseMixin],
     validate: DatosFiscales.simpleSchema().pick(CAMPO_PROPIETARIOID, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
@@ -57,7 +57,7 @@ export const cambiosDireccionFiscal = new ValidatedMethod({
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([altaDatosFiscales, cambiosDireccionFiscal], 'name');
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([altaDatosFiscales, cambiosDatosFiscales], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

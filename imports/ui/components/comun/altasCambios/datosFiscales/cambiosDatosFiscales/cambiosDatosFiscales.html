@@ -1,0 +1,23 @@
+<form role="form" class="p-lg" id="cambiosDatosFiscalesFrmId" name="cambiosDatosFiscalesFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Dirección Fiscal</h3>
+        </div>
+    </div>
+    <div class="row">
+        <forma-direccion direccion="cambiosDatosFiscales.datosFiscales"></forma-direccion>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <alertas tipo="cambiosDatosFiscales.tipoMsj" mensaje="cambiosDatosFiscales.msj"></alertas>
+        </div>
+        <div class="col-md-3">
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-disabled="cambiosDatosFiscalesFrm.$invalid"
+                    ng-click="cambiosDatosFiscales.cambiosDatosFiscales(cambiosDatosFiscalesFrm)">
+                Actualizar
+            </button>
+        </div>
+    </div>
+</form>

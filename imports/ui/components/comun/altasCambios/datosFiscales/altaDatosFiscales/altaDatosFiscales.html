@@ -1,0 +1,33 @@
+<form role="form" class="p-lg" id="altaDatosFiscalesFrmId" name="altaDatosFiscalesFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Datos Fiscales</h3>
+        </div>
+    </div>
+    <div class="row">
+        <forma-datos-fiscales datos="altaDatosFiscales.datosFiscales"></forma-datos-fiscales>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Dirección Fiscal</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <forma-direccion direccion="altaDatosFiscales.datosFiscales"></forma-direccion>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <alertas tipo="altaDatosFiscales.tipoMsj" mensaje="altaDatosFiscales.msj"></alertas>
+        </div>
+        <div class="col-md-3">
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-disabled="altaDatosFiscalesFrm.$invalid"
+                    ng-click="altaDatosFiscales.altaDatosFiscales()">
+                Guardar
+            </button>
+        </div>
+    </div>
+</form>
