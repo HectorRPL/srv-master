@@ -41,7 +41,11 @@ export const altaDireccion = new ValidatedMethod({
             propietarioId, calle, delMpio, estado, estadoId,
             colonia, codigoPostal, numExt, numInt, codigoPais
         };
-        return Direcciones.insert(direccion);
+        return Direcciones.insert(direccion,(err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+            }
+        });
     }
 });
 
@@ -73,6 +77,10 @@ export const cambiosDireccion = new ValidatedMethod({
                 codigoPostal: codigoPostal,
                 numExt: numExt,
                 numInt: numInt
+            }
+        }, (err)=> {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
         });
     }
