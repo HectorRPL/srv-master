@@ -5,7 +5,7 @@ import template from "./editarProveedor.html";
 import ngAnimate from "angular-animate";
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as EditarProveedorGenerales} from "./editarProveedorGenerales/editarProveedorGenerales";
-import {name as EditarProveedorDireccion} from "./editarProveedorDireccion/editarProveedorDireccion";
+import {name as ProveedorDireccion} from "./proveedorDireccion/proveedorDireccion";
 import {name as EditarProveedorFiscales} from "./editarProveedorFiscales/editarProveedorFiscales";
 import {name as EditarProveedorCuentaContable} from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
 import {name as DesactivarProveedor} from "./desactivarProveedor/desactivarProveedor";
@@ -48,7 +48,7 @@ export default angular
     .module(name, [
         ngAnimate,
         EditarProveedorGenerales,
-        EditarProveedorDireccion,
+        ProveedorDireccion,
         EditarProveedorFiscales,
         EditarProveedorCuentaContable,
         DesactivarProveedor

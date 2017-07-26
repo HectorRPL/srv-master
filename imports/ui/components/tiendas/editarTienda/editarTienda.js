@@ -39,11 +39,11 @@ class EditarTienda {
 
         $scope.oneAtATime = true;
         this.acordeon = [
-            {titulo: "Datos Generales", estado: "app.tienda.editar.generales", icono: 'fa fa-book'},
-            {titulo: "Dirección",       estado: "app.tienda.editar.direccion", icono: 'fa fa-book'},
-            {titulo: "Datos Fiscales",  estado: "app.tienda.editar.fiscales", icono: 'fa fa-address-card-o'},
-            {titulo: "Cuenta Contable", estado: "app.tienda.editar.cuentaContable", icono: 'fa fa-gavel'},
-            {titulo: "Eliminar",        estado: "app.tienda.editar.eliminar", icono: 'fa fa-trash-o'}
+            {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
+            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-book'},
+            {titulo: "Datos Fiscales",  estado: ".fiscales", icono: 'fa fa-address-card-o'},
+            {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'},
+            {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
         ];
     }
 }
