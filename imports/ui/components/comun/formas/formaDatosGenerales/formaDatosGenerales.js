@@ -16,7 +16,7 @@ class FormaDatosGenerales {
 
     agregarTelefono() {
         if (!this.datos.telefonos) {
-            this.datos. telefonos = [{telefono: ''}];
+            this.datos.telefonos = [{telefono: ''}];
         } else {
             this.telefono = {
                 telefono: '',
@@ -24,10 +24,6 @@ class FormaDatosGenerales {
             };
             this.datos.telefonos.push(this.telefono);
         }
-    }
-
-    bajaTelefono() {
-
     }
 }
 
