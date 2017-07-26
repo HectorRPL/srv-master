@@ -8,10 +8,9 @@ import {cambiosTienda} from "../../../../../api/catalogos/tiendas/methods";
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 
 class EditarTiendaGenerales {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
         this._id = $stateParams.tiendaId;

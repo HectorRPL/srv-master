@@ -8,10 +8,9 @@ import {cambiosTiendaActivar} from "../../../../../api/catalogos/tiendas/methods
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 
 class EliminarTienda {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;

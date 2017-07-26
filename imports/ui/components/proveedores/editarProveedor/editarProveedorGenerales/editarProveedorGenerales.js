@@ -8,10 +8,9 @@ import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class EditarProveedorGenerales {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
         this.propietarioId = $stateParams.proveedorId;
