@@ -5,7 +5,9 @@
         <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR DATOS FISCALES</strong>
     </span>
     <small>
-        {{mostrarDatosFiscales.datosFiscales.razonSocial}}
+        <i class="fa fa-envelope" ng-show="mostrarDatosFiscales.datosFiscales._id"></i>&nbsp;
+        {{mostrarDatosFiscales.datosFiscales.email}}<br>
+        {{mostrarDatosFiscales.datosFiscales.razonSocial}} {{mostrarDatosFiscales.datosFiscales.tipoSociedad}}
         {{mostrarDatosFiscales.datosFiscales.nombre}}&nbsp;
         {{mostrarDatosFiscales.datosFiscales.segundoNombre}}&nbsp;
         {{mostrarDatosFiscales.datosFiscales.apellidoPaterno}}&nbsp;
