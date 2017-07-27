@@ -2,6 +2,7 @@
  * Created by jvltmtz on 8/03/17.
  */
 import {name as ProveedorDatosGenerales} from "./proveedorDatosGenerales/proveedorDatosGenerales";
+import {name as ProveedorDatosDireccion} from "./proveedorDatosDireccion/proveedorDatosDireccion";
 import {name as ProveedorDatosFiscales} from "./proveedorDatosFiscales/proveedorDatosFiscales";
 import template from "./agregarProveedor.html";
 
@@ -13,8 +14,9 @@ class AgregarProveedor {
         this.titulo = 'Agregar Proveedores';
 
         this.tabs = [
-            {titulo: "Datos Generales", estado: ".datos", icono: 'fa fa-user'},
-            {titulo: "Datos Fiscales", estado: ".fiscales", icono: 'fa fa-cubes'}
+            {titulo: "Datos Generales", estado: ".datos",     icono: 'fa fa-user'},
+            {titulo: "Direccion",       estado: ".direccion", icono: 'fa fa-map-marker'},
+            {titulo: "Datos Fiscales",  estado: ".fiscales",  icono: 'fa fa-cubes'}
         ];
     }
 }
@@ -24,6 +26,7 @@ const name = 'agregarProveedor';
 export default angular
     .module(name, [
         ProveedorDatosGenerales,
+        ProveedorDatosDireccion,
         ProveedorDatosFiscales
     ])
     .component(name, {

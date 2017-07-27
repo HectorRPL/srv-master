@@ -39,7 +39,7 @@ class ProveedorDatosGenerales {
             } else {
                 this.msj = 'Los datos de contacto se guardaron con éxito.';
                 this.tipoMsj = 'success';
-                this.$state.go('app.proveedores.agregar.fiscales', {propietarioId: result});
+                this.$state.go('app.proveedores.agregar.direccion', {proveedorId: result});
             }
         }));
     }
