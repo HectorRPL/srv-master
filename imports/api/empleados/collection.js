@@ -80,8 +80,8 @@ Empleados.schema = new SimpleSchema({
                 nombreCompleto += ' ' + this.field('segundoNombre').value.toUpperCase();
             }
             nombreCompleto += ' ' + this.field('apellidoPaterno').value.toUpperCase();
-            if (this.field('segundoNombre').value) {
-                nombreCompleto += ' ' + this.field('segundoNombre').value.toUpperCase();
+            if (this.field('apellidoMaterno').value) {
+                nombreCompleto += ' ' + this.field('apellidoMaterno').value.toUpperCase();
             }
             return nombreCompleto;
         }
