@@ -2,70 +2,30 @@
  * Created by jvltmtz on 10/05/17.
  */
 import template from "./agregarSucursal.html";
-import {name as Alertas} from "../../comun/alertas/alertas";
-import {altaSucursal} from "../../../../api/catalogos/tiendas/sucursales/methods";
-import {altaDireccion} from "../../../../api/direcciones/methods";
+import {name as SucursalDatosGenerales} from "./sucursalDatosGenerales/sucursalDatosGenerales";
+import {name as SucursalDatosDireccion} from "./sucursalDatosDireccion/sucursalDatosDireccion";
 
 class AgregarSucursal {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.tipoMsj = '';
-        this.direccion = {};
-        this.$scope = $scope;
-        this.datos = {
-            telefonos: [{telefono: ''}]
-        };
-        this.tiendaId = $stateParams.tiendaId;
         this.titulo = 'Agregar Sucursal';
-    }
 
-    agregarTelefono() {
-        this.nuevoTelefono = {
-            telefono: this.telefono,
-            extension: this.extension,
-        };
-        this.datos.telefonos.push(this.nuevoTelefono);
-    }
-
-    guardar() {
-        this.datos.tiendaMatrizId = this.tiendaId;
-        altaSucursal.call(this.datos, this.$bindToContext((err, result)=> {
-            if (err) {
-                this.msj = 'Error al crear una Sucursal, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.direccion.propietarioId = result;
-                this.guardarDireccion();
-
-            }
-        }));
-    }
-
-    guardarDireccion() {
-        let direccionFinal = angular.copy(this.direccion);
-        delete direccionFinal.colonias;
-        altaDireccion.call(direccionFinal, this.$bindToContext((err, result)=> {
-            if (err) {
-                this.msj = 'Error al crear la direccion de una Sucursal, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos de contacto se guardaron con éxito.';
-                this.tipoMsj = 'success';
-                this.pasoActual++;
-            }
-        }))
+        this.tabs = [
+            {titulo: "Datos Generales", estado: ".datos", icono: 'fa fa-user'},
+            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-map-marker'}
+        ];
     }
 
 }
 
 const name = 'agregarSucursal';
 
-// create a module
 export default angular
     .module(name, [
-        Alertas
+        SucursalDatosGenerales,
+        SucursalDatosDireccion
     ])
     .component(name, {
         template,
@@ -77,8 +37,9 @@ export default angular
 function config($stateProvider) {
     'ngInject';
     $stateProvider
-        .state('app.tienda.sucursal', {
+        .state('app.tienda.agregarSucursal', {
             url: '/sucursal/:tiendaId',
-            template: '<agregar-sucursal></agregar-sucursal>'
+            template: '<agregar-sucursal></agregar-sucursal>',
+            abstract: true
         });
 }

@@ -4,6 +4,7 @@
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "../collection";
@@ -15,7 +16,7 @@ const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMa
 // Enviará un correo con un link al usuario para verificacar de registro
 export const altaSucursal = new ValidatedMethod({
     name: 'sucursales.altaSucursal',
-    mixins: [PermissionsMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
             roles: ['crea_tien'],
@@ -35,6 +36,11 @@ export const altaSucursal = new ValidatedMethod({
     run({nombre, telefonos, email, tiendaMatrizId}) {
         return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId}, ()=>{
 
+        }, (err) => {
+            if (err) {
+                console.log('[41]', err);
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+            }
         });
 
     }

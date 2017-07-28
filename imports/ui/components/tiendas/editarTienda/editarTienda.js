@@ -38,13 +38,19 @@ class EditarTienda {
         ];
 
         $scope.oneAtATime = true;
-        this.acordeon = [
+        this.tiendaMatriz = [
             {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
             {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-book'},
             {titulo: "Datos Fiscales",  estado: ".fiscales", icono: 'fa fa-address-card-o'},
             {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'},
             {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
         ];
+        this.tiendaSucursal = [
+            {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
+            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-book'},
+            {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
+        ];
+
     }
 }
 

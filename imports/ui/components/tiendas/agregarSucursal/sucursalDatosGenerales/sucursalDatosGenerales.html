@@ -1,0 +1,38 @@
+<div class="wizard">
+    <div class="content">
+        <form role="form" class="p-lg" id="sucursalDatosGeneralesFrmId" name="sucursalDatosGeneralesFrm" novalidate>
+            <fieldset>
+                <h2>Datos Contacto y Ubicación</h2>
+                <div class="row">
+                    <forma-datos-generales datos="sucursalDatosGenerales.datos"></forma-datos-generales>
+                    <!--CUENTA CONTABLE-->
+                    <!--<div class="col-sm-6">-->
+                        <!--<div class="form-group" ng-class="{ 'has-error' : sucursalDatosGeneralesFrm.cuentaContable.$invalid && !sucursalDatosGeneralesFrm.cuentaContable.$pristine}">-->
+                            <!--<div ng-messages="sucursalDatosGeneralesFrm.cuentaContable.$dirty && sucursalDatosGeneralesFrm.cuentaContable.$error" role="alert">-->
+                                <!--<label>Cuenta Contable *-->
+                                    <!--<span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>-->
+                                    <!--<span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>-->
+                                    <!--<span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>-->
+                                <!--</label>-->
+                                <!--<cuenta-contable dato="sucursalDatosGenerales.datos.cuentaContable"></cuenta-contable>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <alertas tipo="sucursalDatosGenerales.tipoMsj" mensaje="sucursalDatosGenerales.msj"></alertas>
+                    </div>
+                    <div class="col-xs-3">
+                        <!-- BOTON GUARDAR DATOS GENERALES (Del paso 1 al paso 2) -->
+                        <button type="button" class="btn btn-primary pull-right"
+                                ng-disabled="sucursalDatosGeneralesFrm.$invalid"
+                                ng-click="sucursalDatosGenerales.altaDatosGenerales()">
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

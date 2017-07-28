@@ -46,6 +46,15 @@
                 </div>
                 <!--<div class="clearfix"></div>-->
             </a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a ui-sref="app.tienda.agregarSucursal.datos({tiendaId: tienda._id})"
+                       ng-class="{'disabled' : tienda.tiendaMatrizId || tienda.tiendaMatrizId}"
+                       class="btn btn-white btn-sm">
+                        <i class="fa fa-industry"></i> Agregar Sucursal
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
