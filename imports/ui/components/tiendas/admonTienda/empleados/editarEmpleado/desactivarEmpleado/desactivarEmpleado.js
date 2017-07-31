@@ -43,7 +43,6 @@ class DesactivarEmpleado {
             this.tipoMsj = 'success';
             this.limpiarCampos(desactivarEmpleadoForm);
         })).catch(this.$bindToContext((err)=> {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
         // */

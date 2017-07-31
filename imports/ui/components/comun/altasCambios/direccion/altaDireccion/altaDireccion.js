@@ -44,6 +44,6 @@ export default angular
         controllerAs: name,
         controller: AltaDireccion,
         bindings: {
-            propietarioId: '='
+            propietarioId: '<'
         }
     });

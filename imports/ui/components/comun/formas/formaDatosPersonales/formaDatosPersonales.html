@@ -1,71 +1,37 @@
 <ng-form name="formaDatosPersonalesFrm">
-    <!--PRIMER NOMBRE-->
+    <!--NOMBRE-->
     <div class="col-sm-6">
         <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.primerNombre.$invalid && !formaDatosPersonalesFrm.primerNombre.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.primerNombre.$dirty && formaDatosPersonalesFrm.primerNombre.$error"
+             ng-class="{ 'has-error' : formaDatosPersonalesFrm.nombres.$invalid && !formaDatosPersonalesFrm.nombres.$pristine}">
+            <div ng-messages="formaDatosPersonalesFrm.nombres.$dirty && formaDatosPersonalesFrm.nombres.$error"
                  role="alert">
-                <label>Primer Nombre *
+                <label>Nombre(s) *
                     <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 30 letras</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                 </label>
-                <input id="primerNombreId" class="form-control" name="primerNombre" type="text" aria-describedby="sizing-addon1"
-                       placeholder="Primer Nombre" required minlength="2" maxlength="31" ng-minlength="2"
+                <input id="nombresId" class="form-control" name="nombres" type="text" aria-describedby="sizing-addon1"
+                       placeholder="Nombre(s)" required minlength="2" maxlength="31" ng-minlength="2"
                        ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑ\s]+$/"
-                       ng-model="formaDatosPersonales.datos.primerNombre">
+                       ng-model="formaDatosPersonales.datos.nombres">
             </div>
         </div>
     </div>
-    <!--SEGUNDO NOMBRE-->
+    <!--APELLIDOS-->
     <div class="col-sm-6">
         <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.segundoNombre.$invalid && !formaDatosPersonalesFrm.segundoNombre.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.segundoNombre.$dirty && formaDatosPersonalesFrm.segundoNombre.$error"
+             ng-class="{ 'has-error' : formaDatosPersonalesFrm.apellidos.$invalid && !formaDatosPersonalesFrm.apellidos.$pristine}">
+            <div ng-messages="formaDatosPersonalesFrm.apellidos.$dirty && formaDatosPersonalesFrm.apellidos.$error"
                  role="alert">
-                <label>Segundo Nombre
-                    <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 30 letras</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                </label>
-                <input id="segundoNombreId" class="form-control" name="segundoNombre" type="text" aria-describedby="sizing-addon1"
-                       placeholder="Segundo Nombre" minlength="2" maxlength="31" ng-minlength="2"
-                       ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑ\s]+$/"
-                       ng-model="formaDatosPersonales.datos.segundoNombre">
-            </div>
-        </div>
-    </div>
-    <!--APELLIDO PATERNO-->
-    <div class="col-sm-6">
-        <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.apellidoPaterno.$invalid && !formaDatosPersonalesFrm.apellidoPaterno.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.apellidoPaterno.$dirty && formaDatosPersonalesFrm.apellidoPaterno.$error"
-                 role="alert">
-                <label>Apellidos Paterno *
+                <label>Apellido(s) *
                     <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 2, max 30 letras</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                 </label>
-                <input id="apellidoPaternoId" class="form-control" name="apellidoPaterno" type="text" placeholder="Apellido Paterno"
+                <input id="apellidosId" class="form-control" name="apellidos" type="text" placeholder="Apellido(s)"
                        aria-describedby="sizing-addon1" required minlength="2" maxlength="31"
                        ng-minlength="2" ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑ\s]+$/"
-                       ng-model="formaDatosPersonales.datos.apellidoPaterno">
-            </div>
-        </div>
-    </div>
-    <!--APELLIDO MATERNO-->
-    <div class="col-sm-6">
-        <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.apellidoMaterno.$invalid && !formaDatosPersonalesFrm.apellidoMaterno.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.apellidoMaterno.$dirty && formaDatosPersonalesFrm.apellidoMaterno.$error"
-                 role="alert">
-                <label>Apellido Materno
-                    <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 2, max 30 letras</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                </label>
-                <input id="apellidoMaternoId" class="form-control" name="apellidoMaterno" type="text" placeholder="Apellido Materno"
-                       aria-describedby="sizing-addon1" minlength="2" maxlength="31"
-                       ng-minlength="2" ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑ\s]+$/"
-                       ng-model="formaDatosPersonales.datos.apellidoMaterno">
+                       ng-model="formaDatosPersonales.datos.apellidos">
             </div>
         </div>
     </div>

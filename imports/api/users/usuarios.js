@@ -22,11 +22,9 @@ if (Meteor.isServer) {
             empleado = {
                 propietarioId: user._id,
                 departamentoId: strDepto,
-                primerNombre: options.profile.primerNombre,
-                segundoNombre: options.profile.segundoNombre,
+                nombres: options.profile.nombres,
+                apellidos: options.profile.apellidos,
                 tiendaId: options.profile.tiendaId,
-                apellidoPaterno: options.profile.apellidoPaterno,
-                apellidoMaterno: options.profile.apellidoMaterno,
                 nacimientoDia: options.profile.nacimientoDia,
                 nacimientoMes: options.profile.nacimientoMes,
                 nacimientoAnio: options.profile.nacimientoAnio,
