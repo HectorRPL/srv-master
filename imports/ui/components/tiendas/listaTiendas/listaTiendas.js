@@ -19,7 +19,7 @@ class ListaTiendas {
         this.titulo = 'Tiendas';
 
         this.tiendaSelec = '';
-        this.perPage = 10;
+        this.perPage = 9;
         this.page = 1;
         this.subscribe('tiendas.todas', () =>
             [

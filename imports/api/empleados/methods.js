@@ -8,8 +8,9 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Empleados} from "./collection";
 
+const ID = ['_id'];
+const CAMPO_ACTIVO = ['activo'];
 const CAMPOS_EMPLEADOS = [
-    '_id',
     'primerNombre',
     'segundoNombre',
     'apellidoPaterno',
@@ -27,7 +28,7 @@ const CAMPOS_EMPLEADOS = [
 export const cambiosEmpleados = new ValidatedMethod({
     name: 'empleados.cambiosEmpleados',
     mixins: [CallPromiseMixin],
-    validate: Empleados.simpleSchema().pick(CAMPOS_EMPLEADOS).validator({
+    validate: Empleados.simpleSchema().pick(ID, CAMPOS_EMPLEADOS).validator({
         clean: true,
         filter: false
     }),
@@ -69,7 +70,30 @@ export const cambiosEmpleados = new ValidatedMethod({
     }
 });
 
-const EMPLEADOS_METHODS = _.pluck([cambiosEmpleados], 'name');
+export const cambiosEmpleadosActivar = new ValidatedMethod({
+    name: 'empleados.cambiosEmpleadosActivar',
+    mixins: [CallPromiseMixin],
+    validate: Empleados.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
+        clean: true,
+        filter: false
+    }),
+    run({
+        _id, activo
+    }) {
+        return Empleados.update({_id: _id}, {
+            $set: {
+                activo
+            }
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+            }
+        });
+    }
+});
+
+
+const EMPLEADOS_METHODS = _.pluck([cambiosEmpleados, cambiosEmpleadosActivar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

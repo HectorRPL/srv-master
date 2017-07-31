@@ -1,10 +1,12 @@
 /**
  * Created by jvltmtz on 22/06/17.
  */
-import template from "./listaProveedores.html";
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
+import {name as MostrarDireccion} from '../../comun/mostrar/mostrarDireccion/mostrarDireccion';
+import {name as MostrarDatosFiscales} from '../../comun/mostrar/mostrarDatosFiscales/mostrarDatosFiscales';
 import {name as AgregarProveedor} from '../agregarProveedor/agregarProveedor';
 import {name as BuscarProveedor} from '../../comun/busquedas/buscarProveedor/buscarProveedor';
+import template from "./listaProveedores.html";
 
 
 class ListaProveedores {
@@ -14,7 +16,7 @@ class ListaProveedores {
         $reactive(this).attach($scope);
         this.titulo = 'Todos los Proveedores';
         this.proveedorSelec = '';
-        this.perPage = 10;
+        this.perPage = 9;
         this.page = 1;
         this.subscribe('proveedores.todos', () =>
             [
@@ -48,6 +50,8 @@ const name = 'listaProveedores';
 
 export default angular
     .module(name, [
+        MostrarDireccion,
+        MostrarDatosFiscales,
         AgregarProveedor,
         BuscarProveedor
     ])

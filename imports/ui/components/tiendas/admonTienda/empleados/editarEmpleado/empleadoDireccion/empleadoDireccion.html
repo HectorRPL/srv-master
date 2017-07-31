@@ -1,0 +1,49 @@
+<div class="row animated fadeInRight">
+    <div class="col-sm-4 b-r">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-box">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <address>
+                            {{empleadoDireccion.direccionActual.calle}}
+                            {{empleadoDireccion.direccionActual.numExt}}<span ng-show="empleadoDireccion.direccionActual._id">,</span>
+                            <span ng-show="empleadoDireccion.direccionActual.numInt">Int. {{empleadoDireccion.direccionActual.numInt}}.</span> <br>
+                            {{empleadoDireccion.direccionActual.colonia}}
+                            <span ng-show="empleadoDireccion.direccionActual._id">CP.</span> {{empleadoDireccion.direccionActual.codigoPostal}}
+                            {{empleadoDireccion.direccionActual.delMpio}}<span ng-show="empleadoDireccion.direccionActual._id">,</span>
+                            {{empleadoDireccion.direccionActual.estado}}<br>
+                        </address>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <!--BOTON EDITAR -->
+                <button type="button"
+                        class="btn btn-primary btn-xs pull-right"
+                        ng-show="empleadoDireccion.direccionActual._id && !empleadoDireccion.mostrarCampos"
+                        ng-click="empleadoDireccion.editar()">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--DIRECCION-->
+    <div class="col-sm-8 animated fadeInRight">
+        <div class="row">
+            <cambios-direccion
+                    ng-if="empleadoDireccion.direccionActual._id && empleadoDireccion.mostrarCampos"
+                    direccion="empleadoDireccion.direccion">
+            </cambios-direccion>
+            <alta-direccion
+                    ng-if="!empleadoDireccion.direccionActual._id"
+                    propietario-id="empleadoDireccion.propietarioId">
+            </alta-direccion>
+        </div>
+    </div>
+</div>

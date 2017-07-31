@@ -5,7 +5,7 @@ import ngAnimate from "angular-animate";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as EditarTiendaGenerales} from "./editarTiendaGenerales/editarTiendaGenerales";
 import {name as EditarTiendaDireccion} from "./editarTiendaDireccion/editarTiendaDireccion";
-import {name as EditarTiendaFiscales} from "./editarTiendaFiscales/editarTiendaFiscales";
+import {name as EditarTiendaDatosFiscales} from "./editarTiendaDatosFiscales/editarTiendaDatosFiscales";
 import {name as EditarTiendaCuentaContable} from "./editarTiendaCuentaContable/editarTiendaCuentaContable";
 import {name as EliminarTienda} from "./eliminarTienda/eliminarTienda";
 import template from "./editarTienda.html";
@@ -38,13 +38,19 @@ class EditarTienda {
         ];
 
         $scope.oneAtATime = true;
-        this.acordeon = [
-            {titulo: "Datos Generales", estado: "app.tienda.editar.generales", icono: 'fa fa-book'},
-            {titulo: "Dirección",       estado: "app.tienda.editar.direccion", icono: 'fa fa-book'},
-            {titulo: "Datos Fiscales",  estado: "app.tienda.editar.fiscales", icono: 'fa fa-address-card-o'},
-            {titulo: "Cuenta Contable", estado: "app.tienda.editar.cuentaContable", icono: 'fa fa-gavel'},
-            {titulo: "Eliminar",        estado: "app.tienda.editar.eliminar", icono: 'fa fa-trash-o'}
+        this.tiendaMatriz = [
+            {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
+            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-book'},
+            {titulo: "Datos Fiscales",  estado: ".fiscales", icono: 'fa fa-address-card-o'},
+            {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'},
+            {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
         ];
+        this.tiendaSucursal = [
+            {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
+            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-book'},
+            {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
+        ];
+
     }
 }
 
@@ -55,7 +61,7 @@ export default angular
         ngAnimate,
         EditarTiendaGenerales,
         EditarTiendaDireccion,
-        EditarTiendaFiscales,
+        EditarTiendaDatosFiscales,
         EditarTiendaCuentaContable,
         EliminarTienda
     ])

@@ -1,32 +1,26 @@
 /**
  * Created by Héctor on 18/07/2017.
  */
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
-import {cambiosDireccion} from "../../../../../api/direcciones/methods";
+import {name as AltaDireccion} from "../../../comun/altasCambios/direccion/altaDireccion/altaDireccion";
+import {name as CambiosDireccion} from "../../../comun/altasCambios/direccion/cambiosDireccion/cambiosDireccion";
 import {Direcciones} from "../../../../../api/direcciones/collection";
 import template from "./editarTiendaDireccion.html";
 
-class editarTiendaDireccion {
-    constructor($scope, $reactive, $state, $stateParams) {
+class EditarTiendaDireccion {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
-        $reactive(this).attach($scope);
 
-        this.propietarioId = $stateParams.tiendaId;
+        $reactive(this).attach($scope);
 
         this.direccion = {};
 
-        this.tipoMsj = '';
+        this.propietarioId = $stateParams.tiendaId;
 
-        /* TODO: Los códigos postales cada que no existe dirección, funciona cuando se captura algo en un input */
         this.subscribe('direcciones.todas', () => [{propietarioId: this.propietarioId}]);
-        this.nuevaDireccion= {};
         this.helpers({
-            direccion(){
-                this.nuevaDireccion = Direcciones.findOne({propietarioId: this.propietarioId});
-                return angular.copy(this.nuevaDireccion);
+            direccionActual(){
+                return Direcciones.findOne({propietarioId: this.propietarioId});
             }
         });
 
@@ -34,24 +28,7 @@ class editarTiendaDireccion {
 
     editar() {
         this.mostrarCampos = true;
-    }
-
-    actualizar() {
-        this.tipoMsj = '';
-        let direccionFinal = angular.copy(this.nuevaDireccion);
-        delete direccionFinal.colonias;
-        delete direccionFinal.fechaCreacion;
-
-        cambiosDireccion.callPromise(direccionFinal).then(this.$bindToContext(()=> {
-            this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
-            this.tipoMsj = 'danger';
-        }));
-    }
-
-    limpiarCampos(editarTiendaDireccionFrm) {
-        this.datosFiscalesOriginal = {};
-        editarTiendaDireccionFrm.$setPristine();
+        this.direccion = angular.copy(this.direccionActual);
     }
 }
 
@@ -59,13 +36,13 @@ const name = 'editarTiendaDireccion';
 
 export default angular
     .module(name, [
-        Alertas,
-        FormaDireccion
+        AltaDireccion,
+        CambiosDireccion
     ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: editarTiendaDireccion
+        controller: EditarTiendaDireccion
     })
     .config(config);
 

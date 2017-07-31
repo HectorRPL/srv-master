@@ -4,6 +4,7 @@
 import template from "./listaEmpleados.html";
 import {Empleados} from "../../../../../../api/empleados/collection";
 import {name as BuscarEmpleado} from "../../../../comun/busquedas/buscarEmpleado/buscarEmpleado";
+import {name as MostrarDireccion} from "../../../../comun/mostrar/mostrarDireccion/mostrarDireccion";
 
 class ListaEmpleados {
     constructor($scope, $reactive, $stateParams) {
@@ -48,7 +49,8 @@ const name = 'listaEmpleados';
 
 export default angular
     .module(name, [
-        BuscarEmpleado
+        BuscarEmpleado,
+        MostrarDireccion
     ])
     .component(name, {
         template,

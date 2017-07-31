@@ -8,10 +8,9 @@ import {cambiosTiendaCuentaContable} from "../../../../../api/catalogos/tiendas/
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 
 class EditarTiendaCuentaContable {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;

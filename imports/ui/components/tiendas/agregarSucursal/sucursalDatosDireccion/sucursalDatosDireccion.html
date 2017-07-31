@@ -1,0 +1,31 @@
+<div class="wizard">
+    <div class="content">
+        <form role="form" class="p-lg" id="sucursalDatosDireccionFrmId" name="sucursalDatosDireccionFrm" novalidate>
+            <fieldset>
+                <h2>Ubicación</h2>
+                <div class="row">
+                    <forma-direccion direccion="sucursalDatosDireccion.direccion"></forma-direccion>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <alertas tipo="sucursalDatosDireccion.tipoMsj" mensaje="sucursalDatosDireccion.msj"></alertas>
+                    </div>
+                    <div class="col-xs-3">
+                        <!-- BOTON GUARDAR DATOS GENERALES (Del paso 1 al paso 2) -->
+                        <button type="button" class="btn btn-primary pull-right"
+                                ng-hide="sucursalDatosDireccion.tipoMsj === 'success'"
+                                ng-disabled="sucursalDatosDireccionFrm.$invalid"
+                                ng-click="sucursalDatosDireccion.altaDireccion()">
+                            Siguiente
+                        </button>
+                        <button type="button" class="btn btn-primary pull-right"
+                                ng-show="sucursalDatosDireccion.tipoMsj === 'success'"
+                                ui-sref="app.tienda.admon.empleados.lista({tiendaId: sucursalDatosDireccion.propietarioId})">
+                            Ver Tienda
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

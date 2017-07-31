@@ -8,10 +8,9 @@ import {cambiosCuentaContable} from "../../../../../api/catalogos/proveedores/me
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class EditarProveedorCuentaContable {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
         this.propietarioId = $stateParams.proveedorId;

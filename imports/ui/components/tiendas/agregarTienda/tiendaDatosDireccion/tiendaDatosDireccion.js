@@ -27,6 +27,13 @@ class TiendaDatosDireccion {
 
         altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
+
+            /* TODO: El usuario podría meter más de una dirección
+
+            Si el usuario agrega la direción y lluego regresa con la flecha del navegador es posible
+            que pueda introducir mas de una dirección o mas un datos fiscales.
+
+            */
             this.$state.go('app.tienda.agregar.fiscales', {tiendaId:  this.propietarioId});
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

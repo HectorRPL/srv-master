@@ -3,9 +3,9 @@
  */
 import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
 import {Promociones} from "../../../../../../api/promociones/collection";
-import template from "./listaProductosPromo.html";
+import template from "./listaProductosPromocion.html";
 
-class ListaProductosPromo {
+class ListaProductosPromocion {
 
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
@@ -55,14 +55,14 @@ class ListaProductosPromo {
 
 }
 
-const name = 'listaProductosPromo';
+const name = 'listaProductosPromocion';
 
 export default angular
     .module(name, [ ])
     .component(name, {
         template,
         controllerAs: name,
-        controller: ListaProductosPromo,
+        controller: ListaProductosPromocion,
     })
     .config(config);
 
@@ -71,6 +71,6 @@ function config($stateProvider) {
     $stateProvider
         .state('app.tienda.admon.promociones.productos', {
             url: '/:promocionId/productos',
-            template: '<lista-productos-promo></lista-productos-promo>',
+            template: '<lista-productos-promocion></lista-productos-promocion>',
         });
 }

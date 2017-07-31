@@ -1,0 +1,58 @@
+<ng-form name="formaComisionFrm">
+    <div class="row">
+        <!-- NOMBRE -->
+        <div class="col-sm-12">
+            <div class="form-group" ng-class="{ 'has-error' : formaComisionFrm.nombre.$invalid && !formaComisionFrm.nombre.$pristine}">
+                <div ng-messages="formaComisionFrm.nombre.$dirty && formaComisionFrm.nombre.$error" role="alert">
+                    <label>Nombre *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                    </label>
+                    <input id="nombreId"
+                           class="form-control"
+                           name="nombre"
+                           type="text"
+                           placeholder="Nombre de la Comisión"
+                           aria-describedby="sizing-addon1"
+                           minlength="2"
+                           maxlength="51"
+                           ng-minlength="2"
+                           ng-maxlength="50"
+                           ng-pattern="/^[a-zA-ZñÑ\s\d]+$/"
+                           required
+                           ng-disabled="formaComision.tipoMsj === 'success'"
+                           ng-model="formaComision.comision.nombre">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- COMISIÓN -->
+        <div class="col-sm-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : formaComisionFrm['comision'+$index].$invalid && !formaComisionFrm['comision'+$index].$pristine}">
+                <div ng-messages="formaComisionFrm['comision'+$index].$dirty && formaComisionFrm['comision'+$index].$error" role="alert">
+                    <label>
+                        Comision *
+                        <span class="animated fadeIn" style="color:red;" ng-message="min">mix 0.0000%</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="max">max 20%</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <input id="comisionId"
+                           class="form-control"
+                           type="number"
+                           name="comision"
+                           max="20.00"
+                           min="0.0001"
+                           step=".0001"
+                           required
+                           ng-disabled="formaComision.tipoMsj === 'success'"
+                           ng-model="formaComision.comision.comision">
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-form>

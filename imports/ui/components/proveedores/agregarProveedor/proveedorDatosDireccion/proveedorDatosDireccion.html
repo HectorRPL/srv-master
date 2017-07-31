@@ -1,0 +1,25 @@
+<div class="wizard">
+    <div class="content">
+        <form role="form" class="p-lg" id="proveedorDatosDireccionFrmId" name="proveedorDatosDireccionFrm" novalidate>
+            <fieldset>
+                <h2>Ubicación</h2>
+                <div class="row">
+                    <forma-direccion direccion="proveedorDatosDireccion.direccion"></forma-direccion>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-7">
+                        <alertas tipo="proveedorDatosDireccion.tipoMsj" mensaje="proveedorDatosDireccion.msj"></alertas>
+                    </div>
+                    <div class="col-xs-3">
+                        <!-- BOTON GUARDAR DATOS GENERALES (Del paso 1 al paso 2) -->
+                        <button type="button" class="btn btn-primary pull-right"
+                                ng-disabled="proveedorDatosDireccionFrm.$invalid"
+                                ng-click="proveedorDatosDireccion.guardarDireccion()">
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

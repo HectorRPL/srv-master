@@ -1,30 +1,30 @@
 /**
  * Created by Héctor on 12/07/2017.
  */
-import template from "./desactivarEmpleado.html";
+import {Empleados} from "../../../../../../../api/empleados/collection";
+import {cambiosEmpleadosActivar} from "../../../../../../../api/empleados/methods";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
-// import {cambiosEmpleadosActivar} from "../../../../../../../api/productos/methods";
-// import {Empleados} from "../../../../../../../api/productos/collection";
+import template from "./desactivarEmpleado.html";
 
 class DesactivarEmpleado {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
-        this.propietarioId = $stateParams.empleadoId;
+        this.empleadoId = $stateParams.empleadoId;
 
         this.tipoMsj = '';
 
-        /*
-        this.subscribe('productos.todos', () => [{_id: this.propietarioId}]);
+
+        // /*
+        this.subscribe('empleados.todos', () => [{_id: this.empleadoId}]);
         this.helpers({
             empleado(){
-                return Empleados.findOne({_id: this.propietarioId});
+                return Empleados.findOne({_id: this.empleadoId});
             }
         });
-         */
+        // */
     }
 
     editar() {
@@ -37,16 +37,16 @@ class DesactivarEmpleado {
     }
 
     desactivar(desactivarEmpleadoForm) {
-        this.datos._id = this.propietarioId;
+        this.datos._id = this.empleadoId;
 
-        /*
         cambiosEmpleadosActivar.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(desactivarEmpleadoForm);
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err)=> {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
-        */
+        // */
     }
 
 }

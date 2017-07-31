@@ -22,12 +22,14 @@
                         <!-- BOTON GUARDAR DATOS GENERALES-->
                         <button type="button"
                                 class="btn btn-primary pull-right"
+                                ng-hide="tiendaDatosFiscales.tipoMsj === 'success'"
                                 ng-disabled="agregarDatosFiscalesFrm.$invalid"
                                 ng-click="tiendaDatosFiscales.guardar()">
                             Siguiente
                         </button>
                     </div>
-                    <div class="col-md-2" ng-show="tiendaDatosFiscales.tipoMsj === 'success'">
+                    <div class="col-md-2"
+                         ng-show="tiendaDatosFiscales.tipoMsj === 'success'">
                         <a class="btn btn-default" role="button" ui-sref="app.tienda.lista">
                             Ver Tiendas
                         </a>

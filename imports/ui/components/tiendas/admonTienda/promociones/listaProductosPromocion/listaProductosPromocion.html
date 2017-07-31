@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Promoción:
+            <span class="text-navy">{{listaProductosPromocion.promocion.nombre}}</span>
+        </h2>
+    </div>
+    <div class="col-sm-4">
+        <span class="pull-right">
+            Descuento: <span class="text-navy">{{listaProductosPromocion.promocion.descuento}}</span>%.
+            Sobre:  <span class="text-navy" ng-show="listaProductosPromocion.promocion.precioLista"> Lista</span>
+                    <span class="text-navy" ng-show="!listaProductosPromocion.promocion.precioLista">Compra</span>
+            <br>
+            del
+            <span class="text-navy">{{listaProductosPromocion.promocion.fechaInicio | date:'dd-MMMM-yyyy' }}</span> al
+            <span class="text-navy">{{listaProductosPromocion.promocion.fechaFin | date:'dd-MMMM-yyyy' }}</span>
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="listaProductosPromocion.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto marcaid="listaProductosPromocion.marcaSelec._id"
+                         producto="listaProductosPromocion.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="col-xs-2">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th class="text-left">Marca - Producto</th>
+        <th class="text-center">Costo</th>
+        <th class="text-center">Precio</th>
+        <th class="text-center">Precio Final</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr class="table-responsive text-right"
+        dir-paginate="producto in listaProductosPromocion.productos | itemsPerPage: listaProductosPromocion.perPage"
+        total-items="listaProductosPromocion.productosCount">
+        <td class="text-left">
+            {{producto.marca().nombre}}&nbsp;&nbsp;{{producto.producto().campoBusqueda}}
+        </td>
+        <td class="text-center">${{producto.costo  | number:2}}</td>
+        <td class="text-center">${{producto.precioUno() | number:2}}</td>
+        <td class="text-center">${{producto.precioDescuento() | number:2}}</td>
+    </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaProductosPromocion.pageChanged(newPageNumber)"></dir-pagination-controls>

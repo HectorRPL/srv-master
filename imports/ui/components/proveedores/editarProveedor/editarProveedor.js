@@ -6,7 +6,7 @@ import ngAnimate from "angular-animate";
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as EditarProveedorGenerales} from "./editarProveedorGenerales/editarProveedorGenerales";
 import {name as EditarProveedorDireccion} from "./editarProveedorDireccion/editarProveedorDireccion";
-import {name as EditarProveedorFiscales} from "./editarProveedorFiscales/editarProveedorFiscales";
+import {name as EditarProveedorDatosFiscales} from "./editarProveedorDatosFiscales/editarProveedorDatosFiscales";
 import {name as EditarProveedorCuentaContable} from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
 import {name as DesactivarProveedor} from "./desactivarProveedor/desactivarProveedor";
 
@@ -49,7 +49,7 @@ export default angular
         ngAnimate,
         EditarProveedorGenerales,
         EditarProveedorDireccion,
-        EditarProveedorFiscales,
+        EditarProveedorDatosFiscales,
         EditarProveedorCuentaContable,
         DesactivarProveedor
     ])

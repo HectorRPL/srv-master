@@ -1,0 +1,59 @@
+<form role="form" id="editarComisionFrmId" name="editarComisionFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-sm-10">
+            <h2>{{editarComision.titulo}}</h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-sm-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="editarComision.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <p> Edita una comision para aplicarlo a una marca o productos.</p>
+                <br>
+                <!--FORMA COMISIÓN-->
+                <!--
+                TODO: Al editar el nombre/valor el papá también se actualiza en tiempo real
+                Problemas:
+                    1) Al cerrar/cancelar el valor lo sigue conservando el papá (no actualiuza la base)
+                    2) Pudiera confundir al usuario.
+                    3) Lo mismo ocurre con promociones, factores etc.
+                -->
+                <div class="row">
+                    <forma-comision comision="editarComision.resolve.comision"></forma-comision>
+                </div>
+                <!--ALERTAS-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <alertas tipo="editarComision.tipoMsj" mensaje="editarComision.msj"></alertas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!--CANCERLAR/GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON CANCELAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-click="editarComision.cerrar()">
+                    Cerrar
+                </button>
+                <!--BOTON CREAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-hide="editarComision.tipoMsj === 'success'"
+                        ng-disabled="editarComisionFrm.$invalid"
+                        ng-click="editarComision.editarComision()">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

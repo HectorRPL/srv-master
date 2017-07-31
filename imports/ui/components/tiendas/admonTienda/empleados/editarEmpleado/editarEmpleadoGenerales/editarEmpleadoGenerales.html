@@ -4,7 +4,6 @@
         <div class="col-sm-6 b-r">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>Datos Personales</h3>
                     <div class="contact-box">
                         <div class="col-sm-6">
                             <div class="text-center">
@@ -41,7 +40,6 @@
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <!--BOTON EDITAR -->
                     <button type="button"
                             class="btn btn-primary btn-xs pull-right"
                             ng-hide="editarEmpleadoGenerales.mostrarCampos"
@@ -53,10 +51,6 @@
         </div>
         <div class="col-sm-6 animated fadeInRight" ng-show="editarEmpleadoGenerales.mostrarCampos">
             <div class="row">
-                <div class="col-sm-12">
-                    <h3>Datos Personales</h3>
-                </div>
-                <!--NOMBRE DEl EMPLEADO-->
                 <forma-datos-personales datos="editarEmpleadoGenerales.datosEmpleadoNuevo"></forma-datos-personales>
             </div>
         </div>

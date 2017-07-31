@@ -1,7 +1,7 @@
 <div class="row">
     <!-- TÍTULO -->
     <div class="col-sm-10">
-        <h2>TIENDA: {{editarTienda.tienda.nombre}}</h2>
+        <h2>Tienda: <span class="text-navy">{{editarTienda.tienda.nombre}}</span></h2>
     </div>
     <!-- ATRÄS-->
     <div class="col-sm-2">
@@ -13,9 +13,24 @@
 <hr>
 <div class="row">
     <div class="col-sm-12">
-        <uib-accordion close-others="oneAtATime">
+        <!--MOSTRAR CUANDO SEA SUCURSAL-->
+        <uib-accordion
+                ng-show="editarTienda.tienda.tiendaMatrizId"
+                close-others="oneAtATime">
             <div uib-accordion-group
-                 ng-repeat="fole in editarTienda.acordeon"
+                 ng-repeat="fole in editarTienda.tiendaSucursal"
+                 class="panel-default"
+                 ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})"
+                 heading="{{fole.titulo}}">
+                <div ui-view=""></div>
+            </div>
+        </uib-accordion>
+        <!--MOSTRAR CUANDO SEA TIENDA MATRIZ-->
+        <uib-accordion
+                ng-show="!editarTienda.tienda.tiendaMatrizId"
+                close-others="oneAtATime">
+            <div uib-accordion-group
+                 ng-repeat="fole in editarTienda.tiendaMatriz"
                  class="panel-default"
                  ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})"
                  heading="{{fole.titulo}}">

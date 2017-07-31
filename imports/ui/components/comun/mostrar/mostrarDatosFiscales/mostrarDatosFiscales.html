@@ -1,15 +1,24 @@
 <address>
-    <strong ng-hide="!mostrarDatosFiscales.datosFiscales._id">RFC: {{mostrarDatosFiscales.datosFiscales._id}}</strong><br>
+    <span ng-hide="!mostrarDatosFiscales.datosFiscales._id"><i class="fa fa-address-card-o"></i> <strong>DATOS FISCALES</strong></span><br>
+    {{mostrarDatosFiscales.datosFiscales._id}} <br>
     <span ng-hide="mostrarDatosFiscales.datosFiscales._id" style="color: red">
-        <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR</strong> Los datos fiscales deben ser completados
+        <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR DATOS FISCALES</strong>
     </span>
-    {{mostrarDatosFiscales.datosFiscales.razonSocial}}<br>
-    {{mostrarDatosFiscales.datosFiscales.calle}}
-    {{mostrarDatosFiscales.datosFiscales.numExt}}
-    <span ng-hide="!mostrarDatosFiscales.datosFiscales._id">Int. {{mostrarDatosFiscales.datosFiscales.numInt}}</span> <br>
-    {{mostrarDatosFiscales.datosFiscales.colonia}}
-    {{mostrarDatosFiscales.datosFiscales.codigoPostal}} <br>
-    {{mostrarDatosFiscales.datosFiscales.delMpio}},
-    {{mostrarDatosFiscales.datosFiscales.estado}}
-    <br>
+    <small>
+        <i class="fa fa-envelope" ng-show="mostrarDatosFiscales.datosFiscales._id"></i>&nbsp;
+        {{mostrarDatosFiscales.datosFiscales.email}}<br>
+        {{mostrarDatosFiscales.datosFiscales.razonSocial}} {{mostrarDatosFiscales.datosFiscales.tipoSociedad}}
+        {{mostrarDatosFiscales.datosFiscales.nombre}}&nbsp;
+        {{mostrarDatosFiscales.datosFiscales.segundoNombre}}&nbsp;
+        {{mostrarDatosFiscales.datosFiscales.apellidoPaterno}}&nbsp;
+        {{mostrarDatosFiscales.datosFiscales.apellidoMaterno}}&nbsp;
+        <br>
+        {{mostrarDatosFiscales.datosFiscales.calle}}
+        {{mostrarDatosFiscales.datosFiscales.numExt}}<span ng-show="mostrarDatosFiscales.datosFiscales._id">,</span>
+        <span ng-show="mostrarDatosFiscales.datosFiscales.numInt">Int. {{mostrarDatosFiscales.datosFiscales.numInt}}.</span> <br>
+        {{mostrarDatosFiscales.datosFiscales.colonia}}
+        <span ng-show="mostrarDatosFiscales.datosFiscales._id">CP.</span> {{mostrarDatosFiscales.datosFiscales.codigoPostal}}
+        {{mostrarDatosFiscales.datosFiscales.delMpio}}<span ng-show="mostrarDatosFiscales.datosFiscales._id">,</span>
+        {{mostrarDatosFiscales.datosFiscales.estado}}<br>
+    </small>
 </address>

@@ -12,11 +12,12 @@
         <ul class="nav nav-tabs">
             <span class="pull-right small text-muted">
                 <a ui-sref="app.tienda.lista">
-                    <i class="fa fa-chevron-left"></i>  Atras
+                    <i class="fa fa-chevron-left"></i>  Atrás
                 </a>
             </span>
             <li ng-class="{active: admonTienda.tab === $index}" ng-repeat="tab in admonTienda.tabs">
-                <a ng-click="admonTienda.tab = $index" ui-sref="{{tab.estado}}">
+                <a ng-click="admonTienda.tab = $index"
+                   ui-sref="{{tab.estado}}">
                     <i class="{{tab.icono}}"></i>{{tab.titulo}}
                 </a>
             </li>

@@ -7,7 +7,7 @@ import template from "./codigosPostales.html";
 class CodigosPostales {
     constructor($scope) {
         'ngInject';
-        this.colonias = {};
+        this.colonias = [];
         this.direccion = {};
     }
 }

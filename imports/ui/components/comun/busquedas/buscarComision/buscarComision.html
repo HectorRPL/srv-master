@@ -1,0 +1,8 @@
+<div class="input-group m-b">
+    <input type="text"
+           class="form-control"
+           placeholder="Buscar Comisión"
+           uib-typeahead="comision as comision.nombre for comision in buscarComision.buscarComision($viewValue)"
+           ng-model="buscarComision.comision">
+    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+</div>

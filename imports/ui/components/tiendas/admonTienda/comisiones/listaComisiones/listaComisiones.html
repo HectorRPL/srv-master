@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-sm-4">
+        <a href="" class="btn btn-primary btn-sm" ng-click="listaComisiones.crearComision()">
+            Crear Comisión
+        </a>
+    </div>
+    <div class="col-sm-4 m-b-xs">
+        <div class="ibox float-e-margins">
+            <buscar-comision comision="listaComisiones.comisionSelec"></buscar-comision>
+        </div>
+    </div>
+    <div class="col-sm-4">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="">Nombre</th>
+            <th class="text-right">Porcentaje</th>
+            <th class=""></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="table-responsive"
+            dir-paginate="comision in listaComisiones.comisiones | itemsPerPage: listaComisiones.perPage"
+            total-items="listaComisiones.comisionesCount">
+            <td class=""><a class="text-navy" style="text-decoration: inherit" ui-sref="^.productos({comisionId: comision._id})">{{comision.nombre}}</a></td>
+            <td class="text-right">{{comision.comision | number:4}}%</td>
+            <td class="text-right">
+                <div class="btn-group" role="group" aria-label="...">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Aplicar a&nbsp;&nbsp;&nbsp;
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="^.aplicar.marca({comisionId: comision._id})">Marca</a></li>
+                            <li><a ui-sref="^.aplicar.producto({comisionId: comision._id})">Producto</a></li>
+                        </ul>
+                        <button type="button" class="btn btn-xs btn-default" ng-click="listaComisiones.editarComisionModal(comision)">Editar</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaComisiones.pageChanged(newPageNumber)"></dir-pagination-controls>
+

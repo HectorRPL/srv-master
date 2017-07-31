@@ -1,4 +1,4 @@
-<ng-form name="datosGeneralesForm">
+<ng-form name="formaDatosGeneralesForm">
     <!--BOTON AÑADIR TELÉFONO -->
     <div class="col-sm-12">
         <button type="button" class="btn btn-primary pull-right btn-xs" ng-click="formaDatosGenerales.agregarTelefono()">
@@ -7,8 +7,8 @@
     </div>
     <!--NOMBRE DE LA EMPRESA-->
     <div class="col-sm-6">
-        <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.nombre.$invalid && !datosGeneralesForm.nombre.$pristine}">
-            <div ng-messages="datosGeneralesForm.nombre.$dirty && datosGeneralesForm.nombre.$error" role="alert">
+        <div class="form-group" ng-class="{ 'has-error' : formaDatosGeneralesForm.nombre.$invalid && !formaDatosGeneralesForm.nombre.$pristine}">
+            <div ng-messages="formaDatosGeneralesForm.nombre.$dirty && formaDatosGeneralesForm.nombre.$error" role="alert">
                 <label>Nombre corto*
                     <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 50 letras</span>
@@ -24,8 +24,8 @@
     </div>
     <!-- EMAIL DE CONTACTO -->
     <div class="col-sm-6">
-        <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm.email.$invalid && !datosGeneralesForm.email.$pristine}">
-            <div ng-messages="datosGeneralesForm.email.$dirty && datosGeneralesForm.email.$error" role="alert">
+        <div class="form-group" ng-class="{ 'has-error' : formaDatosGeneralesForm.email.$invalid && !formaDatosGeneralesForm.email.$pristine}">
+            <div ng-messages="formaDatosGeneralesForm.email.$dirty && formaDatosGeneralesForm.email.$error" role="alert">
                 <label> Email *
                     <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                     <span class="animated fadeIn" style="color:red;" ng-message="email">incorrecto</span>
@@ -39,10 +39,11 @@
         </div>
     </div>
     <!-- TELÉFONOS DE CONTACTO-->
-    <span class="animated fadeIn" ng-repeat="telefono in formaDatosGenerales.datos.telefonos track by $index">
+    <span class="animated fadeIn"
+          ng-repeat="telefono in formaDatosGenerales.datos.telefonos track by $index">
         <div class="col-sm-4">
-            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['telefono'+$index].$invalid && !datosGeneralesForm ['telefono'+$index].$pristine}">
-                <div ng-messages="datosGeneralesForm['telefono'+$index].$dirty && datosGeneralesForm['telefono'+$index].$error" role="alert">
+            <div class="form-group" ng-class="{ 'has-error' : formaDatosGeneralesForm['telefono'+$index].$invalid && !formaDatosGeneralesForm['telefono'+$index].$pristine}">
+                <div ng-messages="formaDatosGeneralesForm['telefono'+$index].$dirty && formaDatosGeneralesForm['telefono'+$index].$error" role="alert">
                     <label> Teléfono <span class="font-bold text-navy">{{$index + 1}}</span> *
                         <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                         <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
@@ -57,8 +58,8 @@
         </div>
         <!-- TELÉFONO EXTENSIÓN -->
         <div class="col-sm-2">
-            <div class="form-group" ng-class="{ 'has-error' : datosGeneralesForm['extension'+$index].$invalid && !datosGeneralesForm['extension'+$index].$pristine}">
-                <div ng-messages="datosGeneralesForm['extension'+$index].$dirty && datosGeneralesForm['extension'+$index].$error" role="alert">
+            <div class="form-group" ng-class="{ 'has-error' : formaDatosGeneralesForm['extension'+$index].$invalid && !formaDatosGeneralesForm['extension'+$index].$pristine}">
+                <div ng-messages="formaDatosGeneralesForm['extension'+$index].$dirty && formaDatosGeneralesForm['extension'+$index].$error" role="alert">
                     <label>&nbsp;
                         <span class="animated fadeIn" style="color:red;" ng-message="pattern">número</span>
                     </label>

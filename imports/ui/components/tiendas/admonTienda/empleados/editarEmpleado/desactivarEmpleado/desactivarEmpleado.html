@@ -8,7 +8,6 @@
         <div class="col-sm-4 b-r">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>Estatus</h3>
                     <div class="contact-box">
                         <div class="col-sm-4">
                             <div class="text-center">
@@ -16,11 +15,12 @@
                             </div>
                         </div>
                         <div class="col-sm-8">
-                            <p class="m-t-xs font-bold">Empleado: </p>
                             <h2>
                                 <strong>
-                                    <span ng-show="desactivarEmpleado.empleado.activo">Este empleado se encuentra activo</span>
-                                    <span ng-hide="desactivarEmpleado.empleado.activo">Este empleado se encuentra desactivado</span>
+                                        <span >Status: <br>
+                                            <span class="text-navy" ng-show="desactivarEmpleado.empleado.activo">Activo</span>
+                                            <span class="text-navy" ng-show="desactivarEmpleado.empleado.activo === false">Desactivado</span>
+                                        </span>
                                 </strong>
                             </h2>
                             <address>
@@ -44,9 +44,6 @@
         </div>
         <div class="col-sm-8 animated fadeInRight" ng-show="desactivarEmpleado.mostrarCampos">
             <div class="row">
-                <div class="col-sm-12">
-                    <h3>Eliminar empleado</h3>
-                </div>
                 <div class="col-sm-offset-3 col-sm-6">
                     <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
                     <h4>El empleado dejará de operar en el sistema y no se guardará más información.</h4>

@@ -8,7 +8,6 @@
         <div class="col-sm-4 b-r">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3>Tienda Activa</h3>
                     <div class="contact-box">
                         <a href="">
                             <div class="col-sm-4">
@@ -17,16 +16,17 @@
                                 </div>
                             </div>
                             <div class="col-sm-8">
-                                <p class="m-t-xs font-bold">Tienda Activa: </p>
                                 <h2>
                                     <strong>
-                                        <span ng-show="desactivarProveedor.proveedor.activo">Este proveedor se encuentra activo</span>
-                                        <span ng-hide="desactivarProveedor.proveedor.activo">Este proveedor se encuentra desactivado</span>
+                                        <span >Status: <br>
+                                            <span class="text-navy" ng-show="desactivarProveedor.proveedor.activo">Activo</span>
+                                            <span class="text-navy" ng-hide="desactivarProveedor.proveedor.activo">Desactivado</span>
+                                        </span>
                                     </strong>
                                 </h2>
                                 <address>
                                     <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
-                                    <p>Eliminar una proveedor implica grandes riesgos operativos y pérdida de información.</p>
+                                    <p>Eliminar un proveedor implica grandes riesgos operativos y pérdida de información.</p>
                                 </address>
                             </div>
                             <div class="clearfix"></div>
@@ -45,9 +45,6 @@
         </div>
         <div class="col-sm-8 " ng-show="desactivarProveedor.ocultarBoton">
             <div class="row">
-                <div class="col-sm-12">
-                    <h3>Eliminar Proveedor</h3>
-                </div>
                 <div class="col-sm-offset-3 col-sm-6">
                     <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
                     <h4>El proveedor dejará de operar en el sistema y no se guardará más información.</h4>

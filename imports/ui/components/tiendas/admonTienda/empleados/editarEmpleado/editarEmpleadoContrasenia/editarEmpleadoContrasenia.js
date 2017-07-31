@@ -8,10 +8,9 @@ import {name as Contrasenia} from "../../../../../comun/inputs/contrasenia/contr
 import {Empleados} from "../../../../../../../api/empleados/collection";
 
 class EditarEmpleadoContrasenia {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-        this.$state = $state;
         $reactive(this).attach($scope);
 
         this._id = $stateParams.empleadoId;

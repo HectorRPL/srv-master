@@ -27,20 +27,41 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <mostrar-direccion propietario-id="tienda._id"></mostrar-direccion>
-                        <mostrar-datos-fiscales propietario-id="tienda._id"></mostrar-datos-fiscales>
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                        <span ng-repeat="telefono in tienda.telefonos">{{telefono.telefono}},
+                        <i class="fa fa-phone" aria-hidden="true" ng-hide="!tienda.telefonos"></i>
+                        <span ng-hide="tienda.telefonos" style="color: red">
+                            <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong>
+                        </span>
+                        <span ng-repeat="telefono in tienda.telefonos"
+                              ng-hide="!tienda.telefonos">
+                            {{telefono.telefono}},
                             <span ng-show="telefono.extension">
                                 Ext. {{telefono.extension}},
                             </span>
                         </span>
+                        <mostrar-direccion propietario-id="tienda._id"></mostrar-direccion>
+                        <hr>
+                        <mostrar-datos-fiscales propietario-id="tienda._id"></mostrar-datos-fiscales>
 
                     </div>
                 </div>
-                <div class="clearfix"></div>
+                <!--<div class="clearfix"></div>-->
             </a>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a ui-sref="app.tienda.agregarSucursal.datos({tiendaId: tienda._id})"
+                       ng-class="{'disabled' : tienda.tiendaMatrizId || tienda.tiendaMatrizId}"
+                       class="btn btn-white btn-sm">
+                        <i class="fa fa-industry"></i> Agregar Sucursal
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <dir-pagination-controls on-page-change="listaTiendas.pageChanged(newPageNumber)"></dir-pagination-controls>
+
+<!--
+TODO => Validar la cuenta contable con alerta
+Ya que al momento de la carga masiva de las cuentas contable a la base de mongo no se sabe si todas las tiendas
+y proveedoras tendrán dicha cuenta de manera válida, no repetida y vigente.
+-->

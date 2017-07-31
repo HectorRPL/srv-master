@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-sm-8">
+        <h2>Comisión:
+            <span class="text-navy">{{listaProductosComision.comision.nombre}} ({{listaProductosComision.comision.comision}}%)</span>
+        </h2>
+    </div>
+    <div class="col-sm-4">
+        <span class="pull-right">
+            Porcentaje: <span class="text-navy">{{listaProductosComision.comision.comision}}</span>%.
+            <br>
+        </span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <buscar-marca
+                marca="listaProductosComision.marcaSelec">
+        </buscar-marca>
+    </div>
+    <div class="col-sm-4">
+        <buscar-producto
+                marcaid="listaProductosComision.marcaSelec._id"
+                producto="listaProductosComision.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Marca - Producto</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="table-responsive"
+            dir-paginate="producto in listaProductosComision.productos | itemsPerPage: listaProductosComision.perPage"
+            total-items="listaProductosComision.productosCount">
+            <td>
+                {{producto.marca().nombre}}&nbsp;&nbsp;{{producto.producto().campoBusqueda}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+<dir-pagination-controls on-page-change="listaProductosComision.pageChanged(newPageNumber)"></dir-pagination-controls>

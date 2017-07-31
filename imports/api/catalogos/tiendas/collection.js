@@ -60,7 +60,8 @@ Tiendas.schema = new SimpleSchema({
     },
     cuentaContable: {
         type: String,
-        regEx: /^[0-9-]{12}$/
+        regEx: /^[0-9-]{12}$/,
+        optional: true
     },
     tiendaMatrizId: {
         type: String,
