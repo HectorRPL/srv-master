@@ -31,7 +31,7 @@ Empleados.schema = new SimpleSchema({
     propietarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
     tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
     departamentoId: {type: String},
-    primerNombre: {
+    nombres: {
         type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/,
         autoValue: function () {
             if (this.value) {
@@ -39,24 +39,8 @@ Empleados.schema = new SimpleSchema({
             }
         }
     },
-    segundoNombre: {
-        type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/, optional: true,
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase();
-            }
-        }
-    },
-    apellidoPaterno: {
+    apellidos: {
         type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/,
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase();
-            }
-        }
-    },
-    apellidoMaterno: {
-        type: String, max: 30, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/, optional: true,
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase();
@@ -78,19 +62,13 @@ Empleados.schema = new SimpleSchema({
     celular: {type: String, regEx: /^[0-9]{10}$/, min: 10, max: 10},
     noEmpleado: {type: Number},
     nombreCompleto: {
+
         type: String,
         autoValue: function () {
-            if (this.value) {
-
+            if (this.field('nombres').value && this.field('apellidos').value) {
                 let nombreCompleto = '';
-                nombreCompleto += this.field('primerNombre').value.toUpperCase();
-                if (this.field('segundoNombre').value) {
-                    nombreCompleto += ' ' + this.field('segundoNombre').value.toUpperCase();
-                }
-                nombreCompleto += ' ' + this.field('apellidoPaterno').value.toUpperCase();
-                if (this.field('segundoNombre').value) {
-                    nombreCompleto += ' ' + this.field('segundoNombre').value.toUpperCase();
-                }
+                nombreCompleto += this.field('nombres').value.toUpperCase();
+                nombreCompleto += ' ' + this.field('apellidos').value.toUpperCase();
                 return nombreCompleto;
             }
         }
