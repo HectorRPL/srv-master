@@ -33,12 +33,12 @@ class EditarEmpleadoGenerales {
         this.mostrarCampos = true;
     }
 
-    limpiarCampos(editarEmpleadoGeneralesForm) {
+    limpiarCampos(editarEmpleadoGeneralesFrm) {
         this.datosEmpleadoNuevo = {};
-        editarEmpleadoGeneralesForm.$setPristine();
+        editarEmpleadoGeneralesFrm.$setPristine();
     }
 
-    actualizar(editarEmpleadoGeneralesForm) {
+    actualizar(editarEmpleadoGeneralesFrm) {
         delete this.datosEmpleadoNuevo.fechaCreacion;
         delete this.datosEmpleadoNuevo._id;
         delete this.datosEmpleadoNuevo.activo;
@@ -51,7 +51,7 @@ class EditarEmpleadoGenerales {
 
         cambiosEmpleados.callPromise(this.datosEmpleadoNuevo).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(editarEmpleadoGeneralesForm);
+            this.limpiarCampos(editarEmpleadoGeneralesFrm);
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));

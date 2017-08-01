@@ -1,5 +1,5 @@
 <ng-form name="formaDatosPersonalesFrm">
-    <!--NOMBRE-->
+    <!--NOMBRES-->
     <div class="col-sm-6">
         <div class="form-group"
              ng-class="{ 'has-error' : formaDatosPersonalesFrm.nombres.$invalid && !formaDatosPersonalesFrm.nombres.$pristine}">
@@ -76,88 +76,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!--NACIMIENTO-->
-    <div class="col-sm-12">
-        <div class="form-group">
-            <div ng-messages="(formaDatosPersonalesFrm.elegirAnio.$dirty && formaDatosPersonalesFrm.elegirAnio.$error)
-                                || (formaDatosPersonalesFrm.elegirMes.$dirty && formaDatosPersonalesFrm.elegirMes.$error)
-                                || (formaDatosPersonalesFrm.elegirDia.$dirty && formaDatosPersonalesFrm.elegirDia.$error)"
-                 role="alert">
-                <label>Fecha Nacimiento*
-                    <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                </label>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : formaDatosPersonalesFrm.elegirAnio.$invalid && !formaDatosPersonalesFrm.elegirAnio.$pristine}">
-                            <elegir-anio anioid="formaDatosPersonales.datos.nacimientoAnio"></elegir-anio>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : formaDatosPersonalesFrm.elegirMes.$invalid && !formaDatosPersonalesFrm.elegirMes.$pristine}">
-                            <elegir-mes mesid="formaDatosPersonales.datos.nacimientoMes"></elegir-mes>
-                        </div>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="form-group"
-                             ng-class="{ 'has-error' : formaDatosPersonalesFrm.elegirDia.$invalid && !formaDatosPersonalesFrm.elegirDia.$pristine}">
-                            <elegir-dia diaid="formaDatosPersonales.datos.nacimientoDia"></elegir-dia>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--TELEFONO-->
-    <div class="col-sm-4">
-        <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.telefono.$invalid && !formaDatosPersonalesFrm.telefono.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.telefono.$dirty && formaDatosPersonalesFrm.telefono.$error"
-                 role="alert">
-                <label> Teléfono*
-                    <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
-                </label>
-                <input id="telefonosId" class="form-control" type="text" name="telefono"
-                       aria-describedby="sizing-addon1" maxlength="10" ng-pattern="/^[0-9]{10}$/"
-                       required ng-model="formaDatosPersonales.datos.telefono">
-            </div>
-        </div>
-    </div>
-    <!--CELULAR-->
-    <div class="col-sm-4">
-        <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.celular.$invalid && !formaDatosPersonalesFrm.celular.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.celular.$dirty && formaDatosPersonalesFrm.celular.$error"
-                 role="alert">
-                <label> Celular *
-                    <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">10 dígitos</span>
-                    <span class="animated fadeIn" style="color:red;" ng-message="pattern">inválido</span>
-                </label>
-                <input id="celularId" class="form-control" type="text" name="celular"
-                       aria-describedby="sizing-addon1" maxlength="10" ng-pattern="/^[0-9]{10}$/"
-                       required ng-model="formaDatosPersonales.datos.celular">
-            </div>
-        </div>
-    </div>
-    <!--PUESTO-->
-    <div class="col-sm-4">
-        <div class="form-group"
-             ng-class="{ 'has-error' : formaDatosPersonalesFrm.departamento.$invalid && !formaDatosPersonalesFrm.departamento.$pristine}">
-            <div ng-messages="formaDatosPersonalesFrm.departamento.$dirty && formaDatosPersonalesFrm.departamento.$error"
-                 role="alert">
-                <label> Puesto *
-                    <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                </label>
-                <elegir-departamento departamento="formaDatosPersonales.datos.departamentoId"></elegir-departamento>
             </div>
         </div>
     </div>

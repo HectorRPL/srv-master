@@ -24,10 +24,8 @@ class CambiosDatosFiscales {
         delete this.datosFiscales.tipoPersona;
         delete this.datosFiscales.razonSocial;
         delete this.datosFiscales.tipoSociedad;
-        delete this.datosFiscales.apellidoMaterno;
-        delete this.datosFiscales.apellidoPaterno;
-        delete this.datosFiscales.segundoNombre;
-        delete this.datosFiscales.nombre;
+        delete this.datosFiscales.apellidos;
+        delete this.datosFiscales.nombres;
         delete this.datosFiscales.email;
         delete this.datosFiscales.fechaCreacion;
 
