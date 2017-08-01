@@ -12,10 +12,14 @@ class BuscarEmpleado {
         $reactive(this).attach($scope);
         this.empleado = '';
 
+
     }
 
     buscar(valor) {
-        return buscarEmpleados.callPromise({tiendaId: this.tiendaid, nombre: valor}).then(function (result) {
+        return buscarEmpleados.callPromise({
+            tiendaId: this.tiendaId,
+            nombre: valor
+        }).then(function (result) {
             return result;
         });
     }
@@ -31,7 +35,7 @@ export default angular
         controllerAs: name,
         controller: BuscarEmpleado,
         bindings: {
-            tiendaid: '<',
+            tiendaId: '<',
             empleado: '='
         },
     });

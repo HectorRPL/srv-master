@@ -15,7 +15,6 @@ class BuscarProducto {
     }
 
     buscar(valor) {
-        console.log(valor);
         return buscarProductos.callPromise({
             marcaId: this.marcaid,
             codigo: valor

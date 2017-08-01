@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Empleados} from "./collection";
@@ -14,9 +15,12 @@ export const buscarEmpleados = new ValidatedMethod({
         tiendaId: {type:String},
         nombre: {type: String}
     }).validator(),
-    run({nombre}) {
+    run({nombre, tiendaId}) {
         const partialMatch = new RegExp(`^${nombre}`, 'i');
-        const selector = {nombreCompleto: {$regex: partialMatch}};
+        const selector = {
+            tiendaId: {$regex: tiendaId},
+            nombreCompleto: {$regex: partialMatch}
+        };
         let options = {fields: {_id: 1, nombreCompleto: 1}};
         const resultado = Empleados.find(selector, options).fetch();
 
