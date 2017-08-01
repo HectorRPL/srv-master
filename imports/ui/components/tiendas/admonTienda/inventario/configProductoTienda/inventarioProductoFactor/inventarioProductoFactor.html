@@ -1,0 +1,39 @@
+<ul class="list-group clear-list m-t">
+    <li class="list-group-item fist-item">
+        <span class="pull-right"></span>
+        <span class="label label-success">&nbsp;&nbsp;&nbsp;Costo&nbsp;&nbsp;&nbsp;</span>
+        <strong>${{inventarioProductoFactor.costo  | number:2 }}</strong>
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor1 | number:2 }}</span>
+        <span class="label label-info">Cliente 1</span> {{inventarioProductoFactor.factor.factor1 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor2 | number:2 }}</span>
+        <span class="label label-info">Cliente 2</span> {{inventarioProductoFactor.factor.factor2 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor3 | number:2 }}</span>
+        <span class="label label-info">Cliente 3</span> {{inventarioProductoFactor.factor.factor3 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor4 | number:2 }}</span>
+        <span class="label label-info">Cliente 4</span> {{inventarioProductoFactor.factor.factor4 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor5 | number:2 }}</span>
+        <span class="label label-info">Cliente 5</span> {{inventarioProductoFactor.factor.factor5 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor6 | number:2 }}</span>
+        <span class="label label-info">Cliente 6</span> {{inventarioProductoFactor.factor.factor6 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor7 | number:2 }}</span>
+        <span class="label label-info">Cliente 7</span> {{inventarioProductoFactor.factor.factor7 | number:4 }}
+    </li>
+    <li class="list-group-item">
+        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor8 | number:2 }}</span>
+        <span class="label label-info">Cliente 8</span> {{inventarioProductoFactor.factor.factor8 | number:4 }}
+    </li>
+</ul>

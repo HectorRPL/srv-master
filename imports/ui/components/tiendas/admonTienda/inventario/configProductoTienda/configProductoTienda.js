@@ -3,6 +3,7 @@
  */
 import template from "./configProductoTienda.html";
 import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
+import {name as InventarioProductoFactor} from "./inventarioProductoFactor/inventarioProductoFactor";
 
 class ConfigProductoTienda {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -11,7 +12,6 @@ class ConfigProductoTienda {
         $reactive(this).attach($scope);
 
         this.productoId = $stateParams.productoId;
-
 
         this.subscribe('productosInventarios.detallesTiendaProducto', () => [
             {
@@ -23,17 +23,16 @@ class ConfigProductoTienda {
                 return ProductosInventarios.findOne();
             }
         });
-    }
 
-    cerrar(){
-        this.dismiss();
     }
 }
 
 const name = 'configProductoTienda';
 
 export default angular
-    .module(name, [])
+    .module(name, [
+        InventarioProductoFactor
+    ])
     .component(name, {
         template,
         controllerAs: name,
