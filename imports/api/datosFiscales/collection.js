@@ -39,7 +39,7 @@ Schema.datosFiscales = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    nombre: {
+    nombres: {
         type: String,
         regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
@@ -57,18 +57,7 @@ Schema.datosFiscales = new SimpleSchema({
             }
         }
     },
-    segundoNombre: {
-        type: String,
-        regEx: /^[a-zA-ZñÑ\s]+$/,
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase()
-            }
-        },
-        optional: true
-
-    },
-    apellidoPaterno: {
+    apellidos: {
         type: String,
         regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
@@ -80,16 +69,6 @@ Schema.datosFiscales = new SimpleSchema({
                 }
             }
         },
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase()
-            }
-        }
-    },
-    apellidoMaterno: {
-        type: String,
-        regEx: /^[a-zA-ZñÑ\s]+$/,
-        optional: true,
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase()

@@ -10,7 +10,7 @@ import {DatosFiscales} from "./collection";
 
 const CAMPO_ID = ['_id'];
 const CAMPO_PROPIETARIOID = ['propietarioId'];
-const CAMPOS_DATOS_FISCALES = ['tipoPersona', 'nombre', 'segundoNombre', 'apellidoPaterno', 'apellidoMaterno', 'razonSocial', 'tipoSociedad', 'email'];
+const CAMPOS_DATOS_FISCALES = ['tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad', 'email'];
 const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 export const altaDatosFiscales = new ValidatedMethod({
@@ -22,13 +22,11 @@ export const altaDatosFiscales = new ValidatedMethod({
     }),
     run({
         _id, propietarioId, tipoPersona,
-        nombre, segundoNombre, apellidoPaterno, apellidoMaterno,
-        razonSocial, tipoSociedad, email,
+        nombres, apellidos, razonSocial, tipoSociedad, email,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
         return DatosFiscales.insert({ _id, propietarioId, tipoPersona,
-            nombre, segundoNombre, apellidoPaterno, apellidoMaterno,
-            razonSocial, tipoSociedad, email,
+            nombres, apellidos, razonSocial, tipoSociedad, email,
             calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
         }, (err)=> {
             if (err) {

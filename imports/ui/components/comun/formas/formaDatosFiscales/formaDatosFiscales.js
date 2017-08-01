@@ -13,10 +13,8 @@ class FormaDatosFiscales {
 
     esPersonaMoral() {
         delete this.datos.email;
-        delete this.datos.nombre;
-        delete this.datos.segundoNombre;
-        delete this.datos.apellidoPaterno;
-        delete this.datos.apellidoMaterno;
+        delete this.datos.nombres;
+        delete this.datos.apellidos;
         delete this.datos._id;
         this.datos.tipoPersona = 'PM';
     }
@@ -33,7 +31,6 @@ class FormaDatosFiscales {
 
 const name = 'formaDatosFiscales';
 
-// create a module
 export default angular
     .module(name, [
         ElegirTipoSociedad
@@ -59,7 +56,7 @@ export default angular
                         if (result) {
                             return $q.reject('RFC encontrado');
                         }
-                    }).catch(function (err) { // cacha el error (¿dos veces?)
+                    }).catch(function (err) {
                         return $q.reject('Error encontrado');
                     });
                 };
