@@ -3,11 +3,12 @@
         <a class="btn btn-primary btn-sm" ui-sref="app.tienda.admon.empleados.agregar.datosTemporales">AgregarEmpleado</a>
     </div>
     <div class="col-sm-4">
-        <buscar-empleado empleadoid="listaEmpleados.empleadoId" empleado="listaEmpleados.empleadoSelec"></buscar-empleado>
+        <buscar-empleado
+                empleado="listaEmpleados.empleadoSelec"
+                tienda-id="listaEmpleados.tiendaId">
+        </buscar-empleado>
     </div>
-    <div class="col-sm-4">
-        {{listaEmpleados.empleadoSelec}}
-    </div>
+    <div class="col-sm-4"></div>
 </div>
 <div class="row">
     <div class="col-sm-4 ajustar"
