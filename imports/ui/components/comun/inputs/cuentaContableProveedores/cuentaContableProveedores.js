@@ -8,7 +8,7 @@ import template from "./cuentaContableProveedores.html";
 class CuentaContableProveedores {
     constructor($scope) {
         'ngInject';
-        this.cuentaContableProveedores = {};
+        // this.cuentaContable = {};
     }
 }
 

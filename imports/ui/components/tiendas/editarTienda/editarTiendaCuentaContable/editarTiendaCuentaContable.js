@@ -18,23 +18,15 @@ class EditarTiendaCuentaContable {
         this.tipoMsj = '';
 
         this.tienda = {};
+        this.datos = {};
 
         this.subscribe('tiendas.todas', () => [{_id: this.tiendaId}]);
 
         this.helpers({
-            tienda(){
+            tiendaActual(){
                 return Tiendas.findOne({_id: this.tiendaId});
             }
         });
-    }
-
-    editar() {
-        this.ocultarBoton = true;
-    }
-
-    limpiarCampos(editarTiendaCuentaContableForm) {
-        this.datos = {};
-        editarTiendaCuentaContableForm.$setPristine();
     }
 
     actualizarDatosGenerales(editarTiendaCuentaContableForm) {
@@ -47,6 +39,18 @@ class EditarTiendaCuentaContable {
             this.tipoMsj = 'danger';
         }));
     }
+
+    editar() {
+        this.ocultarBoton = true;
+        this.datos.cuentaContable = angular.copy(this.tiendaActual.cuentaContable);
+
+    }
+
+    limpiarCampos(editarTiendaCuentaContableForm) {
+        this.datos = {};
+        editarTiendaCuentaContableForm.$setPristine();
+    }
+
 
 }
 

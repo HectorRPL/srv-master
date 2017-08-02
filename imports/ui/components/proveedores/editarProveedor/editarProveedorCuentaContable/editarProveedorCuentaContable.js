@@ -18,23 +18,15 @@ class EditarProveedorCuentaContable {
         this.tipoMsj = '';
 
         this.proveedor = {};
+        this.datos = {};
 
         this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
 
         this.helpers({
-            proveedor(){
+            proveedorActual(){
                 return Proveedores.findOne();
             }
         });
-    }
-
-    editar() {
-        this.ocultarBoton = true;
-    }
-
-    limpiarCampos(editarProveedorCuentaContableForm) {
-        this.datos = {};
-        editarProveedorCuentaContableForm.$setPristine();
     }
 
     actualizarDatosGenerales(editarProveedorCuentaContableForm) {
@@ -47,6 +39,18 @@ class EditarProveedorCuentaContable {
             this.tipoMsj = 'danger';
         }));
     }
+
+    editar() {
+        this.ocultarBoton = true;
+        this.datos.cuentaContable = angular.copy(this.proveedorActual.cuentaContable);
+    }
+
+    limpiarCampos(editarProveedorCuentaContableForm) {
+        this.datos = {};
+        editarProveedorCuentaContableForm.$setPristine();
+    }
+
+
 }
 
 const name = 'editarProveedorCuentaContable';
