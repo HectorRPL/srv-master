@@ -73,8 +73,8 @@ export const cambiosTienda = new ValidatedMethod({
     }
 });
 
-export const cambiosTiendaCuentaContable = new ValidatedMethod({
-    name: 'tiendas.cambiosTiendaCuentaContable',
+export const cambiosCuentaContableTiendas = new ValidatedMethod({
+    name: 'tiendas.cambiosCuentaContableTiendas',
     mixins: [CallPromiseMixin],
     validate: Tiendas.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
@@ -117,7 +117,7 @@ export const cambiosTiendaActivar = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([altaTienda, cambiosTienda, cambiosTiendaCuentaContable, cambiosTiendaActivar], 'name');
+const TIENDAS_METHODS = _.pluck([altaTienda, cambiosTienda, cambiosCuentaContableTiendas, cambiosTiendaActivar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

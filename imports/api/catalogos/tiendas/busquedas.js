@@ -24,8 +24,19 @@ export const buscarTiendas = new ValidatedMethod({
     }
 });
 
+export const buscarCuentaContableTiendas = new ValidatedMethod({
+    name: 'proveedores.buscarCuentaContableTiendas',
+    mixins: [CallPromiseMixin],
+    validate: new SimpleSchema({
+        cc: {type: String}
+    }).validator(),
+    run({cc}) {
+        const resultado = Tiendas.find({cuentaContable: cc}).fetch();
+        return resultado;
+    }
+});
 
-const BUSQUEDAS_TIENDAS_METHODS = _.pluck([buscarTiendas], 'name');
+const BUSQUEDAS_TIENDAS_METHODS = _.pluck([buscarTiendas, buscarCuentaContableTiendas], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

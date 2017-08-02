@@ -4,7 +4,7 @@
 import template from "./proveedorDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
+import {name as CuentaContableProveedores} from "../../../comun/inputs/cuentaContableProveedores/cuentaContableProveedores";
 import {altaProveedor} from "../../../../../api/catalogos/proveedores/methods";
 
 class ProveedorDatosGenerales {
@@ -52,7 +52,7 @@ export default angular
     .module(name, [
         Alertas,
         FormaDatosGenerales,
-        CuentaContable
+        CuentaContableProveedores
     ])
     .component(name, {
         template,

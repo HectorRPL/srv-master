@@ -42,14 +42,14 @@
                 <div class="col-sm-offset-3 col-sm-6">
                     <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
                     <h4>No edite este campo si no está seguro que todos los contadores de cada tienda estén enterados.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : editarTiendaCuentaContableForm.cuentaContable.$invalid && !editarTiendaCuentaContableForm.cuentaContable.$pristine}">
-                        <div ng-messages="editarTiendaCuentaContableForm.cuentaContable.$dirty && editarTiendaCuentaContableForm.cuentaContable.$error" role="alert">
+                    <div class="form-group" ng-class="{ 'has-error' : editarTiendaCuentaContableForm.cuentaContableTiendas.$invalid && !editarTiendaCuentaContableForm.cuentaContableTiendas.$pristine}">
+                        <div ng-messages="editarTiendaCuentaContableForm.cuentaContableTiendas.$dirty && editarTiendaCuentaContableForm.cuentaContableTiendas.$error" role="alert">
                             <label>Nueva Cuenta Contable *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
                             </label>
-                            <cuenta-contable dato="editarTiendaCuentaContable.datos.cuentaContable"></cuenta-contable>
+                            <cuenta-contable-tiendas dato="editarTiendaCuentaContable.datos.cuentaContable"></cuenta-contable-tiendas>
                         </div>
                     </div>
                 </div>

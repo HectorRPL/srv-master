@@ -7,14 +7,14 @@
                     <forma-datos-generales datos="tiendaDatosGenerales.datos"></forma-datos-generales>
                     <!--CUENTA CONTABLE-->
                     <div class="col-sm-6">
-                        <div class="form-group" ng-class="{ 'has-error' : tiendaDatosGeneralesFrm.cuentaContable.$invalid && !tiendaDatosGeneralesFrm.cuentaContable.$pristine}">
-                            <div ng-messages="tiendaDatosGeneralesFrm.cuentaContable.$dirty && tiendaDatosGeneralesFrm.cuentaContable.$error" role="alert">
+                        <div class="form-group" ng-class="{ 'has-error' : tiendaDatosGeneralesFrm.cuentaContableTiendas.$invalid && !tiendaDatosGeneralesFrm.cuentaContableTiendas.$pristine}">
+                            <div ng-messages="tiendaDatosGeneralesFrm.cuentaContableTiendas.$dirty && tiendaDatosGeneralesFrm.cuentaContableTiendas.$error" role="alert">
                                 <label>Cuenta Contable *
                                     <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                                     <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                                     <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
                                 </label>
-                                <cuenta-contable dato="tiendaDatosGenerales.datos.cuentaContable"></cuenta-contable>
+                                <cuenta-contable-tiendas dato="tiendaDatosGenerales.datos.cuentaContable"></cuenta-contable-tiendas>
                             </div>
                         </div>
                     </div>

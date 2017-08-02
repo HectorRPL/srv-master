@@ -1,18 +1,18 @@
 /**
- * Created by Héctor on 23/06/2017.
+ * Created by Héctor on 01/08/2017.
  */
-import {buscarCuentaContable} from "../../../../../api/catalogos/proveedores/busquedas";
+import {buscarCuentaContableTiendas} from "../../../../../api/catalogos/tiendas/busquedas";
 import uiMask from "angular-ui-mask";
-import template from "./cuentaContable.html";
+import template from "./cuentaContableTiendas.html";
 
-class CuentaContable {
+class CuentaContableTiendas {
     constructor($scope) {
         'ngInject';
-        this.cuentaContable = {};
+        this.cuentaContableTiendas = {};
     }
 }
 
-const name = 'cuentaContable';
+const name = 'cuentaContableTiendas';
 
 export default angular
     .module(name, [
@@ -24,22 +24,22 @@ export default angular
         bindings: {
             dato: '='
         },
-        controller: CuentaContable
+        controller: CuentaContableTiendas
     })
-    .directive('buscarCuentaContable', ['$q', function ($q) {
+    .directive('buscarCuentaContableTiendas', ['$q', function ($q) {
         return {
             restrict: 'EA',
             require: '?ngModel',
             link: function (scope, element, attrs, ngModel) {
                 ngModel.$asyncValidators.existecta = function (modelValue, viewValue) {
                     let cuentaContable = modelValue || viewValue;
-                    return buscarCuentaContable.callPromise({
+                    return buscarCuentaContableTiendas.callPromise({
                         cc: cuentaContable
                     }).then(function (result) {
                         if (result.length != 0) {
                             return $q.reject('Encontrado');
                         } else {
-                            // scope.proveedorDatosGenerales.datos.cuentaContable = '';
+                            // scope.tiendaDatosGenerales.datos.cuentaContableTiendas = '';
                         }
                     }).catch(function (err) {
                         return $q.reject('No encontrado');

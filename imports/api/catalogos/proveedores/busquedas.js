@@ -23,8 +23,8 @@ export const buscarProveedor = new ValidatedMethod({
     }
 });
 
-export const buscarCuentaContable = new ValidatedMethod({
-    name: 'proveedores.buscarCuentaContable',
+export const buscarCuentaContableProveedores = new ValidatedMethod({
+    name: 'proveedores.buscarCuentaContableProveedores',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
         cc: {type: String}
@@ -36,7 +36,7 @@ export const buscarCuentaContable = new ValidatedMethod({
 });
 
 
-const BUSQUEDAS_PROVEEDORES_METHODS = _.pluck([buscarProveedor, buscarCuentaContable], 'name');
+const BUSQUEDAS_PROVEEDORES_METHODS = _.pluck([buscarProveedor, buscarCuentaContableProveedores], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

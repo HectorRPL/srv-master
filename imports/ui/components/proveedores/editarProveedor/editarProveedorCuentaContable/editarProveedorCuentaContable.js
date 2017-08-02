@@ -3,8 +3,8 @@
  */
 import template from "./editarProveedorCuentaContable.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as CuentaContable} from "../../../comun/inputs/cuentaContable/cuentaContable";
-import {cambiosCuentaContable} from "../../../../../api/catalogos/proveedores/methods";
+import {name as CuentaContableProveedores} from "../../../comun/inputs/cuentaContableProveedores/cuentaContableProveedores";
+import {cambiosCuentaContableProveedores} from "../../../../../api/catalogos/proveedores/methods";
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
 
 class EditarProveedorCuentaContable {
@@ -40,7 +40,7 @@ class EditarProveedorCuentaContable {
     actualizarDatosGenerales(editarProveedorCuentaContableForm) {
         this.datos._id = this.propietarioId;
 
-        cambiosCuentaContable.callPromise(this.datos).then(this.$bindToContext(() => {
+        cambiosCuentaContableProveedores.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarProveedorCuentaContableForm);
         })).catch(this.$bindToContext((err)=>{
@@ -54,7 +54,7 @@ const name = 'editarProveedorCuentaContable';
 export default angular
     .module(name, [
         Alertas,
-        CuentaContable
+        CuentaContableProveedores
     ])
     .component(name, {
         template,

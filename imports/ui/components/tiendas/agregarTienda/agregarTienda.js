@@ -5,7 +5,7 @@ import template from "./agregarTienda.html";
 import {name as TiendaDatosGenerales} from "./tiendaDatosGenerales/tiendaDatosGenerales";
 import {name as TiendaDatosDireccion} from "./tiendaDatosDireccion/tiendaDatosDireccion";
 import {name as TiendaDatosFiscales} from "./tiendaDatosFiscales/tiendaDatosFiscales";
-import {name as CuentaContable} from "../../comun/inputs/cuentaContable/cuentaContable";
+import {name as CuentaContableTiendas} from "../../comun/inputs/cuentaContableTiendas/cuentaContableTiendas";
 
 class AgregarTienda {
     constructor($scope, $reactive, $state) {
@@ -30,7 +30,7 @@ export default angular
         TiendaDatosGenerales,
         TiendaDatosDireccion,
         TiendaDatosFiscales,
-        CuentaContable
+        CuentaContableTiendas
     ])
     .component(name, {
         template,

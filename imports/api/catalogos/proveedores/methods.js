@@ -48,8 +48,8 @@ export const cambiosProveedor = new ValidatedMethod({
     }
 });
 
-export const cambiosCuentaContable = new ValidatedMethod({
-    name: 'proveedores.cambiosCuentaContable',
+export const cambiosCuentaContableProveedores = new ValidatedMethod({
+    name: 'proveedores.cambiosCuentaContableProveedores',
     mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
@@ -92,7 +92,7 @@ export const cambiosProveedorActivar = new ValidatedMethod({
     }
 });
 
-const PROVEEDORES_METHODS = _.pluck([altaProveedor, cambiosProveedor, cambiosCuentaContable, cambiosProveedorActivar], 'name');
+const PROVEEDORES_METHODS = _.pluck([altaProveedor, cambiosProveedor, cambiosCuentaContableProveedores, cambiosProveedorActivar], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

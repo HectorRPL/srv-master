@@ -40,14 +40,14 @@
                 <div class="col-sm-offset-3 col-sm-6">
                     <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
                     <h4>No edite este campo si no está seguro que todos los contadores de cada tienda estén enterados.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : editarProveedorCuentaContableForm.cuentaContable.$invalid && !editarProveedorCuentaContableForm.cuentaContable.$pristine}">
-                        <div ng-messages="editarProveedorCuentaContableForm.cuentaContable.$dirty && editarProveedorCuentaContableForm.cuentaContable.$error" role="alert">
+                    <div class="form-group" ng-class="{ 'has-error' : editarProveedorCuentaContableForm.cuentaContableProveedores.$invalid && !editarProveedorCuentaContableForm.cuentaContableProveedores.$pristine}">
+                        <div ng-messages="editarProveedorCuentaContableForm.cuentaContableProveedores.$dirty && editarProveedorCuentaContableForm.cuentaContableProveedores.$error" role="alert">
                             <label>Nueva Cuenta Contable *
                                 <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
                                 <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
                             </label>
-                            <cuenta-contable dato="editarProveedorCuentaContable.datos.cuentaContable"></cuenta-contable>
+                            <cuenta-contable-proveedores dato="editarProveedorCuentaContable.datos.cuentaContable"></cuenta-contable-proveedores>
                         </div>
                     </div>
                 </div>
