@@ -30,5 +30,6 @@ export default angular
         controller: MostrarDatosFiscales,
         bindings: {
             propietarioId: '<',
+            tiendaMatriz: '<'
         }
     });
