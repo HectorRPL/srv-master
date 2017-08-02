@@ -10,14 +10,13 @@
                         <div class="contact-box">
                             <div class="col-sm-12">
                                 <div class="text-center">
-                                    <i class="fa fa-money fa-5x" aria-hidden="true"></i>
+                                    <i class="fa fa-money fa-4x" aria-hidden="true"></i>
                                     <div class="m-t-xs font-bold"></div>
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <h2>Factor: <br>
-                                    {{configProductoTienda.producto.factor().nombre}}
-                                </h2>
+                                <h2>FACTOR</h2>
+                                <h2>{{configProductoTienda.producto.factor().nombre}}</h2>
                                 <inventario-producto-factor
                                         factor-id="configProductoTienda.producto.factorId"
                                         costo="configProductoTienda.producto.costo">
@@ -26,7 +25,7 @@
                             <div class="col-sm-12">
                                 <button type="button"
                                         class="btn btn-primary btn-xs pull-right"
-                                        ng-click="configProductoTienda.editar()">
+                                        ng-click="configProductoTienda.reasignarFactorModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                                 </button>
                             </div>
@@ -37,14 +36,13 @@
                         <div class="contact-box">
                             <div class="col-sm-12">
                                 <div class="text-center">
-                                    <i class="fa fa-hand-o-down fa-5x" aria-hidden="true"></i>
+                                    <i class="fa fa-hand-o-down fa-4x" aria-hidden="true"></i>
                                     <div class="m-t-xs font-bold"></div>
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <h2>Promoción: <br>
-                                    {{configProductoTienda.producto.promocion().nombre}}
-                                </h2>
+                                <h2>PROMOCIÓN</h2>
+                                <h2>{{configProductoTienda.producto.promocion().nombre}}</h2>
                             </div>
                             <div class="col-sm-12">
                                 <button type="button"
@@ -60,14 +58,13 @@
                         <div class="contact-box">
                             <div class="col-sm-12">
                                 <div class="text-center">
-                                    <i class="fa fa-briefcase fa-5x" aria-hidden="true"></i>
+                                    <i class="fa fa-briefcase fa-4x" aria-hidden="true"></i>
                                     <div class="m-t-xs font-bold"></div>
                                 </div>
                             </div>
                             <div class="col-sm-12">
-                                <h2>Comisión: <br>
-                                    {{configProductoTienda.producto.comision().nombre}}
-                                </h2>
+                                <h2>COMISIÓN</h2>
+                                <h2>{{configProductoTienda.producto.comision().nombre}}</h2>
                             </div>
                             <div class="col-sm-12">
                                 <button type="button"

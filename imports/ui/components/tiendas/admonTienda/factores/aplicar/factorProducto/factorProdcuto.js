@@ -38,6 +38,8 @@ class FactorProducto {
             productos: this.productosAplicarFac,
             operacion: 'factorProducto'
         };
+        console.log('[32] this.productosAplicarFac', this.productosAplicarFac);
+        console.log('[41 Esto vamos a evniar "datos"]', datos);
         aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarFac = [];
             this.tipoMsj = 'success';

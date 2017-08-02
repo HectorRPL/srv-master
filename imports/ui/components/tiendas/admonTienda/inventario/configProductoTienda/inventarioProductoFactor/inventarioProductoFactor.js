@@ -14,7 +14,6 @@ class InventarioProductoFactor {
 
         this.helpers({
             factor() {
-                console.log('17', this.factor);
                 return Factores.findOne({_id: this.getReactively('factorId')});
             }
         });

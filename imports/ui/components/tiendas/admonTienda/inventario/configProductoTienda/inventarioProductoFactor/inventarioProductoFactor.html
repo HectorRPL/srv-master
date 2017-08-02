@@ -1,39 +1,103 @@
-<ul class="list-group clear-list m-t">
-    <li class="list-group-item fist-item">
-        <span class="pull-right"></span>
-        <span class="label label-success">&nbsp;&nbsp;&nbsp;Costo&nbsp;&nbsp;&nbsp;</span>
-        <strong>${{inventarioProductoFactor.costo  | number:2 }}</strong>
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor1 | number:2 }}</span>
-        <span class="label label-info">Cliente 1</span> {{inventarioProductoFactor.factor.factor1 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor2 | number:2 }}</span>
-        <span class="label label-info">Cliente 2</span> {{inventarioProductoFactor.factor.factor2 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor3 | number:2 }}</span>
-        <span class="label label-info">Cliente 3</span> {{inventarioProductoFactor.factor.factor3 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor4 | number:2 }}</span>
-        <span class="label label-info">Cliente 4</span> {{inventarioProductoFactor.factor.factor4 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor5 | number:2 }}</span>
-        <span class="label label-info">Cliente 5</span> {{inventarioProductoFactor.factor.factor5 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor6 | number:2 }}</span>
-        <span class="label label-info">Cliente 6</span> {{inventarioProductoFactor.factor.factor6 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor7 | number:2 }}</span>
-        <span class="label label-info">Cliente 7</span> {{inventarioProductoFactor.factor.factor7 | number:4 }}
-    </li>
-    <li class="list-group-item">
-        <span class="pull-right">${{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor8 | number:2 }}</span>
-        <span class="label label-info">Cliente 8</span> {{inventarioProductoFactor.factor.factor8 | number:4 }}
-    </li>
-</ul>
+<table class="table table-hover margin bottom">
+    <!--<thead>-->
+        <!--<tr>-->
+            <!--<th style="width: 1%" class="text-center"></th>-->
+            <!--<th></th>-->
+            <!--<th class="text-right">Costo</th>-->
+        <!--</tr>-->
+    <!--</thead>-->
+    <tbody>
+        <tr>
+            <td></td>
+            <td>Costo</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo  | number:2}}
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="table table-hover margin bottom">
+    <thead>
+        <tr>
+            <th style="width: 1%" class="text-center">Lista</th>
+            <th>Factor</th>
+            <th class="text-right">Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="text-center">1</td>
+            <td> {{inventarioProductoFactor.factor.factor1 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor1 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">2</td>
+            <td> {{inventarioProductoFactor.factor.factor2 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor2 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">3</td>
+            <td> {{inventarioProductoFactor.factor.factor3 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor3 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">4</td>
+            <td> {{inventarioProductoFactor.factor.factor4 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor4 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">5</td>
+            <td> {{inventarioProductoFactor.factor.factor5 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor5 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">6</td>
+            <td> {{inventarioProductoFactor.factor.factor6 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor6 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">7</td>
+            <td> {{inventarioProductoFactor.factor.factor7 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor7 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-center">8</td>
+            <td> {{inventarioProductoFactor.factor.factor8 | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-navy font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor8 | number:2 }}
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
