@@ -11,7 +11,7 @@
             </div>
 
             <h1 class="no-margins font-bold text-success">
-                {{inventarioProductoComision.comision.comisionProdInt}}%
+                {{inventarioProductoComision.comision.comisionProdInt | number:2}}%
             </h1>
             <small>Sobre mercancía en tienda</small>
         </div>
@@ -30,7 +30,7 @@
             </div>
 
             <h1 class="no-margins font-bold text-success">
-                {{inventarioProductoComision.comision.comisionProdExt}}%
+                {{inventarioProductoComision.comision.comisionProdExt | number:2}}%
             </h1>
             <small>Sobre mercancía sacada de otra tienda</small>
         </div>
