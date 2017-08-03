@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 02/08/2017.
  */
-import {Factores} from "../../../../../../../api/factores/collection";
+import {Comisiones} from "../../../../../../../api/comisiones/collection";
 import template from "./inventarioProductoComision.html";
 
 class InventarioProductoComision {
@@ -10,11 +10,12 @@ class InventarioProductoComision {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.subscribe('factores.todos', () =>[{_id: this.getReactively('comisionId')}]);
+        this.subscribe('comisiones.todos', () =>[{_id: this.getReactively('comisionId')}]);
 
         this.helpers({
-            factor() {
-                return Factores.findOne({_id: this.getReactively('comisionId')});
+            comision() {
+                console.log('XXXXXXX', this.getReactively('comisionId'));
+                return Comisiones.findOne({_id: this.getReactively('comisionId')});
             }
         });
     }

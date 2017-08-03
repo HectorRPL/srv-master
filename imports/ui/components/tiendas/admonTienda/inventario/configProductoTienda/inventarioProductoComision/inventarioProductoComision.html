@@ -1,1 +1,30 @@
-<pre>{{inventarioProductoComision.comisionId}}</pre>
+<!--<pre>{{inventarioProductoComision.comisionId}}</pre>-->
+<!--<pre>{{inventarioProductoComision.comision|json}}</pre>-->
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Comisión sobre producto</h5>
+            <span class="label label-success pull-right">Interno</span>
+        </div>
+        <div class="ibox-content">
+            <h1 class="no-margins font-bold text-success">
+                {{inventarioProductoComision.comision.comisionProdInt}}%
+            </h1>
+            <small>Sobre mercancía en tienda</small>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Comisión sobre producto</h5>
+            <span class="label label-success pull-right">Externo</span>
+        </div>
+        <div class="ibox-content">
+            <h1 class="no-margins font-bold text-success">
+                {{inventarioProductoComision.comision.comisionProdExt}}%
+            </h1>
+            <small>Sobre mercancía sacada de otra tienda</small>
+        </div>
+    </div>
+</div>

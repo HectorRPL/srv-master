@@ -1,4 +1,72 @@
+<form role="form" id="reasignarComisionProductoFrmId" name="reasignarComisionProductoFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-sm-10">
+            <h2>{{reasignarComisionProducto.titulo}}
+                <small></small>
+            </h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-sm-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="reasignarComisionProducto.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>
+                            Para cambiar la comisión del producto <strong>{{reasignarComisionProducto.resolve.productoInventario.nombreProducto}}</strong> debe asignar una comision al producto seleccionado.
+                        </p>
+                        <buscar-comision
+                                ng-hide="reasignarComisionProducto.tipoMsj === 'success'"
+                                comision="reasignarComisionProducto.comisionSelec">
+                        </buscar-comision>
+                    </div>
+                    <div class="col-sm-12 animated fadeIn" ng-show="reasignarComisionProducto.comisionSelec._id">
+                        <h3 class="text-center" ng-hide="reasignarComisionProducto.tipoMsj === 'success'">Vista previa</h3>
+                        <inventario-producto-comision
+                                comision-id="reasignarComisionProducto.comisionSelec._id">
+                        </inventario-producto-comision>
+                    </div>
+                </div>
+                <!--ALERTAS-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- ALERTA -->
+                        <alertas tipo="reasignarComisionProducto.tipoMsj" mensaje="reasignarComisionProducto.msj"></alertas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON CANCELAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-click="reasignarComisionProducto.cerrar()">
+                    Cerrar
+                </button>
+                <!--BOTON CREAR -->
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-hide="reasignarComisionProducto.tipoMsj === 'success'"
+                        ng-disabled="reasignarComisionProductoFrm.$invalid"
+                        ng-click="reasignarComisionProducto.aplicarFactorProducto()">
+                    Aplicar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
 <pre>resolve: {{reasignarComisionProducto.resolve|json}}</pre>
-<inventario-producto-comision
-        comision-id="reasignarComisionProducto.resolve.productoInventario.comisionId">
-</inventario-producto-comision>
+
+
