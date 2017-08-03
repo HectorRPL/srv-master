@@ -15,7 +15,8 @@ Comisiones.deny({
 Comisiones.schema = new SimpleSchema({
     _id:             {type:  String,  regEx: SimpleSchema.RegEx.Id},
     nombre:          {type:  String,  autoValue: function () { return this.value.toUpperCase() } },
-    comision:        {type:  Number,  defaultValue: 0.0, decimal: true, max: 20, min: .0001},
+    comisionProdInt: {type:  Number,  defaultValue: 0.0, decimal: true, max: 20, min: .0001},
+    comisionProdExt: {type:  Number,  defaultValue: 0.0, decimal: true, max: 20, min: .0001},
     fechaCreacion:   {type:  Date,    defaultValue: new Date(), denyUpdate: true}
 });
 

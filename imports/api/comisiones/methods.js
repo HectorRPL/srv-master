@@ -9,7 +9,7 @@ import {_} from "meteor/underscore";
 import {Comisiones} from "./collection";
 import {BitaFactPromoComi} from "../bitacoras/factoresPromo/collection";
 
-const CAMPOS_COMISIONES = ['nombre', 'comision'];
+const CAMPOS_COMISIONES = ['nombre', 'comisionProdInt', 'comisionProdExt'];
 const CAMPO_ID = ['_id'];
 
 export const altaComision = new ValidatedMethod({
@@ -24,10 +24,11 @@ export const altaComision = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({nombre, comision}) {
+    run({nombre, comisionProdInt, comisionProdExt}) {
         return Comisiones.insert({
             nombre,
-            comision
+            comisionProdInt,
+            comisionProdExt
         }, (err) => {
             if (err) {
                 throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
@@ -51,14 +52,20 @@ export const cambiosComisiones = new ValidatedMethod({
     run({
         _id,
         nombre,
-        comision
+        comisionProdInt,
+        comisionProdExt
     }) {
+        console.log('[nombre]', nombre);
+        console.log('[comisionProdInt]', comisionProdInt);
+        console.log('[comisionProdExt]', comisionProdExt);
+
         return Comisiones.update({
             _id: _id
         }, {
             $set: {
                 nombre: nombre,
-                comision1: comision
+                comisionProdInt: comisionProdInt,
+                comisionProdExt: comisionProdExt
             }
         }, (err) => {
             if (err) {

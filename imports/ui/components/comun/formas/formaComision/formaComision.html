@@ -29,28 +29,53 @@
     </div>
 
     <div class="row">
-        <!-- COMISIÓN -->
-        <div class="col-sm-4">
+        <!--COMISION DE PRODUCTO EXISTENTE DE MI TIENDA-->
+        <div class="col-sm-6">
             <div class="form-group"
-                 ng-class="{ 'has-error' : formaComisionFrm['comision'+$index].$invalid && !formaComisionFrm['comision'+$index].$pristine}">
-                <div ng-messages="formaComisionFrm['comision'+$index].$dirty && formaComisionFrm['comision'+$index].$error" role="alert">
+                 ng-class="{ 'has-error' : formaComisionFrm.comisionProdInt.$invalid && !formaComisionFrm.comisionProdInt.$pristine}">
+                <div ng-messages="formaComisionFrm.comisionProdInt.$dirty && formaComisionFrm.comisionProdInt.$error" role="alert">
                     <label>
-                        Comision *
+                        Comisión tienda *
                         <span class="animated fadeIn" style="color:red;" ng-message="min">mix 0.0000%</span>
                         <span class="animated fadeIn" style="color:red;" ng-message="max">max 20%</span>
                         <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
                         <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                     </label>
-                    <input id="comisionId"
+                    <input id="comisionProdIntId"
                            class="form-control"
                            type="number"
-                           name="comision"
+                           name="comisionProdInt"
                            max="20.00"
                            min="0.0001"
                            step=".0001"
                            required
                            ng-disabled="formaComision.tipoMsj === 'success'"
-                           ng-model="formaComision.comision.comision">
+                           ng-model="formaComision.comision.comisionProdInt">
+                </div>
+            </div>
+        </div>
+        <!--COMISION DE PRODUCTO EXISTENTE DE TIENDA EXTERNA-->
+        <div class="col-sm-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : formaComisionFrm.comisionProdExt.$invalid && !formaComisionFrm.comisionProdExt.$pristine}">
+                <div ng-messages="formaComisionFrm.comisionProdExt.$dirty && formaComisionFrm.comisionProdExt.$error" role="alert">
+                    <label>
+                        Comisión tienda externa *
+                        <span class="animated fadeIn" style="color:red;" ng-message="min">mix 0.0000%</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="max">max 20%</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <input id="comisionProdExtId"
+                           class="form-control"
+                           type="number"
+                           name="comisionProdExt"
+                           max="20.00"
+                           min="0.0001"
+                           step=".0001"
+                           required
+                           ng-disabled="formaComision.tipoMsj === 'success'"
+                           ng-model="formaComision.comision.comisionProdExt">
                 </div>
             </div>
         </div>

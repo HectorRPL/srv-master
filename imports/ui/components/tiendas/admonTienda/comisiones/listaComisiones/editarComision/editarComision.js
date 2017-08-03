@@ -17,7 +17,7 @@ class EditarComision {
     }
 
     editarComision() {
-        this.datos = angular.copy(this.resolve.comision);
+        this.datos = angular.copy(this.resolve.editarComision);
         delete this.datos.fechaCreacion;
 
         console.log(this.datos);

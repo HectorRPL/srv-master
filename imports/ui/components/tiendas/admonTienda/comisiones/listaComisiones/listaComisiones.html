@@ -17,7 +17,8 @@
     <thead>
         <tr>
             <th class="">Nombre</th>
-            <th class="text-right">Porcentaje</th>
+            <th class="text-right">Comisión Tienda</th>
+            <th class="text-right">Comisión Tienda Externa</th>
             <th class=""></th>
         </tr>
     </thead>
@@ -27,7 +28,8 @@
             dir-paginate="comision in listaComisiones.comisiones | itemsPerPage: listaComisiones.perPage"
             total-items="listaComisiones.comisionesCount">
             <td class=""><a class="text-navy" style="text-decoration: inherit" ui-sref="^.productos({comisionId: comision._id})">{{comision.nombre}}</a></td>
-            <td class="text-right">{{comision.comision | number:4}}%</td>
+            <td class="text-right">{{comision.comisionProdInt | number:4}}%</td>
+            <td class="text-right">{{comision.comisionProdExt | number:4}}%</td>
             <td class="text-right">
                 <div class="btn-group" role="group" aria-label="...">
                     <div class="btn-group" role="group">

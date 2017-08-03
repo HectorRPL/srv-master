@@ -4,8 +4,10 @@
 import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
 import {name as InventarioProductoFactor} from "./inventarioProductoFactor/inventarioProductoFactor";
 import {name as InventarioProductoPromocion} from "./inventarioProductoPromocion/inventarioProductoPromocion";
+import {name as InventarioProductoComision} from "./inventarioProductoComision/inventarioProductoComision";
 import {name as ReasignarFactorProducto} from "./inventarioProductoFactor/reasignarFactorProducto/reasignarFactorProducto";
 import {name as ReasignarPromocionProducto} from "./inventarioProductoPromocion/reasignarPromocionProducto/reasignarPromocionProducto";
+import {name as ReasignarComisionProducto} from "./inventarioProductoComision/reasignarComisionProducto/reasignarComisionProducto";
 import template from "./configProductoTienda.html";
 
 class ConfigProductoTienda {
@@ -61,6 +63,22 @@ class ConfigProductoTienda {
             }
         });
     }
+
+    reasignarComisionModal(productoInventario, nombreProducto) {
+        productoInventario.nombreProducto = nombreProducto;
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'ReasignarComisionProducto',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true,
+            resolve: {
+                productoInventario: function () {
+                    return productoInventario;
+                }
+            }
+        });
+    }
 }
 
 const name = 'configProductoTienda';
@@ -69,8 +87,10 @@ export default angular
     .module(name, [
         InventarioProductoFactor,
         InventarioProductoPromocion,
+        InventarioProductoComision,
         ReasignarFactorProducto,
-        ReasignarPromocionProducto
+        ReasignarPromocionProducto,
+        ReasignarComisionProducto
     ])
     .component(name, {
         template,

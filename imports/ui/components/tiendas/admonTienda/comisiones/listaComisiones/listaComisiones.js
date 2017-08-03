@@ -57,6 +57,7 @@ class ListaComisiones {
     }
 
     editarComisionModal(comision) {
+        let editarComision = angular.copy(comision);
         var modalInstance = this.$uibModal.open({
             animation: true,
             component: 'EditarComision',
@@ -64,8 +65,8 @@ class ListaComisiones {
             size: 'md',
             keyboard: true,
             resolve: {
-                comision: function () {
-                    return comision;
+                editarComision: function () {
+                    return editarComision;
                 }
             }
         });
