@@ -24,12 +24,10 @@ class ReasignarPromocionProducto {
             }],
             operacion: 'promocionProducto'
         };
-        console.log('Esto es lo que vamos a enviar', datos);
         aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
             this.producto = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log('[32]', err);
             this.tipoMsj = 'danger';
         }));
     }

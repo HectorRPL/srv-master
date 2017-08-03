@@ -14,7 +14,6 @@ class InventarioProductoComision {
 
         this.helpers({
             comision() {
-                console.log('XXXXXXX', this.getReactively('comisionId'));
                 return Comisiones.findOne({_id: this.getReactively('comisionId')});
             }
         });

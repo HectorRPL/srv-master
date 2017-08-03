@@ -64,7 +64,6 @@ class ListaProdsMarcaTienda {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarExistenciaFrm);
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
