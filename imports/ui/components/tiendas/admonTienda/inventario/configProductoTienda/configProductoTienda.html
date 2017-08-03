@@ -43,11 +43,15 @@
                             <div class="col-sm-12">
                                 <h2>PROMOCIÓN</h2>
                                 <h2>{{configProductoTienda.producto.promocion().nombre}}</h2>
+                                <inventario-producto-promocion
+                                        promocion-id="configProductoTienda.producto.promocionId"
+                                        costo="configProductoTienda.producto.costo">
+                                </inventario-producto-promocion>
                             </div>
                             <div class="col-sm-12">
                                 <button type="button"
                                         class="btn btn-primary btn-xs pull-right"
-                                        ng-click="configProductoTienda.editar()">
+                                        ng-click="configProductoTienda.reasignarPromocionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                                 </button>
                             </div>

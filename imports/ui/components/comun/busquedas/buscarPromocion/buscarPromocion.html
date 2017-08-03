@@ -1,0 +1,8 @@
+<div class="input-group m-b">
+    <input type="text"
+           class="form-control"
+           placeholder="Ingresa el nombre del Factor"
+           uib-typeahead="promocion as promocion.nombre for promocion in buscarPromocion.buscarPromocion($viewValue)"
+           ng-model="buscarPromocion.promocion">
+    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+</div>

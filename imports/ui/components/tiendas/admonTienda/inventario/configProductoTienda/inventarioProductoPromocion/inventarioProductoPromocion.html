@@ -1,0 +1,28 @@
+<!--<pre>inventarioProductoPromocion: <br> {{inventarioProductoPromocion.promocionId|json}}</pre>-->
+<!--<pre>inventarioProductoPromocion: <br> {{inventarioProductoPromocion.costo|json}}</pre>-->
+<!--<pre>promocion: <br> {{inventarioProductoPromocion.promocion|json}}</pre>-->
+
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <span class="label label-success pull-right"
+                  ng-show="inventarioProductoPromocion.promocion.precioLista">PRECIO DE LISTA
+            </span>
+            <span class="label label-info pull-right"
+                  ng-show="!inventarioProductoPromocion.promocion.precioLista">PRECIO DE COMPRA
+            </span>
+            <h5>Se aplica sobre</h5>
+        </div>
+        <div class="ibox-content">
+            <small>Precio último al público</small>
+            <h1 class="no-margins">$ 40 886,200</h1>
+
+            <div class="stat-percent font-bold text-success">{{inventarioProductoPromocion.promocion.descuento}}% <i class="fa fa-bolt"></i></div>
+            <small>
+                   Del {{inventarioProductoPromocion.promocion.fechaInicio | date:'dd/MMM/yyyy' }}
+                   <br>
+                   Al: {{inventarioProductoPromocion.promocion.fechaFin | date:'dd/MMM/yyyy' }}
+            </small>
+        </div>
+    </div>
+</div>

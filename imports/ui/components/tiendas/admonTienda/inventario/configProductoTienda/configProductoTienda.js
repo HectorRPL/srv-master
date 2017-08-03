@@ -3,7 +3,9 @@
  */
 import {ProductosInventarios} from "../../../../../../api/inventarios/productosInventarios/collection";
 import {name as InventarioProductoFactor} from "./inventarioProductoFactor/inventarioProductoFactor";
+import {name as InventarioProductoPromocion} from "./inventarioProductoPromocion/inventarioProductoPromocion";
 import {name as ReasignarFactorProducto} from "./inventarioProductoFactor/reasignarFactorProducto/reasignarFactorProducto";
+import {name as ReasignarPromocionProducto} from "./inventarioProductoPromocion/reasignarPromocionProducto/reasignarPromocionProducto";
 import template from "./configProductoTienda.html";
 
 class ConfigProductoTienda {
@@ -43,6 +45,22 @@ class ConfigProductoTienda {
             }
         });
     }
+
+    reasignarPromocionModal(productoInventario, nombreProducto) {
+        productoInventario.nombreProducto = nombreProducto;
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'ReasignarPromocionProducto',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true,
+            resolve: {
+                productoInventario: function () {
+                    return productoInventario;
+                }
+            }
+        });
+    }
 }
 
 const name = 'configProductoTienda';
@@ -50,7 +68,9 @@ const name = 'configProductoTienda';
 export default angular
     .module(name, [
         InventarioProductoFactor,
-        ReasignarFactorProducto
+        InventarioProductoPromocion,
+        ReasignarFactorProducto,
+        ReasignarPromocionProducto
     ])
     .component(name, {
         template,

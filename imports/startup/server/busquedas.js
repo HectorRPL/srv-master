@@ -10,3 +10,4 @@ import "../../api/catalogos/productos/busquedas";
 import "../../api/catalogos/tiendas/busquedas";
 import "../../api/empleados/busquedas";
 import "../../api/comisiones/busquedas";
+import "../../api/promociones/busquedas";
