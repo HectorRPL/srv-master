@@ -1,69 +1,30 @@
-<form role="form"
-      id="editarEmpleadoContraseniaFormId"
-      name="editarEmpleadoContraseniaForm"
-      novalidate>
-    <!--DATOS FISCALES-->
-    <div class="row animated fadeInRight">
-        <div class="col-sm-4 b-r">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="contact-box">
-                        <div class="col-sm-4">
-                            <div class="text-center">
-                                <i class="fa fa-key fa-5x" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h2><strong>{{editarEmpleadoContrasenia.empleado.contrasenia}}</strong></h2>
-                            <address>
-                                <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
-                                <p>Al editar la Contraseña el empleado debe ser informado.</p>
-                            </address>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <!--BOTON EDITAR -->
-                    <button type="button"
-                            class="btn btn-primary btn-xs pull-right"
-                            ng-click="editarEmpleadoContrasenia.editar()">
-                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                    </button>
-                </div>
-            </div>
+<form class="animated fadeInRight" role="form" id="editarEmpleadoContraseniaFrmId" name="editarEmpleadoContraseniaFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 text-center">
+            <i class="fa fa-key fa-5x" aria-hidden="true"></i>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarEmpleadoContrasenia.ocultarBoton">
-            <div class="row">
-                <!--CUENTA CONTABLE-->
-                <div class="col-sm-offset-3 col-sm-6">
-                    <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
-                    <h4>Se deberá informar personalmente al empleado dicho cambio.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : editarEmpleadoContraseniaForm.contrasenia.$invalid && !editarEmpleadoContraseniaForm.contrasenia.$pristine}">
-                        <div ng-messages="editarEmpleadoContraseniaForm.contrasenia.$dirty && editarEmpleadoContraseniaForm.contrasenia.$error" role="alert">
-                            <label>Nueva Contraseña *
-                                <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
-                            </label>
-                            <contrasenia dato="editarEmpleadoContrasenia.datos.contrasenia"></contrasenia>
-                        </div>
-                    </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <br>
+            <br>
+            <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
+            <p>Se deberá informar personalmente al empleado de dicho cambio.</p>
+            <div class="form-group" ng-class="{ 'has-error' : editarEmpleadoContraseniaForm.contrasenia.$invalid && !editarEmpleadoContraseniaForm.contrasenia.$pristine}">
+                <div ng-messages="editarEmpleadoContraseniaForm.contrasenia.$dirty && editarEmpleadoContraseniaForm.contrasenia.$error" role="alert">
+                    <label>Nueva Contraseña *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
+                    </label>
+                    <contrasenia dato="editarEmpleadoContrasenia.datos.contrasenia"></contrasenia>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
-    <!--DIRECCIÓN FISCAL-->
-    <div class="row animated fadeInRight">
-    </div>
-    <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
             <alertas tipo="editarEmpleadoContrasenia.tipoMsj" mensaje="editarEmpleadoContrasenia.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="editarEmpleadoContrasenia.ocultarBoton">
-            <!--BOTON GUARDAR DATOS GENERALES-->
+        <div class="col-md-3">
             <button type="button"
                     class="btn btn-primary pull-right"
                     ng-disabled="editarEmpleadoContraseniaForm.$invalid"
