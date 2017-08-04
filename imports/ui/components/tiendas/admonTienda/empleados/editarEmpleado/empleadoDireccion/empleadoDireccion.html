@@ -1,49 +1,33 @@
-<div class="row animated fadeInRight">
-    <div class="col-sm-4 b-r">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="contact-box">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <address>
-                            {{empleadoDireccion.direccionActual.calle}}
-                            {{empleadoDireccion.direccionActual.numExt}}<span ng-show="empleadoDireccion.direccionActual._id">,</span>
-                            <span ng-show="empleadoDireccion.direccionActual.numInt">Int. {{empleadoDireccion.direccionActual.numInt}}.</span> <br>
-                            {{empleadoDireccion.direccionActual.colonia}}
-                            <span ng-show="empleadoDireccion.direccionActual._id">CP.</span> {{empleadoDireccion.direccionActual.codigoPostal}}
-                            {{empleadoDireccion.direccionActual.delMpio}}<span ng-show="empleadoDireccion.direccionActual._id">,</span>
-                            {{empleadoDireccion.direccionActual.estado}}<br>
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
+<form role="form" id="empleadoDireccionFrmId" name="empleadoDireccionFrm" novalidate>
+    <!--DATOS FISCALES-->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <forma-direccion direccion="empleadoDireccion.direccion"></forma-direccion>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <alertas tipo="empleadoDireccion.tipoMsj" mensaje="empleadoDireccion.msj"></alertas>
+                </div>
+                <div class="col-md-3">
+                    <!--BOTON GUARDAR DIRECCIÓN-->
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-hide="empleadoDireccion.direccion._id"
+                            ng-disabled="empleadoDireccionFrm.$invalid"
+                            ng-click="empleadoDireccion.guardarDireccion()">
+                        Guardar
+                    </button>
+                    <!--BOTON ACTUALIZAR DIRECCIÓN-->
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-show="empleadoDireccion.direccion._id"
+                            ng-disabled="empleadoDireccionFrm.$invalid"
+                            ng-click="empleadoDireccion.actualizarDireccion()">
+                        Actualizar
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-12">
-                <!--BOTON EDITAR -->
-                <button type="button"
-                        class="btn btn-primary btn-xs pull-right"
-                        ng-show="empleadoDireccion.direccionActual._id && !empleadoDireccion.mostrarCampos"
-                        ng-click="empleadoDireccion.editar()">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                </button>
-            </div>
         </div>
     </div>
-    <!--DIRECCION-->
-    <div class="col-sm-8 animated fadeInRight">
-        <div class="row">
-            <cambios-direccion
-                    ng-if="empleadoDireccion.direccionActual._id && empleadoDireccion.mostrarCampos"
-                    direccion="empleadoDireccion.direccion">
-            </cambios-direccion>
-            <alta-direccion
-                    ng-if="!empleadoDireccion.direccionActual._id"
-                    propietario-id="empleadoDireccion.propietarioId">
-            </alta-direccion>
-        </div>
-    </div>
-</div>
+</form>
