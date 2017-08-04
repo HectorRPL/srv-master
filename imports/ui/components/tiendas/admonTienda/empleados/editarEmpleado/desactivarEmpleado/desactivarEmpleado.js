@@ -16,36 +16,26 @@ class DesactivarEmpleado {
 
         this.tipoMsj = '';
 
-
-        // /*
         this.subscribe('empleados.todos', () => [{_id: this.empleadoId}]);
         this.helpers({
             empleado(){
                 return Empleados.findOne({_id: this.empleadoId});
             }
         });
-        // */
     }
 
     editar() {
         this.mostrarCampos = true;
     }
 
-    limpiarCampos(desactivarEmpleadoForm) {
-        this.datos = {};
-        desactivarEmpleadoForm.$setPristine();
-    }
-
-    desactivar(desactivarEmpleadoForm) {
+    desactivar() {
         this.datos._id = this.empleadoId;
 
         cambiosEmpleadosActivar.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(desactivarEmpleadoForm);
         })).catch(this.$bindToContext((err)=> {
             this.tipoMsj = 'danger';
         }));
-        // */
     }
 
 }
