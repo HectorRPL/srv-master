@@ -6,6 +6,7 @@ import {name as EditarEmpleadoGenerales} from "./editarEmpleadoGenerales/editarE
 import {name as EmpleadoDireccion} from "./empleadoDireccion/empleadoDireccion";
 import {name as EditarEmpleadoContrasenia} from "./editarEmpleadoContrasenia/editarEmpleadoContrasenia";
 import {name as DesactivarEmpleado} from "./desactivarEmpleado/desactivarEmpleado";
+import {name as MostrarDireccion} from "../../../../comun/mostrar/mostrarDireccion/mostrarDireccion";
 import template from "./editarEmpleado.html";
 
 class EditarEmpleado {
@@ -19,23 +20,22 @@ class EditarEmpleado {
 
         $scope.oneAtATime = true;
 
-        this.acordeon = [
-            {titulo: "Datos Generales", estado: "app.tienda.admon.empleados.editar.generales",   icono: 'fa fa-user'},
-            {titulo: "Dirección",       estado: "app.tienda.admon.empleados.editar.direccion",   icono: 'fa fa-map-marker'},
-            {titulo: "Contraseña",      estado: "app.tienda.admon.empleados.editar.contrasenia", icono: 'fa fa-key'},
-            {titulo: "Eliminar",        estado: "app.tienda.admon.empleados.editar.desactivar",  icono: 'fa fa-trash-o'}
+        this.tabs = [
+            {titulo: "Datos Generales", estado: "app.tienda.admon.empleados.editar.generales", icono: 'fa fa-user'},
+            {titulo: "Dirección", estado: "app.tienda.admon.empleados.editar.direccion", icono: 'fa fa-map-marker'},
+            {titulo: "Contraseña", estado: "app.tienda.admon.empleados.editar.contrasenia", icono: 'fa fa-key'},
+            {titulo: "Eliminar", estado: "app.tienda.admon.empleados.editar.desactivar", icono: 'fa fa-trash-o'}
 
         ];
-// /*
+        this.tab = 0;
+
         this.subscribe('empleados.porTienda', () => [{_id: this.empleadoId}]);
-        this.datosEmpleadoNuevo = {};
         this.helpers({
             empleado(){
-                this.datosEmpleadoNuevo = Empleados.findOne({_id: this.empleadoId});
-                return angular.copy(this.datosEmpleadoNuevo);
-            }
+                return Empleados.findOne({_id: this.empleadoId});
+            },
         });
-// */
+
     }
 }
 
@@ -46,7 +46,8 @@ export default angular
         EditarEmpleadoGenerales,
         EmpleadoDireccion,
         EditarEmpleadoContrasenia,
-        DesactivarEmpleado
+        DesactivarEmpleado,
+        MostrarDireccion
     ])
     .component(name, {
         template,

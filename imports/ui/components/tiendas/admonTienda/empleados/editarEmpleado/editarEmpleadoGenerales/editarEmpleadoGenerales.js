@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 11/07/2017.
  */
-import template from "./editarEmpleadoGenerales.html";
-import {name as Alertas} from "../../../../../comun/alertas/alertas";
+import {Empleados} from "../../../../../../../api/empleados/collection";
 import {cambiosEmpleados} from "../../../../../../../api/empleados/methods";
 import {name as FormaDatosPersonales} from "../../../../../comun/formas/formaDatosPersonales/formaDatosPersonales";
-import {Empleados} from "../../../../../../../api/empleados/collection";
+import {name as Alertas} from "../../../../../comun/alertas/alertas";
+import template from "./editarEmpleadoGenerales.html";
 
 class EditarEmpleadoGenerales {
     constructor($scope, $reactive, $stateParams) {
@@ -17,53 +17,41 @@ class EditarEmpleadoGenerales {
 
         this.tipoMsj = '';
 
-        this.tienda = {};
-
         this.subscribe('empleados.porTienda', () => [{_id: this.empleadoId}]);
-        this.datosEmpleadoNuevo = {};
         this.helpers({
             empleado(){
-                this.datosEmpleadoNuevo = Empleados.findOne({_id: this._id});
-                return angular.copy(this.datosEmpleadoNuevo);
+                return Empleados.findOne({_id: this._id}) || {};
             }
         });
     }
 
-    editar() {
-        this.mostrarCampos = true;
-    }
+    actualizarDatosGenerales() {
+        delete this.empleado.fechaCreacion;
+        delete this.empleado.activo;
+        delete this.empleado.noEmpleado;
+        delete this.empleado.propietarioId;
+        delete this.empleado.tiendaId;
+        delete this.empleado.nombreCompleto;
 
-    limpiarCampos(editarEmpleadoGeneralesFrm) {
-        this.datosEmpleadoNuevo = {};
-        editarEmpleadoGeneralesFrm.$setPristine();
-    }
+        console.log('[23] Esto es lo que vamos a enviar', this.empleado);
 
-    actualizar(editarEmpleadoGeneralesFrm) {
-        delete this.datosEmpleadoNuevo.fechaCreacion;
-        delete this.datosEmpleadoNuevo._id;
-        delete this.datosEmpleadoNuevo.activo;
-        delete this.datosEmpleadoNuevo.noEmpleado;
-        delete this.datosEmpleadoNuevo.propietarioId;
-        delete this.datosEmpleadoNuevo.tiendaId;
-        delete this.datosEmpleadoNuevo.nombreCompleto;
-
-        this.datosEmpleadoNuevo._id = this._id;
-
-        cambiosEmpleados.callPromise(this.datosEmpleadoNuevo).then(this.$bindToContext(() => {
+        cambiosEmpleados.callPromise(this.empleado).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(editarEmpleadoGeneralesFrm);
+            ;
         })).catch(this.$bindToContext((err) => {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
+
 }
 
 const name = 'editarEmpleadoGenerales';
 
 export default angular
     .module(name, [
-        Alertas,
-        FormaDatosPersonales
+        FormaDatosPersonales,
+        Alertas
     ])
     .component(name, {
         template,
