@@ -1,0 +1,36 @@
+<form class="animated fadeInRight" role="form" id="editarEmpleadoPuestoFrmId" name="editarEmpleadoPuestoFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 text-center">
+            <i class="fa fa-address-card-o fa-5x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <br>
+            <br>
+
+            <p>Asigna el puesto al empleado para tenga los permisos necesarios para utilizar el sistema.</p>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : empleadoFrm.departamento.$invalid && !empleadoFrm.departamento.$pristine}">
+                <div ng-messages="empleadoFrm.departamento.$dirty && empleadoFrm.departamento.$error"
+                     role="alert">
+                    <label> Puesto *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <elegir-departamento departamento="editarEmpleadoPuesto.empleado.departamentoId"></elegir-departamento>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <alertas tipo="editarEmpleadoPuesto.tipoMsj" mensaje="editarEmpleadoPuesto.msj"></alertas>
+        </div>
+        <div class="col-md-3">
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-disabled="editarEmpleadoPuestoFrm.$invalid"
+                    ng-click="editarEmpleadoPuesto.editarEmpleadoPuesto()">
+                Aceptar
+            </button>
+        </div>
+    </div>
+</form>

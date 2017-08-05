@@ -9,7 +9,8 @@ import {_} from "meteor/underscore";
 import {Empleados} from "./collection";
 
 const ID = ['_id'];
-const CAMPOS_EMPLEADOS = [ 'nombres', 'apellidos', 'celular', 'departamentoId', 'email', 'nacimientoAnio', 'nacimientoDia', 'nacimientoMes', 'sexo', 'telefono'];
+const CAMPO_DEPARTAMENTOID = ['departamentoId'];
+const CAMPOS_EMPLEADOS = [ 'nombres', 'apellidos', 'celular', 'email', 'nacimientoAnio', 'nacimientoDia', 'nacimientoMes', 'sexo', 'telefono'];
 
 export const cambiosEmpleados = new ValidatedMethod({
     name: 'empleados.cambiosEmpleados',
@@ -18,9 +19,9 @@ export const cambiosEmpleados = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({_id, nombres, apellidos, celular, departamentoId, email, nacimientoAnio, nacimientoDia, nacimientoMes, sexo, telefono,}) {
+    run({_id, nombres, apellidos, celular, email, nacimientoAnio, nacimientoDia, nacimientoMes, sexo, telefono,}) {
         return Empleados.update({_id: _id}, {
-            $set: {nombres, apellidos, celular, departamentoId, email, nacimientoAnio, nacimientoDia, nacimientoMes, sexo, telefono,}
+            $set: {nombres, apellidos, celular, email, nacimientoAnio, nacimientoDia, nacimientoMes, sexo, telefono,}
         }, (err) => {
             if (err) {
                 throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
@@ -51,8 +52,30 @@ export const cambiosEmpleadosActivar = new ValidatedMethod({
     }
 });
 
+export const cambiosEmpleadosPuesto = new ValidatedMethod({
+    name: 'empleados.cambiosEmpleadosPuesto',
+    mixins: [CallPromiseMixin],
+    validate: new SimpleSchema({
+        _id: {type: String, regEx: SimpleSchema.RegEx.Id},
+        departamentoId: {type: String}
+    }).validator(),
+    run({
+        _id, departamentoId
+    }) {
+        return Empleados.update({_id: _id}, {
+            $set: {
+                departamentoId
+            }
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+            }
+        });
+    }
+});
 
-const EMPLEADOS_METHODS = _.pluck([cambiosEmpleados, cambiosEmpleadosActivar], 'name');
+
+const EMPLEADOS_METHODS = _.pluck([cambiosEmpleados, cambiosEmpleadosActivar, cambiosEmpleadosPuesto], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -32,6 +32,7 @@ class EditarEmpleadoGenerales {
         delete this.empleado.propietarioId;
         delete this.empleado.tiendaId;
         delete this.empleado.nombreCompleto;
+        delete this.empleado.departamentoId;
 
         console.log('[23] Esto es lo que vamos a enviar', this.empleado);
 

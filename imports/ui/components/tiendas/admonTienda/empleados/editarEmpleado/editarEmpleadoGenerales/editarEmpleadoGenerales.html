@@ -1,4 +1,4 @@
-<form role="form" id="empleadoFrmId" name="empleadoFrm" novalidate>
+<form class="animated fadeInRight" role="form" id="empleadoFrmId" name="empleadoFrm" novalidate>
     <!--DATOS FISCALES-->
     <div class="row">
         <div class="col-sm-12">
@@ -70,19 +70,6 @@
                             <input id="celularId" class="form-control" type="text" name="celular"
                                    aria-describedby="sizing-addon1" maxlength="10" ng-pattern="/^[0-9]{10}$/"
                                    required ng-model="editarEmpleadoGenerales.empleado.celular">
-                        </div>
-                    </div>
-                </div>
-                <!--PUESTO-->
-                <div class="col-sm-4">
-                    <div class="form-group"
-                         ng-class="{ 'has-error' : empleadoFrm.departamento.$invalid && !empleadoFrm.departamento.$pristine}">
-                        <div ng-messages="empleadoFrm.departamento.$dirty && empleadoFrm.departamento.$error"
-                             role="alert">
-                            <label> Puesto *
-                                <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                            </label>
-                            <elegir-departamento departamento="editarEmpleadoGenerales.empleado.departamentoId"></elegir-departamento>
                         </div>
                     </div>
                 </div>

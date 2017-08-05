@@ -7,6 +7,8 @@ import {name as EmpleadoDireccion} from "./empleadoDireccion/empleadoDireccion";
 import {name as EditarEmpleadoContrasenia} from "./editarEmpleadoContrasenia/editarEmpleadoContrasenia";
 import {name as DesactivarEmpleado} from "./desactivarEmpleado/desactivarEmpleado";
 import {name as MostrarDireccion} from "../../../../comun/mostrar/mostrarDireccion/mostrarDireccion";
+import {name as EditarEmpleadoPuesto} from "./editarEmpleadoPuesto/editarEmpleadoPuesto";
+
 import template from "./editarEmpleado.html";
 
 class EditarEmpleado {
@@ -22,6 +24,7 @@ class EditarEmpleado {
 
         this.tabs = [
             {titulo: "Datos Generales", estado: "app.tienda.admon.empleados.editar.generales", icono: 'fa fa-user'},
+            {titulo: "Puesto", estado: "app.tienda.admon.empleados.editar.puesto", icono: 'fa fa-address-card-o'},
             {titulo: "Dirección", estado: "app.tienda.admon.empleados.editar.direccion", icono: 'fa fa-map-marker'},
             {titulo: "Contraseña", estado: "app.tienda.admon.empleados.editar.contrasenia", icono: 'fa fa-key'},
             {titulo: "Eliminar", estado: "app.tienda.admon.empleados.editar.desactivar", icono: 'fa fa-trash-o'}
@@ -47,7 +50,8 @@ export default angular
         EmpleadoDireccion,
         EditarEmpleadoContrasenia,
         DesactivarEmpleado,
-        MostrarDireccion
+        MostrarDireccion,
+        EditarEmpleadoPuesto
     ])
     .component(name, {
         template,
