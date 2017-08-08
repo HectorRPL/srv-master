@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 27/06/2017.
  */
-import template from "./editarProveedorGenerales.html";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods";
-import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
+import {Proveedores}                    from "../../../../../api/catalogos/proveedores/collection";
+import {cambiosProveedor}               from "../../../../../api/catalogos/proveedores/methods";
+import {name as Alertas}                from "../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales}    from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
+import template                         from "./editarProveedorGenerales.html";
 
 class EditarProveedorGenerales {
     constructor($scope, $reactive, $stateParams) {
@@ -21,38 +21,27 @@ class EditarProveedorGenerales {
 
         this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
 
-        this.datosProveedorNuevo = {};
+        this.proveedor = {};
         this.helpers({
             proveedor(){
-                this.datosProveedorNuevo = Proveedores.findOne({_id: $stateParams.proveedorId});
-                return angular.copy(this.datosProveedorNuevo);
+                return Proveedores.findOne({_id: $stateParams.proveedorId});
             }
         });
     }
 
-    editar() {
-        this.mostrarCampos = true;
-    }
+    actualizarDatosGenerales() {
+        delete this.proveedor.cuentaContable;
+        delete this.proveedor.fechaCreacion;
+        delete this.proveedor._id;
+        delete this.proveedor.activo;
+        delete this.proveedor.dias;
 
-    limpiarCampos(datosGeneralesForm) {
-        this.datosProveedorNuevo = {};
-        datosGeneralesForm.$setPristine();
-    }
+        this.proveedor._id = this.propietarioId;
 
-
-    actualizarDatosGenerales(datosGeneralesForm) {
-        delete this.datosProveedorNuevo.cuentaContable;
-        delete this.datosProveedorNuevo.fechaCreacion;
-        delete this.datosProveedorNuevo._id;
-        delete this.datosProveedorNuevo.activo;
-        delete this.datosProveedorNuevo.dias;
-
-        this.datosProveedorNuevo._id = this.propietarioId;
-
-        cambiosProveedor.callPromise(this.datosProveedorNuevo).then(this.$bindToContext(() => {
+        cambiosProveedor.callPromise(this.proveedor).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(datosGeneralesForm);
         })).catch(this.$bindToContext((err)=>{
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
 

@@ -1,65 +1,24 @@
-<form role="form" class="p-lg" id="datosGeneralesFormId" name="datosGeneralesForm" novalidate>
+<form class="animated fadeInRight" role="form" id="editarProveedorGeneralesFrmId" name="editarProveedorGeneralesFrm"
+      novalidate>
     <!--DATOS FISCALES-->
-    <div class="row animated fadeInRight">
-        <div class="col-sm-4 b-r">
+    <div class="row">
+        <div class="col-sm-12">
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="contact-box">
-                        <div class="col-sm-4">
-                            <div class="text-center">
-                                <i class="fa fa fa-book fa-5x" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h3><strong>{{editarProveedorGenerales.proveedor.nombre}}</strong></h3>
-                            <address>
-                                <strong><i class="fa fa-envelope-o"></i> {{editarProveedorGenerales.proveedor.email}}</strong><br>
-                                <div ng-repeat="telefono in editarProveedorGenerales.proveedor.telefonos">
-                                    {{telefono.telefono}}
-                                    <span ng-show="telefono.extension">
-                                        Ext. {{telefono.extension}}
-                                    </span>
-                                </div>
-                            </address>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                <forma-datos-generales datos="editarProveedorGenerales.proveedor"></forma-datos-generales>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <alertas tipo="editarProveedorGenerales.tipoMsj" mensaje="editarProveedorGenerales.msj"></alertas>
                 </div>
-                <div class="col-sm-12">
-                    <!--BOTON EDITAR -->
+                <div class="col-sm-4">
                     <button type="button"
-                            class="btn btn-primary btn-xs pull-right"
-                            ng-click="editarProveedorGenerales.editar()">
-                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                            class="btn btn-primary pull-right"
+                            ng-disabled="editarProveedorGeneralesFrm.$invalid"
+                            ng-click="editarProveedorGenerales.actualizarDatosGenerales()">
+                        Actualizar
                     </button>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarProveedorGenerales.mostrarCampos">
-            <div class="row">
-                <forma-datos-generales datos="editarProveedorGenerales.datosProveedorNuevo"></forma-datos-generales>
-            </div>
-
-        </div>
-    </div>
-    <hr>
-    <!--DIRECCIÓN FISCAL-->
-    <div class="row animated fadeInRight">
-    </div>
-    <!--ALERTA Y BOTÓN-->
-    <div class="row">
-        <div class="col-md-8">
-            <alertas tipo="editarProveedorGenerales.tipoMsj" mensaje="editarProveedorGenerales.msj"></alertas>
-        </div>
-        <div class="col-md-3">
-            <!--BOTON GUARDAR DATOS GENERALES-->
-            <button type="button"
-                    class="btn btn-primary pull-right"
-                    ng-hide="!editarProveedorGenerales.mostrarCampos"
-                    ng-disabled="datosGeneralesForm.$invalid"
-                    ng-click="editarProveedorGenerales.actualizarDatosGenerales(datosGeneralesForm)">
-                Actualizar
-            </button>
         </div>
     </div>
 </form>

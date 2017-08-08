@@ -1,14 +1,15 @@
 /**
  * Created by Héctor on 27/06/2017.
  */
-import template from "./editarProveedor.html";
-import ngAnimate from "angular-animate";
-import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
-import {name as EditarProveedorGenerales} from "./editarProveedorGenerales/editarProveedorGenerales";
-import {name as EditarProveedorDireccion} from "./editarProveedorDireccion/editarProveedorDireccion";
-import {name as EditarProveedorDatosFiscales} from "./editarProveedorDatosFiscales/editarProveedorDatosFiscales";
-import {name as EditarProveedorCuentaContable} from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
-import {name as DesactivarProveedor} from "./desactivarProveedor/desactivarProveedor";
+import {Proveedores}                            from "../../../../api/catalogos/proveedores/collection";
+import {name as MostrarDireccion}               from "../../comun/mostrar/mostrarDireccion/mostrarDireccion";
+import {name as MostrarDatosFiscales}           from "../../comun/mostrar/mostrarDatosFiscales/mostrarDatosFiscales";
+import {name as EditarProveedorGenerales}       from "./editarProveedorGenerales/editarProveedorGenerales";
+import {name as EditarProveedorDireccion}       from "./editarProveedorDireccion/editarProveedorDireccion";
+import {name as EditarProveedorDatosFiscales}   from "./editarProveedorDatosFiscales/editarProveedorDatosFiscales";
+import {name as EditarProveedorCuentaContable}  from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
+import {name as DesactivarProveedor}            from "./desactivarProveedor/desactivarProveedor";
+import template                                 from "./editarProveedor.html";
 
 class EditarProveedor {
     constructor($scope, $state, $reactive, $stateParams) {
@@ -18,14 +19,13 @@ class EditarProveedor {
 
         this.proveedorId = $stateParams.proveedorId;
 
-        $scope.oneAtATime = true;
-
         this.nuevotitulo = 'Editar Proveedor';
+        this.tab = 0;
 
         /*TODO: por alguna razón desconocida cuando doy click en dirección o en fiscales el nombre desaparece
         * lo he comparado con tiendas y no sucede eso. No sé a que se deba
         * */
-        this.acordeon = [
+        this.tabs = [
             {titulo: 'Datos Generales', estado: '.generales',       icono: 'fa fa-book'},
             {titulo: 'Direccion',       estado: '.direccion',       icono: 'fa-map-marker'},
             {titulo: 'Datos Fiscales',  estado: '.fiscales',        icono: 'fa fa-address-card-o'},
@@ -46,7 +46,8 @@ const name = 'editarProveedor';
 
 export default angular
     .module(name, [
-        ngAnimate,
+        MostrarDireccion,
+        MostrarDatosFiscales,
         EditarProveedorGenerales,
         EditarProveedorDireccion,
         EditarProveedorDatosFiscales,

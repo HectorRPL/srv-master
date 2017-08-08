@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 30/06/2017.
  */
-import template from "./editarTiendaGenerales.html";
+import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
+import {cambiosTienda} from "../../../../../api/catalogos/tiendas/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-import {cambiosTienda} from "../../../../../api/catalogos/tiendas/methods";
-import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
+import template from "./editarTiendaGenerales.html";
 
 class EditarTiendaGenerales {
     constructor($scope, $reactive, $stateParams) {

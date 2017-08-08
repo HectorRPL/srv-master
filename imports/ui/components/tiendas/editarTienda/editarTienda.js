@@ -1,7 +1,6 @@
 /**
  * Created by Héctor on 30/06/2017.
  */
-import ngAnimate from "angular-animate";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as EditarTiendaGenerales} from "./editarTiendaGenerales/editarTiendaGenerales";
 import {name as EditarTiendaDireccion} from "./editarTiendaDireccion/editarTiendaDireccion";
@@ -60,7 +59,6 @@ const name = 'editarTienda';
 
 export default angular
     .module(name, [
-        ngAnimate,
         EditarTiendaGenerales,
         EditarTiendaDireccion,
         EditarTiendaDatosFiscales,
