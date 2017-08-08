@@ -17,8 +17,8 @@
                 <br>
                 El empleado dejará de operar en el sistema y no se guardará más información.
             </p>
-            <div class="form-group" ng-class="{ 'has-error' : desactivarEmpleadoForm.cuentaContable.$invalid && !desactivarEmpleadoForm.cuentaContable.$pristine}">
-                <div ng-messages="desactivarEmpleadoForm.cuentaContable.$dirty && desactivarEmpleadoForm.cuentaContable.$error" role="alert">
+            <div class="form-group" ng-class="{ 'has-error' : desactivarEmpleadoForm.activo.$invalid && !desactivarEmpleadoForm.activo.$pristine}">
+                <div ng-messages="desactivarEmpleadoForm.activo.$dirty && desactivarEmpleadoForm.activo.$error" role="alert">
                     <label>Acción
                         <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                         <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>

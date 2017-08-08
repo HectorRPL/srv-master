@@ -1,41 +1,63 @@
-<div class="row">
-    <!-- TÍTULO -->
-    <div class="col-sm-10">
-        <h2>Tienda: <span class="text-navy">{{editarTienda.tienda.nombre}}</span></h2>
-    </div>
-    <!-- ATRÄS-->
-    <div class="col-sm-2">
-        <div class="ibox-tools">
-            <a ui-sref="app.tienda.lista" class="small"><i class="fa fa-chevron-left text-navy"></i> <span class="text-navy"> Editar</span></a>
+<div class="row m-b-lg m-t-lg">
+    <div class="col-md-6">
+        <div class="profile-image">
+            <i class="fa fa-industry fa-5x" aria-hidden="true"></i>
         </div>
+        <div class="profile-info">
+            <div>
+                <h2 class="no-margins">{{editarTienda.tienda.nombre}}</h2>
+                <br>
+                <mostrar-direccion propietario-Id="editarTienda.tienda._id"></mostrar-direccion>
+                <hr>
+                <mostrar-datos-fiscales propietario-id="editarTienda.tienda._id" tienda-matriz="editarTienda.tienda.tiendaMatrizId"></mostrar-datos-fiscales>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <table class="table small m-b-xs">
+            <tbody>
+                <tr>
+                    <td>Cuenta Contable</td>
+                    <td>{{editarTienda.tienda.cuentaContable}}</td>
+                </tr>
+                <tr ng-repeat="telefono in editarTienda.tienda.telefonos">
+                    <td>Teléfono</td>
+                    <td>{{telefono.telefono}} <span ng-show="telefono.extension"> Ext. {{telefono.extension}}</span></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{editarTienda.tienda.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-3">
     </div>
 </div>
 <hr>
-<div class="row">
-    <div class="col-sm-12">
-        <!--MOSTRAR CUANDO SEA SUCURSAL-->
-        <uib-accordion
-                ng-show="editarTienda.tienda.tiendaMatrizId"
-                close-others="oneAtATime">
-            <div uib-accordion-group
-                 ng-repeat="fole in editarTienda.tiendaSucursal"
-                 class="panel-default"
-                 ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})"
-                 heading="{{fole.titulo}}">
-                <div ui-view=""></div>
-            </div>
-        </uib-accordion>
-        <!--MOSTRAR CUANDO SEA TIENDA MATRIZ-->
-        <uib-accordion
-                ng-show="!editarTienda.tienda.tiendaMatrizId"
-                close-others="oneAtATime">
-            <div uib-accordion-group
-                 ng-repeat="fole in editarTienda.tiendaMatriz"
-                 class="panel-default"
-                 ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})"
-                 heading="{{fole.titulo}}">
-                <div ui-view=""></div>
-            </div>
-        </uib-accordion>
+<div class="row" style="min-height:250px !important;">
+    <div class="col-sm-2">
+        <ul class="nav nav-tabs tabs-left">
+            <li ng-show="editarTienda.tienda.tiendaMatrizId"
+                data-toggle="tab"
+                ng-repeat="fole in editarTienda.tiendaSucursal"
+                ng-class="{active: editarTienda.fole === $index}">
+                <a ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})">
+                    <i class="{{fole.icono}}" aria-hidden="true"></i> {{fole.titulo}}
+                </a>
+            </li>
+            <li ng-show="!editarTienda.tienda.tiendaMatrizId"
+                data-toggle="tab"
+                ng-repeat="fole in editarTienda.tiendaMatriz"
+                ng-class="{active: editarTienda.fole === $index}">
+                <a ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})">
+                    <i class="{{fole.icono}}" aria-hidden="true"></i> {{fole.titulo}}
+                </a>
+            </li>
+        </ul>
     </div>
+    <div class="col-sm-10">
+        <div ui-view=""></div>
+    </div>
+    <div class="clearfix"></div>
 </div>

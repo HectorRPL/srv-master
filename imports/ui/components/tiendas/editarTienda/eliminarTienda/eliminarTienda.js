@@ -16,8 +16,8 @@ class EliminarTienda {
         this.tiendaId = $stateParams.tiendaId;
 
         this.tipoMsj = '';
-
         this.tienda = {};
+        this.datos = {};
 
         this.subscribe('tiendas.todas', () => [{_id: this.tiendaId}]);
 
@@ -28,22 +28,17 @@ class EliminarTienda {
         });
     }
 
-    editar() {
-        this.ocultarBoton = true;
-    }
 
-    limpiarCampos(eliminarTiendaForm) {
-        this.datos = {};
-        eliminarTiendaForm.$setPristine();
-    }
 
-    eliminar(eliminarTiendaForm) {
+    eliminar() {
         this.datos._id = this.tiendaId;
+        this.datos.activo = this.dato.activo;
 
+        console.log('Esto se va a enviar', this.datos);
         cambiosTiendaActivar.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(eliminarTiendaForm);
         })).catch(this.$bindToContext((err)=>{
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

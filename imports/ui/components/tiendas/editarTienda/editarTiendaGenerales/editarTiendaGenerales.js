@@ -14,45 +14,34 @@ class EditarTiendaGenerales {
         $reactive(this).attach($scope);
 
         this._id = $stateParams.tiendaId;
-
         this.tipoMsj = '';
 
-        this.tienda = {};
+        // this.tienda = {};
 
         this.subscribe('tiendas.todas', () => [{_id: this._id}]);
-
-        this.datosTiendaNuevo = {};
         this.helpers({
             tienda(){
-                this.datosTiendaNuevo = Tiendas.findOne({_id: this._id});
-                return angular.copy(this.datosTiendaNuevo);
+                return Tiendas.findOne({_id: this._id});
             }
         });
     }
 
-    editar() {
-        this.mostrarCampos = true;
-    }
+    actualizarDatosGenerales() {
+        delete this.tienda.cuentaContable;
+        delete this.tienda.fechaCreacion;
+        delete this.tienda._id;
+        delete this.tienda.activo;
+        delete this.tienda.dias;
+        delete this.tienda.tiendaMatrizId;
 
-    limpiarCampos(datosGeneralesForm) {
-        this.datosTiendaNuevo = {};
-        datosGeneralesForm.$setPristine();
-    }
+        this.tienda._id = this._id;
 
-    actualizarDatosGenerales(datosGeneralesForm) {
-        delete this.datosTiendaNuevo.cuentaContable;
-        delete this.datosTiendaNuevo.fechaCreacion;
-        delete this.datosTiendaNuevo._id;
-        delete this.datosTiendaNuevo.activo;
-        delete this.datosTiendaNuevo.dias;
-        delete this.datosTiendaNuevo.tiendaMatrizId;
+        console.log('[39] Lo que vamos a enviar', this.tienda);
 
-        this.datosTiendaNuevo._id = this._id;
-
-        cambiosTienda.callPromise(this.datosTiendaNuevo).then(this.$bindToContext(() => {
+        cambiosTienda.callPromise(this.tienda).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(datosGeneralesForm);
         })).catch(this.$bindToContext((err)=>{
+            console.log('[47]', err);
             this.tipoMsj = 'danger';
         }));
     }

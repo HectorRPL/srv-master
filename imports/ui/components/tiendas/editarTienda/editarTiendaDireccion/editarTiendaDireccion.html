@@ -1,50 +1,30 @@
-<!--DATOS FISCALES-->
-<div class="row animated fadeInRight">
-    <div class="col-sm-4 b-r">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="contact-box">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <address>
-                            {{editarTiendaDireccion.direccionActual.calle}}
-                            {{editarTiendaDireccion.direccionActual.numExt}}<span ng-show="editarTiendaDireccion.direccionActual._id">,</span>
-                            <span ng-show="editarTiendaDireccion.direccionActual.numInt">Int. {{editarTiendaDireccion.direccionActual.numInt}}.</span> <br>
-                            {{editarTiendaDireccion.direccionActual.colonia}}
-                            <span ng-show="editarTiendaDireccion.direccionActual._id">CP.</span> {{editarTiendaDireccion.direccionActual.codigoPostal}}
-                            {{editarTiendaDireccion.direccionActual.delMpio}}<span ng-show="editarTiendaDireccion.direccionActual._id">,</span>
-                            {{editarTiendaDireccion.direccionActual.estado}}<br>
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
+<form class="animated fadeInRight" role="form" id="editarTiendaDireccionFrmId" name="editarTiendaDireccionFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <forma-direccion direccion="editarTiendaDireccion.direccion"></forma-direccion>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <alertas tipo="editarTiendaDireccion.tipoMsj" mensaje="editarTiendaDireccion.msj"></alertas>
+                </div>
+                <div class="col-md-3">
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-hide="editarTiendaDireccion.direccion._id"
+                            ng-disabled="editarTiendaDireccionFrm.$invalid"
+                            ng-click="editarTiendaDireccion.guardarDireccion()">
+                        Guardar
+                    </button>
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-show="editarTiendaDireccion.direccion._id"
+                            ng-disabled="editarTiendaDireccionFrm.$invalid"
+                            ng-click="editarTiendaDireccion.actualizarDireccion()">
+                        Actualizar
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-12">
-                <!--BOTON EDITAR -->
-                <button type="button"
-                        class="btn btn-primary btn-xs pull-right"
-                        ng-show="editarTiendaDireccion.direccionActual._id && !editarTiendaDireccion.mostrarCampos"
-                        ng-click="editarTiendaDireccion.editar()">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                </button>
-            </div>
         </div>
     </div>
-    <!--DIRECCION-->
-    <div class="col-sm-8 animated fadeInRight">
-        <div class="row">
-            <cambios-direccion
-                    ng-if="editarTiendaDireccion.direccionActual._id && editarTiendaDireccion.mostrarCampos"
-                    direccion="editarTiendaDireccion.direccion">
-            </cambios-direccion>
-            <alta-direccion
-                    ng-if="!editarTiendaDireccion.direccionActual._id"
-                    propietario-id="editarTiendaDireccion.propietarioId">
-            </alta-direccion>
-        </div>
-    </div>
-</div>
+</form>

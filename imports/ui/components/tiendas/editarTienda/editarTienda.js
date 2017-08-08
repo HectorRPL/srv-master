@@ -8,6 +8,8 @@ import {name as EditarTiendaDireccion} from "./editarTiendaDireccion/editarTiend
 import {name as EditarTiendaDatosFiscales} from "./editarTiendaDatosFiscales/editarTiendaDatosFiscales";
 import {name as EditarTiendaCuentaContable} from "./editarTiendaCuentaContable/editarTiendaCuentaContable";
 import {name as EliminarTienda} from "./eliminarTienda/eliminarTienda";
+import {name as MostrarDireccion} from "../../comun/mostrar/mostrarDireccion/mostrarDireccion";
+import {name as MostrarDatosFiscales} from "../../comun/mostrar/mostrarDatosFiscales/mostrarDatosFiscales";
 import template from "./editarTienda.html";
 
 class EditarTienda {
@@ -17,6 +19,7 @@ class EditarTienda {
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;
+        this.fole = 0;
 
         this.subscribe('tiendas.todas', () =>
             [
@@ -37,7 +40,6 @@ class EditarTienda {
             {titulo: "Promociones", estado: ".promociones.lista", icono: 'fa fa-hand-o-down'},
         ];
 
-        $scope.oneAtATime = true;
         this.tiendaMatriz = [
             {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
             {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-book'},
@@ -63,7 +65,9 @@ export default angular
         EditarTiendaDireccion,
         EditarTiendaDatosFiscales,
         EditarTiendaCuentaContable,
-        EliminarTienda
+        EliminarTienda,
+        MostrarDireccion,
+        MostrarDatosFiscales
     ])
     .component(name, {
         template,

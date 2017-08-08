@@ -1,79 +1,39 @@
-<form role="form"
-      id="editarTiendaCuentaContableFormId"
-      name="editarTiendaCuentaContableForm"
-      class="p-lg"
-      novalidate>
-    <!--DATOS FISCALES-->
-    <div class="row animated fadeInRight">
-        <div class="col-sm-4 b-r">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="contact-box">
-                        <a href="">
-                            <div class="col-sm-4">
-                                <div class="text-center">
-                                    <i class="fa fa-gavel fa-5x" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <h2><strong>{{editarTiendaCuentaContable.tiendaActual.cuentaContable}}</strong></h2>
-                                <address>
-                                    <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
-                                    <p>Al editar la Cuenta Contable de ésta tienda todas las tiendas verán reflejado dicho cambio así como severas repercusiones en la contabilidad.</p>
-                                </address>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <!--BOTON EDITAR -->
-                    <button type="button"
-                            class="btn btn-primary btn-xs pull-right"
-                            ng-click="editarTiendaCuentaContable.editar()">
-                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                    </button>
+<form class="animated fadeInRight" role="form" id="editarTiendaCuentaContableFrmId" name="editarTiendaCuentaContableFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 text-center">
+            <i class="fa fa-gavel fa-5x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <br>
+            <br>
+            <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
+            <p>
+                Al editar la Cuenta Contable de ésta tienda todas los contadores verán reflejado dicho cambio así como severas repercusiones en la contabilidad.
+                <br>
+                No edite este campo si no está seguro que los contadores estén enteredos.
+            </p>
+            <div class="form-group" ng-class="{ 'has-error' : editarTiendaCuentaContableForm.cuentaContableTiendas.$invalid && !editarTiendaCuentaContableForm.cuentaContableTiendas.$pristine}">
+                <div ng-messages="editarTiendaCuentaContableForm.cuentaContableTiendas.$dirty && editarTiendaCuentaContableForm.cuentaContableTiendas.$error" role="alert">
+                    <label>Nueva Cuenta Contable *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
+                    </label>
+                    <cuenta-contable-tiendas dato="editarTiendaCuentaContable.tienda.cuentaContable"></cuenta-contable-tiendas>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarTiendaCuentaContable.ocultarBoton">
-            <div class="row">
-                <!--CUENTA CONTABLE-->
-                <div class="col-sm-offset-3 col-sm-6">
-                    <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
-                    <h4>No edite este campo si no está seguro que todos los contadores de cada tienda estén enterados.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : editarTiendaCuentaContableForm.cuentaContableTiendas.$invalid && !editarTiendaCuentaContableForm.cuentaContableTiendas.$pristine}">
-                        <div ng-messages="editarTiendaCuentaContableForm.cuentaContableTiendas.$dirty && editarTiendaCuentaContableForm.cuentaContableTiendas.$error" role="alert">
-                            <label>Nueva Cuenta Contable *
-                                <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
-                            </label>
-                            <cuenta-contable-tiendas dato="editarTiendaCuentaContable.datos.cuentaContable"></cuenta-contable-tiendas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
-    <hr>
-    <!--DIRECCIÓN FISCAL-->
-    <div class="row animated fadeInRight">
-    </div>
-    <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
             <alertas tipo="editarTiendaCuentaContable.tipoMsj" mensaje="editarTiendaCuentaContable.msj"></alertas>
         </div>
-        <div class="col-md-3" >
-            <!--BOTON GUARDAR DATOS GENERALES-->
+        <div class="col-md-3">
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-show="editarTiendaCuentaContable.ocultarBoton"
-                    ng-disabled="editarTiendaCuentaContableForm.$invalid"
-                    ng-click="editarTiendaCuentaContable.actualizarDatosGenerales(editarTiendaCuentaContableForm)">
-                Actualizar
+                    ng-disabled="editarTiendaCuentaContableFrm.$invalid"
+                    ng-click="editarTiendaCuentaContable.actualizarCuentaContable()">
+                Aceptar
             </button>
         </div>
     </div>

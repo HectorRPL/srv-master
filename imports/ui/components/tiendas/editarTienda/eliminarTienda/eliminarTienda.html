@@ -1,79 +1,43 @@
-<form role="form"
-      id="eliminarTiendaFormId"
-      name="eliminarTiendaForm"
-      class="p-lg"
-      novalidate>
-    <!--DATOS FISCALES-->
-    <div class="row animated fadeInRight">
-        <div class="col-sm-4 b-r">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="contact-box">
-                        <a href="">
-                            <div class="col-sm-4">
-                                <div class="text-center">
-                                    <i class="fa fa-industry fa-5x" aria-hidden="true"></i>
-                                </div>
-                            </div>
-                            <div class="col-sm-8">
-                                <h2>
-                                    <strong>
-                                        <span >Status: <br>
-                                            <span class="text-navy" ng-show="eliminarTienda.tienda.activo">Activa</span>
-                                            <span class="text-navy" ng-hide="eliminarTienda.tienda.activo">Desactivada</span>
-                                        </span>
-                                    </strong>
-                                </h2>
-                                <address>
-                                    <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
-                                    <p>Eliminar una tienda implica grandes riesgos operativos y pérdida de información.</p>
-                                </address>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <!--BOTON EDITAR -->
-                    <button type="button"
-                            class="btn btn-primary btn-xs pull-right"
-                            ng-click="eliminarTienda.editar()">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i> Eliminar
-                    </button>
-                </div>
-            </div>
+<form class="animated fadeInRight" role="form" id="eliminarTiendaFrmId" name="eliminarTiendaFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 text-center">
+            <i class="fa fa-trash-o fa-5x" aria-hidden="true"></i>
+            <h2>
+                <strong>
+                    Status:
+                    <span class="text-navy" ng-show="eliminarTienda.tienda.activo">Activo</span>
+                    <span class="text-navy" ng-show="eliminarTienda.tienda.activo === false">Desactivado</span>
+                </strong>
+            </h2>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="eliminarTienda.ocultarBoton">
-            <div class="row">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
-                    <h4>La tienda dejará de operar en el sistema y no se guardará más información.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : eliminarTiendaForm.cuentaContable.$invalid && !eliminarTiendaForm.cuentaContable.$pristine}">
-                        <div ng-messages="eliminarTiendaForm.cuentaContable.$dirty && eliminarTiendaForm.cuentaContable.$error" role="alert">
-                            <label>Acción
-                                <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
-                            </label>
-                            <radio-desactivar dato="eliminarTienda.datos.activo"></radio-desactivar>
-                        </div>
-                    </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
+            <p>
+                Eliminar una tienda implica grandes riesgos operativos y pérdida de información.
+                <br>
+                La tienda dejará de operar en el sistema y no se guardará más información.
+            </p>
+            <div class="form-group" ng-class="{ 'has-error' : eliminarTiendaForm.activo.$invalid && !eliminarTiendaForm.activo.$pristine}">
+                <div ng-messages="eliminarTiendaForm.activo.$dirty && eliminarTiendaForm.activo.$error" role="alert">
+                    <label>Acción
+                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
+                    </label>
+                    <radio-desactivar dato="eliminarTienda.dato.activo"></radio-desactivar>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
-    <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
             <alertas tipo="eliminarTienda.tipoMsj" mensaje="eliminarTienda.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="eliminarTienda.ocultarBoton">
-            <!--BOTON GUARDAR DATOS GENERALES-->
+        <div class="col-md-3">
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-disabled="eliminarTiendaForm.$invalid"
-                    ng-click="eliminarTienda.eliminar(eliminarTiendaForm)">
+                    ng-disabled="eliminarTiendaFrm.$invalid"
+                    ng-click="eliminarTienda.eliminar()">
                 Aceptar
             </button>
         </div>

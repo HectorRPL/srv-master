@@ -1,50 +1,44 @@
-<!--DATOS FISCALES-->
-<div class="row animated fadeInRight">
-    <div class="col-sm-4 b-r">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="contact-box">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <address>
-                            {{editarTiendaDatosFiscales.datosFiscalesActuales.calle}}
-                            {{editarTiendaDatosFiscales.datosFiscalesActuales.numExt}}<span ng-show="editarTiendaDatosFiscales.datosFiscalesActuales._id">,</span>
-                            <span ng-show="editarTiendaDatosFiscales.datosFiscalesActuales.numInt">Int. {{editarTiendaDatosFiscales.datosFiscalesActuales.numInt}}.</span> <br>
-                            {{editarTiendaDatosFiscales.datosFiscalesActuales.colonia}}
-                            <span ng-show="editarTiendaDatosFiscales.datosFiscalesActuales._id">CP.</span> {{editarTiendaDatosFiscales.datosFiscalesActuales.codigoPostal}}
-                            {{editarTiendaDatosFiscales.datosFiscalesActuales.delMpio}}<span ng-show="editarTiendaDatosFiscales.datosFiscalesActuales._id">,</span>
-                            {{editarTiendaDatosFiscales.datosFiscalesActuales.estado}}<br>
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
+<form class="animated fadeInRight" role="form" id="editarTiendaDatosFiscalesFrmId" name="editarTiendaDatosFiscalesFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row" ng-if="!editarTiendaDatosFiscales.datosFiscales._id">
+                <div class="col-sm-12">
+                    <h3 class="text-navy">Datos Fiscales</h3>
+                </div>
+                <forma-datos-fiscales
+                        datos="editarTiendaDatosFiscales.datosFiscales">
+                </forma-datos-fiscales>
+            </div>
+            <hr>
+            <div class="row animated fadeIn" ng-show="editarTiendaDatosFiscales.datosFiscales.tipoPersona">
+                <div class="col-sm-12">
+                    <h3 class="text-navy">Dirección Fiscal</h3>
+                </div>
+                <forma-direccion
+                        direccion="editarTiendaDatosFiscales.datosFiscales">
+                </forma-direccion>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <alertas tipo="editarTiendaDatosFiscales.tipoMsj" mensaje="editarTiendaDatosFiscales.msj"></alertas>
+                </div>
+                <div class="col-md-3">
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-show="!editarTiendaDatosFiscales.datosFiscales._id"
+                            ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
+                            ng-click="editarTiendaDatosFiscales.altaDatosFiscales()">
+                        Guardar Datos Fiscales y Dirección
+                    </button>
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-show="editarTiendaDatosFiscales.datosFiscales.codigoPostal"
+                            ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
+                            ng-click="editarTiendaDatosFiscales.guardarDatosFiscales()">
+                        Actualizar Dirección
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-12">
-                <button type="button"
-                        class="btn btn-primary btn-xs pull-right"
-                        ng-show="editarTiendaDatosFiscales.datosFiscalesActuales._id && !editarTiendaDatosFiscales.mostrarCampos"
-                        ng-click="editarTiendaDatosFiscales.editar()">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                </button>
-            </div>
         </div>
     </div>
-    <div class="col-sm-8 animated fadeInRight">
-        <div class="row">
-            <alta-datos-fiscales
-                    ng-if="editarTiendaDatosFiscales.datosFiscalesActuales._id === undefined"
-                    propietario-id="editarTiendaDatosFiscales.propietarioId">
-            </alta-datos-fiscales>
-            <!--&lt;!&ndash;-->
-            <cambios-datos-fiscales
-                    ng-if="editarTiendaDatosFiscales.datosFiscalesActuales._id && editarTiendaDatosFiscales.mostrarCampos"
-                    datos-fiscales="editarTiendaDatosFiscales.datosFiscales">
-            </cambios-datos-fiscales>
-            <!--&ndash;&gt;-->
-        </div>
-    </div>
-</div>
+</form>
