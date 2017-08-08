@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 25/07/2017.
  */
-import {Direcciones}                        from "../../../../../api/direcciones/collection";
-import {altaDireccion, cambiosDireccion}    from "../../../../../api/direcciones/methods";
-import {name as Alertas}                    from "../../../comun/alertas/alertas";
-import {name as FormaDireccion}             from "../../../comun/formas/formaDireccion/formaDireccion";
-import template                             from "./editarProveedorDireccion.html";
+import {Direcciones} from "../../../../../api/direcciones/collection";
+import {altaDireccion, cambiosDireccion} from "../../../../../api/direcciones/methods";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
+import template from "./editarProveedorDireccion.html";
 
 class EditarProveedorDireccion {
     constructor($scope, $reactive, $stateParams) {

@@ -5,10 +5,10 @@ import template from "./proveedores.html";
 import {name as ListaProveedores} from "./listaProveedores/listaProveedores"
 import {name as EditarProveedor} from "./editarProveedor/editarProveedor"
 
-
 class Proveedores {
     constructor() {
         'ngInject';
+
     }
 
 }
@@ -26,6 +26,7 @@ export default angular
         controller: Proveedores
     })
     .config(config);
+
 
 function config($stateProvider) {
     'ngInject';

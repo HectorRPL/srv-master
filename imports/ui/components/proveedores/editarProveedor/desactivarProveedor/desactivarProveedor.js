@@ -27,7 +27,6 @@ class DesactivarProveedor {
     }
     desactivarProveedor() {
 
-
         this.datos = {
             _id: this.propietarioId,
             activo: this.proveedor.activo
@@ -38,7 +37,6 @@ class DesactivarProveedor {
         cambiosProveedorActivar.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

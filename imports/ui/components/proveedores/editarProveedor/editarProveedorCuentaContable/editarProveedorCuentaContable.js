@@ -30,6 +30,7 @@ class EditarProveedorCuentaContable {
     }
 
     actualizarCuentaContable() {
+
         this.datos = {
             _id: this.propietarioId,
             cuentaContable: this.proveedor.cuentaContable
@@ -38,7 +39,6 @@ class EditarProveedorCuentaContable {
         cambiosCuentaContableProveedores.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

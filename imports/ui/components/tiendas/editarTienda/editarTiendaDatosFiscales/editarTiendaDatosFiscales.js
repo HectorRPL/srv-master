@@ -38,7 +38,6 @@ class EditarTiendaDatosFiscales {
         altaDatosFiscales.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log('[31]', err);
             this.tipoMsj = 'danger';
         }));
     }

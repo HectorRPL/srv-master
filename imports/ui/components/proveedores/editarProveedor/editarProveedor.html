@@ -1,14 +1,13 @@
 <div class="row m-b-lg m-t-lg">
     <div class="col-md-6">
         <div class="profile-image">
-            <i class="fa fa-industry fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-product-hunt fa-5x" aria-hidden="true"></i>
         </div>
         <div class="profile-info">
             <div>
                 <h2 class="no-margins">{{editarProveedor.proveedor.nombre}}</h2>
                 <br>
                 <mostrar-direccion propietario-Id="editarProveedor.proveedor._id"></mostrar-direccion>
-                <!--<pre>{{editarProveedor.proveedor|json}}</pre>-->
                 <hr>
                 <mostrar-datos-fiscales propietario-id="editarProveedor.proveedor._id" proveedor-matriz="editarProveedor.proveedor.proveedorMatrizId"></mostrar-datos-fiscales>
             </div>
@@ -17,18 +16,22 @@
     <div class="col-md-3">
         <table class="table small m-b-xs">
             <tbody>
-            <tr>
-                <td>Cuenta Contable</td>
-                <td>{{editarProveedor.proveedor.cuentaContable}}</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>{{editarProveedor.proveedor.email}}</td>
-            </tr>
-            <tr ng-repeat="telefono in editarProveedor.proveedor.telefonos">
-                <td>Teléfono</td>
-                <td>{{telefono.telefono}} <span ng-show="telefono.extension"> Ext. {{telefono.extension}}</span></td>
-            </tr>
+                <tr>
+                    <td>Cuenta Contable</td>
+                    <td>{{editarProveedor.proveedor.cuentaContable}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{editarProveedor.proveedor.email}}</td>
+                </tr>
+                <tr ng-hide="editarProveedor.proveedor.telefonos">
+                    <td>Teléfono</td>
+                    <td> <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong></td>
+                </tr>
+                <tr ng-repeat="telefono in editarProveedor.proveedor.telefonos">
+                    <td>Teléfono</td>
+                    <td>{{telefono.telefono}} <span ng-show="telefono.extension"> Ext. {{telefono.extension}}</span></td>
+                </tr>
             </tbody>
         </table>
     </div>

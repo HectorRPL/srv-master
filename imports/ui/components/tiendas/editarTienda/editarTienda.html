@@ -24,6 +24,10 @@
                     <td>Email</td>
                     <td>{{editarTienda.tienda.email}}</td>
                 </tr>
+                <tr ng-hide="editarTienda.tienda.telefonos">
+                    <td>Teléfono</td>
+                    <td> <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong></td>
+                </tr>
                 <tr ng-repeat="telefono in editarTienda.tienda.telefonos">
                     <td>Teléfono</td>
                     <td>{{telefono.telefono}} <span ng-show="telefono.extension"> Ext. {{telefono.extension}}</span></td>
@@ -40,18 +44,18 @@
         <ul class="nav nav-tabs tabs-left">
             <li ng-show="editarTienda.tienda.tiendaMatrizId"
                 data-toggle="tab"
-                ng-repeat="fole in editarTienda.tiendaSucursal"
-                ng-class="{active: editarTienda.fole === $index}">
-                <a ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})">
-                    <i class="{{fole.icono}}" aria-hidden="true"></i> {{fole.titulo}}
+                ng-repeat="tab in editarTienda.tiendaSucursal"
+                ng-class="{active: editarTienda.tab === $index}">
+                <a ui-sref="{{tab.estado}}({tiendaId: editarTienda.tiendaId})">
+                    <i class="{{tab.icono}}" aria-hidden="true"></i> {{tab.titulo}}
                 </a>
             </li>
             <li ng-show="!editarTienda.tienda.tiendaMatrizId"
                 data-toggle="tab"
-                ng-repeat="fole in editarTienda.tiendaMatriz"
-                ng-class="{active: editarTienda.fole === $index}">
-                <a ui-sref="{{fole.estado}}({tiendaId: editarTienda.tiendaId})">
-                    <i class="{{fole.icono}}" aria-hidden="true"></i> {{fole.titulo}}
+                ng-repeat="tab in editarTienda.tiendaMatriz"
+                ng-class="{active: editarTienda.tab === $index}">
+                <a ui-sref="{{tab.estado}}({tiendaId: editarTienda.tiendaId})">
+                    <i class="{{tab.icono}}" aria-hidden="true"></i> {{tab.titulo}}
                 </a>
             </li>
         </ul>

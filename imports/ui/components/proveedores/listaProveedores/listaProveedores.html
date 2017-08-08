@@ -19,7 +19,7 @@
             <a ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
                 <div class="row">
                     <div class="col-sm-1">
-                        <i class="fa fa-industry" aria-hidden="true"></i>
+                        <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     </div>
                     <div class="col-sm-11">
                         <h3><strong>{{proveedor.nombre}}</strong></h3>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <i class="fa fa-phone" aria-hidden="true" ng-hide="!proveedor.telefonos"></i>
-                        <span ng-hide="proveedor.telefonos" style="color: red">
+                        <span ng-hide="proveedor.telefonos">
                             <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong>
                         </span>
                         <span ng-repeat="telefono in proveedor.telefonos"

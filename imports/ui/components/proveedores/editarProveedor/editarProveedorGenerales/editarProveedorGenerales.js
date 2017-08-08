@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 27/06/2017.
  */
-import {Proveedores}                    from "../../../../../api/catalogos/proveedores/collection";
-import {cambiosProveedor}               from "../../../../../api/catalogos/proveedores/methods";
-import {name as Alertas}                from "../../../comun/alertas/alertas";
-import {name as FormaDatosGenerales}    from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
-import template                         from "./editarProveedorGenerales.html";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
+import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods";
+import {name as Alertas} from "../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
+import template from "./editarProveedorGenerales.html";
 
 class EditarProveedorGenerales {
     constructor($scope, $reactive, $stateParams) {
@@ -17,11 +17,8 @@ class EditarProveedorGenerales {
 
         this.tipoMsj = '';
 
-        this.proveedor = {};
-
         this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
 
-        this.proveedor = {};
         this.helpers({
             proveedor(){
                 return Proveedores.findOne({_id: $stateParams.proveedorId});
@@ -40,8 +37,7 @@ class EditarProveedorGenerales {
 
         cambiosProveedor.callPromise(this.proveedor).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
-            console.log(err);
+        })).catch(this.$bindToContext((err)=> {
             this.tipoMsj = 'danger';
         }));
 

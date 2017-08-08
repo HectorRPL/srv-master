@@ -16,8 +16,6 @@ class EditarTiendaGenerales {
         this._id = $stateParams.tiendaId;
         this.tipoMsj = '';
 
-        // this.tienda = {};
-
         this.subscribe('tiendas.todas', () => [{_id: this._id}]);
         this.helpers({
             tienda(){
@@ -36,12 +34,9 @@ class EditarTiendaGenerales {
 
         this.tienda._id = this._id;
 
-        console.log('[39] Lo que vamos a enviar', this.tienda);
-
         cambiosTienda.callPromise(this.tienda).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log('[47]', err);
             this.tipoMsj = 'danger';
         }));
     }

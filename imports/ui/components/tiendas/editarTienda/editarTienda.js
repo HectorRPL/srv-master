@@ -18,19 +18,15 @@ class EditarTienda {
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;
-        this.fole = 0;
+        this.tab = 0;
 
-        this.subscribe('tiendas.todas', () =>
-            [
-                {
-                    _id: this.tiendaId
-                }
-            ]);
+        this.subscribe('tiendas.todas', () => [{_id: this.tiendaId}]);
         this.helpers({
             tienda(){
                 return Tiendas.findOne({_id: this.tiendaId});
             }
         });
+
         this.tabs = [
             {titulo: "Empleados", estado: ".empleados.lista", icono: 'fa fa-users'},
             {titulo: "Inventario", estado: ".inventario.lista", icono: 'fa fa-cubes'},
@@ -41,15 +37,15 @@ class EditarTienda {
 
         this.tiendaMatriz = [
             {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
-            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-map-marker'},
-            {titulo: "Datos Fiscales",  estado: ".fiscales", icono: 'fa fa-address-card-o'},
+            {titulo: "Dirección", estado: ".direccion", icono: 'fa fa-map-marker'},
+            {titulo: "Datos Fiscales", estado: ".fiscales", icono: 'fa fa-address-card-o'},
             {titulo: "Cuenta Contable", estado: ".cuentaContable", icono: 'fa fa-gavel'},
-            {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
+            {titulo: "Eliminar", estado: ".eliminar", icono: 'fa fa-trash-o'}
         ];
         this.tiendaSucursal = [
             {titulo: "Datos Generales", estado: ".generales", icono: 'fa fa-book'},
-            {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-map-marker'},
-            {titulo: "Eliminar",        estado: ".eliminar", icono: 'fa fa-trash-o'}
+            {titulo: "Dirección", estado: ".direccion", icono: 'fa fa-map-marker'},
+            {titulo: "Eliminar", estado: ".eliminar", icono: 'fa fa-trash-o'}
         ];
 
     }
