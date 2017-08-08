@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 29/06/2017.
  */
-import template from "./editarProveedorCuentaContable.html";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
+import {cambiosCuentaContableProveedores} from "../../../../../api/catalogos/proveedores/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as CuentaContableProveedores} from "../../../comun/inputs/cuentaContableProveedores/cuentaContableProveedores";
-import {cambiosCuentaContableProveedores} from "../../../../../api/catalogos/proveedores/methods";
-import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
+import template from "./editarProveedorCuentaContable.html";
 
 class EditarProveedorCuentaContable {
     constructor($scope, $reactive, $stateParams) {
@@ -23,31 +23,24 @@ class EditarProveedorCuentaContable {
         this.subscribe('proveedores.todos', () => [{_id: $stateParams.proveedorId}]);
 
         this.helpers({
-            proveedorActual(){
+            proveedor(){
                 return Proveedores.findOne();
             }
         });
     }
 
-    actualizarDatosGenerales(editarProveedorCuentaContableForm) {
-        this.datos._id = this.propietarioId;
+    actualizarCuentaContable() {
+        this.datos = {
+            _id: this.propietarioId,
+            cuentaContable: this.proveedor.cuentaContable
+        };
 
         cambiosCuentaContableProveedores.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(editarProveedorCuentaContableForm);
         })).catch(this.$bindToContext((err)=>{
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
-    }
-
-    editar() {
-        this.ocultarBoton = true;
-        this.datos.cuentaContable = angular.copy(this.proveedorActual.cuentaContable);
-    }
-
-    limpiarCampos(editarProveedorCuentaContableForm) {
-        this.datos = {};
-        editarProveedorCuentaContableForm.$setPristine();
     }
 
 

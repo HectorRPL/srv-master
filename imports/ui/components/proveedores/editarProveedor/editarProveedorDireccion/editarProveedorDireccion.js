@@ -1,43 +1,61 @@
 /**
  * Created by Héctor on 25/07/2017.
  */
-import {name as AltaDireccion} from "../../../comun/altasCambios/direccion/altaDireccion/altaDireccion";
-import {name as CambiosDireccion} from "../../../comun/altasCambios/direccion/cambiosDireccion/cambiosDireccion";
-import {Direcciones} from "../../../../../api/direcciones/collection";
-import template from "./editarProveedorDireccion.html";
+import {Direcciones}                        from "../../../../../api/direcciones/collection";
+import {altaDireccion, cambiosDireccion}    from "../../../../../api/direcciones/methods";
+import {name as Alertas}                    from "../../../comun/alertas/alertas";
+import {name as FormaDireccion}             from "../../../comun/formas/formaDireccion/formaDireccion";
+import template                             from "./editarProveedorDireccion.html";
 
 class EditarProveedorDireccion {
     constructor($scope, $reactive, $stateParams) {
         'ngInject';
         this.$scope = $scope;
-
         $reactive(this).attach($scope);
-
-        this.direccion = {};
 
         this.propietarioId = $stateParams.proveedorId;
 
         this.subscribe('direcciones.todas', () => [{propietarioId: this.propietarioId}]);
         this.helpers({
-            direccionActual(){
-                return Direcciones.findOne({propietarioId: this.propietarioId});
+            direccion(){
+                return Direcciones.findOne({propietarioId: this.propietarioId}) || {};
             }
         });
-
     }
 
-    editar() {
-        this.mostrarCampos = true;
-        this.direccion = angular.copy(this.direccionActual);
+    guardarDireccion() {
+        let direccionFinal = angular.copy(this.direccion);
+        delete direccionFinal.colonias;
+        direccionFinal.propietarioId = this.propietarioId;
+
+        altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err) => {
+            console.log('[29]', err);
+            this.tipoMsj = 'danger';
+        }));
+    }
+
+    actualizarDireccion() {
+        this.tipoMsj = '';
+        let direccionFinal = angular.copy(this.direccion);
+        delete direccionFinal.colonias;
+        delete direccionFinal.fechaCreacion;
+
+        cambiosDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err) => {
+            console.log('[48]', err);
+            this.tipoMsj = 'danger';
+        }));
     }
 }
-
 const name = 'editarProveedorDireccion';
 
 export default angular
     .module(name, [
-        AltaDireccion,
-        CambiosDireccion
+        Alertas,
+        FormaDireccion
     ])
     .component(name, {
         template,

@@ -1,50 +1,30 @@
-<!--DATOS FISCALES-->
-<div class="row animated fadeInRight">
-    <div class="col-sm-4 b-r">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="contact-box">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <i class="fa fa-map-marker fa-5x" aria-hidden="true"></i>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <address>
-                            {{editarProveedorDireccion.direccionActual.calle}}
-                            {{editarProveedorDireccion.direccionActual.numExt}}<span ng-show="editarProveedorDireccion.direccionActual._id">,</span>
-                            <span ng-show="editarProveedorDireccion.direccionActual.numInt">Int. {{editarProveedorDireccion.direccionActual.numInt}}.</span> <br>
-                            {{editarProveedorDireccion.direccionActual.colonia}}
-                            <span ng-show="editarProveedorDireccion.direccionActual._id">CP.</span> {{editarProveedorDireccion.direccionActual.codigoPostal}}
-                            {{editarProveedorDireccion.direccionActual.delMpio}}<span ng-show="editarProveedorDireccion.direccionActual._id">,</span>
-                            {{editarProveedorDireccion.direccionActual.estado}}<br>
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
+<form class="animated fadeInRight" role="form" id="editarProveedorDireccionFrmId" name="editarProveedorDireccionFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <forma-direccion direccion="editarProveedorDireccion.direccion"></forma-direccion>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <alertas tipo="editarProveedorDireccion.tipoMsj" mensaje="editarProveedorDireccion.msj"></alertas>
+                </div>
+                <div class="col-md-3">
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-hide="editarProveedorDireccion.direccion._id"
+                            ng-disabled="editarProveedorDireccionFrm.$invalid"
+                            ng-click="editarProveedorDireccion.guardarDireccion()">
+                        Guardar
+                    </button>
+                    <button type="button"
+                            class="btn btn-primary pull-right"
+                            ng-show="editarProveedorDireccion.direccion._id"
+                            ng-disabled="editarProveedorDireccionFrm.$invalid"
+                            ng-click="editarProveedorDireccion.actualizarDireccion()">
+                        Actualizar
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-12">
-                <!--BOTON EDITAR -->
-                <button type="button"
-                        class="btn btn-primary btn-xs pull-right"
-                        ng-show="editarProveedorDireccion.direccionActual._id && !editarProveedorDireccion.mostrarCampos"
-                        ng-click="editarProveedorDireccion.editar()">
-                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                </button>
-            </div>
         </div>
     </div>
-    <!--DIRECCION-->
-    <div class="col-sm-8 animated fadeInRight">
-        <div class="row">
-            <cambios-direccion
-                    ng-if="editarProveedorDireccion.direccionActual._id && editarProveedorDireccion.mostrarCampos"
-                    direccion="editarProveedorDireccion.direccion">
-            </cambios-direccion>
-            <alta-direccion
-                    ng-if="!editarProveedorDireccion.direccionActual._id"
-                    propietario-id="editarProveedorDireccion.propietarioId">
-            </alta-direccion>
-        </div>
-    </div>
-</div>
+</form>

@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 30/06/2017.
  */
-import template from "./editarTiendaCuentaContable.html";
+import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
+import {cambiosCuentaContableTiendas} from "../../../../../api/catalogos/tiendas/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as CuentaContableTiendas} from "../../../comun/inputs/cuentaContableTiendas/cuentaContableTiendas";
-import {cambiosCuentaContableTiendas} from "../../../../../api/catalogos/tiendas/methods";
-import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
+import template from "./editarTiendaCuentaContable.html";
 
 class EditarTiendaCuentaContable {
     constructor($scope, $reactive, $stateParams) {

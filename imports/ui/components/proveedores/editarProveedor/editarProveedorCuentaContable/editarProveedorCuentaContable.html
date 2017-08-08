@@ -1,76 +1,39 @@
-<form role="form"
-      id="editarProveedorCuentaContableFormId"
-      name="editarProveedorCuentaContableForm"
-      class="p-lg"
-      novalidate>
-    <!--DATOS FISCALES-->
-    <div class="row animated fadeInRight">
-        <div class="col-sm-4 b-r">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="contact-box">
-                        <div class="col-sm-4">
-                            <div class="text-center">
-                                <i class="fa fa-gavel fa-5x" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <h2><strong>{{editarProveedorCuentaContable.proveedorActual.cuentaContable}}</strong></h2>
-                            <address>
-                                <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
-                                <p>Al editar la Cuenta Contable de éste proveedor todas las tiendas verán reflejado dicho cambio así como severas repercusiones en la contabilidad.</p>
-                            </address>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <!--BOTON EDITAR -->
-                    <button type="button"
-                            class="btn btn-primary btn-xs pull-right"
-                            ng-click="editarProveedorCuentaContable.editar()">
-                        <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                    </button>
+<form class="animated fadeInRight" role="form" id="editarProveedorCuentaContableFrmId" name="editarProveedorCuentaContableFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 text-center">
+            <i class="fa fa-gavel fa-5x" aria-hidden="true"></i>
+        </div>
+        <div class="col-sm-offset-3 col-sm-6">
+            <br>
+            <br>
+            <strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i> Advertencia</strong><br><br>
+            <p>
+                Al editar la Cuenta Contable de éste proveedor tendrá severas repercusiones en la contabilidad.
+                <br>
+                No edite este campo si no está seguro que los contadores están enteredos.
+            </p>
+            <div class="form-group" ng-class="{ 'has-error' : editarProveedorCuentaContableForm.cuentaContableTiendas.$invalid && !editarProveedorCuentaContableForm.cuentaContableTiendas.$pristine}">
+                <div ng-messages="editarProveedorCuentaContableForm.cuentaContableTiendas.$dirty && editarProveedorCuentaContableForm.cuentaContableTiendas.$error" role="alert">
+                    <label>Nueva Cuenta Contable *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
+                    </label>
+                    <cuenta-contable-proveedores dato="editarProveedorCuentaContable.proveedor.cuentaContable"></cuenta-contable-proveedores>
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 animated fadeInRight" ng-show="editarProveedorCuentaContable.ocultarBoton">
-            <div class="row">
-                <!--CUENTA CONTABLE-->
-                <div class="col-sm-offset-3 col-sm-6">
-                    <h3><strong class="label label-warning"><i class="fa fa-exclamation-triangle"></i></strong>  IMPORTANTE</h3>
-                    <h4>No edite este campo si no está seguro que todos los contadores de cada tienda estén enterados.</h4>
-                    <div class="form-group" ng-class="{ 'has-error' : editarProveedorCuentaContableForm.cuentaContableProveedores.$invalid && !editarProveedorCuentaContableForm.cuentaContableProveedores.$pristine}">
-                        <div ng-messages="editarProveedorCuentaContableForm.cuentaContableProveedores.$dirty && editarProveedorCuentaContableForm.cuentaContableProveedores.$error" role="alert">
-                            <label>Nueva Cuenta Contable *
-                                <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
-                                <span class="animated fadeIn" style="color:red;" ng-message="existecta">registrado</span>
-                            </label>
-                            <cuenta-contable-proveedores dato="editarProveedorCuentaContable.datos.cuentaContable"></cuenta-contable-proveedores>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </div>
-    <hr>
-    <!--DIRECCIÓN FISCAL-->
-    <div class="row animated fadeInRight">
-    </div>
-    <!--ALERTA Y BOTÓN-->
     <div class="row">
         <div class="col-md-8">
             <alertas tipo="editarProveedorCuentaContable.tipoMsj" mensaje="editarProveedorCuentaContable.msj"></alertas>
         </div>
-        <div class="col-md-3" ng-show="editarProveedorCuentaContable.ocultarBoton">
-            <!--BOTON GUARDAR DATOS GENERALES-->
+        <div class="col-md-3">
             <button type="button"
                     class="btn btn-primary pull-right"
-                    ng-disabled="editarProveedorCuentaContableForm.$invalid"
-                    ng-click="editarProveedorCuentaContable.actualizarDatosGenerales(editarProveedorCuentaContableForm)">
-                Actualizar
+                    ng-disabled="editarProveedorCuentaContableFrm.$invalid"
+                    ng-click="editarProveedorCuentaContable.actualizarCuentaContable()">
+                Aceptar
             </button>
         </div>
     </div>

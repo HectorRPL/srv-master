@@ -1,11 +1,11 @@
 /**
  * Created by Héctor on 11/07/2017.
  */
-import template from "./desactivarProveedor.html";
+import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
+import {cambiosProveedorActivar} from "../../../../../api/catalogos/proveedores/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
-import {cambiosProveedorActivar} from "../../../../../api/catalogos/proveedores/methods";
-import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
+import template from "./desactivarProveedor.html";
 
 class DesactivarProveedor {
     constructor($scope, $reactive, $stateParams) {
@@ -15,33 +15,30 @@ class DesactivarProveedor {
 
         this.propietarioId = $stateParams.proveedorId;
 
+        this.datos = {};
         this.tipoMsj = '';
 
         this.subscribe('proveedores.todos', () => [{_id: this.propietarioId}]);
-
         this.helpers({
             proveedor(){
                 return Proveedores.findOne({_id: this.propietarioId});
             }
         });
     }
+    desactivarProveedor() {
 
-    editar() {
-        this.ocultarBoton = true;
-    }
 
-    limpiarCampos(desactivarProveedorForm) {
-        this.datos = {};
-        desactivarProveedorForm.$setPristine();
-    }
+        this.datos = {
+            _id: this.propietarioId,
+            activo: this.proveedor.activo
+        };
 
-    desactivar(desactivarProveedorForm) {
-        this.datos._id = this.propietarioId;
+        console.log('[28] Esto vamos a enviar' , this.datos);
 
         cambiosProveedorActivar.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            this.limpiarCampos(desactivarProveedorForm);
         })).catch(this.$bindToContext((err)=>{
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
