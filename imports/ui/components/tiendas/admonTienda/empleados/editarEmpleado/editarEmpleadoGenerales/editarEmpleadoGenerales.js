@@ -65,7 +65,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.admon.empleados.editar.generales', {
-            url: '/:empleadoId/generales',
+            url: '/generales',
             template: '<editar-empleado-generales></editar-empleado-generales>'
         });
 }

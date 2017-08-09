@@ -57,7 +57,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.admon.empleados.editar.desactivar', {
-            url: '/:empleadoId/desactivar',
+            url: '/desactivar',
             template: '<desactivar-empleado></desactivar-empleado>'
         });
 }

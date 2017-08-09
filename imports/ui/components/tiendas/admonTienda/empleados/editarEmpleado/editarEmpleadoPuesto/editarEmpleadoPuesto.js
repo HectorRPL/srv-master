@@ -58,7 +58,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.admon.empleados.editar.puesto', {
-            url: '/:empleadoId/puesto',
+            url: '/puesto',
             template: '<editar-empleado-puesto></editar-empleado-puesto>'
         });
 }

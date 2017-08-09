@@ -69,7 +69,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.admon.empleados.editar.contrasenia', {
-            url: '/:empleadoId/contrasenia',
+            url: '/contrasenia',
             template: '<editar-empleado-contrasenia></editar-empleado-contrasenia>'
         });
 }

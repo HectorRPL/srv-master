@@ -70,7 +70,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.admon.empleados.editar.direccion', {
-            url: '/:empleadoId/direccion',
+            url: '/direccion',
             template: '<empleado-direccion></empleado-direccion>'
         });
 }

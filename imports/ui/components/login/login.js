@@ -33,7 +33,9 @@ class Login {
 const name = 'login';
 
 // create a module
-export default angular.module(name, [])
+export default angular.module(name, [
+        Alertas
+    ])
     .component(name, {
         template,
         controllerAs: name,
