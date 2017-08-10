@@ -12,8 +12,8 @@
                 <br>
                 No edite este campo si no está seguro que los contadores están enteredos.
             </p>
-            <div class="form-group" ng-class="{ 'has-error' : editarTiendaCuentaContableForm.cuentaContableTiendas.$invalid && !editarTiendaCuentaContableForm.cuentaContableTiendas.$pristine}">
-                <div ng-messages="editarTiendaCuentaContableForm.cuentaContableTiendas.$dirty && editarTiendaCuentaContableForm.cuentaContableTiendas.$error" role="alert">
+            <div class="form-group" ng-class="{ 'has-error' : editarTiendaCuentaContableFrm.cuentaContableTiendas.$invalid && !editarTiendaCuentaContableFrm.cuentaContableTiendas.$pristine}">
+                <div ng-messages="editarTiendaCuentaContableFrm.cuentaContableTiendas.$dirty && editarTiendaCuentaContableFrm.cuentaContableTiendas.$error" role="alert">
                     <label>Nueva Cuenta Contable *
                         <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
                         <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
