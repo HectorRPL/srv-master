@@ -40,7 +40,8 @@ function config($stateProvider) {
     $stateProvider
         .state('app', {
             url: '/app',
-            template: '<app></app>'
+            template: '<app></app>',
+            abstract:true
         });
 };
 

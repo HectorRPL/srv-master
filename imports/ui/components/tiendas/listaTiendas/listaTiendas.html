@@ -40,7 +40,8 @@
                         </span>
                         <mostrar-direccion propietario-id="tienda._id"></mostrar-direccion>
                         <hr>
-                        <mostrar-datos-fiscales propietario-id="tienda._id" tienda-matriz="tienda.tiendaMatrizId"></mostrar-datos-fiscales>
+                        <mostrar-datos-fiscales propietario-id="tienda._id"
+                                                tienda-matriz="tienda.tiendaMatrizId"></mostrar-datos-fiscales>
 
                     </div>
                 </div>
@@ -48,11 +49,14 @@
             </a>
             <div class="row">
                 <div class="col-sm-12">
-                    <a ui-sref="app.tienda.agregarSucursal.datos({tiendaId: tienda._id})"
-                       ng-class="{'disabled' : tienda.tiendaMatrizId || tienda.tiendaMatrizId}"
-                       class="btn btn-white btn-sm">
-                        <i class="fa fa-industry"></i> Agregar Sucursal
-                    </a>
+                    <strong class="label label-info">
+                        <span ng-show="tienda.tiendaMatrizId">
+                            Sucursal
+                        </span>
+                        <span ng-hide="tienda.tiendaMatrizId">
+                            Matriz
+                        </span>
+                    </strong>
                 </div>
             </div>
         </div>

@@ -1,9 +1,9 @@
 /**
  * Created by Héctor on 26/07/2017.
  */
-import {altaSucursal} from "../../../../../api/catalogos/tiendas/sucursales/methods";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
+import {altaSucursal} from "../../../../../../api/catalogos/tiendas/sucursales/methods";
+import {name as Alertas} from "../../../../comun/alertas/alertas";
+import {name as FormaDatosGenerales} from "../../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import template from "./sucursalDatosGenerales.html";
 
 class SucursalDatosGenerales {

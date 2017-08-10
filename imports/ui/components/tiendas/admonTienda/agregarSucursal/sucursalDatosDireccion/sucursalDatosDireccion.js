@@ -1,9 +1,9 @@
 /**
  * Created by Héctor on 26/07/2017.
  */
-import {altaDireccion} from "../../../../../api/direcciones/methods";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
+import {altaDireccion} from "../../../../../../api/direcciones/methods";
+import {name as Alertas} from "../../../../comun/alertas/alertas";
+import {name as FormaDireccion} from "../../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./sucursalDatosDireccion.html";
 
 class SucursalDatosDireccion {

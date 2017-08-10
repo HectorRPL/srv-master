@@ -7,7 +7,6 @@ import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincip
 import {name as MostrarDireccion} from '../../comun/mostrar/mostrarDireccion/mostrarDireccion';
 import {name as MostrarDatosFiscales} from '../../comun/mostrar/mostrarDatosFiscales/mostrarDatosFiscales';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
-import {name as AgregarSucursal} from '../agregarSucursal/agregarSucursal';
 import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
 import template from "./listaTiendas.html";
 
@@ -56,7 +55,6 @@ export default angular
         utilsPagination,
         TituloPrincipal,
         AgregarTienda,
-        AgregarSucursal,
         BuscarTienda,
         MostrarDireccion,
         MostrarDatosFiscales

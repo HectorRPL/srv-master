@@ -9,8 +9,8 @@ import {name as Comisiones} from './comisiones/comisiones';
 import {name as Inventario} from './inventario/inventario';
 import {name as Empleados} from './empleados/empleados';
 import {name as Promociones} from './promociones/promociones';
-import {name as EditarTienda} from '../editarTienda/editarTienda';
-import {name as DetallesTienda} from './detallesTienda/detallesTienda';
+import {name as AgregarSucursal} from './agregarSucursal/agregarSucursal';
+
 
 class AdmonTienda {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -53,7 +53,8 @@ export default angular
         Comisiones,
         Inventario,
         Promociones,
-        Empleados
+        Empleados,
+        AgregarSucursal
     ])
     .component(name, {
         template,
