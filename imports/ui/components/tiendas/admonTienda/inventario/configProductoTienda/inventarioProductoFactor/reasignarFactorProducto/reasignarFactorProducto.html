@@ -57,7 +57,7 @@
                 <button type="button"
                         class="btn btn-primary"
                         ng-hide="reasignarFactorProducto.tipoMsj === 'success'"
-                        ng-disabled="reasignarFactorProductoFrm.$invalid"
+                        ng-disabled="!reasignarFactorProducto.factorSelec._id"
                         ng-click="reasignarFactorProducto.aplicarFactorProducto()">
                     Aplicar
                 </button>

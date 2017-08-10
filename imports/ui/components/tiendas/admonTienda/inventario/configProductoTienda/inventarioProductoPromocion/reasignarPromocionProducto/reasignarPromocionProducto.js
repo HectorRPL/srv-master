@@ -24,7 +24,7 @@ class ReasignarPromocionProducto {
             }],
             operacion: 'promocionProducto'
         };
-        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
+        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(() => {
             this.producto = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{

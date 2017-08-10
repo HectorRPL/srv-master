@@ -46,17 +46,17 @@
         <div class="inmodal">
             <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
             <div class="modal-footer">
-                <!--BOTON CANCELAR -->
+                <!--BOTON CERRAR -->
                 <button type="button"
                         class="btn btn-primary"
                         ng-click="reasignarPromocionProducto.cerrar()">
                     Cerrar
                 </button>
-                <!--BOTON CREAR -->
+                <!--BOTON APLICAR -->
                 <button type="button"
                         class="btn btn-primary"
                         ng-hide="reasignarPromocionProducto.tipoMsj === 'success'"
-                        ng-disabled="reasignarPromocionProductoFrm.$invalid"
+                        ng-disabled="!reasignarPromocionProducto.promocionSelec._id"
                         ng-click="reasignarPromocionProducto.aplicarPromocionProducto()">
                     Aplicar
                 </button>

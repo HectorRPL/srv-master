@@ -18,7 +18,11 @@ BASE DE DATOS MONGO
             Linux:
                 export MONGO_URL=mongodb://localhost:27017/ccp-dev1
             Windows:
-                SET MONGO_URL=mongodb://127.0.0.1:27017/ccp-dev1
+                Conexión local:
+                    SET MONGO_URL=mongodb://127.0.0.1:27017/ccp-dev1
+                Conexión a la nube:
+                    SET MONGO_URL=mongodb://dev01:0000@ds053196.mlab.com:53196/srv-dev
+                
     Importar / Exportar Collections
         mongoexport --db ccp-dev1 --collection tallas --out tallas.json
         
@@ -80,7 +84,8 @@ BASE DE DATOS MONGO
             $ meteor npm --save install bootstrap-social@5.0.0
             $ meteor npm --save install font-awesome@4.7.0
             $ meteor npm --save install angular-ui-mask
-            $ meteor npm install --save csvtojson
+            $ meteor npm --save install  csvtojson
+            $ meteor npm --save install  jquery-slimscroll
             $ meteor add angular-templates@1.0.9
             $ meteor add pbastowski:angular-babel@1.3.7
             $ meteor add accounts-password@1.3.3

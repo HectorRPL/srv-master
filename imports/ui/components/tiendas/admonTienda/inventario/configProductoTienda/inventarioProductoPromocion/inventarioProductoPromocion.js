@@ -14,7 +14,7 @@ class InventarioProductoPromocion {
         // /*
 
         this.subscribe('promociones.todos', () => [{_id: this.getReactively('promocionId')}]);
-        this.subscribe('productosInventarios.miInventario', ()=> [{
+        this.subscribe('productosInventarios.miInventario', () => [{
             tiendaId: this.getReactively('resolve.producto.tiendaId'),
             productoId: this.getReactively('resolve.producto._id')
         }]);

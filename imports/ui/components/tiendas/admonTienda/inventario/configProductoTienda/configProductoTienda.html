@@ -1,7 +1,10 @@
 <form id="configProductoTiendaFrmId" name="configProductoTiendaFrm" role="form">
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-12">
-            <h2>{{configProductoTienda.producto.producto().campoBusqueda}}</h2>
+            <h2>
+                <span class="text-navy">{{configProductoTienda.producto.marca().nombre}}</span>
+                {{configProductoTienda.producto.producto().campoBusqueda}}
+            </h2>
         </div>
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox-content">
@@ -36,6 +39,31 @@
                         <div class="contact-box">
                             <div class="col-sm-12">
                                 <div class="text-center">
+                                    <i class="fa fa-briefcase fa-3x" aria-hidden="true"></i>
+                                    <div class="m-t-xs font-bold"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <h3 class="text-center">COMISIÓN</h3>
+                                <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.comision().nombre}}</h3>
+                                <inventario-producto-comision
+                                        comision-id="configProductoTienda.producto.comisionId">
+                                </inventario-producto-comision>
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button"
+                                        class="btn btn-primary btn-xs pull-right"
+                                        ng-click="configProductoTienda.reasignarComisionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                </button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="contact-box">
+                            <div class="col-sm-12">
+                                <div class="text-center">
                                     <i class="fa fa-hand-o-down fa-3x" aria-hidden="true"></i>
                                     <div class="m-t-xs font-bold"></div>
                                 </div>
@@ -52,31 +80,6 @@
                                 <button type="button"
                                         class="btn btn-primary btn-xs pull-right"
                                         ng-click="configProductoTienda.reasignarPromocionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="contact-box">
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    <i class="fa fa-briefcase fa-3x" aria-hidden="true"></i>
-                                    <div class="m-t-xs font-bold"></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <h3 class="text-center">COMISIÓN</h3>
-                                <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.comision().nombre}}</h3>
-                                <inventario-producto-comision
-                                        comision-id="configProductoTienda.producto.comisionId">
-                                </inventario-producto-comision>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button"
-                                        class="btn btn-primary btn-xs pull-right"
-                                        ng-click="configProductoTienda.reasignarComisionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
                                     <i class="fa fa-pencil" aria-hidden="true"></i> Editar
                                 </button>
                             </div>
