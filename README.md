@@ -84,8 +84,8 @@ BASE DE DATOS MONGO
             $ meteor npm --save install bootstrap-social@5.0.0
             $ meteor npm --save install font-awesome@4.7.0
             $ meteor npm --save install angular-ui-mask
-            $ meteor npm --save install  csvtojson
-            $ meteor npm --save install  jquery-slimscroll
+            $ meteor npm --save install csvtojson
+            $ meteor npm --save install jquery-slimscroll
             $ meteor add angular-templates@1.0.9
             $ meteor add pbastowski:angular-babel@1.3.7
             $ meteor add accounts-password@1.3.3
