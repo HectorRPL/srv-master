@@ -8,7 +8,7 @@ class Alertas {
         'ngInject';
         $reactive(this).attach($scope);
         this.dangerMsj = 'Error al realizar la operación.';
-        this.successMsj = 'Éxito al realizar la operación.'
+        this.successMsj = 'Éxito al realizar la operación.';
     }
 }
 
