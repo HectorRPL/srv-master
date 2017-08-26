@@ -16,22 +16,22 @@
     <div class="col-md-3">
         <table class="table small m-b-xs">
             <tbody>
-                <tr>
-                    <td>Cuenta Contable</td>
-                    <td>{{editarTienda.tienda.cuentaContable}}</td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td>{{editarTienda.tienda.email}}</td>
-                </tr>
-                <tr ng-hide="editarTienda.tienda.telefonos">
-                    <td>Teléfono</td>
-                    <td> <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong></td>
-                </tr>
-                <tr ng-repeat="telefono in editarTienda.tienda.telefonos">
-                    <td>Teléfono</td>
-                    <td>{{telefono.telefono}} <span ng-show="telefono.extension"> Ext. {{telefono.extension}}</span></td>
-                </tr>
+            <tr>
+                <td>Cuenta Contable</td>
+                <td>{{editarTienda.tienda.cuentaContable}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{editarTienda.tienda.email}}</td>
+            </tr>
+            <tr ng-hide="editarTienda.tienda.telefonos">
+                <td>Teléfono</td>
+                <td> <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong></td>
+            </tr>
+            <tr ng-repeat="telefono in editarTienda.tienda.telefonos">
+                <td>Teléfono</td>
+                <td>{{telefono.telefono}} <span ng-show="telefono.extension"> Ext. {{telefono.extension}}</span></td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -40,28 +40,36 @@
 </div>
 <hr>
 <div class="row" style="min-height:250px !important;">
-    <div class="col-sm-2">
-        <ul class="nav nav-tabs tabs-left">
-            <li ng-show="editarTienda.tienda.tiendaMatrizId"
-                data-toggle="tab"
-                ng-repeat="tab in editarTienda.tiendaSucursal"
-                ng-class="{active: editarTienda.tab === $index}">
-                <a ui-sref="{{tab.estado}}({tiendaId: editarTienda.tiendaId})">
-                    <i class="{{tab.icono}}" aria-hidden="true"></i> {{tab.titulo}}
-                </a>
-            </li>
-            <li ng-show="!editarTienda.tienda.tiendaMatrizId"
-                data-toggle="tab"
-                ng-repeat="tab in editarTienda.tiendaMatriz"
-                ng-class="{active: editarTienda.tab === $index}">
-                <a ui-sref="{{tab.estado}}({tiendaId: editarTienda.tiendaId})">
-                    <i class="{{tab.icono}}" aria-hidden="true"></i> {{tab.titulo}}
-                </a>
-            </li>
-        </ul>
+    <div class="col-xs-12">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <ul class="nav nav-tabs tabs-left">
+                            <li ng-show="editarTienda.tienda.tiendaMatrizId"
+                                data-toggle="tab"
+                                ng-repeat="tab in editarTienda.tiendaSucursal"
+                                ng-class="{active: editarTienda.tab === $index}">
+                                <a ui-sref="{{tab.estado}}({tiendaId: editarTienda.tiendaId})">
+                                    <i class="{{tab.icono}}" aria-hidden="true"></i> {{tab.titulo}}
+                                </a>
+                            </li>
+                            <li ng-show="!editarTienda.tienda.tiendaMatrizId"
+                                data-toggle="tab"
+                                ng-repeat="tab in editarTienda.tiendaMatriz"
+                                ng-class="{active: editarTienda.tab === $index}">
+                                <a ui-sref="{{tab.estado}}({tiendaId: editarTienda.tiendaId})">
+                                    <i class="{{tab.icono}}" aria-hidden="true"></i> {{tab.titulo}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10">
+                        <div ui-view=""></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
     </div>
-    <div class="col-sm-10">
-        <div ui-view=""></div>
-    </div>
-    <div class="clearfix"></div>
 </div>

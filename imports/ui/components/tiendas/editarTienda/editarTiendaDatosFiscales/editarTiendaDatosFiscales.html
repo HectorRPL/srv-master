@@ -1,7 +1,7 @@
 <form class="animated fadeInRight" role="form" id="editarTiendaDatosFiscalesFrmId" name="editarTiendaDatosFiscalesFrm" novalidate>
     <div class="row">
         <div class="col-sm-12">
-            <div class="row" ng-if="!editarTiendaDatosFiscales.datosFiscales._id">
+            <div class="row" ng-if="!editarTiendaDatosFiscales.datosFiscales.rfc">
                 <div class="col-sm-12">
                     <h3 class="text-navy">Datos Fiscales</h3>
                 </div>
@@ -25,11 +25,12 @@
                 <div class="col-md-3">
                     <button type="button"
                             class="btn btn-primary pull-right"
-                            ng-show="!editarTiendaDatosFiscales.datosFiscales._id"
+                            ng-show="!editarTiendaDatosFiscales.datosFiscales.rfc"
                             ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
                             ng-click="editarTiendaDatosFiscales.altaDatosFiscales()">
                         Guardar Datos Fiscales y Dirección
                     </button>
+                    <!--
                     <button type="button"
                             class="btn btn-primary pull-right"
                             ng-show="editarTiendaDatosFiscales.datosFiscales.codigoPostal"
@@ -37,6 +38,7 @@
                             ng-click="editarTiendaDatosFiscales.guardarDatosFiscales()">
                         Actualizar Dirección
                     </button>
+                    -->
                 </div>
             </div>
         </div>

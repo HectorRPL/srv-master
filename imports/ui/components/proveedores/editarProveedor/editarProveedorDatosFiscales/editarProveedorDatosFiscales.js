@@ -2,8 +2,8 @@
  * Created by Héctor on 25/07/2017.
  */
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
-// import {name as AltaDatosFiscales} from "../../../comun/altasCambios/datosFiscales/altaDatosFiscales/altaDatosFiscales";
-// import {name as CambiosDatosFiscales} from "../../../comun/altasCambios/datosFiscales/cambiosDatosFiscales/cambiosDatosFiscales";
+import {name as AltaDatosFiscales} from "../../../comun/altasCambios/datosFiscales/altaDatosFiscales/altaDatosFiscales";
+import {name as CambiosDatosFiscales} from "../../../comun/altasCambios/datosFiscales/cambiosDatosFiscales/cambiosDatosFiscales";
 import template from "./editarProveedorDatosFiscales.html";
 
 class EditarProveedorDatosFiscales {
@@ -39,8 +39,8 @@ const name = 'editarProveedorDatosFiscales';
 
 export default angular
     .module(name, [
-        // AltaDatosFiscales,
-        // CambiosDatosFiscales
+        AltaDatosFiscales,
+        CambiosDatosFiscales
     ])
     .component(name, {
         template,
