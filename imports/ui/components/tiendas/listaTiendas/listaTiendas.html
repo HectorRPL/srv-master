@@ -1,18 +1,26 @@
-<h2>Tiendas del Grupo</h2>
-<hr>
 <div class="row">
-    <div class="col-xs-4">
-        <a ui-sref="app.tienda.agregar.datos" class="btn btn-primary btn-sm">Agregar Tienda</a>
-    </div>
-    <div class="col-xs-4">
-        <buscar-tienda tienda="listaTiendas.tiendaSelec"></buscar-tienda>
-    </div>
-    <div class="col-xs-4">
-
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>Tiendas del Grupo</h2>
+                        <hr>
+                    </div>
+                    <div class="col-xs-4">
+                        <a ui-sref="app.tienda.agregar.datos" class="btn btn-primary btn-sm">Agregar Tienda</a>
+                    </div>
+                    <div class="col-xs-4">
+                        <buscar-tienda tienda="listaTiendas.tiendaSelec"></buscar-tienda>
+                    </div>
+                    <div class="col-xs-4"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-4 ajustar"
+    <div class="col-sm-4"
          dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
          total-items="listaTiendas.tiendasCount">
         <div class="contact-box">
@@ -21,7 +29,7 @@
                     <div class="col-sm-1">
                         <i class="fa fa-industry" aria-hidden="true"></i>
                     </div>
-                    <div class="col-sm-11">
+                    <div class="col-sm-11 ajustar">
                         <h3><strong>{{tienda.nombre}}</strong></h3>
                     </div>
                 </div>
