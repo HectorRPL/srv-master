@@ -26,7 +26,7 @@ export default angular
         ElegirDepartamento
     ])
     .component(name, {
-        template ,
+        template: template.default,
         controllerAs: name,
         controller: FormaDatosPersonales,
         bindings: {
