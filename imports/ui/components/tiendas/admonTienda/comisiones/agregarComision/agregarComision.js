@@ -43,7 +43,7 @@ export default angular
         FormaComision
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AgregarComision,
         bindings: {

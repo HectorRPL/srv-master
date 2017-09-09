@@ -16,7 +16,7 @@ const name = 'radioDesactivar';
 export default angular
     .module(name, [])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         bindings: {
             dato: '='

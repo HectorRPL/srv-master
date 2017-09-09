@@ -33,7 +33,7 @@ export default angular
         CuentaContableTiendas
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AgregarTienda
     })

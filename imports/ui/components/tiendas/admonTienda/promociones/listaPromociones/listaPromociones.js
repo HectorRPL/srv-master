@@ -81,7 +81,7 @@ export default angular
         EditarPromocion
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ListaFactores,
     })

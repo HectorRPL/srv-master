@@ -53,7 +53,7 @@ export default angular
         MostrarDireccion
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ListaEmpleados
     })

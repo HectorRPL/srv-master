@@ -22,7 +22,7 @@ export default angular
         InfoTienda
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: DetallesTienda
     }).config(config);

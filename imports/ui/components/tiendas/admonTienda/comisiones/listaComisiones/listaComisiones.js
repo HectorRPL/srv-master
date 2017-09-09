@@ -84,7 +84,7 @@ export default angular
         BuscarComision
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ListaComisiones,
     })

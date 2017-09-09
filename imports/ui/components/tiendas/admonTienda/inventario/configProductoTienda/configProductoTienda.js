@@ -93,7 +93,7 @@ export default angular
         ReasignarComisionProducto
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ConfigProductoTienda
     })

@@ -46,7 +46,7 @@ export default angular
         FormaDireccion
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AgregarDireccionEmpleado
     })

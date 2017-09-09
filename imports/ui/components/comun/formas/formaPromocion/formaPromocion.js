@@ -18,7 +18,7 @@ export default angular
         EligeFechaInicioFin
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         bindings: {
             promocion: '='

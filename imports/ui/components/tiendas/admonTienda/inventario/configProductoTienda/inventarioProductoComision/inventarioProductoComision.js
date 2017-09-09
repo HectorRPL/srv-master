@@ -25,7 +25,7 @@ const name = 'inventarioProductoComision';
 export default angular
     .module(name, [])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: InventarioProductoComision,
         bindings: {

@@ -40,7 +40,7 @@ export default angular
         DesactivarMarca
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: EditarProducto
     })

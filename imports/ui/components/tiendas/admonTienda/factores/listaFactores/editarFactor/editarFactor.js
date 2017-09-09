@@ -57,7 +57,7 @@ export default angular
         FormaFactores
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: EditarFactor,
         bindings: {

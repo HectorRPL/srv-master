@@ -59,7 +59,7 @@ export default angular
         Contrasenia
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: EditarEmpleadoContrasenia
     })

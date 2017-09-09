@@ -53,7 +53,7 @@ export default angular
         BuscarMarca
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ListaProductos
     })

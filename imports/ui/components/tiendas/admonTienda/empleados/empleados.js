@@ -24,7 +24,7 @@ export default angular
         EditarEmpleado
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: Empleados
     })

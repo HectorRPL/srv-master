@@ -46,7 +46,7 @@ export default angular
         BuscarPromocion
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ReasignarPromocionProducto,
         bindings: {

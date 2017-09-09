@@ -22,7 +22,7 @@ export default angular
         EditarTienda
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: TiendasClass
     })

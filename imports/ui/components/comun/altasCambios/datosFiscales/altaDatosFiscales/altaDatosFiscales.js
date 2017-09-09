@@ -47,7 +47,7 @@ export default angular
         FormaDatosFiscales
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AltaDatosFiscales,
         bindings: {

@@ -56,7 +56,7 @@ export default angular
         BuscarProveedor
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ListaProveedores
     })

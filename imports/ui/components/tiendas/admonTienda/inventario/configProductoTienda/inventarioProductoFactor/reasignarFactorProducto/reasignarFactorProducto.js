@@ -46,7 +46,7 @@ export default angular
         BuscarFactor
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ReasignarFactorProducto,
         bindings: {

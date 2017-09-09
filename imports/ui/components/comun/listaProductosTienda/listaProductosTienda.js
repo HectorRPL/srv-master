@@ -59,7 +59,7 @@ export default angular
         utilsPagination
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: ListaProductosTienda,
         bindings: {

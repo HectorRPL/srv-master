@@ -21,7 +21,7 @@ export default angular
         EditarProveedor
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: Proveedores
     })

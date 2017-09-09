@@ -51,7 +51,7 @@ export default angular
         RadioDesactivar
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: DesactivarProveedor
     })

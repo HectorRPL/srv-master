@@ -40,7 +40,7 @@ export default angular
         Alertas
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: TiendaDatosFiscales
     })

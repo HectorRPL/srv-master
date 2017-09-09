@@ -53,7 +53,7 @@ export default angular
         FormaDatosGenerales
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: EditarProveedorGenerales
     })

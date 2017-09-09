@@ -29,7 +29,7 @@ export default angular
         ConfigProductoTienda
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: Inventario
     })

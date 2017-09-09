@@ -57,7 +57,7 @@ export default angular
         AgregarSucursal
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AdmonTienda
     })

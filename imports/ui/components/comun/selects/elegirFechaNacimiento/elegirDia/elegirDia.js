@@ -21,7 +21,7 @@ const name = 'elegirDia';
 export default angular
     .module(name, [])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         bindings: {
             diaid: '='

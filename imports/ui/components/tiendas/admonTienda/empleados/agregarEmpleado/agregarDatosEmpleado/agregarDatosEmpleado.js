@@ -37,7 +37,7 @@ export default angular
         FormaDatosPersonales
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AregarDatosEmpleado
     })

@@ -24,7 +24,7 @@ export default angular
         // EditarProducto
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: Catalogo
     })

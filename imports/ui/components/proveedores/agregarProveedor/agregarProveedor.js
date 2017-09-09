@@ -30,7 +30,7 @@ export default angular
         ProveedorDatosFiscales
     ])
     .component(name, {
-        template,
+        template: template.default,
         controllerAs: name,
         controller: AgregarProveedor
     })
