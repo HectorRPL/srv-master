@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {_} from "meteor/underscore";
 import {Factores} from "./collection";
@@ -16,6 +17,13 @@ export const buscarFactores = new ValidatedMethod({
     run({factor}) {
         const selector = {nombre: {$regex: factor, $options: 'i'}};
         let options = {fields: {_id: 1, nombre: 1}};
+
+        /*
+
+        TODO: ¿Las búsquedas llevan throw new Meteor.Error... ?
+
+        */
+
         const resultado = Factores.find(selector, options).fetch();
         return resultado;
     }

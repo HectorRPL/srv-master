@@ -28,14 +28,10 @@ class AgregarFactor {
     }
 
     agregar() {
-        altaFactor.call(this.datos, this.$bindToContext((err)=> {
-            if (err) {
-                this.msj = err.reason;
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'El factor se ha creado con éxito y está listo para su uso.';
-                this.tipoMsj = 'success';
-            }
+        altaFactor.callPromise(this.datos).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err)=>{
+            this.tipoMsj = 'danger';
         }));
     }
 

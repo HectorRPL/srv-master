@@ -4,6 +4,7 @@
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {ValidatedMethod} from "meteor/mdg:validated-method"
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {Factores} from "./collection";
@@ -15,29 +16,23 @@ const CAMPO_ID = ['_id'];
 
 export const altaFactor = new ValidatedMethod({
     name: 'factores.altaFactor',
+    mixins: [CallPromiseMixin],
     validate: Factores.simpleSchema().pick(CAMPOS_FACTORES).validator({
         clean: true,
         filter: false
     }),
     run({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9}) {
-        return Factores.insert({
-            nombre,
-            factor1,
-            factor2,
-            factor3,
-            factor4,
-            factor5,
-            factor6,
-            factor7,
-            factor8,
-            factor9
+        return Factores.insert({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9}, (err)=> {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+            }
         });
     }
 });
 
 export const cambiosFactor = new ValidatedMethod({
     name: 'factores.cambiosFactor',
-    mixins: [LoggedInMixin, CallPromiseMixin],
+    mixins: [CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
         message: 'Para modificar estos campos necesita registrarse.',
@@ -63,6 +58,10 @@ export const cambiosFactor = new ValidatedMethod({
                 factor7: factor7,
                 factor8: factor8,
                 factor9: factor9
+            }
+        }, (err)=> {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
         });
     }
