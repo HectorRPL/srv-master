@@ -19,7 +19,7 @@ class EditarEmpleadoGenerales {
 
         this.subscribe('empleados.porTienda', () => [{_id: this.empleadoId}]);
         this.helpers({
-            empleado(){
+            empleado() {
                 return Empleados.findOne({_id: this._id}) || {};
             }
         });
@@ -34,17 +34,12 @@ class EditarEmpleadoGenerales {
         delete this.empleado.nombreCompleto;
         delete this.empleado.departamentoId;
 
-        console.log('[23] Esto es lo que vamos a enviar', this.empleado);
-
         actualizarEmpleado.callPromise(this.empleado).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-            ;
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
-
 }
 
 const name = 'editarEmpleadoGenerales';

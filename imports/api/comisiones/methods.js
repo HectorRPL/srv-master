@@ -3,7 +3,8 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
-import {ValidatedMethod} from "meteor/mdg:validated-method"
+import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {Comisiones} from "./collection";
@@ -14,7 +15,19 @@ const CAMPO_ID = ['_id'];
 
 export const crearComision = new ValidatedMethod({
     name: 'comisiones.crearComision',
-    mixins: [LoggedInMixin, CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin, LoggedInMixin],
+    allow: [
+        {
+            roles: ['crea_comisiones'],
+            group: 'comisiones'
+        }
+    ],
+    permissionsError: {
+        name: 'comisiones.crearComision',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     checkLoggedInError: {
         error: 'noLogeado',
         message: 'Para modificar estos campos necesita registrarse.',
@@ -39,7 +52,19 @@ export const crearComision = new ValidatedMethod({
 
 export const actualizarComision = new ValidatedMethod({
     name: 'comisiones.actualizarComision',
-    mixins: [LoggedInMixin, CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin, LoggedInMixin],
+    allow: [
+        {
+            roles: ['actua_comisiones'],
+            group: 'comisiones'
+        }
+    ],
+    permissionsError: {
+        name: 'comisiones.actualizarComision',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     checkLoggedInError: {
         error: 'noLogeado',
         message: 'Para modificar estos campos necesita registrarse.',

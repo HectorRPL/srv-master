@@ -4,6 +4,7 @@
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Productos} from "./collection";
@@ -27,7 +28,19 @@ const CAMPOS_PRODUCTOS = [
 
 export const crearProducto = new ValidatedMethod({
     name: 'productos.crearProducto',
-    mixins: [PermissionsMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_productos'],
+            group: 'productos'
+        }
+    ],
+    permissionsError: {
+        name: 'productos.crearProducto',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     allow: PermissionsMixin.LoggedIn,
     validate: Productos.simpleSchema().pick(CAMPOS_PRODUCTOS).validator({
         clean: true,

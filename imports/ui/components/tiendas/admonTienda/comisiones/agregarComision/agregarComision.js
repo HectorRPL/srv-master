@@ -17,13 +17,10 @@ class AgregarComision {
     }
 
     agregar() {
-        console.log(this.comision);
-
         // /*
         crearComision.callPromise(this.comision).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
          // */

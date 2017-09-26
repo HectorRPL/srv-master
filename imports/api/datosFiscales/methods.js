@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
@@ -15,7 +16,19 @@ const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colo
 
 export const crearDatoFiscal = new ValidatedMethod({
     name: 'datosFiscales.crearDatoFiscal',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_datos_fiscales'],
+            group: 'datos_fiscales'
+        }
+    ],
+    permissionsError: {
+        name: 'datosFiscales.crearDatoFiscal',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: DatosFiscales.simpleSchema().pick(CAMPO_ID, CAMPO_PROPIETARIOID, CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false
@@ -38,7 +51,19 @@ export const crearDatoFiscal = new ValidatedMethod({
 
 export const actlzrDatsFiscls = new ValidatedMethod({
     name: 'datosFiscales.actlzrDatsFiscls',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_datos_fiscales'],
+            group: 'datos_fiscales'
+        }
+    ],
+    permissionsError: {
+        name: 'datosFiscales.actlzrDatsFiscls',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: DatosFiscales.simpleSchema().pick(CAMPO_PROPIETARIOID, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false

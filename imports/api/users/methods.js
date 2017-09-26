@@ -4,25 +4,25 @@
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
-import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
+import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 
 const ID = ['_id'];
 
 export const crearUsuario = new ValidatedMethod({
     name: 'usuarios.crearUsuario',
-    mixins: [CallPromiseMixin, PermissionsMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_usua'],
+            roles: ['crea_usuarios'],
             group: '__global_roles__'
         }
     ],
     permissionsError: {
-        name: 'tiendas.insertar',
-        message: ()=> {
-            return 'Acceso denegado';
+        name: 'usuarios.crearUsuario',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
     validate: new SimpleSchema({
@@ -40,22 +40,19 @@ export const crearUsuario = new ValidatedMethod({
 
 export const borrarUsuario = new ValidatedMethod({
     name: 'usuarios.borrarUsuario',
-    mixins: [CallPromiseMixin, PermissionsMixin],
-    /* todo: falta que juan me explique que es lo que va aquí:
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_usua'],
+            roles: ['borr_usuarios'],
             group: '__global_roles__'
         }
     ],
-
     permissionsError: {
-        name: 'tiendas.insertar',
-        message: ()=> {
-            return 'Acceso denegado';
+        name: 'usuarios.borrarUsuario',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    */
     validate: new SimpleSchema({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id}
     }).validator(),
@@ -68,10 +65,6 @@ export const borrarUsuario = new ValidatedMethod({
         });
     }
 });
-
-
-
-
 
 const USUARIOS_METHODS = _.pluck([crearUsuario, borrarUsuario], 'name');
 if (Meteor.isServer) {

@@ -19,12 +19,9 @@ class EditarComision {
     editarComision() {
         this.datos = angular.copy(this.resolve.editarComision);
         delete this.datos.fechaCreacion;
-
-        console.log(this.datos);
         actualizarComision.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 02/08/2017.
  */
-import {aplicarFactPromoComiProd}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdInvFacPromCom}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas}            from "../../../../../../comun/alertas/alertas";
 import {name as BuscarComision}     from "../../../../../../comun/busquedas/buscarComision/buscarComision";
 import template                     from "./reasignarComisionProducto.html";
@@ -24,7 +24,7 @@ class ReasignarComisionProducto {
             }],
             operacion: 'comisionProducto'
         };
-        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdInvFacPromCom.callPromise(datos).then(this.$bindToContext(() => {
             this.producto = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{

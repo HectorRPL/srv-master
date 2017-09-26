@@ -2,7 +2,8 @@
  * Created by jvltmtz on 9/03/17.
  */
 import {Meteor} from "meteor/meteor";
-import {ValidatedMethod} from "meteor/mdg:validated-method"
+import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
@@ -11,9 +12,22 @@ import {Marcas} from "./collection";
 const ID = ['_id'];
 
 const CAMPOS_FACTORES = ['nombre'];
-// Enviará un correo con un link al usuario para verificacar de registro
+
 export const crearMarca = new ValidatedMethod({
     name: 'marcas.crearMarca',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_marcas'],
+            group: 'marcas'
+        }
+    ],
+    permissionsError: {
+        name: 'marcas.crearMarca',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Marcas.simpleSchema().pick(CAMPOS_FACTORES).validator({
         clean: true,
         filter: false

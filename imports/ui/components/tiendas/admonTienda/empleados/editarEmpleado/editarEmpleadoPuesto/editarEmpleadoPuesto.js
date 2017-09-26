@@ -34,7 +34,6 @@ class EditarEmpleadoPuesto {
         actlzrEmpldPust.callPromise(empleadoDatosFinales).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

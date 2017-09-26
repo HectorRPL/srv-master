@@ -14,7 +14,6 @@ class ProveedorDatosDireccion {
         $reactive(this).attach($scope);
 
         this.propietarioId = $stateParams.proveedorId;
-        console.log('[17]', $stateParams.proveedorId);
 
         this.tipoMsj = '';
         this.direccion = {};
@@ -24,7 +23,6 @@ class ProveedorDatosDireccion {
         this.direccion.propietarioId = this.propietarioId
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
-        console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
 
         crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
@@ -37,7 +35,6 @@ class ProveedorDatosDireccion {
              */
             this.$state.go('app.proveedores.agregar.fiscales', {propietarioId:  this.propietarioId});
         })).catch(this.$bindToContext((err)=>{
-            console.log('[39]', err);
             this.tipoMsj = 'danger';
         }));
     }

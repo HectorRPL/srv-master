@@ -19,14 +19,14 @@ export const crearDireccion = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_dire'],
-            group: 'cruddirecciones'
+            roles: ['crea_direcciones'],
+            group: 'direcciones'
         }
     ],
     permissionsError: {
         name: 'direcciones.crearDireccion',
-        message: ()=> {
-            return 'Este usuario no cuenta con los permisos necesarios.';
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
     validate: Direcciones.simpleSchema().pick(CAMPOS_DIRECCION).validator({
@@ -52,7 +52,19 @@ export const crearDireccion = new ValidatedMethod({
 // ACTUALIZAR DIRECCIÓN
 export const actualizarDireccion = new ValidatedMethod({
     name: 'direcciones.actualizarDireccion',
-    mixins: [LoggedInMixin, CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin, LoggedInMixin],
+    allow: [
+        {
+            roles: ['actu_direcciones'],
+            group: 'direcciones'
+        }
+    ],
+    permissionsError: {
+        name: 'direcciones.actualizarDireccion',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     checkLoggedInError: {
         error: 'noLogeado',
         message: 'Para modificar estos campos necesita registrarse.',

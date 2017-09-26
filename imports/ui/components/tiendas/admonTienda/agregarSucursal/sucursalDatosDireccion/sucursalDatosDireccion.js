@@ -13,7 +13,6 @@ class SucursalDatosDireccion {
         $reactive(this).attach($scope);
 
         this.propietarioId = $stateParams.sucursalId;
-        console.log('ESTO ES LA SUCURSAL_ID', this.propietarioId);
 
         this.tipoMsj = '';
         this.direccion = {};
@@ -24,7 +23,6 @@ class SucursalDatosDireccion {
         this.direccion.propietarioId = this.propietarioId
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
-        console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
 
         crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';

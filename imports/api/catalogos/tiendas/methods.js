@@ -20,16 +20,16 @@ const CAMPO_ACTIVO = ['activo'];
 
 export const crearTienda = new ValidatedMethod({
     name: 'tiendas.crearTienda',
-    mixins: [CallPromiseMixin, PermissionsMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_tien'],
-            group: 'crudtiendas'
+            roles: ['crea_tiendas'],
+            group: 'tiendas'
         }
     ],
     permissionsError: {
         name: 'tiendas.crearTienda',
-        message: ()=> {
+        message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
@@ -52,8 +52,20 @@ export const crearTienda = new ValidatedMethod({
 });
 
 export const actualizarTienda = new ValidatedMethod({
-    name: 'datosFiscales.actualizarTienda',
-    mixins: [CallPromiseMixin],
+    name: 'tiendas.actualizarTienda',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_tiendas'],
+            group: 'tiendas'
+        }
+    ],
+    permissionsError: {
+        name: 'tiendas.actualizarTienda',
+        message: () => {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
     validate: Tiendas.simpleSchema().pick(ID, CAMPOS_TIENDAS).validator({
         clean: true,
         filter: false
@@ -75,7 +87,19 @@ export const actualizarTienda = new ValidatedMethod({
 
 export const actlzrCuntContblTind = new ValidatedMethod({
     name: 'tiendas.actlzrCuntContblTind',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_tiendas'],
+            group: 'tiendas'
+        }
+    ],
+    permissionsError: {
+        name: 'tiendas.actlzrCuntContblTind',
+        message: () => {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
     validate: Tiendas.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
@@ -97,7 +121,19 @@ export const actlzrCuntContblTind = new ValidatedMethod({
 
 export const actlzrTindActvr = new ValidatedMethod({
     name: 'tiendas.actlzrTindActvr',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_tiendas'],
+            group: 'tiendas'
+        }
+    ],
+    permissionsError: {
+        name: 'tiendas.actlzrTindActvr',
+        message: () => {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
     validate: Tiendas.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
         clean: true,
         filter: false

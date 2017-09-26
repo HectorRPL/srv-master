@@ -3,7 +3,7 @@
  */
 import {ProductosInventarios}       from "../../../../../../../api/inventarios/productosInventarios/collection";
 import {Marcas}                     from "../../../../../../../api/catalogos/marcas/collection";
-import {actlzrExstncProdct}  from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrExstncProdct}  from "../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as BuscarProducto}     from "../../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {name as Alertas}            from "../../../../../comun/alertas/alertas";
 import template                     from "./listaProdsMarcaTienda.html";
@@ -30,7 +30,6 @@ class ListaProdsMarcaTienda {
             }
         });
 
-
         this.perPage = 10;
         this.page = 1;
 
@@ -53,14 +52,13 @@ class ListaProdsMarcaTienda {
                 return Counts.get('numProdsInventarios');
             }
         });
-
     }
 
     actualizar(nuevoValor, id, editarExistenciaFrm) {
         this.tipoMsj = '';
         this.datos.cantidad = nuevoValor;
         this.datos._id = id;
-        actlzrExstncProdct.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlzrProdctInvntrExstncProdct.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarExistenciaFrm);
         })).catch(this.$bindToContext((err) => {

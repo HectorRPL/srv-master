@@ -27,17 +27,13 @@ class ProveedorDatosFiscales {
         delete datosFiscalesFinal.colonias;
 
         datosFiscalesFinal.propietarioId = this.propietarioId;
-        crearDatoFiscal.call(datosFiscalesFinal, this.$bindToContext((err) => {
-            if (err) {
-                this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
-                this.tipoMsj = 'danger';
-            } else {
-                this.msj = 'Los datos fiscales se guardaron exitosamente.';
-                this.tipoMsj = 'success';
-            }
+
+        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err) => {
+            this.tipoMsj = 'danger';
         }));
     }
-
 }
 
 const name = 'proveedorDatosFiscales';

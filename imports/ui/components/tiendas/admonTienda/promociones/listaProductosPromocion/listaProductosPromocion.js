@@ -13,7 +13,6 @@ class ListaProductosPromocion {
         $reactive(this).attach($scope);
         this.tiendaId = $stateParams.tiendaId;
         this.promocionId = $stateParams.promocionId;
-        console.log(this.promocionId);
         this.marcaSelec = '';
         this.productoSelec = '';
 

@@ -3,7 +3,8 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
-import {ValidatedMethod} from "meteor/mdg:validated-method"
+import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {Promociones} from "./collection";
@@ -17,7 +18,19 @@ const CAMPO_ID = ['_id'];
 
 export const crearPromocion = new ValidatedMethod({
     name: 'promociones.crearPromocion',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_promocion'],
+            group: 'promociones'
+        }
+    ],
+    permissionsError: {
+        name: 'promociones.crearPromocion',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Promociones.simpleSchema().pick(CAMPOS_PROMOCIONES).validator({
         clean: true,
         filter: false
@@ -57,9 +70,21 @@ export const actualizarPromocion = new ValidatedMethod({
     }
 });
 
-export const aplicarPromocionProductos = new ValidatedMethod({
-    name: 'promociones.aplicarProductos',
-    mixins: [CallPromiseMixin],
+export const actlzrPromcnProdct = new ValidatedMethod({
+    name: 'promociones.actlzrPromcnProdct',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_promocion'],
+            group: 'promociones'
+        }
+    ],
+    permissionsError: {
+        name: 'promociones.actlzrPromcnProdct',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         promocionNuevaId: {type: String},
         productos: {type: [Object], blackbox: true}
@@ -84,8 +109,20 @@ export const aplicarPromocionProductos = new ValidatedMethod({
 });
 
 export const aplicarPromocionMarca = new ValidatedMethod({
-    name: 'promociones.aplicarMarca',
-    mixins: [CallPromiseMixin],
+    name: 'promociones.aplicarPromocionMarca',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_promocion'],
+            group: 'promociones'
+        }
+    ],
+    permissionsError: {
+        name: 'promociones.aplicarPromocionMarca',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         tiendaId: {type: String},
         marcaId: {type: String},
@@ -123,7 +160,7 @@ export const aplicarPromocionMarca = new ValidatedMethod({
 });
 
 
-const PROMOCIONES_METHODS = _.pluck([crearPromocion, actualizarPromocion, aplicarPromocionProductos, aplicarPromocionMarca], 'name');
+const PROMOCIONES_METHODS = _.pluck([crearPromocion, actualizarPromocion, actlzrPromcnProdct, aplicarPromocionMarca], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

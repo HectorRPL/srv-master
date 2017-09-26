@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
@@ -14,7 +15,19 @@ const CAMPOS_EMPLEADOS = [ 'nombres', 'apellidos', 'celular', 'email', 'nacimien
 
 export const actualizarEmpleado = new ValidatedMethod({
     name: 'empleados.actualizarEmpleado',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_empleados'],
+            group: 'empleados'
+        }
+    ],
+    permissionsError: {
+        name: 'empleados.actualizarEmpleado',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Empleados.simpleSchema().pick(ID, CAMPOS_EMPLEADOS).validator({
         clean: true,
         filter: false
@@ -32,7 +45,19 @@ export const actualizarEmpleado = new ValidatedMethod({
 
 export const actlzrEmpldActvr = new ValidatedMethod({
     name: 'empleados.actlzrEmpldActvr',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_empleados'],
+            group: 'empleados'
+        }
+    ],
+    permissionsError: {
+        name: 'empleados.actlzrEmpldActvr',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
         activo: {type: Boolean}
@@ -54,7 +79,19 @@ export const actlzrEmpldActvr = new ValidatedMethod({
 
 export const actlzrEmpldPust = new ValidatedMethod({
     name: 'empleados.actlzrEmpldPust',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_empleados'],
+            group: 'empleados'
+        }
+    ],
+    permissionsError: {
+        name: 'empleados.actlzrEmpldPust',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
         departamentoId: {type: String}
@@ -73,7 +110,6 @@ export const actlzrEmpldPust = new ValidatedMethod({
         });
     }
 });
-
 
 const EMPLEADOS_METHODS = _.pluck([actualizarEmpleado, actlzrEmpldActvr, actlzrEmpldPust], 'name');
 if (Meteor.isServer) {

@@ -44,7 +44,6 @@ class ComisionProducto {
             this.productosAplicarPromo = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

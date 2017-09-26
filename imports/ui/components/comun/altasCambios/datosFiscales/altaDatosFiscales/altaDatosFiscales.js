@@ -23,7 +23,6 @@ class AltaDatosFiscales {
     }
 
     altaDatosFiscales() {
-        console.log('[23]', this.datosFiscales);
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
         datosFiscalesFinal.propietarioId = this.propietarioId;
@@ -31,7 +30,6 @@ class AltaDatosFiscales {
         crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log('[31]', err);
             this.tipoMsj = 'danger';
         }));
     }

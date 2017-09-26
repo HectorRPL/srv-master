@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 27/06/17.
  */
-import {aplicarFactPromoComiMarca} from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrFactrPromcnComsnMarc} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./factorMarca.html";
 
 class FactorMarca {
@@ -42,7 +42,7 @@ class FactorMarca {
             excepciones: this.prodsExcepciones,
             operacion: 'factorMarca'
         };
-        aplicarFactPromoComiMarca.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdctInvntrFactrPromcnComsnMarc.callPromise(datos).then(this.$bindToContext(()=> {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {

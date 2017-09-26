@@ -28,8 +28,6 @@ class EditarFactor {
         this.datos.factor7 = this.resolve.factor.factores.factor7;
         this.datos.factor8 = this.resolve.factor.factores.factor8;
 
-        console.log('[18]', this.datos);
-
         // /*
         actualizarFactor.call(this.datos, this.$bindToContext((err)=> {
             if (err) {

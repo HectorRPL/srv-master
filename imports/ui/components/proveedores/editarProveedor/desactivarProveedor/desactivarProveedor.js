@@ -32,8 +32,6 @@ class DesactivarProveedor {
             activo: this.proveedor.activo
         };
 
-        console.log('[28] Esto vamos a enviar' , this.datos);
-
         actlizrProvdrActvr.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{

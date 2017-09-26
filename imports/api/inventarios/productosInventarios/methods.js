@@ -3,8 +3,9 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
-import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {ProductosInventarios} from "./collection";
 import {BitaFactPromoComi} from "../../bitacoras/factoresPromo/collection";
@@ -25,10 +26,21 @@ const ID = ['_id'];
 
 const CAMPO_CANTIDAD = ['cantidad'];
 
-
-export const aplicarFactPromoComiProd = new ValidatedMethod({
-    name: 'productosInventarios.aplicarFactPromoComiProd',
-    mixins: [CallPromiseMixin],
+export const actlzrProdctInvntrPromcnComsnProdct = new ValidatedMethod({
+    name: 'productosInventarios.actlzrProdctInvntrPromcnComsnProdct',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_productos_inventarios'],
+            group: 'productos_inventarios'
+        }
+    ],
+    permissionsError: {
+        name: 'productosInventarios.actlzrProdctInvntrPromcnComsnProdct',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         nuevoValorId: {type: String},
         productos: {type: [Object],  blackbox: true},
@@ -68,9 +80,21 @@ export const aplicarFactPromoComiProd = new ValidatedMethod({
     }
 });
 
-export const aplicarFactPromoComiMarca = new ValidatedMethod({
-    name: 'productosInventarios.aplicarFactPromoComiMarca',
-    mixins: [CallPromiseMixin],
+export const actlzrProdctInvntrFactrPromcnComsnMarc = new ValidatedMethod({
+    name: 'productosInventarios.actlzrProdctInvntrFactrPromcnComsnMarc',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_productos_inventarios'],
+            group: 'productos_inventarios'
+        }
+    ],
+    permissionsError: {
+        name: 'productosInventarios.actlzrProdctInvntrFactrPromcnComsnMarc',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         tiendaId: {type: String},
         marcaId: {type: String},
@@ -117,10 +141,21 @@ export const aplicarFactPromoComiMarca = new ValidatedMethod({
     }
 });
 
-
-export const actlzrExstncProdct = new ValidatedMethod({
-    name: 'productosInventarios.actlzrExstncProdct',
-    mixins: [CallPromiseMixin],
+export const actlzrProdctInvntrExstncProdct = new ValidatedMethod({
+    name: 'productosInventarios.actlzrProdctInvntrExstncProdct',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_productos_inventarios'],
+            group: 'productos_inventarios'
+        }
+    ],
+    permissionsError: {
+        name: 'productosInventarios.actlzrProdctInvntrExstncProdct',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: ProductosInventarios.simpleSchema().pick(CAMPO_CANTIDAD, ID).validator({
         clean: true,
         filter: false
@@ -144,7 +179,13 @@ export const actlzrExstncProdct = new ValidatedMethod({
     }
 });
 
-const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([aplicarFactPromoComiMarca, aplicarFactPromoComiProd, actlzrExstncProdct], 'name');
+const PRODUCTOS_INVENTARIOS_METHODS = _.pluck(
+    [
+        actlzrProdctInvntrPromcnComsnProdct,
+        actlzrProdctInvntrFactrPromcnComsnMarc,
+        actlzrProdctInvntrExstncProdct
+    ],
+    'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

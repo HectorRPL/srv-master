@@ -3,6 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
@@ -16,7 +17,19 @@ const CAMPO_ACTIVO = ['activo'];
 
 export const crearProveedor = new ValidatedMethod({
     name: 'proveedores.crearProveedor',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_proveedores'],
+            group: 'proveedores'
+        }
+    ],
+    permissionsError: {
+        name: 'proveedores.crearProveedor',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Proveedores.simpleSchema().pick(CAMPOS_PROVEEDORES, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
@@ -28,7 +41,19 @@ export const crearProveedor = new ValidatedMethod({
 
 export const actlzrProvdrDatGenrl = new ValidatedMethod({
     name: 'proveedores.actlzrProvdrDatGenrl',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actua_proveedores'],
+            group: 'proveedores'
+        }
+    ],
+    permissionsError: {
+        name: 'proveedores.actlzrProvdrDatGenrl',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Proveedores.simpleSchema().pick(ID, CAMPOS_PROVEEDORES).validator({
         clean: true,
         filter: false
@@ -50,7 +75,19 @@ export const actlzrProvdrDatGenrl = new ValidatedMethod({
 
 export const actlzrCuntContblProvdr = new ValidatedMethod({
     name: 'proveedores.actlzrCuntContblProvdr',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actua_proveedores'],
+            group: 'proveedores'
+        }
+    ],
+    permissionsError: {
+        name: 'proveedores.actlzrCuntContblProvdr',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
         filter: false
@@ -71,8 +108,20 @@ export const actlzrCuntContblProvdr = new ValidatedMethod({
 });
 
 export const actlizrProvdrActvr = new ValidatedMethod({
-    name: 'tiendas.actlizrProvdrActvr',
-    mixins: [CallPromiseMixin],
+    name: 'proveedores.actlizrProvdrActvr',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actua_proveedores'],
+            group: 'proveedores'
+        }
+    ],
+    permissionsError: {
+        name: 'proveedores.actlizrProvdrActvr',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
         clean: true,
         filter: false

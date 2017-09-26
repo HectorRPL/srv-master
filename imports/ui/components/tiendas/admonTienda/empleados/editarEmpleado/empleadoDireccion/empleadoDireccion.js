@@ -32,7 +32,6 @@ class EmpleadoDireccion {
         crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log('[29]', err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -46,7 +45,6 @@ class EmpleadoDireccion {
         actualizarDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
-            console.log('[48]', err);
             this.tipoMsj = 'danger';
         }));
     }

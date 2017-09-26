@@ -3,7 +3,7 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
-import {ValidatedMethod} from "meteor/mdg:validated-method"
+import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
@@ -16,7 +16,19 @@ const CAMPO_ID = ['_id'];
 
 export const crearFactor = new ValidatedMethod({
     name: 'factores.crearFactor',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_factores'],
+            group: 'factores'
+        }
+    ],
+    permissionsError: {
+        name: 'factores.crearFactor',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: Factores.simpleSchema().pick(CAMPOS_FACTORES).validator({
         clean: true,
         filter: false
@@ -32,7 +44,20 @@ export const crearFactor = new ValidatedMethod({
 
 export const actualizarFactor = new ValidatedMethod({
     name: 'factores.actualizarFactor',
-    mixins: [CallPromiseMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_factores'],
+            group: 'factores'
+        }
+    ],
+    permissionsError: {
+        name: 'factores.actualizarFactor',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
+    // TODO: ¿va con checkLoggedInError, o con PermissionsMixin, o con los dos?
     checkLoggedInError: {
         error: 'noLogeado',
         message: 'Para modificar estos campos necesita registrarse.',
@@ -67,9 +92,13 @@ export const actualizarFactor = new ValidatedMethod({
     }
 });
 
-
-
-const FACTORES_METHODS = _.pluck([crearFactor, actualizarFactor], 'name');
+const FACTORES_METHODS = _.pluck(
+    [
+        crearFactor,
+        actualizarFactor
+    ],
+    'name'
+);
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

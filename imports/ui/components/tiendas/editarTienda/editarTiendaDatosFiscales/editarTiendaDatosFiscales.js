@@ -30,9 +30,9 @@ class EditarTiendaDatosFiscales {
     }
 
     altaDatosFiscales() {
-        console.log('[23]', this.datosFiscales);
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
+        delete datosFiscalesFinal.fechaCreacion;
         datosFiscalesFinal.propietarioId = this.propietarioId;
 
         crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
@@ -58,7 +58,6 @@ class EditarTiendaDatosFiscales {
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
-
     }
 }
 

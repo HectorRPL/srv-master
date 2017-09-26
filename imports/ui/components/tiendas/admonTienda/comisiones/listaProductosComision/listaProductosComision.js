@@ -37,11 +37,9 @@ class ListaProductosComision {
         ]);
         this.helpers({
             comision() {
-                console.log('[38]', Comisiones.findOne(this.comisionId));
                 return Comisiones.findOne({_id: this.comisionId});
             },
             productos(){
-                console.log('[42]', ProductosInventarios.find());
                 return ProductosInventarios.find();
             },
             productosCount(){

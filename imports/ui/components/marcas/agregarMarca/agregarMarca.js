@@ -19,7 +19,6 @@ class AgregarMarca {
         this.tipoMsj = '';
         crearMarca.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
-                console.log();
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';
             } else {

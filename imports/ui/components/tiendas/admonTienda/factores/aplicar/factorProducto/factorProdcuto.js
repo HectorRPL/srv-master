@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 27/06/17.
  */
-import {aplicarFactPromoComiProd} from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrPromcnComsnProdct} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./factorProducto.html";
 
 class FactorProducto {
@@ -38,9 +38,7 @@ class FactorProducto {
             productos: this.productosAplicarFac,
             operacion: 'factorProducto'
         };
-        console.log('[32] this.productosAplicarFac', this.productosAplicarFac);
-        console.log('[41 Esto vamos a evniar "datos"]', datos);
-        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarFac = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
@@ -67,8 +65,6 @@ class FactorProducto {
             console.log(reason)
         }));
     }
-
-
 }
 
 const name = 'factorProducto';

@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 02/08/2017.
  */
-import {aplicarFactPromoComiProd}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrPromcnComsnProdct}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas}            from "../../../../../../comun/alertas/alertas";
 import {name as BuscarFactor}       from "../../../../../../comun/busquedas/buscarFactor/buscarFactor";
 import template                     from "./reasignarFactorProducto.html";
@@ -24,10 +24,10 @@ class ReasignarFactorProducto {
             }],
             operacion: 'factorProducto'
         };
-        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(()=> {
             this.producto = [];
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }
@@ -35,7 +35,6 @@ class ReasignarFactorProducto {
     cerrar() {
         this.dismiss();
     }
-
 }
 
 const name = 'reasignarFactorProducto';

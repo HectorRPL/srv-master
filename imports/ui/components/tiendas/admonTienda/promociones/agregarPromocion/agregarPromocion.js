@@ -15,8 +15,6 @@ class AgregarPromocion {
     }
 
     agregar() {
-        console.log(this.promocion);
-
         crearPromocion.callPromise(this.promocion).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {

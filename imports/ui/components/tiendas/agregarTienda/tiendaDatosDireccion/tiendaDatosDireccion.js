@@ -23,7 +23,6 @@ class TiendaDatosDireccion {
         this.direccion.propietarioId = this.propietarioId
         let direccionFinal = angular.copy(this.direccion);
         delete direccionFinal.colonias;
-        console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
 
         crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';

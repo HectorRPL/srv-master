@@ -5,14 +5,13 @@ import template from "./proveedorDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {name as CuentaContableProveedores} from "../../../comun/inputs/cuentaContableProveedores/cuentaContableProveedores";
-import {altaProveedor} from "../../../../../api/catalogos/proveedores/methods";
+import {crearProveedor} from "../../../../../api/catalogos/proveedores/methods";
 
 class ProveedorDatosGenerales {
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-
 
         this.tipoMsj = '';
         this.$scope = $scope;
@@ -32,7 +31,7 @@ class ProveedorDatosGenerales {
     }
 
     guardar() {
-        altaProveedor.call(this.datos, this.$bindToContext((err, result) => {
+        crearProveedor.call(this.datos, this.$bindToContext((err, result) => {
             if (err) {
                 this.msj = 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';

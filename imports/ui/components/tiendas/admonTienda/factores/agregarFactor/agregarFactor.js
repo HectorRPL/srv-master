@@ -30,7 +30,7 @@ class AgregarFactor {
     agregar() {
         crearFactor.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }
