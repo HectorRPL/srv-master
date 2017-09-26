@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 24/07/2017.
  */
-import {cambiosComisiones} from "../../../../../../../api/comisiones/methods";
+import {actualizarComision} from "../../../../../../../api/comisiones/methods";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import {name as FormaComision} from "../../../../../comun/formas/formaComision/formaComision";
 import template from "./editarComision.html";
@@ -21,7 +21,7 @@ class EditarComision {
         delete this.datos.fechaCreacion;
 
         console.log(this.datos);
-        cambiosComisiones.callPromise(this.datos).then(this.$bindToContext(() => {
+        actualizarComision.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             console.log(err);

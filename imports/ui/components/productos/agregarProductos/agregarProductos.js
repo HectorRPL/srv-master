@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 11/03/2017.
  */
-import {altaProducto} from "../../../../api/catalogos/productos/methods";
+import {crearProducto} from "../../../../api/catalogos/productos/methods";
 import {name as ConstruyeNombre} from "../construyeNombre/construyeNombre";
 
 import {name as ElegirTipoProducto} from "../../comun/selects/elegirTipoProducto/elegirTipoProducto";
@@ -38,7 +38,7 @@ class AgregarProductos {
 
     agregarProducto() {
         this.tipoMsj = '';
-        altaProducto.call(this.producto, this.$bindToContext((err)=> {
+        crearProducto.call(this.producto, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';

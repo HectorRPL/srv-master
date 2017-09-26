@@ -118,8 +118,8 @@ export const aplicarFactPromoComiMarca = new ValidatedMethod({
 });
 
 
-export const cambiosExistenciaProducto = new ValidatedMethod({
-    name: 'productosInventarios.cambiosExistenciaProducto',
+export const actlzrExstncProdct = new ValidatedMethod({
+    name: 'productosInventarios.actlzrExstncProdct',
     mixins: [CallPromiseMixin],
     validate: ProductosInventarios.simpleSchema().pick(CAMPO_CANTIDAD, ID).validator({
         clean: true,
@@ -144,7 +144,7 @@ export const cambiosExistenciaProducto = new ValidatedMethod({
     }
 });
 
-const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([aplicarFactPromoComiMarca, aplicarFactPromoComiProd, cambiosExistenciaProducto], 'name');
+const PRODUCTOS_INVENTARIOS_METHODS = _.pluck([aplicarFactPromoComiMarca, aplicarFactPromoComiProd, actlzrExstncProdct], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

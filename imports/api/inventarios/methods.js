@@ -15,8 +15,8 @@ const CAMPOS_INVENTARIOS = [
     'actualizacion'
 ];
 
-export const altaInventario = new ValidatedMethod({
-    name: 'inventarios.altaInventario',
+export const crearInventario = new ValidatedMethod({
+    name: 'inventarios.crearInventario',
     validate: new SimpleSchema({
         tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id}
     }).validator(),
@@ -28,8 +28,8 @@ export const altaInventario = new ValidatedMethod({
     }
 });
 
-export const altaInventarioMarca = new ValidatedMethod({
-    name: 'inventarios.altaInventarioMarca',
+export const crearInventarioMarca = new ValidatedMethod({
+    name: 'inventarios.crearInventarioMarca',
     validate: new SimpleSchema({
         tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
         marcaId: {type: String, regEx: SimpleSchema.RegEx.Id}
@@ -42,7 +42,7 @@ export const altaInventarioMarca = new ValidatedMethod({
     }
 });
 
-const INVENTARIOS_METHODS = _.pluck([altaInventario, altaInventarioMarca], 'name');
+const INVENTARIOS_METHODS = _.pluck([crearInventario, crearInventarioMarca], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

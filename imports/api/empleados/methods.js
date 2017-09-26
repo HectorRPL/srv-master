@@ -12,8 +12,8 @@ const ID = ['_id'];
 const CAMPO_DEPARTAMENTOID = ['departamentoId'];
 const CAMPOS_EMPLEADOS = [ 'nombres', 'apellidos', 'celular', 'email', 'nacimientoAnio', 'nacimientoDia', 'nacimientoMes', 'sexo', 'telefono'];
 
-export const cambiosEmpleados = new ValidatedMethod({
-    name: 'empleados.cambiosEmpleados',
+export const actualizarEmpleado = new ValidatedMethod({
+    name: 'empleados.actualizarEmpleado',
     mixins: [CallPromiseMixin],
     validate: Empleados.simpleSchema().pick(ID, CAMPOS_EMPLEADOS).validator({
         clean: true,
@@ -30,8 +30,8 @@ export const cambiosEmpleados = new ValidatedMethod({
     }
 });
 
-export const cambiosEmpleadosActivar = new ValidatedMethod({
-    name: 'empleados.cambiosEmpleadosActivar',
+export const actlzrEmpldActvr = new ValidatedMethod({
+    name: 'empleados.actlzrEmpldActvr',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
@@ -52,8 +52,8 @@ export const cambiosEmpleadosActivar = new ValidatedMethod({
     }
 });
 
-export const cambiosEmpleadosPuesto = new ValidatedMethod({
-    name: 'empleados.cambiosEmpleadosPuesto',
+export const actlzrEmpldPust = new ValidatedMethod({
+    name: 'empleados.actlzrEmpldPust',
     mixins: [CallPromiseMixin],
     validate: new SimpleSchema({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
@@ -75,7 +75,7 @@ export const cambiosEmpleadosPuesto = new ValidatedMethod({
 });
 
 
-const EMPLEADOS_METHODS = _.pluck([cambiosEmpleados, cambiosEmpleadosActivar, cambiosEmpleadosPuesto], 'name');
+const EMPLEADOS_METHODS = _.pluck([actualizarEmpleado, actlzrEmpldActvr, actlzrEmpldPust], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -2,7 +2,7 @@
  * Created by jvltmtz on 19/06/17.
  */
 import template from "./agregarDireccionEmpleado.html";
-import {altaUsuario} from "../../../../../../../api/users/methods";
+import {crearUsuario} from "../../../../../../../api/users/methods";
 import {name as FormaDireccion} from "../../../../../comun/formas/formaDireccion/formaDireccion";
 import {Session} from "meteor/session";
 
@@ -29,7 +29,7 @@ class AgregarDireccionEmpleado {
 
         this.credentials.profile.email = this.credentials.email;
 
-        altaUsuario.callPromise(this.credentials).then(this.$bindToContext(()=> {
+        crearUsuario.callPromise(this.credentials).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

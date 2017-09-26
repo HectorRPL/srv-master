@@ -2,7 +2,7 @@
  * Created by Héctor on 12/07/2017.
  */
 import {Empleados} from "../../../../../../../api/empleados/collection";
-import {cambiosEmpleadosActivar} from "../../../../../../../api/empleados/methods";
+import {actlzrEmpldActvr} from "../../../../../../../api/empleados/methods";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import template from "./desactivarEmpleado.html";
 
@@ -31,7 +31,7 @@ class DesactivarEmpleado {
     desactivar() {
         this.datos._id = this.empleadoId;
 
-        cambiosEmpleadosActivar.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlzrEmpldActvr.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {
             this.tipoMsj = 'danger';

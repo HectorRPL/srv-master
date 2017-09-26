@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 26/07/2017.
  */
-import {altaDireccion} from "../../../../../../api/direcciones/methods";
+import {crearDireccion} from "../../../../../../api/direcciones/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./sucursalDatosDireccion.html";
@@ -26,7 +26,7 @@ class SucursalDatosDireccion {
         delete direccionFinal.colonias;
         console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
 
-        altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+        crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

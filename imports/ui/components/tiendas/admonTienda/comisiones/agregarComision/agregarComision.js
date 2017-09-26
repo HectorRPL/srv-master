@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 24/07/2017.
  */
-import {altaComision} from "../../../../../../api/comisiones/methods";
+import {crearComision} from "../../../../../../api/comisiones/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaComision} from "../../../../comun/formas/formaComision/formaComision";
 import template from "./agregarComision.html";
@@ -20,7 +20,7 @@ class AgregarComision {
         console.log(this.comision);
 
         // /*
-        altaComision.callPromise(this.comision).then(this.$bindToContext(()=> {
+        crearComision.callPromise(this.comision).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             console.log(err);

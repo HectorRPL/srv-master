@@ -2,7 +2,7 @@
  * Created by Héctor on 29/06/2017.
  */
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
-import {cambiosCuentaContableProveedores} from "../../../../../api/catalogos/proveedores/methods";
+import {actlzrCuntContblProvdr} from "../../../../../api/catalogos/proveedores/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as CuentaContableProveedores} from "../../../comun/inputs/cuentaContableProveedores/cuentaContableProveedores";
 import template from "./editarProveedorCuentaContable.html";
@@ -36,7 +36,7 @@ class EditarProveedorCuentaContable {
             cuentaContable: this.proveedor.cuentaContable
         };
 
-        cambiosCuentaContableProveedores.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlzrCuntContblProvdr.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

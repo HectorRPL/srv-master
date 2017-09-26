@@ -13,8 +13,8 @@ const CAMPO_PROPIETARIOID = ['propietarioId'];
 const CAMPOS_DATOS_FISCALES = ['tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad', 'email'];
 const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
-export const altaDatosFiscales = new ValidatedMethod({
-    name: 'datosFiscales.altaDatosFiscales',
+export const crearDatoFiscal = new ValidatedMethod({
+    name: 'datosFiscales.crearDatoFiscal',
     mixins: [CallPromiseMixin],
     validate: DatosFiscales.simpleSchema().pick(CAMPO_ID, CAMPO_PROPIETARIOID, CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
@@ -36,8 +36,8 @@ export const altaDatosFiscales = new ValidatedMethod({
     }
 });
 
-export const cambiosDatosFiscales= new ValidatedMethod({
-    name: 'datosFiscales.cambiosDatosFiscales',
+export const actlzrDatsFiscls = new ValidatedMethod({
+    name: 'datosFiscales.actlzrDatsFiscls',
     mixins: [CallPromiseMixin],
     validate: DatosFiscales.simpleSchema().pick(CAMPO_PROPIETARIOID, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
@@ -55,7 +55,7 @@ export const cambiosDatosFiscales= new ValidatedMethod({
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([altaDatosFiscales, cambiosDatosFiscales], 'name');
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([crearDatoFiscal, actlzrDatsFiscls], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -14,8 +14,8 @@ const ID = ['_id'];
 const CAMPOS_DIRECCION = ['propietarioId', 'calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 // CREAR DIRECCIÓN
-export const altaDireccion = new ValidatedMethod({
-    name: 'direcciones.altaDireccion',
+export const crearDireccion = new ValidatedMethod({
+    name: 'direcciones.crearDireccion',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -24,7 +24,7 @@ export const altaDireccion = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'direcciones.altaDireccion',
+        name: 'direcciones.crearDireccion',
         message: ()=> {
             return 'Este usuario no cuenta con los permisos necesarios.';
         }
@@ -50,8 +50,8 @@ export const altaDireccion = new ValidatedMethod({
 });
 
 // ACTUALIZAR DIRECCIÓN
-export const cambiosDireccion = new ValidatedMethod({
-    name: 'direcciones.cambiosDireccion',
+export const actualizarDireccion = new ValidatedMethod({
+    name: 'direcciones.actualizarDireccion',
     mixins: [LoggedInMixin, CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
@@ -86,7 +86,7 @@ export const cambiosDireccion = new ValidatedMethod({
     }
 });
 
-const DIRECCIONES_METHODS = _.pluck([altaDireccion, cambiosDireccion], 'name');
+const DIRECCIONES_METHODS = _.pluck([crearDireccion, actualizarDireccion], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

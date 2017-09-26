@@ -14,8 +14,8 @@ const CAMPOS_PROVEEDORES = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 const CAMPO_CUENTA_CONTABLE = ['cuentaContable'];
 const CAMPO_ACTIVO = ['activo'];
 
-export const altaProveedor = new ValidatedMethod({
-    name: 'proveedores.altaProveedor',
+export const crearProveedor = new ValidatedMethod({
+    name: 'proveedores.crearProveedor',
     mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(CAMPOS_PROVEEDORES, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
@@ -26,8 +26,8 @@ export const altaProveedor = new ValidatedMethod({
     }
 });
 
-export const cambiosProveedor = new ValidatedMethod({
-    name: 'proveedores.cambiosProveedor',
+export const actlzrProvdrDatGenrl = new ValidatedMethod({
+    name: 'proveedores.actlzrProvdrDatGenrl',
     mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(ID, CAMPOS_PROVEEDORES).validator({
         clean: true,
@@ -48,8 +48,8 @@ export const cambiosProveedor = new ValidatedMethod({
     }
 });
 
-export const cambiosCuentaContableProveedores = new ValidatedMethod({
-    name: 'proveedores.cambiosCuentaContableProveedores',
+export const actlzrCuntContblProvdr = new ValidatedMethod({
+    name: 'proveedores.actlzrCuntContblProvdr',
     mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
@@ -70,8 +70,8 @@ export const cambiosCuentaContableProveedores = new ValidatedMethod({
     }
 });
 
-export const cambiosProveedorActivar = new ValidatedMethod({
-    name: 'tiendas.cambiosProveedorActivar',
+export const actlizrProvdrActvr = new ValidatedMethod({
+    name: 'tiendas.actlizrProvdrActvr',
     mixins: [CallPromiseMixin],
     validate: Proveedores.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
         clean: true,
@@ -92,7 +92,7 @@ export const cambiosProveedorActivar = new ValidatedMethod({
     }
 });
 
-const PROVEEDORES_METHODS = _.pluck([altaProveedor, cambiosProveedor, cambiosCuentaContableProveedores, cambiosProveedorActivar], 'name');
+const PROVEEDORES_METHODS = _.pluck([crearProveedor, actlzrProvdrDatGenrl, actlzrCuntContblProvdr, actlizrProvdrActvr], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

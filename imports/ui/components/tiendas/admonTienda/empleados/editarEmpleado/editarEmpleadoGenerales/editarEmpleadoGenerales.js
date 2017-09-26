@@ -2,7 +2,7 @@
  * Created by Héctor on 11/07/2017.
  */
 import {Empleados} from "../../../../../../../api/empleados/collection";
-import {cambiosEmpleados} from "../../../../../../../api/empleados/methods";
+import {actualizarEmpleado} from "../../../../../../../api/empleados/methods";
 import {name as FormaDatosPersonales} from "../../../../../comun/formas/formaDatosPersonales/formaDatosPersonales";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import template from "./editarEmpleadoGenerales.html";
@@ -36,7 +36,7 @@ class EditarEmpleadoGenerales {
 
         console.log('[23] Esto es lo que vamos a enviar', this.empleado);
 
-        cambiosEmpleados.callPromise(this.empleado).then(this.$bindToContext(() => {
+        actualizarEmpleado.callPromise(this.empleado).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             ;
         })).catch(this.$bindToContext((err) => {

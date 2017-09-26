@@ -2,7 +2,7 @@
  * Created by Héctor on 30/06/2017.
  */
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
-import {cambiosCuentaContableTiendas} from "../../../../../api/catalogos/tiendas/methods";
+import {actlzrCuntContblTind} from "../../../../../api/catalogos/tiendas/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as CuentaContableTiendas} from "../../../comun/inputs/cuentaContableTiendas/cuentaContableTiendas";
 import template from "./editarTiendaCuentaContable.html";
@@ -30,7 +30,7 @@ class EditarTiendaCuentaContable {
             _id: this.tiendaId,
             cuentaContable: this.tienda.cuentaContable
         };
-        cambiosCuentaContableTiendas.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlzrCuntContblTind.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

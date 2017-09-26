@@ -2,7 +2,7 @@
  * Created by Héctor on 04/08/2017.
  */
 import {Empleados} from "../../../../../../../api/empleados/collection";
-import {cambiosEmpleadosPuesto} from "../../../../../../../api/empleados/methods";
+import {actlzrEmpldPust} from "../../../../../../../api/empleados/methods";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import {name as ElegirDepartamento} from "../../../../../comun/selects/elegirDepartamento/elegirDepartamento";
 import template from "./editarEmpleadoPuesto.html";
@@ -31,7 +31,7 @@ class EditarEmpleadoPuesto {
             _id: this.empleado._id,
             departamentoId: this.empleado.departamentoId
         };
-        cambiosEmpleadosPuesto.callPromise(empleadoDatosFinales).then(this.$bindToContext(() => {
+        actlzrEmpldPust.callPromise(empleadoDatosFinales).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             console.log(err);

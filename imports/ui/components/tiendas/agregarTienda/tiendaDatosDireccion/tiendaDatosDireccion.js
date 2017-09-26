@@ -4,7 +4,7 @@
 import template from "./tiendaDatosDireccion.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
-import {altaDireccion} from "../../../../../api/direcciones/methods";
+import {crearDireccion} from "../../../../../api/direcciones/methods";
 
 class TiendaDatosDireccion {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -25,7 +25,7 @@ class TiendaDatosDireccion {
         delete direccionFinal.colonias;
         console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
 
-        altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+        crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
 
             /* TODO: El usuario podría meter más de una dirección

@@ -2,7 +2,7 @@
  * Created by Héctor on 30/06/2017.
  */
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
-import {cambiosTienda} from "../../../../../api/catalogos/tiendas/methods";
+import {actualizarTienda} from "../../../../../api/catalogos/tiendas/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import template from "./editarTiendaGenerales.html";
@@ -34,7 +34,7 @@ class EditarTiendaGenerales {
 
         this.tienda._id = this._id;
 
-        cambiosTienda.callPromise(this.tienda).then(this.$bindToContext(() => {
+        actualizarTienda.callPromise(this.tienda).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

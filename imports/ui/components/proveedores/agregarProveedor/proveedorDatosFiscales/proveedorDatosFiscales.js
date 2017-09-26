@@ -3,7 +3,7 @@
  */
 import template from "./proveedorDatosFiscales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
+import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 
 class ProveedorDatosFiscales {
@@ -27,7 +27,7 @@ class ProveedorDatosFiscales {
         delete datosFiscalesFinal.colonias;
 
         datosFiscalesFinal.propietarioId = this.propietarioId;
-        altaDatosFiscales.call(datosFiscalesFinal, this.$bindToContext((err) => {
+        crearDatoFiscal.call(datosFiscalesFinal, this.$bindToContext((err) => {
             if (err) {
                 this.msj = err + 'Error, llamar a soporte técnico: 55-6102-4884 | 55-2628-5121';
                 this.tipoMsj = 'danger';

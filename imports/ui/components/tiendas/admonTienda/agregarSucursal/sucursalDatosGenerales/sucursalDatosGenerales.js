@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 26/07/2017.
  */
-import {altaSucursal} from "../../../../../../api/catalogos/tiendas/sucursales/methods";
+import {crearSucursal} from "../../../../../../api/catalogos/tiendas/sucursales/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import template from "./sucursalDatosGenerales.html";
@@ -25,7 +25,7 @@ class SucursalDatosGenerales {
     altaDatosGenerales() {
         this.datos.tiendaMatrizId = this.tiendaId;
         console.log(this.datos);
-        altaSucursal.callPromise(this.datos).then(this.$bindToContext((result) => {
+        crearSucursal.callPromise(this.datos).then(this.$bindToContext((result) => {
             this.tipoMsj = 'success';
             this.sucursalId = result
             console.log(this.sucursalId);

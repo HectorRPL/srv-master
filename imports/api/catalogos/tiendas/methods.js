@@ -8,7 +8,7 @@ import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Tiendas} from "./collection";
-import {altaInventario} from "../../inventarios/methods";
+import {crearInventario} from "../../inventarios/methods";
 
 const ID = ['_id'];
 
@@ -18,8 +18,8 @@ const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 
 const CAMPO_ACTIVO = ['activo'];
 
-export const altaTienda = new ValidatedMethod({
-    name: 'tiendas.altaTienda',
+export const crearTienda = new ValidatedMethod({
+    name: 'tiendas.crearTienda',
     mixins: [CallPromiseMixin, PermissionsMixin],
     allow: [
         {
@@ -28,7 +28,7 @@ export const altaTienda = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'tiendas.altaTienda',
+        name: 'tiendas.crearTienda',
         message: ()=> {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -44,15 +44,15 @@ export const altaTienda = new ValidatedMethod({
                     throw err;
                 }
                 Meteor.defer(() => {
-                    altaInventario.call({tiendaId: result});
+                    crearInventario.call({tiendaId: result});
                 });
             });
         }
     }
 });
 
-export const cambiosTienda = new ValidatedMethod({
-    name: 'datosFiscales.cambiosTienda',
+export const actualizarTienda = new ValidatedMethod({
+    name: 'datosFiscales.actualizarTienda',
     mixins: [CallPromiseMixin],
     validate: Tiendas.simpleSchema().pick(ID, CAMPOS_TIENDAS).validator({
         clean: true,
@@ -73,8 +73,8 @@ export const cambiosTienda = new ValidatedMethod({
     }
 });
 
-export const cambiosCuentaContableTiendas = new ValidatedMethod({
-    name: 'tiendas.cambiosCuentaContableTiendas',
+export const actlzrCuntContblTind = new ValidatedMethod({
+    name: 'tiendas.actlzrCuntContblTind',
     mixins: [CallPromiseMixin],
     validate: Tiendas.simpleSchema().pick(ID, CAMPO_CUENTA_CONTABLE).validator({
         clean: true,
@@ -95,8 +95,8 @@ export const cambiosCuentaContableTiendas = new ValidatedMethod({
     }
 });
 
-export const cambiosTiendaActivar = new ValidatedMethod({
-    name: 'tiendas.cambiosTiendaActivar',
+export const actlzrTindActvr = new ValidatedMethod({
+    name: 'tiendas.actlzrTindActvr',
     mixins: [CallPromiseMixin],
     validate: Tiendas.simpleSchema().pick(ID, CAMPO_ACTIVO).validator({
         clean: true,
@@ -117,7 +117,7 @@ export const cambiosTiendaActivar = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([altaTienda, cambiosTienda, cambiosCuentaContableTiendas, cambiosTiendaActivar], 'name');
+const TIENDAS_METHODS = _.pluck([crearTienda, actualizarTienda, actlzrCuntContblTind, actlzrTindActvr], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

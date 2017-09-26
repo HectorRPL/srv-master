@@ -2,7 +2,7 @@
  * Created by Héctor on 18/07/2017.
  */
 import {Direcciones} from "../../../../../api/direcciones/collection";
-import {altaDireccion, cambiosDireccion} from "../../../../../api/direcciones/methods";
+import {crearDireccion, actualizarDireccion} from "../../../../../api/direcciones/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./editarTiendaDireccion.html";
@@ -28,7 +28,7 @@ class EditarTiendaDireccion {
         delete direccionFinal.colonias;
         direccionFinal.propietarioId = this.propietarioId;
 
-        altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+        crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
@@ -41,7 +41,7 @@ class EditarTiendaDireccion {
         delete direccionFinal.colonias;
         delete direccionFinal.fechaCreacion;
 
-        cambiosDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+        actualizarDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';

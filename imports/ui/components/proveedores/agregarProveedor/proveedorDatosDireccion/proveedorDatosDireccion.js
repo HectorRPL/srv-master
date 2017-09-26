@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 26/07/2017.
  */
-import {altaDireccion} from "../../../../../api/direcciones/methods";
+import {crearDireccion} from "../../../../../api/direcciones/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./proveedorDatosDireccion.html";
@@ -26,7 +26,7 @@ class ProveedorDatosDireccion {
         delete direccionFinal.colonias;
         console.log('Esta es la dirección que vamos a enviar:', direccionFinal);
 
-        altaDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
+        crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
 
             /* TODO: El usuario podría meter más de una dirección

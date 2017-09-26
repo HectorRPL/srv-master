@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 14/07/2017.
  */
-import {cambiosProveedorActivar} from "../../../../../api/catalogos/proveedores/methods";
+import {actlizrProvdrActvr} from "../../../../../api/catalogos/proveedores/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
 import template from "./eliminarProveedor.html";
@@ -16,7 +16,7 @@ class EliminarProveedor {
 
     eliminar() {
         this.datos._id = this.getReactively('resolve.proveedor._id');
-        cambiosProveedorActivar.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlizrProvdrActvr.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             console.log(err);

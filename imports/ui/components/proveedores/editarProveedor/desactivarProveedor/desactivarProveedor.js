@@ -2,7 +2,7 @@
  * Created by Héctor on 11/07/2017.
  */
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
-import {cambiosProveedorActivar} from "../../../../../api/catalogos/proveedores/methods";
+import {actlizrProvdrActvr} from "../../../../../api/catalogos/proveedores/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
 import template from "./desactivarProveedor.html";
@@ -34,7 +34,7 @@ class DesactivarProveedor {
 
         console.log('[28] Esto vamos a enviar' , this.datos);
 
-        cambiosProveedorActivar.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlizrProvdrActvr.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

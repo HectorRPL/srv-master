@@ -4,7 +4,7 @@
 /**
  * Created by Héctor on 25/07/2017.
  */
-import {altaDatosFiscales} from "../../../../../../api/datosFiscales/methods";
+import {crearDatoFiscal} from "../../../../../../api/datosFiscales/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../../comun/formas/formaDireccion/formaDireccion";
 import {name as FormaDatosFiscales} from "../../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
@@ -28,7 +28,7 @@ class AltaDatosFiscales {
         delete datosFiscalesFinal.colonias;
         datosFiscalesFinal.propietarioId = this.propietarioId;
 
-        altaDatosFiscales.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             console.log('[31]', err);

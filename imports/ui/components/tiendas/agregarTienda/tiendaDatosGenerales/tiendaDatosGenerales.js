@@ -5,7 +5,7 @@ import template from "./tiendaDatosGenerales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
-import {altaTienda} from "../../../../../api/catalogos/tiendas/methods";
+import {crearTienda} from "../../../../../api/catalogos/tiendas/methods";
 
 class TiendaDatosGenerales {
     constructor($scope, $reactive, $state) {
@@ -22,7 +22,7 @@ class TiendaDatosGenerales {
     }
 
     guardar() {
-        altaTienda.callPromise(this.datos).then(this.$bindToContext((result) => {
+        crearTienda.callPromise(this.datos).then(this.$bindToContext((result) => {
             this.tipoMsj = 'success';
             this.$state.go('app.tienda.agregar.direccion', {tiendaId: result});
         })).catch(this.$bindToContext((err)=>{

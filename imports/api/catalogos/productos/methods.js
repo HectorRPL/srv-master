@@ -25,8 +25,8 @@ const CAMPOS_PRODUCTOS = [
     'metrosCuadrados'
 ];
 
-export const altaProducto = new ValidatedMethod({
-    name: 'productos.altaProducto',
+export const crearProducto = new ValidatedMethod({
+    name: 'productos.crearProducto',
     mixins: [PermissionsMixin],
     allow: PermissionsMixin.LoggedIn,
     validate: Productos.simpleSchema().pick(CAMPOS_PRODUCTOS).validator({
@@ -68,7 +68,7 @@ export const altaProducto = new ValidatedMethod({
     }
 });
 
-const PRODUCTOS_METHODS = _.pluck([altaProducto], 'name');
+const PRODUCTOS_METHODS = _.pluck([crearProducto], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -3,7 +3,7 @@
  */
 import template from "./tiendaDatosFiscales.html";
 import {name as Alertas} from "../../../comun/alertas/alertas";
-import {altaDatosFiscales} from "../../../../../api/datosFiscales/methods";
+import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
 
 class TiendaDatosFiscales {
     constructor($scope, $reactive, $state, $stateParams) {
@@ -23,7 +23,7 @@ class TiendaDatosFiscales {
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
 
-        altaDatosFiscales.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

@@ -3,7 +3,7 @@
  */
 import {ProductosInventarios}       from "../../../../../../../api/inventarios/productosInventarios/collection";
 import {Marcas}                     from "../../../../../../../api/catalogos/marcas/collection";
-import {cambiosExistenciaProducto}  from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrExstncProdct}  from "../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as BuscarProducto}     from "../../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {name as Alertas}            from "../../../../../comun/alertas/alertas";
 import template                     from "./listaProdsMarcaTienda.html";
@@ -60,7 +60,7 @@ class ListaProdsMarcaTienda {
         this.tipoMsj = '';
         this.datos.cantidad = nuevoValor;
         this.datos._id = id;
-        cambiosExistenciaProducto.callPromise(this.datos).then(this.$bindToContext(() => {
+        actlzrExstncProdct.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(editarExistenciaFrm);
         })).catch(this.$bindToContext((err) => {

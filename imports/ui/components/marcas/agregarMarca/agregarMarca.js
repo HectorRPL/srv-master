@@ -3,7 +3,7 @@
  */
 import template from "./agregarMarca.html";
 import {name as Alertas} from "../../comun/alertas/alertas";
-import {altaMarca} from "../../../../api/catalogos/marcas/methods";
+import {crearMarca} from "../../../../api/catalogos/marcas/methods";
 
 class AgregarMarca {
     constructor($scope, $reactive, $state) {
@@ -17,7 +17,7 @@ class AgregarMarca {
 
     agregar() {
         this.tipoMsj = '';
-        altaMarca.call(this.datos, this.$bindToContext((err)=> {
+        crearMarca.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
                 console.log();
                 this.msj = err.reason;

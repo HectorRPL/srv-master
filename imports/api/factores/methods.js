@@ -14,8 +14,8 @@ import {BitaFactPromoComi} from "../bitacoras/factoresPromo/collection";
 const CAMPOS_FACTORES = ['nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9'];
 const CAMPO_ID = ['_id'];
 
-export const altaFactor = new ValidatedMethod({
-    name: 'factores.altaFactor',
+export const crearFactor = new ValidatedMethod({
+    name: 'factores.crearFactor',
     mixins: [CallPromiseMixin],
     validate: Factores.simpleSchema().pick(CAMPOS_FACTORES).validator({
         clean: true,
@@ -30,8 +30,8 @@ export const altaFactor = new ValidatedMethod({
     }
 });
 
-export const cambiosFactor = new ValidatedMethod({
-    name: 'factores.cambiosFactor',
+export const actualizarFactor = new ValidatedMethod({
+    name: 'factores.actualizarFactor',
     mixins: [CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
@@ -69,7 +69,7 @@ export const cambiosFactor = new ValidatedMethod({
 
 
 
-const FACTORES_METHODS = _.pluck([altaFactor, cambiosFactor], 'name');
+const FACTORES_METHODS = _.pluck([crearFactor, actualizarFactor], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

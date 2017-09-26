@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 12/04/2017.
  */
-import {altaFactor} from "../../../../../../api/factores/methods";
+import {crearFactor} from "../../../../../../api/factores/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaFactores} from "../../../../comun/formas/formaFactores/formaFactores";
 import template from "./agregarFactor.html";
@@ -28,7 +28,7 @@ class AgregarFactor {
     }
 
     agregar() {
-        altaFactor.callPromise(this.datos).then(this.$bindToContext(() => {
+        crearFactor.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

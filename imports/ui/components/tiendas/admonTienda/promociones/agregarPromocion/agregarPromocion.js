@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 7/07/17.
  */
-import {altaPromocion} from "../../../../../../api/promociones/methods";
+import {crearPromocion} from "../../../../../../api/promociones/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaPromocion} from "../../../../comun/formas/formaPromocion/formaPromocion";
 import template from "./agregarPromocion.html";
@@ -17,7 +17,7 @@ class AgregarPromocion {
     agregar() {
         console.log(this.promocion);
 
-        altaPromocion.callPromise(this.promocion).then(this.$bindToContext(()=> {
+        crearPromocion.callPromise(this.promocion).then(this.$bindToContext(()=> {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';

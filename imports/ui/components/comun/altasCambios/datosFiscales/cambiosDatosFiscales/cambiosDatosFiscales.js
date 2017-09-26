@@ -4,7 +4,7 @@
 /**
  * Created by Héctor on 25/07/2017.
  */
-import {cambiosDatosFiscales} from "../../../../../../api/datosFiscales/methods";
+import {actlzrDatsFiscls} from "../../../../../../api/datosFiscales/methods";
 import {name as Alertas} from "../../../../comun/alertas/alertas";
 import {name as FormaDireccion} from "../../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./cambiosDatosFiscales.html";
@@ -32,7 +32,7 @@ class CambiosDatosFiscales {
         delete this.datosFiscales.email;
         delete this.datosFiscales.fechaCreacion;
 
-        cambiosDatosFiscales.callPromise(this.datosFiscales).then(this.$bindToContext(() => {
+        actlzrDatsFiscls.callPromise(this.datosFiscales).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
             this.limpiarCampos(cambiosDatosFiscalesFrm);
         })).catch(this.$bindToContext((err) => {

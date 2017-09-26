@@ -2,7 +2,7 @@
  * Created by Héctor on 27/06/2017.
  */
 import {Proveedores} from "../../../../../api/catalogos/proveedores/collection";
-import {cambiosProveedor} from "../../../../../api/catalogos/proveedores/methods";
+import {actlzrProvdrDatGenrl} from "../../../../../api/catalogos/proveedores/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaDatosGenerales} from "../../../comun/formas/formaDatosGenerales/formaDatosGenerales";
 import template from "./editarProveedorGenerales.html";
@@ -35,7 +35,7 @@ class EditarProveedorGenerales {
 
         this.proveedor._id = this.propietarioId;
 
-        cambiosProveedor.callPromise(this.proveedor).then(this.$bindToContext(() => {
+        actlzrProvdrDatGenrl.callPromise(this.proveedor).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {
             this.tipoMsj = 'danger';

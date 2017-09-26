@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 19/07/2017.
  */
-import {cambiosFactor} from "../../../../../../../api/factores/methods";
+import {actualizarFactor} from "../../../../../../../api/factores/methods";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import {name as FormaFactores} from "../../../../../comun/formas/formaFactores/formaFactores";
 import template from "./editarFactor.html";
@@ -31,7 +31,7 @@ class EditarFactor {
         console.log('[18]', this.datos);
 
         // /*
-        cambiosFactor.call(this.datos, this.$bindToContext((err)=> {
+        actualizarFactor.call(this.datos, this.$bindToContext((err)=> {
             if (err) {
                 this.msj = err.reason;
                 this.tipoMsj = 'danger';

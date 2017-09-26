@@ -15,8 +15,8 @@ const CAMPOS_PROMOCIONES = ['nombre', 'descuento', 'precioLista', 'fechaInicio',
 const CAMPO_ID = ['_id'];
 
 
-export const altaPromocion = new ValidatedMethod({
-    name: 'promociones.altaPromocion',
+export const crearPromocion = new ValidatedMethod({
+    name: 'promociones.crearPromocion',
     mixins: [CallPromiseMixin],
     validate: Promociones.simpleSchema().pick(CAMPOS_PROMOCIONES).validator({
         clean: true,
@@ -31,8 +31,8 @@ export const altaPromocion = new ValidatedMethod({
     }
 });
 
-export const cambiosPromociones = new ValidatedMethod({
-    name: 'promociones.cambiosPromociones',
+export const actualizarPromocion = new ValidatedMethod({
+    name: 'promociones.actualizarPromocion',
     mixins: [LoggedInMixin, CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
@@ -123,7 +123,7 @@ export const aplicarPromocionMarca = new ValidatedMethod({
 });
 
 
-const PROMOCIONES_METHODS = _.pluck([altaPromocion, cambiosPromociones, aplicarPromocionProductos, aplicarPromocionMarca], 'name');
+const PROMOCIONES_METHODS = _.pluck([crearPromocion, actualizarPromocion, aplicarPromocionProductos, aplicarPromocionMarca], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

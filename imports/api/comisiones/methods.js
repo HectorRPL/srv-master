@@ -12,8 +12,8 @@ import {BitaFactPromoComi} from "../bitacoras/factoresPromo/collection";
 const CAMPOS_COMISIONES = ['nombre', 'comisionProdInt', 'comisionProdExt'];
 const CAMPO_ID = ['_id'];
 
-export const altaComision = new ValidatedMethod({
-    name: 'comisiones.altaComision',
+export const crearComision = new ValidatedMethod({
+    name: 'comisiones.crearComision',
     mixins: [LoggedInMixin, CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
@@ -37,8 +37,8 @@ export const altaComision = new ValidatedMethod({
     }
 });
 
-export const cambiosComisiones = new ValidatedMethod({
-    name: 'comisiones.cambiosComisiones',
+export const actualizarComision = new ValidatedMethod({
+    name: 'comisiones.actualizarComision',
     mixins: [LoggedInMixin, CallPromiseMixin],
     checkLoggedInError: {
         error: 'noLogeado',
@@ -75,7 +75,7 @@ export const cambiosComisiones = new ValidatedMethod({
     }
 });
 
-const COMISIONES_METHODS = _.pluck([altaComision, cambiosComisiones], 'name');
+const COMISIONES_METHODS = _.pluck([crearComision, actualizarComision], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
