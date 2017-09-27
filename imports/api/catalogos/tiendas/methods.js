@@ -85,8 +85,8 @@ export const actualizarTienda = new ValidatedMethod({
     }
 });
 
-export const actlzrCuntContblTind = new ValidatedMethod({
-    name: 'tiendas.actlzrCuntContblTind',
+export const actualizarTindaCuntCont = new ValidatedMethod({
+    name: 'tiendas.actualizarTindaCuntCont',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -95,7 +95,7 @@ export const actlzrCuntContblTind = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'tiendas.actlzrCuntContblTind',
+        name: 'tiendas.actualizarTindaCuntCont',
         message: () => {
             return 'Este usuario no cuenta con los permisos necesarios.';
         }
@@ -119,8 +119,8 @@ export const actlzrCuntContblTind = new ValidatedMethod({
     }
 });
 
-export const actlzrTindActvr = new ValidatedMethod({
-    name: 'tiendas.actlzrTindActvr',
+export const actualizarTindaActv = new ValidatedMethod({
+    name: 'tiendas.actualizarTindaActv',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -129,7 +129,7 @@ export const actlzrTindActvr = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'tiendas.actlzrTindActvr',
+        name: 'tiendas.actualizarTindaActv',
         message: () => {
             return 'Este usuario no cuenta con los permisos necesarios.';
         }
@@ -153,7 +153,7 @@ export const actlzrTindActvr = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([crearTienda, actualizarTienda, actlzrCuntContblTind, actlzrTindActvr], 'name');
+const TIENDAS_METHODS = _.pluck([crearTienda, actualizarTienda, actualizarTindaCuntCont, actualizarTindaActv], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

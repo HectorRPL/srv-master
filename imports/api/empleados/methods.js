@@ -43,8 +43,8 @@ export const actualizarEmpleado = new ValidatedMethod({
     }
 });
 
-export const actlzrEmpldActvr = new ValidatedMethod({
-    name: 'empleados.actlzrEmpldActvr',
+export const actualizarEmpldActiv = new ValidatedMethod({
+    name: 'empleados.actualizarEmpldActiv',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -53,7 +53,7 @@ export const actlzrEmpldActvr = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'empleados.actlzrEmpldActvr',
+        name: 'empleados.actualizarEmpldActiv',
         message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -77,8 +77,8 @@ export const actlzrEmpldActvr = new ValidatedMethod({
     }
 });
 
-export const actlzrEmpldPust = new ValidatedMethod({
-    name: 'empleados.actlzrEmpldPust',
+export const actualizarEmpldPust = new ValidatedMethod({
+    name: 'empleados.actualizarEmpldPust',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -87,7 +87,7 @@ export const actlzrEmpldPust = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'empleados.actlzrEmpldPust',
+        name: 'empleados.actualizarEmpldPust',
         message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -111,7 +111,7 @@ export const actlzrEmpldPust = new ValidatedMethod({
     }
 });
 
-const EMPLEADOS_METHODS = _.pluck([actualizarEmpleado, actlzrEmpldActvr, actlzrEmpldPust], 'name');
+const EMPLEADOS_METHODS = _.pluck([actualizarEmpleado, actualizarEmpldActiv, actualizarEmpldPust], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

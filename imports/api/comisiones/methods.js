@@ -28,11 +28,6 @@ export const crearComision = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    checkLoggedInError: {
-        error: 'noLogeado',
-        message: 'Para modificar estos campos necesita registrarse.',
-        reason: 'Usuario no logeado'
-    },
     validate: Comisiones.simpleSchema().pick(CAMPOS_COMISIONES).validator({
         clean: true,
         filter: false
@@ -65,25 +60,13 @@ export const actualizarComision = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    checkLoggedInError: {
-        error: 'noLogeado',
-        message: 'Para modificar estos campos necesita registrarse.',
-        reason: 'Usuario no logeado'
-    },
     validate: Comisiones.simpleSchema().pick(CAMPO_ID, CAMPOS_COMISIONES).validator({
         clean: true,
         filter: false
     }),
     run({
-        _id,
-        nombre,
-        comisionProdInt,
-        comisionProdExt
-    }) {
-        console.log('[nombre]', nombre);
-        console.log('[comisionProdInt]', comisionProdInt);
-        console.log('[comisionProdExt]', comisionProdExt);
-
+            _id, nombre, comisionProdInt, comisionProdExt
+        }) {
         return Comisiones.update({
             _id: _id
         }, {

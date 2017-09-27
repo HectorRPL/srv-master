@@ -49,8 +49,8 @@ export const crearDatoFiscal = new ValidatedMethod({
     }
 });
 
-export const actlzrDatsFiscls = new ValidatedMethod({
-    name: 'datosFiscales.actlzrDatsFiscls',
+export const actualizarDatoFiscal = new ValidatedMethod({
+    name: 'datosFiscales.actualizarDatoFiscal',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -59,7 +59,7 @@ export const actlzrDatsFiscls = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'datosFiscales.actlzrDatsFiscls',
+        name: 'datosFiscales.actualizarDatoFiscal',
         message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -80,7 +80,7 @@ export const actlzrDatsFiscls = new ValidatedMethod({
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([crearDatoFiscal, actlzrDatsFiscls], 'name');
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([crearDatoFiscal, actualizarDatoFiscal], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

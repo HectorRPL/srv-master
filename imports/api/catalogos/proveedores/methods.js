@@ -39,8 +39,8 @@ export const crearProveedor = new ValidatedMethod({
     }
 });
 
-export const actlzrProvdrDatGenrl = new ValidatedMethod({
-    name: 'proveedores.actlzrProvdrDatGenrl',
+export const actualizarProvdrDats = new ValidatedMethod({
+    name: 'proveedores.actualizarProvdrDats',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -49,7 +49,7 @@ export const actlzrProvdrDatGenrl = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'proveedores.actlzrProvdrDatGenrl',
+        name: 'proveedores.actualizarProvdrDats',
         message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -73,8 +73,8 @@ export const actlzrProvdrDatGenrl = new ValidatedMethod({
     }
 });
 
-export const actlzrCuntContblProvdr = new ValidatedMethod({
-    name: 'proveedores.actlzrCuntContblProvdr',
+export const actualizarProvdrCuntCont = new ValidatedMethod({
+    name: 'proveedores.actualizarProvdrCuntCont',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -83,7 +83,7 @@ export const actlzrCuntContblProvdr = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'proveedores.actlzrCuntContblProvdr',
+        name: 'proveedores.actualizarProvdrCuntCont',
         message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -107,8 +107,8 @@ export const actlzrCuntContblProvdr = new ValidatedMethod({
     }
 });
 
-export const actlizrProvdrActvr = new ValidatedMethod({
-    name: 'proveedores.actlizrProvdrActvr',
+export const actualizarProvdrActv = new ValidatedMethod({
+    name: 'proveedores.actualizarProvdrActv',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
@@ -117,7 +117,7 @@ export const actlizrProvdrActvr = new ValidatedMethod({
         }
     ],
     permissionsError: {
-        name: 'proveedores.actlizrProvdrActvr',
+        name: 'proveedores.actualizarProvdrActv',
         message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
@@ -141,7 +141,7 @@ export const actlizrProvdrActvr = new ValidatedMethod({
     }
 });
 
-const PROVEEDORES_METHODS = _.pluck([crearProveedor, actlzrProvdrDatGenrl, actlzrCuntContblProvdr, actlizrProvdrActvr], 'name');
+const PROVEEDORES_METHODS = _.pluck([crearProveedor, actualizarProvdrDats, actualizarProvdrCuntCont, actualizarProvdrActv], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

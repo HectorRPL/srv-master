@@ -75,7 +75,7 @@ export const actlzrPromcnProdct = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['actu_promocion'],
+            roles: ['actu_promociones'],
             group: 'promociones'
         }
     ],
@@ -113,7 +113,7 @@ export const aplicarPromocionMarca = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['actu_promocion'],
+            roles: ['actu_promociones'],
             group: 'promociones'
         }
     ],

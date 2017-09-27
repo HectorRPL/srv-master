@@ -19,8 +19,8 @@ export const crearSucursal = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_tien'],
-            group: 'crudtiendas'
+            roles: ['crea_tiendas'],
+            group: 'tiendas'
         }
     ],
     permissionsError: {

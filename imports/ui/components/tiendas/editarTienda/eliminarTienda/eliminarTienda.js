@@ -2,7 +2,7 @@
  * Created by Héctor on 10/07/2017.
  */
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
-import {actlzrTindActvr} from "../../../../../api/catalogos/tiendas/methods";
+import {actualizarTindaActv} from "../../../../../api/catalogos/tiendas/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as RadioDesactivar} from "../../../comun/radio/radioDesactivar/radioDesactivar";
 import template from "./eliminarTienda.html";
@@ -36,7 +36,7 @@ class EliminarTienda {
             activo: this.tienda.activo
         };
 
-        actlzrTindActvr.callPromise(this.datos).then(this.$bindToContext(() => {
+        actualizarTindaActv.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';

@@ -41,7 +41,6 @@ export const crearProducto = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    allow: PermissionsMixin.LoggedIn,
     validate: Productos.simpleSchema().pick(CAMPOS_PRODUCTOS).validator({
         clean: true,
         filter: false
