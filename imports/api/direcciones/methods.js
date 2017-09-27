@@ -65,11 +65,6 @@ export const actualizarDireccion = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    checkLoggedInError: {
-        error: 'noLogeado',
-        message: 'Para modificar estos campos necesita registrarse.',
-        reason: 'Usuario no logeado'
-    },
     validate: Direcciones.simpleSchema().pick(ID, CAMPOS_DIRECCION).validator({
         clean: true,
         filter: false

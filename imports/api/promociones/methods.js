@@ -46,11 +46,18 @@ export const crearPromocion = new ValidatedMethod({
 
 export const actualizarPromocion = new ValidatedMethod({
     name: 'promociones.actualizarPromocion',
-    mixins: [LoggedInMixin, CallPromiseMixin],
-    checkLoggedInError: {
-        error: 'noLogeado',
-        message: 'Para modificar estos campos necesita registrarse.',
-        reason: 'Usuario no logeado'
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_promociones'],
+            group: 'promociones'
+        }
+    ],
+    permissionsError: {
+        name: 'promociones.crearPromocion',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
     },
     validate: Promociones.simpleSchema().pick(CAMPO_ID, CAMPOS_PROMOCIONES).validator({
         clean: true,

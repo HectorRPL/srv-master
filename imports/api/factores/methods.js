@@ -57,12 +57,6 @@ export const actualizarFactor = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    // TODO: ¿va con checkLoggedInError, o con PermissionsMixin, o con los dos?
-    checkLoggedInError: {
-        error: 'noLogeado',
-        message: 'Para modificar estos campos necesita registrarse.',
-        reason: 'Usuario no logeado'
-    },
     validate: Factores.simpleSchema().pick(CAMPO_ID, CAMPOS_FACTORES).validator({
         clean: true,
         filter: false
