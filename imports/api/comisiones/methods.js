@@ -15,7 +15,7 @@ const CAMPO_ID = ['_id'];
 
 export const crearComision = new ValidatedMethod({
     name: 'comisiones.crearComision',
-    mixins: [PermissionsMixin, CallPromiseMixin, LoggedInMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
             roles: ['crea_comisiones'],
@@ -47,7 +47,7 @@ export const crearComision = new ValidatedMethod({
 
 export const actualizarComision = new ValidatedMethod({
     name: 'comisiones.actualizarComision',
-    mixins: [PermissionsMixin, CallPromiseMixin, LoggedInMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
             roles: ['actua_comisiones'],
