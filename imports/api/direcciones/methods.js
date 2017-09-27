@@ -52,7 +52,7 @@ export const crearDireccion = new ValidatedMethod({
 // ACTUALIZAR DIRECCIÓN
 export const actualizarDireccion = new ValidatedMethod({
     name: 'direcciones.actualizarDireccion',
-    mixins: [PermissionsMixin, CallPromiseMixin, LoggedInMixin],
+    mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
             roles: ['actu_direcciones'],
