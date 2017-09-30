@@ -7,6 +7,7 @@ import {name as FormaComision} from "../../../../../comun/formas/formaComision/f
 import template from "./editarComision.html";
 
 class EditarComision {
+
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;

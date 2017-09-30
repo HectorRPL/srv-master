@@ -44,7 +44,7 @@ export const actualizarProvdrDats = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['actua_proveedores'],
+            roles: ['actu_proveedores'],
             group: 'proveedores'
         }
     ],
@@ -78,7 +78,7 @@ export const actualizarProvdrCuntCont = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['actua_proveedores'],
+            roles: ['actu_proveedores'],
             group: 'proveedores'
         }
     ],
@@ -112,7 +112,7 @@ export const actualizarProvdrActv = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['actua_proveedores'],
+            roles: ['actu_proveedores'],
             group: 'proveedores'
         }
     ],

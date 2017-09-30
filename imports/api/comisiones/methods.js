@@ -50,7 +50,7 @@ export const actualizarComision = new ValidatedMethod({
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['actua_comisiones'],
+            roles: ['actu_comisiones'],
             group: 'comisiones'
         }
     ],
@@ -64,9 +64,7 @@ export const actualizarComision = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({
-            _id, nombre, comisionProdInt, comisionProdExt
-        }) {
+    run({_id, nombre, comisionProdInt, comisionProdExt}) {
         return Comisiones.update({
             _id: _id
         }, {
