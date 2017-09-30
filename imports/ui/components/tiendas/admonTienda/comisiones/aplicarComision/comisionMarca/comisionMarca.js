@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 24/07/2017.
  */
-import {aplicarFactPromoComiMarca} from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrFactrPromcnComsnMarc} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./comisionMarca.html";
 
 class ComisionMarca {
@@ -41,7 +41,7 @@ class ComisionMarca {
             excepciones: this.prodsExcepciones,
             operacion: 'comisionMarca'
         };
-        aplicarFactPromoComiMarca.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdctInvntrFactrPromcnComsnMarc.callPromise(datos).then(this.$bindToContext(()=> {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {

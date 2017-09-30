@@ -1,12 +1,13 @@
 /**
  * Created by Héctor on 02/08/2017.
  */
-import {actlzrProdInvFacPromCom}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrPromcnComsnProdct}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas}            from "../../../../../../comun/alertas/alertas";
 import {name as BuscarComision}     from "../../../../../../comun/busquedas/buscarComision/buscarComision";
 import template                     from "./reasignarComisionProducto.html";
 
 class ReasignarComisionProducto {
+
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -24,7 +25,7 @@ class ReasignarComisionProducto {
             }],
             operacion: 'comisionProducto'
         };
-        actlzrProdInvFacPromCom.callPromise(datos).then(this.$bindToContext(() => {
+        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(() => {
             this.producto = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
