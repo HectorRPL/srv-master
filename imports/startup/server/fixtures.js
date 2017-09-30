@@ -11,9 +11,9 @@ import "./fixtures/inventarios/inventarios";
 
     //if (Meteor.roles.find().count() === 0) {
         /*const roles = [
-            {"name": "crea_promociones"},
-            {"name": "actu_promociones"},
-            {"name": "borr_promociones"}
+            {"name": "crea_empleados"},
+            {"name": "actu_empleados"},
+            {"name": "borr_empleados"}
         ];
 
         roles.forEach((rol) => {

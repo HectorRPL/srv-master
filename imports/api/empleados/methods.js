@@ -11,7 +11,7 @@ import {Empleados} from "./collection";
 
 const ID = ['_id'];
 const CAMPO_DEPARTAMENTOID = ['departamentoId'];
-const CAMPOS_EMPLEADOS = [ 'nombres', 'apellidos', 'celular', 'email', 'nacimientoAnio', 'nacimientoDia', 'nacimientoMes', 'sexo', 'telefono'];
+const CAMPOS_EMPLEADOS = ['nombres', 'apellidos', 'celular', 'email', 'nacimientoAnio', 'nacimientoDia', 'nacimientoMes', 'sexo', 'telefono'];
 
 export const actualizarEmpleado = new ValidatedMethod({
     name: 'empleados.actualizarEmpleado',
@@ -62,9 +62,7 @@ export const actualizarEmpldActiv = new ValidatedMethod({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
         activo: {type: Boolean}
     }).validator(),
-    run({
-        _id, activo
-    }) {
+    run({_id, activo}) {
         return Empleados.update({_id: _id}, {
             $set: {
                 activo
@@ -96,9 +94,7 @@ export const actualizarEmpldPust = new ValidatedMethod({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
         departamentoId: {type: String}
     }).validator(),
-    run({
-        _id, departamentoId
-    }) {
+    run({_id, departamentoId}) {
         return Empleados.update({_id: _id}, {
             $set: {
                 departamentoId
