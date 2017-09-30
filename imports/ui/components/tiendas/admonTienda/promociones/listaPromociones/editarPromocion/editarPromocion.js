@@ -1,12 +1,13 @@
 /**
  * Created by Héctor on 20/07/2017.
  */
-import {actlzrPromcnProdct} from "../../../../../../../api/promociones/methods";
+import {actualizarPromocion} from "../../../../../../../api/promociones/methods";
 import {name as Alertas} from "../../../../../comun/alertas/alertas";
 import {name as FormaPromocion} from "../../../../../comun/formas/formaPromocion/formaPromocion";
 import template from "./editarPromocion.html";
 
 class EditarPromocion {
+
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
@@ -20,7 +21,7 @@ class EditarPromocion {
         this.datos = angular.copy(this.resolve.promocion);
         delete this.datos.fechaCreacion;
 
-        actlzrPromcnProdct.callPromise(this.datos).then(this.$bindToContext(() => {
+        actualizarPromocion.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';

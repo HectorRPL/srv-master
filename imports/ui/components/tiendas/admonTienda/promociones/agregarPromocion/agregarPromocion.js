@@ -7,6 +7,7 @@ import {name as FormaPromocion} from "../../../../comun/formas/formaPromocion/fo
 import template from "./agregarPromocion.html";
 
 class AgregarPromocion {
+
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
@@ -15,7 +16,7 @@ class AgregarPromocion {
     }
 
     agregar() {
-        crearPromocion.callPromise(this.promocion).then(this.$bindToContext(()=> {
+        crearPromocion.callPromise(this.promocion).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';

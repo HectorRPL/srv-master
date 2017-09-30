@@ -15,13 +15,12 @@ const CAMPOS_PROMOCIONES = ['nombre', 'descuento', 'precioLista', 'fechaInicio',
 
 const CAMPO_ID = ['_id'];
 
-
 export const crearPromocion = new ValidatedMethod({
     name: 'promociones.crearPromocion',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_promocion'],
+            roles: ['crea_promociones'],
             group: 'promociones'
         }
     ],
@@ -63,8 +62,7 @@ export const actualizarPromocion = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({_id, nombre, descuento, precioLista, fechaInicio, fechaFin,
-    }) {
+    run({_id, nombre, descuento, precioLista, fechaInicio, fechaFin}) {
         return Promociones.update({
             _id: _id
         }, {
@@ -165,7 +163,6 @@ export const aplicarPromocionMarca = new ValidatedMethod({
         }
     }
 });
-
 
 const PROMOCIONES_METHODS = _.pluck([crearPromocion, actualizarPromocion, actlzrPromcnProdct, aplicarPromocionMarca], 'name');
 if (Meteor.isServer) {

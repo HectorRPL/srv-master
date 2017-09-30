@@ -1,12 +1,13 @@
 /**
  * Created by Héctor on 02/08/2017.
  */
-import {aplicarFactPromoComiProd}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrPromcnComsnProdct}   from "../../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as Alertas}            from "../../../../../../comun/alertas/alertas";
 import {name as BuscarPromocion}    from "../../../../../../comun/busquedas/buscarPromocion/buscarPromocion";
 import template                     from "./reasignarPromocionProducto.html";
 
 class ReasignarPromocionProducto {
+
     constructor($scope, $reactive) {
         'ngInject';
         $reactive(this).attach($scope);
@@ -24,10 +25,10 @@ class ReasignarPromocionProducto {
             }],
             operacion: 'promocionProducto'
         };
-        aplicarFactPromoComiProd.callPromise(datos).then(this.$bindToContext(() => {
+        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(() => {
             this.producto = [];
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }

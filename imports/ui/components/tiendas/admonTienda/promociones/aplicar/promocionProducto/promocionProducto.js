@@ -1,7 +1,7 @@
 /**
  * Created by jvltmtz on 11/07/17.
  */
-import {actlzrProdInvFacPromCom} from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrPromcnComsnProdct} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./promocionProducto.html";
 
 class PromocionProducto {
@@ -38,7 +38,7 @@ class PromocionProducto {
             productos: this.productosAplicarPromo,
             operacion: 'promocionProducto'
         };
-        actlzrProdInvFacPromCom.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarPromo = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
@@ -65,6 +65,7 @@ class PromocionProducto {
             console.log(reason)
         }));
     }
+
 }
 
 const name = 'promocionProducto';

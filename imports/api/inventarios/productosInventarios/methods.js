@@ -160,10 +160,7 @@ export const actlzrProdctInvntrExstncProdct = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({
-        _id,
-        cantidad
-    }) {
+    run({_id, cantidad}) {
         if (Meteor.isServer) {
             return ProductosInventarios.update({_id: _id}, {
                 $set: {
