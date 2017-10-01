@@ -67,7 +67,7 @@
                             <div class="form-group" ng-class="{ 'has-error' : agregarFactorFrm['factor'+$index].$invalid && !agregarFactorFrm['factor'+$index].$pristine}">
                                 <div ng-messages="agregarFactorFrm['factor'+$index].$dirty && agregarFactorFrm['factor'+$index].$error" role="alert">
                                     <label>
-                                        Factor {{$index + 1}}
+                                        Factor {{$index + 1}} *
                                         <span class="animated fadeIn" style="color:red;" ng-message="min">mix 1.0000</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="max">max 1.4000</span>
                                         <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
@@ -83,6 +83,30 @@
                                            required
                                            ng-disabled="agregarFactor.tipoMsj === 'success'"
                                            ng-model="agregarFactor.datos['factor'+($index + 1)]">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FACTOR COSTO -->
+                        <div class="col-sm-4">
+                            <div class="form-group" ng-class="{ 'has-error' : agregarFactorFrm.factorCosto.$invalid && !agregarFactorFrm.factorCosto.$pristine}">
+                                <div ng-messages="agregarFactorFrm.factorCosto.$dirty && agregarFactorFrm.factorCosto.$error" role="alert">
+                                    <label>
+                                        Factor Costo *
+                                        <span class="animated fadeIn" style="color:red;" ng-message="min">mix 0.0001</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="max">max 1</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
+                                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                                    </label>
+                                    <input id="factorCostoId"
+                                           class="form-control"
+                                           type="number"
+                                           name="factorCosto"
+                                           max="1.0001"
+                                           min="0.0001"
+                                           step=".0001"
+                                           required
+                                           ng-disabled="agregarFactor.tipoMsj === 'success'"
+                                           ng-model="agregarFactor.datos.factorCosto">
                                 </div>
                             </div>
                         </div>

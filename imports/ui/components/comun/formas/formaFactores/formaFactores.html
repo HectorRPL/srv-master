@@ -55,5 +55,29 @@
                 </div>
             </div>
         </div>
+        <!-- FACTOR COSTO -->
+        <div class="col-sm-4">
+            <div class="form-group" ng-class="{ 'has-error' : formaFactoresFrm.factorCosto.$invalid && !formaFactoresFrm.factorCosto.$pristine}">
+                <div ng-messages="formaFactoresFrm.factorCosto.$dirty && formaFactoresFrm.factorCosto.$error" role="alert">
+                    <label>
+                        Factor Costo *
+                        <span class="animated fadeIn" style="color:red;" ng-message="min">mix 0.0000</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="max">max 1</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="step">max 4 decimales</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <input id="factorCostoId"
+                           class="form-control"
+                           type="number"
+                           name="factorCosto"
+                           max="1.0001"
+                           min="0.0001"
+                           step=".0001"
+                           required
+                           ng-disabled="formaFactores.tipoMsj === 'success'"
+                           ng-model="formaFactores.factor.factorCosto">
+                </div>
+            </div>
+        </div>
     </div>
 </ng-form>

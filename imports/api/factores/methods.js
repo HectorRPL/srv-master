@@ -3,15 +3,15 @@
  */
 import {Meteor} from "meteor/meteor";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
+import {_} from "meteor/underscore";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
 import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
-import {_} from "meteor/underscore";
 import {Factores} from "./collection";
 import {ProductosInventarios} from "../inventarios/productosInventarios/collection";
 import {BitaFactPromoComi} from "../bitacoras/factoresPromo/collection";
 
-const CAMPOS_FACTORES = ['nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9'];
+const CAMPOS_FACTORES = ['nombre', 'factor1', 'factor2', 'factor3', 'factor4', 'factor5', 'factor6', 'factor7', 'factor8', 'factor9', 'factorCosto'];
 const CAMPO_ID = ['_id'];
 
 export const crearFactor = new ValidatedMethod({
@@ -33,8 +33,8 @@ export const crearFactor = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9}) {
-        return Factores.insert({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9}, (err)=> {
+    run({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factorCosto}) {
+        return Factores.insert({nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factorCosto}, (err)=> {
             if (err) {
                 throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
@@ -61,8 +61,7 @@ export const actualizarFactor = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({_id, nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9}) {
-
+    run({_id, nombre, factor1, factor2, factor3, factor4, factor5, factor6, factor7, factor8, factor9, factorCosto}) {
         return Factores.update({
             _id: _id
         }, {
@@ -76,7 +75,8 @@ export const actualizarFactor = new ValidatedMethod({
                 factor6: factor6,
                 factor7: factor7,
                 factor8: factor8,
-                factor9: factor9
+                factor9: factor9,
+                factorCosto: factorCosto
             }
         }, (err)=> {
             if (err) {

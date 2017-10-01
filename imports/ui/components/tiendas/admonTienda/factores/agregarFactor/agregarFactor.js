@@ -7,6 +7,7 @@ import {name as FormaFactores} from "../../../../comun/formas/formaFactores/form
 import template from "./agregarFactor.html";
 
 class AgregarFactor {
+
     constructor($scope, $reactive, $state) {
         'ngInject';
         this.$state = $state;
