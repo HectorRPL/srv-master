@@ -14,14 +14,14 @@
 <table class="table table-hover margin bottom">
     <thead>
         <tr>
-            <th style="width: 1%" class="text-center">Lista</th>
-            <th>Factor</th>
+            <th style="width: 1%">Factor</th>
+            <th>Valor</th>
             <th class="text-right">Precio</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="text-right">
         <tr>
-            <td class="text-center">1</td>
+            <td>1</td>
             <td> {{inventarioProductoFactor.factor.factor1 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -30,7 +30,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">2</td>
+            <td>2</td>
             <td> {{inventarioProductoFactor.factor.factor2 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -39,7 +39,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">3</td>
+            <td>3</td>
             <td> {{inventarioProductoFactor.factor.factor3 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -48,7 +48,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">4</td>
+            <td>4</td>
             <td> {{inventarioProductoFactor.factor.factor4 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -57,7 +57,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">5</td>
+            <td>5</td>
             <td> {{inventarioProductoFactor.factor.factor5 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -66,7 +66,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">6</td>
+            <td>6</td>
             <td> {{inventarioProductoFactor.factor.factor6 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -75,7 +75,7 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">7</td>
+            <td>7</td>
             <td> {{inventarioProductoFactor.factor.factor7 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
@@ -84,11 +84,20 @@
             </td>
         </tr>
         <tr>
-            <td class="text-center">8</td>
+            <td>8</td>
             <td> {{inventarioProductoFactor.factor.factor8 | number:4 }}</td>
             <td class="text-right">
                 <span class="text-navy font-bold">$
                     {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factor8 | number:2 }}
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Costo</td>
+            <td> {{inventarioProductoFactor.factor.factorCosto | number:4 }}</td>
+            <td class="text-right">
+                <span class="text-success font-bold">$
+                    {{inventarioProductoFactor.costo * inventarioProductoFactor.factor.factorCosto | number:2 }}
                 </span>
             </td>
         </tr>
