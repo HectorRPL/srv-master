@@ -98,12 +98,45 @@ export const actualizarDatoFiscal = new ValidatedMethod({
     }
 });
 
+export const actlzrDireccDatsFiscls = new ValidatedMethod({
+    name: 'datosFiscales.actlzrDireccDatsFiscls',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_datos_fiscales'],
+            group: 'datos_fiscales'
+        }
+    ],
+    permissionsError: {
+        name: 'datosFiscales.actlzrDireccDatsFiscls',
+        message: ()=> {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
+    validate: DatosFiscales.simpleSchema().pick(['propietarioId'], CAMPOS_DIRECCION_FISCAL).validator({
+        clean: true,
+        filter: false
+    }),
+    run({propietarioId, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
+    }) {
+        return DatosFiscales.update({propietarioId: propietarioId},
+            {$set: { calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais}
+            }, (err) => {
+                if (err) {
+                    throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
+                }
+            });
+    }
+});
+
 const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck(
     [
         crearDatoFiscal,
-        actualizarDatoFiscal
+        actualizarDatoFiscal,
+        actlzrDireccDatsFiscls
 
-    ], 'name');
+    ],
+    'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

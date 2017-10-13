@@ -3,7 +3,7 @@
  */
 import {DatosFiscales}              from "../../../../../api/datosFiscales/collection";
 import {crearDatoFiscal}            from "../../../../../api/datosFiscales/methods";
-import {actualizarDatoFiscal}           from "../../../../../api/datosFiscales/methods";
+import {actlzrDireccDatsFiscls}     from "../../../../../api/datosFiscales/methods";
 import {name as Alertas}            from "../../../comun/alertas/alertas";
 import {name as FormaDireccion}     from "../../../comun/formas/formaDireccion/formaDireccion";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
@@ -42,9 +42,10 @@ class EditarTiendaDatosFiscales {
         }));
     }
 
-    cambiosDatosFiscales() {
+    actualizarDireccionFiscal() {
         delete this.datosFiscales.colonias;
         delete this.datosFiscales._id;
+        delete this.datosFiscales.rfc;
         delete this.datosFiscales.tipoPersona;
         delete this.datosFiscales.razonSocial;
         delete this.datosFiscales.tipoSociedad;
@@ -53,7 +54,7 @@ class EditarTiendaDatosFiscales {
         delete this.datosFiscales.email;
         delete this.datosFiscales.fechaCreacion;
 
-        actualizarDatoFiscal.callPromise(this.datosFiscales).then(this.$bindToContext(() => {
+        actlzrDireccDatsFiscls.callPromise(this.datosFiscales).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
