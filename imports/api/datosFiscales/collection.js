@@ -21,26 +21,29 @@ DatosFiscales.deny({
 const Schema = {};
 
 Schema.datosFiscales = new SimpleSchema({
+    _id: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id
+    },
     fechaCreacion: {
         type: Date,
         defaultValue: new Date(),
         denyUpdate: true
     },
-    _id: {
+    rfc: {
         type: String,
         autoValue: function () {
             if (this.value) {
-                return this.value.toUpperCase();
+                return this.value.toUpperCase()
             }
         }
-
     },
     propietarioId: {
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
     nombres: {
-        type: String,
+        type: String, min: 2, max: 30,
         regEx: /^[a-zA-ZñÑ\s]+$/,
         optional: true,
         custom: function () {
@@ -53,13 +56,13 @@ Schema.datosFiscales = new SimpleSchema({
         },
         autoValue: function () {
             if (this.value) {
-                return this.value.toUpperCase()
+                return this.value.toUpperCase();
             }
         }
     },
     apellidos: {
         type: String,
-        regEx: /^[a-zA-ZñÑ\s]+$/,
+        regEx: /^[a-zA-Z-Ññ-\s\d]+$/,
         optional: true,
         custom: function () {
             let shouldBeRequired = this.field('tipoPersona').value == 'PF';
@@ -75,18 +78,9 @@ Schema.datosFiscales = new SimpleSchema({
             }
         }
     },
-    email: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Email,
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase();
-            }
-        }
-    },
     razonSocial: {
         type: String,
-        regEx: /^[a-zA-ZñÑ\s]+$/,
+        regEx: /^[a-zA-Z-Ññ.,-\s\d]+$/,
         optional: true,
         custom: function () {
             let shouldBeRequired = this.field('tipoPersona').value == 'PM';
@@ -97,44 +91,33 @@ Schema.datosFiscales = new SimpleSchema({
             }
         },
         autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase();
-            }
-        }
-    },
-    tipoSociedad: {
-        type: String,
-        regEx: /^[a-zA-Z-Ññ.\s]+$/,
-        optional: true,
-        custom: function () {
-            let shouldBeRequired = this.field('tipoPersona').value == 'PM';
-            if (shouldBeRequired) {
-                if (!this.operator) {
-                    if (!this.isSet || this.value === null || this.value === '') return "required";
+            let razonSocial = '';
+            if (this.field('tipoPersona').value == 'PF') {
+                if (this.field('nombres').value && this.field('apellidos').value) {
+                    razonSocial += this.field('nombres').value.toUpperCase();
+                    razonSocial += ' ' + this.field('apellidos').value.toUpperCase();
+                    return razonSocial;
+                } else {
+                    return this.value.toUpperCase();
                 }
-            }
-        },
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase();
             }
         }
     },
     tipoPersona: {
         type: String
     },
-    /*
-    curp: {
+    tipoSociedad: {
         type: String,
         optional: true,
-        autoValue: function () {
-            if (this.value) {
-                return this.value.toUpperCase()
+        custom: function () {
+            let shouldBeRequired = this.field('tipoPersona').value == 'PM';
+            if (shouldBeRequired) {
+                if (!this.operator) {
+                    if (!this.isSet || this.value === null || this.value === '') return "required";
+                }
             }
-        }
+        },
     },
-     */
-
     /* DIRECCION FISCAL */
 
     calle: {
@@ -191,7 +174,7 @@ Schema.datosFiscales = new SimpleSchema({
         min: 1,
         regEx: /^[a-zA-Z./&Ññ-\s\d]+$/,
         autoValue: function () {
-            if(this.value){
+            if (this.value) {
                 return this.value.toUpperCase()
             }
         }

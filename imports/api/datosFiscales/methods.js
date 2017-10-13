@@ -10,8 +10,7 @@ import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
 const CAMPO_ID = ['_id'];
-const CAMPO_PROPIETARIOID = ['propietarioId'];
-const CAMPOS_DATOS_FISCALES = ['tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad', 'email'];
+const CAMPOS_DATOS_FISCALES = ['propietarioId', 'rfc', 'tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad'];
 const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 export const crearDatoFiscal = new ValidatedMethod({
@@ -25,25 +24,24 @@ export const crearDatoFiscal = new ValidatedMethod({
     ],
     permissionsError: {
         name: 'datosFiscales.crearDatoFiscal',
-        message: () => {
-            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        message: ()=> {
+            return 'Este usuario no cuenta con los permisos necesarios.';
         }
     },
-    validate: DatosFiscales.simpleSchema().pick(CAMPO_ID, CAMPO_PROPIETARIOID, CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
+    validate: DatosFiscales.simpleSchema().pick(CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false
     }),
     run({
-        _id, propietarioId, tipoPersona,
-        nombres, apellidos, razonSocial, tipoSociedad, email,
+        propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
-        return DatosFiscales.insert({ _id, propietarioId, tipoPersona,
-            nombres, apellidos, razonSocial, tipoSociedad, email,
+        return DatosFiscales.insert({
+            propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
             calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
-        }, (err)=> {
+        }, (err) => {
             if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'datos-fiscales-no-creados');
             }
         });
     }
@@ -60,27 +58,52 @@ export const actualizarDatoFiscal = new ValidatedMethod({
     ],
     permissionsError: {
         name: 'datosFiscales.actualizarDatoFiscal',
-        message: () => {
-            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        message: ()=> {
+            return 'Este usuario no cuenta con los permisos necesarios.';
         }
     },
-    validate: DatosFiscales.simpleSchema().pick(CAMPO_PROPIETARIOID, CAMPOS_DIRECCION_FISCAL).validator({
+    validate: DatosFiscales.simpleSchema().pick(CAMPO_ID, CAMPOS_DATOS_FISCALES, CAMPOS_DIRECCION_FISCAL).validator({
         clean: true,
         filter: false
     }),
-    run({propietarioId, calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
+    run({
+        _id, propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+        calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
-        return DatosFiscales.update({propietarioId: propietarioId},
-            {$set: { calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais}
-        }, (err) => {
-            if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
-            }
-        });
+
+        if (tipoPersona === 'PM') {
+            return DatosFiscales.update({_id: _id}, {
+                $set: {
+                    propietarioId: propietarioId, rfc: rfc, tipoPersona: tipoPersona, razonSocial: razonSocial,
+                    tipoSociedad: tipoSociedad, calle: calle, delMpio: delMpio, estadoId: estadoId, estado: estado,
+                    colonia: colonia, codigoPostal: codigoPostal, numExt: numExt, numInt: numInt
+                },
+                $unset: {
+                    nombres: "", apellidos: ""
+                }
+            });
+        } else {
+            return DatosFiscales.update({_id: _id}, {
+                $set: {
+                    propietarioId: propietarioId, rfc: rfc, tipoPersona: tipoPersona, nombres: nombres,
+                    apellidos: apellidos, calle: calle, delMpio: delMpio, estadoId: estadoId, estado: estado,
+                    colonia: colonia, codigoPostal: codigoPostal, numExt: numExt, numInt: numInt
+                },
+                $unset: {
+                    tipoSociedad: ""
+                }
+            });
+        }
+
     }
 });
 
-const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck([crearDatoFiscal, actualizarDatoFiscal], 'name');
+const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck(
+    [
+        crearDatoFiscal,
+        actualizarDatoFiscal
+
+    ], 'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

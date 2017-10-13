@@ -1,6 +1,6 @@
-<ng-form name="formaDatosFiscalesForm">
+<ng-form name="datosFiscalesForm">
     <!-- BOTONES = PERSONA FISICA / PERSONA MORAL -->
-    <div class="col-sm-4">
+    <div class="col-sm-6">
         <label class="control-label">Persona *</label>
         <div class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
@@ -23,14 +23,14 @@
             </div>
         </div>
     </div>
-    <div class="animated fadeIn">
+    <span class="animated fadeIn">
         <!-- PERSONA FISICA -->
         <div class="animated fadeIn" ng-if="formaDatosFiscales.datos.tipoPersona === 'PF'">
             <!--RFC PERSONA FÍSCA-->
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.rfcPersonaFisica.$invalid && !formaDatosFiscalesForm.rfcPersonaFisica.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.rfcPersonaFisica.$dirty && formaDatosFiscalesForm.rfcPersonaFisica.$error"
+                     ng-class="{ 'has-error' : datosFiscalesForm.rfcPersonaFisica.$invalid && !datosFiscalesForm.rfcPersonaFisica.$pristine}">
+                    <div ng-messages="datosFiscalesForm.rfcPersonaFisica.$dirty && datosFiscalesForm.rfcPersonaFisica.$error"
                          role="alert">
                         <label>RFC *
                             <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
@@ -45,42 +45,24 @@
                                ng-pattern="/^([A-ZÑ&]{4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/"
                                required
                                buscar-rfc
-                               ng-model="formaDatosFiscales.datos._id">
+                               ng-model="formaDatosFiscales.datos.rfc">
                     </div>
                 </div>
             </div>
-            <!-- EMAIL FISCAL -->
-            <div class="col-sm-4">
-                <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.emailFiscal.$invalid && !formaDatosFiscalesForm.emailFiscal.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.emailFiscal.$dirty && formaDatosFiscalesForm.emailFiscal.$error"
-                         role="alert">
-                        <label>Email Fiscal *
-                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="email">correo incorrecto</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 5, max 50 letras</span>
-                        </label>
-                        <input id="emailFiscalId" class="form-control" name="emailFiscal" type="email"
-                               aria-describedby="sizing-addon1" minlength="5"
-                               maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                               ng-model="formaDatosFiscales.datos.email">
-                    </div>
-                </div>
-            </div>
-            <!--NOMBRES-->
+            <!--NOMBRE-->
             <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.nombres.$invalid && !formaDatosFiscalesForm.nombres.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.nombres.$dirty && formaDatosFiscalesForm.nombres.$error"
-                         role="alert">
+                     ng-class="{ 'has-error' : datosFiscalesForm.nombres.$invalid && !datosFiscalesForm.nombres.$pristine}">
+                    <div ng-messages="datosFiscalesForm.nombres.$dirty && datosFiscalesForm.nombres.$error" role="alert">
                         <label>Nombre(s) *
-                            <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 1, max 30 letras</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
+                            <span class="animated fadeIn" style="color:red;"ng-message="pattern">caracter no válido</span>
                         </label>
-                        <input id="nombresId" class="form-control" name="nombres" type="text" aria-describedby="sizing-addon1"
-                               placeholder="Nombre(s)" required minlength="2" maxlength="31" ng-minlength="2"
-                               ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑ\s]+$/"
+                        <input id="nombreId" class="form-control"
+                               name="nombre" type="text" aria-describedby="sizing-addon1"
+                               minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                               ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
                                ng-model="formaDatosFiscales.datos.nombres">
                     </div>
                 </div>
@@ -88,17 +70,18 @@
             <!--APELLIDOS-->
             <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.apellidos.$invalid && !formaDatosFiscalesForm.apellidos.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.apellidos.$dirty && formaDatosFiscalesForm.apellidos.$error"
+                     ng-class="{ 'has-error' : datosFiscalesForm.apellidos.$invalid && !datosFiscalesForm.apellidos.$pristine}">
+                    <div ng-messages="datosFiscalesForm.apellidos.$dirty && datosFiscalesForm.apellidos.$error"
                          role="alert">
-                        <label>Apellido(s) *
-                            <span class="animated fadeIn" style="color:red;" ng-message="required"> requerido</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 2, max 30 letras</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="pattern"> caracter inválido</span>
+                        <label>Apellidos *
+                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
+                            <span class="animated fadeIn" style="color:red;"ng-message="pattern">caracter no válido</span>
                         </label>
-                        <input id="apellidosId" class="form-control" name="apellidos" type="text" placeholder="Apellido(s)"
-                               aria-describedby="sizing-addon1" required minlength="2" maxlength="31"
-                               ng-minlength="2" ng-maxlength="30" ng-pattern="/^[a-zA-ZñÑ\s]+$/"
+                        <input id="apellidosId" class="form-control"
+                               name="apellidos" type="text" aria-describedby="sizing-addon1"
+                               minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                               ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
                                ng-model="formaDatosFiscales.datos.apellidos">
                     </div>
                 </div>
@@ -107,10 +90,10 @@
         <!-- PERSONA MORAL -->
         <div class="animated fadeIn" ng-if="formaDatosFiscales.datos.tipoPersona === 'PM'">
             <!--RFC PERSONA MORAL-->
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.rfcPersonaMoral.$invalid && !formaDatosFiscalesForm.rfcPersonaMoral.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.rfcPersonaMoral.$dirty && formaDatosFiscalesForm.rfcPersonaMoral.$error"
+                     ng-class="{ 'has-error' : datosFiscalesForm.rfcPersonaMoral.$invalid && !datosFiscalesForm.rfcPersonaMoral.$pristine}">
+                    <div ng-messages="datosFiscalesForm.rfcPersonaMoral.$dirty && datosFiscalesForm.rfcPersonaMoral.$error"
                          role="alert">
                         <label>RFC *
                             <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
@@ -125,33 +108,15 @@
                                ng-pattern="/^([A-ZÑ&]{3}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/"
                                required
                                buscar-rfc
-                               ng-model="formaDatosFiscales.datos._id">
-                    </div>
-                </div>
-            </div>
-            <!-- EMAIL FISCAL -->
-            <div class="col-sm-4">
-                <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.emailFiscal.$invalid && !formaDatosFiscalesForm.emailFiscal.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.emailFiscal.$dirty && formaDatosFiscalesForm.emailFiscal.$error"
-                         role="alert">
-                        <label>Email Fiscal *
-                            <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="email">correo incorrecto</span>
-                            <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength"> min 5, max 50 letras</span>
-                        </label>
-                        <input id="emailFiscalId" class="form-control" name="emailFiscal" type="email"
-                               aria-describedby="sizing-addon1" minlength="5"
-                               maxlength="51" ng-minlength="5" ng-maxlength="50" required
-                               ng-model="formaDatosFiscales.datos.email">
+                               ng-model="formaDatosFiscales.datos.rfc">
                     </div>
                 </div>
             </div>
             <!--RAZÓN SOCIAL-->
             <div class="col-sm-8">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.razonSocial.$invalid && !formaDatosFiscalesForm.razonSocial.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.razonSocial.$dirty && formaDatosFiscalesForm.razonSocial.$error"
+                     ng-class="{ 'has-error' : datosFiscalesForm.razonSocial.$invalid && !datosFiscalesForm.razonSocial.$pristine}">
+                    <div ng-messages="datosFiscalesForm.razonSocial.$dirty && datosFiscalesForm.razonSocial.$error"
                          role="alert">
                         <label>Razón Social *
                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -169,8 +134,8 @@
             <!--TIPO DE SOCIEDAD-->
             <div class="col-sm-4">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : formaDatosFiscalesForm.elegirTipoSociedad.$invalid && !formaDatosFiscalesForm.elegirTipoSociedad.$pristine}">
-                    <div ng-messages="formaDatosFiscalesForm.elegirTipoSociedad.$dirty && formaDatosFiscalesForm.elegirTipoSociedad.$error"
+                     ng-class="{ 'has-error' : datosFiscalesForm.elegirTipoSociedad.$invalid && !datosFiscalesForm.elegirTipoSociedad.$pristine}">
+                    <div ng-messages="datosFiscalesForm.elegirTipoSociedad.$dirty && datosFiscalesForm.elegirTipoSociedad.$error"
                          role="alert">
                         <label>&nbsp;
                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -180,5 +145,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </span>
 </ng-form>
