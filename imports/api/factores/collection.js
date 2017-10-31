@@ -29,7 +29,7 @@ Factores.schema = new SimpleSchema({
     factor6:       {type:  Number, defaultValue: 1.0, decimal: true},
     factor7:       {type:  Number, defaultValue: 1.0, decimal: true},
     factor8:       {type:  Number, defaultValue: 1.0, decimal: true},
-    factorCosto:   {type:  Number, defaultValue: 1.0, decimal: true, optional: true}, // TODO Esto es requerido ¿no?
+    factorCosto:   {type:  Number, defaultValue: 1.0, decimal: true},
     activo:        {type: Boolean, defaultValue:true},
     fechaCreacion: {type:  Date,   defaultValue: new Date(), denyUpdate: true}
 });
