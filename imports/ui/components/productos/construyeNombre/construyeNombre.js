@@ -21,7 +21,7 @@ export default angular
         controllerAs: name,
         bindings: {
             producto: '<',
-            nombremarca: '<'
+            nombreMarca: '<'
 
         },
         controller: ConstruyeNombre

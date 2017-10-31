@@ -24,7 +24,7 @@ export default angular
         template: template.default,
         controllerAs: name,
         bindings: {
-            diaid: '='
+            diaId: '='
         },
         controller: ElegirDia
     });

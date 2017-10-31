@@ -30,7 +30,7 @@ export default angular
         template: template.default,
         controllerAs: name,
         bindings: {
-            tipoproducto: '=',
+            tipoProducto: '=',
         },
         controller: ElegirTipoProducto
     });

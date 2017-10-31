@@ -28,7 +28,7 @@ export default angular
         template: template.default,
         controllerAs: name,
         bindings: {
-            tiposociedad: '=',
+            tipoSociedad: '=',
         },
         controller: ElegirTipoSociedad
     });
