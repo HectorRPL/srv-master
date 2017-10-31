@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="quitarPromocionProducto.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-6">
+        <buscar-producto marcaid="quitarPromocionProducto.marcaSelec._id"
+                         producto="quitarPromocionProducto.productoSelec">
+        </buscar-producto>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <button class="btn btn-primary btn-sm pull-right"
+                    ng-disabled="quitarPromocionProducto.productosAplicarFac.length === 0"
+                    ng-click="quitarPromocionProducto.confirmar()">
+                Aplicar Promocion
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+        <alertas tipo="quitarPromocionProducto.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">Productos a elegir</h3>
+        <p></p>
+        <lista-productos-tienda marca="quitarPromocionProducto.marcaSelec" producto="quitarPromocionProducto.productoSelec"
+                                tienda-id="quitarPromocionProducto.tiendaId"
+                                agregar-prod="quitarPromocionProducto.agregar(_id, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Productos que seran actaulizados</h4>
+        <p></p>
+        <lista-productos-elegidos productos="quitarPromocionProducto.productosAplicarPromo"></lista-productos-elegidos>
+    </div>
+</div>

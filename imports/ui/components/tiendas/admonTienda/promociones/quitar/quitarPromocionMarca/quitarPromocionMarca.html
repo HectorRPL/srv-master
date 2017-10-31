@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-xs-4">
+        <buscar-marca marca="quitarPromocionMarca.marcaSelec"></buscar-marca>
+    </div>
+    <div class="col-xs-4">
+
+    </div>
+    <div class="col-xs-4">
+        <button class="btn btn-primary btn-sm pull-right"
+                ng-disabled="!quitarPromocionMarca.marcaSelec._id"
+                ng-click="quitarPromocionMarca.confirmar()">
+            Aplicar Promocion
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+        <alertas tipo="quitarPromocionMarca.tipoMsj" mensaje=""></alertas>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-default btn-sm pull-left"
+                ng-disabled="quitarPromocionMarca.productosAplicarFac.length === 0 || !quitarPromocionMarca.marcaSelec._id"
+                ng-click="quitarPromocionMarca.mostrar = !quitarPromocionMarca.mostrar">
+            Agregar Excepciones
+        </button>
+    </div>
+</div>
+<div class="row" uib-collapse="quitarPromocionMarca.mostrar" class="row">
+    <div class="col-sm-6 b-r">
+        <h3 class="m-t-none m-b">
+            <buscar-producto marcaid="quitarPromocionMarca.marcaSelec._id"
+                             producto="quitarPromocionMarca.productoSelec">
+            </buscar-producto>
+        </h3>
+        <p></p>
+        <lista-productos-tienda
+                marca="quitarPromocionMarca.marcaSelec" producto="quitarPromocionMarca.productoSelec" tienda-id="quitarPromocionMarca.tiendaId"
+                agregar-prod="quitarPromocionMarca.agregar(_id, marca, producto)">
+        </lista-productos-tienda>
+    </div>
+    <div class="col-sm-6">
+        <h4>Lsita de excepciones&nbsp;</h4>
+        <p></p>
+        <lista-productos-elegidos productos="quitarPromocionMarca.prodsExcepciones"></lista-productos-elegidos>
+    </div>
+</div>

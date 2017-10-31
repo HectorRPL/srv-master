@@ -4,11 +4,11 @@
 import {Promociones} from "../../../../../../api/promociones/collection";
 import {name as AgregarPromocion} from "../agregarPromocion/agregarPromocion";
 import {name as AplicarPromocion} from "../aplicar/aplicarPromocion";
+import {name as QuitarPromocion} from "../quitar/quitarPromocion";
 import {name as EditarPromocion} from "./editarPromocion/editarPromocion";
 import template from "./listaPromociones.html";
 
-class ListaFactores {
-
+class ListaPromociones {
     constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
@@ -40,11 +40,9 @@ class ListaFactores {
         });
 
     }
-
     pageChanged(newPage) {
         this.page = newPage;
     }
-
     crearPromocion() {
         var modalInstance = this.$uibModal.open({
             animation: true,
@@ -54,7 +52,6 @@ class ListaFactores {
             keyboard: true
         });
     }
-
     editarPromocionModal(promocion) {
         var modalInstance = this.$uibModal.open({
             animation: true,
@@ -69,7 +66,6 @@ class ListaFactores {
             }
         });
     }
-
 }
 
 const name = 'listaPromociones';
@@ -78,12 +74,13 @@ export default angular
     .module(name, [
         AgregarPromocion,
         AplicarPromocion,
+        QuitarPromocion,
         EditarPromocion
     ])
     .component(name, {
         template: template.default,
         controllerAs: name,
-        controller: ListaFactores,
+        controller: ListaPromociones,
     })
     .config(config);
 
