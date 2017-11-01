@@ -5,7 +5,6 @@ import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import utilsPagination from "angular-utils-pagination";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as MostrarDireccion} from '../../comun/mostrar/mostrarDireccion/mostrarDireccion';
-import {name as MostrarDatosFiscales} from '../../comun/mostrar/mostrarDatosFiscales/mostrarDatosFiscales';
 import {name as AgregarTienda} from '../agregarTienda/agregarTienda';
 import {name as BuscarTienda} from "../../comun/busquedas/buscarTienda/buscarTienda";
 import template from "./listaTiendas.html";
@@ -56,8 +55,7 @@ export default angular
         TituloPrincipal,
         AgregarTienda,
         BuscarTienda,
-        MostrarDireccion,
-        MostrarDatosFiscales
+        MostrarDireccion
     ])
     .component(name, {
         template: template.default,

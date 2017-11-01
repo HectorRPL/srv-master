@@ -1,59 +1,67 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="ibox">
-            <div class="ibox-content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2>{{listaProveedores.titulo}}</h2>
-                        <hr>
-                    </div>
-                    <div class="col-xs-4">
-                        <a ui-sref="app.proveedores.agregar.datos" class="btn btn-primary btn-sm">Agregar Proveedor</a>
-                    </div>
-                    <div class="col-xs-4">
-                        <buscar-proveedor proveedor="listaProveedores.proveedorSelec"></buscar-proveedor>
-                    </div>
-                    <div class="col-xs-4"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4 ajustar"
-         dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
-         total-items="listaProveedores.proveedoresCount">
-        <div class="contact-box">
-            <a ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
+            <div class="ibox-content m-b-sm border-bottom">
                 <div class="row">
                     <div class="col-sm-1">
-                        <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                        <div class="pull-left m-r-md">
+                            <i class="fa fa-globe text-navy mid-icon"></i>
+                        </div>
                     </div>
                     <div class="col-sm-11">
-                        <h3><strong>{{proveedor.nombre}}</strong></h3>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2>Proveedores</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <a ui-sref="app.proveedores.agregar.datos" class="btn btn-primary btn-sm">Agregar Proveedor</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <buscar-proveedor proveedor="listaProveedores.proveedorSelec"></buscar-proveedor>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <i class="fa fa-phone" aria-hidden="true" ng-hide="!proveedor.telefonos"></i>
-                        <span ng-hide="proveedor.telefonos">
-                            <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong>
-                        </span>
-                        <span ng-repeat="telefono in proveedor.telefonos"
-                              ng-hide="!proveedor.telefonos">
-                            {{telefono.telefono}},
-                            <span ng-show="telefono.extension">
-                                Ext. {{telefono.extension}},
-                            </span>
-                        </span>
-                        <mostrar-direccion propietario-id="proveedor._id"></mostrar-direccion>
-                        <hr>
-                        <mostrar-datos-fiscales propietario-id="proveedor._id"></mostrar-datos-fiscales>
-
+            </div>
+            <div class="ibox-content forum-container">
+                <div class="forum-item"
+                     dir-paginate="proveedor in listaProveedores.proveedores | itemsPerPage: listaProveedores.perPage"
+                     total-items="listaProveedores.proveedoresCount">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="forum-icon">
+                                <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                            </div>
+                            <a class="forum-item-title" ui-sref="app.proveedores.editar.generales({proveedorId: proveedor._id})">
+                                {{proveedor.nombre}}
+                            </a>
+                            <div class="forum-sub-title">
+                                <mostrar-direccion propietario-id="proveedor._id"></mostrar-direccion>
+                            </div>
+                        </div>
+                        <div class="col-md-1 forum-info">
+                            <span class="views-number">1216</span>
+                            <div>
+                                <small>Compras</small>
+                            </div>
+                        </div>
+                        <div class="col-md-1 forum-info">
+                            <span class="views-number">368</span>
+                            <div>
+                                <small>Devoluciones</small>
+                            </div>
+                        </div>
+                        <div class="col-md-1 forum-info">
+                            <span class="views-number">140</span>
+                            <div>
+                                <small>Marcas</small>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <!--<div class="clearfix"></div>-->
-            </a>
+            </div>
         </div>
     </div>
 </div>

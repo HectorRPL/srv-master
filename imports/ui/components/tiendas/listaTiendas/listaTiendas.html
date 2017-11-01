@@ -1,70 +1,72 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="ibox">
-            <div class="ibox-content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h2>Tiendas del Grupo</h2>
-                        <hr>
-                    </div>
-                    <div class="col-xs-4">
-                        <a ui-sref="app.tienda.agregar.datos" class="btn btn-primary btn-sm">Agregar Tienda</a>
-                    </div>
-                    <div class="col-xs-4">
-                        <buscar-tienda tienda="listaTiendas.tiendaSelec"></buscar-tienda>
-                    </div>
-                    <div class="col-xs-4"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4"
-         dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
-         total-items="listaTiendas.tiendasCount">
-        <div class="contact-box">
-            <a ui-sref="app.tienda.admon.empleados.lista({tiendaId: tienda._id})">
+            <div class="ibox-content m-b-sm border-bottom">
                 <div class="row">
                     <div class="col-sm-1">
-                        <i class="fa fa-industry" aria-hidden="true"></i>
+                        <div class="pull-left m-r-md">
+                            <i class="fa fa-globe text-navy mid-icon"></i>
+                        </div>
                     </div>
-                    <div class="col-sm-11 ajustar">
-                        <h3><strong>{{tienda.nombre}}</strong></h3>
+                    <div class="col-sm-11">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2>Tiendas</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <a ui-sref="app.tienda.agregar.datos" class="btn btn-primary btn-sm">Agregar Tienda</a>
+                            </div>
+                            <div class="col-sm-4">
+                                <buscar-tienda tienda="listaTiendas.tiendaSelec"></buscar-tienda>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <i class="fa fa-phone" aria-hidden="true" ng-hide="!tienda.telefonos"></i>
-                        <span ng-hide="tienda.telefonos" style="color: red">
-                            <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR TELÉFONO</strong>
-                        </span>
-                        <span ng-repeat="telefono in tienda.telefonos"
-                              ng-hide="!tienda.telefonos">
-                            {{telefono.telefono}},
-                            <span ng-show="telefono.extension">
-                                Ext. {{telefono.extension}},
+            </div>
+            <div class="ibox-content forum-container">
+                <div class="forum-item"
+                     dir-paginate="tienda in listaTiendas.tiendas | itemsPerPage: listaTiendas.perPage"
+                     total-items="listaTiendas.tiendasCount">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="forum-icon">
+                            <span class="text-center center-block" ng-hide="tienda.tiendaMatrizId">
+                                <i class="fa fa-industry" aria-hidden="true"></i>
+                                <small>Matriz</small>
                             </span>
-                        </span>
-                        <mostrar-direccion propietario-id="tienda._id"></mostrar-direccion>
-                        <hr>
-                        <mostrar-datos-fiscales propietario-id="tienda._id"
-                                                tienda-matriz="tienda.tiendaMatrizId"></mostrar-datos-fiscales>
-
+                                <span class="text-center center-block" ng-show="tienda.tiendaMatrizId">
+                                <i class="fa fa-sitemap" aria-hidden="true"></i>
+                                <small class="text-center center-block">Sucur..</small>
+                            </span>
+                            </div>
+                            <a class="forum-item-title" ui-sref="app.tienda.admon.empleados.lista({tiendaId: tienda._id})">
+                                {{tienda.nombre}}
+                            </a>
+                            <div class="forum-sub-title">
+                                <mostrar-direccion propietario-id="tienda._id"></mostrar-direccion>
+                            </div>
+                        </div>
+                        <div class="col-md-1 forum-info">
+                            <span class="views-number">1216</span>
+                            <div>
+                                <small>Ventas</small>
+                            </div>
+                        </div>
+                        <div class="col-md-1 forum-info">
+                            <span class="views-number">368</span>
+                            <div>
+                                <small>Devoluciones</small>
+                            </div>
+                        </div>
+                        <div class="col-md-1 forum-info">
+                            <span class="views-number">140</span>
+                            <div>
+                                <small>Clientes</small>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!--<div class="clearfix"></div>-->
-            </a>
-            <div class="row">
-                <div class="col-sm-12">
-                    <strong class="label label-info">
-                        <span ng-show="tienda.tiendaMatrizId">
-                            Sucursal
-                        </span>
-                        <span ng-hide="tienda.tiendaMatrizId">
-                            Matriz
-                        </span>
-                    </strong>
                 </div>
             </div>
         </div>

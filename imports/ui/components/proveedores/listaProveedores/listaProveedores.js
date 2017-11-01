@@ -3,7 +3,6 @@
  */
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as MostrarDireccion} from '../../comun/mostrar/mostrarDireccion/mostrarDireccion';
-import {name as MostrarDatosFiscales} from '../../comun/mostrar/mostrarDatosFiscales/mostrarDatosFiscales';
 import {name as AgregarProveedor} from '../agregarProveedor/agregarProveedor';
 import {name as BuscarProveedor} from '../../comun/busquedas/buscarProveedor/buscarProveedor';
 import template from "./listaProveedores.html";
@@ -51,7 +50,6 @@ const name = 'listaProveedores';
 export default angular
     .module(name, [
         MostrarDireccion,
-        MostrarDatosFiscales,
         AgregarProveedor,
         BuscarProveedor
     ])

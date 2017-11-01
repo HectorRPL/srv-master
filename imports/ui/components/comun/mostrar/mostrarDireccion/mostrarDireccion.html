@@ -1,12 +1,11 @@
 <p>
-    <span ng-hide="!mostrarDireccion.direccion._id"><i class="fa fa-map-marker"></i> <strong>DIRECCIÓN</strong></span><br>
     <span ng-hide="mostrarDireccion.direccion._id" style="color: red">
         <strong class="label label-danger"><i class="fa fa-exclamation-triangle"></i>&nbsp; COMPLETAR DIRECCIÓN</strong>
     </span>
     <small>
         {{mostrarDireccion.direccion.calle}}
         {{mostrarDireccion.direccion.numExt}}<span ng-show="mostrarDireccion.direccion._id">,</span>
-        <span ng-show="mostrarDireccion.direccion.numInt">Int. {{mostrarDireccion.direccion.numInt}}.</span> <br>
+        <span ng-show="mostrarDireccion.direccion.numInt">Int. {{mostrarDireccion.direccion.numInt}}.</span>
         {{mostrarDireccion.direccion.colonia}}
         <span ng-show="mostrarDireccion.direccion._id">CP.</span> {{mostrarDireccion.direccion.codigoPostal}}
         {{mostrarDireccion.direccion.delMpio}}<span ng-show="mostrarDireccion.direccion._id">,</span>

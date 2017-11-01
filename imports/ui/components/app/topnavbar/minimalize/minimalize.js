@@ -8,7 +8,7 @@ class Minimalize {
         'ngInject';
         $reactive(this).attach($scope);
 
-        this.minimalize();
+        // this.minimalize();
 
 
     }
