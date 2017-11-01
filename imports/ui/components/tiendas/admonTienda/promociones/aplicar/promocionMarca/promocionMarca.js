@@ -41,10 +41,11 @@ class PromocionMarca {
             excepciones: this.prodsExcepciones,
             operacion: 'promocionMarca'
         };
-        actlzrProdctInvntrFactrPromcnComsnMarc.callPromise(datos).then(this.$bindToContext(()=> {
+        console.log('Estos son los datos a los que se les va a aplicar una promoción', datos);
+        actlzrProdctInvntrFactrPromcnComsnMarc.callPromise(datos).then(this.$bindToContext(() => {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=> {
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }

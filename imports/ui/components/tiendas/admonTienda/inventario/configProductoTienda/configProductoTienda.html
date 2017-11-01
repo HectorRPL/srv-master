@@ -71,6 +71,7 @@
                             <div class="col-sm-12">
                                 <h3 class="text-center">PROMOCIÓN</h3>
                                 <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.promocion().nombre}}</h3>
+                                <h3 class="text-center" style="font-weight: 100; color: red" ng-hide="configProductoTienda.producto.promocionId"><strong>Sin Promoción</strong></h3>
                                 <inventario-producto-promocion
                                         promocion-id="configProductoTienda.producto.promocionId"
                                         costo="configProductoTienda.producto.costo">

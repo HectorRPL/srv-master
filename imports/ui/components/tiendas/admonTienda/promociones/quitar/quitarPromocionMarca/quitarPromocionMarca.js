@@ -1,7 +1,7 @@
 /**
  * Created by Héctor on 31/10/2017.
  */
-import {actlzrProdctInvntrFactrPromcnComsnMarc} from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {borrProdctInvntrPromcnMarc} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./quitarPromocionMarca.html";
 
 class QuitarPromocionMarca {
@@ -41,7 +41,7 @@ class QuitarPromocionMarca {
             excepciones: this.prodsExcepciones,
             operacion: 'quitarPromocionMarca'
         };
-        actlzrProdctInvntrFactrPromcnComsnMarc.callPromise(datos).then(this.$bindToContext(()=> {
+        borrProdctInvntrPromcnMarc.callPromise(datos).then(this.$bindToContext(()=> {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {

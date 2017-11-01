@@ -43,7 +43,7 @@ export const actlzrProdctInvntrPromcnComsnProdct = new ValidatedMethod({
     },
     validate: new SimpleSchema({
         nuevoValorId: {type: String},
-        productos: {type: [Object],  blackbox: true},
+        productos: {type: [Object], blackbox: true},
         operacion: {type: String}
     }).validator(),
     run({nuevoValorId, productos, operacion}) {
@@ -55,22 +55,23 @@ export const actlzrProdctInvntrPromcnComsnProdct = new ValidatedMethod({
 
             const selector = {_id: {$in: arrIds}};
             let campoActualizar = {};
-            if(operacion.includes('promocion')){
+            if (operacion.includes('promocion')) {
                 campoActualizar = {promocionId: nuevoValorId}
-            } else if(operacion.includes('factor')){
+            } else if (operacion.includes('factor')) {
                 campoActualizar = {factorId: nuevoValorId}
-            }else {
+            } else {
                 campoActualizar = {comisionId: nuevoValorId}
             }
-            console.log('', campoActualizar);
 
             let prodInventariosBulk = ProductosInventarios.rawCollection().initializeUnorderedBulkOp();
             prodInventariosBulk.find(selector).update({$set: campoActualizar});
             const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
             try {
                 execute();
-                BitaFactPromoComi.insert({usuarioId: this.userId, nuevoValorId:nuevoValorId, operacion: operacion,
-                    productos: arrIds});
+                BitaFactPromoComi.insert({
+                    usuarioId: this.userId, nuevoValorId: nuevoValorId, operacion: operacion,
+                    productos: arrIds
+                });
                 return true;
             } catch (error) {
                 console.log(error);
@@ -99,13 +100,13 @@ export const actlzrProdctInvntrFactrPromcnComsnMarc = new ValidatedMethod({
         tiendaId: {type: String},
         marcaId: {type: String},
         nuevoValorId: {type: String},
-        excepciones: {type: [Object],  blackbox: true},
+        excepciones: {type: [Object], blackbox: true},
         operacion: {type: String}
     }).validator(),
     run({tiendaId, marcaId, nuevoValorId, excepciones, operacion}) {
         if (Meteor.isServer) {
             let arrIds = [];
-            excepciones.forEach((prod)=> {
+            excepciones.forEach((prod) => {
                 arrIds.push(prod._id);
             });
 
@@ -117,11 +118,11 @@ export const actlzrProdctInvntrFactrPromcnComsnMarc = new ValidatedMethod({
                 ]
             };
             let campoActualizar = {};
-            if(operacion.includes('promocion')){
+            if (operacion.includes('promocion')) {
                 campoActualizar = {promocionId: nuevoValorId}
-            } else if(operacion.includes('factor')){
+            } else if (operacion.includes('factor')) {
                 campoActualizar = {factorId: nuevoValorId}
-            }else {
+            } else {
                 campoActualizar = {comisionId: nuevoValorId}
             }
 
@@ -130,8 +131,72 @@ export const actlzrProdctInvntrFactrPromcnComsnMarc = new ValidatedMethod({
             const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
             try {
                 execute();
-                BitaFactPromoComi.insert({usuarioId: this.userId, nuevoValorId:nuevoValorId, operacion: operacion,
-                    marcaId: marcaId, excepciones: arrIds});
+                BitaFactPromoComi.insert({
+                    usuarioId: this.userId,
+                    nuevoValorId: nuevoValorId,
+                    operacion: operacion,
+                    marcaId: marcaId,
+                    excepciones: arrIds
+                });
+                return true;
+            } catch (error) {
+                console.log(error);
+                throw new Meteor.Error(403, 'Error al aplicar factor', 'error.aplicar-factor');
+            }
+        }
+    }
+});
+
+export const borrProdctInvntrPromcnMarc = new ValidatedMethod({
+    name: 'productosInventarios.borrProdctInvntrPromcnMarc',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['borr_productos_inventarios'],
+            group: 'productos_inventarios'
+        }
+    ],
+    permissionsError: {
+        name: 'productosInventarios.borrProdctInvntrPromcnMarc',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
+    validate: new SimpleSchema({
+        tiendaId: {type: String},
+        marcaId: {type: String},
+        nuevoValorId: {type: String},
+        excepciones: {type: [Object], blackbox: true},
+        operacion: {type: String}
+    }).validator(),
+    run({tiendaId, marcaId, nuevoValorId, excepciones, operacion}) {
+        if (Meteor.isServer) {
+            let arrIds = [];
+            excepciones.forEach((prod) => {
+                arrIds.push(prod._id);
+            });
+
+            const selector = {
+                $and: [
+                    {_id: {$nin: arrIds}},
+                    {tiendaId: tiendaId},
+                    {marcaId: marcaId}
+                ]
+            };
+            let campoActualizar = {promocionId: ''};
+
+            let prodInventariosBulk = ProductosInventarios.rawCollection().initializeUnorderedBulkOp();
+            prodInventariosBulk.find(selector).update({$unset: campoActualizar});
+            const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
+            try {
+                execute();
+                BitaFactPromoComi.insert({
+                    usuarioId: this.userId,
+                    nuevoValorId: nuevoValorId,
+                    operacion: operacion,
+                    marcaId: marcaId,
+                    excepciones: arrIds
+                });
                 return true;
             } catch (error) {
                 console.log(error);
@@ -180,6 +245,7 @@ const PRODUCTOS_INVENTARIOS_METHODS = _.pluck(
     [
         actlzrProdctInvntrPromcnComsnProdct,
         actlzrProdctInvntrFactrPromcnComsnMarc,
+        borrProdctInvntrPromcnMarc,
         actlzrProdctInvntrExstncProdct
     ],
     'name');
