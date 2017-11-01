@@ -1,11 +1,10 @@
 /**
  * Created by Héctor on 31/10/2017.
  */
-import {borrProdctInvntrPromcnProdct} from "../../../../../../../api/inventarios/productosInventarios/methods";
+import {actlzrProdctInvntrPromcnComsnProdct} from "../../../../../../../api/inventarios/productosInventarios/methods";
 import template from "./quitarPromocionProducto.html";
 
 class QuitarPromocionProducto {
-
     constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
@@ -17,7 +16,6 @@ class QuitarPromocionProducto {
         this.productoSelec = '';
         this.productosAplicarPromo = [];
     }
-
     agregar(_id, marca, producto) {
         const result = {
             _id: _id,
@@ -31,21 +29,19 @@ class QuitarPromocionProducto {
             this.productosAplicarPromo.push(result);
         }
     }
-
     quitarPromocion() {
         const datos = {
             nuevoValorId: this.promocionId,
             productos: this.productosAplicarPromo,
-            operacion: 'quitarPromocionProducto'
+            operacion: 'quitarPromocion'
         };
-        borrProdctInvntrPromcnProdct.callPromise(datos).then(this.$bindToContext(()=> {
+        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(()=> {
             this.productosAplicarPromo = [];
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=>{
             this.tipoMsj = 'danger';
         }));
     }
-
     confirmar() {
         var modalInstance = this.$uibModal.open({
             animation: true,
@@ -65,7 +61,6 @@ class QuitarPromocionProducto {
             console.log(reason)
         }));
     }
-
 }
 
 const name = 'quitarPromocionProducto';
