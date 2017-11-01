@@ -147,6 +147,54 @@ export const actlzrProdctInvntrFactrPromcnComsnMarc = new ValidatedMethod({
     }
 });
 
+export const borrProdctInvntrPromcnProdct = new ValidatedMethod({
+    name: 'productosInventarios.borrProdctInvntrPromcnProdct',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['borr_productos_inventarios'],
+            group: 'productos_inventarios'
+        }
+    ],
+    permissionsError: {
+        name: 'productosInventarios.borrProdctInvntrPromcnProdct',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
+    validate: new SimpleSchema({
+        nuevoValorId: {type: String},
+        productos: {type: [Object], blackbox: true},
+        operacion: {type: String}
+    }).validator(),
+    run({nuevoValorId, productos, operacion}) {
+        if (Meteor.isServer) {
+            let arrIds = [];
+            productos.forEach((prod)=> {
+                arrIds.push(prod._id);
+            });
+
+            const selector = {_id: {$in: arrIds}};
+            let campoActualizar = {promocionId: ''};
+
+            let prodInventariosBulk = ProductosInventarios.rawCollection().initializeUnorderedBulkOp();
+            prodInventariosBulk.find(selector).update({$unset: campoActualizar});
+            const execute = Meteor.wrapAsync(prodInventariosBulk.execute, prodInventariosBulk);
+            try {
+                execute();
+                BitaFactPromoComi.insert({
+                    usuarioId: this.userId, nuevoValorId: nuevoValorId, operacion: operacion,
+                    productos: arrIds
+                });
+                return true;
+            } catch (error) {
+                console.log(error);
+                throw new Meteor.Error(403, 'Error al aplicar factor', 'error.aplicar-factor');
+            }
+        }
+    }
+});
+
 export const borrProdctInvntrPromcnMarc = new ValidatedMethod({
     name: 'productosInventarios.borrProdctInvntrPromcnMarc',
     mixins: [PermissionsMixin, CallPromiseMixin],
@@ -245,6 +293,7 @@ const PRODUCTOS_INVENTARIOS_METHODS = _.pluck(
     [
         actlzrProdctInvntrPromcnComsnProdct,
         actlzrProdctInvntrFactrPromcnComsnMarc,
+        borrProdctInvntrPromcnProdct,
         borrProdctInvntrPromcnMarc,
         actlzrProdctInvntrExstncProdct
     ],
