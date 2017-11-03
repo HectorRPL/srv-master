@@ -13,7 +13,7 @@ import {crearInventario} from "../../../inventarios/methods";
 const ID = ['_id'];
 
 const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMatrizId'];
-// Enviará un correo con un link al usuario para verificacar de registro
+
 export const crearSucursal = new ValidatedMethod({
     name: 'sucursales.crearSucursal',
     mixins: [PermissionsMixin, CallPromiseMixin],
@@ -25,7 +25,7 @@ export const crearSucursal = new ValidatedMethod({
     ],
     permissionsError: {
         name: 'sucursales.crearSucursal',
-        message: ()=> {
+        message: () => {
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
@@ -34,13 +34,16 @@ export const crearSucursal = new ValidatedMethod({
         filter: false
     }),
     run({nombre, telefonos, email, tiendaMatrizId}) {
-        return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId}, ()=>{
+        return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId}, () => {
 
         }, (err) => {
             if (err) {
                 console.log('[41]', err);
                 throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
             }
+            Meteor.defer(() => {
+                crearInventario.call({tiendaId: result});
+            });
         });
 
     }

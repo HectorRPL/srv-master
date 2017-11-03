@@ -18,7 +18,6 @@ class SucursalDatosDireccion {
         this.direccion = {};
     }
 
-    // /*
     altaDireccion() {
         this.direccion.propietarioId = this.propietarioId
         let direccionFinal = angular.copy(this.direccion);
@@ -26,13 +25,10 @@ class SucursalDatosDireccion {
 
         crearDireccion.callPromise(direccionFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }
-    // */
-
-
 }
 
 const name = 'sucursalDatosDireccion';

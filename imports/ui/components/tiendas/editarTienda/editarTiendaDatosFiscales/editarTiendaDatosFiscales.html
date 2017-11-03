@@ -1,7 +1,7 @@
 <form class="animated fadeInRight" role="form" id="editarTiendaDatosFiscalesFrmId" name="editarTiendaDatosFiscalesFrm" novalidate>
     <div class="row">
         <div class="col-sm-12">
-            <div class="row" ng-show="!editarTiendaDatosFiscales.datosFiscales._id">
+            <div class="row">
                 <div class="col-sm-12">
                     <h3 class="text-navy">Datos Fiscales</h3>
                 </div>
@@ -10,7 +10,7 @@
                 </forma-datos-fiscales>
             </div>
             <hr>
-            <div class="row animated fadeIn" ng-show="editarTiendaDatosFiscales.datosFiscales.tipoPersona">
+            <div class="row animated fadeIn">
                 <div class="col-sm-12">
                     <h3 class="text-navy">Dirección Fiscal</h3>
                 </div>
@@ -20,25 +20,26 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <alertas tipo="editarTiendaDatosFiscales.tipoMsj" mensaje="editarTiendaDatosFiscales.msj"></alertas>
+                    <alertas
+                            tipo="editarTiendaDatosFiscales.tipoMsj"
+                            mensaje="editarTiendaDatosFiscales.msj">
+                    </alertas>
                 </div>
                 <div class="col-md-3">
                     <button type="button"
                             class="btn btn-primary pull-right"
-                            ng-show="!editarTiendaDatosFiscales.datosFiscales._id"
+                            ng-if="!editarTiendaDatosFiscales.datosFiscales._id"
                             ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
                             ng-click="editarTiendaDatosFiscales.altaDatosFiscales()">
-                        Guardar Datos Fiscales y Dirección
+                        Guardar
                     </button>
-                    <!--&lt;!&ndash;-->
                     <button type="button"
                             class="btn btn-primary pull-right"
-                            ng-show="editarTiendaDatosFiscales.datosFiscales.codigoPostal"
+                            ng-if="editarTiendaDatosFiscales.datosFiscales._id"
                             ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
                             ng-click="editarTiendaDatosFiscales.actualizarDireccionFiscal()">
-                        Actualizar Dirección Fiscal
+                        Actualizar
                     </button>
-                    <!--&ndash;&gt;-->
                 </div>
             </div>
         </div>

@@ -17,7 +17,6 @@ class TiendaDatosFiscales {
         };
         this.propietarioId = $stateParams.tiendaId;
     }
-
     guardar() {
 
         this.datosFiscales.propietarioId = this.propietarioId;
@@ -35,7 +34,6 @@ class TiendaDatosFiscales {
 
 const name = 'tiendaDatosFiscales';
 
-// create a module
 export default angular
     .module(name, [
         Alertas,

@@ -30,7 +30,7 @@ class SucursalDatosGenerales {
             this.sucursalId = result
             console.log(this.sucursalId);
             this.$state.go('app.tienda.agregarSucursal.direccion', {sucursalId: this.sucursalId});
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
             console.log(err);
             this.tipoMsj = 'danger';
         }));
