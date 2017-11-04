@@ -1,6 +1,7 @@
 /**
  * Created by Héctor on 09/02/2017.
  */
+import {Meteor} from "meteor/meteor";
 import "metismenu/dist/metisMenu.js";
 import {name as CapitalizarInputs} from "../directives/capitalizarInputs/capitalizarInputs";
 import {name as Navigation} from "./navigation/navigation";
@@ -10,14 +11,7 @@ import {name as TiendasClass} from "../tiendas/tiendas";
 import {name as Marcas} from "../marcas/marcas";
 import template from "./app.html";
 
-class App {
-    constructor() {
-        this.userName = 'Example user';
-        this.helloText = 'Welcome in SeedProject';
-        this.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
-
-    }
-}
+class App {}
 
 const name = 'app';
 
@@ -41,6 +35,15 @@ function config($stateProvider) {
         .state('app', {
             url: '/app',
             template: '<app></app>',
-            abstract:true
+            abstract: true,
+            resolve: {
+                currentUser($q) {
+                    if (Meteor.user() === null) {
+                        return $q.reject('AUTH_REQUIRED');
+                    } else {
+                        return $q.resolve();
+                    }
+                }
+            }
         });
-};
+}

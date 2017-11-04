@@ -1,3 +1,4 @@
+import {name as Logout} from './logout/logout';
 import {name as Minimalize} from './minimalize/minimalize';
 import template from "./topnavbar.html";
 
@@ -12,6 +13,7 @@ const name = 'topnavbar';
 
 export default angular
     .module(name, [
+        Logout,
         Minimalize
     ])
     .component(name, {
