@@ -1,25 +1,28 @@
 /**
  * Created by jvltmtz on 9/03/17.
  */
-
 import {Mongo} from "meteor/mongo";
-import {SimpleSchema} from "meteor/aldeed:simple-schema";
+import tiendasHooks from './tiendasHooks';
 
-export const Tiendas = new Mongo.Collection('tiendas');
+class TiendasCollection extends Mongo.Collection {
+    insert(doc, callback) {
+        const result = super.insert(doc, callback);
+        tiendasHooks.afterInsertTiendas(doc);
+        return result;
+    }
+}
+
+export const Tiendas = new TiendasCollection('tiendas');
 
 Tiendas.deny({
-    insert() {
-        return true;
-    },
-    update() {
-        return true;
-    },
-    remove() {
-        return true;
-    }
+    insert() {return true;},
+    update() {return true;},
+    remove() {return true;}
 });
 
-Tiendas.schema = new SimpleSchema({
+const Schema = {};
+
+Schema.tiendas = new SimpleSchema({
     _id: {
         type: String,
         regEx: SimpleSchema.RegEx.Id
@@ -36,7 +39,7 @@ Tiendas.schema = new SimpleSchema({
         max: 50,
         autoValue: function () {
             if (this.value) {
-            return this.value.toUpperCase()
+                return this.value.toUpperCase()
             }
         }
     },
@@ -70,4 +73,4 @@ Tiendas.schema = new SimpleSchema({
     }
 });
 
-Tiendas.attachSchema(Tiendas.schema);
+Tiendas.attachSchema(Schema.tiendas);

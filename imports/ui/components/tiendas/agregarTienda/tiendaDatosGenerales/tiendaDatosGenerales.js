@@ -20,7 +20,6 @@ class TiendaDatosGenerales {
             telefonos: [{telefono: ''}]
         };
     }
-
     guardar() {
         crearTienda.callPromise(this.datos).then(this.$bindToContext((result) => {
             this.tipoMsj = 'success';

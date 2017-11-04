@@ -10,17 +10,15 @@ import {_} from "meteor/underscore";
 import {Tiendas} from "../collection";
 import {crearInventario} from "../../../inventarios/methods";
 
-const ID = ['_id'];
-
-const CAMPOS_TIENDAS = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMatrizId'];
+const CAMPOS_SUCURSALES = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMatrizId'];
 
 export const crearSucursal = new ValidatedMethod({
     name: 'sucursales.crearSucursal',
     mixins: [PermissionsMixin, CallPromiseMixin],
     allow: [
         {
-            roles: ['crea_tiendas'],
-            group: 'tiendas'
+            roles: ['crea_sucursales'],
+            group: 'sucursales'
         }
     ],
     permissionsError: {
@@ -29,27 +27,30 @@ export const crearSucursal = new ValidatedMethod({
             return 'Usuario no autorizado, no tienen los permisos necesarios.';
         }
     },
-    validate: Tiendas.simpleSchema().pick(CAMPOS_TIENDAS).validator({
+    validate: Tiendas.simpleSchema().pick(CAMPOS_SUCURSALES).validator({
         clean: true,
         filter: false
     }),
     run({nombre, telefonos, email, tiendaMatrizId}) {
-        return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId}, () => {
-
-        }, (err) => {
-            if (err) {
-                console.log('[41]', err);
-                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
-            }
-            Meteor.defer(() => {
-                crearInventario.call({tiendaId: result});
+        if (Meteor.isServer) {
+            return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId}, (err, result) => {
+                if (err) {
+                    throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+                }
+                Meteor.defer(() => {
+                    crearInventario.call({tiendaId: result});
+                });
             });
-        });
-
+        }
     }
 });
 
-const TIENDAS_METHODS = _.pluck([crearSucursal], 'name');
+const TIENDAS_METHODS = _.pluck(
+    [
+        crearSucursal
+    ],
+    'name'
+);
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {
