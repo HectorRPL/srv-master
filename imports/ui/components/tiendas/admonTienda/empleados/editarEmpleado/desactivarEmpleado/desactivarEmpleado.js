@@ -34,6 +34,7 @@ class DesactivarEmpleado {
         actualizarEmpldActiv.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err)=> {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }

@@ -2,7 +2,23 @@
  * Created by jvltmtz on 4/04/17.
  */
 import {Mongo} from "meteor/mongo";
-export const Empleados = new Mongo.Collection('empleados');
+import empleadosHooks from './empleadosHooks';
+
+class EmpleadosCollection extends Mongo.Collection {
+    /*insert(doc, callback) {
+        const result = super.insert(doc, callback);
+        empleadosHooks.afterInsertEmpleado(doc);
+        return result;
+    }*/
+
+    update(selector, modifier) {
+        const result = super.update(selector, modifier);
+        empleadosHooks.afterUpdateEmpleado(selector, modifier);
+        return result;
+    }
+}
+
+export const Empleados = new EmpleadosCollection('empleados');
 
 Empleados.deny({
     insert() {
@@ -16,7 +32,9 @@ Empleados.deny({
     }
 });
 
-Empleados.schema = new SimpleSchema({
+const Schema = {};
+
+Schema.empleados = new SimpleSchema({
     _id: {type: String, regEx: SimpleSchema.RegEx.Id},
     fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
     email: {
@@ -76,8 +94,7 @@ Empleados.schema = new SimpleSchema({
     activo: {
         type: Boolean,
         defaultValue: true
-    },
+    }
 });
 
-Empleados.attachSchema(Empleados.schema);
-
+Empleados.attachSchema(Schema.empleados);
