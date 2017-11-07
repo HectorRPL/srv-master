@@ -5,7 +5,6 @@ import {actlzrProdctInvntrFactrPromcnComsnMarc} from "../../../../../../../api/i
 import template from "./promocionMarca.html";
 
 class PromocionMarca {
-
     constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
@@ -18,7 +17,6 @@ class PromocionMarca {
         this.mostrar = true;
         this.prodsExcepciones = [];
     }
-
     agregar(_id, marca, producto) {
         const result = {
             _id: _id,
@@ -32,7 +30,6 @@ class PromocionMarca {
             this.prodsExcepciones.push(result);
         }
     }
-
     aplicarPromocion() {
         const datos = {
             tiendaId: this.tiendaId,
@@ -41,7 +38,6 @@ class PromocionMarca {
             excepciones: this.prodsExcepciones,
             operacion: 'promocionMarca'
         };
-        console.log('Estos son los datos a los que se les va a aplicar una promoción', datos);
         actlzrProdctInvntrFactrPromcnComsnMarc.callPromise(datos).then(this.$bindToContext(() => {
             this.prodsExcepciones = [];
             this.tipoMsj = 'success';
@@ -49,7 +45,6 @@ class PromocionMarca {
             this.tipoMsj = 'danger';
         }));
     }
-
     confirmar() {
         var modalInstance = this.$uibModal.open({
             animation: true,
@@ -69,7 +64,6 @@ class PromocionMarca {
             console.log(reason)
         }));
     }
-
 }
 
 const name = 'promocionMarca';

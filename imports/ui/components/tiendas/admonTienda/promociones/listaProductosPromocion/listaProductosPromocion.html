@@ -1,32 +1,27 @@
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-4">
         <h2>Promoción:
             <span class="text-navy">{{listaProductosPromocion.promocion.nombre}}</span>
         </h2>
-    </div>
-    <div class="col-sm-4">
-        <span class="pull-right">
-            Descuento: <span class="text-navy">{{listaProductosPromocion.promocion.descuento}}</span>%.
-            Sobre:  <span class="text-navy" ng-show="listaProductosPromocion.promocion.precioLista"> Lista</span>
-                    <span class="text-navy" ng-show="!listaProductosPromocion.promocion.precioLista">Compra</span>
-            <br>
-            del
-            <span class="text-navy">{{listaProductosPromocion.promocion.fechaInicio | date:'dd-MMMM-yyyy' }}</span> al
-            <span class="text-navy">{{listaProductosPromocion.promocion.fechaFin | date:'dd-MMMM-yyyy' }}</span>
-        </span>
+        Descuento: <span class="text-navy">{{listaProductosPromocion.promocion.descuento}}</span>%. <br>
+        Sobre:  <span class="text-navy" ng-show="listaProductosPromocion.promocion.precioLista"> Lista</span> <br>
+        <span class="text-navy" ng-show="!listaProductosPromocion.promocion.precioLista">Compra</span>
+        Del
+        <span class="text-navy">{{listaProductosPromocion.promocion.fechaInicio | date:'dd-MMMM-yyyy' }}</span> al
+        <span class="text-navy">{{listaProductosPromocion.promocion.fechaFin | date:'dd-MMMM-yyyy' }}</span>
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-4">
-        <buscar-marca marca="listaProductosPromocion.marcaSelec"></buscar-marca>
+    <div class="col-sm-offset-4 col-sm-4">
+        <buscar-marca
+                marca="listaProductosPromocion.marcaSelec">
+        </buscar-marca>
     </div>
-    <div class="col-xs-6">
-        <buscar-producto marcaid="listaProductosPromocion.marcaSelec._id"
-                         producto="listaProductosPromocion.productoSelec">
+    <div class="col-sm-4">
+        <buscar-producto
+                marcaid="listaProductosPromocion.marcaSelec._id"
+                producto="listaProductosPromocion.productoSelec">
         </buscar-producto>
-    </div>
-    <div class="col-xs-2">
-
     </div>
 </div>
 <table class="table table-striped">
