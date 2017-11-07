@@ -66,12 +66,12 @@
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul side-navigation class="nav metismenu" id="side-menu">
-            <li ui-sref-active="active">
+            <li ng-class="{'active' : navigation.$state.includes('app.tienda')}">
                 <a ui-sref="app.tienda.lista">
                     <i class="fa fa-industry"></i> <span class="nav-label">Tiendas</span>
                 </a>
             </li>
-            <li ui-sref-active="active">
+            <li ng-class="{'active' : navigation.$state.includes('app.proveedores')}">
                 <a ui-sref="app.proveedores.lista">
                     <i class="fa fa-product-hunt"></i> <span class="nav-label">Proveedores</span>
                 </a>

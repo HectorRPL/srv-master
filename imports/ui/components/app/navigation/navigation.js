@@ -4,10 +4,10 @@
 import template from "./navigation.html";
 
 class Navigation {
-    constructor() {
-        this.userName = 'Example user';
-        this.helloText = 'Welcome in SeedProject';
-        this.descriptionText = 'It is an application skeleton for a typical AngularJS web app. You can use it to quickly bootstrap your angular webapp projects and dev environment for these projects.';
+    constructor($scope, $reactive, $state) {
+        'ngInject';
+        $reactive(this).attach($scope);
+        this.$state = $state;
     }
 }
 
