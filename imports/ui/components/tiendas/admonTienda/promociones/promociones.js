@@ -1,7 +1,6 @@
 /**
  * Created by jvltmtz on 7/07/17.
  */
-
 import {name as ListaPromociones} from "./listaPromociones/listaPromociones";
 import {name as ListaProductosPromocion} from "./listaProductosPromocion/listaProductosPromocion";
 import utilsPagination from "angular-utils-pagination";

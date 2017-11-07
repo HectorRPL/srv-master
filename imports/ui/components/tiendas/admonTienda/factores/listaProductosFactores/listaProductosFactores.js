@@ -6,7 +6,6 @@ import {Factores} from "../../../../../../api/factores/collection";
 import template from "./listaProductosFactores.html";
 
 class ListaProductosFactores {
-
     constructor($scope, $reactive, $state, $stateParams) {
         'ngInject';
         this.$state = $state;
@@ -46,12 +45,9 @@ class ListaProductosFactores {
             }
         });
     }
-
     pageChanged(newPage) {
         this.page = newPage;
     }
-
-
 }
 
 const name = 'listaProductosFactores';

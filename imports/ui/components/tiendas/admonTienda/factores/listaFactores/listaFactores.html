@@ -1,82 +1,67 @@
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-sm-8">
         <a href="" class="btn btn-primary btn-sm" ng-click="listaFactores.crearFactor()">Agregar Factor</a>
     </div>
-    <div class="col-xs-4">
-
-    </div>
-    <div class="col-sm-6 m-b-xs">
+    <div class="col-sm-4 m-b-xs">
         <div class="ibox float-e-margins">
             <buscar-factor factor="listaFactores.factorSelec"></buscar-factor>
         </div>
     </div>
 </div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="text-center">Nombre</th>
-            <th class="text-center">1</th>
-            <th class="text-center">2</th>
-            <th class="text-center">3</th>
-            <th class="text-center">4</th>
-            <th class="text-center">5</th>
-            <th class="text-center">6</th>
-            <th class="text-center">7</th>
-            <th class="text-center">8</th>
-            <th class="text-center">Costo</th>
-            <th class="text-center">Activo</th>
-            <th class="text-center">Acción</th>
-        </tr>
-    </thead>
 
-    <tbody>
-        <tr class="table-responsive text-right"
-            dir-paginate="factor in listaFactores.factores | itemsPerPage: listaFactores.perPage"
-            total-items="listaFactores.factoresCount">
-            <td class="text-center">
-                <a class="text-navy" style="text-decoration: inherit" ui-sref="^.productos({factorId: factor._id})">
-                    {{factor.nombre}}
-                </a>
-            </td>
-            <td class="text-center">{{factor.factor1 | number:4 }}</td>
-            <td class="text-center">{{factor.factor2 | number:4 }}</td>
-            <td class="text-center">{{factor.factor3 | number:4 }}</td>
-            <td class="text-center">{{factor.factor4 | number:4 }}</td>
-            <td class="text-center">{{factor.factor5 | number:4 }}</td>
-            <td class="text-center">{{factor.factor6 | number:4 }}</td>
-            <td class="text-center">{{factor.factor7 | number:4 }}</td>
-            <td class="text-center">{{factor.factor8 | number:4 }}</td>
-            <td class="text-center text-navy">{{factor.factorCosto | number:4 }}</td>
-            <td class="text-center">{{factor.activo}}</td>
-            <td>
-                <div class="btn-group" role="group" aria-label="...">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Aplicar a&nbsp;&nbsp;&nbsp;
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="^.aplicar.marca({factorId: factor._id})">Marca</a></li>
-                            <li><a ui-sref="^.aplicar.producto({factorId: factor._id})">Producto</a></li>
-                        </ul>
-                        <button type="button" class="btn btn-xs btn-default" ng-click="listaFactores.editarFactorModal(factor)">Editar</button>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="text-left">Nombre</th>
+                <th class="text-center">1</th>
+                <th class="text-center">2</th>
+                <th class="text-center">3</th>
+                <th class="text-center">4</th>
+                <th class="text-center">5</th>
+                <th class="text-center">6</th>
+                <th class="text-center">7</th>
+                <th class="text-center">8</th>
+                <th class="text-center">Costo</th>
+                <th class="text-center">Activo</th>
+                <th class="text-center">Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr dir-paginate="factor in listaFactores.factores | itemsPerPage: listaFactores.perPage"
+                total-items="listaFactores.factoresCount">
+                <td>
+                    <a class="client-link"
+                       ui-sref="^.productos({factorId: factor._id})">{{factor.nombre}}
+                    </a>
+                </td>
+                <td class="text-right">{{factor.factor1 | number:4 }}</td>
+                <td class="text-right">{{factor.factor2 | number:4 }}</td>
+                <td class="text-right">{{factor.factor3 | number:4 }}</td>
+                <td class="text-right">{{factor.factor4 | number:4 }}</td>
+                <td class="text-right">{{factor.factor5 | number:4 }}</td>
+                <td class="text-right">{{factor.factor6 | number:4 }}</td>
+                <td class="text-right">{{factor.factor7 | number:4 }}</td>
+                <td class="text-right">{{factor.factor8 | number:4 }}</td>
+                <td class="text-right text-navy">{{factor.factorCosto | number:4 }}</td>
+                <td class="text-right">{{factor.activo}}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Aplicar&nbsp;&nbsp;&nbsp;
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="^.aplicar.marca({factorId: factor._id})">A Marca</a></li>
+                                <li><a ui-sref="^.aplicar.producto({factorId: factor._id})">A Producto(s)</a></li>
+                            </ul>
+                            <button type="button" class="btn btn-xs btn-default" ng-click="listaFactores.editarFactorModal(factor)">Editar</button>
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <dir-pagination-controls on-page-change="listaFactores.pageChanged(newPageNumber)"></dir-pagination-controls>
-
-
-<!--
-
-NOTAS
-
-La variable "tiendaid" no tiene l CamelCase porque esta dentro de un componente, y recordemos que los bindings no
-respetan CamelCase.
-
-Entonces al pasar a la pantalla de aplicar factor ya sea a una marca o a un producto dicho parámetro viajará con los
-$statesParams sin CamelCase
-
--->

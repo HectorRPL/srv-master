@@ -6,13 +6,14 @@
     </div>
     <div class="col-sm-4">
         <span class="pull-right">
-            Porcentaje: <span class="text-navy">{{listaProductosComision.comision.comision}}</span>%.
+            Comisión producto interno: <span class="text-navy">{{listaProductosComision.comision.comisionProdInt}}</span>%.<br>
+            Comisión producto externo: <span class="text-navy">{{listaProductosComision.comision.comisionProdExt}}</span>%.
             <br>
         </span>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-offset-4 col-sm-4">
         <buscar-marca
                 marca="listaProductosComision.marcaSelec">
         </buscar-marca>
@@ -22,9 +23,6 @@
                 marcaid="listaProductosComision.marcaSelec._id"
                 producto="listaProductosComision.productoSelec">
         </buscar-producto>
-    </div>
-    <div class="col-sm-2">
-
     </div>
 </div>
 <table class="table table-striped">

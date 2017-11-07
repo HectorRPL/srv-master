@@ -1,6 +1,8 @@
 <div class="input-group m-b">
-    <input type="text" class="form-control" ng-model="buscarMarca.marca"
+    <input type="text"
+           class="form-control"
+           placeholder="Buscar Marca"
            uib-typeahead="marca as marca.nombre for marca in buscarMarca.buscarMarca($viewValue)"
-           placeholder="Ingresa la marca">
+           ng-model="buscarMarca.marca">
     <span class="input-group-addon"><i class="fa fa-search"></i></span>
 </div>

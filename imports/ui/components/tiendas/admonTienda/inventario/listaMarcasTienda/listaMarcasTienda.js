@@ -3,6 +3,7 @@
  */
 import {Marcas} from "../../../../../../api/catalogos/marcas/collection";
 import {name as ListaProdsMarcaTienda} from "./listaProdsMarcaTienda/listaProdsMarcaTienda";
+import {name as BuscarMarca} from "../../../../comun/busquedas/buscarMarca/buscarMarca";
 import template from "./listaMarcasTienda.html";
 
 class ListaMarcasTienda {
@@ -13,8 +14,6 @@ class ListaMarcasTienda {
 
         this.tiendaId = $stateParams.tiendaId;
         this.marcaId = $stateParams.marcaId;
-
-        this.titulo = 'Marcas';
 
         this.marcaSelec = '';
 
@@ -38,18 +37,17 @@ class ListaMarcasTienda {
             }
         });
     }
-
     pageChanged(newPage) {
         this.page = newPage;
     }
-
 }
 
 const name = 'listaMarcasTienda';
 
 export default angular
     .module(name, [
-        ListaProdsMarcaTienda
+        ListaProdsMarcaTienda,
+        BuscarMarca
     ])
     .component(name, {
         template: template.default,

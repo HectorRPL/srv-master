@@ -11,42 +11,46 @@
     </div>
     <div class="col-sm-4">
 
+
+
     </div>
 </div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="">Nombre</th>
-            <th class="text-right">Comisión Tienda</th>
-            <th class="text-right">Comisión Tienda Externa</th>
-            <th class=""></th>
-        </tr>
-    </thead>
 
-    <tbody>
-        <tr class="table-responsive"
-            dir-paginate="comision in listaComisiones.comisiones | itemsPerPage: listaComisiones.perPage"
-            total-items="listaComisiones.comisionesCount">
-            <td class=""><a class="text-navy" style="text-decoration: inherit" ui-sref="^.productos({comisionId: comision._id})">{{comision.nombre}}</a></td>
-            <td class="text-right">{{comision.comisionProdInt | number:4}}%</td>
-            <td class="text-right">{{comision.comisionProdExt | number:4}}%</td>
-            <td class="text-right">
-                <div class="btn-group" role="group" aria-label="...">
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Aplicar a&nbsp;&nbsp;&nbsp;
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="^.aplicar.marca({comisionId: comision._id})">Marca</a></li>
-                            <li><a ui-sref="^.aplicar.producto({comisionId: comision._id})">Producto</a></li>
-                        </ul>
-                        <button type="button" class="btn btn-xs btn-default" ng-click="listaComisiones.editarComisionModal(comision)">Editar</button>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="">Nombre</th>
+                <th class="text-right">Comisión Tienda</th>
+                <th class="text-right">Comisión Tienda Externa</th>
+                <th class=""></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-responsive"
+                dir-paginate="comision in listaComisiones.comisiones | itemsPerPage: listaComisiones.perPage"
+                total-items="listaComisiones.comisionesCount">
+                <td class=""><a class="client-link" style="text-decoration: inherit" ui-sref="^.productos({comisionId: comision._id})">{{comision.nombre}}</a></td>
+                <td class="text-right">{{comision.comisionProdInt | number:4}}%</td>
+                <td class="text-right">{{comision.comisionProdExt | number:4}}%</td>
+                <td class="text-right">
+                    <div class="btn-group" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Aplicar a&nbsp;&nbsp;&nbsp;
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="^.aplicar.marca({comisionId: comision._id})">Marca</a></li>
+                                <li><a ui-sref="^.aplicar.producto({comisionId: comision._id})">Producto</a></li>
+                            </ul>
+                            <button type="button" class="btn btn-xs btn-default" ng-click="listaComisiones.editarComisionModal(comision)">Editar</button>
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <dir-pagination-controls on-page-change="listaComisiones.pageChanged(newPageNumber)"></dir-pagination-controls>
 

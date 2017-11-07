@@ -53,7 +53,6 @@ class ListaProdsMarcaTienda {
             }
         });
     }
-
     actualizar(nuevoValor, id, editarExistenciaFrm) {
         this.tipoMsj = '';
         this.datos.cantidad = nuevoValor;
@@ -65,15 +64,12 @@ class ListaProdsMarcaTienda {
             this.tipoMsj = 'danger';
         }));
     }
-
     limpiarCampos(editarExistenciaFrm) {
         editarExistenciaFrm.$setPristine();
     }
-
     pageChanged(newPage) {
         this.page = newPage;
     }
-
 }
 
 const name = 'listaProdsMarcaTienda';

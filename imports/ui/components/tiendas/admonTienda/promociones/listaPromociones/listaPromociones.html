@@ -1,85 +1,84 @@
 <div class="row">
-    <div class="col-xs-4">
+    <div class="col-sm-4">
         <a href="" class="btn btn-primary btn-sm" ng-click="listaPromociones.crearPromocion()">
             Agregar Promocion
         </a>
     </div>
-    <div class="col-xs-4">
-
-    </div>
-    <div class="col-sm-6 m-b-xs">
+    <div class="col-sm-offset-4 col-sm-4 m-b-xs">
         <div class="ibox float-e-margins">
-            <buscar-factor factor="listaPromociones.factorSelec">
-            </buscar-factor>
+            <buscar-promocion
+                    promocion="listaPromociones.promocionSelec">
+            </buscar-promocion>
         </div>
     </div>
 </div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th class="text-center">Nombre</th>
-            <th class="text-center">Descuento</th>
-            <th class="text-center">Fecha Inicio</th>
-            <th class="text-center">Fecha Fin</th>
-            <th class="text-center">Sobre el Precio</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="table-responsive text-right"
-            dir-paginate="promocion in listaPromociones.promociones | itemsPerPage: listaPromociones.perPage"
-            total-items="listaPromociones.promocionesCount">
-            <td class="text-left"><a class="text-navy" style="text-decoration: inherit" ui-sref="^.productos({promocionId: promocion._id})">{{promocion.nombre}}</a></td>
-            <td class="text-right">{{promocion.descuento}}%</td>
-            <td class="text-left">{{promocion.fechaInicio | date:"yyyy-MMMM-dd HH:mm:ss"}}</td>
-            <td class="text-left">{{promocion.fechaFin | date:"yyyy-MMMM-dd HH:mm:ss"}}</td>
-            <td class="text-left">
-                <span ng-show="promocion.precioLista">Lista</span>
-                <span ng-hide="promocion.precioLista">Compra</span>
-            </td>
-            <td>
-                <div class="btn-group" role="group" aria-label="...">
-                    <div class="btn-group" role="group">
-                        <button type="button"
-                                class="btn btn-default btn-xs dropdown-toggle"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                            Quitar&nbsp;&nbsp;&nbsp;
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="^.quitar.marca({promocionId: promocion._id})">Marca</a></li>
-                            <li><a ui-sref="^.quitar.producto({promocionId: promocion._id})">Producto(s)</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="btn-group" role="group" aria-label="...">
-                    <div class="btn-group" role="group">
-                        <button type="button"
-                                class="btn btn-default btn-xs dropdown-toggle"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false">
-                            Aplicar&nbsp;&nbsp;&nbsp;
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a ui-sref="^.aplicar.marca({promocionId: promocion._id})">Marca</a></li>
-                            <li><a ui-sref="^.aplicar.producto({promocionId: promocion._id})">Producto(s)</a></li>
-                        </ul>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Descuento</th>
+                <th class="text-center">Fecha Inicio</th>
+                <th class="text-center">Fecha Fin</th>
+                <th class="text-center">Sobre el Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-responsive text-right"
+                dir-paginate="promocion in listaPromociones.promociones | itemsPerPage: listaPromociones.perPage"
+                total-items="listaPromociones.promocionesCount">
+                <td class="text-left"><a class="client-link" style="text-decoration: inherit" ui-sref="^.productos({promocionId: promocion._id})">{{promocion.nombre}}</a></td>
+                <td class="text-right">{{promocion.descuento}}%</td>
+                <td class="text-left">{{promocion.fechaInicio | date:"yyyy-MMMM-dd HH:mm:ss"}}</td>
+                <td class="text-left">{{promocion.fechaFin | date:"yyyy-MMMM-dd HH:mm:ss"}}</td>
+                <td class="text-left">
+                    <span ng-show="promocion.precioLista">Lista</span>
+                    <span ng-hide="promocion.precioLista">Compra</span>
+                </td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <div class="btn-group" role="group">
+                            <button type="button"
+                                    class="btn btn-default btn-xs dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                Quitar&nbsp;&nbsp;&nbsp;
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="^.quitar.marca({promocionId: promocion._id})">Marca</a></li>
+                                <li><a ui-sref="^.quitar.producto({promocionId: promocion._id})">Producto(s)</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="btn-group" role="group" aria-label="...">
                         <div class="btn-group" role="group">
                             <button type="button"
-                                    class="btn btn-xs btn-default"
-                                    ng-click="listaPromociones.editarPromocionModal(promocion)">Editar
+                                    class="btn btn-default btn-xs dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                                Aplicar&nbsp;&nbsp;&nbsp;
+                                <span class="caret"></span>
                             </button>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="^.aplicar.marca({promocionId: promocion._id})">Marca</a></li>
+                                <li><a ui-sref="^.aplicar.producto({promocionId: promocion._id})">Producto(s)</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button"
+                                        class="btn btn-xs btn-default"
+                                        ng-click="listaPromociones.editarPromocionModal(promocion)">Editar
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <dir-pagination-controls on-page-change="listaPromociones.pageChanged(newPageNumber)"></dir-pagination-controls>
-

@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-sm-4">
-        <h2>{{listaMarcasTienda.titulo}}</h2>
+    <div class="col-sm-8">
+        <h2>Marcas</h2>
     </div>
     <div class="col-sm-4">
         <div class="ibox float-e-margins">
@@ -8,18 +8,18 @@
         </div>
     </div>
 </div>
-<div class="clients-list">
-    <div class="full-height-scroll" full-scroll>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
-                <tbody>
-                <tr dir-paginate="marca in listaMarcasTienda.marcas | itemsPerPage: listaMarcasTienda.perPage"
-                    total-items="listaMarcasTienda.marcasCount">
-                    <td><a ui-sref="app.tienda.admon.inventario.productos({marcaId: marca._id})" class="client-link">{{marca.nombre}}</a></td>
-                </tr>
-                </tbody>
-            </table>
-            <dir-pagination-controls on-page-change="listaMarcasTienda.pageChanged(newPageNumber)"></dir-pagination-controls>
-        </div>
-    </div>
+
+
+    </table>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <tbody>
+        <tr dir-paginate="marca in listaMarcasTienda.marcas | itemsPerPage: listaMarcasTienda.perPage"
+            total-items="listaMarcasTienda.marcasCount">
+            <td><a ui-sref="app.tienda.admon.inventario.productos({marcaId: marca._id})" class="client-link">{{marca.nombre}}</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <dir-pagination-controls on-page-change="listaMarcasTienda.pageChanged(newPageNumber)"></dir-pagination-controls>
 </div>

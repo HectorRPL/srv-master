@@ -5,11 +5,9 @@ import {Factores} from "../../../../../../api/factores/collection";
 import {name as AplicarFactor} from "../aplicar/aplicarFactor";
 import {name as AgregarFactor} from "../agregarFactor/agregarFactor";
 import {name as EditarFactor} from "./editarFactor/editarFactor";
-
 import template from "./listaFactores.html";
 
 class ListaFactores {
-
     constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
@@ -47,7 +45,6 @@ class ListaFactores {
         });
 
     }
-
     crearFactor() {
         var modalInstance = this.$uibModal.open({
             animation: true,
@@ -57,7 +54,6 @@ class ListaFactores {
             keyboard: true
         });
     }
-
     editarFactorModal(factor) {
         this.datos.factores = angular.copy(factor);
 
@@ -89,13 +85,9 @@ class ListaFactores {
             }
         });
     }
-
-
-
     pageChanged(newPage) {
         this.page = newPage;
     }
-
 }
 
 const name = 'listaFactores';
