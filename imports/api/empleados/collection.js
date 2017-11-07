@@ -2,18 +2,15 @@
  * Created by jvltmtz on 4/04/17.
  */
 import {Mongo} from "meteor/mongo";
-import empleadosHooks from './empleadosHooks';
 
 class EmpleadosCollection extends Mongo.Collection {
-    /*insert(doc, callback) {
+    insert(doc, callback) {
         const result = super.insert(doc, callback);
-        empleadosHooks.afterInsertEmpleado(doc);
         return result;
-    }*/
+    }
 
     update(selector, modifier) {
         const result = super.update(selector, modifier);
-        empleadosHooks.afterUpdateEmpleado(selector, modifier);
         return result;
     }
 }

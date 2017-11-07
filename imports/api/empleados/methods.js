@@ -60,18 +60,24 @@ export const actualizarEmpldActiv = new ValidatedMethod({
     },
     validate: new SimpleSchema({
         _id: {type: String, regEx: SimpleSchema.RegEx.Id},
+        propietarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
         activo: {type: Boolean}
     }).validator(),
-    run({_id, activo}) {
-        return Empleados.update({_id: _id}, {
-            $set: {
-                activo
-            }
-        }, (err) => {
-            if (err) {
-                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-cambiar');
-            }
-        });
+    run({_id, propietarioId, activo}) {
+        if (Meteor.isServer) {
+
+            Meteor.users.remove({_id: propietarioId} , (err) => {
+                if (err) {
+                    throw new Meteor.Error(401, 'Error al borrar el empleado, intente mas tarde.', 'empleado-no-borrado');
+                } else {
+                    Empleados.update({_id: _id}, {
+                        $set: {
+                            activo
+                        }
+                    });
+                }
+            });
+        }
     }
 });
 

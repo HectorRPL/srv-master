@@ -13,7 +13,6 @@ class DesactivarEmpleado {
         $reactive(this).attach($scope);
 
         this.empleadoId = $stateParams.empleadoId;
-
         this.tipoMsj = '';
 
         this.subscribe('empleados.todos', () => [{_id: this.empleadoId}]);
@@ -23,22 +22,19 @@ class DesactivarEmpleado {
             }
         });
     }
-
     editar() {
         this.mostrarCampos = true;
     }
-
     desactivar() {
         this.datos._id = this.empleadoId;
+        this.datos.propietarioId = this.empleado.propietarioId;
 
         actualizarEmpldActiv.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=> {
-            console.log(err);
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
     }
-
 }
 
 const name = 'desactivarEmpleado';
