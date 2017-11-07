@@ -1,6 +1,7 @@
-import template from "./login.html";
+import {Meteor} from "meteor/meteor";
+import {Roles} from "meteor/alanning:roles";
 import {name as Alertas} from '../comun/alertas/alertas';
-
+import template from "./login.html";
 
 class Login {
     constructor($scope, $reactive, $state) {
@@ -14,7 +15,6 @@ class Login {
         this.msj = '';
         this.tipoMsj = '';
     }
-
     login() {
         this.tipoMsj = '';
         Meteor.loginWithPassword(this.credentials.username, this.credentials.password,
@@ -23,7 +23,12 @@ class Login {
                     this.msj = 'Combinación de usuario y contraseña incorrectos.';
                     this.tipoMsj = 'danger';
                 } else {
-                    this.$state.go('app.tienda.lista');
+                    if (Roles.userIsInRole(Meteor.userId())) {
+                        this.msj = 'Usuario no permitido';
+                        this.tipoMsj = 'danger';
+                    } else {
+                        this.$state.go('app.tienda.lista');
+                    }
                 }
             })
         );
@@ -32,7 +37,6 @@ class Login {
 
 const name = 'login';
 
-// create a module
 export default angular.module(name, [
         Alertas
     ])
