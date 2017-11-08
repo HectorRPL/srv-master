@@ -70,51 +70,51 @@ export const actualizarDatoFiscal = new ValidatedMethod({
         _id, propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
-
-        if (tipoPersona === 'PM') {
-            return DatosFiscales.update({_id: _id}, {
-                $set: {
-                    propietarioId: propietarioId,
-                    rfc: rfc,
-                    tipoPersona: tipoPersona,
-                    razonSocial: razonSocial,
-                    tipoSociedad: tipoSociedad,
-                    calle: calle,
-                    delMpio: delMpio,
-                    estadoId: estadoId,
-                    estado: estado,
-                    colonia: colonia,
-                    codigoPostal: codigoPostal,
-                    numExt: numExt,
-                    numInt: numInt
-                },
-                $unset: {
-                    nombres: "", apellidos: ""
-                }
-            });
-        } else {
-            return DatosFiscales.update({_id: _id}, {
-                $set: {
-                    propietarioId: propietarioId,
-                    rfc: rfc,
-                    tipoPersona: tipoPersona,
-                    nombres: nombres,
-                    apellidos: apellidos,
-                    calle: calle,
-                    delMpio: delMpio,
-                    estadoId: estadoId,
-                    estado: estado,
-                    colonia: colonia,
-                    codigoPostal: codigoPostal,
-                    numExt: numExt,
-                    numInt: numInt
-                },
-                $unset: {
-                    tipoSociedad: ""
-                }
-            });
+        if (Meteor.isServer) {
+            if (tipoPersona === 'PM') {
+                return DatosFiscales.update({_id: _id}, {
+                    $set: {
+                        propietarioId: propietarioId,
+                        rfc: rfc,
+                        tipoPersona: tipoPersona,
+                        razonSocial: razonSocial,
+                        tipoSociedad: tipoSociedad,
+                        calle: calle,
+                        delMpio: delMpio,
+                        estadoId: estadoId,
+                        estado: estado,
+                        colonia: colonia,
+                        codigoPostal: codigoPostal,
+                        numExt: numExt,
+                        numInt: numInt
+                    },
+                    $unset: {
+                        nombres: "", apellidos: ""
+                    }
+                });
+            } else {
+                return DatosFiscales.update({_id: _id}, {
+                    $set: {
+                        propietarioId: propietarioId,
+                        rfc: rfc,
+                        tipoPersona: tipoPersona,
+                        nombres: nombres,
+                        apellidos: apellidos,
+                        calle: calle,
+                        delMpio: delMpio,
+                        estadoId: estadoId,
+                        estado: estado,
+                        colonia: colonia,
+                        codigoPostal: codigoPostal,
+                        numExt: numExt,
+                        numInt: numInt
+                    },
+                    $unset: {
+                        tipoSociedad: ""
+                    }
+                });
+            }
         }
-
     }
 });
 

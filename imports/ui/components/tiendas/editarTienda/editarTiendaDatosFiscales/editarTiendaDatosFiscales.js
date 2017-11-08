@@ -28,7 +28,6 @@ class EditarTiendaDatosFiscales {
             }
         });
     }
-
     altaDatosFiscales() {
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
@@ -41,11 +40,11 @@ class EditarTiendaDatosFiscales {
             this.tipoMsj = 'danger';
         }));
     }
-
-    actualizarDireccionFiscal() {
+    actualizarDatosFiscales() {
         delete this.datosFiscales.colonias;
         delete this.datosFiscales.fechaCreacion;
 
+        console.log(this.datosFiscales);
         actualizarDatoFiscal.callPromise(this.datosFiscales).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {

@@ -2,9 +2,20 @@
  * Created by jvltmtz on 25/03/17.
  */
 import {Mongo} from "meteor/mongo";
-import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const DatosFiscales = new Mongo.Collection('datosFiscales');
+class DatosFiscalesCollection extends Mongo.Collection {
+    insert(doc, callback) {
+        const result = super.insert(doc, callback);
+        return result;
+    }
+
+    update(selector, modifier, options, callback) {
+        const result = super.update(selector, modifier, options, callback);
+        return result;
+    }
+}
+
+export const DatosFiscales = new DatosFiscalesCollection('datosFiscales');
 
 DatosFiscales.deny({
     insert() {
