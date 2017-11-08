@@ -49,10 +49,6 @@ Schema.datosFiscales = new SimpleSchema({
             }
         }
     },
-    propietarioId: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Id
-    },
     nombres: {
         type: String, min: 2, max: 30,
         regEx: /^[a-zA-ZñÑ\s]+$/,

@@ -10,7 +10,7 @@ import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
 const CAMPO_ID = ['_id'];
-const CAMPOS_DATOS_FISCALES = ['propietarioId', 'rfc', 'tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad'];
+const CAMPOS_DATOS_FISCALES = ['rfc', 'tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad'];
 const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 export const crearDatoFiscal = new ValidatedMethod({
@@ -33,11 +33,11 @@ export const crearDatoFiscal = new ValidatedMethod({
         filter: false
     }),
     run({
-        propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+        rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
         return DatosFiscales.insert({
-            propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+            rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
             calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
         }, (err) => {
             if (err) {
@@ -67,14 +67,13 @@ export const actualizarDatoFiscal = new ValidatedMethod({
         filter: false
     }),
     run({
-        _id, propietarioId, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+        _id, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
         if (Meteor.isServer) {
             if (tipoPersona === 'PM') {
                 return DatosFiscales.update({_id: _id}, {
                     $set: {
-                        propietarioId: propietarioId,
                         rfc: rfc,
                         tipoPersona: tipoPersona,
                         razonSocial: razonSocial,
@@ -95,7 +94,6 @@ export const actualizarDatoFiscal = new ValidatedMethod({
             } else {
                 return DatosFiscales.update({_id: _id}, {
                     $set: {
-                        propietarioId: propietarioId,
                         rfc: rfc,
                         tipoPersona: tipoPersona,
                         nombres: nombres,
