@@ -3,7 +3,7 @@
  */
 import {buscarRfc} from "../../../../../api/datosFiscales/busquedas";
 import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
-import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad";
+import {name as FormaDireccion} from "../../formas/formaDireccion/formaDireccion";
 import template from "./formaDatosFiscales.html";
 
 class FormaDatosFiscales {
@@ -37,6 +37,7 @@ class FormaDatosFiscales {
         crearDatoFiscal.callPromise(datosFinales).then(this.$bindToContext((result) => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -46,7 +47,7 @@ const name = 'formaDatosFiscales';
 
 export default angular
     .module(name, [
-        ElegirTipoSociedad
+        FormaDireccion
     ])
     .component(name, {
         template: template.default,
@@ -66,7 +67,7 @@ export default angular
                         if (result.length > 0) {
                             return $q.reject('RFC encontrado');
                         }
-                    }).catch(function (err) { // cacha el error (¿dos veces?)
+                    }).catch(function (err) {
                         return $q.reject('Error encontrado');
                     });
                 };

@@ -3,7 +3,6 @@
  */
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 import {actualizarDatoFiscal} from "../../../../../api/datosFiscales/methods";
-import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./formaEditarDatosFiscales.html";
@@ -23,15 +22,9 @@ class FormaEditarDatosFiscales {
         });
     }
     esPersonaMoral() {
-        delete this.datos.nombres;
-        delete this.datos.apellidos;
-        delete this.datos.rfc;
         this.datos.tipoPersona = 'PM';
     }
     esPersonaFisica() {
-        delete this.datos.razonSocial;
-        delete this.datos.tipoSociedad;
-        delete this.datos.rfc;
         this.datos.tipoPersona = 'PF';
 
     }
@@ -41,6 +34,7 @@ class FormaEditarDatosFiscales {
         actualizarDatoFiscal.callPromise(this.datos).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -50,7 +44,6 @@ const name = 'formaEditarDatosFiscales';
 
 export default angular
     .module(name, [
-        ElegirTipoSociedad,
         FormaDatosFiscales,
         FormaDireccion
     ])

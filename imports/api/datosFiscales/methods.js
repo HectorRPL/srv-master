@@ -10,7 +10,7 @@ import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
 const CAMPO_ID = ['_id'];
-const CAMPOS_DATOS_FISCALES = ['rfc', 'tipoPersona', 'nombres', 'apellidos', 'razonSocial', 'tipoSociedad'];
+const CAMPOS_DATOS_FISCALES = ['rfc', 'tipoPersona', 'razonSocial'];
 const CAMPOS_DIRECCION_FISCAL = ['calle', 'delMpio', 'estado', 'estadoId', 'colonia', 'codigoPostal', 'numExt', 'numInt', 'codigoPais'];
 
 export const crearDatoFiscal = new ValidatedMethod({
@@ -33,11 +33,11 @@ export const crearDatoFiscal = new ValidatedMethod({
         filter: false
     }),
     run({
-        rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+        rfc, tipoPersona, razonSocial,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
         return DatosFiscales.insert({
-            rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+            rfc, tipoPersona, razonSocial,
             calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
         }, (err) => {
             if (err) {
@@ -67,51 +67,25 @@ export const actualizarDatoFiscal = new ValidatedMethod({
         filter: false
     }),
     run({
-        _id, rfc, tipoPersona, nombres, apellidos, razonSocial, tipoSociedad,
+        _id, rfc, tipoPersona, razonSocial,
         calle, delMpio, estado, estadoId, colonia, codigoPostal, numExt, numInt, codigoPais
     }) {
         if (Meteor.isServer) {
-            if (tipoPersona === 'PM') {
-                return DatosFiscales.update({_id: _id}, {
-                    $set: {
-                        rfc: rfc,
-                        tipoPersona: tipoPersona,
-                        razonSocial: razonSocial,
-                        tipoSociedad: tipoSociedad,
-                        calle: calle,
-                        delMpio: delMpio,
-                        estadoId: estadoId,
-                        estado: estado,
-                        colonia: colonia,
-                        codigoPostal: codigoPostal,
-                        numExt: numExt,
-                        numInt: numInt
-                    },
-                    $unset: {
-                        nombres: "", apellidos: ""
-                    }
-                });
-            } else {
-                return DatosFiscales.update({_id: _id}, {
-                    $set: {
-                        rfc: rfc,
-                        tipoPersona: tipoPersona,
-                        nombres: nombres,
-                        apellidos: apellidos,
-                        calle: calle,
-                        delMpio: delMpio,
-                        estadoId: estadoId,
-                        estado: estado,
-                        colonia: colonia,
-                        codigoPostal: codigoPostal,
-                        numExt: numExt,
-                        numInt: numInt
-                    },
-                    $unset: {
-                        tipoSociedad: ""
-                    }
-                });
-            }
+            return DatosFiscales.update({_id: _id}, {
+                $set: {
+                    rfc: rfc,
+                    tipoPersona: tipoPersona,
+                    razonSocial: razonSocial,
+                    calle: calle,
+                    delMpio: delMpio,
+                    estadoId: estadoId,
+                    estado: estado,
+                    colonia: colonia,
+                    codigoPostal: codigoPostal,
+                    numExt: numExt,
+                    numInt: numInt
+                }
+            });
         }
     }
 });
