@@ -63,10 +63,10 @@ export default angular
                     return buscarRfc.callPromise({
                         rfc: rfc
                     }).then(function (result) {
-                        if (result) {
+                        if (result.length > 0) {
                             return $q.reject('RFC encontrado');
                         }
-                    }).catch(function (err) {
+                    }).catch(function (err) { // cacha el error (¿dos veces?)
                         return $q.reject('Error encontrado');
                     });
                 };
