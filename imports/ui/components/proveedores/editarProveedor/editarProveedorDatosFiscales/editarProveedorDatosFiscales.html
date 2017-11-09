@@ -1,16 +1,16 @@
 <form class="animated fadeInRight" role="form" id="editarProveedorDatosFiscalesFrmId" name="editarProveedorDatosFiscalesFrm" novalidate>
     <div class="row">
         <div class="col-sm-12">
-            <div class="row" ng-show="!editarProveedorDatosFiscales.datosFiscales._id">
+            <div class="row">
                 <div class="col-sm-12">
                     <h3 class="text-navy">Datos Fiscales</h3>
                 </div>
-                <forma-datos-fiscales
+                <forma-editar-datos-fiscales
                         datos="editarProveedorDatosFiscales.datosFiscales">
-                </forma-datos-fiscales>
+                </forma-editar-datos-fiscales>
             </div>
             <hr>
-            <div class="row animated fadeIn" ng-show="editarProveedorDatosFiscales.datosFiscales.tipoPersona">
+            <div class="row animated fadeIn">
                 <div class="col-sm-12">
                     <h3 class="text-navy">Dirección Fiscal</h3>
                 </div>
@@ -20,28 +20,28 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <alertas tipo="editarProveedorDatosFiscales.tipoMsj" mensaje="editarProveedorDatosFiscales.msj"></alertas>
+                    <alertas
+                            tipo="editarProveedorDatosFiscales.tipoMsj"
+                            mensaje="editarProveedorDatosFiscales.msj">
+                    </alertas>
                 </div>
                 <div class="col-md-3">
                     <button type="button"
                             class="btn btn-primary pull-right"
-                            ng-show="!editarProveedorDatosFiscales.datosFiscales._id"
+                            ng-if="!editarProveedorDatosFiscales.datosFiscales._id"
                             ng-disabled="editarProveedorDatosFiscalesFrm.$invalid"
                             ng-click="editarProveedorDatosFiscales.altaDatosFiscales()">
-                        Guardar Datos Fiscales y Dirección
+                        Guardar
                     </button>
-                    <!--&lt;!&ndash;-->
                     <button type="button"
                             class="btn btn-primary pull-right"
-                            ng-show="editarProveedorDatosFiscales.datosFiscales.codigoPostal"
+                            ng-if="editarProveedorDatosFiscales.datosFiscales._id"
                             ng-disabled="editarProveedorDatosFiscalesFrm.$invalid"
-                            ng-click="editarProveedorDatosFiscales.actualizarDireccionFiscal()">
-                        Actualizar Dirección Fiscal
+                            ng-click="editarProveedorDatosFiscales.actualizarDatosFiscales()">
+                        Actualizar
                     </button>
-                    <!--&ndash;&gt;-->
                 </div>
             </div>
         </div>
     </div>
 </form>
-<pre>{{editarProveedorDatosFiscales.datosFiscales|json}}</pre>

@@ -6,6 +6,7 @@ import {Tiendas} from "../collection";
 
 if (Meteor.isServer) {
     Meteor.publish('tiendas.todas', function (filter, options) {
+        console.log('[]filter, options[]', filter, options);
         Counts.publish(this, 'numTiendas', Tiendas.find(filter), {
             noReady: true
         });

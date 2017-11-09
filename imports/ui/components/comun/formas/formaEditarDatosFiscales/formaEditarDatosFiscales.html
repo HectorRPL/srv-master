@@ -1,0 +1,129 @@
+<ng-form name="datosFiscalesForm">
+    <div class="col-sm-6">
+        <label class="control-label">Persona</label>
+        <h2>
+            <span ng-show="formaEditarDatosFiscales.datos.tipoPersona === 'PF'">FÍSICA</span>
+            <span ng-show="formaEditarDatosFiscales.datos.tipoPersona === 'PM'">MORAL</span>
+        </h2>
+    </div>
+    <!-- PERSONA FISICA -->
+    <div class="animated fadeIn" ng-if="formaEditarDatosFiscales.datos.tipoPersona === 'PF'">
+        <!--RFC PERSONA FÍSCA-->
+        <div class="col-sm-6">
+            <h2>
+                {{formaEditarDatosFiscales.datos.rfc}}
+            </h2>
+        </div>
+        <!--NOMBRE-->
+        <div class="col-sm-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : datosFiscalesForm.nombres.$invalid && !datosFiscalesForm.nombres.$pristine}">
+                <div ng-messages="datosFiscalesForm.nombres.$dirty && datosFiscalesForm.nombres.$error" role="alert">
+                    <label>Nombre(s) *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
+                        <span class="animated fadeIn" style="color:red;"ng-message="pattern">caracter no válido</span>
+                    </label>
+                    <input id="nombreId" class="form-control"
+                           name="nombre" type="text" aria-describedby="sizing-addon1"
+                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                           ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
+                           ng-model="formaEditarDatosFiscales.datos.nombres">
+                </div>
+            </div>
+        </div>
+        <!--APELLIDOS-->
+        <div class="col-sm-6">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : datosFiscalesForm.apellidos.$invalid && !datosFiscalesForm.apellidos.$pristine}">
+                <div ng-messages="datosFiscalesForm.apellidos.$dirty && datosFiscalesForm.apellidos.$error"
+                     role="alert">
+                    <label>Apellidos *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
+                        <span class="animated fadeIn" style="color:red;"ng-message="pattern">caracter no válido</span>
+                    </label>
+                    <input id="apellidosId" class="form-control"
+                           name="apellidos" type="text" aria-describedby="sizing-addon1"
+                           minlength="2" maxlength="51" ng-minlength="2" ng-maxlength="50"
+                           ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
+                           ng-model="formaEditarDatosFiscales.datos.apellidos">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PERSONA MORAL -->
+    <div class="animated fadeIn" ng-if="formaEditarDatosFiscales.datos.tipoPersona === 'PM'">
+        <!--RFC PERSONA MORAL-->
+        <div class="col-sm-6">
+            <label class="control-label">RFC</label>
+            <h2>
+                {{formaEditarDatosFiscales.datos.rfc}}
+            </h2>
+        </div>
+        <!--RAZÓN SOCIAL-->
+        <div class="col-sm-8">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : datosFiscalesForm.razonSocial.$invalid && !datosFiscalesForm.razonSocial.$pristine}">
+                <div ng-messages="datosFiscalesForm.razonSocial.$dirty && datosFiscalesForm.razonSocial.$error"
+                     role="alert">
+                    <label>Razón Social *
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
+                        <span class="animated fadeIn" style="color:red;" ng-message="pattern">caracter no válido</span>
+                    </label>
+                    <input id="razonSocialId" class="form-control"
+                           name="razonSocial" type="text" aria-describedby="sizing-addon1"
+                           minlength="2" maxlength="81" ng-minlength="2" ng-maxlength="81"
+                           ng-pattern="/^[a-zA-ZñÑ\s]+$/" required
+                           ng-model="formaEditarDatosFiscales.datos.razonSocial">
+                </div>
+            </div>
+        </div>
+        <!--TIPO DE SOCIEDAD-->
+        <div class="col-sm-4">
+            <div class="form-group"
+                 ng-class="{ 'has-error' : datosFiscalesForm.elegirTipoSociedad.$invalid && !datosFiscalesForm.elegirTipoSociedad.$pristine}">
+                <div ng-messages="datosFiscalesForm.elegirTipoSociedad.$dirty && datosFiscalesForm.elegirTipoSociedad.$error"
+                     role="alert">
+                    <label>&nbsp;
+                        <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
+                    </label>
+                    <elegir-tipo-sociedad tipo-Sociedad="formaEditarDatosFiscales.datos.tipoSociedad"></elegir-tipo-sociedad>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <h3 class="text-navy">Dirección Fiscal</h3>
+    </div>
+    <!--FORMA DIRECCION-->
+    <forma-direccion
+            direccion="formaEditarDatosFiscales.datos">
+    </forma-direccion>
+    <!--ALERTA-->
+    <div class="col-md-8">
+        <alertas
+                tipo="formaEditarDatosFiscales.tipoMsj"
+                mensaje="formaEditarDatosFiscales.msj">
+        </alertas>
+    </div>
+    <!--CALL TO ACTION-->
+    <div class="col-md-3">
+        <button type="button"
+                class="btn btn-primary pull-right"
+                ng-if="!formaEditarDatosFiscales.datos._id"
+                ng-disabled="formaEditarDatosFiscalesFrm.$invalid"
+                ng-click="formaEditarDatosFiscales.altaDatosFiscales()">
+            Guardar
+        </button>
+        <button type="button"
+                class="btn btn-primary pull-right"
+                ng-if="formaEditarDatosFiscales.datos._id"
+                ng-disabled="formaEditarDatosFiscalesFrm.$invalid"
+                ng-click="formaEditarDatosFiscales.actualizarDatosFiscales()">
+            Actualizar
+        </button>
+    </div>
+</ng-form>

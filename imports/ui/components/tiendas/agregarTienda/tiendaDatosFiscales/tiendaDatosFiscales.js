@@ -15,13 +15,30 @@ class TiendaDatosFiscales {
         this.datosFiscales = {
             tipoPersona: 'PM'
         };
-        this.propietarioId = $stateParams.tiendaId;
     }
     guardar() {
 
-        this.datosFiscales.propietarioId = this.propietarioId;
         let datosFiscalesFinal = angular.copy(this.datosFiscales);
         delete datosFiscalesFinal.colonias;
+
+
+        // Este es el ejemplo del méthodo que voy a usar.
+        /*crearDatoFiscal.callPromise(datosFiscalesFinal)
+            .then(this.$bindToContext((result) => {
+                return actualizaNombre.callPromise({
+                    _id: this.tiendaId,
+                    datosFiscalesId: result
+                });
+            }))
+            .then(this.$bindToContext((result) => {
+                this.modalInstance.close(true);
+            }))
+            .catch(this.$bindToContext((err) => {
+                this.tipoMsj = 'danger';
+            }));*/
+
+
+
 
         crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';

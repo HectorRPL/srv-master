@@ -6,41 +6,13 @@
                     <h3 class="text-navy">Datos Fiscales</h3>
                 </div>
                 <forma-datos-fiscales
-                        datos="editarTiendaDatosFiscales.datosFiscales">
+                        ng-if="!editarTiendaDatosFiscales.tienda.datosFiscalesId">
                 </forma-datos-fiscales>
-            </div>
-            <hr>
-            <div class="row animated fadeIn">
-                <div class="col-sm-12">
-                    <h3 class="text-navy">Dirección Fiscal</h3>
-                </div>
-                <forma-direccion
-                        direccion="editarTiendaDatosFiscales.datosFiscales">
-                </forma-direccion>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <alertas
-                            tipo="editarTiendaDatosFiscales.tipoMsj"
-                            mensaje="editarTiendaDatosFiscales.msj">
-                    </alertas>
-                </div>
-                <div class="col-md-3">
-                    <button type="button"
-                            class="btn btn-primary pull-right"
-                            ng-if="!editarTiendaDatosFiscales.datosFiscales._id"
-                            ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
-                            ng-click="editarTiendaDatosFiscales.altaDatosFiscales()">
-                        Guardar
-                    </button>
-                    <button type="button"
-                            class="btn btn-primary pull-right"
-                            ng-if="editarTiendaDatosFiscales.datosFiscales._id"
-                            ng-disabled="editarTiendaDatosFiscalesFrm.$invalid"
-                            ng-click="editarTiendaDatosFiscales.actualizarDatosFiscales()">
-                        Actualizar
-                    </button>
-                </div>
+
+                <forma-editar-datos-fiscales
+                        ng-if="editarTiendaDatosFiscales.tienda.datosFiscalesId"
+                        dato-fiscal-id="editarTiendaDatosFiscales.tienda.datosFiscalesId">
+                </forma-editar-datos-fiscales>
             </div>
         </div>
     </div>
