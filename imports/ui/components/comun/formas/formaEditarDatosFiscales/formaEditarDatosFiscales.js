@@ -4,6 +4,7 @@
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
 import {crearDatoFiscal, actualizarDatoFiscal} from "../../../../../api/datosFiscales/methods";
 import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad";
+import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
 import template from "./formaEditarDatosFiscales.html";
 
@@ -63,6 +64,7 @@ const name = 'formaEditarDatosFiscales';
 export default angular
     .module(name, [
         ElegirTipoSociedad,
+        FormaDatosFiscales,
         FormaDireccion
     ])
     .component(name, {
