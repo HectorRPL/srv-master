@@ -1,16 +1,19 @@
 /**
  * Created by Héctor on 06/04/2017.
  */
-import template from "./formaDatosFiscales.html";
 import {buscarRfc} from "../../../../../api/datosFiscales/busquedas";
+import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
 import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad";
+import template from "./formaDatosFiscales.html";
 
 class FormaDatosFiscales {
-    constructor($scope) {
+    constructor($scope, $reactive) {
         'ngInject';
-        // this.datos.abreviacion = '';
-    }
+        $reactive(this).attach($scope);
 
+        this.direccion = {};
+        this.datos = {};
+    }
     esPersonaMoral() {
         delete this.datos.email;
         delete this.datos.nombres;
@@ -26,7 +29,17 @@ class FormaDatosFiscales {
         this.datos.tipoPersona = 'PF';
 
     }
+    guardarDatosFiscales() {
+        let datosFinales = angular.copy(this.datos);
+        delete datosFinales.colonias
+        console.log('[datosFinales]', datosFinales);
 
+        crearDatoFiscal.callPromise(datosFinales).then(this.$bindToContext((result) => {
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err) => {
+            this.tipoMsj = 'danger';
+        }));
+    }
 }
 
 const name = 'formaDatosFiscales';
@@ -38,10 +51,7 @@ export default angular
     .component(name, {
         template: template.default,
         controllerAs: name,
-        controller: FormaDatosFiscales,
-        bindings: {
-            datos: '='
-        }
+        controller: FormaDatosFiscales
     })
     .directive('buscarRfc', ['$q', function ($q) {
         return {

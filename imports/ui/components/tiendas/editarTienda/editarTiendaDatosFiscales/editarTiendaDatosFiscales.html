@@ -6,8 +6,12 @@
                     <h3 class="text-navy">Datos Fiscales</h3>
                 </div>
                 <forma-editar-datos-fiscales
+                        ng-show="editarTiendaDatosFiscales.tienda.datosFiscalesId"
                         dato-fiscal-id="editarTiendaDatosFiscales.tienda.datosFiscalesId">
                 </forma-editar-datos-fiscales>
+                <forma-datos-fiscales
+                        ng-hide="editarTiendaDatosFiscales.tienda.datosFiscalesId">
+                </forma-datos-fiscales>
             </div>
         </div>
     </div>

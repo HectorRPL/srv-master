@@ -1,4 +1,4 @@
-<ng-form name="datosFiscalesForm">
+<ng-form name="datosFiscalesFrm">
     <!-- BOTONES = PERSONA FISICA / PERSONA MORAL -->
     <div class="col-sm-6">
         <label class="control-label">Persona *</label>
@@ -29,8 +29,8 @@
             <!--RFC PERSONA FÍSCA-->
             <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : datosFiscalesForm.rfcPersonaFisica.$invalid && !datosFiscalesForm.rfcPersonaFisica.$pristine}">
-                    <div ng-messages="datosFiscalesForm.rfcPersonaFisica.$dirty && datosFiscalesForm.rfcPersonaFisica.$error"
+                     ng-class="{ 'has-error' : datosFiscalesFrm.rfcPersonaFisica.$invalid && !datosFiscalesFrm.rfcPersonaFisica.$pristine}">
+                    <div ng-messages="datosFiscalesFrm.rfcPersonaFisica.$dirty && datosFiscalesFrm.rfcPersonaFisica.$error"
                          role="alert">
                         <label>RFC *
                             <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
@@ -53,8 +53,8 @@
             <!--NOMBRE-->
             <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : datosFiscalesForm.nombres.$invalid && !datosFiscalesForm.nombres.$pristine}">
-                    <div ng-messages="datosFiscalesForm.nombres.$dirty && datosFiscalesForm.nombres.$error" role="alert">
+                     ng-class="{ 'has-error' : datosFiscalesFrm.nombres.$invalid && !datosFiscalesFrm.nombres.$pristine}">
+                    <div ng-messages="datosFiscalesFrm.nombres.$dirty && datosFiscalesFrm.nombres.$error" role="alert">
                         <label>Nombre(s) *
                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
                             <span class="animated fadeIn" style="color:red;" ng-message="minlength, maxlength">min 2, max 50 letras</span>
@@ -71,8 +71,8 @@
             <!--APELLIDOS-->
             <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : datosFiscalesForm.apellidos.$invalid && !datosFiscalesForm.apellidos.$pristine}">
-                    <div ng-messages="datosFiscalesForm.apellidos.$dirty && datosFiscalesForm.apellidos.$error"
+                     ng-class="{ 'has-error' : datosFiscalesFrm.apellidos.$invalid && !datosFiscalesFrm.apellidos.$pristine}">
+                    <div ng-messages="datosFiscalesFrm.apellidos.$dirty && datosFiscalesFrm.apellidos.$error"
                          role="alert">
                         <label>Apellidos *
                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -93,8 +93,8 @@
             <!--RFC PERSONA MORAL-->
             <div class="col-sm-6">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : datosFiscalesForm.rfcPersonaMoral.$invalid && !datosFiscalesForm.rfcPersonaMoral.$pristine}">
-                    <div ng-messages="datosFiscalesForm.rfcPersonaMoral.$dirty && datosFiscalesForm.rfcPersonaMoral.$error"
+                     ng-class="{ 'has-error' : datosFiscalesFrm.rfcPersonaMoral.$invalid && !datosFiscalesFrm.rfcPersonaMoral.$pristine}">
+                    <div ng-messages="datosFiscalesFrm.rfcPersonaMoral.$dirty && datosFiscalesFrm.rfcPersonaMoral.$error"
                          role="alert">
                         <label>RFC *
                             <span style="color:red;" class="animated fadeIn" ng-message="required">requerido</span>
@@ -117,8 +117,8 @@
             <!--RAZÓN SOCIAL-->
             <div class="col-sm-8">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : datosFiscalesForm.razonSocial.$invalid && !datosFiscalesForm.razonSocial.$pristine}">
-                    <div ng-messages="datosFiscalesForm.razonSocial.$dirty && datosFiscalesForm.razonSocial.$error"
+                     ng-class="{ 'has-error' : datosFiscalesFrm.razonSocial.$invalid && !datosFiscalesFrm.razonSocial.$pristine}">
+                    <div ng-messages="datosFiscalesFrm.razonSocial.$dirty && datosFiscalesFrm.razonSocial.$error"
                          role="alert">
                         <label>Razón Social *
                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -136,8 +136,8 @@
             <!--TIPO DE SOCIEDAD-->
             <div class="col-sm-4">
                 <div class="form-group"
-                     ng-class="{ 'has-error' : datosFiscalesForm.elegirTipoSociedad.$invalid && !datosFiscalesForm.elegirTipoSociedad.$pristine}">
-                    <div ng-messages="datosFiscalesForm.elegirTipoSociedad.$dirty && datosFiscalesForm.elegirTipoSociedad.$error"
+                     ng-class="{ 'has-error' : datosFiscalesFrm.elegirTipoSociedad.$invalid && !datosFiscalesFrm.elegirTipoSociedad.$pristine}">
+                    <div ng-messages="datosFiscalesFrm.elegirTipoSociedad.$dirty && datosFiscalesFrm.elegirTipoSociedad.$error"
                          role="alert">
                         <label>&nbsp;
                             <span class="animated fadeIn" style="color:red;" ng-message="required">requerido</span>
@@ -148,4 +148,23 @@
             </div>
         </div>
     </span>
+    <forma-direccion
+            direccion="formaDatosFiscales.datos">
+    </forma-direccion>
+    <!--ALERTA-->
+    <div class="col-md-8">
+        <alertas
+                tipo="formaDatosFiscales.tipoMsj"
+                mensaje="formaDatosFiscales.msj">
+        </alertas>
+    </div>
+    <!--CALL TO ACTION-->
+    <div class="col-md-3">
+        <button type="button"
+                class="btn btn-primary pull-right"
+                ng-disabled="datosFiscalesFrm.$invalid"
+                ng-click="formaDatosFiscales.guardarDatosFiscales()">
+            Guardar
+        </button>
+    </div>
 </ng-form>

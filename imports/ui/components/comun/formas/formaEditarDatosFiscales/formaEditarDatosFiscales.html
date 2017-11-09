@@ -113,38 +113,8 @@
                 class="btn btn-primary pull-right"
                 ng-if="formaEditarDatosFiscales.datos._id"
                 ng-disabled="formaEditarDatosFiscalesFrm.$invalid"
-                ng-click="formaEditarDatosFiscales.actualizarDatosFiscales()">
+                ng-click="formaEditarDatosFiscales.guardarDatosFiscales()">
             Actualizar
-        </button>
-    </div>
-</ng-form>
-
-<!--FORMA PARA CUANDO SE GUARDAN LOS DATOS FISCALES-->
-<ng-form name="formaEditarDatosFiscalesFrm" ng-if="!formaEditarDatosFiscales.datoFiscalId">
-    <!--FORMA DATOS FISCALES-->
-    <forma-datos-fiscales
-            datos="formaEditarDatosFiscales.datos">
-    </forma-datos-fiscales>
-    <!--FORMA DIRECCION-->
-    <forma-direccion
-            ng-show="formaEditarDatosFiscales.datos.tipoPersona"
-            direccion="formaEditarDatosFiscales.datos">
-    </forma-direccion>
-    <!--ALERTA-->
-    <div class="col-md-8">
-        <alertas
-                tipo="formaEditarDatosFiscales.tipoMsj"
-                mensaje="formaEditarDatosFiscales.msj">
-        </alertas>
-    </div>
-    <!--CALL TO ACTION-->
-    <div class="col-md-3">
-        <button type="button"
-                class="btn btn-primary pull-right"
-                ng-if="!formaEditarDatosFiscales.datos._id"
-                ng-disabled="formaEditarDatosFiscalesFrm.$invalid"
-                ng-click="formaEditarDatosFiscales.altaDatosFiscales()">
-            Guardar
         </button>
     </div>
 </ng-form>

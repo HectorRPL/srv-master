@@ -2,8 +2,9 @@
  * Created by Héctor on 15/06/2017.
  */
 import {Meteor} from "meteor/meteor";
-import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
+import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {DatosFiscales} from "./collection";
 
@@ -14,8 +15,12 @@ export const buscarRfc = new ValidatedMethod({
         rfc: {type: String}
     }).validator(),
     run({rfc}) {
-        const resultado = DatosFiscales.findOne({_id: rfc});
-        return resultado ? true : false;
+        const partialMatch = new RegExp(`^${rfc}`, 'i');
+        const selector = {rfc: {$regex: partialMatch}};
+        let options = {fields: {_id: 1, rfc: 1}, limit: 10};
+        const resultado = DatosFiscales.find(selector, options).fetch();
+
+        return resultado;
     }
 });
 

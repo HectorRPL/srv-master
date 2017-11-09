@@ -4,6 +4,7 @@
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaEditarDatosFiscales} from "../../../comun/formas/formaEditarDatosFiscales/formaEditarDatosFiscales";
+import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 import template from "./editarTiendaDatosFiscales.html";
 
 class EditarTiendaDatosFiscales {
@@ -32,7 +33,8 @@ const name = 'editarTiendaDatosFiscales';
 export default angular
     .module(name, [
         Alertas,
-        FormaEditarDatosFiscales
+        FormaEditarDatosFiscales,
+        FormaDatosFiscales
     ])
     .component(name, {
         template: template.default,

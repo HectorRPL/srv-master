@@ -2,7 +2,7 @@
  * Created by jvltmtz on 10/08/17.
  */
 import {DatosFiscales} from "../../../../../api/datosFiscales/collection";
-import {crearDatoFiscal, actualizarDatoFiscal} from "../../../../../api/datosFiscales/methods";
+import {actualizarDatoFiscal} from "../../../../../api/datosFiscales/methods";
 import {name as ElegirTipoSociedad} from "../../selects/elegirTipoSociedad/elegirTipoSociedad";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
 import {name as FormaDireccion} from "../../../comun/formas/formaDireccion/formaDireccion";
@@ -34,19 +34,6 @@ class FormaEditarDatosFiscales {
         delete this.datos.rfc;
         this.datos.tipoPersona = 'PF';
 
-    }
-    altaDatosFiscales() {
-        let datosFiscalesFinal = angular.copy(this.datos);
-        delete datosFiscalesFinal.colonias;
-        delete datosFiscalesFinal.fechaCreacion;
-        datosFiscalesFinal.tiendaId = this.tiendaId;
-
-        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
-            this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err) => {
-            console.log(err);
-            this.tipoMsj = 'danger';
-        }));
     }
     actualizarDatosFiscales() {
         delete this.datos.colonias;
