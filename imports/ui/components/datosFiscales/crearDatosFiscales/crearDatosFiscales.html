@@ -1,0 +1,21 @@
+<forma-datos-fiscales
+        datos="crearDatosFiscales.datos">
+</forma-datos-fiscales>
+<!--ALERTA-->
+<div class="col-md-8">
+    <alertas
+            tipo="crearDatosFiscales.tipoMsj"
+            mensaje="crearDatosFiscales.msj">
+    </alertas>
+</div>
+<!--CALL TO ACTION-->
+<div class="col-md-3">
+    <button type="button"
+            class="btn btn-primary pull-right"
+            ng-disabled="datosFiscalesFrm.$invalid ||
+                crearDatosFiscales.datos.tipoPersona === undefined ||
+                crearDatosFiscales.datos.tipoPersona === null"
+            ng-click="crearDatosFiscales.guardarDatosFiscales()">
+        Guardar
+    </button>
+</div>

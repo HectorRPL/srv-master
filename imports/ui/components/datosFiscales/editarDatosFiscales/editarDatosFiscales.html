@@ -1,0 +1,22 @@
+<ng-form name="editarDatosFiscalesFrm">
+    <!--FORMA EDITAR DATOS FISCALES-->
+    <forma-editar-datos-fiscales
+            datos="editarDatosFiscales.datos">
+    </forma-editar-datos-fiscales>
+    <!--ALERTA-->
+    <div class="col-md-8">
+        <alertas
+                tipo="editarDatosFiscales.tipoMsj"
+                mensaje="editarDatosFiscales.msj">
+        </alertas>
+    </div>
+    <!--CALL TO ACTION-->
+    <div class="col-md-3">
+        <button type="button"
+                class="btn btn-primary pull-right"
+                ng-disabled="editarDatosFiscalesFrm.$invalid"
+                ng-click="editarDatosFiscales.actualizarDatosFiscales()">
+            Actualizar
+        </button>
+    </div>
+</ng-form>

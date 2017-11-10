@@ -94,22 +94,4 @@
     <forma-direccion
             direccion="formaDatosFiscales.datos">
     </forma-direccion>
-    <!--ALERTA-->
-    <div class="col-md-8">
-        <alertas
-                tipo="formaDatosFiscales.tipoMsj"
-                mensaje="formaDatosFiscales.msj">
-        </alertas>
-    </div>
-    <!--CALL TO ACTION-->
-    <div class="col-md-3">
-        <button type="button"
-                class="btn btn-primary pull-right"
-                ng-disabled="datosFiscalesFrm.$invalid ||
-                formaDatosFiscales.datos.tipoPersona === undefined ||
-                formaDatosFiscales.datos.tipoPersona === null"
-                ng-click="formaDatosFiscales.guardarDatosFiscales()">
-            Guardar
-        </button>
-    </div>
 </ng-form>

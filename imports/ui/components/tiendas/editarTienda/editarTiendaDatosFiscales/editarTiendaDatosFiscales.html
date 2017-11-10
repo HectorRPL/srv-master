@@ -2,14 +2,14 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
-                <forma-editar-datos-fiscales
+                <editar-datos-fiscales
                         ng-show="editarTiendaDatosFiscales.tienda.datosFiscalesId"
-                        dato-fiscal-id="editarTiendaDatosFiscales.tienda.datosFiscalesId">
-                </forma-editar-datos-fiscales>
-                <forma-datos-fiscales
+                        dato-Fiscal-Id="editarTiendaDatosFiscales.tienda.datosFiscalesId">
+                </editar-datos-fiscales>
+                <crear-datos-fiscales
                         respuesta="editarTiendaDatosFiscales.asignarDatosFiscalesId({item})"
                         ng-hide="editarTiendaDatosFiscales.tienda.datosFiscalesId">
-                </forma-datos-fiscales>
+                </crear-datos-fiscales>
             </div>
             <br>
             <div class="row">

@@ -2,7 +2,6 @@
  * Created by Héctor on 06/04/2017.
  */
 import {buscarRfc} from "../../../../../api/datosFiscales/busquedas";
-import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
 import {name as Alertas} from "../../alertas/alertas";
 import {name as FormaDireccion} from "../../formas/formaDireccion/formaDireccion";
 import template from "./formaDatosFiscales.html";
@@ -30,25 +29,6 @@ class FormaDatosFiscales {
         this.datos.tipoPersona = 'PF';
 
     }
-    guardarDatosFiscales() {
-        let datosFinales = angular.copy(this.datos);
-        delete datosFinales.colonias
-
-        crearDatoFiscal.callPromise(datosFinales).then(this.$bindToContext((result) => {
-            this.tipoMsj = 'success';
-
-            const datoFiscalId = {
-                event: result,
-                item: result,
-                label: result,
-                model: result
-            };
-
-            this.respuesta(datoFiscalId);
-        })).catch(this.$bindToContext((err) => {
-            this.tipoMsj = 'danger';
-        }));
-    }
 }
 
 const name = 'formaDatosFiscales';
@@ -63,7 +43,7 @@ export default angular
         controllerAs: name,
         controller: FormaDatosFiscales,
         bindings: {
-            respuesta: '&'
+            datos: '='
         }
     })
     .directive('buscarRfc', ['$q', function ($q) {

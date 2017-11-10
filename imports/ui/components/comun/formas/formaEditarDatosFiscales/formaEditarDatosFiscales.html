@@ -1,4 +1,4 @@
-<ng-form name="formaEditarDatosFiscalesFrm" ng-if="formaEditarDatosFiscales.datoFiscalId">
+<ng-form name="formaEditarDatosFiscalesFrm">
     <!--LABEL PERSONA FISICA/MORAL-->
     <div class="col-sm-6">
         <label class="control-label">Persona</label>
@@ -37,21 +37,4 @@
     <forma-direccion
             direccion="formaEditarDatosFiscales.datos">
     </forma-direccion>
-    <!--ALERTA-->
-    <div class="col-md-8">
-        <alertas
-                tipo="formaEditarDatosFiscales.tipoMsj"
-                mensaje="formaEditarDatosFiscales.msj">
-        </alertas>
-    </div>
-    <!--CALL TO ACTION-->
-    <div class="col-md-3">
-        <button type="button"
-                class="btn btn-primary pull-right"
-                ng-if="formaEditarDatosFiscales.datos._id"
-                ng-disabled="formaEditarDatosFiscalesFrm.$invalid"
-                ng-click="formaEditarDatosFiscales.actualizarDatosFiscales()">
-            Actualizar
-        </button>
-    </div>
 </ng-form>

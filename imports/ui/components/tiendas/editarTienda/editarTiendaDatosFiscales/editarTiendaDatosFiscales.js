@@ -1,12 +1,12 @@
 /**
  * Created by Héctor on 25/07/2017.
  */
-import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
-import {actlzrTindDatFiscl} from "../../../../../api/catalogos/tiendas/methods";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaEditarDatosFiscales} from "../../../comun/formas/formaEditarDatosFiscales/formaEditarDatosFiscales";
-import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
-import template from "./editarTiendaDatosFiscales.html";
+import {Tiendas}                     from "../../../../../api/catalogos/tiendas/collection";
+import {actlzrTindDatFiscl}          from "../../../../../api/catalogos/tiendas/methods";
+import {name as Alertas}             from "../../../comun/alertas/alertas";
+import {name as EditarDatosFiscales} from "../../../datosFiscales/editarDatosFiscales/editarDatosFiscales";
+import {name as CrearDatosFiscales}  from "../../../datosFiscales/crearDatosFiscales/crearDatosFiscales";
+import template                      from "./editarTiendaDatosFiscales.html";
 
 class EditarTiendaDatosFiscales {
     constructor($scope, $reactive, $stateParams) {
@@ -15,9 +15,7 @@ class EditarTiendaDatosFiscales {
         $reactive(this).attach($scope);
 
         this.direccion = {};
-
         this.tiendaId = $stateParams.tiendaId;
-
         this.tipoMsj = '';
 
         this.subscribe('tiendas.todas', () => [{_id: this.tiendaId}]);
@@ -47,8 +45,8 @@ const name = 'editarTiendaDatosFiscales';
 export default angular
     .module(name, [
         Alertas,
-        FormaEditarDatosFiscales,
-        FormaDatosFiscales
+        EditarDatosFiscales,
+        CrearDatosFiscales
     ])
     .component(name, {
         template: template.default,
