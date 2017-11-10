@@ -9,7 +9,6 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {Proveedores} from "./collection";
 
-
 const ID = ['_id'];
 const CAMPOS_PROVEEDORES = ['nombre', 'telefonos', 'telefonos.$', 'email'];
 const CAMPO_CUENTA_CONTABLE = ['cuentaContable'];
@@ -36,6 +35,38 @@ export const crearProveedor = new ValidatedMethod({
     }),
     run({nombre, telefonos, email, cuentaContable}) {
         return Proveedores.insert({nombre, telefonos, email, cuentaContable});
+    }
+});
+
+export const actlzrProvdrDatFiscl = new ValidatedMethod({
+    name: 'proveedores.actlzrProvdrDatFiscl',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_proveedores'],
+            group: 'proveedores'
+        }
+    ],
+    permissionsError: {
+        name: 'proveedores.actlzrProvdrDatFiscl',
+        message: () => {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
+    validate: Proveedores.simpleSchema().pick(ID, 'datosFiscalesId').validator({
+        clean: true,
+        filter: false
+    }),
+    run({
+        _id, datosFiscalesId
+    }) {
+        return Proveedores.update({_id: _id}, {
+            $set: {datosFiscalesId}
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+            }
+        });
     }
 });
 
@@ -141,7 +172,15 @@ export const actualizarProvdrActv = new ValidatedMethod({
     }
 });
 
-const PROVEEDORES_METHODS = _.pluck([crearProveedor, actualizarProvdrDats, actualizarProvdrCuntCont, actualizarProvdrActv], 'name');
+const PROVEEDORES_METHODS = _.pluck(
+    [
+        crearProveedor,
+        actlzrProvdrDatFiscl,
+        actualizarProvdrDats,
+        actualizarProvdrCuntCont,
+        actualizarProvdrActv
+    ],
+    'name');
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

@@ -2,12 +2,10 @@
  * Created by jvltmtz on 9/03/17.
  */
 import {Mongo} from "meteor/mongo";
-import tiendasHooks from './tiendasHooks';
 
 class TiendasCollection extends Mongo.Collection {
     insert(doc, callback) {
         const result = super.insert(doc, callback);
-        tiendasHooks.afterInsertTiendas(doc);
         return result;
     }
 }

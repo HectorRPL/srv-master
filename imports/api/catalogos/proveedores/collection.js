@@ -2,26 +2,33 @@
  * Created by jvltmtz on 8/03/17.
  */
 import {Mongo} from "meteor/mongo";
-import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const Proveedores = new Mongo.Collection('proveedores');
+class ProveedoresCollection extends Mongo.Collection {
+    insert(doc, callback) {
+        const result = super.insert(doc, callback);
+        return result;
+    }
+}
+
+export const Proveedores = new ProveedoresCollection('proveedores');
 
 Proveedores.deny({
-    insert() {
-        return true;
-    },
-    update() {
-        return true;
-    },
-    remove() {
-        return true;
-    }
+    insert() {return true;},
+    update() {return true;},
+    remove() {return true;}
 });
 
-Proveedores.schema = new SimpleSchema({
+const Schema = {};
+
+Schema.proveedores = new SimpleSchema({
     _id: {
         type: String,
         regEx: SimpleSchema.RegEx.Id
+    },
+    datosFiscalesId: {
+        type: String,
+        regEx: SimpleSchema.RegEx.Id,
+        optional: true
     },
     fechaCreacion: {
         type: Date,
@@ -68,4 +75,4 @@ Proveedores.schema = new SimpleSchema({
     }
 });
 
-Proveedores.attachSchema(Proveedores.schema);
+Proveedores.attachSchema(Schema.proveedores);

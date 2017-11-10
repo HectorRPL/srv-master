@@ -1,36 +1,39 @@
 /**
  * Created by Héctor on 22/06/2017.
  */
-import template from "./proveedorDatosFiscales.html";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
-import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
+import {Proveedores}                from "../../../../../api/catalogos/proveedores/collection";
+import {actlzrProvdrDatFiscl}       from "../../../../../api/catalogos/proveedores/methods";
+import {name as Alertas}            from "../../../comun/alertas/alertas";
+import {name as CrearDatosFiscales} from "../../../datosFiscales/crearDatosFiscales/crearDatosFiscales";
+import template                     from "./proveedorDatosFiscales.html";
 
 class ProveedorDatosFiscales {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
-        this.$state = $state;
+        this.$scope = $scope;
         $reactive(this).attach($scope);
 
-        this.propietarioId = $stateParams.propietarioId;
-
-        this.datosFiscales = {
-            tipoPersona: 'PM'
-        };
-
+        this.direccion = {};
+        this.proveedorId = $stateParams.propietarioId;
         this.tipoMsj = '';
-        this.$scope = $scope;
+
+        this.subscribe('proveedores.todos', () => [{_id: this.proveedorId}]);
+        this.helpers({
+            proveedor(){
+                return Proveedores.findOne({_id: this.proveedorId});
+            }
+        });
     }
-
-    guardar() {
-        let datosFiscalesFinal = angular.copy(this.datosFiscales);
-        delete datosFiscalesFinal.colonias;
-
-        datosFiscalesFinal.propietarioId = this.propietarioId;
-
-        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+    asignarDatosFiscalesId(result) {
+        let datos = {
+            _id: this.proveedorId,
+            datosFiscalesId: result.item
+        };
+        actlzrProvdrDatFiscl.callPromise(datos).then(this.$bindToContext(() => {
+            this.msj = 'Éxito al realizar la operación';
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -38,11 +41,10 @@ class ProveedorDatosFiscales {
 
 const name = 'proveedorDatosFiscales';
 
-// create a module
 export default angular
     .module(name, [
         Alertas,
-        FormaDatosFiscales
+        CrearDatosFiscales
     ])
     .component(name, {
         template: template.default,

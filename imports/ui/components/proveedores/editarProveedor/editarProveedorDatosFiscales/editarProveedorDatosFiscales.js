@@ -1,13 +1,12 @@
 /**
  * Created by Héctor on 25/07/2017.
  */
-import {DatosFiscales}              from "../../../../../api/datosFiscales/collection";
-import {crearDatoFiscal}            from "../../../../../api/datosFiscales/methods";
-import {actlzrDireccDatsFiscls}     from "../../../../../api/datosFiscales/methods";
-import {name as Alertas}            from "../../../comun/alertas/alertas";
-import {name as FormaDireccion}     from "../../../comun/formas/formaDireccion/formaDireccion";
-import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
-import template                     from "./editarProveedorDatosFiscales.html";
+import {Proveedores}                 from "../../../../../api/catalogos/proveedores/collection";
+import {actlzrProvdrDatFiscl}        from "../../../../../api/catalogos/proveedores/methods";
+import {name as Alertas}             from "../../../comun/alertas/alertas";
+import {name as EditarDatosFiscales} from "../../../datosFiscales/editarDatosFiscales/editarDatosFiscales";
+import {name as CrearDatosFiscales}  from "../../../datosFiscales/crearDatosFiscales/crearDatosFiscales";
+import template                      from "./editarProveedorDatosFiscales.html";
 
 class EditarProveedorDatosFiscales {
     constructor($scope, $reactive, $stateParams) {
@@ -16,45 +15,23 @@ class EditarProveedorDatosFiscales {
         $reactive(this).attach($scope);
 
         this.direccion = {};
-
-        this.propietarioId = $stateParams.proveedorId;
-
+        this.proveedorId = $stateParams.proveedorId;
         this.tipoMsj = '';
 
-        this.subscribe('datosFiscales.proveedor', () => [{propietarioId: this.propietarioId}]);
+        this.subscribe('proveedores.todos', () => [{_id: this.proveedorId}]);
         this.helpers({
-            datosFiscales(){
-                return DatosFiscales.findOne({propietarioId: this.propietarioId});
+            proveedor(){
+                return Proveedores.findOne({_id: this.proveedorId});
             }
         });
     }
-
-    altaDatosFiscales() {
-        let datosFiscalesFinal = angular.copy(this.datosFiscales);
-        delete datosFiscalesFinal.colonias;
-        delete datosFiscalesFinal.fechaCreacion;
-        datosFiscalesFinal.propietarioId = this.propietarioId;
-
-        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
-            this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err) => {
-            this.tipoMsj = 'danger';
-        }));
-    }
-
-    actualizarDireccionFiscal() {
-        delete this.datosFiscales.colonias;
-        delete this.datosFiscales._id;
-        delete this.datosFiscales.rfc;
-        delete this.datosFiscales.tipoPersona;
-        delete this.datosFiscales.razonSocial;
-        delete this.datosFiscales.tipoSociedad;
-        delete this.datosFiscales.apellidos;
-        delete this.datosFiscales.nombres;
-        delete this.datosFiscales.email;
-        delete this.datosFiscales.fechaCreacion;
-
-        actlzrDireccDatsFiscls.callPromise(this.datosFiscales).then(this.$bindToContext(() => {
+    asignarDatosFiscalesId(result) {
+        let datos = {
+            _id: this.proveedorId,
+            datosFiscalesId: result.item
+        };
+        actlzrProvdrDatFiscl.callPromise(datos).then(this.$bindToContext(() => {
+            this.msj = 'Éxito al realizar la operación';
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
@@ -67,8 +44,8 @@ const name = 'editarProveedorDatosFiscales';
 export default angular
     .module(name, [
         Alertas,
-        FormaDireccion,
-        FormaDatosFiscales
+        EditarDatosFiscales,
+        CrearDatosFiscales
     ])
     .component(name, {
         template: template.default,
