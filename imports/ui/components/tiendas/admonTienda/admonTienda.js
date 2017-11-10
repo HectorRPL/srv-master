@@ -1,7 +1,6 @@
 /**
  * Created by jvltmtz on 29/03/17.
  */
-import template from "./admonTienda.html";
 import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 import {name as TituloPrincipal} from '../../comun/tituloPrincipal/tituloPrincipal';
 import {name as Factores} from './factores/factores';
@@ -10,7 +9,7 @@ import {name as Inventario} from './inventario/inventario';
 import {name as Empleados} from './empleados/empleados';
 import {name as Promociones} from './promociones/promociones';
 import {name as AgregarSucursal} from './agregarSucursal/agregarSucursal';
-
+import template from "./admonTienda.html";
 
 class AdmonTienda {
     constructor($scope, $reactive, $state, $stateParams) {

@@ -7,7 +7,10 @@
                         <h5>{{admonTienda.tienda.nombre}}</h5>
                     </div>
                     <div class="col-sm-2">
-                        <a ui-sref="app.tienda.agregarSucursal.datos({tiendaId: admonTienda.tienda._id})"
+                        <a ui-sref="app.tienda.agregarSucursal.datos({
+                            tiendaId: admonTienda.tienda._id,
+                            datosFiscalesId: admonTienda.tienda.datosFiscalesId
+                        })"
                            class="btn btn-primary btn-xs pull-right"
                            ng-hide="admonTienda.tienda.tiendaMatrizId">
                             Agregar sucursal

@@ -17,7 +17,6 @@ class AgregarSucursal {
             {titulo: "Dirección",       estado: ".direccion", icono: 'fa fa-map-marker'}
         ];
     }
-
 }
 
 const name = 'agregarSucursal';
@@ -38,7 +37,7 @@ function config($stateProvider) {
     'ngInject';
     $stateProvider
         .state('app.tienda.agregarSucursal', {
-            url: '/sucursal/:tiendaId',
+            url: '/sucursal/:tiendaId/:datosFiscalesId',
             template: '<agregar-sucursal></agregar-sucursal>',
             abstract: true
         });

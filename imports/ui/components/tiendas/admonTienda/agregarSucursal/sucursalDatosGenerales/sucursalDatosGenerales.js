@@ -14,6 +14,7 @@ class SucursalDatosGenerales {
         $reactive(this).attach($scope);
 
         this.tiendaId = $stateParams.tiendaId;
+        this.datosFiscalesId = $stateParams.datosFiscalesId;
         this.sucursalId = {};
 
         this.tipoMsj = '';
@@ -21,10 +22,9 @@ class SucursalDatosGenerales {
             telefonos: [{telefono: ''}]
         };
     }
-
     altaDatosGenerales() {
         this.datos.tiendaMatrizId = this.tiendaId;
-        console.log(this.datos);
+        this.datos.datosFiscalesId = this.datosFiscalesId;
         crearSucursal.callPromise(this.datos).then(this.$bindToContext((result) => {
             this.tipoMsj = 'success';
             this.sucursalId = result

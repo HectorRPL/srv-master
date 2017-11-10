@@ -10,7 +10,7 @@ import {_} from "meteor/underscore";
 import {Tiendas} from "../collection";
 import {crearInventario} from "../../../inventarios/methods";
 
-const CAMPOS_SUCURSALES = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMatrizId'];
+const CAMPOS_SUCURSALES = ['nombre', 'telefonos', 'telefonos.$', 'email', 'tiendaMatrizId', 'datosFiscalesId'];
 
 export const crearSucursal = new ValidatedMethod({
     name: 'sucursales.crearSucursal',
@@ -31,9 +31,9 @@ export const crearSucursal = new ValidatedMethod({
         clean: true,
         filter: false
     }),
-    run({nombre, telefonos, email, tiendaMatrizId}) {
+    run({nombre, telefonos, email, tiendaMatrizId, datosFiscalesId}) {
         if (Meteor.isServer) {
-            return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId}, (err, result) => {
+            return Tiendas.insert({nombre, telefonos, email, tiendaMatrizId, datosFiscalesId}, (err, result) => {
                 if (err) {
                     throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
                 }
