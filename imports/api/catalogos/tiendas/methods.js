@@ -51,6 +51,38 @@ export const crearTienda = new ValidatedMethod({
     }
 });
 
+export const actlzrTindDatFiscl = new ValidatedMethod({
+    name: 'tiendas.actlzrTindDatFiscl',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_tiendas'],
+            group: 'tiendas'
+        }
+    ],
+    permissionsError: {
+        name: 'tiendas.actlzrTindDatFiscl',
+        message: () => {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
+    validate: Tiendas.simpleSchema().pick(ID, 'datosFiscalesId').validator({
+        clean: true,
+        filter: false
+    }),
+    run({
+        _id, datosFiscalesId
+    }) {
+        return Tiendas.update({_id: _id}, {
+            $set: {datosFiscalesId}
+        }, (err) => {
+            if (err) {
+                throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+            }
+        });
+    }
+});
+
 export const actualizarTienda = new ValidatedMethod({
     name: 'tiendas.actualizarTienda',
     mixins: [PermissionsMixin, CallPromiseMixin],
@@ -153,7 +185,16 @@ export const actualizarTindaActv = new ValidatedMethod({
     }
 });
 
-const TIENDAS_METHODS = _.pluck([crearTienda, actualizarTienda, actualizarTindaCuntCont, actualizarTindaActv], 'name');
+const TIENDAS_METHODS = _.pluck(
+    [
+        crearTienda,
+        actlzrTindDatFiscl,
+        actualizarTienda,
+        actualizarTindaCuntCont,
+        actualizarTindaActv
+    ],
+    'name'
+);
 if (Meteor.isServer) {
     DDPRateLimiter.addRule({
         name(name) {

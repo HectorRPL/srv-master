@@ -2,6 +2,7 @@
  * Created by Héctor on 25/07/2017.
  */
 import {Tiendas} from "../../../../../api/catalogos/tiendas/collection";
+import {actlzrTindDatFiscl} from "../../../../../api/catalogos/tiendas/methods";
 import {name as Alertas} from "../../../comun/alertas/alertas";
 import {name as FormaEditarDatosFiscales} from "../../../comun/formas/formaEditarDatosFiscales/formaEditarDatosFiscales";
 import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
@@ -25,6 +26,19 @@ class EditarTiendaDatosFiscales {
                 return Tiendas.findOne({_id: this.tiendaId});
             }
         });
+    }
+    asignarDatosFiscalesId(result) {
+        let datos = {
+            _id: this.tiendaId,
+            datosFiscalesId: result.item
+        };
+        actlzrTindDatFiscl.callPromise(datos).then(this.$bindToContext(() => {
+            this.msj = 'Éxito al realizar la operación';
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err) => {
+            console.log(err);
+            this.tipoMsj = 'danger';
+        }));
     }
 }
 

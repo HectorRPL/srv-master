@@ -2,16 +2,23 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-sm-12">
-                    <h3 class="text-navy">Datos Fiscales</h3>
-                </div>
                 <forma-editar-datos-fiscales
                         ng-show="editarTiendaDatosFiscales.tienda.datosFiscalesId"
                         dato-fiscal-id="editarTiendaDatosFiscales.tienda.datosFiscalesId">
                 </forma-editar-datos-fiscales>
                 <forma-datos-fiscales
+                        respuesta="editarTiendaDatosFiscales.asignarDatosFiscalesId({item})"
                         ng-hide="editarTiendaDatosFiscales.tienda.datosFiscalesId">
                 </forma-datos-fiscales>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <alertas
+                            tipo="editarTiendaDatosFiscales.tipoMsj"
+                            mensaje="editarTiendaDatosFiscales.msj">
+                    </alertas>
+                </div>
             </div>
         </div>
     </div>

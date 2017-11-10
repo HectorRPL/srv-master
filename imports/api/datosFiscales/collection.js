@@ -50,7 +50,7 @@ Schema.datosFiscales = new SimpleSchema({
         }
     },
     razonSocial: {
-        type: String, max: 80, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ.\s]+$/,
+        type: String, max: 80, min: 2, regEx: /^[a-zA-ZñÑáéíóúÁÉÍÓÚ&_.\s\d]+$/,
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase();

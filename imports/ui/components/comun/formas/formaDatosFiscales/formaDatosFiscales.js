@@ -3,6 +3,7 @@
  */
 import {buscarRfc} from "../../../../../api/datosFiscales/busquedas";
 import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
+import {name as Alertas} from "../../alertas/alertas";
 import {name as FormaDireccion} from "../../formas/formaDireccion/formaDireccion";
 import template from "./formaDatosFiscales.html";
 
@@ -32,12 +33,19 @@ class FormaDatosFiscales {
     guardarDatosFiscales() {
         let datosFinales = angular.copy(this.datos);
         delete datosFinales.colonias
-        console.log('[datosFinales]', datosFinales);
 
         crearDatoFiscal.callPromise(datosFinales).then(this.$bindToContext((result) => {
             this.tipoMsj = 'success';
+
+            const datoFiscalId = {
+                event: result,
+                item: result,
+                label: result,
+                model: result
+            };
+
+            this.respuesta(datoFiscalId);
         })).catch(this.$bindToContext((err) => {
-            console.log(err);
             this.tipoMsj = 'danger';
         }));
     }
@@ -47,12 +55,16 @@ const name = 'formaDatosFiscales';
 
 export default angular
     .module(name, [
+        Alertas,
         FormaDireccion
     ])
     .component(name, {
         template: template.default,
         controllerAs: name,
-        controller: FormaDatosFiscales
+        controller: FormaDatosFiscales,
+        bindings: {
+            respuesta: '&'
+        }
     })
     .directive('buscarRfc', ['$q', function ($q) {
         return {
