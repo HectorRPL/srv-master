@@ -11,10 +11,10 @@ class MostrarDatosFiscales {
         $reactive(this).attach($scope);
 
 
-        this.subscribe('datosFiscales.proveedor', () => [{propietarioId: this.getReactively('propietarioId')}]);
+        this.subscribe('datosFiscales.lista', () => [{_id: this.getReactively('datosFiscalesId')}]);
         this.helpers({
             datosFiscales(){
-                return DatosFiscales.findOne({propietarioId: this.getReactively('propietarioId')});
+                return DatosFiscales.findOne({_id: this.getReactively('datosFiscalesId')});
             }
         });
     }
@@ -29,7 +29,6 @@ export default angular
         controllerAs: name,
         controller: MostrarDatosFiscales,
         bindings: {
-            propietarioId: '<',
-            tiendaMatriz: '<'
+            datosFiscalesId: '<'
         }
     });

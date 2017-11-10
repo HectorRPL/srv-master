@@ -7,9 +7,14 @@
             <div>
                 <h2 class="no-margins">{{editarProveedor.proveedor.nombre}}</h2>
                 <br>
-                <mostrar-direccion propietario-Id="editarProveedor.proveedor._id"></mostrar-direccion>
+                <mostrar-direccion
+                        propietario-Id="editarProveedor.proveedor._id">
+                </mostrar-direccion>
                 <hr>
-                <mostrar-datos-fiscales propietario-id="editarProveedor.proveedor._id" proveedor-matriz="editarProveedor.proveedor.proveedorMatrizId"></mostrar-datos-fiscales>
+                <span ng-hide="!editarProveedor.proveedor.datosFiscalesId"><i class="fa fa-address-card-o"></i> <strong>DATOS FISCALES</strong></span><br>
+                <mostrar-datos-fiscales
+                        datos-fiscales-id="editarProveedor.proveedor.datosFiscalesId">
+                </mostrar-datos-fiscales>
             </div>
         </div>
     </div>
