@@ -1,44 +1,35 @@
 <div class="wizard">
     <div class="content">
-        <form role="form" class="p-lg" id="agregarDatosFiscalesFrmId" name="agregarDatosFiscalesFrm" novalidate>
+        <form class="animated fadeInRight" role="form" id="tiendaDatosFiscalesFrmId" name="tiendaDatosFiscalesFrm" novalidate>
             <fieldset>
                 <h2>Datos y Direccion Fiscal</h2>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <forma-datos-fiscales datos="tiendaDatosFiscales.datosFiscales"></forma-datos-fiscales>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <forma-direccion direccion="tiendaDatosFiscales.datosFiscales"></forma-direccion>
-                    </div>
-                </div>
-                <!--ALERTA Y BOTÓN-->
-                <div class="row">
-                    <div class="col-md-8">
-                        <alertas tipo="tiendaDatosFiscales.tipoMsj" mensaje="tiendaDatosFiscales.msj"></alertas>
-                    </div>
-                    <div class="col-md-3" ng-show="!tiendaDatosFiscales.msj || tiendaDatosFiscales.tipoMsj != 'success'">
-                        <!-- BOTON GUARDAR DATOS GENERALES-->
-                        <button type="button"
-                                class="btn btn-primary pull-right"
-                                ng-hide="tiendaDatosFiscales.tipoMsj === 'success'"
-                                ng-disabled="agregarDatosFiscalesFrm.$invalid"
-                                ng-click="tiendaDatosFiscales.guardar()">
-                            Siguiente
-                        </button>
-                    </div>
-                    <div class="col-md-2"
-                         ng-show="tiendaDatosFiscales.tipoMsj === 'success'">
-                        <a class="btn btn-default"
-                           role="button"
-                           ui-sref="app.tienda.admon.empleados.lista({tiendaId: tiendaDatosFiscales.propietarioId})">
-                            Ver Tienda
-                        </a>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <crear-datos-fiscales
+                                    ng-hide="tiendaDatosFiscales.tienda.datosFiscalesId"
+                                    respuesta="tiendaDatosFiscales.asignarDatosFiscalesId({item})">
+                            </crear-datos-fiscales>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <alertas
+                                        tipo="tiendaDatosFiscales.tipoMsj"
+                                        mensaje="tiendaDatosFiscales.msj">
+                                </alertas>
+                            </div>
+                            <div class="col-sm-2">
+                                <a class="btn btn-default" role="button"
+                                   ng-show="tiendaDatosFiscales.tipoMsj === 'success'"
+                                   ui-sref="app.tienda.admon.empleados.lista({tiendaId: tiendaDatosFiscales.propietarioId})">
+                                    Ver Tienda
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
-

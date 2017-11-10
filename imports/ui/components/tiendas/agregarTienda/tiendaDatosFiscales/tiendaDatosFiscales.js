@@ -1,51 +1,41 @@
 /**
  * Created by jvltmtz on 9/05/17.
  */
-import template from "./tiendaDatosFiscales.html";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as FormaDatosFiscales} from "../../../comun/formas/formaDatosFiscales/formaDatosFiscales";
-import {crearDatoFiscal} from "../../../../../api/datosFiscales/methods";
+import {Tiendas}                    from "../../../../../api/catalogos/tiendas/collection";
+import {actlzrTindDatFiscl}         from "../../../../../api/catalogos/tiendas/methods";
+import {name as Alertas}            from "../../../comun/alertas/alertas";
+import {name as CrearDatosFiscales} from "../../../datosFiscales/crearDatosFiscales/crearDatosFiscales";
+import template                     from "./tiendaDatosFiscales.html";
 
 class TiendaDatosFiscales {
-    constructor($scope, $reactive, $state, $stateParams) {
+    constructor($scope, $reactive, $stateParams) {
         'ngInject';
-        this.$state = $state;
+        this.$scope = $scope;
         $reactive(this).attach($scope);
+
+        this.direccion = {};
+        this.tiendaId = $stateParams.tiendaId;
         this.tipoMsj = '';
-        this.datosFiscales = {
-            tipoPersona: 'PM'
-        };
+
+        this.subscribe('tiendas.todas', () => [{_id: this.tiendaId}]);
+        this.helpers({
+            tienda(){
+                return Tiendas.findOne({_id: this.tiendaId});
+            }
+        });
     }
-    guardar() {
-
-        let datosFiscalesFinal = angular.copy(this.datosFiscales);
-        delete datosFiscalesFinal.colonias;
-
-
-        // Este es el ejemplo del méthodo que voy a usar.
-        /*crearDatoFiscal.callPromise(datosFiscalesFinal)
-            .then(this.$bindToContext((result) => {
-                return actualizaNombre.callPromise({
-                    _id: this.tiendaId,
-                    datosFiscalesId: result
-                });
-            }))
-            .then(this.$bindToContext((result) => {
-                this.modalInstance.close(true);
-            }))
-            .catch(this.$bindToContext((err) => {
-                this.tipoMsj = 'danger';
-            }));*/
-
-
-
-
-        crearDatoFiscal.callPromise(datosFiscalesFinal).then(this.$bindToContext(() => {
+    asignarDatosFiscalesId(result) {
+        let datos = {
+            _id: this.tiendaId,
+            datosFiscalesId: result.item
+        };
+        actlzrTindDatFiscl.callPromise(datos).then(this.$bindToContext(() => {
+            this.msj = 'Éxito al realizar la operación';
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
+            console.log(err);
             this.tipoMsj = 'danger';
         }));
-
     }
 }
 
@@ -54,7 +44,7 @@ const name = 'tiendaDatosFiscales';
 export default angular
     .module(name, [
         Alertas,
-        FormaDatosFiscales
+        CrearDatosFiscales
     ])
     .component(name, {
         template: template.default,

@@ -29,7 +29,8 @@ Schema.tiendas = new SimpleSchema({
     },
     datosFiscalesId: {
         type: String,
-        regEx: SimpleSchema.RegEx.Id
+        regEx: SimpleSchema.RegEx.Id,
+        optional: true
     },
     fechaCreacion: {
         type: Date,
