@@ -1,0 +1,26 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="text-left">Marca</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-responsive"
+                dir-paginate="marca in listaMarcasProveedores.marcas | itemsPerPage: listaMarcasProveedores.perPage"
+                total-items="listaMarcasProveedores.marcasCount">
+                <td class="text-left">
+                    {{marca.nombre}}
+                </td>
+                <td>
+                    <button type="button"
+                            class="btn btn-xs btn-default pull-right"
+                            ng-click="listaMarcasProveedores.quitarMarca(marca)"><i class="fa fa-trash-o" aria-hidden="true"></i> Quitar Marca
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<dir-pagination-controls on-page-change="listaMarcasProveedores.pageChanged(newPageNumber)"></dir-pagination-controls>

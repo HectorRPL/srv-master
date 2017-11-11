@@ -9,3 +9,4 @@ import "../../api/datosFiscales/server/publish";
 import "../../api/direcciones/server/publish";
 import "../../api/promociones/server/publish";
 import "../../api/comisiones/server/publish";
+import "../../api/catalogos/marcasProveedores/server/publish";

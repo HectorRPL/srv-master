@@ -1,10 +1,12 @@
 /**
  * Created by Héctor on 10/11/2017.
  */
-import {actlizrMarcsProvdrs} from "../../../../../api/catalogos/marcasProveedores/methods";
-import {name as Alertas} from "../../../comun/alertas/alertas";
-import {name as BuscarMarca} from "../../../comun/busquedas/buscarMarca/buscarMarca";
-import template from "./editarMarcasProveedores.html";
+import {MarcasProveedores}              from "../../../../../api/catalogos/marcasProveedores/collection";
+import {actlizrMarcsProvdrs}            from "../../../../../api/catalogos/marcasProveedores/methods";
+import {name as BuscarMarca}            from "../../../comun/busquedas/buscarMarca/buscarMarca";
+import {name as ListaMarcasProveedores} from "./listaMarcasProveedores/listaMarcasProveedores";
+import {name as Alertas}                from "../../../comun/alertas/alertas";
+import template                         from "./editarMarcasProveedores.html";
 
 class EditarMarcasProveedores {
     constructor($scope, $reactive, $stateParams) {
@@ -15,7 +17,13 @@ class EditarMarcasProveedores {
         this.proveedorId = $stateParams.proveedorId;
 
         this.tipoMsj = '';
-        this.marcaSelec = '';
+
+        this.subscribe('marcasProveedores.lista', () => [{proveedorId: this.proveedorId}]);
+        this.helpers({
+            marcasProveedor(){
+                return MarcasProveedores.findOne({proveedorId: this.proveedorId});
+            }
+        });
     }
 
     aniadirMarca() {
@@ -37,8 +45,9 @@ const name = 'editarMarcasProveedores';
 
 export default angular
     .module(name, [
-        Alertas,
-        BuscarMarca
+        BuscarMarca,
+        ListaMarcasProveedores,
+        Alertas
     ])
     .component(name, {
         template: template.default,

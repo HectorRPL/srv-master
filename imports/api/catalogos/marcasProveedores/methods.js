@@ -9,7 +9,6 @@ import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
 import {_} from "meteor/underscore";
 import {MarcasProveedores} from "./collection";
 
-
 export const actlizrMarcsProvdrs = new ValidatedMethod({
     name: 'marcasProveedores.actlizrMarcsProvdrs',
     mixins: [PermissionsMixin, CallPromiseMixin],
@@ -46,9 +45,44 @@ export const actlizrMarcsProvdrs = new ValidatedMethod({
     }
 });
 
+export const borrarMarcaProveedor = new ValidatedMethod({
+    name: 'marcasProveedores.borrarMarcaProveedor',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['actu_marcas_proveedores'],
+            group: 'marcas_proveedores'
+        }
+    ],
+    permissionsError: {
+        name: 'marcasProveedores.borrarMarcaProveedor',
+        message: () => {
+            return 'Este usuario no cuenta con los permisos necesarios.';
+        }
+    },
+    validate: new SimpleSchema({
+        proveedorId: {type: String, regEx: SimpleSchema.RegEx.Id},
+        marcaId: {type: String, regEx: SimpleSchema.RegEx.Id}
+    }).validator(),
+    run({
+        proveedorId, marcaId
+    }) {
+        if (Meteor.isServer) {
+            return MarcasProveedores.update({proveedorId: proveedorId}, {
+                $pull: {marcasId: marcaId}
+            }), (err) => {
+                if (err) {
+                    throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
+                }
+            }
+        }
+    }
+});
+
 const DATOS_FISCALES_PROVEEDORES_METHODS = _.pluck(
     [
-        actlizrMarcsProvdrs
+        actlizrMarcsProvdrs,
+        borrarMarcaProveedor
     ],
     'name');
 if (Meteor.isServer) {
