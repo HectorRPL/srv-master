@@ -25,24 +25,23 @@ class EditarProveedorGenerales {
             }
         });
     }
-
     actualizarDatosGenerales() {
         delete this.proveedor.cuentaContable;
         delete this.proveedor.fechaCreacion;
         delete this.proveedor._id;
         delete this.proveedor.activo;
         delete this.proveedor.dias;
+        delete this.proveedor.datosFiscalesId;
 
         this.proveedor._id = this.propietarioId;
 
         actualizarProvdrDats.callPromise(this.proveedor).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=> {
+        })).catch(this.$bindToContext((err) => {
             this.tipoMsj = 'danger';
         }));
 
     }
-
 }
 
 const name = 'editarProveedorGenerales';
