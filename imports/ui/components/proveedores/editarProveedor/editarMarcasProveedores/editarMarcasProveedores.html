@@ -1,0 +1,20 @@
+<form class="animated fadeInRight" role="form" id="editarMarcasProveedoresFrmId" name="editarMarcasProveedoresFrm" novalidate>
+    <div class="row">
+        <div class="col-sm-12">
+            <p>Elige la marca que el proveedor maneja.</p>
+        </div>
+        <!--BUSCAR LA MARCA-->
+        <div class="col-sm-8">
+            <buscar-marca marca="editarMarcasProveedores.marcaSelec"></buscar-marca>
+        </div>
+        <!--CALL TO ACTION-->
+        <div class="col-sm-4">
+            <button type="button"
+                    class="btn btn-primary pull-right"
+                    ng-show="editarMarcasProveedores.marcaSelec._id"
+                    ng-disabled="!editarMarcasProveedores.marcaSelec._id"
+                    ng-click="editarMarcasProveedores.aniadirMarca()">Añadir la marca {{editarMarcasProveedores.marcaSelec.nombre}}
+            </button>
+        </div>
+    </div>
+</form>

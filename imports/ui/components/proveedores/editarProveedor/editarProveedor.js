@@ -3,6 +3,7 @@
  */
 import {Proveedores} from "../../../../api/catalogos/proveedores/collection";
 import {name as EditarProveedorGenerales} from "./editarProveedorGenerales/editarProveedorGenerales";
+import {name as EditarMarcasProveedores} from "./editarMarcasProveedores/editarMarcasProveedores";
 import {name as EditarProveedorDireccion} from "./editarProveedorDireccion/editarProveedorDireccion";
 import {name as EditarProveedorDatosFiscales} from "./editarProveedorDatosFiscales/editarProveedorDatosFiscales";
 import {name as EditarProveedorCuentaContable} from "./editarProveedorCuentaContable/editarProveedorCuentaContable";
@@ -22,6 +23,7 @@ class EditarProveedor {
 
         this.tabs = [
             {titulo: 'Datos Generales', estado: '.generales', icono: 'fa fa-book'},
+            {titulo: 'Marcas', estado: '.marcas', icono: 'fa fa-star-o'},
             {titulo: 'Direccion', estado: '.direccion', icono: 'fa-map-marker'},
             {titulo: 'Datos Fiscales', estado: '.fiscales', icono: 'fa fa-address-card-o'},
             {titulo: 'Cuenta Contable', estado: '.cuentaContable', icono: 'fa fa-gavel'},
@@ -42,6 +44,7 @@ const name = 'editarProveedor';
 export default angular
     .module(name, [
         EditarProveedorGenerales,
+        EditarMarcasProveedores,
         EditarProveedorDireccion,
         EditarProveedorDatosFiscales,
         EditarProveedorCuentaContable,

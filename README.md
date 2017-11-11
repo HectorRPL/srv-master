@@ -7,7 +7,7 @@ CONECTARSE A LA BASE:
             
         Windows: Conexión a la nube:
         
-            $ SET MONGO_URL=mongodb://dev01:0000@ds053196.mlab.com:53196/srv-dev
+            SET MONGO_URL=mongodb://dev01:0000@ds053196.mlab.com:53196/srv-dev
             
 LEVANTAR EL PROYECTO
 

@@ -24,48 +24,48 @@
         <div class="table-responsive">
             <table class="table table-striped table-hover">
                 <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Existencia</th>
-                    <th>Actualizar Existencia</th>
-                </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Existencia</th>
+                        <th>Actualizar Existencia</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr dir-paginate="producto in listaProdsMarcaTienda.productos | itemsPerPage: listaProdsMarcaTienda.perPage"
-                    total-items="listaProdsMarcaTienda.productosCount">
-                    <td><a ui-sref="app.tienda.admon.inventario.producto({productoId: producto._id})" class="client-link">{{producto.producto().campoBusqueda}}</a></td>
-                    <td>{{producto.cantidad}}</td>
-                    <td>
-                        <form role="form"
-                              style="max-width: 250px"
-                              id="editarExistenciaFrmId"
-                              name="editarExistenciaFrm"
-                              novalidate>
-                            <div class="input-group input-group-sm" ng-class="{ 'has-error' : editarExistenciaFrm.nuevaExistencia.$invalid && !editarExistenciaFrm.nuevaExistencia.$pristine}">
-                                <input id="nuevaExistenciaId"
-                                       class="form-control "
-                                       type="number"
-                                       name="nuevaExistencia"
-                                       placeholder="Nuevo valor"
-                                       aria-describedby="sizing-addon1"
-                                       max="10000"
-                                       min="0"
-                                       required
-                                       ng-model="producto.nuevaExistencia">
-                                <span class="input-group-btn">
-                                        <button class="btn btn-default"
-                                                ng-disabled="editarExistenciaFrm.$invalid"
-                                                ng-click="listaProdsMarcaTienda.actualizar(producto.nuevaExistencia, producto._id, editarExistenciaFrm)"
-                                                type="button">Actualizar
-                                        </button>
-                                    </span>
-                                <div ng-messages="editarExistenciaFrm.nuevaExistencia.$dirty && editarExistenciaFrm.nuevaExistencia.$error" role="alert">
-                                    <div style="color: red" ng-message="max">máximo 10 mil</div>
+                    <tr dir-paginate="producto in listaProdsMarcaTienda.productos | itemsPerPage: listaProdsMarcaTienda.perPage"
+                        total-items="listaProdsMarcaTienda.productosCount">
+                        <td><a ui-sref="app.tienda.admon.inventario.producto({productoId: producto._id})" class="client-link">{{producto.producto().campoBusqueda}}</a></td>
+                        <td>{{producto.cantidad}}</td>
+                        <td>
+                            <form role="form"
+                                  style="max-width: 250px"
+                                  id="editarExistenciaFrmId"
+                                  name="editarExistenciaFrm"
+                                  novalidate>
+                                <div class="input-group input-group-sm" ng-class="{ 'has-error' : editarExistenciaFrm.nuevaExistencia.$invalid && !editarExistenciaFrm.nuevaExistencia.$pristine}">
+                                    <input id="nuevaExistenciaId"
+                                           class="form-control "
+                                           type="number"
+                                           name="nuevaExistencia"
+                                           placeholder="Nuevo valor"
+                                           aria-describedby="sizing-addon1"
+                                           max="10000"
+                                           min="0"
+                                           required
+                                           ng-model="producto.nuevaExistencia">
+                                    <span class="input-group-btn">
+                                            <button class="btn btn-default"
+                                                    ng-disabled="editarExistenciaFrm.$invalid"
+                                                    ng-click="listaProdsMarcaTienda.actualizar(producto.nuevaExistencia, producto._id, editarExistenciaFrm)"
+                                                    type="button">Actualizar
+                                            </button>
+                                        </span>
+                                    <div ng-messages="editarExistenciaFrm.nuevaExistencia.$dirty && editarExistenciaFrm.nuevaExistencia.$error" role="alert">
+                                        <div style="color: red" ng-message="max">máximo 10 mil</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </td>
-                </tr>
+                            </form>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

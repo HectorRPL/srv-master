@@ -4,7 +4,7 @@
 import {Mongo} from "meteor/mongo";
 import {SimpleSchema} from "meteor/aldeed:simple-schema";
 
-export const MarcasProveedores= new Mongo.Collection('marcasProveedores');
+export const MarcasProveedores = new Mongo.Collection('marcasProveedores');
 
 MarcasProveedores.deny({
     insert() {
@@ -27,11 +27,10 @@ MarcasProveedores.schema = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    marcaId: {
-        type: String,
+    marcasId: {
+        type: [String],
         regEx: SimpleSchema.RegEx.Id
-    },
-
+    }
 });
 
 MarcasProveedores.attachSchema(MarcasProveedores.schema);
