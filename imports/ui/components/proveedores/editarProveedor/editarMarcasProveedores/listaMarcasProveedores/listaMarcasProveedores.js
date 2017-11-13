@@ -32,7 +32,7 @@ class ListaMarcasProveedores {
             proveedorId: this.proveedorId,
             marcaId: marca._id
         };
-        console.log(datos);
+
         borrarMarcaProveedor.callPromise(datos)
             .then(this.$bindToContext((result) => {
                 this.tipoMsj = 'success';

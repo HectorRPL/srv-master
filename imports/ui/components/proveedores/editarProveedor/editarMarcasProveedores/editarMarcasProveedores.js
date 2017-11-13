@@ -31,7 +31,7 @@ class EditarMarcasProveedores {
             proveedorId: this.proveedorId,
             marcaId: this.marcaSelec._id
         };
-        console.log('datos que vamos a enviar para añadir la marca a un provedor', datos);
+
         actlizrMarcsProvdrs.callPromise(datos)
             .then(this.$bindToContext(() => {
                 this.tipoMsj = 'success';
