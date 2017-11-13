@@ -31,6 +31,7 @@ class EditarMarcasProveedores {
             proveedorId: this.proveedorId,
             marcaId: this.marcaSelec._id
         };
+
         actlizrMarcsProvdrs.callPromise(datos)
             .then(this.$bindToContext(() => {
                 this.tipoMsj = 'success';

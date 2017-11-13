@@ -29,7 +29,8 @@ MarcasProveedores.schema = new SimpleSchema({
     },
     marcasId: {
         type: [String],
-        regEx: SimpleSchema.RegEx.Id
+        regEx: SimpleSchema.RegEx.Id,
+        optional: true
     }
 });
 

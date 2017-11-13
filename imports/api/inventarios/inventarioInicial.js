@@ -64,7 +64,7 @@ ProdsInvntariosUtils = {
                 fechaCreacion: new Date(),
                 costo: producto.costoProveedor,
                 factorId: producto.factorDefaultId,
-                cantidad: 10
+                cantidad: 0
             };
 
             ProductosInventarios.insert(productoInven, (err)=>{

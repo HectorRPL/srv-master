@@ -2,8 +2,10 @@
  * Created by Héctor on 30/03/17.
  */
 import {Meteor} from "meteor/meteor";
-import {ValidatedMethod} from "meteor/mdg:validated-method";
 import {DDPRateLimiter} from "meteor/ddp-rate-limiter";
+import {ValidatedMethod} from "meteor/mdg:validated-method";
+import {PermissionsMixin} from "meteor/didericis:permissions-mixin";
+import {CallPromiseMixin} from "meteor/didericis:callpromise-mixin";
 import {_} from "meteor/underscore";
 import {Inventarios} from "./collection";
 
@@ -30,6 +32,19 @@ export const crearInventario = new ValidatedMethod({
 
 export const crearInventarioMarca = new ValidatedMethod({
     name: 'inventarios.crearInventarioMarca',
+    mixins: [PermissionsMixin, CallPromiseMixin],
+    allow: [
+        {
+            roles: ['crea_productos_inventarios'],
+            group: 'productos_inventarios'
+        }
+    ],
+    permissionsError: {
+        name: 'inventarios.crearInventarioMarca',
+        message: () => {
+            return 'Usuario no autorizado, no tienen los permisos necesarios.';
+        }
+    },
     validate: new SimpleSchema({
         tiendaId: {type: String, regEx: SimpleSchema.RegEx.Id},
         marcaId: {type: String, regEx: SimpleSchema.RegEx.Id}
@@ -38,7 +53,6 @@ export const crearInventarioMarca = new ValidatedMethod({
         if (Meteor.isServer) {
             ProdsInvntariosUtils.generarInventarioMarca(tiendaId, marcaId);
         }
-
     }
 });
 

@@ -37,7 +37,6 @@ export const actlizrMarcsProvdrs = new ValidatedMethod({
                 {$addToSet: {marcasId: marcaId}}
             ), (err) => {
                 if (err) {
-                    console.log(err);
                     throw new Meteor.Error(500, 'Error al realizar la operación.', 'error-al-crear');
                 }
             };
