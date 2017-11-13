@@ -2,10 +2,17 @@
  * Created by jvltmtz on 8/03/17.
  */
 import {Mongo} from "meteor/mongo";
+import proveedoresHooks from './proveedoresHooks';
 
 class ProveedoresCollection extends Mongo.Collection {
     insert(doc, callback) {
         const result = super.insert(doc, callback);
+        proveedoresHooks.afterInsertProveedor(doc);
+        return result;
+    }
+
+    update(selector, modifier, options, callback) {
+        const result = super.update(selector, modifier, options, callback);
         return result;
     }
 }
