@@ -17,6 +17,7 @@ if (Meteor.isServer) {
         let empleado = {};
         let noEmpleado = 0;
         let strDepto = options.profile.departamentoId;
+        let tiendaId = options.profile.tiendaId;
 
         if (options.profile) {
             empleado = {
@@ -34,15 +35,21 @@ if (Meteor.isServer) {
                 email: options.profile.email
             };
 
-            var findOneAndUpdate = Meteor.wrapAsync(Counters.rawCollection().findOneAndUpdate, Counters.rawCollection());
-            try{
-                let result = findOneAndUpdate({_id: 'noEmpleado'}, {$inc: {seq: 1}},  {returnOriginal: false, upsert: true});
+            var findOneAndUpdate = Meteor.wrapAsync(
+                Counters.rawCollection().findOneAndUpdate, Counters.rawCollection()
+            );
+            try {
+                let result = findOneAndUpdate({nombre: 'EMPLEADOS', tiendaId: tiendaId}, {
+                    $inc: {seq: 1}
+                }, {
+                    returnOriginal: false, upsert: true
+                });
                 noEmpleado = result.value.seq;
-            }catch (e){
+            } catch (e) {
+                console.log(e);
                 throw  new Meteor.Error(401, 'Error al crear el empleado, intente mas tarde.', 'no-empleado-noEncontrado');
             }
             empleado.noEmpleado = noEmpleado;
-
         }
 
         empleado.propietarioId = user._id;
@@ -82,10 +89,7 @@ if (Meteor.isServer) {
         }
     });
 
-    Accounts.onLogout((result)=>{
-        BitacoraLogin.update({_id: result.user._id}, {$set:{fechaLogout: new Date()}});
+    Accounts.onLogout((result)=> {
+        BitacoraLogin.update({_id: result.user._id}, {$set: {fechaLogout: new Date()}});
     });
-
-
-
 }

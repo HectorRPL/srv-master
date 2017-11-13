@@ -11,15 +11,15 @@ class AgregarDireccionEmpleado {
         'ngInject';
         this.$state = $state;
         $reactive(this).attach($scope);
-        this.titulo = 'AgregarDireccion Empleado';
+
+        // this.rootScope = $rootScope;
         this.tiendaId = $stateParams.tiendaId;
-        this.rootScope = $rootScope;
+        this.titulo = 'AgregarDireccion Empleado';
         this.credentials =  Session.get('empleadoNuevo');
 
         this.direccion = {};
 
     }
-
     guardar() {
         this.tipoMsj = '';
         const direccionFinal = angular.copy(this.direccion);
@@ -29,14 +29,14 @@ class AgregarDireccionEmpleado {
 
         this.credentials.profile.email = this.credentials.email;
 
-        crearUsuario.callPromise(this.credentials).then(this.$bindToContext(()=> {
+        console.log('Datos enviados para crear un empleado', this.credentials);
+        crearUsuario.callPromise(this.credentials).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
+        })).catch(this.$bindToContext((err) => {
+            console.log('[err]', err);
             this.tipoMsj = 'danger';
         }));
     }
-
-
 }
 
 const name = 'agregarDireccionEmpleado';

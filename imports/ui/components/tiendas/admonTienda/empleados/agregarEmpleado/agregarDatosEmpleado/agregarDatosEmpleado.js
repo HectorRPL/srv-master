@@ -16,7 +16,6 @@ class AregarDatosEmpleado {
         };
     }
 
-    // Inserta usuario, empleado y dirreccion productos
     siguiente() {
         this.credentials.username = this.credentials.profile.email;
         this.credentials.email = this.credentials.profile.email;
@@ -31,7 +30,6 @@ class AregarDatosEmpleado {
 
 const name = 'agregarDatosEmpleado';
 
-// create a module
 export default angular
     .module(name, [
         FormaDatosPersonales

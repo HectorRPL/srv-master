@@ -7,7 +7,6 @@ import {MarcasProveedores} from '../marcasProveedores/collection';
 const proveedoresHooks = {
     _insertMarcaProveedor(doc) {
         const proveedorId = doc._id;
-        console.log('[proveedorId]', proveedorId);
         MarcasProveedores.insert({proveedorId: proveedorId});
     },
 
