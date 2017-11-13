@@ -39,7 +39,7 @@ if (Meteor.isServer) {
                 Counters.rawCollection().findOneAndUpdate, Counters.rawCollection()
             );
             try {
-                let result = findOneAndUpdate({nombre: 'EMPLEADOS', tiendaId: tiendaId}, {
+                let result = findOneAndUpdate({nombre: 'EMPLEADOS'}, {
                     $inc: {seq: 1}
                 }, {
                     returnOriginal: false, upsert: true

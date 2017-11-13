@@ -28,6 +28,7 @@ class ProveedorDatosDireccion {
             this.tipoMsj = 'success';
             this.$state.go('app.proveedores.agregar.fiscales', {propietarioId:  this.propietarioId});
         })).catch(this.$bindToContext((err)=>{
+            console.log('[err]', err);
             this.tipoMsj = 'danger';
         }));
     }
