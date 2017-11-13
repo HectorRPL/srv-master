@@ -3,6 +3,7 @@
  */
 import {ProductosInventarios}       from "../../../../../../../api/inventarios/productosInventarios/collection";
 import {Marcas}                     from "../../../../../../../api/catalogos/marcas/collection";
+import {crearInventarioMarca     }  from "../../../../../../../api/inventarios/methods";
 import {actlzrProdctInvntrExstncProdct}  from "../../../../../../../api/inventarios/productosInventarios/methods";
 import {name as BuscarProducto}     from "../../../../../comun/busquedas/buscarProducto/buscarProducto";
 import {name as Alertas}            from "../../../../../comun/alertas/alertas";
@@ -22,17 +23,10 @@ class ListaProdsMarcaTienda {
         this.datos = {};
         this.mensajeExitoso = '';
 
-
-        this.subscribe('marcas.todas', () => [{_id: this.marcaId}]);
-        this.helpers({
-            marca(){
-                return Marcas.findOne({_id: this.marcaId});
-            }
-        });
-
         this.perPage = 10;
         this.page = 1;
 
+        this.subscribe('marcas.todas', () => [{_id: this.marcaId}]);
         this.subscribe('productosInventarios.tiendaMarca', () => [
             {
                 tiendaId: this.tiendaId,
@@ -45,6 +39,9 @@ class ListaProdsMarcaTienda {
             }
         ]);
         this.helpers({
+            marca(){
+                return Marcas.findOne({_id: this.marcaId});
+            },
             productos(){
                 return ProductosInventarios.find();
             },
@@ -52,6 +49,19 @@ class ListaProdsMarcaTienda {
                 return Counts.get('numProdsInventarios');
             }
         });
+    }
+    crearInventarioInicial() {
+        let datos = {
+            tiendaId: this.tiendaId,
+            marcaId: this.marcaId
+        };
+
+        crearInventarioMarca.callPromise(datos).then(this.$bindToContext(()=> {
+            this.prodsExcepciones = [];
+            this.tipoMsj = 'success';
+        })).catch(this.$bindToContext((err)=> {
+            this.tipoMsj = 'danger';
+        }));
     }
     actualizar(nuevoValor, id, editarExistenciaFrm) {
         this.tipoMsj = '';
