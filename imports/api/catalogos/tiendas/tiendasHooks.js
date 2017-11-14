@@ -4,7 +4,7 @@
 import {_} from 'meteor/underscore';
 import {Counters} from "../counters/collection";
 
-const COUNTS = ['EMPLEADOS', 'VENTAS', 'COMPRAS', 'NOTA'];
+const COUNTS = ['VENTAS', 'COMPRAS', 'NOTA'];
 
 const comprasEntregasHooks = {
     _insertCounters(doc) {
