@@ -29,7 +29,6 @@ class AgregarDireccionEmpleado {
 
         this.credentials.profile.email = this.credentials.email;
 
-        console.log('Datos enviados para crear un empleado', this.credentials);
         crearUsuario.callPromise(this.credentials).then(this.$bindToContext(() => {
             this.tipoMsj = 'success';
         })).catch(this.$bindToContext((err) => {
