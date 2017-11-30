@@ -36,11 +36,6 @@ Schema.datosFiscales = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    fechaCreacion: {
-        type: Date,
-        defaultValue: new Date(),
-        denyUpdate: true
-    },
     rfc: {
         type: String,
         autoValue: function () {
@@ -136,6 +131,13 @@ Schema.datosFiscales = new SimpleSchema({
     codigoPais: {
         type: String,
         defaultValue: 'MX'
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
     }
 });
 

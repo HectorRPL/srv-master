@@ -17,7 +17,13 @@ Comisiones.schema = new SimpleSchema({
     nombre:          {type:  String,  autoValue: function () { return this.value.toUpperCase() } },
     comisionProdInt: {type:  Number,  defaultValue: 0.0, decimal: true, max: 20, min: .0001},
     comisionProdExt: {type:  Number,  defaultValue: 0.0, decimal: true, max: 20, min: .0001},
-    fechaCreacion:   {type:  Date,    defaultValue: new Date(), denyUpdate: true}
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
+    }
 });
 
 Comisiones.attachSchema(Comisiones.schema);

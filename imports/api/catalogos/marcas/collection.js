@@ -23,11 +23,6 @@ Marcas.schema = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    fechaCreacion: {
-        type: Date,
-        defaultValue: new Date(),
-        denyUpdate: true
-    },
     nombre: {
         type: String,
         // regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
@@ -40,6 +35,13 @@ Marcas.schema = new SimpleSchema({
     activo: {
         type: Boolean,
         defaultValue: true
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
     }
 });
 

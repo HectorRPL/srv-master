@@ -25,11 +25,17 @@ Schema.bitaFactPromoComi = new SimpleSchema({
     usuarioId: {type: String, regEx: SimpleSchema.RegEx.Id},
     nuevoValorId: {type: String, regEx: SimpleSchema.RegEx.Id},
     operacion: {type: String},
-    fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
     productoInventarioId: {type: String, optional: true},
     marcaId: {type: String, optional: true},
     excepciones: {type: [String], blackbox: true, optional: true},
-    productos: {type: [String], blackbox: true, optional: true}
+    productos: {type: [String], blackbox: true, optional: true},
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
+    }
 });
 
 BitaFactPromoComi.attachSchema(Schema.bitaFactPromoComi);

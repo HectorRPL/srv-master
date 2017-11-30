@@ -27,7 +27,6 @@ Promociones.schema = new SimpleSchema({
     },
     descuento: {type: Number},
     precioLista: {type: Boolean, defaultValue: false},
-    fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
     fechaInicio: {
         type: Date, autoValue: function () {
             let dia = this.value.getDate();
@@ -52,6 +51,13 @@ Promociones.schema = new SimpleSchema({
             fechaFin.setFullYear(anio);
             fechaFin.setHours(22, 0, 0, 0);
             return fechaFin;
+        }
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
         }
     }
 });

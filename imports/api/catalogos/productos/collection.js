@@ -15,7 +15,6 @@ Productos.deny({
 
 Productos.schema = new SimpleSchema({
     _id:                {type: String,  regEx: SimpleSchema.RegEx.Id},
-    fechaCreacion:      {type: Date,    defaultValue: new Date(), denyUpdate: true},
     marcaId:            {type: String,  regEx: SimpleSchema.RegEx.Id},
     factorDefaultId:    {type: String,  regEx: SimpleSchema.RegEx.Id},
     codigoProveedor:    {type: String},
@@ -39,7 +38,14 @@ Productos.schema = new SimpleSchema({
     activo:             {type: Boolean, defaultValue: true},
     medidas:            {type: [Number], decimal:true, blackbox: true, optional:true},
     metrosCaja:         {type: Number, decimal:true, optional:true},
-    rectificado:        {type: Boolean, optional:true}
+    rectificado:        {type: Boolean, optional:true},
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
+    }
 });
 
 Productos.attachSchema(Productos.schema);

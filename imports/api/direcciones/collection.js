@@ -29,11 +29,6 @@ Schema.direcciones = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id
     },
-    fechaCreacion: {
-        type: Date,
-        defaultValue: new Date(),
-        denyUpdate: true
-    },
     calle: {
         type: String,
         max: 50,
@@ -113,6 +108,13 @@ Schema.direcciones = new SimpleSchema({
         autoValue: function () {
             if (this.value) {
                 return this.value.toUpperCase()
+            }
+        }
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
             }
         }
     }

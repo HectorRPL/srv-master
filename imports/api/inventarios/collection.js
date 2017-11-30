@@ -17,8 +17,14 @@ Schema.inventarios = new SimpleSchema({
     _id:                {type: String,  regEx: SimpleSchema.RegEx.Id},
     tiendaId:           {type: String,  regEx: SimpleSchema.RegEx.Id},
     ultimaOrdenCompra:  {type: String,  optional: true},
-    fechaCreacion:      {type: Date,    defaultValue: new Date(), denyUpdate: true},
-    actualizacion:      {type: Date,    optional: true}
+    actualizacion:      {type: Date,    optional: true},
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
+    }
 });
 
 Inventarios.attachSchema(Schema.inventarios);

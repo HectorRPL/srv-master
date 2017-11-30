@@ -32,11 +32,6 @@ Schema.tiendas = new SimpleSchema({
         regEx: SimpleSchema.RegEx.Id,
         optional: true
     },
-    fechaCreacion: {
-        type: Date,
-        defaultValue: new Date(),
-        denyUpdate: true
-    },
     nombre: {
         type: String,
         regEx: /^[a-zA-Z-/.&ÑñáéíóúÁÉÍÓÚ-\s\d]+$/,
@@ -75,6 +70,13 @@ Schema.tiendas = new SimpleSchema({
         type: String,
         regEx: SimpleSchema.RegEx.Id,
         optional: true
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
     }
 });
 

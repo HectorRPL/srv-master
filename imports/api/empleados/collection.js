@@ -33,7 +33,6 @@ const Schema = {};
 
 Schema.empleados = new SimpleSchema({
     _id: {type: String, regEx: SimpleSchema.RegEx.Id},
-    fechaCreacion: {type: Date, defaultValue: new Date(), denyUpdate: true},
     email: {
         type: String,
         regEx: SimpleSchema.RegEx.Email,
@@ -91,6 +90,13 @@ Schema.empleados = new SimpleSchema({
     activo: {
         type: Boolean,
         defaultValue: true
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
     }
 });
 

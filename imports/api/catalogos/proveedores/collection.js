@@ -37,11 +37,6 @@ Schema.proveedores = new SimpleSchema({
         regEx: SimpleSchema.RegEx.Id,
         optional: true
     },
-    fechaCreacion: {
-        type: Date,
-        defaultValue: new Date(),
-        denyUpdate: true
-    },
     nombre: {
         type: String,
         regEx: /^[ñÑ\s\w]+$/,
@@ -79,6 +74,13 @@ Schema.proveedores = new SimpleSchema({
     dias: {
         type: Number,
         optional: true
+    },
+    fechaCreacion: {
+        type: Date, denyUpdate: true, autoValue: function () {
+            if (this.isInsert) {
+                return new Date();
+            }
+        }
     }
 });
 
