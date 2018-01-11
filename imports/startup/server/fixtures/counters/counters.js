@@ -2,9 +2,13 @@
  * Created by jvltmtz on 15/11/17.
  */
 import {Counters} from '../../../../api/catalogos/counters/collection'
+import {Tiendas} from "../../../../api/catalogos/tiendas/collection";
 
-if (Counters.find({tiendaId: 'iJMyg7kDMLF7GW2Qt', nombre:'CREDITOVENTA'}).count() === 0) {
+if (Counters.find({nombre: 'DEVOLUCIONES'}).count() === 0) {
 
-    Counters.insert({tiendaId: 'iJMyg7kDMLF7GW2Qt', nombre:'CREDITOVENTA'});
+    Tiendas.find({}).forEach(
+        (tienda) => {
+            Counters.insert({tiendaId: tienda._id, nombre: 'DEVOLUCIONES'});
+        });
 
 }
