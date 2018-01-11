@@ -3,8 +3,8 @@
  */
 import {Counters} from '../../../../api/catalogos/counters/collection'
 
-if (Counters.find({tiendaId: 'iJMyg7kDMLF7GW2Qt', nombre:'CS'}).count() === 0) {
+if (Counters.find({tiendaId: 'iJMyg7kDMLF7GW2Qt', nombre:'CREDITOVENTA'}).count() === 0) {
 
-    Counters.insert({tiendaId: 'iJMyg7kDMLF7GW2Qt', nombre:'CS'});
+    Counters.insert({tiendaId: 'iJMyg7kDMLF7GW2Qt', nombre:'CREDITOVENTA'});
 
 }
