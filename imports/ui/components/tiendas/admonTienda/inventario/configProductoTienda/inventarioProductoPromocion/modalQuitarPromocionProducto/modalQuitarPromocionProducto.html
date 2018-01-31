@@ -1,0 +1,57 @@
+<form role="form" id="modalQuitarPromocionProductoFrmId" name="modalQuitarPromocionProductoFrm" novalidate>
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <!--TITULO MODAL-->
+        <div class="col-sm-10">
+            <h2>Quitar promoción</h2>
+        </div>
+        <!-- TACHE (CERRAR MODAL)-->
+        <div class="col-sm-2">
+            <div class="ibox-tools">
+                <br>
+                <a ng-click="modalQuitarPromocionProducto.cerrar()"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <!-- BODY MODAL -->
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>¿Confirmas que deseas quitar la promoción
+                            <strong>{{modalQuitarPromocionProducto.resolve.nombrePromocion}}</strong> del producto
+                            <strong>{{modalQuitarPromocionProducto.resolve.nombreMarca}} {{modalQuitarPromocionProducto.resolve.nombreProducto}}</strong>?
+                        </p>
+                    </div>
+                    <div class="col-sm-12">
+                        <!--BOTON ACEPTAR-->
+                        <button type="button"
+                                class="btn btn-primary center-block"
+                                ng-hide="modalQuitarPromocionProducto.tipoMsj === 'success'"
+                                ng-click="modalQuitarPromocionProducto.quitarPromocion()">
+                            Aceptar
+                        </button>
+                    </div>
+                </div>
+                <!--ALERTAS-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- ALERTA -->
+                        <alertas tipo="modalQuitarPromocionProducto.tipoMsj" mensaje="modalQuitarPromocionProducto.msj"></alertas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FOOTER MODAL-->
+        <div class="inmodal">
+            <!-- BOTON / SIGUIENTE / GUARDAR / GUARDAR-->
+            <div class="modal-footer">
+                <!--BOTON CERRAR -->
+                <button type="button"
+                        class="btn btn-default"
+                        ng-click="modalQuitarPromocionProducto.cerrar()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<pre>{{modalQuitarPromocionProducto.resolve|json}}</pre>

@@ -29,18 +29,23 @@ class QuitarPromocionProducto {
             this.productosAplicarPromo.push(result);
         }
     }
+
     quitarPromocion() {
         const datos = {
             nuevoValorId: this.promocionId,
             productos: this.productosAplicarPromo,
             operacion: 'quitarPromocion'
         };
-        actlzrProdctInvntrPromcnComsnProdct.callPromise(datos).then(this.$bindToContext(()=> {
-            this.productosAplicarPromo = [];
-            this.tipoMsj = 'success';
-        })).catch(this.$bindToContext((err)=>{
-            this.tipoMsj = 'danger';
-        }));
+        console.log('Asi se envían los datos para quitar la promoción', datos);
+        actlzrProdctInvntrPromcnComsnProdct
+            .callPromise(datos)
+            .then(this.$bindToContext(()=> {
+                this.productosAplicarPromo = [];
+                this.tipoMsj = 'success';
+            }))
+            .catch(this.$bindToContext((err)=> {
+                this.tipoMsj = 'danger';
+            }));
     }
     confirmar() {
         var modalInstance = this.$uibModal.open({

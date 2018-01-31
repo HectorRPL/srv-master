@@ -1,5 +1,6 @@
 <form id="configProductoTiendaFrmId" name="configProductoTiendaFrm" role="form">
     <div class="row wrapper border-bottom white-bg page-heading">
+        <!--MARCA Y TÍTULO DEL PRODUCTO-->
         <div class="col-sm-12">
             <h2>
                 <span class="text-navy">{{configProductoTienda.producto.marca().nombre}}</span>
@@ -9,82 +10,114 @@
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="ibox-content">
                 <div class="row">
+                    <!--FACTOR-->
                     <div class="col-sm-4">
-                        <div class="contact-box">
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    <i class="fa fa-money fa-3x" aria-hidden="true"></i>
-                                    <div class="m-t-xs font-bold"></div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="text-center">
+                                            <i class="fa fa-money fa-3x" aria-hidden="true"></i>
+                                            <div class="m-t-xs font-bold"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <h3 class="text-center">FACTOR</h3>
+                                        <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.factor().nombre}}</h3>
+                                        <inventario-producto-factor
+                                                factor-id="configProductoTienda.producto.factorId"
+                                                costo="configProductoTienda.producto.costo">
+                                        </inventario-producto-factor>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="button"
+                                                class="btn btn-primary btn-xs pull-right"
+                                                ng-click="configProductoTienda.reasignarFactorModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                        </button>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                                <h3 class="text-center">FACTOR</h3>
-                                <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.factor().nombre}}</h3>
-                                <inventario-producto-factor
-                                        factor-id="configProductoTienda.producto.factorId"
-                                        costo="configProductoTienda.producto.costo">
-                                </inventario-producto-factor>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button"
-                                        class="btn btn-primary btn-xs pull-right"
-                                        ng-click="configProductoTienda.reasignarFactorModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
                     </div>
+                    <!--COMISION-->
                     <div class="col-sm-4">
-                        <div class="contact-box">
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    <i class="fa fa-briefcase fa-3x" aria-hidden="true"></i>
-                                    <div class="m-t-xs font-bold"></div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="text-center">
+                                            <i class="fa fa-briefcase fa-3x" aria-hidden="true"></i>
+                                            <div class="m-t-xs font-bold"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <h3 class="text-center">COMISIÓN</h3>
+                                        <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.comision().nombre}}</h3>
+                                        <inventario-producto-comision
+                                                comision-id="configProductoTienda.producto.comisionId">
+                                        </inventario-producto-comision>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="button"
+                                                class="btn btn-primary btn-xs pull-right"
+                                                ng-click="configProductoTienda.reasignarComisionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                        </button>
+                                    </div>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                                <h3 class="text-center">COMISIÓN</h3>
-                                <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.comision().nombre}}</h3>
-                                <inventario-producto-comision
-                                        comision-id="configProductoTienda.producto.comisionId">
-                                </inventario-producto-comision>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button"
-                                        class="btn btn-primary btn-xs pull-right"
-                                        ng-click="configProductoTienda.reasignarComisionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
                     </div>
+                    <!--PROMOCION-->
                     <div class="col-sm-4">
-                        <div class="contact-box">
-                            <div class="col-sm-12">
-                                <div class="text-center">
-                                    <i class="fa fa-hand-o-down fa-3x" aria-hidden="true"></i>
-                                    <div class="m-t-xs font-bold"></div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="text-center">
+                                            <i class="fa fa-hand-o-down fa-3x" aria-hidden="true"></i>
+                                            <div class="m-t-xs font-bold"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <h3 class="text-center">PROMOCIÓN</h3>
+                                        <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.promocion().nombre}}</h3>
+                                        <h3 class="text-center" style="font-weight: 100; color: red" ng-hide="configProductoTienda.producto.promocionId"><strong>Sin Promoción</strong></h3>
+                                        <inventario-producto-promocion
+                                                promocion-id="configProductoTienda.producto.promocionId"
+                                                costo="configProductoTienda.producto.costo">
+                                        </inventario-producto-promocion>
+                                    </div>
+                                    <!--QUITAR PROMOCION-->
+                                    <div class="col-sm-6">
+                                        <button type="button"
+                                                class="btn btn-primary btn-xs"
+                                                ng-disabled="!configProductoTienda.producto.promocionId"
+                                                ng-click="configProductoTienda.quitarPromocionModal(
+                                                        configProductoTienda.producto,
+                                                        configProductoTienda.producto.producto().campoBusqueda,
+                                                        configProductoTienda.producto.promocion().nombre,
+                                                        configProductoTienda.producto.marca().nombre)">
+                                            <i class="fa fa-trash-o" aria-hidden="true"></i> Quitar
+                                        </button>
+                                    </div>
+                                    <!--EDITAR PROMOCION-->
+                                    <div class="col-sm-6">
+                                        <button type="button"
+                                                class="btn btn-primary btn-xs pull-right"
+                                                ng-click="configProductoTienda.reasignarPromocionModal(
+                                                        configProductoTienda.producto,
+                                                        configProductoTienda.producto.producto().campoBusqueda)">
+                                            <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+                                        </button>
+                                    </div>
+
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                                <h3 class="text-center">PROMOCIÓN</h3>
-                                <h3 class="text-center" style="font-weight: 100">{{configProductoTienda.producto.promocion().nombre}}</h3>
-                                <h3 class="text-center" style="font-weight: 100; color: red" ng-hide="configProductoTienda.producto.promocionId"><strong>Sin Promoción</strong></h3>
-                                <inventario-producto-promocion
-                                        promocion-id="configProductoTienda.producto.promocionId"
-                                        costo="configProductoTienda.producto.costo">
-                                </inventario-producto-promocion>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button"
-                                        class="btn btn-primary btn-xs pull-right"
-                                        ng-click="configProductoTienda.reasignarPromocionModal(configProductoTienda.producto, configProductoTienda.producto.producto().campoBusqueda)">
-                                    <i class="fa fa-pencil" aria-hidden="true"></i> Editar
-                                </button>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

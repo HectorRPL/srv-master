@@ -7,10 +7,12 @@ import {name as InventarioProductoPromocion} from "./inventarioProductoPromocion
 import {name as InventarioProductoComision} from "./inventarioProductoComision/inventarioProductoComision";
 import {name as ReasignarFactorProducto} from "./inventarioProductoFactor/reasignarFactorProducto/reasignarFactorProducto";
 import {name as ReasignarPromocionProducto} from "./inventarioProductoPromocion/reasignarPromocionProducto/reasignarPromocionProducto";
+import {name as ModalQuitarPromocionProducto} from "./inventarioProductoPromocion/modalQuitarPromocionProducto/modalQuitarPromocionProducto";
 import {name as ReasignarComisionProducto} from "./inventarioProductoComision/reasignarComisionProducto/reasignarComisionProducto";
 import template from "./configProductoTienda.html";
 
 class ConfigProductoTienda {
+
     constructor($scope, $reactive, $state, $stateParams, $uibModal) {
         'ngInject';
         this.$state = $state;
@@ -79,6 +81,36 @@ class ConfigProductoTienda {
             }
         });
     }
+
+    quitarPromocionModal(productoInventario, nombreProducto, nombrePromocion, nombreMarca) {
+        console.log('[productoInventario]', productoInventario);
+        console.log('[nombreProducto]', nombreProducto);
+        console.log('[nombrePromocion]', nombrePromocion);
+
+        productoInventario.nombreProducto = nombreProducto;
+        var modalInstance = this.$uibModal.open({
+            animation: true,
+            component: 'ModalQuitarPromocionProducto',
+            backdrop: 'static',
+            size: 'md',
+            keyboard: true,
+            resolve: {
+                productoInventario: function () {
+                    return productoInventario;
+                },
+                nombreProducto: function () {
+                    return nombreProducto;
+                },
+                nombrePromocion: function () {
+                    return nombrePromocion;
+                },
+                nombreMarca: function () {
+                    return nombreMarca;
+                }
+            }
+        });
+    }
+
 }
 
 const name = 'configProductoTienda';
@@ -90,6 +122,7 @@ export default angular
         InventarioProductoComision,
         ReasignarFactorProducto,
         ReasignarPromocionProducto,
+        ModalQuitarPromocionProducto,
         ReasignarComisionProducto
     ])
     .component(name, {

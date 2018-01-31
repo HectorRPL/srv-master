@@ -1,32 +1,31 @@
-<div class="col-sm-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Aplicar al precio de </h5>
-            <span class="label label-success pull-right" ng-show="inventarioProductoPromocion.promocion.precioLista">LISTA </span>
-            <span class="label label-success pull-right" ng-show="!inventarioProductoPromocion.promocion.precioLista">COMPRA </span>
-        </div>
-        <div class="ibox-title">
-            <h5>Inicia</h5>
-            <span class="pull-right">{{inventarioProductoPromocion.promocion.fechaInicio | date:'dd/MMM/yyyy' }} </span>
-        </div>
-        <div class="ibox-title">
-            <h5>Finaliza</h5>
-            <span class="pull-right">{{inventarioProductoPromocion.promocion.fechaFin | date:'dd/MMM/yyyy' }}</span>
-        </div>
+<table class="table table-hover margin bottom">
+    <tbody>
+        <tr>
+            <td>Sobre precio de </td>
+            <td class="text-right">
+                <span class="label label-success" ng-show="inventarioProductoPromocion.promocion.precioLista">LISTA </span>
+                <span class="label label-success" ng-show="!inventarioProductoPromocion.promocion.precioLista">COMPRA </span>
+            </td>
+        </tr>
+        <tr>
+            <td>Inicia</td>
+            <td class="text-right">{{inventarioProductoPromocion.promocion.fechaInicio | date:'dd/MMM/yyyy' }}</td>
+        </tr>
+        <tr>
+            <td>Finaliza</td>
+            <td class="text-right">{{inventarioProductoPromocion.promocion.fechaFin | date:'dd/MMM/yyyy' }}</td>
+        </tr>
+    </tbody>
+</table>
 
-
-        <div class="ibox-content">
-            <div class="row">
-                <div class="col sm-6">
-                    <div>
-                        <h1 class="stat-percent font-bold text-success">{{inventarioProductoPromocion.promocion.descuento | number:2}}%</h1>
-                    </div>
-                </div>
-                <div class="col sm-6">
-                    <h1 class="no-margins">${{inventarioProductoPromocion.miInventario.precioDescuento() | number:2}}</h1>
-                    <small>Precio último al público</small>
-                </div>
-            </div>
+<div class="ibox-content">
+    <div class="row">
+        <div class="col sm-6 text-center">
+            <h1 class="font-bold text-success">{{inventarioProductoPromocion.promocion.descuento | number:2}}%</h1>
+        </div>
+        <div class="col sm-6 text-center">
+            <h1 class="no-margins">${{inventarioProductoPromocion.miInventario.precioDescuento() | number:2}}</h1>
+            <small>Precio último al público</small>
         </div>
     </div>
 </div>
