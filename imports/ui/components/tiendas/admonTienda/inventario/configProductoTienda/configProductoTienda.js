@@ -83,9 +83,6 @@ class ConfigProductoTienda {
     }
 
     quitarPromocionModal(productoInventario, nombreProducto, nombrePromocion, nombreMarca) {
-        console.log('[productoInventario]', productoInventario);
-        console.log('[nombreProducto]', nombreProducto);
-        console.log('[nombrePromocion]', nombrePromocion);
 
         productoInventario.nombreProducto = nombreProducto;
         var modalInstance = this.$uibModal.open({
